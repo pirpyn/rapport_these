@@ -1,0 +1,466 @@
+% Magic comment for atom building
+% !TEX root=main.tex
+% START OF THE DOCUMENT
+\section{Calcul des coefficients des CIOEs}\label{sec:coeffs_cioe}
+%{
+%\color{red} Terminer cette partie : noyau de Q pour dire si sdp.
+%}
+
+Nous allons maintenant étudier comment approcher l'opérateur d'impédance. Ce travail complète les résultats de \cite[Annexe~A]{stupfel_implementation_2015} car nous caractérisons l'image et le noyau de la fonctionnelle.
+
+On cherche à déterminer les coefficients des CIOE $(a_0,a_1,b) \in \C^3$ qui permettent d'approcher la condition d'impédance \eqref{eq:coeff_ref:mat_z:imped}.
+
+% \begin{equation}
+% \label{eq:cioe}
+% %-\n \pvect \n \pvect \E = \gls{ope-imp} \left( \n \pvect \H \right)
+% %\approx
+% -\left(1 + b t \right)\n \pvect \n \pvect \E = \left(a_0 + a_1 t \right)\n \pvect \H
+% \end{equation}
+
+On se place en un point de la surface. Si la surface y est suffisamment régulière, on peut trouver un voisinage de ce point tel que le problème à résoudre soit celui étudié en section \ref{sec:coeffs_ref}.
+
+\subsection{Formulation exacte dans le cadre de l'approximation plan tangent}
+
+Soit $s$ tel que $k_{x,0} = k_0s$\footnote{Si  $s \le 1, s=\sin(\theta)$, angle d'incidence par rapport à la normale au plan tangent.}. Soit $t := \frac{s^2}{\nu^2}$. Alors
+\begin{align*}
+  \text{TE: } \mathcal Z_{th}(t) &= i\eta \frac{\tan\left(kd\sqrt{1+\frac{t}{\nu^2}}\right)}{\sqrt{1+\frac{t}{\nu^2}}}\\
+  \text{TM: } \mathcal Z_{th}(t) &= i\eta \frac{\tan\left(kd\sqrt{1+\frac{t}{\nu^2}}\right)}{\sqrt{1+\frac{t}{\nu^2}}}(1+\frac{t}{\nu^2})
+\end{align*}
+%%%%%% SECTION MOINDRE CARRE
+
+La méthodologie est la suivante : étant donné plusieurs $s_j$ entre $0$ et $s_{\max}$\footnote{Le choix du $s_{\max}$ est réalisé en calculant l'erreur L2 relative entre les coefficients de réflexions exactes et ceux des CIOEs}, on va minimiser la distance entre le $Z$ et le $\mathcal{Z}_{th}$.
+
+On dispose de $N$ observations de $\mathcal Z_{th} : Z_j = \mathcal Z_{th}(t_j)$, on note $X = (a_0,a_1,b) \in \C^3$.
+\subsection{Calcul des coefficients par résolution d'un problème d'optimisation}
+\subsubsection{Fonctionnelle à minimiser}
+Soit $f:\C^3 \rightarrow \C$
+\[
+f_t(X) = a_0 + a_1 t - b t \mathcal Z_{th}(t)
+\]
+On cherche alors à minimiser la distance de $f$ à $\mathcal Z_{th}$  : on cherche $X_{opt}\in \C^3$ tel que
+\[
+X_{opt} = \text{argmin}_X \left( \frac{1}{2}\sum_{j=1}^{N} | f_{t_j}(X) - Z_j|^2 \right)
+\]
+
+\subsection{Calcul des coefficients par résolution d'un système linéaire}
+On peut écrire le problème à résoudre comme
+\begin{align*}
+	MX &= Z\\
+	M &=
+	\begin{pmatrix}
+		1 & t_1 & -t_1Z_1 \\
+		\vdots & \vdots & \vdots \\
+		1 & t_N & -t_NZ_N
+	\end{pmatrix}
+\end{align*}
+
+On résout ce genre de système non inversible en utilisant la transposée conjuguée. 
+\begin{equation}
+   \conj{M^t}MX = \conj{M^t} Z
+\end{equation}
+Ce genre de solution est équivalent à la résolution d'un système par moindre carré \cite{penrose_best_1956} :
+\begin{equation}
+  X_{opt} = \left(\conj{M^t}M\right)^{-1}\conj{M^t} Z = M^+ Z
+\end{equation}
+
+\subsubsection{Formulation sous forme quadratique}\label{sec:formQ}
+
+Soit $\left<.,.\right>$ le produit scalaire associée à la norme $||.||_2$ ($\left<a,a\right> = ||a||_2^2 = \sum_{j=1}^N|a_j|^2$).
+
+\begin{prop}
+Il existe une matrice $Q$, un vecteur $P$ et un scalaire $D$ tel que:
+
+\[
+\frac{1}{2}\sum_{j=1}^N |f_{\xi_j}(X) -Z_j|^2 = \left<Q X,X\right> -2\left<P,X\right> +D
+\]
+\end{prop}
+\begin{proof}
+\begin{align*}
+\sum_{j=1}^N |f_{t_j}(X) -Z_j|^2&= ||MX-Z||^2\\
+&= \left<MX-Z,MX-Z\right>\\
+&=\left<\conj{M^t}MX,X\right> - 2\left<\conj{M^t}Z,X\right> + \left<Z,Z\right>\\
+&= 2\left<Q X,X\right> -\left<P,X\right> +2D
+\end{align*}
+
+Si Q est inversible alors le minimum de cette fonctionnelle est atteint en $X_{opt} = Q^{-1}P$
+
+\end{proof}
+
+Si l'on cherche des inconnus réelles, on a :
+
+Soit $(x_i)_{i=1..6} \in \R^6$, 
+\begin{align*}
+g_t(x) &= 
+\x_1 + \x_3 t - \left(x_5 Z_{th}(t)' - x_6 Z_{th}(t)''\right)t  \\
+&+ i\left(
+\x_2 + \x_4 t - \left(x_5 Z_{th}(t)'' + x_6 Z_{th}(t)'\right)t
+\right)
+\end{align*}
+où $z'= \Re{z}, z''=\Im{z}$.
+
+alors de la même manière, il existe une matrice $Q$, un vecteur $P$ et un scalaire $D$ tel que
+\[
+\sum_{j=1}^N|f_{t_j}(X) -Z_j|^2  = \sum_{j=1}^N|g_{t_j}(x) -Z_j|^2 = \left<Q x,x\right> -2\left<P,x\right> + D
+\]
+
+De plus, on a $Q = \sum_{j=1}^N Q_j, P = \sum_{j=1}^N P_j ,D=\sum_{j=1}^N D_j$ où
+\[
+Q_j =
+\begin{pmatrix}
+1 & 0 & t_j & 0 & -t_jZ_j' & t_jZ_j'' \\
+& 1 & 0 & t_j & -t_jZ_j'' & -t_jZ_j' \\
+&   & t_j^2 & 0 & -t_j^2Z_j' & t_j^2Z_j'' \\
+&   &  & t_j^2 & -t_j^2Z_j'' & -t_j^2Z_j' \\
+&   &  &  & t_j^2|Z_j|^2 & 0 \\
+&   &  &  &  & t_j^2|Z_j|^2 \\
+\end{pmatrix}
+,\quad
+P_j =
+\begin{pmatrix}
+Z_j' \\ Z_j'' \\ t_j Z_j' \\ t_j Z_j''  \\ -t_j |Z_j|^2  \\ 0
+\end{pmatrix}
+,\quad
+D_j = |Z_j|^2
+\]
+
+Et $Q_j$ est une matrice symétrique par définition du produit scalaire, positive par définition du module:
+\[
+\forall x \in \R^6, q(x) := \left<Q_jx,x\right> = |g_t(x)|^2 \ge 0
+\]
+Mais elle n'est pas définie : il existe $x \not = 0$ tel que $q(x) = 0$ (ex, $x = (1,0,-1/t_j,0,0,0)$).
+
+Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté numériquement.
+
+
+\subsection{Etude de la forme quadratique}\label{sec:etud_Q}
+
+Changeons les colonnes/lignes afin de disposer les zéros loin de la diagonale afin d'avoir une matrice qui ``ressemble'' le plus à une matrice diagonale: du vecteur $x$ on passe à $\tilde x = (a_0',a_1',b',a_0'',a_1'',b'')^t$ et alors $x^tQ_jx = {\tilde x}^t\tilde{Q_j} \tilde{x}$ avec
+\[
+  \tilde{Q_j} =
+  \begin{pmatrix}
+    1 &  t_j & -{t_j Z'} &0 &0 &{t_j Z''}\\
+      & {t_j^2} & -{t_j^2Z'} & 0 &0 & {t_j^2Z''}\\
+      & & {t_j^2|Z|^2} & -{t_j Z''} & -{t_j^2Z''} & 0\\
+      & & & 1 & t_j & -{t_j Z'} \\
+      & & & & {t_j^2} & -{t_j^2 Z'} \\
+      & & & & & {t_j^2|Z|^2}
+  \end{pmatrix}, \text{ symétrique }
+\]
+
+On définit les matrices $A,B$ respectivement symétriques et antisymétriques telles que $\tilde{Q_j} = \begin{pmatrix} A & B \\ B^t & A\end{pmatrix}$.
+% Cherchons les valeurs propres de $\tilde{Q_j}$. Par soucis de simplicité, on identifie le scalaire 1 à la matrice identité.
+
+% \begin{align}
+%   \det(\tilde{Q_j} -\lambda) = \det(A-\lambda) \det(A-\lambda - B(A-\lambda)^{-1}B^t)\label{eq:detQj}
+% \end{align}
+
+\begin{tcolorbox}
+\centering
+\textbf{On définit et utilise dans ce qui suit}
+\[{x_j} = t_j,\; {y_j} = t_j Z_j',\; {z_j} = t_j Z_j''\]
+\end{tcolorbox}
+
+
+\subsubsection{Caractérisation de l'image et du noyau de la sous-matrice A}
+Soit $\mathcal B = (\v{e_1},\v{e_2},\v{e_3})$ la base canonique\\
+Soit $A_\mathcal{B} = \begin{pmatrix}
+ 1 & {x_j} & -{y_j} \\
+ {x_j} & {x_j}^2 & -{x_jy_j} \\
+ -{y_j} & -{x_jy_j} & {y_j}^2 + {z_j}^2
+\end{pmatrix}$\\
+Soit ${\v{v_j}} := \frac{1}{\sqrt{1 + {x_j}^2}}\begin{pmatrix} 1&{x_j}&0\end{pmatrix}^t, {\v{u_j}} = \frac{1}{\sqrt{1+{x_j}^2}}\begin{pmatrix} -{x_j} & 1 & 0 \end{pmatrix}^t$.
+\begin{prop}
+  \begin{align*}
+    \Img(A) &= \Vect{{\v{v_j}},\v{e_3}}\\
+    \Ker(A) &= \Vect {\v{u_j}}
+  \end{align*}
+\end{prop}
+
+\begin{proof}
+  On a : $A_\mathcal{B} = \begin{pmatrix} 1 & {x_j} & -{y_j} \\ {x_j} & {x_j}^2 & -{x_jy_j} \\ -{y_j} & -{x_jy_j} & {y_j}^2 + {z_j}^2\end{pmatrix}$
+
+  On remarque que les 2 premières lignes sont linéairement dépendantes, $(-{x_j}, 1, 0)^t$ appartient au noyau donc \textbf{le rang de $A$ est alors au plus de 2.}
+
+  Soit $e_i$ un vecteur de la base canonique.
+
+  On remarque que $A\v{e_1} = ( 1, {x_j} , -{y_j})^t =: \v{\tau}$. Donc $\v{\tau}$ appartient à l'image de A.
+
+  De plus, $A\v{e_2} = {x_j}\v{\tau}$, puis $A\v{e_3} = -{y_j}\v{\tau}+{z_j}^2\v{e_3}$. On peut en déduire que $A(\v{e_3} + {y_j} \v{e_1}) = {z_j}^2 \v{e_3}$. 
+
+  Donc $\v{e_3}$ appartient à l'image de $A$. La famille $(\v{\tau},\v{e_3})$ est libre et génératrice, l'image est au plus de dimensions 2 donc c'est une base de l'image.
+
+  On va prendre alors la base orthonormale associée : 
+
+  Soit \[
+  {\v{v_j}} := \frac{\v{\tau}}{||\v{\tau}||} = \frac{1}{\sqrt{1 + {x_j}^2 +{y_j}^2}}\begin{pmatrix} 1\\{x_j}\\-{y_j}\end{pmatrix}\]
+  \[{\v{v_j}}^t := \v{e_3} - (\v{e_3}\cdot {\v{v_j}}){\v{v_j}} = \frac{1}{1+{x_j}^2+{y_j}^2}\begin{pmatrix} {y_j} \\ {x_jy_j} \\ 1 + {x_j}^2\end{pmatrix}\]
+
+  Mais cette base n'est pas très pratique : en effet $A\v{v_j} = \sqrt{1+{x_j}^2+{y_j}^2} {\v{v_j}} - {y_j} {z_j}^2 \v{e_3}$. \textbf{On ne voit pas ${\v{v_j}}^t$ apparaître.}. De fait, on aura du mal à expliciter A dans cette nouvelle base. Mais puisque que $\v{e_3}$ apparaît dans l'image, on va supprimer sa composante de ${\v{v_j}}$:
+
+  Soit ${\v{v_j}} := \frac{1}{\sqrt{1 + {x_j}^2}}\begin{pmatrix} 1\\{x_j}\\0\end{pmatrix}$.
+  Alors
+    \begin{align*}
+    A \v{e_1} &= \sqrt{1+{x_j}^2}{\v{v_j}} - {y_j} \v{e_3}\\
+    A \v{e_2} &= {x_j}\sqrt{1+{x_j}^2}{\v{v_j}} -{x_jy_j} \v{e_3}\\
+    & \Rightarrow A {\v{v_j}} = (1+{x_j}^2) {\v{v_j}} - {y_j}\sqrt{1+{x_j}^2} \v{e_3}\\
+    A \v{e_3} &= -{y_j}\sqrt{1+{x_j}^2}{\v{v_j}} +({y_j}^2+{z_j}^2) \v{e_3}\\
+    \intertext{La famille $({\v{v_j}},\v{e_3})$ est libre et géréatrice, l'image est au plus de dimensions 2 donc c'est une base de l'image. On a en définitive }
+    \Img(A) &= \Vect{{\v{v_j}},\v{e_3}}\\
+    \Ker(A) &= \Vect {\v{u_j}}
+  \end{align*}
+\end{proof}
+
+\begin{prop}
+  Soit R la forme réduite de A dans $\mathcal{B'}= (\v{e_3},{\v{v_j}},{\v{u_j}})$
+
+  \[
+    R =
+    \begin{pmatrix}
+      {y_j}^2+{z_j}^2 & -{y_j}\sqrt{1+{x_j}^2} & 0   \\
+      -{y_j}\sqrt{1+{x_j}^2} &1+ {x_j}^2 &0 \\
+      0 & 0 & 0
+    \end{pmatrix}
+  \]
+  Avec la matrice de passage entre les bases $\mathcal B$ et $\mathcal B'$:
+
+  \[
+    P_{\mathcal B' \rightarrow \mathcal B} = \frac{1}{\sqrt{1+{x_j}^2}}
+    \begin{pmatrix}
+      0 & 1 & -{x_j} \\
+      0 & {x_j} & 1 \\
+      \sqrt{1+{x_j}^2} & 0 &0
+    \end{pmatrix}
+  \]
+\end{prop}
+
+\subsubsection{Caractérisation de l'image et du noyau de la sous-matrice B}
+Soit $B = \begin{pmatrix} 0 & 0 & {z_j} \\ 0 & 0 & {x_jz_j} \\ -{z_j} & -{x_jz_j} & 0\end{pmatrix}$
+\begin{prop}
+  \begin{align*}
+    \Img(B) &= \Img(A) \\
+    \Ker(B) &= \Ker(A)
+  \end{align*}
+\end{prop}
+
+\begin{proof}
+  On remarque que de nouveau ${\v{u_j}} \in \Ker(B)$.
+
+  On reprend le même protocole que pour A, et alors
+\begin{align*}
+ B \v{e_1} &= -{z_j} \v{e_3}\\
+ B \v{e_2} &= -{x_jz_j} \v{e_3}\\
+ B {\v{v_j}} &= -{z_j}\sqrt{1+{x_j}^2}\v{e_3}\\
+ B \v{e_3} &= {z_j}\sqrt{1+{x_j}^2}{\v{v_j}}
+\end{align*}
+ donc par les mêmes arguments que précédemment, $({\v{v_j}},\v{e_3})$ appartiennent à l'image et alors B est totalement déterminée..
+\end{proof}
+
+\begin{defn}
+  B s'exprime dans la base $\mathcal{B'}= (\v{e_3},{\v{v_j}},{\v{u_j}})$ comme
+  \[
+    B_\mathcal{B'} = {z_j}\sqrt{1+{x_j}^2}
+    \begin{pmatrix}
+      0 & -1 & 0 \\
+      1 & 0 & 0\\
+      0 & 0 & 0
+    \end{pmatrix}
+  \]
+\end{defn}
+
+\subsubsection{Caractérisation du noyau et de l'image de $Q_j$}
+
+\newcommand{\sqx}{\sqrt{1+{x_j}^2}}
+
+Soient
+\begin{align*}
+V_{j,1} &= \begin{pmatrix}  \sqx {\v{v_j}} - {y_j} \v{e_3} \\ -{z_j} \v{e_3} \end{pmatrix}\\
+V_{j,2} &= \begin{pmatrix} {z_j} \v{e_3} \\  \sqx {\v{v_j}} - {y_j} \v{e_3}\end{pmatrix}\\
+U_{j,1} &= \begin{pmatrix} 0_{\R^3} \\ {\v{u_j}} \end{pmatrix}\\
+U_{j,2} &= \begin{pmatrix} {\v{u_j}} \\0_{\R^3} \end{pmatrix}\\
+U_{j,3} &= \sqrt{\frac{z_j^2}{1+x_j^2 +y_j^2+z_j^2}}\begin{pmatrix} \frac{y_j}{z_j}{\v{v_j}} + \frac{\sqx}{z_j}\v{e_3}{\v{v_j}}\end{pmatrix}\\
+U_{j,4} &= \sqrt{\frac{1}{1+x_j^2 +y_j^2+z_j^2}}\begin{pmatrix} -z_j\v{v_j} \\ y_j\v{v_j} + \sqx \v{e_3}\end{pmatrix}
+\end{align*}
+%TODO ORTHONORMALISER POUR AVOIR UNE BASE DE R6. V1.U4 != 0 V2.U3 !=0
+
+{
+\color{red}
+Ces six vecteurs ne forment pas une base de R6 car V1.U4 != 0 V2.U3 != 0. A revoir !
+}
+
+\begin{prop}
+  \begin{align*}
+    \Img(Q_j) &= \Vect{V_{j,1},V_{j,2}} \\
+    \Ker(Q_j) &= \Vect{U_{j,1},U_{j,2},U_{j,3},U_{j,4}}
+  \end{align*}
+\end{prop}
+
+\begin{proof}
+
+
+On vérifie facilement que $U_{j,1}$ et $U_{j,2}$ appartiennent au noyau puisque $\v{u_j}$ appartient au noyau de $A$ et de $B$.
+
+Il est aussi simple de vérifier que $V_{j,1} = Q_j\begin{pmatrix}\v{e_1}\\0_{\R^3}\end{pmatrix}\not =0$ et $V_{j,2} = Q_j\begin{pmatrix}0_{\R^3}\\\v{e_1}\end{pmatrix} \not= 0$ et $V_{j,1}\cdot V_{j,2} = 0$.
+
+Ainsi on sait que $4 \ge dim(\Ker Q_j) \ge 2$.
+
+On cherche alors $(\lambda_1,\mu_1,\lambda_2, \mu_2)\in\Re$ tel que $X = \begin{pmatrix} \lambda_1 \v{v_j} + \mu_1 \v{e_3}\\ \lambda_2 \v{v_j} + \mu_2 \v{e_3}\end{pmatrix}\in \Ker Q_j$
+
+Il faut alors résoudre le système linéaire suivant :
+
+\[
+\begin{pmatrix}
+ 1+x_j^2 & -y_j \sqx & 0 & z_j\sqx \\
+ -y_j\sqx & y_j^2 + z_j^2 & -z_j\sqx & 0 \\
+0 & -z_j \sqx & 1 +x_j^2 & -y_j \sqx \\
+z_j\sqx & 0 & -y_j\sqx & y_j^2 + z_j^2
+\end{pmatrix}
+\begin{pmatrix}
+  \lambda_1\\
+  \mu_1\\
+  \lambda_2\\
+  \mu_2
+\end{pmatrix} = 0
+\]
+
+Grâce au pivot de Gauss, on remarque que la matrice est de rang 2. Donc on peut fixer deux inconnus et en déduire les deux restantes. Si on ne prend que les deux dernières lignes du système, on a le résultat suivant:
+
+On suppose que $z_j\not= 0$\footnote{Le cas $z_j=0$ est vu en sous-section \ref{sec:Qj_z0}.}, alors $\forall \lambda_2, \mu_2 \in \R$,
+\[
+\left\lbrace
+\begin{matrix}
+\lambda_1 &=& \frac{y_j}{z_j}\lambda_2& - \frac{y_j^2 + z_j^2}{z_j\sqrt{1+x_j^2}}\mu_2\\
+  \mu_1 &=& \frac{\sqrt{1+x_j^2}}{z_j}\lambda_2& - \frac{y_j}{z_j}\mu_2
+\end{matrix}
+\right.
+\]
+
+Soient \begin{align*}
+&W_{j,1} = \begin{pmatrix} \frac{{y_j}}{{z_j}}{\v{v_j}} + \frac{ \sqx}{{z_j}}\v{e_3}\\{\v{v_j}}\end{pmatrix}
+&&W_{j,2} = \begin{pmatrix} -\frac{{y_j}^2+{z_j}^2}{{z_j} \sqx}{\v{v_j}} - \frac{{y_j}}{{z_j}}\v{e_3}\\\v{e_3}\end{pmatrix}
+\end{align*}
+
+
+On peut alors décomposer $X = \lambda_2 W_{j,1} + \mu_2 W_{j,2}$. Puisque on peut choisir arbitrairement $\lambda_2, \mu_2$ de telle sorte que $X$ soit dans le noyau, alors $W_{j,1}$ et $W_{j,2}$ y appartiennent aussi.\\
+
+
+La famille des $(U_{j,k},W_{j,k})_{k=1,2}$ est libre et génératrice. Comme le noyau est au plus de dimensions 4, elle forme une base du noyau, qui n'est pas orthonormale. On va donc utiliser le procédé d'orthonormalisation de Gram-Schmidt.
+
+Soient \begin{align*}
+&U_{j,3} = \frac{W_{j,1}}{||W_{j,1}||} = \sqrt{\frac{z_j^2}{1+x_j^2 +y_j^2+z_j^2}}\begin{pmatrix} \frac{{y_j}}{{z_j}}{\v{v_j}} + \frac{ \sqx}{{z_j}}\v{e_3}\\{\v{v_j}}\end{pmatrix}\\
+&W_{j,3} = W_{j,2} - \left( U_{j,3}\cdot W_{j,2} \right)U_{j,3} = \begin{pmatrix} -\frac{z_j}{\sqx}\v{v_j} \\ \frac{y_j}{\sqx}\v{v_j} + \v {e_3}\end{pmatrix}\\
+&U_{j,4} = \frac{W_{j,3}}{||W_{j,3}||} = \sqrt{\frac{1}{1+x_j^2 +y_j^2+z_j^2}}\begin{pmatrix} -z_j\v{v_j} \\ y_j\v{v_j} + \sqx \v{e_3}\end{pmatrix}
+\end{align*}
+
+
+
+On donc déterminé $\tilde{Q_j}$ par son image et son noyau.
+\end{proof}
+
+\subsubsection{Caractérisation du noyau de Q}
+
+{
+\color{blue}
+Je veux montrer que Q est sdp donc de noyau $\lbrace0\rbrace$. But: arriver à trouver une base orthonormale de l'image de cardinal 6. Idée : Prendre deux vecteurs $V_{p,1}, V_{q,1}$, fixer $x_p$, voir à quelle condition on a $V_{p,1} \cdot V_{q,1} = 0$. Pour çà, il faut que j'ai une base $\R^6$ avec les $V_j$ dedans.
+}
+
+%TODO
+
+\paragraph{Cas $z_j=0$}\label{sec:Qj_z0}~{}\\
+
+Soient
+\begin{align*}
+ &\v{v_j} := \frac{1}{\sqrt{1 + x_j^2 + y_j^2}}
+  \begin{pmatrix}
+  1 \\
+  x_j \\
+  -y_j
+  \end{pmatrix} & \\
+&\v{u_{j,1}} := \frac{1}{\sqrt{1+x_j^2}}
+  \begin{pmatrix}
+  -x_j \\
+  1 \\
+  0 \end{pmatrix} &
+\v{u_{j,2}} := \sqrt{\frac{1+x_j^2}{1+x_j^2+y_j^2}}
+  \begin{pmatrix}
+  \frac{y_j}{1+x_j^2}\\
+  \frac{x_j y_j}{1+x_j^2}\\
+  1
+  \end{pmatrix}
+\end{align*}
+
+\begin{prop}
+  \begin{align*}
+    \Img(A) &= \Vect{\v{v_j}}\\
+    \Ker(A) &= \Vect{\v{u_{j,1}},\v{u_{j,2}}}
+  \end{align*}
+\end{prop}
+
+\begin{proof}
+Dans ce cas, on a 
+\[
+\tilde{Q_j} = \begin{pmatrix} A & 0_{\mathcal M(3,3)} \\ 0_{\mathcal M(3,3)} & A\end{pmatrix}\]
+\[A = \begin{pmatrix}
+ 1 & {x_j} & -{y_j} \\
+ {x_j} & {x_j}^2 & -{x_jy_j} \\
+ -{y_j} & -{x_jy_j} & {y_j}^2
+\end{pmatrix}
+\]
+
+Cette fois-ci on voit directement les 3 lignes sont linéairement dépendantes. $(-x_j, 1, 0)^t$ et $(y_j, 0, 1)^t$ appartiennent au noyau donc le rang de $A$ est alors de 1, et $\tau =  (1,x_j,-y_j)^t$ appartient à l'image. Pour construire une base du noyau, il ne reste plus qu'à utiliser Gram-Schmidt.
+
+\end{proof}
+
+Soient
+\begin{align*}
+&\v{V_{j,1}} := \begin{pmatrix} v_{j} \\ 0 \end{pmatrix} &
+&\v{V_{j,2}} := \begin{pmatrix} 0 \\ v_{j} \end{pmatrix} & & \\
+&\v{U_{j,1}} := \begin{pmatrix} u_{j,1} \\ 0 \end{pmatrix} &
+&\v{U_{j,2}} := \begin{pmatrix} u_{j,2} \\ 0 \end{pmatrix} &
+&\v{U_{j,3}} := \begin{pmatrix} 0 \\ u_{j,1} \end{pmatrix} &
+&\v{U_{j,4}} := \begin{pmatrix} 0 \\ u_{j,2} \end{pmatrix}
+\end{align*}
+
+\begin{prop}
+  \begin{align*}
+    \Img(\tilde{Q_j}) &= \Vect{\v{V_{j,1}},\v{V_{j,2}}}\\
+    \Ker(\tilde{Q_j}) &= \Vect{\v{U_{j,1}},\v{U_{j,2}},\v{U_{j,3}},\v{U_{j,4}}}
+  \end{align*}
+\end{prop}
+
+\begin{proof}
+ Puisque $\tilde{Q_j}$ est diagonale par bloc, le résultat est immédiat.
+\end{proof}
+Par construction, ces 6 vecteurs forment une base de $\R^6$.
+\iffalse
+\subsubsection{Réécriture en contraintes inégalités positives}
+Soit $b = (1+i)\frac{a_1'}{a_0'-a_0''}$. La première contrainte peut alors se réécrire en 2 contraintes inégalités en cherchant $|\Re(b-b)| \leq \epsilon,|\Im(b-b)| \leq \epsilon$. Puisque $\Re(b) = \Im(b) = \frac{a_1'}{a_0'-a_0''}$, on redéfini $b:= \frac{a_1'}{a_0'-a_0''}$
+et alors, soit $\epsilon > 0 $.
+\begin{align}
+\label{eq:contr_1}|b' - b| - \epsilon \geq 0 \\
+\label{eq:contr_2}|b'' - b| - \epsilon \geq 0
+\end{align}
+Pour la seconde, c'est évident. Rappel: $c_3 = a_1''-b'a_0''+b''a_0'$
+\begin{align}
+\label{eq:contr_3}|c_3| - \epsilon \geq 0
+\end{align}
+Et enfin les deux dernières sont déjà sous forme d'inégalités positives
+\begin{align}
+\label{eq:contr_4}c_3(a_0'a_1'' - a_0''a_1') \geq 0 \\
+\label{eq:contr_5}c_3b'' \geq 0
+\end{align}
+%\subsubsection{Convexité de l'espace des contraintes}
+%TODO
+\subsubsection{Gradient des contraintes.}
+De même, les algorithmes de minimisation convergent plus rapidement si le gradient des contraintes est explicité.
+\begin{align}
+\notag \grad b &= \frac{1}{a_0'-a_0''}(-b,b,1,0,0,0)^t\\
+\grad \eqref{eq:contr_1} &= (0,0,0,0,-1,0)^t + \grad b\\
+\grad \eqref{eq:contr_2} &= (0,0,0,0,0,-1)^t + \grad b\\
+\end{align}
+\begin{align}
+\notag \grad c_3 &= (b'',-b',0,1,-a_0'',a_0')^t\\
+\grad \eqref{eq:contr_3} &= \grad c_3 \\
+\grad \eqref{eq:contr_4} &= (a_0'a_1'' - a_0''a_1')\grad (c_3) + c_3(a_1'',-a_1',-a_0'',a_0',0,0)^t \\
+\grad \eqref{eq:contr_5} &= b''\grad (c_3) + c_3(0,0,0,0,0,1)^t
+\end{align}
+\fi

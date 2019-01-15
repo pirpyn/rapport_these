@@ -1,0 +1,99 @@
+%theorem
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}[subsection]
+
+\theoremstyle{definition}
+\newtheorem{defn}{Définition}[subsection]
+\newtheorem{hyp}{Hypothèse}[subsection]
+\newtheorem{demo}{Démonstration}[subsection]
+
+\newcommand{\citationChap}[2]{\epigraph{\og \textit{#1} \fg{}}{#2}}
+
+%redefinition
+\renewcommand{\frac}[2]{\dfrac{#1}{#2}}
+\renewcommand{\tilde}[1]{\widetilde{#1}}
+\newcommand{\tagit}{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\secref}[1]{(\S \ref{#1})}
+\newcommand{\pvect}{\wedge}
+%vectorial notation
+\renewcommand{\v}{}
+\DeclareRobustCommand\v[1]{\underline{#1}}
+
+%
+\newcommand{\w}{\omega}
+
+%mathematical symbol
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\eps}{\epsilon}
+\renewcommand{\d}{\partial}
+\renewcommand{\O}{\Omega}
+
+\newcommand{\dd}[1]{\dfrac{\d}{\d #1}}
+\newcommand{\dr}[2]{\dfrac{\d #2}{\d #1}}
+
+%Operator
+\newcommand{\Hgrad}{\operatorname{H_{grad}}}
+\newcommand{\Hrot}{\operatorname{H_{rot}}}
+\newcommand{\Hdiv}{\operatorname{H_{div}}}
+\newcommand{\Hess}{\v{\v{\operatorname{Hess}}}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\sign}[1]{{\operatorname{sign}\left(#1\right)}}
+\newcommand{\argmin}[1]{{\operatorname{argmin}_{#1}}}
+\newcommand{\conj}[1]{{{#1}^*}} % opérateur conjugé
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Img}{\operatorname{Img}}
+\newcommand{\Vect}[1]{\operatorname{Vect}\left\lbrace#1\right\rbrace}
+
+\newcommand{\Tr}{\operatorname{T_R}}
+\newcommand{\LD}{\operatorname{L_D}}
+\newcommand{\LR}{\operatorname{L_R}}
+
+\newcommand{\EFIE}{\operatorname{EFIE}}
+\newcommand{\MFIE}{\operatorname{MFIE}}
+\newcommand{\CFIE}{\operatorname{CFIE}}
+
+%Maxwell notations
+\newcommand{\E}{\v E}
+\renewcommand{\H}{\v H}
+\newcommand{\n}{\v n}
+\newcommand{\J}{\v J}
+\newcommand{\K}{\v K}
+\newcommand{\M}{\v M}
+\newcommand{\A}{\v A}
+
+%differential operator
+\newcommand{\grad}{\v \nabla}
+\renewcommand{\div}{\v \nabla \cdot}
+\newcommand{\rot}{\v \nabla \pvect}
+
+\newcommand{\tgrad}{{\v{\operatorname{grad}}}}
+\newcommand{\trot}{{\v{\operatorname{rot}}}}
+\newcommand{\tdiv}{{\operatorname{div}}}
+
+\newcommand{\grads}{\v \nabla_s}
+\newcommand{\divs}{\v \nabla_s \cdot}
+\newcommand{\rots}{\v \nabla_s \pvect}
+
+\newcommand{\tgrads}{{\v{\operatorname{grad}}_t}}
+\newcommand{\trots}{{\v{\operatorname{rot}}_t}}
+\newcommand{\tdivs}{{\operatorname{div}_t}}
+
+\newcommand{\lapl}{\v \Delta}
+
+% helmotlz
+\newcommand{\rtp}{r,\theta,\phi}
+\newcommand{\tp}{\theta,\phi}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Pmn}{\P^m_n}
+
+% cioe
+\newcommand{\ov}[1]{\overline{#1}}
+

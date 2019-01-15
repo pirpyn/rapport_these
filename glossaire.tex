@@ -1,0 +1,465 @@
+\renewcommand{\glstextformat}[1]{\textcolor{black}{#1}}
+\renewcommand{\glossarysection}[2][1]{%
+  \def\theglstoctitle{#2}%
+  \par\noindent
+  {\section*{\theglstoctitle}}
+  %{\addcontentsline{toc}{section}{\theglstoctitle}}%
+}
+
+% create :
+% \newglossary{glossary}{glossaryls}{glossarylo}{text}
+
+\newglossary{acr}{acrls}{acrlo}{Acronymes}{
+\newglossary{mat}{matls}{matlo}{Notations Mathématiques}{
+\newglossary{phy}{phyls}{phylo}{Notations Physiques}{
+\newglossary{ope}{opels}{opelo}{Opérateurs}{
+
+\makeglossaries
+
+% create : 
+% \newglossaryentry{glossary-shortlabel}{
+%  type={glossary},
+%  sort={sort},
+%  name={\ensuremath{text}},
+%  description={description},
+}
+% use :
+% \gls{glossary-shortlabel}
+
+\newglossaryentry{mat-om}{
+  type={mat},
+  sort={om},
+  name={\ensuremath{\O}},
+  description={domaine,objet},
+}
+\newglossaryentry{mat-ga}{
+  type={mat},
+  sort={ga},
+  name={\ensuremath{\Gamma}},
+  description={frontière de $\Omega$},
+}
+\newglossaryentry{mat-vx}{
+  type={mat},
+  sort={vx},
+  name={\ensuremath{\v x}},
+  description={point de $\O$},
+}
+\newglossaryentry{mat-vn}{
+  type={mat},
+  sort={vn},
+  name={\ensuremath{\v n}},
+  description={normale unitaire sortante de $\O$},
+}
+\newglossaryentry{mat-boulexr}{
+  type={mat},
+  sort={boulexr},
+  name={\ensuremath{B(\v x,R)}},
+  description={boule de centre $ x$ et de rayon R},
+}
+\newglossaryentry{mat-spherexr}{
+  type={mat},
+  sort={spherexr},
+  name={\ensuremath{S(\v x,R)}},
+  description={sphère de centre $ x$ et de rayon R},
+}
+\newglossaryentry{mat-hi}{
+  type={mat},
+  sort={hi},
+  name={\ensuremath{H^i(\O)}},
+  description={espace de Sobolev d'ordre $i$},
+}
+\newglossaryentry{mat-xcart}{
+  type={mat},
+  sort={xcart},
+  name={\ensuremath{(x_1,x_2,x_3)}},
+  description={coordonnées cartésiennes de $x$},
+}
+\newglossaryentry{mat-xsphe}{
+  type={mat},
+  sort={xsphe},
+  name={\ensuremath{(\rtp)}},
+  description={coordonnées sphérique de $x$},
+}
+\newglossaryentry{mat-pn}{
+  type={mat},
+  sort={pn},
+  name={\ensuremath{p_n}},
+  description={polynôme de Legendre de degré $n$},
+}
+\newglossaryentry{mat-pmn}{
+  type={mat},
+  sort={pmn},
+  name={\ensuremath{\P^m_n}},
+  description={fonction de Legendre d'ordre $m$ et de degré $n$},
+}
+\newglossaryentry{mat-jn}{
+  type={mat},
+  sort={bjn},
+  name={\ensuremath{j_n}},
+  description={fonction de Bessel du 1er ordre de degré $n$},
+}
+\newglossaryentry{mat-hn}{
+  type={mat},
+  sort={bhn},
+  name={\ensuremath{h_n}},
+  description={fonction de Hankel du 2eme type de degré $n$},
+}
+\newglossaryentry{mat-ymn}{
+  type={mat},
+  sort={bymn},
+  name={\ensuremath{Y_{m,n}}},
+  description={harmonique sphérique d'ordre $m$ et de degré $n$},
+}
+\newglossaryentry{mat-tild}{
+  type={mat},
+  sort={tild},
+  name={\ensuremath{\tilde u}},
+  description={$:= \dr{t}(tu(t))$},
+}
+\newglossaryentry{mat-four}{
+  type={mat},
+  sort={four},
+  name={\ensuremath{\hat u}},
+  description={transformée de Fourrier de $u$},
+}
+\newglossaryentry{mat-matimp}{
+  type={mat},
+  sort={matimp},
+  name={\ensuremath{Z}},
+  description={matrice d'impédance},
+}
+\newglossaryentry{mat-conj}{
+  type={mat},
+  sort={cconj},
+  name={\ensuremath{z^*}},
+  description={complexe conjugué de $z$},
+}
+\newglossaryentry{mat-real}{
+  type={mat},
+  sort={creal},
+  name={\ensuremath{z'}},
+  description={partie réelle},
+}
+\newglossaryentry{mat-imag}{
+  type={mat},
+  sort={cimag},
+  name={\ensuremath{z''}},
+  description={partie imaginaire},
+}
+\newglossaryentry{mat-sum}{
+  type={mat},
+  sort={sum},
+  name={\ensuremath{\ov x}},
+  description={$:= \sum_n x_n$. Somme des termes d'une suite.},
+}
+\newglossaryentry{mat-gmn}{
+  type={mat},
+  sort={gmn},
+  name={\ensuremath{\gamma_{m,n}}},
+  description={$:=\frac{4\pi}{2n+1}n(n+1)\frac{(n+m)!}{(n-m)!}$},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newglossaryentry{ope-pv}{
+  type={ope},
+  sort={pv},
+  name={\ensuremath{\cdot \pvect \cdot }},
+  description={produit vectoriel},
+}
+\newglossaryentry{ope-grad}{
+  type={ope},
+  sort={grad},
+  name={\ensuremath{\grad}},
+  description={gradient},
+}
+\newglossaryentry{ope-grads}{
+  type={ope},
+  sort={grads},
+  name={\ensuremath{\grads}},
+  description={$\grads u:= \grad u - \n ( \n \cdot \grad u ) $. gradient surfacique},
+}
+\newglossaryentry{ope-div}{
+  type={ope},
+  sort={div},
+  name={\ensuremath{\div}},
+  description={divergent},
+}
+\newglossaryentry{ope-divs}{
+  type={ope},
+  sort={divs},
+  name={\ensuremath{\divs}},
+  description={divergent surfacique},
+}
+\newglossaryentry{ope-rot}{
+  type={ope},
+  sort={rot},
+  name={\ensuremath{\rot}},
+  description={rotationnel},
+}
+\newglossaryentry{ope-rots}{
+  type={ope},
+  sort={rots},
+  name={\ensuremath{\rots}},
+  description={rotationnel surfacique},
+}
+\newglossaryentry{ope-laps}{
+  type={ope},
+  sort={laps},
+  name={\ensuremath{\Delta}},
+  description={laplacien},
+}
+\newglossaryentry{ope-hess}{
+  type={ope},
+  sort={hess},
+  name={\ensuremath{\Hess}},
+  description={hessienne},
+}
+\newglossaryentry{ope-LD}{
+  type={ope},
+  sort={hodge-LD},
+  name={\ensuremath{L_D}},
+  description={$ \int_\Gamma \LD( u)\cdot  v := - \int_S \divs  u \divs  v $},
+}
+\newglossaryentry{ope-LR}{
+  type={ope},
+  sort={hodge-LR},
+  name={\ensuremath{L_R}},
+  description={$ \int_\gamma \LR( u)\cdot  v :=  \int_S \left( \n \cdot \rots  u \right)\left(\n \cdot \rots  v \right)$},
+}
+\newglossaryentry{ope-L}{
+  type={ope},
+  sort={hodge-L},
+  name={\ensuremath{L}},
+  description={$:=L_D - L_R$},
+}
+\newglossaryentry{ope-real}{
+  type={ope},
+  sort={creal},
+  name={\ensuremath{\Re}},
+  description={partie réelle de $z$},
+}
+\newglossaryentry{ope-imag}{
+  type={ope},
+  sort={cimag},
+  name={\ensuremath{\Im}},
+  description={partie imaginaire de $z$},
+}
+\newglossaryentry{ope-trans}{
+  type={ope},
+  sort={trans},
+  name={\ensuremath{A^t}},
+  description={transposée de A},
+}
+\newglossaryentry{ope-imp}{
+  type={ope},
+  sort={imp},
+  name={\ensuremath{\mathcal Z}},
+  description={opérateur d'impédance},
+}
+\newglossaryentry{ope-saut}{
+  type=ope,
+  sort=saut,
+  name={\ensurmath{[\hat U]_{s}},
+  description={$:= U(s+) - U_(s-)$ saut de U à travers la surface s.},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newglossaryentry{phy-e}
+  type={phy},
+  sort={E},
+  name={\ensuremath{\E}},
+  description={champ électrique},
+}
+\newglossaryentry{phy-h}{
+  type={phy},
+  sort={H},
+  name={\ensuremath{\H}},
+  description={champ magnétique},
+}
+\newglossaryentry{phy-f}{
+  type={phy},
+  sort={f},
+  name={\ensuremath{f}},
+  description={fréquence $[Hz]$},
+}
+\newglossaryentry{phy-c}{
+  type={phy},
+  sort={c},
+  name={\ensuremath{c}},
+  description={célérité de la lumière $[m.s^{-1}]$},
+}
+\newglossaryentry{phy-d}{
+  type={phy},
+  sort={d},
+  name={\ensuremath{d}},
+  description={épaisseur d'une couche de matériau $[m]$},
+}
+\newglossaryentry{phy-theta}{
+  type={phy},
+  sort={theta},
+  name={\ensuremath{\theta}},
+  description={angle d'observation ou d'incidence de l'onde.},
+}
+\newglossaryentry{phy-w}{
+  type={phy},
+  sort={w},
+  name={\ensuremath{w}},
+  description={pulsation d'une onde $[s^{-1}]$},
+}
+\newglossaryentry{phy-mu}{
+  type={phy},
+  sort={mu},
+  name={\ensuremath{\mu}},
+  description={permittivité magnétique},
+}
+\newglossaryentry{phy-eps}{
+  type={phy},
+  sort={eps},
+  name={\ensuremath{\eps}},
+  description={permittivité diélectrique},
+}
+\newglossaryentry{phy-eta}{
+  type={phy},
+  sort={eta},
+  name={\ensuremath{\eta}},
+  description={impédance diélectrique [ohm]},
+}
+\newglossaryentry{phy-nu}{
+  type={phy},
+  sort={nu},
+  name={\ensuremath{\nu}},
+  description={indice du matériau},
+}
+\newglossaryentry{phy-k}{
+  type={phy},
+  sort={k},
+  name={\ensuremath{k}},
+  description={nombre d'onde},
+}
+\newglossaryentry{phy-Mmn}{
+  type={phy},
+  sort={Mmn},
+  name={\ensuremath{M_{m,n}}},
+  description={harmonique sphérique d'ordre $m$ et de degré $n$},
+}
+\newglossaryentry{phy-Nmn}{
+  type={phy},
+  sort={Nmn},
+  name={\ensuremath{N_{m,n}}},
+  description={rotationnel d'une harmonique sphérique d'ordre $m$ et de degré $n$},
+}
+\newglossaryentry{phy-coeff}{
+  type={phy},
+  sort={coeff},
+  name={\ensuremath{c_0,c_1,c_2}},
+  description={coefficients d'approximation de la CI.},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newglossaryentry{acr-csu}{
+  type={acr},
+  name={CSU},
+  description={condition suffisante d'unicité},
+  plural={CSU},
+  descriptionplural={conditions suffisantes d'unicité},
+  first={\glsentrydesc{acr-csu} (\glsentrytext{acr-csu})},
+  firstplural={\glsentrydescplural{acr-csu} (\glsentryplural{acr-csu})},
+}
+\newglossaryentry{acr-cgu}{
+  type={acr},
+  name={CSUG},
+  description={condition suffisante d'unicité générale},
+  first={\glsentrydesc{acr-cgu} (\glsentrytext{acr-cgu})},
+}
+\newglossaryentry{acr-ci}{
+  type={acr},
+  name={CI},
+  description={condition d'impédance},
+  plural={CI},
+  descriptionplural={conditions d'impédance},
+  first={\glsentrydesc{acr-ci} (\glsentrytext{acr-ci})},
+  firstplural={\glsentrydescplural{acr-ci} (\glsentryplural{acr-ci})},
+}
+\newglossaryentry{acr-cioe}{
+  type={acr},
+  name={CIOE},
+  description={condition d'impédance d'ordre élevé},
+  first={\glsentrydesc{acr-cioe} (\glsentrytext{acr-cioe})},
+  plural={CIOE},
+  descriptionplural={conditions d'impédance d'ordre élevé},
+  firstplural={\glsentrydescplural{acr-cioe} (\glsentryplural{acr-cioe})},
+}
+\newglossaryentry{acr-pec}{
+  type={acr},
+  name={PEC},
+  description={perfect electric conductor},
+  plural={PEC},
+  descriptionplural={perfect electric conductors},
+  first={\glsentrydesc{acr-pec} (\glsentrytext{acr-pec})},
+  firstplural={\glsentrydescplural{acr-pec} (\glsentryplural{acr-pec})},
+}
+\newglossaryentry{acr-cp}{
+  type={acr},
+  name={CP},
+  description={conducteur parfait},
+  plural={CP},
+  descriptionplural={conducteurs parfait},
+  first={\glsentrydesc{acr-cp} (\glsentrytext{acr-cp})},
+  firstplural={\glsentrydescplural{acr-cp} (\glsentryplural{acr-cp})},
+}
+\newglossaryentry{acr-cep}{
+  type={acr},
+  name={CEP},
+  description={conducteur électriquement parfait},
+  plural={CEP},
+  descriptionplural={conducteurs électriquement parfait},
+  first={\glsentrydesc{acr-cep} (\glsentrytext{acr-cep})},
+  firstplural={\glsentrydescplural{acr-cep} (\glsentryplural{acr-cep})},
+}
+\newglossaryentry{acr-cmp}{
+  type={acr},
+  name={CMP},
+  description={conducteur magnétiquement parfait},
+  plural={CMP},
+  descriptionplural={conducteurs magnétiquement parfait},
+  first={\glsentrydesc{acr-cmp} (\glsentrytext{acr-cmp})},
+  firstplural={\glsentrydescplural{acr-cmp} (\glsentryplural{acr-cmp})},
+}
+\newglossaryentry{acr-te}{
+  type={acr},
+  name={TE},
+  description={polarisation transverse électrique},
+  plural={TE},
+  descriptionplural={polarisations transverse électrique},
+  first={\glsentrydesc{acr-te} (\glsentrytext{acr-te})},
+  firstplural={\glsentrydescplural{acr-te} (\glsentryplural{acr-te})},
+}
+\newglossaryentry{acr-tm}{
+  type={acr},
+  name={TM},
+  description={polarisation transverse magnétique},
+  plural={TM},
+  descriptionplural={polarisation transverse électrique},
+  first={\glsentrydesc{acr-tm} (\glsentrytext{acr-tm})},
+  firstplural={\glsentrydescplural{acr-tm} (\glsentryplural{acr-tm})},
+}
+\newglossaryentry{acr-cr}{
+  type={acr},
+  name={CR},
+  description={coefficient de réflexion},
+  plural={CR},
+  descriptionplural={coefficients de réflexion},
+  first={\glsentrydesc{acr-cr} (\glsentrytext{acr-cr})},
+  firstplural={\glsentrydescplural{acr-cr} (\glsentryplural{acr-cr})},
+}

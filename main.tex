@@ -1,0 +1,69 @@
+\documentclass[11pt,%
+draft,% seulement brouillon
+twoside,% twoside si document final
+a4paper,%
+openright % openright si document final
+]{book}
+
+\input{header}
+\bibliography{bib/Zotero}
+\input{alias}
+\input{glossaire}
+
+\newcommand{\doctitle}{Modélisation d'un matériau faible indice en hyperfréquence par une condition d'impédance d'ordre élevé}
+\newcommand{\docauthor}{Pierre Payen}
+
+\author{\docauthor}
+\title{\doctitle}
+
+\hypersetup{
+pdftitle={\doctitle},
+pdfauthor={\docauthor}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\includeonly{unicite}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+ \maketitle
+\end{titlepage}
+\hypersetup{pageanchor=true}
+
+\setcounter{secnumdepth}{5} % on numérote tous les niveaux de sections
+\setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
+\dominitoc
+\tableofcontents
+\clearpage
+\include{notations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+\chapter{Introduction et plan de thèse}
+\include{pres_th}
+
+\setcounter{mtc}{2} % "Corrige" les minitocs décallés à cause des chapter* (ex : Intro)
+
+\chapter{Résolution des équations de Maxwell dans le cas du plan et de la sphère}
+\minitoc
+\include{coeffs_ref}
+\include{maxwell_to_helmholtz}
+\include{helmholtz_harmoniques_spheriques}
+\include{maxwell_serie_de_mie}
+\include{serie_mie}
+\include{coeffs_cioe}
+
+\chapter{Conditions suffisantes d'unicité}
+\minitoc
+\include{unicite}
+\include{optim_ci4}
+\chapter{Résolution des équations de Maxwell par équations intégrales}
+\minitoc
+\include{form_int}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\printbibliography
+\end{document}

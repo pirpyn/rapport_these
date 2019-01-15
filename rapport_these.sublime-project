@@ -1,0 +1,65 @@
+{  
+  "build_systems": // If LatexTools not installed
+  [
+    {
+      "name" : "Build with latexmk",
+      "working_dir": "$project_path",
+      "file_regex": "^([^:\\n]*)\\:([0-9]*):()\\ *(.*)$",
+      "windows": {
+        "shell_cmd": "latexmk.exe"
+      },
+      "linux": {
+        "shell_cmd": "latexmk"
+      },
+    },
+  ],
+  "folders":
+  [
+    {
+      "file_exclude_patterns":
+      [
+        "*.pdf",
+        "*.sublime-workspace"
+      ],
+      "path": ".",
+    }
+  ],
+  "settings":
+  {
+    // The number of spaces a tab is considered equal to
+    "tab_size": 2,
+    // Set to false to disable detection of tabs vs. spaces on load
+    "detect_indentation": true,
+    // Calculates indentation automatically when pressing enter
+    "auto_indent": true,
+    // Disables horizontal scrolling if enabled.
+    // May be set to true, false, or "auto", where it will be disabled for
+    // source code, and otherwise enabled.
+    "word_wrap": true,
+    // By default, auto complete will commit the current completion on enter.
+    // This setting can be used to make it complete on tab instead.
+    // Completing on tab is generally a superior option, as it removes
+    // ambiguity between committing the completion and inserting a newline.
+    "auto_complete_commit_on_tab": true,
+    // Display file encoding in the status bar
+    "show_encoding": true,
+    // Display line endings in the status bar
+    "show_line_endings": true,
+    // Enable Spell check
+    "spell_check": true,
+    // Word list to use for spell checking: cf https://github.com/titoBouzout/Dictionaries
+    "dictionary": "Packages/Dictionnaries/French.dic",
+
+    // For LatexTools Package
+    // https://latextools.readthedocs.io/en/latest/available-builders/
+    "builder": "traditional",
+    // Just call latexmk, even on miktex
+    "windows": {
+      "distro":"texlive",
+    },
+    "TEXroot": "main.tex",
+    "tex_file_exts": [".tex", ".tikz", ".bib"],
+    "output_directory": "latex_out",
+    "preview_math_mode": "none",
+  },
+}

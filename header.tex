@@ -1,0 +1,96 @@
+%\usepackage{cmbright} % fichier + lisible sur ordi, - lisible sur papier
+\usepackage[utf8]{inputenc} %gestion des accents par le compilateurs
+\usepackage[cyr]{aeguill}
+\usepackage[T1]{fontenc} %gestion des accents par l'afficheurs et la césure
+\usepackage[french]{babel} % traduction des packages
+
+\usepackage{lmodern} % fontes tailles variables
+
+\usepackage{graphicx} % gestion de figure, dessins
+\usepackage[dvipsnames]{xcolor} % charge des couleurs
+
+\usepackage{xspace}
+\usepackage[%
+% paperwidth=270.0mm,%  A supprimer si plus besoin de todonotes
+headheight=14pt,%
+top    = 2.5cm,%
+bottom = 2.5cm,%
+%left   = 2cm,%
+%right  = 2cm,%
+]{geometry} % feuille a4 de taille 21.0 x 29.7 
+
+% suite de paquets mathematiques
+\usepackage{amsthm} % gestion des théoremes
+\usepackage{amsfonts} % gestions des polices mathématques
+\usepackage{amsmath}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage[%
+  language=english,%
+  sorting=ynt,%
+  backend=biber,%
+  style=alphabetic,%
+  hyperref=true,%
+  giveninits=true, % initialles pour prénoms
+  isbn=false,%
+  url=false,%
+  doi=false,%
+  backref=true,%
+  backrefstyle=three% si cité en page 1,2,3, ecrire 1-3, 
+  ]{biblatex}
+  \renewbibmacro{in:}{} 
+  \DeclareFieldFormat[book,report]{title}{\mkbibquote{#1\isdot}}
+  \DefineBibliographyStrings{french}{%
+    bibliography = {Références},
+  }
+\usepackage[%
+  linkcolor=blue!70!black,%
+  colorlinks=true,%
+  citecolor=purple%
+  ]{hyperref} % gestion des liens hypertexts et reférences
+
+\usepackage{excludeonly}
+
+\usepackage[section]{placeins} % Place un FloatBarrier à chaque nouvelle section
+\usepackage{epigraph}
+\usepackage[francais,nohints]{minitoc}   % Mini table des matières, en français
+\setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
+
+%\usepackage{multicol} % texte sur plusieurs colonnes
+%\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
+
+\usepackage[%
+acronym,%
+nomain,%
+sanitizesort=false,%
+style=super4col%
+]{glossaries} %voir glossaire.tex
+
+\setcounter{tocdepth}{1} % Sommaires n'inclus que les niveau 1 à 2 : section, sous-section
+\setlength\parindent{0pt} % pas d'alinéa à chaque paragraphe
+
+\usepackage{tikz} % Permet de tracer des figures et schémas
+\usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
+
+% \setlength{\oddsidemargin}{25mm}
+% \setlength{\evensidemargin}{25mm}
+% \setlength{\textwidth}{170mm} 
+% \reversemarginpar
+% \usepackage{todonotes} % permet d'ajouter des notes en marges
+
+\usepackage{fancyhdr}      % Entête et pieds de page. Doit être placé APRES geometry
+  \pagestyle{fancy}    % Indique que le style de la page sera justement fancy
+  \fancyfoot[CE,CO]{}
+  \fancyfoot[LE,RO]{\thepage}
+  \fancyhead[RE,LO]{}
+  \fancyhead[RO]{\tiny{\rightmark}}
+  \fancyhead[LE]{\tiny{\leftmark}}
+%\bibliographystyle{apalike}
+
+\usepackage{array}   % for \newcolumntype macro
+\usepackage{multirow}
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of column type
+\newcolumntype{C}{>{$}c<{$}}
+\newcolumntype{R}{>{$}r<{$}}
+
+\usepackage{tcolorbox}

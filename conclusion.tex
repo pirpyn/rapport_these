@@ -1,0 +1,11 @@
+\section{Conclusion}
+
+\subsection{Utilité du rapport}
+Ce rapport a présenté les \glspl{acr-cioe} et la méthode pour les calculer. Pour cela, il a fallu introduire des problèmes largement connus dans la littérature, mais dont-on a agrégé et uniformisé les notations. Ainsi cela m'a permis de m'approprier le sujet, et surtout de préparer sur la rédaction de la thèse ainsi que sur la compréhension des phénomènes et des algorithmes.
+
+\subsection{Perspectives}
+Ce rapport a donc une valeur bibliographique mais non pratique: en effet, il faut encore présenter les représentations intégrales et les équations intégrales des solutions de Maxwell car ce sont elles qui sont effectivement utilisées dans les codes industriels. 
+
+Ces représentations intégrales sont discrétisées grâce à une formulation type éléments finis (FEM). Une difficulté majeure est alors que des matrices pleines de la taille du nombre d'inconnus au carré doivent être inversées. Nous cherchons à simplifier/transformer les équations pour faire disparaître ces inversions et diminuer le coût de calcul numérique.  
+
+De plus, ces équations intégrales n'assurent l'unicité du problème de Maxwell que sous certaines conditions ($Q > 0$) qui impliquent des contraintes sur le calcul des CIOEs qui ne permettent plus de trouver les coefficients par résolution d'un système linaire, mais par résolution d'un problème d'optimisation sous contraintes. Actuellement, un travail est en cours pour déterminer si l'on peut réduire le nombre de contraintes, quitte à aboutir à une approximation de la CI qui soit différente (mais proche) des CIOE.

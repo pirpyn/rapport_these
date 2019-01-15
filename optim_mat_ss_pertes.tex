@@ -1,0 +1,7 @@
+\section{Optimisation dans le cas d'un matériau sans perte}
+
+On se place dans le cadre du plan infini de \cite{soudais_3d_2017}, où $\eps=4,\mu=1,f=12$ Ghz, et $d=3.5$ mm. Ce cas non physique possède un onde guidée pour $s=s^\star$ où $r(s^\star) = \infty$. De plus, il existe aussi $s_z$ tel que $Z(s_z) = \infty$. 
+
+En effet, d'après la formule pour une couche de matériau \eqref{eq:coeff_ref:mat_z:imped}, $s_z = \sqrt{\eps \mu - \left(\frac{\pi/2}{k_0 d}\right)^2}$. 
+
+La fonctionnelle que l'on cherche à minimiser est $||H X - Z||$ où $H$ est une matrice complexe $2n$ par 5, X un vecteur complexe de taille 5 et $Z$ un vecteur complexe de taille $2n$ où $n$ est le nombre de point entre 0 et $s_{max}$. 

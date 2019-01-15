@@ -1,0 +1,39 @@
+\coordinate (ol) at (0,0);
+\coordinate (od) at (2,0);
+\coordinate (ou) at (0,2);
+
+
+\draw (ou) node [above] {$o_j^u$};
+\draw (ol) node [left] {$o_j^l$};
+\draw (od) node [below] {$o_j^d$};
+
+\draw ($1/3*(od) + 1/3*(ou)$) node [above=2pt] {$K_j^l$};
+\draw (ol) -- (ou) -- (od) -- cycle;
+
+\draw [->,black!10!orange,thick] (ol) -- (od) node [midway,below] {\color{black!30!orange}{$\v e_1$}};
+\draw [->,black!10!orange,thick] (ol) -- (ou) node [midway,left] {\color{black!30!orange}{$\v e_2$}};
+
+\draw[thick] (ou) +(0.3,0) circle(0.05cm) node [right=0.06cm] {$\v n$};
+\fill (ou) + (0.3,0) circle(0.01cm);
+
+\draw [dashdotted] ($0.5*(ou)+0.5*(ol)$) -- ($0.5*(od)+0.5*(ol)$);
+
+%2
+\coordinate (x) at ($0.25*(ou) + 0.25*(od)$);
+\draw (x) node [right] {$x'$};
+
+\draw [->,red] (ol) -- (x) node [sloped,midway,above] {$\phi_j(x')$};
+
+\coordinate (vj) at ($(ou)!0.3!(od)$);
+\coordinate (vj) at ($(vj)-(ou)$);
+
+\coordinate (phi) at ($(x)-(ol)$);
+\path let \p1=(phi) in coordinate (p) at (\y1,-\x1);
+\coordinate (xp) at ($(x)+(p)$);
+\draw [->,black!60!green] (x) -- (xp) node [midway,right] {$p_j(x')$};
+
+\coordinate (xp) at ($(x2)+(vj)$);
+\draw [black!60!blue] (x) node [left] {$q_j(x') = 0 $};
+
+%\draw [dotted] (x) -- ($(ol)!(x)!(od)$) node [at end, below] {$\xi_1$};
+%\draw [dotted] (x) -- ($(ol)!(x)!(ou)$) node [at end, left] {$\xi_2$};

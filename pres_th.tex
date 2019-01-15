@@ -1,0 +1,56 @@
+\section*{Présentation de la Thèse}\label{pre_th}
+Cette thèse de mathématiques appliquées s'intitule ``\doctitle''.\\
+
+L'objectif de la thèse est d’approfondir la notion de condition d'impédance pour des objets dont la surface est suffisamment régulière constitués d'empilement de matériaux diélectrique de faible indice (au sens de l'optique géométrique).\\
+
+L’intérêt des conditions d'impédances a été résumé par exemple par \cite{senior_approximate_1995}: "Prenez par exemple, un objet fini immergé dans un milieu homogène et éclairé par un champ électromagnétique. Connaissant les propriétés du matériau, il est possible en principe, de trouver les champ rayonnés à l'extérieur de l'objet. Cependant, ce travail serait grandement facilité si les propriétés pouvait être modélisées par une condition limite ne faisant intervenir que la trace des champs à la surface extérieur de l'objet, de fait, transformant un problème à deux (ou plus) matériaux en un problème à un unique matériau."
+
+\subsection*{Introduction}
+Nous traitons le problème des équations Maxwell sous forme harmonique, en convention $e^{i\w t}$ pour la dépendance temporelle.
+
+Soit un objet $\O$ de type conducteur parfait de surface $\Gamma$, recouvert d'une couche matériau diélectrique d'épaisseur $d$, caractérisé par sa permittivité diélectrique $\gls{phy-eps}$ et sa perméabilité magnétique $\gls{phy-mu}$ qui peuvent dépendre du point courant et être complexe dans le cas de pertes, l'ensemble se situant dans le vide, telle que la célérité d'une onde électromagnétique soit \gls{phy-c}, et les constantes de permittivité et de perméabilité $\gls{phy-eps}_0$, $\gls{phy-mu}_0$ avec $\eps_0\mu_0 = c^{2}$.
+
+On désigne par \gls{phy-w} la pulsation de l'onde. En l'absence de charges électriques et magnétiques, les champs éponymes $( \E, \H )$ sont solutions du système d'équations de Maxwell harmonique : 
+
+Le problème de Maxwell dans l'espace s'énonce: \\
+
+Soit $(\E,\H)$ dans $(\Hrot(\O\cup\O^c))^3 \pvect (\Hrot(\O\cup\O^c))^3$
+\begin{equation}
+  \label{eq:pres_th:intro:maxwell}
+  \left\lbrace \begin{matrix}
+  \rot \E + i\w\mu' \H &=& 0 \\
+  \rot \H - i\w\eps' \E &=& 0 \\
+  \end{matrix} \right. \quad \text{dans $\O\cup\O^c$}
+\end{equation}
+A l'extérieur de $\O$, les constantes sont $\eps',\mu'$ sont $\eps_0,\mu_0$ et à l'intérieur elles sont $\eps,\mu$.
+
+Nous complétons ces équations par des conditions aux limites à la surface $S$ de $\O$, supposée régulière et dont on note la normale sortante $\n$:
+\begin{itemize}
+  \item Les composantes tangentielles des champs sont continues le long d'une surface de discontinuité de $\eps$ et $\mu$ \cite[(2.10) p.~8]{senior_approximate_1995}.
+\begin{align}
+  \label{eq:pres_th:intro:transmissions}[\n \pvect \E]_S = 0  \qquad [\n \pvect \H]_S = 0
+\end{align}
+\end{itemize}
+Dans le cas limite d'un \gls{acr-cep}, les champs $\E$ et $\H$ sont nuls à l'intérieur du conducteur et la composante tangentielle (resp. normale) du champs $\E$ (resp. $\H$) est nulle à l'extérieur.
+
+Enfin comme nous considérons un milieu extérieur non-borné, nous nous dotons de la condition de radiation à l'infini de Silver-Müller afin de définir des solutions en ondes sortantes.
+
+\begin{equation}
+  \label{eq:pres_th:intro:silver-muller}
+  \lim_{r\rightarrow\infty}r\left|\left|\sqrt{\eps'}\E - \sqrt{\mu'}\H\pvect\frac{\v r}{r}\right|\right| = 0
+\end{equation} 
+
+\subsection{Les conditions d'impédance comme approximation d'un opérateur de Calderón}
+
+Tel que l'a démontré \cite[Theorem 1., p.~1042]{lafitte_diffraction_1998}, le problème \eqref{eq:pres_th:intro:maxwell}  posé à l'intérieur et à l'extérieur de l'objet, doté de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} est équivalent au problème \eqref{eq:pres_th:intro:maxwell} à l'extérieur de l'objet doté de de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} et de la \gls{acr-ci} \eqref{eq:pres_th:ci:ci-calderon} sur la surface extérieur de l'objet : 
+\begin{equation}
+\label{eq:pres_th:ci:ci-calderon}
+  \n \pvect \E = \mathcal{C}\left(\n \pvect \n \pvect \H\right)
+\end{equation}
+où $ \mathcal{C}$ est l'opérateur de Calderón. L'opérateur d'impédance est alors une approximation de cet opérateur de Calderón.
+% \subsection*{Plan de la thèse}
+% D'abord nous résoudrons le problème de Maxwell dans le cas d'un plan infini recouvert d'une couche mince de matériau diélectrique. Ce cas permet d'introduire et d'expliciter toutes les notions récurrentes de ce document.
+
+% Puis nous résoudrons le problème de Maxwell avec un objet sphérique. Pour cela, nous étudierons le problème de Helmholtz (section \ref{sec:helmholtz_scal}) avec un objet sphérique afin d'exhiber des solutions particulière de Maxwell (section \ref{sec:sol_maxwell}), dont nous détaillerons les champs sous la forme d'une série de Mie (section \ref{sec:serie_mie}). Plusieurs calculs des termes principaux de cette série seront exhibés : solution exacte et injection des \glspl{acr-cioe}. Ces dernières seront introduites en section  \ref{sec:coeffs_cioe}.
+
+% Nous montrerons alors que l'on peut résoudre les équations de Maxwell grâce à la résolution d'équations intégrales, qui permettent de ne résoudre le problème qu'à la surface du domaine.

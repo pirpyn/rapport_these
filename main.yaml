@@ -1,0 +1,4 @@
+engine: pdflatex
+outputFormat: pdf
+outputDirectory: latex_out
+root: main.tex
