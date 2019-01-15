@@ -1,6 +1,6 @@
 \documentclass[11pt,%
 draft,% seulement brouillon
-twoside,% twoside si document final
+oneside,% twoside si document final
 a4paper,%
 openright % openright si document final
 ]{book}
@@ -46,20 +46,29 @@ pdfauthor={\docauthor}}
 
 \setcounter{mtc}{2} % "Corrige" les minitocs décallés à cause des chapter* (ex : Intro)
 
-\chapter{Résolution des équations de Maxwell dans le cas du plan et de la sphère}
+\chapter{Impédance d'un empilement multi-couche infiniment plan}
 \minitoc
 \include{coeffs_ref}
+\include{coeffs_cioe}
+
+\chapter{Impédance d'un empilement multi-couche courbe}
+\minitoc
+A VENIR
+
+\chapter{Conditions suffisantes d'unicité dans le cas d'un objet quelconque}
+\minitoc
+\include{unicite}
+\include{optim_ci4}
+\include{optim_mat_ss_pertes}
+
+\chapter{Champs électromagnétiques par Série de Mie}
+\minitoc
 \include{maxwell_to_helmholtz}
 \include{helmholtz_harmoniques_spheriques}
 \include{maxwell_serie_de_mie}
 \include{serie_mie}
-\include{coeffs_cioe}
 
-\chapter{Conditions suffisantes d'unicité}
-\minitoc
-\include{unicite}
-\include{optim_ci4}
-\chapter{Résolution des équations de Maxwell par équations intégrales}
+\chapter{Champs électromagnétiques par équations intégrales}
 \minitoc
 \include{form_int}
 
