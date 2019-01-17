@@ -1,6 +1,6 @@
 \documentclass[11pt,%
-draft,% seulement brouillon
-oneside,% twoside si document final
+%draft,% seulement brouillon
+twoside,% twoside si document final
 a4paper,%
 openright % openright si document final
 ]{book}
@@ -27,19 +27,15 @@ pdfauthor={\docauthor}}
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frontmatter
-\hypersetup{pageanchor=false}
-\begin{titlepage}
- \maketitle
-\end{titlepage}
-\hypersetup{pageanchor=true}
+\include{page_de_garde}
 
 \setcounter{secnumdepth}{5} % on numérote tous les niveaux de sections
 \setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
 \dominitoc
-\tableofcontents
+%\tableofcontents
 \clearpage
 \include{notations}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter
 \chapter{Introduction et plan de thèse}
 \include{pres_th}
@@ -72,7 +68,7 @@ A VENIR
 \minitoc
 \include{form_int}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \backmatter
 \printbibliography
 \end{document}

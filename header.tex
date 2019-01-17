@@ -5,7 +5,12 @@
 \usepackage[french]{babel} % traduction des packages
 
 \usepackage{lmodern} % fontes tailles variables
+% substitution des petites capitales grasses manquantes
+\rmfamily
+\DeclareFontShape{T1}{lmr}{b}{sc}{<->ssub*cmr/bx/sc}{}
+\DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*cmr/bx/sc}{}
 
+\usepackage{tabularx} % Permet d'utiliser l'environnement tabularx
 \usepackage{graphicx} % gestion de figure, dessins
 \usepackage[dvipsnames]{xcolor} % charge des couleurs
 
@@ -55,6 +60,7 @@ bottom = 2.5cm,%
 \usepackage{epigraph}
 \usepackage[francais,nohints]{minitoc}   % Mini table des matières, en français
 \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
+\usepackage[Lenny]{fncychap}
 
 %\usepackage{multicol} % texte sur plusieurs colonnes
 %\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
