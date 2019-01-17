@@ -1,18 +1,9 @@
 \section{Opérateur d'impédance dans le cas du plan infini}\label{sec:coeffs_ref}
 
-\newcommand{\x}{{x}}
-\newcommand{\y}{{y}}
-\newcommand{\z}{{z}}
-
-\newcommand{\kO}{\mathbf{k_0}}
-\newcommand{\etaO}{\boldsymbol{\eta_0}}
-\newcommand{\muO}{\boldsymbol{\mu_0}}
-\newcommand{\epsO}{\boldsymbol{\eps_0}}
-\newcommand{\nuO}{\boldsymbol{\nu_0}}
-
 \lettrine{S}{oit} un système de coordonnées $(\x,\y,\z)$ tel que le demi-espace des $\z>0$ soit le vide, où une onde est de célérité \gls{phy-c}, de fréquence $\gls{phy-f}$ et de nombre d'onde $\kO=\frac{2\pi f}{c}$  et d'impédance scalaire $\etaO = \sqrt{\frac{\muO}{\epsO}}$ ( de plus $\kO=2\pi f\sqrt{\muO\epsO}$ ).
 
-On définit en tous point la permittivité diélectrique relative $\gls{phy-eps}_p$ et la perméabilité magnétique relative $\gls{phy-mu}_p$, qui sont invariantes par translation dans le matériau. Ces constantes adimensionnées peuvent être complexes\footnote{Dans le vide $\eps_0=\mu_0=1.$}.
+On définit en tous point la permittivité diélectrique relative $\gls{phy-eps}_p$ et la perméabilité magnétique relative $\gls{phy-mu}_p$, qui sont invariantes par translation dans le matériau.
+ Ces constantes adimensionnées peuvent être complexes\footnote{Dans le vide $\eps_0=\mu_0=1.$}.
 
 Le demi-espace $\z<-d$ restant est assimilé à un \gls{acr-cp}.
 
@@ -20,27 +11,27 @@ On utilisera les notations  suivantes dans la suite de cette partie: le vide ser
 
 \begin{figure}[h!]
 \centering
- \begin{tikzpicture}
- \input{tikz/plan.tikz}
+\begin{tikzpicture}
+\input{tikz/plan.tikz}
 \end{tikzpicture}
-  \caption{schéma du plan infini}
+\caption{schéma du plan infini}
 \end{figure}\label{fig:tikz:plan}
 
 \subsection{Objectif}
 On cherche à obtenir l'opérateur différentiel \gls{ope-imp}, tel que l'on ait la relation,
 
 \begin{equation}
- \label{eq:coeff_ref:intro:ci}
- -\n \pvect \n \pvect \E(\x,\y,0) = \mathcal{Z}( \n \pvect H)(\x,\y,0)
+\label{eq:coeff_ref:intro:ci}
+-\n \pvect \n \pvect \E(\x,\y,0) = \mathcal{Z}( \n \pvect H)(\x,\y,0)
 \end{equation}
 
 %Le premier cas d'étude est celui du plan infini. Il permet de résoudre facilement le problème de Maxwell \eqref{eq:maxwell} et de déterminer l'expression de la la condition d'impédance (\gls{acr-ci}).
 %%%% SECTION HYPOTHESES
 \begin{hyp}[Hypothèses simplificatrices]{}~\\
-    \begin{enumerate}
-      \item On suppose que les solutions s'écriront comme $Ce^{i(k_\x\x +k_\y\y+k_\z\z)}, C\in\C$.
-      \item Comme le plan est infini et quitte à redéfinir les axes cartésiens, on peut supposer que l'onde se propage suivant le vecteur $\v k_p = (k_{\x,p},0,k_{\z,p})$ : pas de dépendance en $\y$ et $k_\y$.
-    \end{enumerate}
+\begin{enumerate}
+    \item On suppose que les solutions s'écriront comme $Ce^{i(k_\x\x +k_\y\y+k_\z\z)}, C\in\C$.
+    \item Comme le plan est infini et quitte à redéfinir les axes cartésiens, on peut supposer que l'onde se propage suivant le vecteur $\v k_p = (k_{\x,p},0,k_{\z,p})$ : pas de dépendance en $\y$ et $k_\y$.
+\end{enumerate}
 \end{hyp}
 
 On note $\eta_p = \sqrt{\frac{\mu_p}{\eps_p}}$ et $\nu_p = \sqrt{\mu_p \eps_p}$.
@@ -49,8 +40,8 @@ On a donc $k_p = \kO\nu_p$\footnote{Évidemment $k_0 = \kO$} et $k_{z,p} = \sqrt
 \begin{hyp}[Principe de superposition]{}~\\
 La solution générale est une combinaison linéaire de deux problèmes: 
 \begin{enumerate}
-  \item \gls{acr-te} : $\E = (0,E_y,0)$.
-  \item \gls{acr-tm} : $\H = (0,H_y,0)$. 
+    \item \gls{acr-te} : $\E = (0,E_y,0)$.
+    \item \gls{acr-tm} : $\H = (0,H_y,0)$. 
 \end{enumerate}
 \end{hyp}
 
@@ -66,58 +57,58 @@ Soit $(\E,\H)$ dans $(\Hrot(\O))^3 \times (\Hrot(\O))^3$.
 
 Alors $(\E,\H)$ sont solutions de Maxwell si 
 \begin{align}
-  \label{eq:coeffs_ref:maxwell-E}
-  \trot \E + i k_p \eta_p \H &= 0 && \text{dans $\O$}\\
-  \label{eq:coeffs_ref:maxwell-H}
-  \trot \H - i \frac{k_p}{\eta_p} \E &= 0 && \text{dans $\O$}
+\label{eq:coeffs_ref:maxwell-E}
+\trot \E + i k_p \eta_p \H &= 0 && \text{dans $\O$}\\
+\label{eq:coeffs_ref:maxwell-H}
+\trot \H - i \frac{k_p}{\eta_p} \E &= 0 && \text{dans $\O$}
 \end{align}
 
 Les équations de Maxwell donnent dans chacun des domaines (indicé par le $p = \lbrace0,1\rbrace$) et pour chacune des polarisations:
 
 \Gls{acr-te}: $ \E(\x,\z) = (0,E_y,0), \H(\x,\y) = (H_x,0,H_z)$. 
 \[
-  \left\lbrace 
-    \begin{matrix}
-      -\d_{\z} E_\y + i k_p \eta_p H_\x & = & 0 \\
-      \d_{\x} E_\y + i k_p \eta_p H_\z &= & 0 \\
-      \d_{\z} H_\x- \d_{\x} H_\z - i\frac{k_p}{\eta_p} E_\y & = & 0\\
-    \end{matrix}
-  \right.
-  \Rightarrow
-  \left\lbrace
-    \begin{matrix}
-      \d_{\z\z}^2 E_\y + \d_{\x\x}^2 E_\y + k_p^2 E_\y = 0\\
-      H_\x = \frac{\d_{\z} E_\y}{i k_p \eta_p }\\
-      H_\y =  -\frac{\d_{\x} E_\z}{i k_p \eta_p }
-    \end{matrix}
-  \right.
+\left\lbrace 
+\begin{matrix}
+-\d_{\z} E_\y + i k_p \eta_p H_\x & = & 0 \\
+\d_{\x} E_\y + i k_p \eta_p H_\z &= & 0 \\
+\d_{\z} H_\x- \d_{\x} H_\z - i\frac{k_p}{\eta_p} E_\y & = & 0\\
+\end{matrix}
+\right.
+\Rightarrow
+\left\lbrace
+\begin{matrix}
+\d_{\z\z}^2 E_\y + \d_{\x\x}^2 E_\y + k_p^2 E_\y = 0\\
+H_\x = \frac{\d_{\z} E_\y}{i k_p \eta_p }\\
+H_\y =  -\frac{\d_{\x} E_\z}{i k_p \eta_p }
+\end{matrix}
+\right.
 \]
 
 \Gls{acr-tm} : $ \E(\x,\z) = (E_\x,0,E_\z), \H(\x,\z) = (0,H_\y,0)$. 
 \[
-  \left\lbrace 
-    \begin{matrix}
-      \d_{\z} E_\x - \d_{\x} E_\z + i k_p \eta_p  H_\y &= & 0 \\
-      - \d_{\z} H_\y - i\frac{k_p}{\eta_p} E_\x & = & 0\\
-      \d_{\x} H_\y -i\frac{k_p}{\eta_p} E_\z &=&0\\
-    \end{matrix}
-  \right.
-  \Rightarrow
-  \left\lbrace
-    \begin{matrix}
-      \d_{\z\z}^2 H_\y + \d_{\x\x}^2 H_\y + k_p^2 H_\y = 0\\
-      E_\x = -\eta_p\frac{\d_{\z} H_\y}{i k_p}\\
-      E_\y = \eta_p\frac{\d_{\x} H_\y}{i k_p}
-    \end{matrix}
-  \right.
+\left\lbrace 
+\begin{matrix}
+\d_{\z} E_\x - \d_{\x} E_\z + i k_p \eta_p  H_\y &= & 0 \\
+- \d_{\z} H_\y - i\frac{k_p}{\eta_p} E_\x & = & 0\\
+\d_{\x} H_\y -i\frac{k_p}{\eta_p} E_\z &=&0\\
+\end{matrix}
+\right.
+\Rightarrow
+\left\lbrace
+\begin{matrix}
+\d_{\z\z}^2 H_\y + \d_{\x\x}^2 H_\y + k_p^2 H_\y = 0\\
+E_\x = -\eta_p\frac{\d_{\z} H_\y}{i k_p}\\
+E_\y = \eta_p\frac{\d_{\x} H_\y}{i k_p}
+\end{matrix}
+\right.
 \]
 
 On obtient alors une équation de Helmholtz à résoudre respectivement pour $E_\y$ et $H_\y$.
 
- Dans la suite, nous allons donc considérer comme inconnu $U$, solution du problème suivant : 
+Dans la suite, nous allons donc considérer comme inconnu $U$, solution du problème suivant : 
 
 \begin{equation}
- \d_{\z\z}^2 U + \d_{\x\x}^2 U + k_p^2 U = 0 \quad \text { dans $\O\cup\O^c$}
+\d_{\z\z}^2 U + \d_{\x\x}^2 U + k_p^2 U = 0 \quad \text { dans $\O\cup\O^c$}
 \end{equation}
 
 % \begin{hyp}[Hypothèses simplificatrices 2]{Passage dans le domaine de Fourier}\\
@@ -166,12 +157,12 @@ On obtient alors une équation de Helmholtz à résoudre respectivement pour $E_
 Grâce à l'hypothèse sur la forme des solutions
 
 \[
-  \d_{\x} U(\x,\z) = ik_\x U(\x,\z)
+\d_{\x} U(\x,\z) = ik_\x U(\x,\z)
 \]
 
 Le problème que l'on veut résoudre est maintenant le suivant:
 \begin{equation}
-  \d_{\z\z}^2 U + k_{\z,p}^2 U = 0 \quad \text { dans $\O\cup\O^c$}
+\d_{\z\z}^2 U + k_{\z,p}^2 U = 0 \quad \text { dans $\O\cup\O^c$}
 \end{equation}
 
 Et dont les solutions de l'équation ci-dessus sont
@@ -185,15 +176,15 @@ On suivra comme convention qu'en polarisation TE, $ U = E_\y$ et en polarisation
 
 Les conditions limites sur le matériau vont permettre de déterminer les valeurs des constantes $A_p, B_p$.
 \begin{itemize}
-  \item 
+    \item 
     Conducteur parfait (\gls{acr-cp})\footcite[p.~217]{morse_methods_1953} : $\v{E_t}(-d) = 0  $
-  \item 
+    \item 
     Continuité des champs tangents: $
     \left\lbrace 
-      \begin{matrix}
-        [ E_t]_{\z=0} &=& 0 \\
-        [ H_t]_{\z=0} &=& 0 
-      \end{matrix}
+    \begin{matrix}
+    [ E_t]_{\z=0} &=& 0 \\
+    [ H_t]_{\z=0} &=& 0 
+    \end{matrix}
     \right.$
 \end{itemize}
 
@@ -228,8 +219,8 @@ Z & \dfrac{k_1\eta_1}{k_{\z,1}}i\tan(k_{\z,1}d) & \dfrac{k_{\z,1}\eta_1}{k_1}i\t
 
 L'opérateur $Z$ est la matrice $diag(Z_{TE},Z_{TM})$:
 \begin{align}
-  \notag Z&=\dfrac{i\eta_1}{k_1^2}\frac{k_1\tan(k_{\z,1}d)}{k_{\z,1}}(k_1^2 I - L_R ) \\
-  &=\dfrac{i\eta_1}{k_1^2}P(k_1^2 I - L_R )\label{eq:coeff_ref:mat_z:imped}
+\notag Z&=\dfrac{i\eta_1}{k_1^2}\frac{k_1\tan(k_{\z,1}d)}{k_{\z,1}}(k_1^2 I - L_R ) \\
+&=\dfrac{i\eta_1}{k_1^2}P(k_1^2 I - L_R )\label{eq:coeff_ref:mat_z:imped}
 \end{align}
 
 où $L_R = diag(0,k_{\x,1}^2)$. C'est la forme que l'on retrouve dans \cite{marceaux_high-order_2000}.
@@ -260,7 +251,8 @@ R & \frac{k_{z,0}Z_{TE}-1}{k_{z,0}Z_{TE}+1} & \frac{k_{z,0}-Z_{TM}}{k_{z,0}+Z_{T
 
 \subsection{Ondes évanescentes}
 
-On note $s=\frac{k_{x,p}}{k_p}$. Si $s>1$ alors $k_{z,p} = k_p\sqrt{\nu_p^2-s^2}$ devient complexe\footnote{Sinon on peut noter $s=\sin(\theta_{inc})$}. La partie imaginaire de ce complexe crée une exponentielle réelle dans la solution générale. On obtient donc des ondes exponentiellement décroissante dans la direction des $\z$ croissant. Ces ondes sont appelées évanescentes.
+On note $s=\frac{k_{x,p}}{k_p}$. Si $s>1$ alors $k_{z,p} = k_p\sqrt{\nu_p^2-s^2}$ devient complexe\footnote{Sinon on peut noter $s=\sin(\theta_{inc})$}.
+La partie imaginaire de ce complexe crée une exponentielle réelle dans la solution générale. On obtient donc des ondes exponentiellement décroissante dans la direction des $\z$ croissant. Ces ondes sont appelées évanescentes.
 
 %%% SECTION MULTICOUCHE
 \subsection{Cas d'un empilement de matériau}
@@ -270,7 +262,7 @@ Un empilement peut-être résolue itérativement: étant donnée une condition d
 En effet, on peut toujours se ramener dans le cas du plan infini avec une couche, c'est à dire avec la condition d'impédance connue en $\z=-d$ et celle que l'on cherche en $\z=0$
 
 On suppose que l'on ait une condition d'impédance en $\z=-d$\[
-  \v { E_{tan}}=Z_d \, \n \pvect  \H
+\v { E_{tan}}=Z_d \, \n \pvect  \H
 \]
 
 
@@ -292,7 +284,7 @@ On suppose que l'on ait une condition d'impédance en $\z=-d$\[
 \v { H_t} &\frac{k_{\z,p}}{k_p\eta_p} \left(-A_p e^{-ik_{\z,p} \z}  + B_p e^{ik_{\z,p} \z}\right) \v e_1 & \left(A_p e^{-ik_{\z,p} \z} + B_p e^{ik_{\z,p} \z}\right) \v e_2\\
 \hline
 
- {\E_t}(-d) = Z_d \n\times\H(-d) & A_1 = -\alpha(\gamma_{TE}) B_1e^{-ik_{\z,1}2d} &  \\
+{\E_t}(-d) = Z_d \n\times\H(-d) & A_1 = -\alpha(\gamma_{TE}) B_1e^{-ik_{\z,1}2d} &  \\
 \hline
 
 \multirow{2}{*}{$\E_t(0)=Z\n\times \H(0)$} & B_1\left(1-\alpha(\gamma_{TE})e^{-ik_{\z,1}2d}\right) &   \\
@@ -313,6 +305,6 @@ P = \dfrac{ik_1}{k_{\z,1}}diag\left(\dfrac{1-\alpha(\gamma_{TE}) e^{ik_{\z,1}2d}
 Alors, la condition d'impédance en $\z=0$ est
 \begin{align}
 \label{eq:coeff_ref:mult_couch:imped}
-  Z = i \dfrac{\eta_1}{k_1^2}P\left(k_1^2 I-\LR\right)
+Z = i \dfrac{\eta_1}{k_1^2}P\left(k_1^2 I-\LR\right)
 \end{align}
 où $\LR$ est défini de la même façon qu'en \eqref{eq:coeff_ref:mat_z:imped}
