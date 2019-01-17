@@ -64,7 +64,7 @@
 
 \usepackage[francais]{minitoc}   % Mini table des matières, en français
     \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
-\usepackage[Lenny]{fncychap}
+\usepackage[PetersLenny]{fncychap}
 
 %\usepackage{multicol} % texte sur plusieurs colonnes
 %\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
@@ -87,9 +87,10 @@
 \usepackage{fancyhdr}      % Entête et pieds de page. Doit être placé APRES geometry
     \pagestyle{fancy}    % Indique que le style de la page sera justement fancy
     \fancyfoot{} % bas de page, rien
-    \fancyhead[RO,LE]{\thepage} % tête de page, droite paire, gauche impaire, rien
-    \fancyhead[LO]{{\nouppercase{\rightmark}}} % tête de page droite impaire, le titre de la section
-    \fancyhead[RE]{{\nouppercase{\leftmark}}} %tête de âge gauche paire, le titre du chapitre
+    \fancyfoot[RO,LE]{\thepage} % tête de page, droite paire, gauche impaire, rien
+    \fancyhead{}
+    \fancyhead[RO]{{\nouppercase{\rightmark}}} % tête de page droite impaire, le titre de la section
+    \fancyhead[LE]{{\nouppercase{\leftmark}}} %tête de âge gauche paire, le titre du chapitre
 
 \usepackage{array}   % for \newcolumntype macro
 \usepackage{multirow}
@@ -98,6 +99,61 @@
     \newcolumntype{R}{>{$}r<{$}}
 
 \usepackage{tcolorbox} % Pour faire de jolie boite, un peu visible
+\usepackage{lettrine} % Pour faire de jolie lettre
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pdflscape} % Pour pouvoir changer l'orientation des pages
+    %%% Solution pour avoir un paysage qui point vers l'intérieur du livre
+    \makeatletter
+    \global\let\orig@begin@landscape=\landscape%
+    \global\let\orig@end@landscape=\endlandscape%
+    \gdef\@true{1}
+    \gdef\@false{0}
+    \gdef\landscape{%
+        \global\let\within@landscape=\@true%
+        \orig@begin@landscape%
+    }%
+    \gdef\endlandscape{%
+        \orig@end@landscape%
+        \global\let\within@landscape=\@false%
+    }%
+    \@ifpackageloaded{pdflscape}{%
+        \gdef\pdf@landscape@rotate{\PLS@Rotate}%
+    }{
+        \gdef\pdf@landscape@rotate#1{}%
+    }
+    \let\latex@outputpage\@outputpage
+    \def\@outputpage{
+        \ifx\within@landscape\@true%
+            \if@twoside%
+                \ifodd\c@page%
+                    \gdef\LS@rot{\setbox\@outputbox\vbox{%
+                        \pdf@landscape@rotate{-90}%
+                        \hbox{\rotatebox{90}{\hbox{\rotatebox{180}{\box\@outputbox}}}}}%
+                    }%
+                \else%
+                    \gdef\LS@rot{\setbox\@outputbox\vbox{%
+                        \pdf@landscape@rotate{+90}%
+                        \hbox{\rotatebox{90}{\hbox{\rotatebox{0}{\box\@outputbox}}}}}%
+                    }%
+                \fi%
+            \else%
+                \gdef\LS@rot{\setbox\@outputbox\vbox{%
+                    \pdf@landscape@rotate{+90}%
+                    \hbox{\rotatebox{90}{\hbox{\rotatebox{0}{\box\@outputbox}}}}}%
+                }%
+            \fi%
+        \fi%
+        \latex@outputpage%
+    }
+    \makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 %%% Pas de numéro de page sur la première page des chapitres
 \makeatletter

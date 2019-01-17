@@ -5,9 +5,9 @@
     openright % openright si document final
     ]{book}
 
-\input{preambule_modules}
-\input{preambule_alias}
-\input{preambule_glossaire}
+\input{tex/preambule/modules}
+\input{tex/preambule/alias}
+\input{tex/preambule/glossaires}
  
 \newcommand{\doctitle}{Modélisation d'un matériau faible indice en hyperfréquence par une condition d'impédance d'ordre élevé}
 \newcommand{\docauthor}{Pierre Payen}
@@ -22,13 +22,12 @@
 \begin{document}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \frontmatter
-        \input{page_de_garde}
+        \input{tex/couverture/couverture}
         \setcounter{secnumdepth}{5} % on numérote tous les niveaux de sections
         \setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
         \dominitoc
         \tableofcontents
-        \input{notations}
-        
+        \include{index}
     % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \mainmatter
         \include{chapitre_0}
