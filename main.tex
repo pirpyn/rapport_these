@@ -1,15 +1,14 @@
 \documentclass[11pt,%
-%draft,% seulement brouillon
-twoside,% twoside si document final
-a4paper,%
-openright % openright si document final
-]{book}
+    %draft,% seulement brouillon
+    twoside,% twoside si document final
+    a4paper,%
+    openright % openright si document final
+    ]{book}
 
-\input{header}
-\bibliography{bib/Zotero}
-\input{alias}
-\input{glossaire}
-
+\input{preambule_modules}
+\input{preambule_alias}
+\input{preambule_glossaire}
+ 
 \newcommand{\doctitle}{Modélisation d'un matériau faible indice en hyperfréquence par une condition d'impédance d'ordre élevé}
 \newcommand{\docauthor}{Pierre Payen}
 
@@ -17,58 +16,28 @@ openright % openright si document final
 \title{\doctitle}
 
 \hypersetup{
-pdftitle={\doctitle},
-pdfauthor={\docauthor}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\includeonly{unicite}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    pdftitle={\doctitle},
+    pdfauthor={\docauthor}}
 
 \begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frontmatter
-\include{page_de_garde}
-
-\setcounter{secnumdepth}{5} % on numérote tous les niveaux de sections
-\setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
-\dominitoc
-%\tableofcontents
-\clearpage
-\include{notations}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mainmatter
-\chapter{Introduction et plan de thèse}
-\include{pres_th}
-
-\setcounter{mtc}{2} % "Corrige" les minitocs décallés à cause des chapter* (ex : Intro)
-
-\chapter{Impédance d'un empilement multi-couche infiniment plan}
-\minitoc
-\include{coeffs_ref}
-\include{coeffs_cioe}
-
-\chapter{Impédance d'un empilement multi-couche courbe}
-\minitoc
-A VENIR
-
-\chapter{Conditions suffisantes d'unicité dans le cas d'un objet quelconque}
-\minitoc
-\include{unicite}
-\include{optim_ci4}
-\include{optim_mat_ss_pertes}
-
-\chapter{Champs électromagnétiques par Série de Mie}
-\minitoc
-\include{maxwell_to_helmholtz}
-\include{helmholtz_harmoniques_spheriques}
-\include{maxwell_serie_de_mie}
-\include{serie_mie}
-
-\chapter{Champs électromagnétiques par équations intégrales}
-\minitoc
-\include{form_int}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\backmatter
-\printbibliography
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \frontmatter
+        \input{page_de_garde}
+        \setcounter{secnumdepth}{5} % on numérote tous les niveaux de sections
+        \setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
+        \dominitoc
+        \tableofcontents
+        \input{notations}
+        
+    % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \mainmatter
+        \include{chapitre_0}
+        \include{chapitre_1}
+        \include{chapitre_2}
+        \include{chapitre_3}
+        \include{chapitre_4}
+        \include{chapitre_5}
+    % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \backmatter
+        \printbibliography
 \end{document}

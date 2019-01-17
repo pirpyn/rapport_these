@@ -27,7 +27,7 @@
   "settings":
   {
     // The number of spaces a tab is considered equal to
-    "tab_size": 2,
+    "tab_size": 4,
     // Set to false to disable detection of tabs vs. spaces on load
     "detect_indentation": true,
     // Calculates indentation automatically when pressing enter

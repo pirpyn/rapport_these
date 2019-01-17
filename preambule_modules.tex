@@ -1,14 +1,13 @@
 %\usepackage{cmbright} % fichier + lisible sur ordi, - lisible sur papier
 \usepackage[utf8]{inputenc} %gestion des accents par le compilateurs
-\usepackage[cyr]{aeguill}
 \usepackage[T1]{fontenc} %gestion des accents par l'afficheurs et la césure
 \usepackage[french]{babel} % traduction des packages
 
 \usepackage{lmodern} % fontes tailles variables
-% substitution des petites capitales grasses manquantes
-\rmfamily
-\DeclareFontShape{T1}{lmr}{b}{sc}{<->ssub*cmr/bx/sc}{}
-\DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*cmr/bx/sc}{}
+    % substitution des petites capitales grasses manquantes
+    \rmfamily
+    \DeclareFontShape{T1}{lmr}{b}{sc}{<->ssub*cmr/bx/sc}{}
+    \DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*cmr/bx/sc}{}
 
 \usepackage{tabularx} % Permet d'utiliser l'environnement tabularx
 \usepackage{graphicx} % gestion de figure, dessins
@@ -16,13 +15,13 @@
 
 \usepackage{xspace}
 \usepackage[%
-% paperwidth=270.0mm,%  A supprimer si plus besoin de todonotes
-headheight=14pt,%
-top    = 2.5cm,%
-bottom = 2.5cm,%
-%left   = 2cm,%
-%right  = 2cm,%
-]{geometry} % feuille a4 de taille 21.0 x 29.7 
+    % paperwidth=270.0mm,%  A supprimer si plus besoin de todonotes
+    headheight=14pt,%
+    top    = 2.5cm,%
+    bottom = 2.5cm,%
+    %left   = 2cm,%
+    %right  = 2cm,%
+    a4paper]{geometry} % feuille a4 de taille 21.0 x 29.7 
 
 % suite de paquets mathematiques
 \usepackage{amsthm} % gestion des théoremes
@@ -31,52 +30,53 @@ bottom = 2.5cm,%
 
 \usepackage[autostyle=true]{csquotes}
 \usepackage[%
-  language=english,%
-  sorting=ynt,%
-  backend=biber,%
-  style=alphabetic,%
-  hyperref=true,%
-  giveninits=true, % initialles pour prénoms
-  isbn=false,%
-  url=false,%
-  doi=false,%
-  backref=true,%
-  backrefstyle=three% si cité en page 1,2,3, ecrire 1-3, 
-  ]{biblatex}
-  \renewbibmacro{in:}{} 
-  \DeclareFieldFormat[book,report]{title}{\mkbibquote{#1\isdot}}
-  \DefineBibliographyStrings{french}{%
+    language=english,%
+    sorting=ynt,%
+    backend=biber,%
+    style=alphabetic,%
+    hyperref=true,%
+    giveninits=true, % initialles pour prénoms
+    isbn=false,%
+    url=false,%
+    doi=false,%
+    backref=true,%
+    backrefstyle=three% si cité en page 1,2,3, ecrire 1-3, 
+    ]{biblatex}
+    \renewbibmacro{in:}{} 
+    \DeclareFieldFormat[book,report]{title}{\mkbibquote{#1\isdot}}
+    \DefineBibliographyStrings{french}{%
     bibliography = {Références},
-  }
+    }
+    \bibliography{bib/Zotero}
+
+
+
 \usepackage[%
-  linkcolor=blue!70!black,%
-  colorlinks=true,%
-  citecolor=purple%
-  ]{hyperref} % gestion des liens hypertexts et reférences
+    linkcolor=blue!70!black,%
+    colorlinks=true,%
+    citecolor=purple%
+    ]{hyperref} % gestion des liens hypertexts et reférences
 
-\usepackage{excludeonly}
+\usepackage[section]{placeins} % Place un FloatBarrier à chaque nouvelle section, les figures s'y arreterons
 
-\usepackage[section]{placeins} % Place un FloatBarrier à chaque nouvelle section
-\usepackage{epigraph}
-\usepackage[francais,nohints]{minitoc}   % Mini table des matières, en français
-\setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
+\usepackage{epigraph} % Pour faire de jolie citations
+    \newcommand{\citationChap}[2]{\epigraph{\og \textit{#1} \fg{}}{#2}}
+
+\usepackage[francais]{minitoc}   % Mini table des matières, en français
+    \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
 \usepackage[Lenny]{fncychap}
 
 %\usepackage{multicol} % texte sur plusieurs colonnes
 %\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
 
 \usepackage[%
-acronym,%
-nomain,%
-sanitizesort=false,%
-style=super4col%
-]{glossaries} %voir glossaire.tex
-
-\setcounter{tocdepth}{1} % Sommaires n'inclus que les niveau 1 à 2 : section, sous-section
-\setlength\parindent{0pt} % pas d'alinéa à chaque paragraphe
+    nomain,%
+    sanitizesort=false,%
+    style=super4col%
+    ]{glossaries} %voir preambule_glossaire.tex
 
 \usepackage{tikz} % Permet de tracer des figures et schémas
-\usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
+    \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
 
 % \setlength{\oddsidemargin}{25mm}
 % \setlength{\evensidemargin}{25mm}
@@ -85,18 +85,46 @@ style=super4col%
 % \usepackage{todonotes} % permet d'ajouter des notes en marges
 
 \usepackage{fancyhdr}      % Entête et pieds de page. Doit être placé APRES geometry
-  \pagestyle{fancy}    % Indique que le style de la page sera justement fancy
-  \fancyfoot[CE,CO]{}
-  \fancyfoot[LE,RO]{\thepage}
-  \fancyhead[RE,LO]{}
-  \fancyhead[RO]{\tiny{\rightmark}}
-  \fancyhead[LE]{\tiny{\leftmark}}
-%\bibliographystyle{apalike}
+    \pagestyle{fancy}    % Indique que le style de la page sera justement fancy
+    \fancyfoot{} % bas de page, rien
+    \fancyhead[RO,LE]{\thepage} % tête de page, droite paire, gauche impaire, rien
+    \fancyhead[LO]{{\nouppercase{\rightmark}}} % tête de page droite impaire, le titre de la section
+    \fancyhead[RE]{{\nouppercase{\leftmark}}} %tête de âge gauche paire, le titre du chapitre
 
 \usepackage{array}   % for \newcolumntype macro
 \usepackage{multirow}
-\newcolumntype{L}{>{$}l<{$}} % math-mode version of column type
-\newcolumntype{C}{>{$}c<{$}}
-\newcolumntype{R}{>{$}r<{$}}
+    \newcolumntype{L}{>{$}l<{$}} % math-mode version of column type
+    \newcolumntype{C}{>{$}c<{$}}
+    \newcolumntype{R}{>{$}r<{$}}
 
-\usepackage{tcolorbox}
+\usepackage{tcolorbox} % Pour faire de jolie boite, un peu visible
+
+%%% Pas de numéro de page sur la première page des chapitres
+\makeatletter
+\let\ps@plain=\ps@empty
+\makeatother
+
+% Réglage fin des notes de bas de page
+\FrenchFootnotes % pour les notes de bas de page à la française
+\AddThinSpaceBeforeFootnotes % pour avoir une espace fine entre le mot et l'appel de note
+
+%% CHAPITRE ETOILE
+%% avec référence dans la table des matières et les bons en-têtes
+%% il sert pour l'introduction, la page de notations, etc
+\newcommand{\chapterstar}[1]{%
+  \chapter*{#1}%
+  \addcontentsline{toc}{chapter}{#1}%
+  \markboth{#1}{#1}}
+
+% Pour que les pages paires sans texte (par exemple, à la fin d'un chapitre et
+% avant un autre), ne contiennent ni en-tête ni pied de page (source :
+% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank)
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
+}
+\let\cleardoublepage\clearemptydoublepage
+
+\setcounter{tocdepth}{1} % Sommaire n'inclus que les niveau 1 à 2 : section, sous-section
+\setlength\parindent{0pt} % pas d'alinéa à chaque paragraphe
