@@ -1,11 +1,23 @@
-%theorem
-\theoremstyle{plain}
-\newtheorem{prop}{Proposition}[subsection]
+\theoremstyle{plain} % style plain
+\newtheorem{thm}{Théorème}[chapter]
+\newtheorem{cor}[thm]{Corollaire}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemme}
+%\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{rmq}[thm]{Remarque}
+\newtheorem*{thmstar}{Théorème} % théorème non numéroté
+\newtheorem*{conjstar}{Conjecture} % conjecture non numérotée
+\newtheorem{defn}[thm]{Définition}
+\newtheorem{hyp}[thm]{Hypothèse}
 
-\theoremstyle{definition}
-\newtheorem{defn}{Définition}[subsection]
-\newtheorem{hyp}{Hypothèse}[subsection]
-\newtheorem{demo}{Démonstration}[subsection]
+\theoremstyle{definition} % style definition
+\newtheorem{exemple}[thm]{Exemple}
+\newtheorem{question}[thm]{Question}
+\newtheorem{remarque}[thm]{Remarque}
+\newtheorem{notation}[thm]{Notation}
+
+% Pour renommer ``preuve'' en ``démonstration''
+\renewcommand{\proofname}{Démonstration}
 
 
 %redefinition
@@ -96,3 +108,12 @@
 % cioe
 \newcommand{\ov}[1]{\overline{#1}}
 
+\newcommand{\x}{{x}}
+\newcommand{\y}{{y}}
+\newcommand{\z}{{z}}
+
+\newcommand{\kO}{\mathbf{k_0}}
+\newcommand{\etaO}{\boldsymbol{\eta_0}}
+\newcommand{\muO}{\boldsymbol{\mu_0}}
+\newcommand{\epsO}{\boldsymbol{\eps_0}}
+\newcommand{\nuO}{\boldsymbol{\nu_0}}
