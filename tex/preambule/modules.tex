@@ -21,7 +21,7 @@
     top    = 2.5cm,%
     bottom = 2.5cm,%
     inner  = 3.5cm,%
-    outer  = 3cm,%
+    outer  = 3.5cm,%
     a4paper]{geometry} % feuille a4 de taille 21.0 x 29.7 
 
 % suite de paquets mathematiques
@@ -50,8 +50,6 @@
     }
     \bibliography{bib/Zotero}
 
-
-
 \usepackage[%
     linkcolor=blue!70!black,%
     colorlinks=true,%
@@ -65,7 +63,12 @@
 
 \usepackage[francais]{minitoc}   % Mini table des matières, en français
     \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
-\usepackage[PetersLenny]{fncychap}
+
+% Jolie en tete de chapitre
+\usepackage[Lenny]{fncychap}
+    \makeatletter
+        \ChNameVar{\huge} % On modifie la taille du môt ``CHapitre''
+    \makeatother
 
 %\usepackage{multicol} % texte sur plusieurs colonnes
 %\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
@@ -76,14 +79,18 @@
     style=super4col%
     ]{glossaries} %voir preambule_glossaire.tex
 
-\usepackage{tikz} % Permet de tracer des figures et schémas
+% Permet de tracer des figures et schémas
+\usepackage{pgfplots}
+    \pgfplotsset{compat=newest}
+\usepackage{tikz} 
     \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
-
+    
+% % permet d'ajouter des notes en marges
 % \setlength{\oddsidemargin}{25mm}
 % \setlength{\evensidemargin}{25mm}
 % \setlength{\textwidth}{170mm} 
 % \reversemarginpar
-% \usepackage{todonotes} % permet d'ajouter des notes en marges
+% \usepackage{todonotes} 
 
 \usepackage{fancyhdr}      % Entête et pieds de page. Doit être placé APRES geometry
     \pagestyle{fancy}    % Indique que le style de la page sera justement fancy
