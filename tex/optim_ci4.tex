@@ -158,9 +158,13 @@ X^\star &= Q^{-1}\left(P- F\lambda\right)
 On peut vérifier $X$ vérifie les contraintes : $ F^t X = F^t Q^{-1} P - F^tQ^{-1}F\lambda = 0 \in (\R_-)^3$.
 
 \subsection{Problème des multiplicateurs nuls}
+
+
 Le lecteur remarquera que par définition les multiplicateur se doivent par définition être positif, ce dont le précédent résulat ne tient pas compte. La théorie des multiplicateurs de K.K.T énonce alors une condition supplémentaire. Soit $\lambda_i$ est positif est la contrainte associée est active, c'est à dire $\left<F_{i,:},X\right> = 0$, soit la contrainte est inactive et alors le multiplicateur associé est nul.
 
-Cependant comme $Q$ n'est pas diagonale, en annulant un multiplicateur, les autres sont modifiés.  Il faut donc reprendre l'ensemble des calculs en supprimant la contrainte correspondante de $F$. On a alors au plus 8 cas à traiter, où l'on considéres toutes les combinaisons possible de contraintes actives. La solution optimale est alors celle où les multiplicateurs sont tous positifs.
+Cependant comme $Q$ n'est pas diagonale, en annulant un multiplicateur, les autres sont modifiés.  Il faut donc reprendre l'ensemble des calculs en supprimant la contrainte correspondante de $F$. On a alors au plus 8 cas à traiter, où l'on considères toutes les combinaisons possible de contraintes actives. La solution optimale est alors celle où les multiplicateurs sont tous positifs.
+
+\TODO{Montrer ces combinaisons}
 
 
 %  Il faut donc savoir quelles sont les contraintes qui seront actives avant de le calculer. On peut alors résoudre géometriquement cette question : l'ensemble des contraintes est une pyramide infini de sommet $(0)$ et d'axes $F_1,F_2,F_3$. Un point appartient à cette pyramide si les composantes $(a,b,c)$ de ce point respectivement à ces 3 vecteurs sont positives, composantes qui doivent résoudre
