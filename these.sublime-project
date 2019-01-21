@@ -2,15 +2,29 @@
   "build_systems": // If LatexTools not installed
   [
     {
-      "name" : "Build with latexmk",
+      "name" : "Build these",
       "working_dir": "$project_path",
       "file_regex": "^([^:\\n]*)\\:([0-9]*):()\\ *(.*)$",
       "windows": {
         "shell_cmd": "latexmk.exe"
       },
       "linux": {
-        "shell_cmd": "latexmk"
+        "shell_cmd": "latexmk",
       },
+      "variants": [
+        {
+          "name"  : "clean",
+          "linux": {
+            "shell_cmd" : "/bin/rm -rf $project_path/latex_out",
+          },
+        },
+        {
+          "name"  : "show",
+          "linux": {
+            "shell_cmd" : "evince $project_path/main.pdf",
+          },
+        },
+      ],
     },
   ],
   "folders":

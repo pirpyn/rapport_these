@@ -1,5 +1,5 @@
 \section{Résolution des formulation intégrales des équations de Maxwell par éléments finis}
-\lettrine{O}{n} écrit la CIOE comme
+On écrit la CIOE comme
 \[
   (I_d + bL)E_t = (a_0I_d+a_1L)J
 \]
@@ -14,9 +14,7 @@ En notations globale au repère 3D.
 Soit $\v x = (x_1,x_2,x_3)$.
 
 %TODO
-{ 
-\color{red}{TODO: mettre source des fonctions RT - RWG}
-}
+\TODO{mettre source des fonctions RT - RWG}
 
 \begin{minipage}{0.4\textwidth}
 \begin{align*}
@@ -29,7 +27,7 @@ Soit $\v x = (x_1,x_2,x_3)$.
 \begin{minipage}{0.58\textwidth}
 	\centering
 	\begin{tikzpicture}[scale=2.5]
-	\input{tikz/fonbasglob.tikz}
+	\input{tikz/schema/fonbasglob.tikz}
 	\end{tikzpicture}
 \end{minipage} 
 
@@ -46,7 +44,7 @@ Les fonctions $q_j$ s'annulent notamment sur le segment $\xi_1+\xi_2=\frac{1}{2}
 \begin{minipage}{0.53\textwidth}
 	\centering
 	\begin{tikzpicture}[scale=2.5]
-	\input{tikz/fonbasloc.tikz}
+	\input{tikz/schema/fonbasloc.tikz}
 	\end{tikzpicture}
 \end{minipage}
 
@@ -56,6 +54,8 @@ Au sens des distributions, $\forall j,\, \rot \phi_j =
 \end{prop}
 \begin{proof}
 \end{proof}
+
+\TODO{Montrer que les RT sont dans Hdiv et non Hrot}
 
 \subsection{Relations de passages et matrices}
 Soit $ U \simeq \sum\limits_{j=1}^N u_j \phi_j \simeq \sum\limits_{j=1}^N v_j p_j \simeq \sum\limits_{j=1}^N w_j q_j$

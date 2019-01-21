@@ -1,22 +1,14 @@
 \hypersetup{pageanchor=false}
-% \newgeometry{left=3cm,right=3cm}
+\thispagestyle{empty}
 \begin{titlepage}
- 
-%\maketitle
-\begin{minipage}[t]{\textwidth}
-\begin{center}
-  \begin{tabularx}{\textwidth}{@{\extracolsep{\fill}}lr}
-  \includegraphics[height = 3cm]{images/logo/CEA.pdf} &
-  \includegraphics[height = 3cm]{images/logo/laga.jpg}
-  %\includegraphics[height = 3cm]{images/logo/P13.png}
-  \end{tabularx}
-\end{center}
-\end{minipage}
+\includegraphics[height = 3cm]{images/logo/CEA.pdf}
+\hfill
+\includegraphics[height = 3cm]{images/logo/laga.jpg}
 
 \begin{center}
 \vspace{\stretch{1}}
 % Permet de créer un espace vertical de longueur variable (\stretch) et de "poids" 1
-{\Large \textbf{École Doctorale 146 « Sciences, Technologies, Santé – Galilée »}}
+{\Large \textbf{École Doctorale 146 \\« Sciences, Technologies, Santé – Galilée »}}
 
 \vspace{\stretch{2}}
 %Espace vertical variable de poids 2.
@@ -33,20 +25,27 @@
 \vspace{\stretch{1}}
 
 {
-    \textbf{{\LARGE Pierre \textsc{Payen}}}\\
+    \textbf{{\LARGE Pierre PAYEN}}\\
 }
 
 \vspace{\stretch{2}}
 \hrule
 \vspace{\stretch{1}}
-{\LARGE \textbf{\doctitle}}
+{\LARGE \textbf{\doctitlefr}}
 \vspace{\stretch{1}}
 \hrule
 % {\textbf{Version:} \hgid{}}
 \vspace{\stretch{1}}
 
-{\Large
-dirigée par Olivier \textsc{Lafitte}}
+{\large dirigée par}
+\vspace{\stretch{1}}
+
+{
+\large
+    Pr.~Olivier LAFITTE (LAGA/Paris 13)\\
+    et Dr.~Bruno STUPFEL (CEA)
+}
+
 
 \vspace{\stretch{5}}
 
@@ -55,10 +54,11 @@ dirigée par Olivier \textsc{Lafitte}}
 \vspace{\stretch{2}}
 {\Large
 \begin{tabular}{l@{\hskip 0cm}lll}
-M.&Xxxx \textsc{Xxxx} & Xxxx & Rapporteur\\
-M\textsuperscript{me}.~&Xxxx \textsc{Xxxx} & Xxxx & Examinateur\\
-M.&Olivier \textsc{Lafitte} & LAGA/Paris 13 & Directeur\\
 M\textsuperscript{me}.~&Xxxx \textsc{Xxxx} & Xxxx & Président\\
+M.&Xxxx \textsc{Xxxx} & Xxxx & Rapporteur\\
+M\textsuperscript{me}.&Xxxx \textsc{Xxxx} & Xxxx & Rapporteur\\
+M.&Olivier \textsc{Lafitte} & LAGA/Paris 13 & Directeur\\
+M.~&Bruno\textsc{Stupfel} & CEA & Examinateur\\
 \end{tabular}
 }
 
@@ -73,19 +73,19 @@ M\textsuperscript{me}.~&Xxxx \textsc{Xxxx} & Xxxx & Président\\
 %Adresse du labo où la thèse a été faite : demande du ministère !
 \noindent
 \begin{center}
-\begin{minipage}[t]{0.45\textwidth}
-LAGA ( UMR 7539 )\\
-Université Paris 13 \\
-99 avenue J.B. Clément \\
+\begin{minipage}[t]{0.5\textwidth}
+LAGA - UMR 7539\\
+Université Paris 13\\
+99 avenue J.B. Clément\\
 93430 Villetaneuse
 \end{minipage}%
 %
 \hfill%
 %
-\begin{minipage}[t]{0.45\textwidth}
-École doctorale 146 « Sciences, Technologies, Santé – Galilée » \\
-Université Paris 13 \\
-99 avenue J.B. Clément \\
+\begin{minipage}[t]{0.5\textwidth}
+École doctorale 146 « Sciences, Technologies, Santé – Galilée »\\
+Université Paris 13\\
+99 avenue J.B. Clément\\
 93430 Villetaneuse
 \end{minipage}
 \end{center}
@@ -94,5 +94,4 @@ Université Paris 13 \\
 
 \end{titlepage}
 \hypersetup{pageanchor=true}
-
 \cleardoublepage
