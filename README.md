@@ -18,6 +18,7 @@ Versionnée par git, la thèse possède 2 branches principales
 # Méthodologie 
 
 En local, travailler sur une branche locale `perso`, commiter puis fusionner avec `master`
+
     git commit
     git checkout master
     git merge --no-ff perso
