@@ -1,20 +1,20 @@
 \section{Solution problème de Maxwell dans la sphère}
-\label{sec:sol_maxwell}
+\label{sec_sol_maxwell}
 
-% Dans cette section, nous allons résoudre le problème de Maxwell \eqref{eq:pres_th:intro:maxwell} dans le cas d'un objet sphérique de constantes $\eps$ et $\mu$, éclairé par une onde électro-magnétique  de pulsation $w$ et de nombre d'onde $k$, tel que $k_0^2 = w^2\eps_0\mu_0$.
+% Dans cette section, nous allons résoudre le problème de Maxwell \eqref{eq_pres_th_intro_maxwell} dans le cas d'un objet sphérique de constantes $\eps$ et $\mu$, éclairé par une onde électro-magnétique  de pulsation $w$ et de nombre d'onde $k$, tel que $k_0^2 = w^2\eps_0\mu_0$.
 
 % Nous allons montrer que le problème de Maxwell en champs $(\E,\H)$ peut être reformulé en potentiels vectoriels $(\v \Phi_E,\v \Phi_H)$, dit de Hertz. Ces potentiels sont alors solution d'un problème de Helmholtz. 
 
-% Alors nous exhiberons une solution qui permet de passer du potentiel vectoriel $\v \Phi$ à un potentiel scalaire $\Psi$. Ce dernier doit-être alors solution du problème de Helmholtz, ce qui sera étudié dans la section suivante (section \ref{sec:sol_maxwellhelmholtz_scal}).
+% Alors nous exhiberons une solution qui permet de passer du potentiel vectoriel $\v \Phi$ à un potentiel scalaire $\Psi$. Ce dernier doit-être alors solution du problème de Helmholtz, ce qui sera étudié dans la section suivante (section \ref{sec_sol_maxwellhelmholtz_scal}).
 
-% Afin de résoudre le problème de Maxwell \eqref{eq:maxwell}, nous allons faire apparaître le problème de Helmholtz vectoriel que nous résoudrons à l'aide du problème de Helmholtz scalaire .
+% Afin de résoudre le problème de Maxwell \eqref{eq_maxwell}, nous allons faire apparaître le problème de Helmholtz vectoriel que nous résoudrons à l'aide du problème de Helmholtz scalaire .
 
 \subsection{Des équations de Maxwell à l'équation de Helmholtz}
 % Afin de faire apparaitre le problème de Helmholtz vectoriel, nous allons nous donner des potentiels qui soient des solutions de ce problème et nous montrerons qu'ils résolvent le problème de Maxwell :
 % \begin{prop}
 %   Soient $(\v \Phi_E,\v \Phi_H)$ tels que
 %   \begin{equation}
-%     \label{eq:sol_maxwell:potentiel}
+%     \label{eq_sol_maxwell_potentiel}
 %     %\left\lbrace 
 %     \begin{matrix}
 %       %\div \v \Phi_{X} &=& 0 \\
@@ -24,10 +24,10 @@
 %     k^2 = w^2 \eps\mu
 %   \end{equation}
 % 
-%   alors les champs $(\E,\H)$ définis ci-dessous sont solutions de \eqref{eq:maxwell}.
+%   alors les champs $(\E,\H)$ définis ci-dessous sont solutions de \eqref{eq_maxwell}.
 % 
 %   \begin{equation}
-%     \label{eq:sol_maxwell:maxwell_potentiel}
+%     \label{eq_sol_maxwell_maxwell_potentiel}
 %     \left\lbrace
 %       \begin{matrix}
 %         \E &=&  \rot \v \Phi_E +  \frac{\rot \rot \v \Phi_H}{iw\eps} \\
@@ -38,14 +38,14 @@
 % \end{prop}
 % \begin{proof}
 
-Soit le problème de Maxwell \eqref{eq:pres_th:intro:maxwell} dans le cas d'un objet sphérique de constantes $\eps$ et $\mu$%, éclairé par une onde électro-magnétique  de pulsation $w$ et de nombre d'onde $k$, tel que $k^2 = w^2\eps\mu$
+Soit le problème de Maxwell \eqref{eq_pres_th_intro_maxwell} dans le cas d'un objet sphérique de constantes $\eps$ et $\mu$%, éclairé par une onde électro-magnétique  de pulsation $w$ et de nombre d'onde $k$, tel que $k^2 = w^2\eps\mu$
 .
 
 Comme le domaine est un ouvert étoilé et que par définition, la divergence des champs est nulle, d'après le Théorème de Helmholtz-Hodge \cite{gui_rigorous_2007}, on peut les représenter comme issus de rotationnels.\\
 On peut donc choisir une représentation en potentiel pour l'un et définir l'autre grâce à une équation du système de Maxwell:\\
  $\exists \v \Phi \in (C^\infty(\O))^3$ tels que
 \begin{equation}
-  \label{eq:sol_maxwell:pot_hertz}
+  \label{eq_sol_maxwell_pot_hertz}
   \left\lbrace\begin{matrix}
     \E &=& \rot \v \Phi \\
     \H &=& - \frac{\rot \rot \v \Phi}{ik\eta}
@@ -64,7 +64,7 @@ On utilise alors l'équation de Maxwell restante:
 \]
 Puisque $\rot  \grad  V  \equiv 0$ et que $\trot\, \trot \v V = -\lapl \v V + \grad \div \v V$, le potentiel $\v \Phi$ doit être solution de 
 \begin{equation}
-  \label{eq:sol_maxwell:helmholtz_vect}
+  \label{eq_sol_maxwell_helmholtz_vect}
   \rot ( \lapl \v \Phi + k^2 \v \Phi ) = 0
 \end{equation}
 
@@ -94,7 +94,7 @@ et un scalaire $\Psi$, on a:
 \end{align*}
 
 
-% En utilisant ces propriétés nous calculons le terme à l'intérieur du rotationnel dans \eqref{eq:helmholtz_vect}:
+% En utilisant ces propriétés nous calculons le terme à l'intérieur du rotationnel dans \eqref{eq_helmholtz_vect}:
 % \begin{align*}
 %  \lapl \v \Phi + k^2 \v \Phi
 % &= \left(\Delta (r\Psi) - \frac{2}{r}\Psi + k^2 r \Psi \right) \v e_r  
@@ -106,7 +106,7 @@ et un scalaire $\Psi$, on a:
 % + \cdots \\
 % &= \left(r \left[ \Delta \Psi + k^2 \Psi \right] \right) \v e_r + 2\grad\Psi
 % \end{align*}
-% En injectant ceci dans \eqref{eq:helmholtz_vect}, on a le résultat suivant:
+% En injectant ceci dans \eqref{eq_helmholtz_vect}, on a le résultat suivant:
 % 
 En développant les calculs on obtient
 \begin{align*}
@@ -126,11 +126,11 @@ En définitive, nous avons dans tout $\O$:
   %// \Rightarrow \exists V \in \Hgrad(\O), \quad \grad V  &= (\Delta \Psi + k^2\Psi)\v e_r
 \end{align*}
 
-On voit donc $\Psi$ solution l'équation de Helmholtz homogène  \eqref{eq:sol_maxwell:helmholtz_scal} implique que $\v \Phi$ satisfait \eqref{eq:sol_maxwell:helmholtz_vect}.
+On voit donc $\Psi$ solution l'équation de Helmholtz homogène  \eqref{eq_sol_maxwell_helmholtz_scal} implique que $\v \Phi$ satisfait \eqref{eq_sol_maxwell_helmholtz_vect}.
 \begin{equation}
-  \label{eq:sol_maxwell:helmholtz_scal}
+  \label{eq_sol_maxwell_helmholtz_scal}
    \Delta \Psi + k^2\Psi = 0 \quad \text{dans $\O$}
 \end{equation}
 
-Et alors on obtient des solutions du problème de Maxwell \eqref{eq:pres_th:intro:maxwell} grâce aux formulations en potentiels \eqref{eq:sol_maxwell:pot_hertz}.
+Et alors on obtient des solutions du problème de Maxwell \eqref{eq_pres_th_intro_maxwell} grâce aux formulations en potentiels \eqref{eq_sol_maxwell_pot_hertz}.
 % On choisit de prendre $f \equiv 0$ et nous allons détailler les solutions de l'équation de Helmholtz dans le cas d'un objet sphérique dans le \secref{sec:helmholtz_scal}.

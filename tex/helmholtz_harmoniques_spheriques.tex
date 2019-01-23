@@ -1,6 +1,6 @@
-\section{Solutions du problème de Helmholtz dans la sphère}\label{sec:helmholtz_scal}
+\section{Solutions du problème de Helmholtz dans la sphère}\label{sec_helmholtz_scal}
 
-Nous cherchons une solution de l'équation de Helmholtz \eqref{eq:sol_maxwell:helmholtz_scal} dans le cas où $\O$ est la sphère unité. Par séparation des variables%\footcite[p.~1264]{morse_methods_1953}
+Nous cherchons une solution de l'équation de Helmholtz \eqref{eq_sol_maxwell_helmholtz_scal} dans le cas où $\O$ est la sphère unité. Par séparation des variables%\footcite[p.~1264]{morse_methods_1953}
 , nous allons exhiber des solutions fondamentales appelées harmoniques sphériques.
 %% subsection intro
 
@@ -27,7 +27,7 @@ Dans la base des coordonnées sphériques, on suppose que l'on peut écrire $\Ps
 On note $f' =\dr{r}{f}, g' = \dr{\theta}{g} , h' = \dr{\phi}{h}$. On omettra les dépendances en $\rtp$ dans $f,g,h$ pour alléger les notations.
 
 L'équation de Helmholtz s'écrie à l'intérieur\footnote{Le cas extérieur est analogue en changeant $k$ pour $k_0$.} de la sphère : 
-\begin{equation}\label{eq:helm:helm}
+\begin{equation}\label{eq_helm_helm}
   \Delta \Psi + k^2 \Psi = gh\frac{1}{r^2}\dd{r}(r^2f') + \frac{1}{r^2}\left[\frac{fh}{\sin(\theta)}\dd{\theta}(\sin(\theta)g')+\frac{fg}{\sin^2(\theta)}h''\right] + k^2 fgh = 0 \; \forall (r,\tp)
 \end{equation}
 
@@ -80,7 +80,7 @@ $A(\theta)$ est donc une constante:
   On multiplie alors cette expression par $g$
 
   \begin{equation*}
-    \label{eq:helm:legendre}\frac{1}{\sin\theta}\left(\dd{\theta}\left(\sin\theta\dd{\theta}g\right)\right) + \left[- A -\frac{m^2}{\sin^2\theta}\right]g = 0
+    \label{eq_helm_legendre}\frac{1}{\sin\theta}\left(\dd{\theta}\left(\sin\theta\dd{\theta}g\right)\right) + \left[- A -\frac{m^2}{\sin^2\theta}\right]g = 0
   \end{equation*}
 
 %On obtient une équation qui n'a de solution non triviales qui si $A$ est valeur propre de l'opérateur $\frac{1}{\sin\theta}\left(\dd{\theta}\left(\sin\theta\dr{\theta}{\cdot}\right)\right) -\frac{m^2}{\sin^2\theta}\operatorname{id}$. Plus précisément, 
@@ -126,13 +126,13 @@ On normalise une dernière fois l'équation de Helmholtz en remplaçant les dern
 \frac{r^2}{gh} \left(\Delta \Psi + k^2 \Psi\right) &= 0 \\
 &= \dd{r}{\left(r^2f'\right)} + \left((kr)^2 - n(n+1)\right)f
 \end{align*}
-  On voit alors apparaître l'équation de Bessel d'ordre $n +1/2$ dont des solutions linéairement indépendantes sont les fonctions de Bessel du 1\ier type $J_{n+1/2}$ et du 2\ieme type $Y_{n+1/2}$\cite[p.~86]{bohren_absorption_2004}\cite[p.~1465]{morse_methods_1953}. 
+  On voit alors apparaître l'équation de Bessel d'ordre $n +1/2$ dont des solutions linéairement indépendantes sont les fonctions de Bessel du premier type $J_{n+1/2}$ et du deuxième type $Y_{n+1/2}$\cite[p.~86]{bohren_absorption_2004}\cite[p.~1465]{morse_methods_1953}. 
   On crée de $J_{n+1/2}$ et $Y_{n+1/2}$ les fonction de Bessel sphériques $j_n$ et $y_n$ 
   \begin{align*}
   j_n(kr) &= \sqrt{\frac{\pi}{2kr}}J_{n+1/2}(kr) &
   y_n(kr) &= \sqrt{\frac{\pi}{2kr}}Y_{n+1/2}(kr)
   \end{align*}
-  Lorsque $r$ tend vers $0$, les $y_n(r)$ tendent vers l'infini. On présente aussi comme solution une combinaisons linéaires de ces deux solutions: les fonctions de Bessel sphérique du 3\ieme type $h_n$:
+  Lorsque $r$ tend vers $0$, les $y_n(r)$ tendent vers l'infini. On présente aussi comme solution une combinaisons linéaires de ces deux solutions: les fonctions de Bessel sphérique du troisième type $h_n$:
   \[
   h_n(kr)=j_n(kr)-i y_n(kr)
   \]
@@ -161,7 +161,7 @@ On peut étendre ces solutions à tout l'espace pour obtenir une solution pour u
 
 Tout champ scalaire $\Psi$ solution de l'équation de Helmholtz s'écrit dans $\O\cup\O^c$:
 \begin{align} 
-\label{eq:helm:sol_helmoltz_scal_somme}
+\label{eq_helm_sol_helmoltz_scal_somme}
 \Psi(\rtp) &= \sum\limits_{n=1}^\infty\sum\limits_{m=-n}^n a_{m,n} \Psi_{m,n}(\rtp) \\
 \Psi_{m,n}(\rtp) &= z_n(r) Y_{m,n}(\tp) \\
 \notag a_{m,n} &= \int_S \Psi(1,\tp) Y_{m,n}(\tp) ds \\

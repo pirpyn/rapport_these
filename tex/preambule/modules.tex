@@ -1,13 +1,24 @@
 %\usepackage{cmbright} % fichier + lisible sur ordi, - lisible sur papier
-\usepackage[utf8]{inputenc} %gestion des accents par le compilateurs
-\usepackage[T1]{fontenc} %gestion des accents par l'afficheurs et la césure
-\usepackage[french]{babel} % traduction des packages
-
-\usepackage{lmodern} % fontes tailles variables
+\ifdefined\XeTeXfonttype %XeLaTeX
+    \usepackage{fontspec}
+    \defaultfontfeatures{Ligatures=TeX} % reportedly a good idea, see https://tex.stackexchange.com/a/37251
+    \setmainfont[Path = fonts/Roboto/]{Roboto-Regular}
+    % \usepackage{polyglossia}
+    % \setdefaultlanguage{french}
+\else % LaTeX
+    \randomcommandthatshouldfail
+    \usepackage[utf8]{inputenc} %gestion des accents par le compilateurs
+    \usepackage[T1]{fontenc} %gestion des accents par l'afficheurs et la césure
+    \usepackage{lmodern} % fontes tailles variables
     % substitution des petites capitales grasses manquantes
     \rmfamily
     \DeclareFontShape{T1}{lmr}{b}{sc}{<->ssub*cmr/bx/sc}{}
     \DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*cmr/bx/sc}{}
+    \usepackage[french]{babel} % traduction des packages
+    % Réglage fin des notes de bas de page
+    \AddThinSpaceBeforeFootnotes % pour avoir une espace fine entre le mot et l'appel de note
+    \FrenchFootnotes % pour les notes de bas de page à la française
+\fi
 
 \usepackage{tabularx} % Permet d'utiliser l'environnement tabularx
 \usepackage{graphicx} % gestion de figure, dessins
@@ -111,7 +122,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{pdflscape} % Pour pouvoir changer l'orientation des pages
+\usepackage{pdflscape} % Pour pouvoir changer l'orientation des pages avec \landscape
     %%% Solution pour avoir un paysage qui point vers l'intérieur du livre
     \makeatletter
     \global\let\orig@begin@landscape=\landscape%
@@ -168,9 +179,6 @@
 \let\ps@plain=\ps@empty
 \makeatother
 
-% Réglage fin des notes de bas de page
-\FrenchFootnotes % pour les notes de bas de page à la française
-\AddThinSpaceBeforeFootnotes % pour avoir une espace fine entre le mot et l'appel de note
 
 %% CHAPITRE ETOILE
 %% avec référence dans la table des matières et les bons en-têtes

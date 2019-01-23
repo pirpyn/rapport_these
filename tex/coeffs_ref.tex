@@ -1,6 +1,6 @@
-\section{Opérateur d'impédance dans le cas du plan infini}\label{sec:coeffs_ref}
+\section{Opérateur d'impédance dans le cas du plan infini}\label{sec_coeffs_ref}
 
-On cherche à résoudre le problème de Maxwell, avec condition de rayonnement à l'infini. Si cette dernière permet d'avoir des solutions qui soient rapidement décroissante à l'infini, alors on peut définir les transformées de Fourier des champs électromagnétiques \cite[p.~146]{yosida_functional_1995}. Grâce à l'égalité de Parseval-Plancherel \cite[p.~153]{yosida_functional_1995}, on peut alors travailler sur les transformées de Fourier, ce qui permet de passer des opérateurs différentielles à des opérateurs multiplicatifs.
+On cherche à résoudre le problème de Maxwell, avec condition de rayonnement à l'infini. Si cette dernière permet d'avoir des solutions qui soient rapidement décroissante à l'infini, alors on peut définir les transformées de Fourier des champs électromagnétiques (\cite[p.~146,p.~153]{yosida_functional_1995}). Grâce à l'égalité de Parseval-Plancherel, on peut alors travailler sur les transformées de Fourier, ce qui permet de passer des opérateurs différentielles à des opérateurs multiplicatifs.
 
 \TODO{Simplifier l'analyse spectrale. Ex: se baser sur \cite[p.~28]{hoppe_impedance_1995}, mais reformuler avec les espaces $L^2$,etc}
 
@@ -20,17 +20,17 @@ On utilisera les notations  suivantes dans la suite de cette partie: le vide ser
 \input{tikz/schema/plan.tikz}
 \end{tikzpicture}
 \caption{schéma du plan infini}
-\end{figure}\label{fig:tikz:plan}
+\end{figure}\label{fig_tikz_plan}
 
 \subsection{Objectif}
 On cherche à obtenir l'opérateur différentiel \gls{ope-imp}, tel que l'on ait la relation,
 
 \begin{equation}
-\label{eq:coeff_ref:intro:ci}
+\label{eq_coeff_ref_intro_ci}
 -\n \pvect \n \pvect \E(\x,\y,0) = \mathcal{Z}( \n \pvect H)(\x,\y,0)
 \end{equation}
 
-%Le premier cas d'étude est celui du plan infini. Il permet de résoudre facilement le problème de Maxwell \eqref{eq:maxwell} et de déterminer l'expression de la la condition d'impédance (\gls{acr-ci}).
+%Le premier cas d'étude est celui du plan infini. Il permet de résoudre facilement le problème de Maxwell \eqref{eq_maxwell} et de déterminer l'expression de la la condition d'impédance (\gls{acr-ci}).
 %%%% SECTION HYPOTHESES
 \begin{hyp}[Hypothèses simplificatrices]{}~\\
 \begin{enumerate}
@@ -227,7 +227,7 @@ Z & \dfrac{k_1\eta_1}{k_{\z,1}}i\tan(k_{\z,1}d) & \dfrac{k_{\z,1}\eta_1}{k_1}i\t
 L'opérateur $Z$ est la matrice $diag(Z_{TE},Z_{TM})$:
 \begin{align}
 \notag Z&=\dfrac{i\eta_1}{k_1^2}\frac{k_1\tan(k_{\z,1}d)}{k_{\z,1}}(k_1^2 I - L_R ) \\
-&=\dfrac{i\eta_1}{k_1^2}P(k_1^2 I - L_R )\label{eq:coeff_ref:mat_z:imped}
+&=\dfrac{i\eta_1}{k_1^2}P(k_1^2 I - L_R )\label{eq_coeff_ref_mat_z_imped}
 \end{align}
 
 où $L_R = diag(0,k_{\x,1}^2)$. C'est la forme que l'on retrouve dans \cite{marceaux_high-order_2000}.
@@ -311,7 +311,7 @@ P = \dfrac{ik_1}{k_{\z,1}}diag\left(\dfrac{1-\alpha(\gamma_{TE}) e^{ik_{\z,1}2d}
 % }
 Alors, la condition d'impédance en $\z=0$ est
 \begin{align}
-\label{eq:coeff_ref:mult_couch:imped}
+\label{eq_coeff_ref_mult_couch_imped}
 Z = i \dfrac{\eta_1}{k_1^2}P\left(k_1^2 I-\LR\right)
 \end{align}
-où $\LR$ est défini de la même façon qu'en \eqref{eq:coeff_ref:mat_z:imped}
+où $\LR$ est défini de la même façon qu'en \eqref{eq_coeff_ref_mat_z_imped}

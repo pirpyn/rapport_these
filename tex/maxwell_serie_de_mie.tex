@@ -1,6 +1,6 @@
-\section{Solutions du problème de Maxwell dans la sphère décomposées sur les harmoniques sphérique.}\label{sec:maxwell_harmonique}
+\section{Solutions du problème de Maxwell dans la sphère décomposées sur les harmoniques sphérique.}\label{sec_maxwell_harmonique}
 
-Nous combinons donc les résultats des sections \ref{sec:sol_maxwell} et \ref{sec:helmholtz_scal} pour donner la forme des solutions.
+Nous combinons donc les résultats des sections \ref{sec_sol_maxwell} et \ref{sec_helmholtz_scal} pour donner la forme des solutions.
 
 On se place à l'intérieur de la sphère: nous allons utiliser les solutions de Helmholtz définies à l'aide des fonctions de Bessel $z_n(kr) = \gls{mat-jn}(kr)$.
 
@@ -8,7 +8,7 @@ On se place à l'intérieur de la sphère: nous allons utiliser les solutions de
 \TODO{Continuer à développer ces série pour retomber sur les solutions finales}
 
 \subsection{Solutions du problème de Maxwell $\E,\H$ sur la sphère}
-On déduit de  \eqref{eq:sol_maxwell:pot_hertz} et \eqref{eq:helm:sol_helmoltz_scal_somme}, que tous champs $(\E,\H)$ solutions du problème de Maxwell \eqref{eq:pres_th:intro:maxwell}, où $\O = B(0,R)$ se décomposent ainsi:
+On déduit de  \eqref{eq_sol_maxwell_pot_hertz} et \eqref{eq_helm_sol_helmoltz_scal_somme}, que tous champs $(\E,\H)$ solutions du problème de Maxwell \eqref{eq_pres_th_intro_maxwell}, où $\O = B(0,R)$ se décomposent ainsi:
 
 $\exists (a_{m,n},b_{m,n}) \in (\C)_{m,n}\times (\C)_{m,n}$.
 \begin{align*}
@@ -16,9 +16,9 @@ $\exists (a_{m,n},b_{m,n}) \in (\C)_{m,n}\times (\C)_{m,n}$.
   \H(\rtp) &= \sum\limits_{n=0}^\infty\sum\limits_{m=-n}^n\bigg[ b_{m,n}   M_{m,n}(\rtp) + i {\eta}^{-1} a_{m,n} N_{m,n}(\rtp)\bigg]
 \end{align*}
 
-Soit $\gls{mat-tild}(x) := \dd{x}{\left(xu(x)\right)}$. $\gls{phy-Mmn} ,\gls{phy-Nmn}$ sont définis tels que:
+Soit $\gls{mat-tild}(x) := \dd{x}{\left(xu(x)\right)}$. $\gls{mat-Mmn} ,\gls{mat-Nmn}$ sont définis tels que:
 \begin{align}
- \label{eq:defMmn}
+ \label{eq_defMmn}
   M_{m,n}(\rtp) &:= \rot \v r \Psi_{m,n} \\
   &= z_n(kr)
   \begin{pmatrix}
@@ -27,7 +27,7 @@ Soit $\gls{mat-tild}(x) := \dd{x}{\left(xu(x)\right)}$. $\gls{phy-Mmn} ,\gls{phy
   \end{pmatrix}
 \end{align}
 \begin{align}
-\label{eq:defNmn}
+\label{eq_defNmn}
   N_{m,n}(\rtp) &:= \frac{\rot M_{m,n}}{k} \\
   &= \frac{1}{kr}\begin{pmatrix}
     \frac{z_n(kr)}{\sin\theta}\dd{\theta}\left(\sin\theta\dd{\theta}{Y_{m,n}}\right)\\ 
@@ -68,9 +68,9 @@ On en déduit donc que les champs incidents se réécrivent
 % Dans les papiers de Bruno\cite{marceaux_high-order_2000} on a $\v \Phi_E = M_{m,n}, \rot \v \Phi_E = k_0 N_{m,n}$\\ \textbf{Remarque}: Il manque le coefficient $\gamma_n^m$ dans $\Psi$, cf \cite[p24, Th 2.4.4]{nedelec_acoustic_2001}.
 % \subsection{De Helmholtz à Maxwell}
 
-% Par définition, la divergence des champs est nulle. En représentant ainsi les potentiels comme issus d'un rotationnel, dans \eqref{eq:maxwell_potentiel}, les propriétés suivantes sont déduites, et l'on voit bien apparaître Helmholtz.
+% Par définition, la divergence des champs est nulle. En représentant ainsi les potentiels comme issus d'un rotationnel, dans \eqref{eq_maxwell_potentiel}, les propriétés suivantes sont déduites, et l'on voit bien apparaître Helmholtz.
 % \begin{equation}
-%   \label{eq:pot_phi}
+%   \label{eq_pot_phi}
 %   \left\lbrace 
 %     \begin{matrix}
 %       \div \v \Phi_{X} &=& 0 \\
@@ -88,7 +88,7 @@ On en déduit donc que les champs incidents se réécrivent
 % %Nous allons maintenant montrer que l'on peut identifier l'un des $\Phi_X$ à 0, et que cela correspond à choix de jauge, qui physiquement traduit le fait que l'on impose une onde radiale à l'infini, puisque de rotationnel nul.
 
 % % \begin{equation}
-% % \label{eq:maxwell_potentiel}
+% % \label{eq_maxwell_potentiel}
 % % \left\lbrace \begin{matrix}
 % % \E &=& \rot \left( \Phi_E + \frac{\v \Phi_H}{iw\eps} \right) \\ 
 % % \H &=& \v \Phi_H - \frac{\rot \rot \Phi_E}{iw\mu} \\

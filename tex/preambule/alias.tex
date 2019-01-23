@@ -38,7 +38,7 @@
 
 %redefinition
 \renewcommand{\frac}[2]{\dfrac{#1}{#2}}
-\renewcommand{\tilde}[1]{\widetilde{#1}}
+%\renewcommand{\tilde}[1]{\widetilde{#1}}
 \newcommand{\tagit}{\addtocounter{equation}{1}\tag{\theequation}}
 \newcommand{\ds}{\displaystyle}
 
@@ -53,7 +53,13 @@
 
 %mathematical symbol
 \newcommand{\R}{\mathbb R}
-\newcommand{\C}{\mathbb C}
+
+\ifdefined\C %% XeLaTex
+    \renewcommand{\C}{\mathbb C}
+\else %% Latex
+    \newcommand{\C}{\mathbb C}
+\fi
+
 \newcommand{\N}{\mathbb N}
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\eps}{\epsilon}

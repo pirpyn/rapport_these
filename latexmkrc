@@ -7,8 +7,8 @@ $ENV{'TZ'}='Europe/France';
 # We want a pdf, dvi is so old school
 $pdf_mode = "1";
 
-# Computing with pdflatex
-$pdflatex = "pdflatex -file-line-error -halt-on-error %O %S";
+# Computing with xelatex
+$pdflatex = "xelatex -file-line-error -halt-on-error %O %S";
 
 # Lets have builing directory
 $out_dir = "latex_out";

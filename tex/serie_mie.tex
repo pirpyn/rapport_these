@@ -1,4 +1,4 @@
-\section{Solution exacte de Maxwell sur une sphère: la série de Mie}\label{sec:serie_mie}
+\section{Solution exacte de Maxwell sur une sphère: la série de Mie}\label{sec_serie_mie}
 %TODO
 
 \TODO{refaire cette partie et expliquer la somme finale sur les champs}
@@ -8,7 +8,7 @@ Maintenant que nous connaissons l'ensemble des solutions de Maxwell ainsi que la
 % Le but est de déterminer les coefficients qui permettent de décomposer les champs sur les harmoniques sphériques pour aboutir aux séries de Mie, et de déterminer les coefficients de Mie $(a_n,b_n)$
 
 \subsection{Rappel}
-Soit $\O = B_{\R^3}(0,R)$, $M_{m,n}, N_{m,n}$ les harmoniques sphériques (cf \cite{marceaux_high-order_2000} et section \ref{sec:sol_maxwell})
+Soit $\O = B_{\R^3}(0,R)$, $M_{m,n}, N_{m,n}$ les harmoniques sphériques (cf \cite{marceaux_high-order_2000} et section \ref{sec_sol_maxwell})
 
 % Dans la base sphérique :
 % \[
@@ -34,7 +34,7 @@ On pose
   \gls{mat-tild} &= \dr{x}{(xu(x))}
 \end{align*}
 
-D'après les résultats énoncés en \ref{sec:helmholtz_scal}, on a
+D'après les résultats énoncés en \ref{sec_helmholtz_scal}, on a
 \[
   j_n(k_0r)M_{m,n} = j_n(k_0r)
   \begin{pmatrix}
@@ -77,8 +77,8 @@ D’après \cite{morse_methods_1953}, les solutions $(\E,\H)$ (avec $\H \equiv \
 \end{align*}
 Et les champs totaux solution de Maxwell sont : 
 \begin{align}
-  \E = \E^i + \E^d\label{eq:solEmie}\\
-  \H = \H^i + \H^d\label{eq:solHmie}
+  \E = \E^i + \E^d\label{eq_solEmie}\\
+  \H = \H^i + \H^d\label{eq_solHmie}
 \end{align}
 
 On rappelle les relation d'orthogonalités énoncées dans \cite{marceaux_high-order_2000}, avec $\delta$ le symbole de Kronecker :
@@ -102,7 +102,7 @@ Et les relations différentielles suivantes:
 Le but est d'expliciter la \gls{acr-cioe} pour trouver des $a_n, b_n$ la satisfaisant.
 Soit $k_0 = w\sqrt{\eps_0\mu_0}$
 \begin{equation}
-  \label{eq:CIOE} \left(1+\frac{b}{k_0^2}L\right)\E_t\ = \left(a_0 + \frac{a_1}{k_0^2}L\right)\J
+  \label{eq_CIOE} \left(1+\frac{b}{k_0^2}L\right)\E_t\ = \left(a_0 + \frac{a_1}{k_0^2}L\right)\J
 \end{equation}
 L est l'opérateur tel que 
 \[
@@ -120,7 +120,7 @@ En combinant l'ensemble de ces termes, on obtient les $a_n$:
 
 Soit $ \alpha_n =-i\frac{a_0R^2k^2 - a_1 n (n+1)}{k^2R^2 - bn(n+1)}$, alors
 \begin{equation}
-  \label{eq:an_mie} a_n = -\frac{\tilde{j_n}\frac{1}{k_0R}\alpha_n +j_n}{\tilde{h_n}\frac{1}{k_0R}\alpha_n + h_n}
+  \label{eq_an_mie} a_n = -\frac{\tilde{j_n}\frac{1}{k_0R}\alpha_n +j_n}{\tilde{h_n}\frac{1}{k_0R}\alpha_n + h_n}
 \end{equation}
 
 \subsubsection{Obtention des $b_n$}
@@ -135,7 +135,7 @@ En combinant l'ensemble de ces termes, on obtient les $b_n$ :
 
 %FIXME : corriger équation ci dessous
 \begin{equation}
-  \label{eq:bn_mie} b_n = -\frac{\tilde{j_n}- \frac{R}{k_0}\alpha_n j_n}{\tilde{h_n}-\frac{R}{k_0}\alpha_nh_n}
+  \label{eq_bn_mie} b_n = -\frac{\tilde{j_n}- \frac{R}{k_0}\alpha_n j_n}{\tilde{h_n}-\frac{R}{k_0}\alpha_nh_n}
 \end{equation}
 \subsection{Lien entre des CSU et Q}
 \textbf{Rappel:} $\ds Q=\Re{\int_{\d\Omega}\J\cdot(\conj{\E_t})ds}$

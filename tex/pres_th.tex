@@ -1,6 +1,6 @@
 \TODO{Introduire le contexte industriel}
 
-L’intérêt des conditions d'impédances a été résumé par exemple par \cite{senior_approximate_1995}:
+L'intérêt des conditions d'impédances a été résumé par exemple par \cite{senior_approximate_1995}:
 "Prenez par exemple, un objet fini immergé dans un milieu homogène et éclairé par un champ électromagnétique.
 Connaissant les propriétés du matériau, il est possible en principe, de trouver les champ rayonnés à l'extérieur de l'objet.
 Cependant, ce travail serait grandement facilité si les propriétés pouvait être modélisées par une condition limite ne faisant intervenir que la trace des champs à la surface extérieur de l'objet, de fait, transformant un problème à deux (ou plus) matériaux en un problème à un unique matériau.
@@ -20,7 +20,7 @@ Le problème de Maxwell dans l'espace s'énonce: \\
 
 Soit $(\E,\H)$ dans $(\Hrot(\O\cup\O^c))^3 \pvect (\Hrot(\O\cup\O^c))^3$
 \begin{equation}
-\label{eq:pres_th:intro:maxwell}
+\label{eq_pres_th_intro_maxwell}
 \left\lbrace \begin{matrix}
 \rot \E + i\w\mu' \H &=& 0 \\
 \rot \H - i\w\eps' \E &=& 0 \\
@@ -35,7 +35,7 @@ Nous complétons ces équations par des conditions aux limites à la surface $S$
   \item Les composantes tangentielles des champs sont continues le long d'une surface de discontinuité de $\eps$ et $\mu$ \cite[(2.10) p.~8]{senior_approximate_1995}.
 
   \begin{align}
-  \label{eq:pres_th:intro:transmissions}[\n \pvect \E]_S = 0  \qquad [\n \pvect \H]_S = 0
+  \label{eq_pres_th_intro_transmissions}[\n \pvect \E]_S = 0  \qquad [\n \pvect \H]_S = 0
   \end{align}
 \end{itemize}
 Dans le cas limite d'un \gls{acr-cep}, les champs $\E$ et $\H$ sont nuls à l'intérieur du conducteur et la composante tangentielle (resp.normale) du champs $\E$ (resp.$\H$) est nulle à l'extérieur.
@@ -51,7 +51,7 @@ Enfin comme nous considérons un milieu extérieur non-borné, nous nous dotons 
 
 \subsection*{Les conditions d'impédance comme approximation d'un opérateur de Calderón}
 
-Tel que l'a démontré \cite[Theorem 1., p.~1042]{lafitte_diffraction_1998}, le problème \eqref{eq:pres_th:intro:maxwell}  posé à l'intérieur et à l'extérieur de l'objet, doté de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} est équivalent au problème \eqref{eq:pres_th:intro:maxwell} à l'extérieur de l'objet doté de de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} et de la \gls{acr-ci} \eqref{eq:pres_th:ci:ci-calderon} sur la surface extérieur de l'objet : 
+Tel que l'a démontré \cite[Theorem 1., p.~1042]{lafitte_diffraction_1998}, le problème \eqref{eq_pres_th_intro_maxwell}  posé à l'intérieur et à l'extérieur de l'objet, doté de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} est équivalent au problème \eqref{eq_pres_th_intro_maxwell} à l'extérieur de l'objet doté de de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} et de la \gls{acr-ci} \eqref{eq:pres_th:ci:ci-calderon} sur la surface extérieur de l'objet : 
 \begin{equation}
 \label{eq:pres_th:ci:ci-calderon}
 \n \pvect \E = \mathcal{C}\left(\n \pvect \n \pvect \H\right)
@@ -65,9 +65,9 @@ Ce cas permet d'introduire et d'expliciter toutes les notions récurrentes de ce
 
 
 % Puis nous résoudrons le problème de Maxwell avec un objet sphérique.
-Pour cela, nous étudierons le problème de Helmholtz (section \ref{sec:helmholtz_scal}) avec un objet sphérique afin d'exhiber des solutions particulière de Maxwell (section \ref{sec:sol_maxwell}), dont nous détaillerons les champs sous la forme d'une série de Mie (section \ref{sec:serie_mie}).
+Pour cela, nous étudierons le problème de Helmholtz (section \ref{sec_helmholtz_scal}) avec un objet sphérique afin d'exhiber des solutions particulière de Maxwell (section \ref{sec_sol_maxwell}), dont nous détaillerons les champs sous la forme d'une série de Mie (section \ref{sec_serie_mie}).
 Plusieurs calculs des termes principaux de cette série seront exhibés : solution exacte et injection des \glspl{acr-cioe}.
-Ces dernières seront introduites en section  \ref{sec:coeffs_cioe}.
+Ces dernières seront introduites en section  \ref{sec_coeffs_cioe}.
 
 
 % Nous montrerons alors que l'on peut résoudre les équations de Maxwell grâce à la résolution d'équations intégrales, qui permettent de ne résoudre le problème qu'à la surface du domaine.

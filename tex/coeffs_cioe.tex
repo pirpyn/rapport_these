@@ -1,23 +1,23 @@
 % Magic comment for atom building
 % !TEX root=main.tex
 % START OF THE DOCUMENT
-\section{Calcul des coefficients des CIOEs}\label{sec:coeffs_cioe}
+\section{Calcul des coefficients des CIOEs}\label{sec_coeffs_cioe}
 %{
 %\color{red} Terminer cette partie : noyau de Q pour dire si sdp.
 %}
 
 Nous allons maintenant étudier comment approcher l'opérateur d'impédance. Ce travail complète les résultats de \cite[Annexe~A]{stupfel_implementation_2015} car nous caractérisons l'image et le noyau de la fonctionnelle.
 
-On cherche à déterminer les coefficients des CIOE $(a_0,a_1,b) \in \C^3$ qui permettent d'approcher la condition d'impédance \eqref{eq:coeff_ref:mat_z:imped}.
+On cherche à déterminer les coefficients des CIOE $(a_0,a_1,b) \in \C^3$ qui permettent d'approcher la condition d'impédance \eqref{eq_coeff_ref_mat_z_imped}.
 
 % \begin{equation}
-% \label{eq:cioe}
+% \label{eq_cioe}
 % %-\n \pvect \n \pvect \E = \gls{ope-imp} \left( \n \pvect \H \right)
 % %\approx
 % -\left(1 + b t \right)\n \pvect \n \pvect \E = \left(a_0 + a_1 t \right)\n \pvect \H
 % \end{equation}
 
-On se place en un point de la surface. Si la surface y est suffisamment régulière, on peut trouver un voisinage de ce point tel que le problème à résoudre soit celui étudié en section \ref{sec:coeffs_ref}.
+On se place en un point de la surface. Si la surface y est suffisamment régulière, on peut trouver un voisinage de ce point tel que le problème à résoudre soit celui étudié en section \ref{sec_coeffs_ref}.
 
 \subsection{Formulation exacte dans le cadre de l'approximation plan tangent}
 
@@ -63,7 +63,7 @@ Ce genre de solution est équivalent à la résolution d'un système par moindre
   X_{opt} = \left(\conj{M^t}M\right)^{-1}\conj{M^t} Z = M^+ Z
 \end{equation}
 
-\subsubsection{Formulation sous forme quadratique}\label{sec:formQ}
+\subsubsection{Formulation sous forme quadratique}\label{sec_formQ}
 
 Soit $\left<.,.\right>$ le produit scalaire associée à la norme $||.||_2$ ($\left<a,a\right> = ||a||_2^2 = \sum_{j=1}^N|a_j|^2$).
 
@@ -132,7 +132,7 @@ Mais elle n'est pas définie : il existe $x \not = 0$ tel que $q(x) = 0$ (ex, $x
 Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté numériquement.
 
 \TODO{Faire le ménage dans cette étude, il y a des choses non finis et/ou inutile}
-\subsection{Etude de la forme quadratique}\label{sec:etud_Q}
+\subsection{Etude de la forme quadratique}\label{sec_etud_Q}
 
 Changeons les colonnes/lignes afin de disposer les zéros loin de la diagonale afin d'avoir une matrice qui ``ressemble'' le plus à une matrice diagonale: du vecteur $x$ on passe à $\tilde x = (a_0',a_1',b',a_0'',a_1'',b'')^t$ et alors $x^tQ_jx = {\tilde x}^t\tilde{Q_j} \tilde{x}$ avec
 \[
@@ -151,7 +151,7 @@ On définit les matrices $A,B$ respectivement symétriques et antisymétriques t
 % Cherchons les valeurs propres de $\tilde{Q_j}$. Par soucis de simplicité, on identifie le scalaire 1 à la matrice identité.
 
 % \begin{align}
-%   \det(\tilde{Q_j} -\lambda) = \det(A-\lambda) \det(A-\lambda - B(A-\lambda)^{-1}B^t)\label{eq:detQj}
+%   \det(\tilde{Q_j} -\lambda) = \det(A-\lambda) \det(A-\lambda - B(A-\lambda)^{-1}B^t)\label{eq_detQj}
 % \end{align}
 
 \begin{tcolorbox}
@@ -324,7 +324,7 @@ z_j\sqx & 0 & -y_j\sqx & y_j^2 + z_j^2
 
 Grâce au pivot de Gauss, on remarque que la matrice est de rang 2. Donc on peut fixer deux inconnus et en déduire les deux restantes. Si on ne prend que les deux dernières lignes du système, on a le résultat suivant:
 
-On suppose que $z_j\not= 0$\footnote{Le cas $z_j=0$ est vu en sous-section \ref{sec:Qj_z0}.}, alors $\forall \lambda_2, \mu_2 \in \R$,
+On suppose que $z_j\not= 0$\footnote{Le cas $z_j=0$ est vu en sous-section \ref{sec_Qj_z0}.}, alors $\forall \lambda_2, \mu_2 \in \R$,
 \[
 \left\lbrace
 \begin{matrix}
@@ -365,7 +365,7 @@ Je veux montrer que Q est sdp donc de noyau $\lbrace0\rbrace$. But: arriver à t
 
 %TODO
 
-\paragraph{Cas $z_j=0$}\label{sec:Qj_z0}~{}\\
+\paragraph{Cas $z_j=0$}\label{sec_Qj_z0}~{}\\
 
 Soient
 \begin{align*}
@@ -436,17 +436,17 @@ Par construction, ces 6 vecteurs forment une base de $\R^6$.
 Soit $b = (1+i)\frac{a_1'}{a_0'-a_0''}$. La première contrainte peut alors se réécrire en 2 contraintes inégalités en cherchant $|\Re(b-b)| \leq \epsilon,|\Im(b-b)| \leq \epsilon$. Puisque $\Re(b) = \Im(b) = \frac{a_1'}{a_0'-a_0''}$, on redéfini $b:= \frac{a_1'}{a_0'-a_0''}$
 et alors, soit $\epsilon > 0 $.
 \begin{align}
-\label{eq:contr_1}|b' - b| - \epsilon \geq 0 \\
-\label{eq:contr_2}|b'' - b| - \epsilon \geq 0
+\label{eq_contr_1}|b' - b| - \epsilon \geq 0 \\
+\label{eq_contr_2}|b'' - b| - \epsilon \geq 0
 \end{align}
 Pour la seconde, c'est évident. Rappel: $c_3 = a_1''-b'a_0''+b''a_0'$
 \begin{align}
-\label{eq:contr_3}|c_3| - \epsilon \geq 0
+\label{eq_contr_3}|c_3| - \epsilon \geq 0
 \end{align}
 Et enfin les deux dernières sont déjà sous forme d'inégalités positives
 \begin{align}
-\label{eq:contr_4}c_3(a_0'a_1'' - a_0''a_1') \geq 0 \\
-\label{eq:contr_5}c_3b'' \geq 0
+\label{eq_contr_4}c_3(a_0'a_1'' - a_0''a_1') \geq 0 \\
+\label{eq_contr_5}c_3b'' \geq 0
 \end{align}
 %\subsubsection{Convexité de l'espace des contraintes}
 %TODO
@@ -454,13 +454,13 @@ Et enfin les deux dernières sont déjà sous forme d'inégalités positives
 De même, les algorithmes de minimisation convergent plus rapidement si le gradient des contraintes est explicité.
 \begin{align}
 \notag \grad b &= \frac{1}{a_0'-a_0''}(-b,b,1,0,0,0)^t\\
-\grad \eqref{eq:contr_1} &= (0,0,0,0,-1,0)^t + \grad b\\
-\grad \eqref{eq:contr_2} &= (0,0,0,0,0,-1)^t + \grad b\\
+\grad \eqref{eq_contr_1} &= (0,0,0,0,-1,0)^t + \grad b\\
+\grad \eqref{eq_contr_2} &= (0,0,0,0,0,-1)^t + \grad b\\
 \end{align}
 \begin{align}
 \notag \grad c_3 &= (b'',-b',0,1,-a_0'',a_0')^t\\
-\grad \eqref{eq:contr_3} &= \grad c_3 \\
-\grad \eqref{eq:contr_4} &= (a_0'a_1'' - a_0''a_1')\grad (c_3) + c_3(a_1'',-a_1',-a_0'',a_0',0,0)^t \\
-\grad \eqref{eq:contr_5} &= b''\grad (c_3) + c_3(0,0,0,0,0,1)^t
+\grad \eqref{eq_contr_3} &= \grad c_3 \\
+\grad \eqref{eq_contr_4} &= (a_0'a_1'' - a_0''a_1')\grad (c_3) + c_3(a_1'',-a_1',-a_0'',a_0',0,0)^t \\
+\grad \eqref{eq_contr_5} &= b''\grad (c_3) + c_3(0,0,0,0,0,1)^t
 \end{align}
 \fi
