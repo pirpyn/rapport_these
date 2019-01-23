@@ -1,0 +1,63 @@
+\section{Matrice de changement de base}
+On se base sur les travaux de \cite{lafitte_diffraction_1998}. On cherche la matrice $g=\left(M^tM\right)^{-1}$ où M est la matrice Jacobienne du changement de base.
+On note $X_i$ les coordonnées dans le repère cartésien et $x_i$ dans le repère local.
+
+\TODO{Demander à Olivier si c'est le transpose sur la 1ere ou 2eme matrice}
+
+\subsection{Cylindre}
+Quitte à faire une rotation, on peut toujours définir le cylindre d'axe $X_3$
+\begin{align*}
+X_1 &= x_1 \cos(x_2) \\
+X_2 &= x_1 \sin(x_2) \\
+X_3 &= x_3
+\end{align*}
+
+\[
+M = \begin{pmatrix}
+\cos(x_2) & \sin(x_2) & 0 \\
+-x_1\sin(x_2) & x_1\cos(x_2) & 0 \\
+0 & 0 & 1
+\end{pmatrix} \quad |M| = x_1
+\]
+\[
+M^tM =
+\begin{pmatrix}
+\cos(x_2)^2 + x_1^2 \sin(x_2)^2 & \cos(x_2)\sin(x_2)(1-x_1^2) & 0 \\
+\cos(x_2)\sin(x_2)(1-x_1^2) & \sin(x_2)^2 + x_1^2\cos(x_2)^2) & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+\[
+g = \frac{1}{x_1^2}
+\begin{pmatrix}
+\sin(x_2)^2 + x_1^2\cos(x_2)^2) & -\cos(x_2)\sin(x_2)(1-x_1^2) & 0 \\
+-\cos(x_2)\sin(x_2)(1-x_1^2) & \cos(x_2)^2 + x_1^2 \sin(x_2)^2& 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+\subsection{Sphère}
+\begin{align*}
+X_1 &= x_1 \cos(x_2)\cos(x_3) \\
+X_2 &= x_1 \sin(x_2)\cos(x_3) \\
+X_3 &= x_1 \sin(x_3)
+\end{align*}
+
+\[
+M = \begin{pmatrix}
+\cos(x_2)\cos(x_3) & \sin(x_2)\cos(x_3) & \sin(x_3) \\
+-x_1\sin(x_2)\cos(x_3) & x_1\cos(x_2)\cos(x_3) & 0 \\
+-x_1 \cos(x_2)\sin(x_3) & -x_1 \cos(x_2)\sin(x_3) & x_1\cos(x_3)
+\end{pmatrix} \quad |M| = x_1 \sin(x_3)
+\]
+\[
+M^tM =
+\begin{pmatrix}
+
+\end{pmatrix}
+\]
+\[
+g =
+\begin{pmatrix}
+
+\end{pmatrix}
+\]
