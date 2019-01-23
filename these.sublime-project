@@ -17,12 +17,19 @@
           "linux": {
             "shell_cmd" : "/bin/rm -rf $project_path/latex_out",
           },
+          "windows":{
+            "shell_cmd":"del /F /Q \"$project_path\\latex_out\"",
+          }
         },
         {
           "name"  : "show",
           "linux": {
+
             "shell_cmd" : "evince $project_path/main.pdf",
           },
+          "windows":{
+            "shell_cmd": "\"C:\\Program Files\\SumatraPDF\\SumatraPDF.exe\" \"$project_path\\latex_out\\main.pdf\"",
+          }
         },
       ],
     },
