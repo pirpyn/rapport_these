@@ -14,14 +14,14 @@ En notations globale au repère 3D.
 Soit $\v x = (x_1,x_2,x_3)$.
 
 %TODO
-\TODO{mettre source des fonctions RT - RWG}
+\TODO{mettre source des fonctions RT - RWG.}
 
 \begin{minipage}{0.4\textwidth}
 \begin{align*}
 	\color{red}{\phi_j(x)} &= \mathbf{1}_{K_j^l}(x)\frac{x-o_j^l}{2|K_j^l|} \\&- \mathbf{1}_{K_j^r}(x)\frac{x-o_j^r}{2|K_j^r|}\\
-	\color{black!60!green}{p_j(x)} &= -\n \pvect \phi_j(x)\\
-	\color{black!60!blue}{q_j(x)} &= \mathbf{1}_{K_j^l}(x) ( { \color{purple}{\v v_j } } \pvect \n ) \cdot ( x - \frac{o^l_j + o^d_j}{2} ) \\
- &- \mathbf{1}_{K_j^r}(x) ( { \color{purple}{\v v_j } } \pvect \n ) \cdot ( x - \frac{o^r_j + o^d_j}{2} )
+	\color{black!60!green}{p_j(x)} &= -\vn \pvect \phi_j(x)\\
+	\color{black!60!blue}{q_j(x)} &= \mathbf{1}_{K_j^l}(x) ( { \color{purple}{\v v_j } } \pvect \vn ) \cdot ( x - \frac{o^l_j + o^d_j}{2} ) \\
+ &- \mathbf{1}_{K_j^r}(x) ( { \color{purple}{\v v_j } } \pvect \vn ) \cdot ( x - \frac{o^r_j + o^d_j}{2} )
 \end{align*}
 \end{minipage}
 \begin{minipage}{0.58\textwidth}
@@ -49,7 +49,7 @@ Les fonctions $q_j$ s'annulent notamment sur le segment $\xi_1+\xi_2=\frac{1}{2}
 \end{minipage}
 
 \begin{prop}
-Au sens des distributions, $\forall j,\, \rot \phi_j =
+Au sens des distributions, $\forall j,\, \vrot \phi_j =
 \delta_x$
 \end{prop}
 \begin{proof}
@@ -78,37 +78,37 @@ On définit les matrices $M,\tilde M, N,\tilde N$ telles que:
 \subsection{EFIE}
 Soit g la fonction de Green
 \[
-  \frac{E_t}{2}+\grad{i}{k}\grad \int  g\div\J +  ik\int g\J - \int \grad g \pvect \K = \E^{inc}
+  \frac{\vE_t}{2}+\vgrad{i}{k}\vgrad \int  g\vdiv\vJ +  ik\int g\vJ - \int \vgrad g \pvect \vK = \vE_i
   \]
-On décompose $\J,\K,\E^t$ sur les fonctions de bases $\phi_j$ : $\J = \sum I_j \phi_j,\K = \sum k_j \phi_j,\E^t = \sum e_j \phi_j$. 
+On décompose $\vJ,\vK,\vE^t$ sur les fonctions de bases $\phi_j$ : $\vJ = \sum I_j \phi_j,\vK = \sum k_j \phi_j,\vE_t = \sum e_j \phi_j$. 
 
 On rappelle que d’après la CIOE,
 \[
-  \E_t = (a_0I_d+a_1L)\J -bL\E_t
+  \vE_t = (a_0I_d+a_1L)\vJ -bL\vE_t
 \]
 
 On va injecter la CIOE dans l'EFIE, faire un produit scalaire avec une fonction de base $\phi_i$ puis intégrer : 
 \begin{multline}
-  \sum_j \left [\frac{I_j(a_0\int \phi_j \cdot \phi_i +a_1\int L(\phi_j) \cdot \phi_i) -be_j \int L(\phi_j)\cdot \phi_i}{2} \right. \\
-  +I_j\frac{i}{k}\int (\int g\div\phi_j)\div \phi_i +  I_j ik\int (\int g\phi_j)\cdot \phi_i\\
-  \left. -  k_j\int(\int \grad g \pvect \phi_j) \cdot \phi_i \right]= \int \E^{inc} \cdot \phi_i
+  \sum_j \left(\frac{I_j(a_0\int \phi_j \cdot \phi_i +a_1\int L(\phi_j) \cdot \phi_i) -be_j \int L(\phi_j)\cdot \phi_i}{2} \right. \\
+  +I_j\frac{i}{k}\int (\int g\vdiv\phi_j)\vdiv \phi_i +  I_j ik\int (\int g\phi_j)\cdot \phi_i\\
+  \left. -  k_j\int(\int \vgrad g \pvect \phi_j) \cdot \phi_i \right)= \int \vE_i \cdot \phi_i
 \end{multline}
 Soit $L_{ij} = \int L(\phi_i)\cdot\phi_j$\\
-Soit $S^0_{ij}=4\pi i\left(k\int(\int g\phi_i)\cdot\phi_j + \frac{1}{k}\int(\int g\div\phi_i)\div\phi_j\right)$\\ 
-Soit $\tilde S^G_{ij} = 4\pi\left(\int(\int \grad g \pvect \phi_i) \cdot \phi_j \right)$\\
-Soit $b_i^E = \int \E^{inc} \cdot \phi_i$.
+Soit $S^0_{ij}=4\pi i\left(k\int(\int g\phi_i)\cdot\phi_j + \frac{1}{k}\int(\int g\vdiv\phi_i)\vdiv\phi_j\right)$\\ 
+Soit $\tilde S^G_{ij} = 4\pi\left(\int(\int \vgrad g \pvect \phi_i) \cdot \phi_j \right)$\\
+Soit $b_i^E = \int \vE_i \cdot \phi_i$.
 On obtient alors 
 \[
   \left[\frac{a_0}{2}M + \frac{a_1}{2}L + \frac{S^0}{4\pi}\right]\v I - \frac{b}{2}L\v e+ \frac{\tilde  S^G \v k}{4\pi} = \v b_i^E
 \]
 \subsubsection{E en fonction de J}
-D’après la CIOE $\E_t = Z\J$ : $M\v e = Z M\v I$.
+D’après la CIOE $\vE_t = Z\vJ$ : $M\v e = Z M\v I$.
 \[
   \left[\frac{a_0}{2}M + \frac{L}{2}(a_1I_d - bM^{-1}ZM) + \frac{S^0}{4\pi}\right]\v I + \frac{\tilde S^G }{4\pi}\v k = \v b_i^E
 \]
 \subsubsection{E en fonction de K}
-$\n \pvect \E_t = \K$.
-$\K = \sum k_j \phi_j = \sum e_j \n \pvect \phi_j = -\sum e_j p_j $.
+$\vn \pvect \vE_t = \vK$.
+$\vK = \sum k_j \phi_j = \sum e_j \vn \pvect \phi_j = -\sum e_j p_j $.
 $M \v k = - \tilde M \v e$
 \[
   \left[\frac{a_0}{2}G + \frac{a_1}{2}L+\frac{S^0}{4\pi}\right]\v I + \left[\frac{\tilde S^G }{4\pi}+  \frac{b}{2}L\tilde M^{-1}M \right]\v k = \v b_i^E
@@ -117,23 +117,23 @@ $M \v k = - \tilde M \v e$
 \subsection{MFIE}
 Soit g la fonction de Green
 \[
-  \frac{H_t}{2}-\frac{i}{k}\grad \int  g\div\K -  ik\int g\K - \int \grad g \pvect \J = \H^{inc}
+  \frac{\vH_t}{2}-\frac{i}{k}\vgrad \int  g\vdiv\vK -  ik\int g\vK - \int \vgrad g \pvect \vJ = \vH_i
 \]
 
-On rappelle que d’après la CIOE, $\n \pvect \E_t = \n \pvect (a_0I_d+a_1L)\J -b\n\pvect L\E_t$. Or $\n\pvect \J = -\H_t$. Donc la CIOE peut s'exprimer
+On rappelle que d’après la CIOE, $\vn \pvect \vE_t = \vn \pvect (a_0I_d+a_1L)\vJ -b\vn\pvect L\vE_t$. Or $\vn\pvect \vJ = -\vH_t$. Donc la CIOE peut s'exprimer
 \[
-  \H_t = \frac{1}{a_0}\left(-K + a_1 \n\pvect L\J -b\n\pvect L\E_t\right)
+  \vH_t = \frac{1}{a_0}\left(-\vK + a_1 \vn\pvect L\vJ -b\vn\pvect L\vE_t\right)
 \]
 
 On décompose les fonctions sur les $\phi_j$ sauf les termes sur lesquels s'applique $L$, où l'on décompose sur $p_j$ 
 
 On va injecter la CIOE dans la MFIE, faire un produit scalaire avec une fonction de base $\phi_i$ puis intégrer : 
 \begin{multline}
-  \sum_j \left [\frac{-k_j\int\phi_j\cdot\phi_i + a_1 I'_j \int \n \pvect L (p_j) \cdot \phi_i  -be'_j\int \n \pvect L(p_j)\cdot \phi_i}{2a_0} \right. \\
-  +\left(k_j\frac{i}{k}\int (\int g\div\phi_j)\div \phi_i + ik\int (\int g\phi_j)\cdot \phi_i \right)\\
-  \left. -  I_j\int(\int \grad g \pvect \phi_j) \cdot \phi_i \right]= \int \H^{inc} \cdot \phi_i
+  \sum_j \left(\frac{-k_j\int\phi_j\cdot\phi_i + a_1 I'_j \int \vn \pvect L (p_j) \cdot \phi_i  -be'_j\int \vn \pvect L(p_j)\cdot \phi_i}{2a_0} \right. \\
+  +\left(k_j\frac{i}{k}\int (\int g\vdiv\phi_j)\vdiv \phi_i + ik\int (\int g\phi_j)\cdot \phi_i \right)\\
+  \left. -  I_j\int(\int \vgrad g \pvect \phi_j) \cdot \phi_i \right)= \int \vH_i \cdot \phi_i
 \end{multline}
-On remarque $ \n \pvect L(p_j)\cdot \phi_i = L(p_j)\cdot(\phi_i\pvect\n) = L(p_j)\cdot p_i = X_{ij}$. 
+On remarque $ \vn \pvect L(p_j)\cdot \phi_i = L(p_j)\cdot(\phi_i\pvect\vn) = L(p_j)\cdot p_i = X_{ij}$. 
 \[
   \left[\frac{1}{2a_0}M + \frac{S^0}{4\pi}\right]\v I + \frac{a_1}{2a_0}X\v I' - \frac{b}{2a_0}X\v e' - \left[ \frac{\tilde S^G}{4\pi}\right]\v k = \v b_i^H
 \]

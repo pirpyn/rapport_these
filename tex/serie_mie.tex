@@ -8,53 +8,53 @@ Maintenant que nous connaissons l'ensemble des solutions de Maxwell ainsi que la
 % Le but est de déterminer les coefficients qui permettent de décomposer les champs sur les harmoniques sphériques pour aboutir aux séries de Mie, et de déterminer les coefficients de Mie $(a_n,b_n)$
 
 \subsection{Rappel}
-Soit $\O = B_{\R^3}(0,R)$, $M_{m,n}, N_{m,n}$ les harmoniques sphériques (cf \cite{marceaux_high-order_2000} et section \ref{sec:sol_maxwell})
+Soit $\OO = B_{\RR^3}(0,R)$, $M_{m,n}, N_{m,n}$ les harmoniques sphériques (cf \cite{marceaux_high-order_2000} et section \ref{sec:sol_maxwell})
 
 % Dans la base sphérique :
 % \[
 %   M_{m,n}=
-%   \begin{pmatrix}
+%   \begin{bmatrix}
 %     0\\
 %     ime^{im\phi}\frac{\mathbb{P}^m_n(\cos\theta)}{\sin\theta}\\
-%     -e^{im\phi}\dd{\theta}{\mathbb{P}^m_n(\cos\theta)}\\
-%   \end{pmatrix}
+%     -e^{im\phi}\ddd{\theta}{\mathbb{P}^m_n(\cos\theta)}\\
+%   \end{bmatrix}
 %   \qquad
 %   N_{m,n}=
-%   \begin{pmatrix}
+%   \begin{bmatrix}
 %     n(n+1)e^{im\phi}\frac{\mathbb{P}^m_n(\cos\theta)}{k_0r}\int_0^x( Id\, dt)/x\\
-%     \frac{e^{im\phi}}{k_0r}\dd{\theta}{\mathbb{P}^m_n(\cos\theta)}Id\\
+%     \frac{e^{im\phi}}{k_0r}\ddd{\theta}{\mathbb{P}^m_n(\cos\theta)}Id\\
 %     im\frac{e^{im\phi}}{k_0r\sin\theta}\mathbb{P}^m_n(\cos\theta)Id
-%   \end{pmatrix}
+%   \end{bmatrix}
 % \]
 
 On pose
 \begin{align*}
   \gls{mat-conj} &=conj(z)\\
   \gls{mat-gmn} &=\frac{4\pi}{2n+1}n(n+1)\frac{(n+m)!}{(n-m)!}\\
-  \gls{mat-tild} &= \dr{x}{(xu(x))}
+  \gls{mat-tild} &= \ddr{x}{(xu(x))}
 \end{align*}
 
 D'après les résultats énoncés en \ref{sec:helmholtz_scal}, on a
 \[
   j_n(k_0r)M_{m,n} = j_n(k_0r)
-  \begin{pmatrix}
+  \begin{bmatrix}
     0\\
     ime^{im\phi}\frac{\mathbb{P}^m_n(\cos\theta)}{\sin\theta}\\
-    -e^{im\phi}\dd{\theta}{\mathbb{P}^m_n(\cos\theta)}\\
-  \end{pmatrix}
+    -e^{im\phi}\ddr{\theta}{\PP^m_n(\cos\theta)}\\
+  \end{bmatrix}
 \]
 et 
 \[
   \tilde{j_n}(k_0r)N_{m,n}=
-    \begin{pmatrix}
+    \begin{bmatrix}
     n(n+1)e^{im\phi}\frac{\mathbb{P}^m_n(\cos\theta)}{k_0r}j_n(k_0r)\\
-    \frac{e^{im\phi}}{k_0r}\dd{\theta}{\mathbb{P}^m_n(\cos\theta)}\tilde j_n(k_0r)\\
-    im\frac{e^{im\phi}}{k_0r\sin\theta}\mathbb{P}^m_n(\cos\theta)\tilde j_n(k_0r)
-  \end{pmatrix}
+    \frac{e^{im\phi}}{k_0r}\ddr{\theta}{\PP^m_n(\cos\theta)}\tilde j_n(k_0r)\\
+    im\frac{e^{im\phi}}{k_0r\sin\theta}\PP^m_n(\cos\theta)\tilde j_n(k_0r)
+  \end{bmatrix}
 \]
 
-On a donc les expressions suivantes pour les champs $(\E,\H)$ solution de Maxwell, sans condition de rayonnement:
-$\forall m,n \Z\pvect\N$
+On a donc les expressions suivantes pour les champs $(\vE,\vH)$ solution de Maxwell, sans condition de rayonnement:
+$\forall m,n \in \ZZ\pvect\NN$
 
 
 
@@ -68,53 +68,55 @@ On rappelle les relations vectorielles liant $M$ et $N$
 \subsection{Expression des champs solutions de Maxwell}
 Soient $(a_n,b_n)_n$ des suites complexes, $f_n = \frac{i^{n+1}(2n+1)}{2n(n+1)}$.
 
-D’après \cite{morse_methods_1953}, les solutions $(\E,\H)$ (avec $\H \equiv \H /\eta_0 $) sont :
+D’après \cite{morse_methods_1953}, les solutions $(\vE,\vH)$ (avec $\vH \equiv \vH /\eta_0 $) sont :
 \begin{align*}
-  \E^i &= -\sum_{n=1}^\infty f_n \left( j_nM_{1,n} + \tilde j_n N_{1,n} \right) + n(n+1)\left(j_n M_{-1,n} - \tilde j_nN_{-1,n} \right)\\
-  \H^i &= -i\sum_{n=1}^\infty f_n \left( j_nM_{1,n} + \tilde j_nN_{1,n} \right) - n(n+1)\left(j_n M_{-1,n} - \tilde j_n N_{-1,n} \right)\\
-  \E^d &= -\sum_{n=1}^\infty f_n \left( a_n h_nM_{1,n} + b_n\tilde h_nN_{1,n} \right) + n(n+1)\left(a_nh_nM_{-1,n} - b_n\tilde h_nN_{-1,n} \right)\\
-  \H^d &= -i\sum_{n=1}^\infty f_n \left( b_nh_nM_{1,n} + a_n\tilde h_nN_{1,n} \right) - n(n+1)\left(b_nh_nM_{-1,n} - a_n\tilde h_nN_{-1,n} \right)\\
+  \vE^i &= -\sum_{n=1}^\infty f_n \left( j_nM_{1,n} + \tilde j_n N_{1,n} \right) + n(n+1)\left(j_n M_{-1,n} - \tilde j_nN_{-1,n} \right)\\
+  \vH^i &= -i\sum_{n=1}^\infty f_n \left( j_nM_{1,n} + \tilde j_nN_{1,n} \right) - n(n+1)\left(j_n M_{-1,n} - \tilde j_n N_{-1,n} \right)\\
+  \vE^d &= -\sum_{n=1}^\infty f_n \left( a_n h_nM_{1,n} + b_n\tilde h_nN_{1,n} \right) + n(n+1)\left(a_nh_nM_{-1,n} - b_n\tilde h_nN_{-1,n} \right)\\
+  \vH^d &= -i\sum_{n=1}^\infty f_n \left( b_nh_nM_{1,n} + a_n\tilde h_nN_{1,n} \right) - n(n+1)\left(b_nh_nM_{-1,n} - a_n\tilde h_nN_{-1,n} \right)\\
 \end{align*}
 Et les champs totaux solution de Maxwell sont : 
 \begin{align}
-  \E = \E^i + \E^d\label{eq:solEmie}\\
-  \H = \H^i + \H^d\label{eq:solHmie}
+  \vE = \vE^i + \vE^d\label{eq:solEmie}\\
+  \vH = \vH^i + \vH^d\label{eq:solHmie}
 \end{align}
 
 On rappelle les relation d'orthogonalités énoncées dans \cite{marceaux_high-order_2000}, avec $\delta$ le symbole de Kronecker :
 \[
   \begin{matrix}
-    \ds\int_S \div N_{m,n}^t \div N_{p,q}^{t,*} &=& \frac{n(n+1)}{k_0^2 R^2} \gamma_{m,n} \delta_{m,n} \delta_{p,q}\\
+    \ds\int_S \vdiv N_{m,n}^t \vdiv N_{p,q}^{t,*} &=& \frac{n(n+1)}{k_0^2 R^2} \gamma_{m,n} \delta_{m,n} \delta_{p,q}\\
     \ds\int_S N_{m,n}^t \cdot N_{p,q}^{t,*} &=& \frac{1}{k_0^2}\gamma_{m,n}\delta_{m,n} \delta_{p,q}\\
-    \ds\int_S \left(\v e_r \cdot \rot M_{m,n}\right)\left( e_r \cdot \rot  M_{p,q}^{*}\right) &=& n(n+1) \gamma_{m,n} \delta_{m,n} \delta_{p,q}\\
+    \ds\int_S \left(\v e_r \cdot \vrot M_{m,n}\right)\left( e_r \cdot \vrot  M_{p,q}^{*}\right) &=& n(n+1) \gamma_{m,n} \delta_{m,n} \delta_{p,q}\\
     \ds\int_S M_{m,n} \cdot M_{p,q}^{*} &=& R^2 \gamma_{m,n} \delta_{m,n} \delta_{p,q}\\
     \ds\int_S M_{m,n} \cdot N_{p,q}^{t,*} &=& 0
   \end{matrix}
 \]
 Et les relations différentielles suivantes:
 \begin{align*}
-  \div M_{m,n} &=0 \\
-  \v e_r \cdot \rot N_{m,n} &= 0
+  \vdiv M_{m,n} &=0 \\
+  \v e_r \cdot \vrot N_{m,n} &= 0
 \end{align*}
 
 \subsection{Calcul des coefficients de la série de Mie.}
-\textbf{Rappel : Sauf mention contraire, les $h_n,j_n$ sont calculées au point $k_0R$. On omet donc cette dépendance dans l'écriture.}\\
+\begin{tcolorbox}
+Sauf mention contraire, les $h_n,j_n$ sont toujours calculées sur le cercle de rayon $k_0R$. On omet donc cette dépendance dans l'écriture.
+\end{tcolorbox}
 Le but est d'expliciter la \gls{acr-cioe} pour trouver des $a_n, b_n$ la satisfaisant.
-Soit $k_0 = w\sqrt{\eps_0\mu_0}$
+Soit $k_0 = \w\sqrt{\eps_0\mu_0}$
 \begin{equation}
-  \label{eq:CIOE} \left(1+\frac{b}{k_0^2}L\right)\E_t\ = \left(a_0 + \frac{a_1}{k_0^2}L\right)\J
+  \label{eq:CIOE} \left(1+\frac{b}{k_0^2}L\right)\vE_t\ = \left(a_0 + \frac{a_1}{k_0^2}L\right)\vJ
 \end{equation}
 L est l'opérateur tel que 
 \[
-  \int_{S} L(u)\cdot v = - \int_{S} {\div u}_t {\div v}_t - \int_{S}\left(\n \cdot \rot u\right)\left( \n \cdot \rot v\right)
+  \int_{S} L(u)\cdot v = - \int_{S} {\vdiv u}_t {\vdiv v}_t - \int_{S}\left(\vn \cdot \vrot u\right)\left( \vn \cdot \vrot v\right)
 \]
 \subsubsection{Obtention des $a_n$}
 On intègre cette relation après un produit scalaire avec $M_{1,n}^{*}$ et l'on va expliciter chaque terme:
 \begin{align*}
-  &\int_S \E_t\cdot M_{1,n}^{*} = - f_n R^2 \gamma_{1,n}[a_n h_n + j_n]\\
-  &\int_S L(\E_t)\cdot M_{1,n}^{*} =  f_n n(n+1)\gamma_{1,n}[a_n h_n + j_n]\\
-  &\int_S \J \cdot M_{1,n}^{*} =  i f_n \frac{R}{k_0} \gamma_{1,n}[a_n \tilde h_n + \tilde j_n]\\
-  &\int_S L(\J) \cdot M_{1,n}^{*} =  - i f_n n(n+1) \gamma_{1,n}\frac{1}{k_0 R}[a_n \tilde h_n + \tilde j_n]\\
+  &\int_S \vE_t\cdot M_{1,n}^{*} = - f_n R^2 \gamma_{1,n}[a_n h_n + j_n]\\
+  &\int_S L(\vE_t)\cdot M_{1,n}^{*} =  f_n n(n+1)\gamma_{1,n}[a_n h_n + j_n]\\
+  &\int_S \vJ \cdot M_{1,n}^{*} =  i f_n \frac{R}{k_0} \gamma_{1,n}[a_n \tilde h_n + \tilde j_n]\\
+  &\int_S L(\vJ) \cdot M_{1,n}^{*} =  - i f_n n(n+1) \gamma_{1,n}\frac{1}{k_0 R}[a_n \tilde h_n + \tilde j_n]\\
 \end{align*}
 En combinant l'ensemble de ces termes, on obtient les $a_n$:
 
@@ -126,10 +128,10 @@ Soit $ \alpha_n =-i\frac{a_0R^2k^2 - a_1 n (n+1)}{k^2R^2 - bn(n+1)}$, alors
 \subsubsection{Obtention des $b_n$}
 On intègre cette relation après un produit scalaire avec $N_{1,n}^{t,*}$ et l'on va expliciter chaque terme:
 \begin{align*}
-  &\int_S \E_t\cdot N_{1,n}^{t,*} = - f_n \frac{1}{k_0^2} \gamma_{1,n}[b_n\tilde{h_n} + \tilde{j_n} ]\\
-  &\int_S L(\E_t)\cdot N_{1,n}^{t,*} =  f_n \frac{n(n+1)}{k_0^2R^2}\gamma_{1,n}[b_n\tilde{h_n} + \tilde{j_n}]\\
-  &\int_S \J \cdot N_{1,n}^{t,*} = - i f_n \frac{R}{k_0}\gamma_{1,n}[b_n {h_n} + {j_n}]\\
-  &\int_S L(\J) \cdot N_{1,n}^{t,*} =  i f_n \frac{n(n+1)}{k_0 R} \gamma_{1,n}[b_n {h_n} + {j_n}]\\
+  &\int_S \vE_t\cdot N_{1,n}^{t,*} = - f_n \frac{1}{k_0^2} \gamma_{1,n}[b_n\tilde{h_n} + \tilde{j_n} ]\\
+  &\int_S L(\vE_t)\cdot N_{1,n}^{t,*} =  f_n \frac{n(n+1)}{k_0^2R^2}\gamma_{1,n}[b_n\tilde{h_n} + \tilde{j_n}]\\
+  &\int_S \vJ \cdot N_{1,n}^{t,*} = - i f_n \frac{R}{k_0}\gamma_{1,n}[b_n {h_n} + {j_n}]\\
+  &\int_S L(\vJ) \cdot N_{1,n}^{t,*} =  i f_n \frac{n(n+1)}{k_0 R} \gamma_{1,n}[b_n {h_n} + {j_n}]\\
 \end{align*}
 En combinant l'ensemble de ces termes, on obtient les $b_n$ :
 
@@ -138,7 +140,11 @@ En combinant l'ensemble de ces termes, on obtient les $b_n$ :
   \label{eq:bn_mie} b_n = -\frac{\tilde{j_n}- \frac{R}{k_0}\alpha_n j_n}{\tilde{h_n}-\frac{R}{k_0}\alpha_nh_n}
 \end{equation}
 \subsection{Lien entre des CSU et Q}
-\textbf{Rappel:} $\ds Q=\Re{\int_{\d\Omega}\J\cdot(\conj{\E_t})ds}$
+\begin{tcolorbox}
+\[
+Q=\Re{\int_{\Gamma}\vJ\cdot(\conj{\vE_t})ds}
+\]
+\end{tcolorbox}
 
 En utilisant les relations d'orthogonalités et $\gamma_{1,n} = n(n+1)\gamma_{-1,n}$, on trouve
 \[
@@ -149,16 +155,6 @@ En utilisant les relations d'orthogonalités et $\gamma_{1,n} = n(n+1)\gamma_{-1
   \right]}
 \]
 
-\iffalse
-\subsection{Notes, remarques}
-Étant donnée la CI dans \cite{marceaux_high-order_2000} en $\n \pvect \E = Z \H_t$ et avec le fait qu'il intègre sur l'intérieur donc avec $M^i, N^i$, mes expressions des $a_n,b_n$ sont différentes, mais dans le même ordre d'idée : 
-\[
-a_n \mapsto b_n, \alpha_n \mapsto - i \eta_0/\eta k \alpha_n^{-1}
-\]
-\[
-b_n \mapsto a_n, \beta_n \mapsto - i \eta_0/\eta k \beta_n^{-1}
-\]
-\fi
 
 
 \begin{tikzpicture}
