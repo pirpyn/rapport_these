@@ -192,7 +192,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 %   {\v{v_j}} := \frac{\v{\tau}}{||\v{\tau}||} = \frac{1}{\sqrt{1 + {x_j}^2 +{y_j}^2}}\begin{bmatrix} 1\\{x_j}\\-{y_j}\end{bmatrix}\]
 %   \[{\v{v_j}}^t := \v{e_3} - (\v{e_3}\cdot {\v{v_j}}){\v{v_j}} = \frac{1}{1+{x_j}^2+{y_j}^2}\begin{bmatrix} {y_j} \\ {x_jy_j} \\ 1 + {x_j}^2\end{bmatrix}\]
 
-%   Mais cette base n'est pas très pratique : en effet $A\v{v_j} = \sqrt{1+{x_j}^2+{y_j}^2} {\v{v_j}} - {y_j} {z_j}^2 \v{e_3}$. \textbf{On ne voit pas ${\v{v_j}}^t$ apparaître.}. De fait, on aura du mal à expliciter A dans cette nouvelle base. Mais puisque que $\v{e_3}$ apparaît dans l'image, on va supprimer sa composante de ${\v{v_j}}$:
+%   Mais cette base n'est pas pratique : en effet $A\v{v_j} = \sqrt{1+{x_j}^2+{y_j}^2} {\v{v_j}} - {y_j} {z_j}^2 \v{e_3}$. \textbf{On ne voit pas ${\v{v_j}}^t$ apparaître.}. Mais puisque que $\v{e_3}$ apparaît dans l'image, on va supprimer sa composante de ${\v{v_j}}$:
 
 %   Soit ${\v{v_j}} := \frac{1}{\sqrt{1 + {x_j}^2}}\begin{bmatrix} 1\\{x_j}\\0\end{bmatrix}$.
 %   Alors
@@ -201,7 +201,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 %     A \v{e_2} &= {x_j}\sqrt{1+{x_j}^2}{\v{v_j}} -{x_jy_j} \v{e_3}\\
 %     & \Rightarrow A {\v{v_j}} = (1+{x_j}^2) {\v{v_j}} - {y_j}\sqrt{1+{x_j}^2} \v{e_3}\\
 %     A \v{e_3} &= -{y_j}\sqrt{1+{x_j}^2}{\v{v_j}} +({y_j}^2+{z_j}^2) \v{e_3}\\
-%     \intertext{La famille $({\v{v_j}},\v{e_3})$ est libre et géréatrice, l'image est au plus de dimensions 2 donc c'est une base de l'image. On a en définitive }
+%     \intertext{La famille $({\v{v_j}},\v{e_3})$ est libre et génératrice, l'image est au plus de dimensions 2 donc c'est une base de l'image. On a en définitive }
 %     \Img(A) &= \Vect{{\v{v_j}},\v{e_3}}\\
 %     \Ker(A) &= \Vect {\v{u_j}}
 %   \end{align*}
@@ -242,7 +242,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 % \begin{proof}
 %   On remarque que de nouveau ${\v{u_j}} \in \Ker(B)$.
 
-%   On reprend le même protocole que pour A, et alors
+%   En appliquant le même raisonnement
 % \begin{align*}
 %  B \v{e_1} &= -{z_j} \v{e_3}\\
 %  B \v{e_2} &= -{x_jz_j} \v{e_3}\\
@@ -296,7 +296,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 
 % On vérifie facilement que $U_{j,1}$ et $U_{j,2}$ appartiennent au noyau puisque $\v{u_j}$ appartient au noyau de $A$ et de $B$.
 
-% Il est aussi simple de vérifier que $V_{j,1} = Q_j\begin{bmatrix}\v{e_1}\\0_{\RR^3}\end{bmatrix}\not =0$ et $V_{j,2} = Q_j\begin{bmatrix}0_{\RR^3}\\\v{e_1}\end{bmatrix} \not= 0$ et $V_{j,1}\cdot V_{j,2} = 0$.
+% De même $V_{j,1} = Q_j\begin{bmatrix}\v{e_1}\\0_{\RR^3}\end{bmatrix}\not =0$ et $V_{j,2} = Q_j\begin{bmatrix}0_{\RR^3}\\\v{e_1}\end{bmatrix} \not= 0$ et $V_{j,1}\cdot V_{j,2} = 0$.
 
 % Ainsi on sait que $4 \ge dim(\Ker Q_j) \ge 2$.
 
@@ -319,7 +319,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 % \end{bmatrix} = 0
 % \]
 
-% Grâce au pivot de Gauss, on remarque que la matrice est de rang 2. Donc on peut fixer deux inconnus et en déduire les deux restantes. Si on ne prend que les deux dernières lignes du système, on a le résultat suivant:
+% Grâce au pivot de Gauss, on remarque que la matrice est de rang 2. Donc on peut fixer deux inconnues et en déduire les deux restantes. Si on ne prend que les deux dernières lignes du système, on a le résultat suivant:
 
 % On suppose que $z_j\not= 0$\footnote{Le cas $z_j=0$ est vu en sous-section \ref{sec:Qj_z0}.}, alors $\forall \lambda_2, \mu_2 \in \RR$,
 % \[

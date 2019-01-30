@@ -16,7 +16,7 @@ Le Laplacien s'écrit en coordonnées sphériques :
 
 \subsection{Solution particulière de Helmholtz par séparation des variables}
 \begin{hyp}
-Dans la base des coordonnées sphériques, on suppose que l'on peut écrire $\Psi(\rtp) : = f(r)g(\theta)h(\phi)$. 
+On suppose que l'on peut écrire $\Psi(\rtp) : = f(r)g(\theta)h(\phi)$. 
 \end{hyp}
 \begin{prop}
 \begin{equation}
@@ -100,7 +100,7 @@ Les fonctions associées de Legendre s'expriment en fonction de la fonction hype
 \PP^m_\nu(z) = \frac{1}{\Gamma\left(1-m\right)}\left(\frac{z+1}{z-1}\right)^{m/2}F\left(-\nu,\nu+1,1-m;\frac{1-z}{2}\right)
 \]
 
-Comme $z=\cos\theta \in [-1,1] $, $\frac{1-z}{2} \in [0,1]$ donc on se situe dans le rayon de convergence de la série entière de la fonction hypergéométrique. Cette dernière n'est pas définie si $\forall p\in \NN, m=1+p $ sauf si $\forall n \in [0,m[, -\nu = -n $ ou alors $ \nu +1 = -n $ \cite[p.~556]{abramowitz_handbook_1964}. Dans ce cas, la série devient un polynôme de dégrée $m$ \cite[p.~561]{abramowitz_handbook_1964}.
+Comme $z=\cos\theta \in [-1,1] $, $\frac{1-z}{2} \in [0,1]$ donc on se situe dans le disque de convergence de la série entière de la fonction hypergéométrique. Cette dernière n'est pas définie si $\forall p\in \NN, m=1+p $ sauf si $\forall n \in [0,m[, -\nu = -n $ ou alors $ \nu +1 = -n $ \cite[p.~556]{abramowitz_handbook_1964}. Dans ce cas, la série devient un polynôme de dégrée $m$ \cite[p.~561]{abramowitz_handbook_1964}.
 
 On conclus que pour obtenir des solutions définis pour tout $m$, alors $\nu:=n \in \NN, n< m $.
 }
@@ -120,7 +120,7 @@ On conclus que pour obtenir des solutions définis pour tout $m$, alors $\nu:=n 
   \end{equation}
 \end{prop}
 \begin{proof}
-On normalise une dernière fois l'équation de Helmholtz en remplaçant les derniers termes par la constante exhibée précédemment.
+On normalise l'équation de Helmholtz en remplaçant les derniers termes par la constante exhibée précédemment.
 
 \begin{align*}
 \frac{r^2}{gh} \left(\Delta \Psi + k^2 \Psi\right) &= 0 \\
