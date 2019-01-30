@@ -13,32 +13,32 @@ Soit $t$ un vecteur réel négatif de taille $n$, strictement décroissant. Soit
 Soit $Z_{TE}, Z_{TM}$ deux vecteurs de complexe de taille $n$ dont une composante représente l'impédance du plan infini pour l'onde d'incidence $t_i$ pour la polar TE, respectivement. TM.
 Soit $M$ la matrice réelle $3\times3$ suivante:
 \[
-M = 2\begin{pmatrix}
+M = 2\begin{bmatrix}
 2n & \st & \st \\
 \st & \stc & 0 \\
 \st & 0 & \stc
-\end{pmatrix}
+\end{bmatrix}
 \]
 Soit $Q$ la matrice réelle de taille $6 \times 6$ suivante :
 \[
-Q = \begin{pmatrix}
+Q = \begin{bmatrix}
 M & 0_{3 \times 3} \\
 0_{3 \times 3} & M
-\end{pmatrix}
+\end{bmatrix}
 \]
 
-Soit $F = \begin{pmatrix}
+Soit $F = \begin{bmatrix}
 -1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1 \\
 0 & 0 & 0 \\
 0 & 0 & 0 \\
 0 & 0 & 0 
-\end{pmatrix}$ et soit $P$ un vecteur de $\R^6$ tel que $ F^tP  \in (\R_-)^3$.
+\end{bmatrix}$ et soit $P$ un vecteur de $\RR^6$ tel que $ F^tP  \in (\RR_-)^3$.
 
-On cherche $X=(a_0', a_1', a_2',a_0'',a_1'',a_2'') \in \R^6$ tel que
+On cherche $X=(a_0', a_1', a_2',a_0'',a_1'',a_2'') \in \RR^6$ tel que
 \begin{align}
-X = \argmin{X\in \R^6} \frac{1}{2}\left<QX,X\right> - \left<P,X\right> + D \text{ s.c } F^tX \in (\R_-)^3
+X = \argmin{X\in \RR^6} \frac{1}{2}\left<QX,X\right> - \left<P,X\right> + D \text{ s.c } F^tX \in (\RR_-)^3
 \end{align}
 
 Cette fonctionnelle possède un unique minimum global car Q est inversible (démontré ci-après) et un unique minimum local à l'espace des contrainte car ce dernier est convexe et  Q est quadratique ( car correspondantz à $|| Z_{ap}(X)||_2^2$ ).
@@ -46,7 +46,7 @@ Cette fonctionnelle possède un unique minimum global car Q est inversible (dém
 Pour résoudre ce problème nous allons appliquer la théorie des multiplicateurs de Karush-Khun-Lagrange-Tucker. 
 
 Le Lagrangien de ce problème est le suivant :
-Soient $\lambda \in (\R_+)^3$ 
+Soient $\lambda \in (\RR_+)^3$ 
 \begin{equation}
 \mathcal{L}(X,\lambda) = \frac{1}{2}\left<Q X, X\right>  - \left<P, X\right> + D + \left<\lambda, F^tX\right>
 \end{equation}
@@ -60,9 +60,9 @@ On cherche la condition de Karush-Khun-Tucker de stationnarité $\nabla_X \mathc
 \end{equation}
 
 % {\color{red}
-% Soit $F$ le vecteur réel de $\R^3$ tel que $F = \begin{pmatrix} 1 \\ -1 \\ -1 \end{pmatrix}$ et $\lambda$ le vecteur réel de $\R^3$ tel que $\lambda = \begin{pmatrix} \lambda_1 \\ \lambda_2 \\ \lambda_3 \end{pmatrix}$.
+% Soit $F$ le vecteur réel de $\RR^3$ tel que $F = \begin{bmatrix} 1 \\ -1 \\ -1 \end{bmatrix}$ et $\lambda$ le vecteur réel de $\RR^3$ tel que $\lambda = \begin{bmatrix} \lambda_1 \\ \lambda_2 \\ \lambda_3 \end{bmatrix}$.
 % \begin{equation}
-% \nabla_X \mathcal{L}(X,\lambda) = 2Q X - 2 P + \begin{pmatrix}\left<\lambda,F\right> \\ 0_{3\times1} \end{pmatrix}.
+% \nabla_X \mathcal{L}(X,\lambda) = 2Q X - 2 P + \begin{bmatrix}\left<\lambda,F\right> \\ 0_{3\times1} \end{bmatrix}.
 % \end{equation}
 % }
 
@@ -77,11 +77,11 @@ Si $t$ possède au moins deux composantes différentes alors
 \begin{proof}
 Par définition $ \det(Q) = \det(M)^2$. Or 
   % \[
-  % M = \begin{pmatrix}
+  % M = \begin{bmatrix}
   % 2n & \st & \st \\
   % \st & \stc & 0 \\
   % \st & 0 & \stc
-  % \end{pmatrix}
+  % \end{bmatrix}
   % \]
   \begin{align}
   \det(M) &= 2\left(\sum_{i=1}^n t_i^2\right)\left( n \sum_{i=1}^n t_i^2 - \left(\sum_{i=1}^n t_i\right)^2\right) \\
@@ -91,21 +91,21 @@ Par définition $ \det(Q) = \det(M)^2$. Or
 % De plus, on note que 
 
 % \begin{equation}
-%   M^{-1} = \frac{1}{\det(M)}
-%   \begin{pmatrix}
+%   M^{-1} = \frac{1}{\ddet(M)}
+%   \begin{bmatrix}
 %     \stc & -\st & -\st \\
 %     -\st & \mma & \mmb \\
 %     -\st & \mmb & \mma
-%   \end{pmatrix}
+%   \end{bmatrix}
 % \end{equation}
 
 et ainsi
 \begin{equation}
 Q^{-1} =
-\begin{pmatrix}
+\begin{bmatrix}
 M^{-1} & 0_{3 \times 3} \\
 0_{3 \times 3} & M^{-1}
-\end{pmatrix}
+\end{bmatrix}
 \end{equation}
 
 \end{proof}
@@ -133,17 +133,17 @@ On cherche alors à maximiser la fonction duale.
   $F^tQ^{-1}F$ est inversible.
 \end{prop}
 \begin{proof}
-$F^tQ^{-1}F = \tilde FM^{-1}\tilde F$ où $\tilde F = \begin{pmatrix}
+$F^tQ^{-1}F = \tilde FM^{-1}\tilde F$ où $\tilde F = \begin{bmatrix}
 -1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
-\end{pmatrix}$.  Comme $\tilde F$ et $M$ sont inversibles, alors $\tilde FM^{-1}\tilde F$ est inversible et $F^tQ^{-1}F$ l'est aussi.
+\end{bmatrix}$.  Comme $\tilde F$ et $M$ sont inversibles, alors $\tilde FM^{-1}\tilde F$ est inversible et $F^tQ^{-1}F$ l'est aussi.
 \end{proof}
 
 Directement on peut trouver le point extremum de la fonction duale.
 \begin{align}
 \nabla \mathcal D (\lambda) = 0 \Leftrightarrow \lambda &= \left(F^tQ^{-1}F\right)^{-1}\left(F^tQ^{-1}P\right)\\
-\intertext{Soit $\tilde P\in (\R)^3$ dont les composantes sont les 3 premières de $P$.}
+\intertext{Soit $\tilde P\in (\RR)^3$ dont les composantes sont les 3 premières de $P$.}
 \lambda &  = \left(\tilde FM^{-1}\tilde F\right)^{-1}\left(\tilde FM^{-1}\tilde P\right) \\
 & = \tilde F\tilde P\\
 \intertext{Ce qui par définition de $\tilde F$ et $\tilde P$ vaut}
@@ -155,7 +155,7 @@ La solution optimale est alors
 X^\star &= Q^{-1}\left(P- F\lambda\right)
 \end{align}
 
-On peut vérifier $X$ vérifie les contraintes : $ F^t X = F^t Q^{-1} P - F^tQ^{-1}F\lambda = 0 \in (\R_-)^3$.
+On peut vérifier $X$ vérifie les contraintes : $ F^t X = F^t Q^{-1} P - F^tQ^{-1}F\lambda = 0 \in (\RR_-)^3$.
 
 \subsection{Problème des multiplicateurs nuls}
 
@@ -170,19 +170,19 @@ Cependant comme $Q$ n'est pas diagonale, en annulant un multiplicateur, les autr
 %  Il faut donc savoir quelles sont les contraintes qui seront actives avant de le calculer. On peut alors résoudre géometriquement cette question : l'ensemble des contraintes est une pyramide infini de sommet $(0)$ et d'axes $F_1,F_2,F_3$. Un point appartient à cette pyramide si les composantes $(a,b,c)$ de ce point respectivement à ces 3 vecteurs sont positives, composantes qui doivent résoudre
 
 % \[
-% \begin{pmatrix}
+% \begin{bmatrix}
 %   |F_1|^2 & F_1 \cdot F_2 & F_1\cdot F_3 \\
 %   F_1\cdot F_2 & |F_2|^2 & F_2\cdot F_3 \\
 %   F_1\cdot F_3 & F_2\cdot F_3 & |F_3|^2
-% \end{pmatrix}
-% \begin{pmatrix}
+% \end{bmatrix}
+% \begin{bmatrix}
 % a\\b\\c
-% \end{pmatrix} = 
-% \begin{pmatrix}
+% \end{bmatrix} = 
+% \begin{bmatrix}
 % X\cdot F_1\\
 % X\cdot F_2\\
 % X\cdot F_3\\
-% \end{pmatrix}
+% \end{bmatrix}
 % \]
 
 % Si l'une des ces composantes est négative alors le point appartient à l'une des pyramides duales, c'est dire de sommet $(0)$ 

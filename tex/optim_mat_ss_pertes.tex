@@ -13,33 +13,33 @@ La fonctionnelle que l'on cherche à minimiser est $||H X - Z||$ où $H$ est une
 
 On a 
 \[
-  H = \begin{pmatrix}
+  H = \begin{bmatrix}
   \vdots & \vdots & \vdots & \vdots &\vdots \\
   1 & -s_i^2 & 0 & s_i^2 Z_{Mi} & 0 \\
   \vdots & \vdots & \vdots & \vdots &\vdots \\
   \vdots & \vdots & \vdots & \vdots &\vdots \\
   1 & 0 &-s_i^2 & 0 & s_i^2 Z_{Ei} \\
   \vdots & \vdots & \vdots & \vdots &\vdots \\
-  \end{pmatrix},
-  X = \begin{pmatrix}
+  \end{bmatrix},
+  X = \begin{bmatrix}
   a_0\\
   a_1\\
   a_2\\
   b_1\\
   b_2\\
-  \end{pmatrix},
-  Z=\begin{pmatrix}
+  \end{bmatrix},
+  Z=\begin{bmatrix}
   \vdots\\
   Z_{Mi}\\
   \vdots\\
   \vdots\\
   Z_{Ei}\\
   \vdots
-  \end{pmatrix}
+  \end{bmatrix}
 \]
 
 D'après la définition \eqref{eq:coeff_ref:mult_couch:imped}, $\lim\limits_{s\rightarrow s_z} (s-s_z) Z(s) 
-= \begin{pmatrix}
+= \begin{bmatrix}
   \vdots \\
   0\\
   \alpha_{M}\\
@@ -49,8 +49,8 @@ D'après la définition \eqref{eq:coeff_ref:mult_couch:imped}, $\lim\limits_{s\r
   0 \alpha_{E} \\
   0 \\
   \vdots \\
-\end{pmatrix}$ et d'après la définition \eqref{eq:unicite:ci3:ci3} $\lim\limits_{s\rightarrow s_z} (s-s_z)H(s) =
-\begin{pmatrix}
+\end{bmatrix}$ et d'après la définition \eqref{eq:unicite:ci3:ci3} $\lim\limits_{s\rightarrow s_z} (s-s_z)H(s) =
+\begin{bmatrix}
   \vdots & \vdots & \vdots & \vdots &\vdots \\
   0 & 0 & 0 & 0 & 0 \\
   0 & 0 & 0 & s_z^2 \alpha_{M} & 0 \\
@@ -60,7 +60,7 @@ D'après la définition \eqref{eq:coeff_ref:mult_couch:imped}, $\lim\limits_{s\r
   0 & 0 & 0 & 0 & s_z^2 \alpha_{E} \\
   0 & 0 & 0 & 0 & 0 \\
   \vdots & \vdots & \vdots & \vdots &\vdots \\
-\end{pmatrix}$.
+\end{bmatrix}$.
 
 
 On suppose donc qu'il existe $Z_\infty, \tilde{Z},X_\infty, \tilde{X},H_\infty, \tilde{H}$ tels que
@@ -71,30 +71,30 @@ X(s) &= X_\infty + (s-s_z)\tilde{X}(s) \\
 H_\infty X_\infty &= Z_\infty
 \end{align*}
 
-Et on en déduit que $X_\infty = \begin{pmatrix}
+Et on en déduit que $X_\infty = \begin{bmatrix}
   0\\
   0\\
   0\\
   s_z^{-2}\\
   s_z^{-2}\\
-  \end{pmatrix}$. Cela veut dire qu'à moins de fixer $b_1$ et $b_2$, on se trouvera dans le noyau de $H_\infty$ et donc la minimisation sera fausse.
+  \end{bmatrix}$. Cela veut dire qu'à moins de fixer $b_1$ et $b_2$, on se trouvera dans le noyau de $H_\infty$ et donc la minimisation sera fausse.
 
-On pose $\tilde{X} = \begin{pmatrix}
+On pose $\tilde{X} = \begin{bmatrix}
   a_0\\
   a_1\\
   a_2\\
   0\\
   0\\
-  \end{pmatrix}$ et l'on a un problème réduit:
+  \end{bmatrix}$ et l'on a un problème réduit:
 
 
 \begin{align*}
-\min\limits_{X\in\C^5}{||HX-Z||} 
-&\equiv \min\limits_{X\in\C^5}{||(s-s_z)(HX-Z)||} \\
-&= \min\limits_{X\in\C^5}{||(H_\infty + (s-s_z)\tilde{H})(X_\infty + (s-s_z)\tilde{X})-(Z_\infty + (s-s_z)\tilde{Z})||}\\
-&= \min\limits_{\tilde{X}\in\C^5}{||(s-s_z)\left[\tilde{H}(X_\infty + (s-s_z)\tilde{X}) + H_\infty\tilde{X} - \tilde{Z}\right]||}\\
-&= \min\limits_{\tilde{X}\in\C^5}{||\tilde{H}(X_\infty + (s-s_z)\tilde{X}) + H_\infty\tilde{X} - \tilde{Z}||}\\
-&= \min\limits_{\tilde{X}\in\C^5}{||(H_\infty + (s-s_z)\tilde{H})\tilde{X} + \tilde{H}X_\infty - \tilde{Z}||}\\
+\min\limits_{X\in\CC^5}{||HX-Z||} 
+&\equiv \min\limits_{X\in\CC^5}{||(s-s_z)(HX-Z)||} \\
+&= \min\limits_{X\in\CC^5}{||(H_\infty + (s-s_z)\tilde{H})(X_\infty + (s-s_z)\tilde{X})-(Z_\infty + (s-s_z)\tilde{Z})||}\\
+&= \min\limits_{\tilde{X}\in\CC^5}{||(s-s_z)\left[\tilde{H}(X_\infty + (s-s_z)\tilde{X}) + H_\infty\tilde{X} - \tilde{Z}\right]||}\\
+&= \min\limits_{\tilde{X}\in\CC^5}{||\tilde{H}(X_\infty + (s-s_z)\tilde{X}) + H_\infty\tilde{X} - \tilde{Z}||}\\
+&= \min\limits_{\tilde{X}\in\CC^5}{||(H_\infty + (s-s_z)\tilde{H})\tilde{X} + \tilde{H}X_\infty - \tilde{Z}||}\\
 \end{align*}
 
 \subsection{Vérification numérique}

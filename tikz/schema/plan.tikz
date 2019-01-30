@@ -18,16 +18,16 @@
 \coordinate (rt) at (2,1);
 \coordinate (mt) at ($(rt)!0.5!(lt)$);
 
-\draw (l) -- (r) node [at end,right] {$z = -d$};
-\draw (lt)  -- (rt) node [at end,right] {$z = 0$};
+\draw (l) -- (r) node [at end,right] {$\z = -d$};
+\draw (lt)  -- (rt) node [at end,right] {$\z = 0$};
 
 \draw (lt) node [above right] {$\eps_0,\mu_0$};
-\draw ($(l)!0.5!(lt)$) node [right] {$\eps_1,\mu_1$};
+\draw ($(l)!0.5!(lt)$) node [right] {$\peps,\pmu$};
 
-\draw [->] (n) -- ++(0,1) node [at end, right] {$z$};
-\draw [->] (n) -- ++(1,0) node [at end, right] {$x$};
+\draw [->] (n) -- ++(0,1) node [at end, right] {$\z$};
+\draw [->] (n) -- ++(1,0) node [at end, right] {$\x$};
 
-\draw (n) circle(0.1cm) node [below=0.1cm] {$y$};
+\draw (n) circle(0.1cm) node [below=0.1cm] {$\y$};
 \draw (n) +(135:0.1cm) -- +(315:0.1cm);
 \draw (n) +(45:0.1cm) -- +(225:0.1cm);
 

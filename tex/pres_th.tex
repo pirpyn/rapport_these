@@ -14,35 +14,35 @@ Avec l'essor des premiers ordinateur permettant de démultiplier les puissances 
 Nous traitons le problème des équations Maxwell sous forme harmonique, en convention $e^{i\w t}$ pour la dépendance temporelle.
 
 
-Soit un objet $\O$ de type conducteur parfait de surface $\Gamma$, recouvert d'une couche matériau diélectrique d'épaisseur $d$, caractérisé par sa permittivité diélectrique $\gls{phy-eps}$ et sa perméabilité magnétique $\gls{phy-mu}$ qui peuvent dépendre du point courant et être complexe dans le cas de pertes, l'ensemble se situant dans le vide, telle que la célérité d'une onde électromagnétique soit \gls{phy-c}, et les constantes de permittivité et de perméabilité $\gls{phy-eps}_0$, $\gls{phy-mu}_0$ avec $\eps_0\mu_0 = c^{2}$.
+Soit un objet $\OO$ de type conducteur parfait de surface $\Gamma$, recouvert d'une couche matériau diélectrique d'épaisseur $d$, caractérisé par sa permittivité diélectrique $\gls{phy-eps}$ et sa perméabilité magnétique $\gls{phy-mu}$ qui peuvent dépendre du point courant et être complexe dans le cas de pertes, l'ensemble se situant dans le vide, telle que la célérité d'une onde électromagnétique soit \gls{phy-c}, et les constantes de permittivité et de perméabilité $\gls{phy-eps}_0$, $\gls{phy-mu}_0$ avec $\eps_0\mu_0 = c^{2}$.
 
 
 On désigne par \gls{phy-w} la pulsation de l'onde.
-En l'absence de charges électriques et magnétiques, les champs éponymes $( \E, \H )$ sont solutions du système d'équations de Maxwell harmonique : 
+En l'absence de charges électriques et magnétiques, les champs éponymes $( \vE, \vH )$ sont solutions du système d'équations de Maxwell harmonique : 
 
 Le problème de Maxwell dans l'espace s'énonce: \\
 
-Soit $(\E,\H)$ dans $(\Hrot(\O\cup\O^c))^3 \pvect (\Hrot(\O\cup\O^c))^3$
+Soit $(\vE,\vH)$ dans $(\Hrot(\OO\cup\OO^c))^3 \pvect (\Hrot(\OO\cup\OO^c))^3$
 \begin{equation}
 \label{eq:pres_th:intro:maxwell}
 \left\lbrace \begin{matrix}
-\rot \E + i\w\mu' \H &=& 0 \\
-\rot \H - i\w\eps' \E &=& 0 \\
+\vrot \vE + i\w\mu' \vH &=& 0 \\
+\vrot \vH - i\w\eps' \vE &=& 0 \\
 \end{matrix} \right.
-\quad \text{dans $\O\cup\O^c$}
+\quad \text{dans $\OO\cup\OO^c$}
 \end{equation}
-A l'extérieur de $\O$, les constantes sont $\eps',\mu'$ sont $\eps_0,\mu_0$ et à l'intérieur elles sont $\eps,\mu$.
+A l'extérieur de $\OO$, les constantes sont $\eps',\mu'$ sont $\eps_0,\mu_0$ et à l'intérieur elles sont $\eps,\mu$.
 
 
-Nous complétons ces équations par des conditions aux limites à la surface $S$ de $\O$, supposée régulière et dont on note la normale sortante $\n$:
+Nous complétons ces équations par des conditions aux limites à la surface $S$ de $\OO$, supposée régulière et dont on note la normale sortante $\vn$:
 \begin{itemize}
   \item Les composantes tangentielles des champs sont continues le long d'une surface de discontinuité de $\eps$ et $\mu$ \cite[(2.10) p.~8]{senior_approximate_1995}.
 
   \begin{align}
-  \label{eq:pres_th:intro:transmissions}[\n \pvect \E]_S = 0  \qquad [\n \pvect \H]_S = 0
+  \label{eq:pres_th:intro:transmissions}[\vn \pvect \vE]_S = 0  \quad [\vn \pvect \vH]_S = 0
   \end{align}
 \end{itemize}
-Dans le cas limite d'un \gls{acr-cep}, les champs $\E$ et $\H$ sont nuls à l'intérieur du conducteur et la composante tangentielle (resp.normale) du champs $\E$ (resp.$\H$) est nulle à l'extérieur.
+Dans le cas limite d'un \gls{acr-cep}, les champs $\vE$ et $\vH$ sont nuls à l'intérieur du conducteur et la composante tangentielle (resp.normale) du champs $\vE$ (resp.$\vH$) est nulle à l'extérieur.
 
 
 Enfin comme nous considérons un milieu extérieur non-borné, nous nous dotons de la condition de radiation à l'infini de Silver-Müller afin de définir des solutions en ondes sortantes.
@@ -50,7 +50,7 @@ Enfin comme nous considérons un milieu extérieur non-borné, nous nous dotons 
 
 \begin{equation}
 \label{eq:pres_th:intro:silver-muller}
-\lim_{r\rightarrow\infty}r\left|\left|\sqrt{\eps'}\E - \sqrt{\mu'}\H\pvect\frac{\v r}{r}\right|\right| = 0
+\lim_{r\rightarrow\infty} r \left|\left|\sqrt{\eps'}\vE - \sqrt{\mu'}\vH\pvect\frac{\v r}{r}\right|\right| = 0
 \end{equation} 
 
 \subsection*{Les conditions d'impédance comme approximation d'un opérateur de Calderón}
@@ -58,7 +58,7 @@ Enfin comme nous considérons un milieu extérieur non-borné, nous nous dotons 
 Tel que l'a démontré \cite[Theorem 1., p.~1042]{lafitte_diffraction_1998}, le problème \eqref{eq:pres_th:intro:maxwell}  posé à l'intérieur et à l'extérieur de l'objet, doté de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} est équivalent au problème \eqref{eq:pres_th:intro:maxwell} à l'extérieur de l'objet doté de de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} et de la \gls{acr-ci} \eqref{eq:pres_th:ci:ci-calderon} sur la surface extérieur de l'objet : 
 \begin{equation}
 \label{eq:pres_th:ci:ci-calderon}
-\n \pvect \E = \mathcal{C}\left(\n \pvect \n \pvect \H\right)
+\vn \pvect \vE = \mathcal{C}\left(\vn \pvect \vn \pvect \vH\right)
 \end{equation}
 où $ \mathcal{C}$ est l'opérateur de Calderón.
 L'opérateur d'impédance est alors une approximation de cet opérateur de Calderón.

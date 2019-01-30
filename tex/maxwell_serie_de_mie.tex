@@ -7,53 +7,53 @@ On se place à l'intérieur de la sphère: nous allons utiliser les solutions de
 
 \TODO{Continuer à développer ces séries pour retomber sur la série de Mie}
 
-\subsection{Solutions du problème de Maxwell $\E,\H$ sur la sphère}
-On déduit de  \eqref{eq:sol_maxwell:pot_hertz} et \eqref{eq:helm:sol_helmoltz_scal_somme}, que tous champs $(\E,\H)$ solutions du problème de Maxwell \eqref{eq:pres_th:intro:maxwell}, où $\O = B(0,R)$ se décomposent ainsi:
+\subsection{Solutions du problème de Maxwell $\vE,\vH$ sur la sphère}
+On déduit de  \eqref{eq:sol_maxwell:pot_hertz} et \eqref{eq:helm:sol_helmoltz_scal_somme}, que tous champs $(\vE,\vH)$ solutions du problème de Maxwell \eqref{eq:pres_th:intro:maxwell}, où $\OO = B(0,R)$ se décomposent ainsi:
 
-$\exists (a_{m,n},b_{m,n}) \in (\C)_{m,n}\times (\C)_{m,n}$.
+$\exists (a_{m,n},b_{m,n}) \in (\CC)_{m,n}\times (\CC)_{m,n}$.
 \begin{align*}
-  \E(\rtp) &= \sum\limits_{n=0}^\infty\sum\limits_{m=-n}^n\bigg[ a_{m,n}   M_{m,n}(\rtp) - i \eta b_{m,n} N_{m,n}(\rtp)\bigg]\\
-  \H(\rtp) &= \sum\limits_{n=0}^\infty\sum\limits_{m=-n}^n\bigg[ b_{m,n}   M_{m,n}(\rtp) + i {\eta}^{-1} a_{m,n} N_{m,n}(\rtp)\bigg]
+  \vE(\rtp) &= \sum\limits_{n=0}^\infty\sum\limits_{m=-n}^n\left( a_{m,n}   M_{m,n}(\rtp) - i \eta b_{m,n} N_{m,n}(\rtp)\right)\\
+  \vH(\rtp) &= \sum\limits_{n=0}^\infty\sum\limits_{m=-n}^n\left( b_{m,n}   M_{m,n}(\rtp) + i {\eta}^{-1} a_{m,n} N_{m,n}(\rtp)\right)
 \end{align*}
 
-Soit $\gls{mat-tild}(x) := \dd{x}{\left(xu(x)\right)}$. $\gls{phy-Mmn} ,\gls{phy-Nmn}$ sont définis tels que:
+Soit $\gls{mat-tild}(x) := \ddr{x}{\left(xu(x)\right)}$. Les vecteurs $\gls{phy-Mmn} ,\gls{phy-Nmn}$ sont définis tels que:
 \begin{align}
  \label{eq:defMmn}
-  M_{m,n}(\rtp) &:= \rot \v r \Psi_{m,n} \\
+  M_{m,n}(\rtp) &:= \vrot \v r \Psi_{m,n} \\
   &= z_n(kr)
-  \begin{pmatrix}
+  \begin{bmatrix}
     0 \\ \frac{im}{\sin\theta}Y_{m,n}\\ 
-    - \dd{\theta}{Y_{m,n}}
-  \end{pmatrix}
+    - \ddr{\theta}{Y_{m,n}}
+  \end{bmatrix}
 \end{align}
 \begin{align}
 \label{eq:defNmn}
-  N_{m,n}(\rtp) &:= \frac{\rot M_{m,n}}{k} \\
-  &= \frac{1}{kr}\begin{pmatrix}
-    \frac{z_n(kr)}{\sin\theta}\dd{\theta}\left(\sin\theta\dd{\theta}{Y_{m,n}}\right)\\ 
-    \tilde z_n(kr)\dd{\theta}{Y_{m,n}}\\ 
+  N_{m,n}(\rtp) &:= \frac{\vrot M_{m,n}}{k} \\
+  &= \frac{1}{kr}\begin{bmatrix}
+    \frac{z_n(kr)}{\sin\theta}\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{Y_{m,n}}\right)\\ 
+    \tilde z_n(kr)\ddr{\theta}{Y_{m,n}}\\ 
     -\tilde z_n(kr)\frac{m^2}{\sin\theta}Y_{m,n}\\
-  \end{pmatrix} 
+  \end{bmatrix} 
 \end{align}
 
 
 \subsection{Solution en tant qu'onde plane.}
 
-Soit une onde plane incidente : $\E_i = E_0 e^{ikz}\v e_x$. En coordonnée sphérique on a $\E = E_0e^{ikr\cos\theta}\left(\sin\theta\cos\phi\v e_r + \cos\theta\cos\phi\v e_\theta - \sin\phi \v e \phi\right)$. On veut déterminer alors les coefficients $a_{m,n}$, $b_{m,n}$.
+Soit une onde plane incidente : $\vE_i = E_0 e^{ikz}\v e_x$. En coordonnée sphérique on a $\vE = E_0e^{ikr\cos\theta}\left(\sin\theta\cos\phi\v e_r + \cos\theta\cos\phi\v e_\theta - \sin\phi \v e \phi\right)$. On veut déterminer alors les coefficients $a_{m,n}$, $b_{m,n}$.
 
-On remarque que $\int_S e^{im\phi} \cos\phi \, ds = 0 = \int_S e^{im\phi} \sin\phi \,ds\; \forall m \not \in \left\lbrace -1,1 \right\rbrace$ donc $\int_S M_{m,n} \cdot \E = 0$. De façon analogue $\int_S N_{m,n} \cdot \E = 0.$
+On remarque que $\int_S e^{im\phi} \cos\phi \, ds = 0 = \int_S e^{im\phi} \sin\phi \,ds\; \forall m \not \in \left\lbrace -1,1 \right\rbrace$ donc $\int_S M_{m,n} \cdot \vE = 0$. De façon analogue $\int_S N_{m,n} \cdot \vE = 0.$
 
 On en déduit donc que les champs incidents se réécrivent
 
 \begin{align*}
-    \E_i &= \sum\limits_{n=0}^\infty\bigg[ 
+    \vE_i &= \sum\limits_{n=0}^\infty\left[ 
     a_{1,n}  M_{1,n} - i \eta b_{1,n} N_{1,n}
     + a_{-1,n}  M_{-1,n} - i \eta b_{-1,n} N_{-1,n}
-    \bigg]\\
-    \H_i &= \sum\limits_{n=0}^\infty\bigg[
+    \right]\\
+    \vH_i &= \sum\limits_{n=0}^\infty\left[
     b_{1,n}  M_{1,n} + i {\eta}^{-1} a_{1,n} N_{1,n}
     + b_{-1,n}  M_{-1,n} + i {\eta}^{-1} a_{-1,n} N_{-1,n}
-    \bigg]
+    \right]
 \end{align*}
 
 % \iffalse
@@ -73,7 +73,7 @@ On en déduit donc que les champs incidents se réécrivent
 %   \label{eq:pot_phi}
 %   \left\lbrace 
 %     \begin{matrix}
-%       \div \v \Phi_{X} &=& 0 \\
+%       \ddiv \v \Phi_{X} &=& 0 \\
 %       -\lapl  \v \Phi_X - k^2 \v \Phi_X &=& 0
 %     \end{matrix}
 %   \right.

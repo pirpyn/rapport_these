@@ -8,7 +8,7 @@ $ENV{'TZ'}='Europe/France';
 $pdf_mode = "1";
 
 # Computing with pdflatex
-$pdflatex = "pdflatex -file-line-error -halt-on-error %O %S";
+$pdflatex = "pdflatex -file-line-error -interaction=nonstopmode %O %S";
 
 # Lets have builing directory
 $out_dir = "latex_out";
