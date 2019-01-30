@@ -9,10 +9,10 @@
 % create :
 % \newglossary{glossary}{glossaryls}{glossarylo}{text}
 
-\newglossary{acr}{acrls}{acrlo}{Acronymes}{
-\newglossary{mat}{matls}{matlo}{Notations Mathématiques}{
-\newglossary{phy}{phyls}{phylo}{Notations Physiques}{
-\newglossary{ope}{opels}{opelo}{Opérateurs}{
+\newglossary{acr}{acrls}{acrlo}{Acronymes}
+\newglossary{mat}{matls}{matlo}{Notations Mathématiques}
+\newglossary{phy}{phyls}{phylo}{Notations Physiques}
+\newglossary{ope}{opels}{opelo}{Opérateurs}
 
 \makeglossaries
 
@@ -22,33 +22,33 @@
 %  sort={sort},
 %  name={\ensuremath{text}},
 %  description={description},
-}
+% }
 % use :
 % \gls{glossary-shortlabel}
 
 \newglossaryentry{mat-om}{
   type={mat},
   sort={om},
-  name={\ensuremath{\O}},
+  name={\ensuremath{\OO}},
   description={domaine,objet},
 }
 \newglossaryentry{mat-ga}{
   type={mat},
   sort={ga},
   name={\ensuremath{\Gamma}},
-  description={frontière de $\Omega$},
+  description={frontière de $\OOmega$},
 }
 \newglossaryentry{mat-vx}{
   type={mat},
   sort={vx},
   name={\ensuremath{\v x}},
-  description={point de $\O$},
+  description={point de $\OO$},
 }
 \newglossaryentry{mat-vn}{
   type={mat},
   sort={vn},
   name={\ensuremath{\v n}},
-  description={normale unitaire sortante de $\O$},
+  description={normale unitaire sortante de $\OO$},
 }
 \newglossaryentry{mat-boulexr}{
   type={mat},
@@ -65,7 +65,7 @@
 \newglossaryentry{mat-hi}{
   type={mat},
   sort={hi},
-  name={\ensuremath{H^i(\O)}},
+  name={\ensuremath{H^i(\OO)}},
   description={espace de Sobolev d'ordre $i$},
 }
 \newglossaryentry{mat-xcart}{
@@ -114,7 +114,7 @@
   type={mat},
   sort={tild},
   name={\ensuremath{\tilde u}},
-  description={$:= \dr{t}{tu(t)}$},
+  description={$:= \ddr{t}{tu(t)}$},
 }
 \newglossaryentry{mat-four}{
   type={mat},
@@ -173,37 +173,37 @@
 \newglossaryentry{ope-grad}{
   type={ope},
   sort={grad},
-  name={\ensuremath{\grad}},
+  name={\ensuremath{\vgrad}},
   description={gradient},
 }
 \newglossaryentry{ope-grads}{
   type={ope},
   sort={grads},
-  name={\ensuremath{\grads}},
-  description={$\grads u:= \grad u - \n ( \n \cdot \grad u ) $. gradient surfacique},
+  name={\ensuremath{\vgrads}},
+  description={$\grads u:= \grad u - \vn ( \vn \cdot \vgrad u ) $. gradient surfacique},
 }
 \newglossaryentry{ope-div}{
   type={ope},
   sort={div},
-  name={\ensuremath{\div}},
+  name={\ensuremath{\vdiv}},
   description={divergent},
 }
 \newglossaryentry{ope-divs}{
   type={ope},
   sort={divs},
-  name={\ensuremath{\divs}},
+  name={\ensuremath{\vdivs}},
   description={divergent surfacique},
 }
 \newglossaryentry{ope-rot}{
   type={ope},
   sort={rot},
-  name={\ensuremath{\rot}},
+  name={\ensuremath{\vrot}},
   description={rotationnel},
 }
 \newglossaryentry{ope-rots}{
   type={ope},
   sort={rots},
-  name={\ensuremath{\rots}},
+  name={\ensuremath{\vrots}},
   description={rotationnel surfacique},
 }
 \newglossaryentry{ope-laps}{
@@ -222,13 +222,13 @@
   type={ope},
   sort={hodge-LD},
   name={\ensuremath{L_D}},
-  description={$ \int_\Gamma \LD( u)\cdot  v := - \int_S \divs  u \divs  v $},
+  description={$ \int_\Gamma \LD( u)\cdot  v := - \int_S \vdivs  u \vdivs  v $},
 }
 \newglossaryentry{ope-LR}{
   type={ope},
   sort={hodge-LR},
   name={\ensuremath{L_R}},
-  description={$ \int_\gamma \LR( u)\cdot  v :=  \int_S \left( \n \cdot \rots  u \right)\left(\n \cdot \rots  v \right)$},
+  description={$ \int_\Gamma \LR( u)\cdot  v :=  \int_S \left( \vn \cdot \vrots  u \right)\left(\vn \cdot \vrots  v \right)$},
 }
 \newglossaryentry{ope-L}{
   type={ope},
@@ -275,13 +275,13 @@
 \newglossaryentry{phy-e}
   type={phy},
   sort={E},
-  name={\ensuremath{\E}},
+  name={\ensuremath{\vE}},
   description={champ électrique},
 }
 \newglossaryentry{phy-h}{
   type={phy},
   sort={H},
-  name={\ensuremath{\H}},
+  name={\ensuremath{\vH}},
   description={champ magnétique},
 }
 \newglossaryentry{phy-f}{
