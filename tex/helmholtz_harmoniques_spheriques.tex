@@ -1,17 +1,17 @@
 \section{Solutions du problème de Helmholtz dans la sphère}\label{sec:helmholtz_scal}
 
-Nous cherchons une solution de l'équation de Helmholtz \eqref{eq:sol_maxwell:helmholtz_scal} dans le cas où $\O$ est la sphère unité. Par séparation des variables%\footcite[p.~1264]{morse_methods_1953}
+Nous cherchons une solution de l'équation de Helmholtz \eqref{eq:sol_maxwell:helmholtz_scal} dans le cas où $\OO$ est la sphère unité. Par séparation des variables%\footcite[p.~1264]{morse_methods_1953}
 , nous allons exhiber des solutions fondamentales appelées harmoniques sphériques.
 %% subsection intro
 
-Soient $k \in \C, \O = B(0,1), \O^c = \R^3 \backslash \overline{\O}$. 
+Soient $k \in \CC, \OO = B(0,1), \OO^c = \RR^3 \backslash \overline{\OO}$. 
 
 Le Laplacien s'écrit en coordonnées sphériques : 
 \[ 
-  \gls{ope-laps} \Psi := \frac{1}{r^2}\left[
-  \frac{\d}{\d r}\left(r^2\dd{r}\Psi\right) 
-  + \frac{1}{\sin(\theta)}\dd{\theta}\left(\sin(\theta)\dd{\theta}\Psi\right)
-  + \frac{1}{\sin^2(\theta)} \frac{\d^2}{\d\phi^2} \Psi \right]
+  \gls{ope-laps} \Psi := \frac{1}{r^2}\left(
+  \ddr{r}{}\left(r^2\ddr{r}{\Psi}\right) 
+  + \frac{1}{\sin(\theta)}\ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Psi}\right)
+  + \frac{1}{\sin^2(\theta)} \frac{\dd^2}{\dd\phi^2} \Psi \right)
 \]
 
 \subsection{Solution particulière de Helmholtz par séparation des variables}
@@ -20,35 +20,35 @@ Dans la base des coordonnées sphériques, on suppose que l'on peut écrire $\Ps
 \end{hyp}
 \begin{prop}
 \begin{equation}
-\forall m \in \Z, \quad h(\phi) = e^{im\phi}
+\forall m \in \ZZ, \quad h(\phi) = e^{im\phi}
 \end{equation}
 \end{prop}
 \begin{proof}
-On note $f' =\dr{r}{f}, g' = \dr{\theta}{g} , h' = \dr{\phi}{h}$. On omettra les dépendances en $\rtp$ dans $f,g,h$ pour alléger les notations.
+On note $f' =\ddr{r}{f}, g' = \ddr{\theta}{g} , h' = \ddr{\phi}{h}$. On omettra les dépendances en $\rtp$ dans $f,g,h$ pour alléger les notations.
 
 L'équation de Helmholtz s'écrie à l'intérieur\footnote{Le cas extérieur est analogue en changeant $k$ pour $k_0$.} de la sphère : 
 \begin{equation}\label{eq:helm:helm}
-  \Delta \Psi + k^2 \Psi = gh\frac{1}{r^2}\dd{r}(r^2f') + \frac{1}{r^2}\left[\frac{fh}{\sin(\theta)}\dd{\theta}(\sin(\theta)g')+\frac{fg}{\sin^2(\theta)}h''\right] + k^2 fgh = 0 \; \forall (r,\tp)
+  \Delta \Psi + k^2 \Psi = gh\frac{1}{r^2}\dd{r}{r^2f'} + \frac{1}{r^2}\left(\frac{fh}{\sin(\theta)}\ddr{\theta}{}(\sin(\theta)g')+\frac{fg}{\sin^2(\theta)}h''\right) + k^2 fgh = 0 \; \forall (r,\tp)
 \end{equation}
 
 On suppose que $ \frac{r^2\sin^2(\theta)}{f(r)g(\theta)h(\phi)}$ ne peut pas s'annuler. Alors on multiplie l'équation de Helmholtz par ce terme pour faire apparaître 2 termes dépendant de variables différentes: un terme variant selon $(r)$, l'autre selon $(\tp)$. 
 
 \begin{align*}
 \frac{r^2}{fgh} \left(\Delta \Psi + k^2 \Psi\right) &= 
-\left(\frac{1}{f}\dd{r}{r^2f'} + (kr)^2\right) + 
-\left(\frac{1}{ \sin(\theta)g} \dd{\theta}(\sin(\theta)g') +  \frac{1}{ \sin^2(\theta)}\frac{h''}{h} \right)\\
+\left(\frac{1}{f}\ddr{r}{r^2f'} + (kr)^2\right) + 
+\left(\frac{1}{ \sin(\theta)g} \ddr{\theta}{}(\sin(\theta)g') +  \frac{1}{ \sin^2(\theta)}\frac{h''}{h} \right)\\
 0 &=R(r) + \Theta(\tp)
 \end{align*}
 Chaque terme doit donc être égal à une constante dont le somme sera nulle. En séparent les dépendances en $\theta$ et $\phi$ dans $\Theta$, on trouve que chaque terme est aussi constant:
 
   %On notera que les deux termes doivent être constant.\\
 \[ 
-\exists z_h \in \C,\; \frac{h''}{h} = z_h^2 \Rightarrow h(\phi) = e^{z_h\phi}
+\exists z_h \in \CC,\; \frac{h''}{h} = z_h^2 \Rightarrow h(\phi) = e^{z_h\phi}
 \]
 
 De plus, par définition du repère sphérique, $h(\phi)$ $2\pi$-périodique:
 \[
-h(\phi) = h(\phi + 2\pi) \Leftrightarrow e^{z_h2\pi}= 1 \Rightarrow \forall m \in \Z, z_h = im
+h(\phi) = h(\phi + 2\pi) \Leftrightarrow e^{z_h2\pi}= 1 \Rightarrow \forall m \in \ZZ, z_h = im
 \]
 %On a donc déterminé la fonction $h$:
 %\begin{equation}
@@ -57,9 +57,9 @@ h(\phi) = h(\phi + 2\pi) \Leftrightarrow e^{z_h2\pi}= 1 \Rightarrow \forall m \i
 \end{proof}
 
 %%% subsection g 
-\begin{prop}$\forall m \in \Z, \forall \nu \in \C$, soit $\P^m_\nu$ la fonction de Legendre associée. Alors
+\begin{prop}$\forall m \in \ZZ, \forall \nu \in \CC$, soit $\PP^m_\nu$ la fonction de Legendre associée. Alors
   \begin{equation} 
-    g(\theta) := \P^m_\nu(\cos \theta)
+    g(\theta) := \PP^m_\nu(\cos \theta)
   \end{equation}
 \end{prop}
 \begin{proof}
@@ -67,28 +67,28 @@ h(\phi) = h(\phi + 2\pi) \Leftrightarrow e^{z_h2\pi}= 1 \Rightarrow \forall m \i
 En injectant $h$ dans l'équation de Helmholtz normalisée par un facteur $\frac{r^2}{fgh}$ on obtient
 \begin{align*}
      \frac{r^2}{fgh} \left(\Delta \Psi + k^2 \Psi\right) &= 
-     \left(\frac{1}{f}\dd{r}{r^2f'} + (kr)^2\right) + 
-     \left(\frac{1}{g\sin(\theta)} \dd{\theta}(\sin(\theta)g') -  \frac{m^2}{\sin^2(\theta)}\right) \\
+     \left(\frac{1}{f}\ddr{r}{r^2f'} + (kr)^2\right) + 
+     \left(\frac{1}{g\sin(\theta)} \ddr{\theta}{}(\sin(\theta)g') -  \frac{m^2}{\sin^2(\theta)}\right) \\
  0 &= R(r) + A(\theta)
 \end{align*}
 
 $A(\theta)$ est donc une constante:
 
 \[
- \exists A \in \C, \frac{1}{g\sin\theta}\left(\dd{\theta}\left(\sin\theta\dd{\theta}g\right)\right)  -\frac{m^2}{\sin^2\theta} = A
+ \exists A \in \CC, \frac{1}{g\sin\theta}\left(\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{g}\right)\right)  -\frac{m^2}{\sin^2\theta} = A
 \]
   On multiplie alors cette expression par $g$
 
   \begin{equation*}
-    \label{eq:helm:legendre}\frac{1}{\sin\theta}\left(\dd{\theta}\left(\sin\theta\dd{\theta}g\right)\right) + \left[- A -\frac{m^2}{\sin^2\theta}\right]g = 0
+    \label{eq:helm:legendre}\frac{1}{\sin\theta}\left(\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{g}\right)\right) + \left(- A -\frac{m^2}{\sin^2\theta}\right)g = 0
   \end{equation*}
 
-%On obtient une équation qui n'a de solution non triviales qui si $A$ est valeur propre de l'opérateur $\frac{1}{\sin\theta}\left(\dd{\theta}\left(\sin\theta\dr{\theta}{\cdot}\right)\right) -\frac{m^2}{\sin^2\theta}\operatorname{id}$. Plus précisément, 
+%On obtient une équation qui n'a de solution non triviales qui si $A$ est valeur propre de l'opérateur $\frac{1}{\sin\theta}\left(\ddd{\theta}\left(\sin\theta\ddr{\theta}{\cdot}\right)\right) -\frac{m^2}{\sin^2\theta}\operatorname{id}$. Plus précisément, 
 Dans la littérature \cite{abramowitz_handbook_1964}, on fait apparaître "l'équation différentielle associée de Legendre" car il existe $
-%\forall A \in \C,
-\nu \in \C,-A = \nu(\nu + 1)$. Des solutions de ce problème sont les fonctions associées de Legendre du 1er type, notées $\P^m_\nu(\cos \theta)$ 
+%\forall A \in \CC,
+\nu \in \CC,-A = \nu(\nu + 1)$. Des solutions de ce problème sont les fonctions associées de Legendre du 1er type, notées $\P^m_\nu(\cos \theta)$ 
 
-D'apres \cite[p.~1264]{abramowitz_handbook_1964}, \cite[p.~84]{bohren_absorption_2004}, $\nu \in \N, n\ge m $. On pose alors $n = \nu$.
+D'apres \cite[p.~1264]{abramowitz_handbook_1964}, \cite[p.~84]{bohren_absorption_2004}, $\nu \in \NN, n\ge m $. On pose alors $n = \nu$.
 
 
 { \color{red}
@@ -97,12 +97,12 @@ D'apres \cite[p.~1264]{abramowitz_handbook_1964}, \cite[p.~84]{bohren_absorption
 Les fonctions associées de Legendre s'expriment en fonction de la fonction hypergéométrique $F(a,b,c,x)$ \cite[p.~332]{abramowitz_handbook_1964}.
 
 \[
-P^m_\nu(z) = \frac{1}{\Gamma\left(1-m\right)}\left(\frac{z+1}{z-1}\right)^{m/2}F\left(-\nu,\nu+1,1-m;\frac{1-z}{2}\right)
+\PP^m_\nu(z) = \frac{1}{\Gamma\left(1-m\right)}\left(\frac{z+1}{z-1}\right)^{m/2}F\left(-\nu,\nu+1,1-m;\frac{1-z}{2}\right)
 \]
 
-Comme $z=\cos\theta \in [-1,1] $, $\frac{1-z}{2} \in [0,1]$ donc on se situe dans le rayon de convergence de la série entière de la fonction hypergéométrique. Cette dernière n'est pas définie si $\forall p\in \N, m=1+p $ sauf si $\forall n \in [0,m[, -\nu = -n $ ou alors $ \nu +1 = -n $ \cite[p.~556]{abramowitz_handbook_1964}. Dans ce cas, la série devient un polynôme de dégrée $m$ \cite[p.~561]{abramowitz_handbook_1964}.
+Comme $z=\cos\theta \in [-1,1] $, $\frac{1-z}{2} \in [0,1]$ donc on se situe dans le rayon de convergence de la série entière de la fonction hypergéométrique. Cette dernière n'est pas définie si $\forall p\in \NN, m=1+p $ sauf si $\forall n \in [0,m[, -\nu = -n $ ou alors $ \nu +1 = -n $ \cite[p.~556]{abramowitz_handbook_1964}. Dans ce cas, la série devient un polynôme de dégrée $m$ \cite[p.~561]{abramowitz_handbook_1964}.
 
-On conclus que pour obtenir des solutions définis pour tout $m$, alors $\nu:=n \in \N, n< m $.
+On conclus que pour obtenir des solutions définis pour tout $m$, alors $\nu:=n \in \NN, n< m $.
 }
 
 
@@ -114,8 +114,8 @@ On conclus que pour obtenir des solutions définis pour tout $m$, alors $\nu:=n 
   \begin{equation}
     f(r) := \left\lbrace
     \begin{matrix}
-    j_n(kr) & \text{ dans $\O$ } \\
-    h_n(k_0r) & \text{ dans } \O^c \\
+    j_n(kr) & \text{ dans $\OO$ } \\
+    h_n(k_0r) & \text{ dans } \OO^c \\
     \end{matrix}\right.
   \end{equation}
 \end{prop}
@@ -124,7 +124,7 @@ On normalise une dernière fois l'équation de Helmholtz en remplaçant les dern
 
 \begin{align*}
 \frac{r^2}{gh} \left(\Delta \Psi + k^2 \Psi\right) &= 0 \\
-&= \dd{r}{\left(r^2f'\right)} + \left((kr)^2 - n(n+1)\right)f
+&= \ddr{r}{}\left(r^2f'\right) + \left((kr)^2 - n(n+1)\right)f
 \end{align*}
   On voit alors apparaître l'équation de Bessel d'ordre $n +1/2$ dont des solutions linéairement indépendantes sont les fonctions de Bessel du 1\ier type $J_{n+1/2}$ et du 2\ieme type $Y_{n+1/2}$\cite[p.~86]{bohren_absorption_2004}\cite[p.~1465]{morse_methods_1953}. 
   On crée de $J_{n+1/2}$ et $Y_{n+1/2}$ les fonction de Bessel sphériques $j_n$ et $y_n$ 
@@ -142,7 +142,7 @@ On normalise une dernière fois l'équation de Helmholtz en remplaçant les dern
 
 \subsection{Solutions scalaire de l'équation de Helmholtz sur la sphère}
 
-On définit les harmoniques sphériques comme les fonctions $Y_n^m = C(m,n) e^{im\phi}\mathbb{P}^m_n(\cos \theta) $ avec $C(m,n)$ tel que,
+On définit les harmoniques sphériques comme les fonctions $Y_n^m = C(m,n) e^{im\phi}\PP^m_n(\cos \theta) $ avec $C(m,n)$ tel que,
 \[
  \ds\int_S Y_{m,n} \conj{Y_{p,\tau}} ds = \delta_m^p \delta_n^\tau
 \]
@@ -156,10 +156,10 @@ De fait, ces fonctions forment une base des fonctions $L_2$ sur la sphère unit�
   \end{align}
 
 
-\subsection{Solutions scalaires de l'équation de Helmholtz dans $\R^3$}
+\subsection{Solutions scalaires de l'équation de Helmholtz dans $\RR^3$}
 On peut étendre ces solutions à tout l'espace pour obtenir une solution pour un champ scalaire .
 
-Tout champ scalaire $\Psi$ solution de l'équation de Helmholtz s'écrit dans $\O\cup\O^c$:
+Tout champ scalaire $\Psi$ solution de l'équation de Helmholtz s'écrit dans $\OO\cup\OO^c$:
 \begin{align} 
 \label{eq:helm:sol_helmoltz_scal_somme}
 \Psi(\rtp) &= \sum\limits_{n=1}^\infty\sum\limits_{m=-n}^n a_{m,n} \Psi_{m,n}(\rtp) \\
@@ -167,7 +167,7 @@ Tout champ scalaire $\Psi$ solution de l'équation de Helmholtz s'écrit dans $\
 \notag a_{m,n} &= \int_S \Psi(1,\tp) Y_{m,n}(\tp) ds \\
 z_n(r) &= \left\lbrace
   \begin{matrix}
-  j_n(kr) &   \text{dans $\O~$} \\
-  h_n(k_0r) & \text{dans $\O^c$} \\
+  j_n(kr) &   \text{dans $\OO~$} \\
+  h_n(k_0r) & \text{dans $\OO^c$} \\
   \end{matrix}\right.
 \end{align}

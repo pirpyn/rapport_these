@@ -13,7 +13,11 @@ Ces constantes adimensionnées peuvent être complexes\footnote{Dans le vide $\e
 Le demi-espace $\z<-d$ restant est assimilé à un \gls{acr-cp}.
 
 On utilisera les notations  suivantes dans la suite de cette partie: le vide sera indiqué comme milieu d'indice $0$ , le matériau comme milieu d'indice $1$.
-
+\renewcommand{\x}{{x}}
+\renewcommand{\y}{{y}}
+\renewcommand{\z}{{z}}
+\renewcommand{\peps}{{\eps_1}}
+\renewcommand{\pmu}{{\mu_1}}
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}
@@ -27,14 +31,14 @@ On cherche à obtenir l'opérateur différentiel \gls{ope-imp}, tel que l'on ait
 
 \begin{equation}
 \label{eq:coeff_ref:intro:ci}
--\n \pvect \n \pvect \E(\x,\y,0) = \mathcal{Z}( \n \pvect H)(\x,\y,0)
+-\vn \pvect \vn \pvect \vE(\x,\y,0) = \mathcal{Z}( \vn \pvect \vH)(\x,\y,0)
 \end{equation}
 
 %Le premier cas d'étude est celui du plan infini. Il permet de résoudre facilement le problème de Maxwell \eqref{eq:maxwell} et de déterminer l'expression de la la condition d'impédance (\gls{acr-ci}).
 %%%% SECTION HYPOTHESES
 \begin{hyp}[Hypothèses simplificatrices]{}~\\
 \begin{enumerate}
-    \item On suppose que les solutions s'écriront comme $Ce^{i(k_\x\x +k_\y\y+k_\z\z)}, C\in\C$.
+    \item On suppose que les solutions s'écriront comme $c e^{i(k_\x\x +k_\y\y+k_\z\z)}, c\in\CC$.
     \item Comme le plan est infini et quitte à redéfinir les axes cartésiens, on peut supposer que l'onde se propage suivant le vecteur $\v k_p = (k_{\x,p},0,k_{\z,p})$ : pas de dépendance en $\y$ et $k_\y$.
 \end{enumerate}
 \end{hyp}
@@ -45,8 +49,8 @@ On a donc $k_p = \kO\nu_p$\footnote{Évidemment $k_0 = \kO$} et $k_{z,p} = \sqrt
 \begin{hyp}[Principe de superposition]{}~\\
 La solution générale est une combinaison linéaire de deux problèmes: 
 \begin{enumerate}
-    \item \gls{acr-te} : $\E = (0,E_y,0)$.
-    \item \gls{acr-tm} : $\H = (0,H_y,0)$. 
+    \item \gls{acr-te} : $\vE = (0,E_y,0)$.
+    \item \gls{acr-tm} : $\vH = (0,H_y,0)$. 
 \end{enumerate}
 \end{hyp}
 
@@ -54,56 +58,56 @@ La solution générale est une combinaison linéaire de deux problèmes:
 
 \begin{tcolorbox}
 \centering
-La dépendance temporelle est en $e^{i \omega t}$, et l'on identifie $\H \equiv \etaO \H$.
+La dépendance temporelle est en $e^{i \omega t}$, et l'on identifie $\vH \equiv \etaO \vH$.
 \end{tcolorbox}
 
 
-Soit $(\E,\H)$ dans $(\Hrot(\O))^3 \times (\Hrot(\O))^3$. 
+Soit $(\vE,\vH)$ dans $(\Hrot(\OO))^3 \times (\Hrot(\OO))^3$. 
 
-Alors $(\E,\H)$ sont solutions de Maxwell si 
+Alors $(\vE,\vH)$ sont solutions de Maxwell si 
 \begin{align}
 \label{eq:coeffs_ref:maxwell-E}
-\trot \E + i k_p \eta_p \H &= 0 && \text{dans $\O$}\\
+\trot \vE + i k_p \eta_p \vH &= 0 && \text{dans $\OO$}\\
 \label{eq:coeffs_ref:maxwell-H}
-\trot \H - i \frac{k_p}{\eta_p} \E &= 0 && \text{dans $\O$}
+\trot \vH - i \frac{k_p}{\eta_p} \vE &= 0 && \text{dans $\OO$}
 \end{align}
 
 Les équations de Maxwell donnent dans chacun des domaines (indicé par le $p = \lbrace0,1\rbrace$) et pour chacune des polarisations:
 
-\Gls{acr-te}: $ \E(\x,\z) = (0,E_y,0), \H(\x,\y) = (H_x,0,H_z)$. 
+\Gls{acr-te}: $ \vE(\x,\z) = (0,E_y,0), \vH(\x,\y) = (H_x,0,H_z)$. 
 \[
 \left\lbrace 
 \begin{matrix}
--\d_{\z} E_\y + i k_p \eta_p H_\x & = & 0 \\
-\d_{\x} E_\y + i k_p \eta_p H_\z &= & 0 \\
-\d_{\z} H_\x- \d_{\x} H_\z - i\frac{k_p}{\eta_p} E_\y & = & 0\\
+-\dd_{\z} E_\y + i k_p \eta_p H_\x & = & 0 \\
+\dd_{\x} E_\y + i k_p \eta_p H_\z &= & 0 \\
+\dd_{\z} H_\x- \dd_{\x} H_\z - i\frac{k_p}{\eta_p} E_\y & = & 0\\
 \end{matrix}
 \right.
 \Rightarrow
 \left\lbrace
 \begin{matrix}
-\d_{\z\z}^2 E_\y + \d_{\x\x}^2 E_\y + k_p^2 E_\y = 0\\
-H_\x = \frac{\d_{\z} E_\y}{i k_p \eta_p }\\
-H_\y =  -\frac{\d_{\x} E_\z}{i k_p \eta_p }
+\dd_{\z\z}^2 E_\y + \dd_{\x\x}^2 E_\y + k_p^2 E_\y = 0\\
+H_\x = \frac{\dd_{\z} E_\y}{i k_p \eta_p }\\
+H_\y =  -\frac{\dd_{\x} E_\z}{i k_p \eta_p }
 \end{matrix}
 \right.
 \]
 
-\Gls{acr-tm} : $ \E(\x,\z) = (E_\x,0,E_\z), \H(\x,\z) = (0,H_\y,0)$. 
+\Gls{acr-tm} : $ \vE(\x,\z) = (E_\x,0,E_\z), \vH(\x,\z) = (0,H_\y,0)$. 
 \[
 \left\lbrace 
 \begin{matrix}
-\d_{\z} E_\x - \d_{\x} E_\z + i k_p \eta_p  H_\y &= & 0 \\
-- \d_{\z} H_\y - i\frac{k_p}{\eta_p} E_\x & = & 0\\
-\d_{\x} H_\y -i\frac{k_p}{\eta_p} E_\z &=&0\\
+\dd_{\z} E_\x - \dd_{\x} E_\z + i k_p \eta_p  H_\y &= & 0 \\
+- \dd_{\z} H_\y - i\frac{k_p}{\eta_p} E_\x & = & 0\\
+\dd_{\x} H_\y -i\frac{k_p}{\eta_p} E_\z &=&0\\
 \end{matrix}
 \right.
 \Rightarrow
 \left\lbrace
 \begin{matrix}
-\d_{\z\z}^2 H_\y + \d_{\x\x}^2 H_\y + k_p^2 H_\y = 0\\
-E_\x = -\eta_p\frac{\d_{\z} H_\y}{i k_p}\\
-E_\y = \eta_p\frac{\d_{\x} H_\y}{i k_p}
+\dd_{\z\z}^2 H_\y + \dd_{\x\x}^2 H_\y + k_p^2 H_\y = 0\\
+E_\x = -\eta_p\frac{\dd_{\z} H_\y}{i k_p}\\
+E_\y = \eta_p\frac{\dd_{\x} H_\y}{i k_p}
 \end{matrix}
 \right.
 \]
@@ -113,13 +117,13 @@ On obtient alors une équation de Helmholtz à résoudre respectivement pour $E_
 Dans la suite, nous allons donc considérer comme inconnu $U$, solution du problème suivant : 
 
 \begin{equation}
-\d_{\z\z}^2 U + \d_{\x\x}^2 U + k_p^2 U = 0 \quad \text { dans $\O\cup\O^c$}
+\dd_{\z\z}^2 U + \dd_{\x\x}^2 U + k_p^2 U = 0 \quad \text { dans $\OO\cup\OO^c$}
 \end{equation}
 
 % \begin{hyp}[Hypothèses simplificatrices 2]{Passage dans le domaine de Fourier}\\
 %   Par définition d'une onde plane $U(x_1,x_2,\z)$, on a la propriété suivante sur sa transformée de Fourier $ U(k_{1,i},k_{2,i},k_{3,i})$:
 % \[
-%  \d_j { U}(\v \kO) = ik_{j,i}  U(\v \kO)
+%  \dd_j { U}(\v \kO) = ik_{j,i}  U(\v \kO)
 % \]
 % \end{hyp}
 
@@ -128,7 +132,7 @@ Dans la suite, nous allons donc considérer comme inconnu $U$, solution du probl
 % \subsection{Onde plane et transformée de Fourier}
 % Une onde plane harmonique (dépendance $e^{i\wt}$) est de type $U(x_1,x_2,\z) = U_0e^{i(k_1x_1+k_2x_2+k_3\z)}$, dont on remarque que . 
 % 
-% Or une propriété de la transformée de Fourier $ U$ de $U$ est ${ \d_j U}(\xi) = i\xi_j  U$. 
+% Or une propriété de la transformée de Fourier $ U$ de $U$ est ${ \dd_j U}(\xi) = i\xi_j  U$. 
 % Donc on peut faire l'analogie entre l'hypothèse d'une onde plane et la transformée de Fourier de $U$,
 %  avec l'analogie $\xi_j \leftrightarrow  k_j$.
 % \fi
@@ -136,19 +140,19 @@ Dans la suite, nous allons donc considérer comme inconnu $U$, solution du probl
 % \subsection{Impédance de surface pour une couche de matériau}
 % Comme le plan est infini, on peut prendre les transformées de Fourier des 2 équations trouvées précédemment afin que les opérateur différentiels issus des équations de Maxwell deviennent des coefficients multiplicatifs. On peut alors rechercher une CI tel que $\mathcal{Z} = Z\operatorname{Id}$ et on note $ \kO = \w^2 \eps_p \mu_p$.
 % 
-% Rappellons que dans le domaine de Fourier, ${ \d_j U}(\xi) = i\xi_j  U$ %(on rappelle que $k_{\z,1} \leftrightarrow k_1$)
+% Rappellons que dans le domaine de Fourier, ${ \dd_j U}(\xi) = i\xi_j  U$ %(on rappelle que $k_{\z,1} \leftrightarrow k_1$)
 
 %%% OLD FOURIER
 
-% Comme $(\E,\H)$ sont dans $L_2(\O)$, ils admettent une transformée de Fourier $( \E,  \H)$ dans $L^2$ et l'on a
+% Comme $(\E,\H)$ sont dans $L_2(\OO)$, ils admettent une transformée de Fourier $( \E,  \H)$ dans $L^2$ et l'on a
 
 % \[
-%   U(\x,\y,\z) = \frac{1}{2\pi} \int_{\R^3}  U (k_\x,k_\y,k_\z) e^{i(k_\x\x +k_\y\y+k_\z\z)} dk_\x dk_\y dk_\z
+%   U(\x,\y,\z) = \frac{1}{2\pi} \int_{\RR^3}  U (k_\x,k_\y,k_\z) e^{i(k_\x\x +k_\y\y+k_\z\z)} dk_\x dk_\y dk_\z
 % \]
 
 % Le problème que l'on veut résoudre est maintenant le suivant:
 % \begin{equation}
-%   \d_{\z\z}^2  U + k_{\z,p}^2  U = 0 \quad \text { dans $\O\cup\O^c$}
+%   \dd_{\z\z}^2  U + k_{\z,p}^2  U = 0 \quad \text { dans $\OO\cup\OO^c$}
 % \end{equation}
 
 % Et dont les solutions de l'équation ci-dessus sont
@@ -162,12 +166,12 @@ Dans la suite, nous allons donc considérer comme inconnu $U$, solution du probl
 Grâce à l'hypothèse sur la forme des solutions
 
 \[
-\d_{\x} U(\x,\z) = ik_\x U(\x,\z)
+\dd_{\x} U(\x,\z) = ik_\x U(\x,\z)
 \]
 
 Le problème que l'on veut résoudre est maintenant le suivant:
 \begin{equation}
-\d_{\z\z}^2 U + k_{\z,p}^2 U = 0 \quad \text { dans $\O\cup\O^c$}
+\dd_{\z\z}^2 U + k_{\z,p}^2 U = 0 \quad \text { dans $\OO\cup\OO^c$}
 \end{equation}
 
 Et dont les solutions de l'équation ci-dessus sont
@@ -182,13 +186,13 @@ On suivra comme convention qu'en polarisation TE, $ U = E_\y$ et en polarisation
 Les conditions limites sur le matériau vont permettre de déterminer les valeurs des constantes $A_p, B_p$.
 \begin{itemize}
     \item 
-    Conducteur parfait (\gls{acr-cp})\footcite[p.~217]{morse_methods_1953} : $\v{E_t}(-d) = 0  $
+    Conducteur parfait (\gls{acr-cp})\footcite[p.~217]{morse_methods_1953} : $\vE_t(-d) = 0  $
     \item 
     Continuité des champs tangents: $
     \left\lbrace 
     \begin{matrix}
-    [ E_t]_{\z=0} &=& 0 \\
-    [ H_t]_{\z=0} &=& 0 
+    [ \vE_t]_{\z=0} &=& 0 \\
+    [ \vH_t]_{\z=0} &=& 0 
     \end{matrix}
     \right.$
 \end{itemize}
@@ -204,20 +208,20 @@ Nous allons alors calculer les champs tangents, utiliser les conditions limites 
 & \text{\textbf{TE}} & \text{\textbf{TM}} \\
 \hline\hline
 
-\v { E_t} & \left(A_p e^{-ik_{\z,p} \z}  + B_p e^{ik_{\z,p} \z}\right) \v e_2 &  \frac{k_{\z,p}\eta_p}{k_p}\left( A_p e^{-ik_{\z,p} \z} - B_p e^{ik_{\z,p}z}\right) \v e_1\\
+\vE_t & \left(A_p e^{-ik_{\z,p} \z}  + B_p e^{ik_{\z,p} \z}\right) \v e_2 &  \frac{k_{\z,p}\eta_p}{k_p}\left( A_p e^{-ik_{\z,p} \z} - B_p e^{ik_{\z,p}z}\right) \v e_1\\
 \hline
 
-\v { H_t} &\frac{k_{\z,p}}{k_p\eta_p} \left(-A_p e^{-ik_{\z,p} \z}  + B_p e^{ik_{\z,p} \z}\right) \v e_1 & \left(A_p e^{-ik_{\z,p} \z} + B_p e^{ik_{\z,p} \z}\right) \v e_2\\
+\vH_t &\frac{k_{\z,p}}{k_p\eta_p} \left(-A_p e^{-ik_{\z,p} \z}  + B_p e^{ik_{\z,p} \z}\right) \v e_1 & \left(A_p e^{-ik_{\z,p} \z} + B_p e^{ik_{\z,p} \z}\right) \v e_2\\
 \hline
 
-\E_t(-d) = 0 & A_1 = -B_1e^{-ik_{\z,1}2d} &  A_1 = B_1e^{-ik_{\z,1}2d}\\
+\vE_t(-d) = 0 & A_1 = -B_1e^{-ik_{\z,1}2d} &  A_1 = B_1e^{-ik_{\z,1}2d}\\
 \hline
 
-\multirow{2}{*}{$\E_t(0)=Z\n\times \H(0)$} & B_1\left(1-e^{-ik_{\z,1}2d}\right) & B_1\left( 1 - e^{-ik_{\z,1}2d} \right)\frac{k_{\z,1}\eta_1}{k_1}  \\
+\multirow{2}{*}{$\vE_t(0)=Z\vn\times \vH(0)$} & B_1\left(1-e^{-ik_{\z,1}2d}\right) & B_1\left( 1 - e^{-ik_{\z,1}2d} \right)\frac{k_{\z,1}\eta_1}{k_1}  \\
 & =  Z\frac{k_{\z,1}}{k_1\eta_1}B_1\left(1+e^{-ik_{\z,1}2d}\right) & = Z\left(e^{-ik_{\z,1}2d} + 1\right)B_1\\
 \hline
 \hline
-Z & \dfrac{k_1\eta_1}{k_{\z,1}}i\tan(k_{\z,1}d) & \dfrac{k_{\z,1}\eta_1}{k_1}i\tan(k_{\z,1}d) \\
+Z & \frac{k_1\eta_1}{k_{\z,1}}i\tan(k_{\z,1}d) & \frac{k_{\z,1}\eta_1}{k_1}i\tan(k_{\z,1}d) \\
 \hline
 \end{tabular}
 \end{center}
@@ -242,12 +246,12 @@ Le rapport $R=B_0/A_0$ est appelé coefficient de réflexion. On cherche à l'ex
 & \text{\textbf{TE}} & \text{\textbf{TM}} \\
 \hline\hline
 
-1+R & \dfrac{B_1(1-e^{-ik_{\z,1}2d})}{A_0}& \dfrac{B_1(1+e^{-ik_{\z,1}2d})}{A_0} \\ 
+1+R & \frac{B_1(1-e^{-ik_{\z,1}2d})}{A_0}& \frac{B_1(1+e^{-ik_{\z,1}2d})}{A_0} \\ 
 \hline
 
--1+R & \dfrac{k_{\z,1}\mu_0 B_1(1+e^{-ik_{\z,1}2d})}{k_{\z,0} \mu_1 A_0} & \dfrac{k_{\z,1}\eps_0 B_1(1-e^{-ik_{\z,1}2d})}{k_{\z,0} \eps_1A_0}\\
+-1+R & \frac{k_{\z,1}\mu_0 B_1(1+e^{-ik_{\z,1}2d})}{k_{\z,0} \mu_1 A_0} & \frac{k_{\z,1}\eps_0 B_1(1-e^{-ik_{\z,1}2d})}{k_{\z,0} \eps_1A_0}\\
 \hline
-\multirow{2}{*}{$\frac{1+R}{-1+R}$}  & -\frac{k_{\z,0} \mu_1}{k_{\z,1} \mu_0}i\tan(k_{\z,1} d) & -\frac{k_{\z,0} \eps_1}{k_{\z,1}\eps_0}\dfrac{1}{i\tan(k_{\z,1}d)}\\
+\multirow{2}{*}{$\frac{1+R}{-1+R}$}  & -\frac{k_{\z,0} \mu_1}{k_{\z,1} \mu_0}i\tan(k_{\z,1} d) & -\frac{k_{\z,0} \eps_1}{k_{\z,1}\eps_0}\frac{1}{i\tan(k_{\z,1}d)}\\
 & =\frac{k_{\z,0}Z_{TE}}{k_0\eta_0} & =\frac{k_{\z,0}\eta_0}{k_0Z_{TM}}\\
 \hline
 \hline
@@ -268,14 +272,15 @@ Un empilement peut-être résolue itérativement: étant donnée une condition d
 
 En effet, on peut toujours se ramener dans le cas du plan infini avec une couche, c'est à dire avec la condition d'impédance connue en $\z=-d$ et celle que l'on cherche en $\z=0$
 
-On suppose que l'on ait une condition d'impédance en $\z=-d$\[
-\v { E_{tan}}=Z_d \, \n \pvect  \H
+On suppose que l'on ait une condition d'impédance en $\z=-d$
+\[
+\vE_t=Z_d \, \vn \pvect  \vH
 \]
 
 
 \begin{align*}
-\gamma_{TE} := \dfrac{k_{\z,1}}{k_1} \dfrac{Z_d}{\eta_1} \qquad
-\gamma_{TM} := \dfrac{k_{\z,1}}{k_1}  \frac{\eta_1}{Z_d}  \qquad
+\gamma_{TE} := \frac{k_{\z,1}}{k_1} \frac{Z_d}{\eta_1} \qquad
+\gamma_{TM} := \frac{k_{\z,1}}{k_1} \frac{\eta_1}{Z_d}  \qquad
 \alpha(\gamma) = \frac{1-\gamma}{1+\gamma}
 \end{align*}
 
@@ -285,26 +290,25 @@ On suppose que l'on ait une condition d'impédance en $\z=-d$\[
 & \text{\textbf{TE}} & \text{\textbf{TM}} \\
 \hline\hline
 
-\v { E_t} & \left(A_p e^{-ik_{\z,p} \z}  + B_p e^{ik_{\z,p} \z}\right) \v e_2 &  \frac{k_{\z,p}\eta_p}{k_p}\left( A_p e^{-ik_{\z,p} \z} - B_p e^{ik_{\z,p}z}\right) \v e_1\\
+\vE_t & \left(A_p e^{-ik_{\z,p} \z}  + B_p e^{ik_{\z,p} \z}\right) \v e_2 &  \frac{k_{\z,p}\eta_p}{k_p}\left( A_p e^{-ik_{\z,p} \z} - B_p e^{ik_{\z,p}z}\right) \v e_1\\
 \hline
 
-\v { H_t} &\frac{k_{\z,p}}{k_p\eta_p} \left(-A_p e^{-ik_{\z,p} \z}  + B_p e^{ik_{\z,p} \z}\right) \v e_1 & \left(A_p e^{-ik_{\z,p} \z} + B_p e^{ik_{\z,p} \z}\right) \v e_2\\
+\vH_t &\frac{k_{\z,p}}{k_p\eta_p} \left(-A_p e^{-ik_{\z,p} \z}  + B_p e^{ik_{\z,p} \z}\right) \v e_1 & \left(A_p e^{-ik_{\z,p} \z} + B_p e^{ik_{\z,p} \z}\right) \v e_2\\
 \hline
 
-{\E_t}(-d) = Z_d \n\times\H(-d) & A_1 = -\alpha(\gamma_{TE}) B_1e^{-ik_{\z,1}2d} &  \\
+\vE_t(-d) = Z_d \vn\times\vH(-d) & A_1 = -\alpha(\gamma_{TE}) B_1e^{-ik_{\z,1}2d} &  \\
 \hline
 
-\multirow{2}{*}{$\E_t(0)=Z\n\times \H(0)$} & B_1\left(1-\alpha(\gamma_{TE})e^{-ik_{\z,1}2d}\right) &   \\
+\multirow{2}{*}{$\vE_t(0)=Z\vn\times \vH(0)$} & B_1\left(1-\alpha(\gamma_{TE})e^{-ik_{\z,1}2d}\right) &   \\
 & =  Z\frac{k_{\z,1}}{k_1\eta_1}B_1\left(1+\alpha(\gamma_{TE})e^{-ik_{\z,1}2d}\right) & \\
 \hline
 \hline
-Z & \dfrac{k_1\eta_1}{k_{\z,1}}\tanh\left(ik_{\z,1}d-\frac{\log(\alpha(\gamma_{TE}))}{2}\right) &  \\
+Z & \frac{k_1\eta_1}{k_{\z,1}}\tanh\left(ik_{\z,1}d-\frac{\log(\alpha(\gamma_{TE}))}{2}\right) &  \\
 \hline
 \end{tabular}
 \end{center}
 \[
-\\
-P = \dfrac{ik_1}{k_{\z,1}}diag\left(\dfrac{1-\alpha(\gamma_{TE}) e^{ik_{\z,1}2d}}{1+\alpha(\gamma_{TE}) e^{ik_{\z,1}2d}},\dfrac{1-\alpha(\gamma_{TM}) e^{ik_{\z,1}2d}}{1+\alpha(\gamma_{TM}) e^{ik_{\z,1}2d}}\right)
+P = \frac{ik_1}{k_{\z,1}}diag\left(\frac{1-\alpha(\gamma_{TE}) e^{ik_{\z,1}2d}}{1+\alpha(\gamma_{TE}) e^{ik_{\z,1}2d}},\frac{1-\alpha(\gamma_{TM}) e^{ik_{\z,1}2d}}{1+\alpha(\gamma_{TM}) e^{ik_{\z,1}2d}}\right)
 \]
 % {
 %   \color{blue}Valeur particulière en $Z_d = -\gamma$. À étudier si l'occasion se présente. 
@@ -312,6 +316,6 @@ P = \dfrac{ik_1}{k_{\z,1}}diag\left(\dfrac{1-\alpha(\gamma_{TE}) e^{ik_{\z,1}2d}
 Alors, la condition d'impédance en $\z=0$ est
 \begin{align}
 \label{eq:coeff_ref:mult_couch:imped}
-Z = i \dfrac{\eta_1}{k_1^2}P\left(k_1^2 I-\LR\right)
+Z = i \frac{\eta_1}{k_1^2}P\left(k_1^2 I-\LR\right)
 \end{align}
 où $\LR$ est défini de la même façon qu'en \eqref{eq:coeff_ref:mat_z:imped}
