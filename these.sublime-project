@@ -28,7 +28,7 @@
             "shell_cmd" : "evince $project_path/main.pdf",
           },
           "windows":{
-            "shell_cmd": "\"C:\\Program Files\\SumatraPDF\\SumatraPDF.exe\" \"$project_path\\latex_out\\main.pdf\"",
+            "shell_cmd": "\"C:\\Program Files\\SumatraPDF\\SumatraPDF.exe\" \"$project_path\\latex_out\\these_payen_2019.pdf\"",
           }
         },
       ],
