@@ -88,10 +88,10 @@ suivante $\ddr{x_3}{}X = M X$ où
     H_2 \\
     \end{bmatrix}\,
     M = \begin{bmatrix}
-    0 & 0 & \frac{k_1k_2}{i\w\eps} & -i\left(\w\mu - \frac{k_1^2}{\w\eps}\right)\\
-    0 & 0 & i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -\frac{k_1k_2}{i\w\eps}\\
-    -\frac{k_1k_2}{i\w\mu} & i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) & 0 & 0 \\
-    -i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{i\w\mu} & 0 & 0 \\
+    0 & 0 & i\frac{k_1k_2}{\w\eps} & i\left(\w\mu - \frac{k_1^2}{\w\eps}\right)\\
+    0 & 0 & -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -i\frac{k_1k_2}{\w\eps}\\
+    -i\frac{k_1k_2}{\w\mu} & -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) & 0 & 0 \\
+    i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) & i\frac{k_1k_2}{\w\mu} & 0 & 0 \\
     \end{bmatrix}
 \end{equation}
 
@@ -102,18 +102,18 @@ Pour résoudre cette EDO, nous allons chercher les vecteurs propres $V_i$ et les
 On pose 
 \begin{equation}
     A = \begin{bmatrix}
-        \frac{k_1k_2}{i\w\eps} & -\left(i\w\mu + \frac{k_1^2}{i\w\eps}\right) \\
-        \left(i\w\mu + \frac{k_2^2}{i\w\eps}\right) & -\frac{k_1k_2}{i\w\eps} \\
+        i\frac{k_1k_2}{i\w\eps} & i\left(\w\mu - \frac{k_1^2}{\w\eps}\right) \\
+        -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -i\frac{k_1k_2}{i\w\eps} \\
     \end{bmatrix}
     \quad
     B = \begin{bmatrix}
-        -\frac{k_1k_2}{i\w\mu} & \left(i\w\eps + \frac{k_1^2}{i\w\mu}\right) \\
-        -\left(i\w\eps + \frac{k_2^2}{i\w\mu}\right) & \frac{k_1k_2}{i\w\mu} \\
+        -i\frac{k_1k_2}{\w\mu} & -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
+        i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) & i\frac{k_1k_2}{\w\mu} \\
     \end{bmatrix}
 \end{equation}
-Le déterminant de M est
+Le déterminant de $M-\lambda I$ est
 \begin{align*}
-    \det(M) &= 
+    \det(M-\lambda I) &= 
     \begin{vmatrix}
         -\lambda I & A \\
         B & -\lambda I
@@ -127,7 +127,11 @@ On note alors
 k_3=\sqrt{\w^2\eps\mu - k_1^2 -k_2^2}
 \end{equation}
 
-Les valeurs propres sont alors $\lambda_\pm = \pm i k_3$. Les espaces propres associés sont de dimension 2, on a 
+Les valeurs propres sont alors 
+\begin{equation}
+    \lambda_\pm = \pm i k_3
+\end{equation}
+Les espaces propres associés sont de dimension 2, on a 
 
 \begin{align}
 \Ker(M-\lambda_+I)=\Vect{V_+;W_+} \\
@@ -136,14 +140,14 @@ Les valeurs propres sont alors $\lambda_\pm = \pm i k_3$. Les espaces propres as
     \lambda_+ \\
         0 \\
         -\frac{k_1k_2}{i\w\mu} \\
-        -i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
+        i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
     \end{bmatrix}
     \,
     W_+ = 
         \begin{bmatrix}
         0 \\
         \lambda_+ \\
-        i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
+        -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
         \frac{k_1k_2}{i\w\mu} \\
     \end{bmatrix}
 \end{align}
@@ -154,16 +158,16 @@ Les valeurs propres sont alors $\lambda_\pm = \pm i k_3$. Les espaces propres as
     \begin{bmatrix}
         \lambda_- \\
         0 \\
-        -\frac{k_1k_2}{i\w\eps} \\
-        -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) \\
+        -\frac{k_1k_2}{i\w\mu} \\
+        i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
     \end{bmatrix}
     \,
     W_- = 
     \begin{bmatrix}
         0 \\
         \lambda_- \\
-        i\left(\w\mu - \frac{k_1^2}{\w\eps}\right) \\
-        \frac{k_1k_2}{i\w\eps} \\
+        -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
+        \frac{k_1k_2}{i\w\mu} \\
     \end{bmatrix}
 \end{align}
 
@@ -172,7 +176,7 @@ On a donc une solution générale du système
     X(x_3) = c_1e^{\lambda_+ x_3}V_+  + c_2e^{\lambda_+ x_3}W_+ + c_3e^{\lambda_- x_3}V_- +c_4e^{\lambda_- x_3}W_- \quad c_i \in \CC
 \end{equation}
 
-
+\TODO{La matrice et les valeurs propres on été vérifié. Pas ce qui suit}
 
 Dans un premier temps, nous allons utiliser la condition limite 
 \begin{equation}
@@ -204,24 +208,26 @@ Immédiatement, on injecte ce résultat pour obtenir
 
 Ainsi
 \begin{align}
- E_1(0) &= ik_3\left(e^{i2dk_3} - 1\right)c_3 \\
- E_2(0) &= ik_3\left(e^{i2dk_3} - 1\right)c_4 \\
- H_1(0) &= 
-     ik_1k_2\left(\frac{e^{i2dk_3}}{\w\mu} + \frac{1}{\w\eps}\right)c_3 
-    + i\left( \left(\w\eps-\frac{k_1^2}{\w\mu}\right)e^{i2dk_3} + \left(\w\mu-\frac{k_1^2}{\w\eps}\right) \right)c_4 \\
- H_2(0) &=
-    - i\left( \left(\w\eps-\frac{k_2^2}{\w\mu}\right)e^{i2dk_3} + \left(\w\mu-\frac{k_2^2}{\w\eps}\right) \right)c_3
-    -i k_1k_2\left(\frac{e^{i2dk_3}}{\w\mu} + \frac{1}{\w\eps}\right)c_4
+     E_1(0) &= ik_3\left(e^{i2dk_3} - 1\right)c_3 \\
+     E_2(0) &= ik_3\left(e^{i2dk_3} - 1\right)c_4 \\
+     H_1(0) &= 
+         \frac{ik_1k_2}{\w\mu}\left(e^{i2dk_3} + 1\right)c_3 
+        + i\left(\w\eps-\frac{k_1^2}{\w\mu}\right)\left( e^{i2dk_3} + 1 \right)c_4 \\
+     H_2(0) &=
+        - i\left(\w\eps-\frac{k_2^2}{\w\mu}\right)\left( e^{i2dk_3} + 1 \right)c_3
+        -\frac{ik_1k_2}{\w\mu}\left(e^{i2dk_3} + 1\right)c_4
 \end{align}
 
 Notons
 \begin{align}
-C &= 
-\begin{bmatrix}
-- i\left( \left(\w\eps-\frac{k_2^2}{\w\mu}\right)e^{i2dk_3} + \left(\w\mu-\frac{k_2^2}{\w\eps}\right) \right) & -i k_1k_2\left(\frac{e^{i2dk_3}}{\w\mu} + \frac{1}{\w\eps}\right)\\
-- ik_1k_2\left(\frac{e^{i2dk_3}}{\w\mu} + \frac{1}{\w\eps}\right) &  - i\left( \left(\w\eps-\frac{k_1^2}{\w\mu}\right)e^{i2dk_3} + \left(\w\mu-\frac{k_1^2}{\w\eps}\right) \right)
-\end{bmatrix}
+    C &= i\left( e^{i2dk_3} + 1 \right)
+    \begin{bmatrix}
+        \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
+        \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
+    \end{bmatrix}
 \end{align}
+
+Comme $k_3$ est complexe et non nul, alors $\det(C) = -i\left( e^{i2dk_3} + 1 \right)k_3^2\frac{\eps}{\mu}$ n'est jamais nul.
 
 On remarque que 
 
@@ -236,8 +242,8 @@ On remarque que
         c_4 \\
     \end{bmatrix}\\
     \begin{bmatrix}
-        H_2(0)\\
-        -H_1(0)\\
+        -H_2(0)\\
+        H_1(0)\\
     \end{bmatrix}
     & = C
     \begin{bmatrix}
@@ -258,15 +264,26 @@ On définit l'opérateur d'impédance comme la matrice $Z$ telle que
         Z_{21} & Z_{22} \\
     \end{bmatrix}
     \begin{bmatrix}
-        H_2(0)\\
-        -H_1(0)\\
+        -H_2(0)\\
+        H_1(0)\\
     \end{bmatrix}
 \end{equation}
 
 On déduit donc que
-\begin{equation}
-    Z =  ik_3e^{i2dk_3} C^{-1}
-\end{equation}
+\begin{align}
+    Z &=  ik_3\left( e^{i2dk_3} -1 \right) C^{-1} \\
+    &=  - \frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}  
+        \begin{bmatrix}
+           \left(\w\eps-\frac{k_1^2}{\w\mu}\right)  & -\frac{k_1k_2}{\w\mu}\\
+            -\frac{k_1k_2}{\w\mu} &  \left(\w\eps-\frac{k_2^2}{\w\mu}\right)
+        \end{bmatrix}\\
+    &= i\frac{\tan\left(k_3d\right)}{k\eta}
+        \begin{bmatrix}
+           k^2-k_1^2  & -k_1k_2\\
+            -k_1k_2 & k^2-k_2^2\\
+        \end{bmatrix}
+\end{align}
+
 
 \TODO{Prouver que C est inversible. Calculer son inverse. Retrouver les résultats connus}
 
