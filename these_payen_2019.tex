@@ -1,4 +1,4 @@
-\documentclass[11pt,%
+\documentclass[12pt,%
     %draft,% seulement brouillon
     twoside,% twoside si document final
     a4paper,%
@@ -21,6 +21,7 @@
 
 % On parametrise le PDF
 \hypersetup{
+    bookmarks=true, % show bookmark panel
     pdffitwindow=false,     % window fit to page when opened
     pdfstartview={FitH},    % fits the width of the page to the window
     pdftitle={\doctitlefr},    % title
@@ -42,10 +43,12 @@
     \frontmatter
         \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
         \input{tex/liminaires/couverture}
-        \include{liminaires}
+        % \include{liminaires}
         \setcounter{secnumdepth}{5} % on numérote tous les niveaux de sections
         \setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
         \dominitoc
+        \hypertarget{tableofcontent}{}%
+        \bookmark[dest={tableofcontent},level=0]{Table des matières}%
         \tableofcontents
         \include{index}
         \restoregeometry
