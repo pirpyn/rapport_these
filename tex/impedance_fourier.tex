@@ -139,7 +139,7 @@ Les espaces propres associés sont de dimension 2, on a
     \begin{bmatrix}
     \lambda_+ \\
         0 \\
-        -\frac{k_1k_2}{i\w\mu} \\
+        -i\frac{k_1k_2}{\w\mu} \\
         i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
     \end{bmatrix}
     \,
@@ -148,7 +148,7 @@ Les espaces propres associés sont de dimension 2, on a
         0 \\
         \lambda_+ \\
         -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
-        \frac{k_1k_2}{i\w\mu} \\
+        i\frac{k_1k_2}{\w\mu} \\
     \end{bmatrix}
 \end{align}
 
@@ -158,7 +158,7 @@ Les espaces propres associés sont de dimension 2, on a
     \begin{bmatrix}
         \lambda_- \\
         0 \\
-        -\frac{k_1k_2}{i\w\mu} \\
+        -i\frac{k_1k_2}{\w\mu} \\
         i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
     \end{bmatrix}
     \,
@@ -167,7 +167,7 @@ Les espaces propres associés sont de dimension 2, on a
         0 \\
         \lambda_- \\
         -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
-        \frac{k_1k_2}{i\w\mu} \\
+        i\frac{k_1k_2}{\w\mu} \\
     \end{bmatrix}
 \end{align}
 
@@ -175,8 +175,6 @@ On a donc une solution générale du système
 \begin{equation}
     X(x_3) = c_1e^{\lambda_+ x_3}V_+  + c_2e^{\lambda_+ x_3}W_+ + c_3e^{\lambda_- x_3}V_- +c_4e^{\lambda_- x_3}W_- \quad c_i \in \CC
 \end{equation}
-
-\TODO{La matrice et les valeurs propres on été vérifié. Pas ce qui suit}
 
 Dans un premier temps, nous allons utiliser la condition limite 
 \begin{equation}
@@ -189,7 +187,7 @@ Dans un premier temps, nous allons utiliser la condition limite
         c_1 e^{-\lambda_+ d} \lambda_{+} + c_3 e^{-\lambda_- d} \lambda_{-} \\
         c_2 e^{-\lambda_+ d} \lambda_{+} + c_4 e^{-\lambda_- d} \lambda_{-}
     \end{bmatrix}
-    =    
+    =
     \begin{bmatrix}
         0\\
         0\\
@@ -211,23 +209,23 @@ Ainsi
      E_1(0) &= ik_3\left(e^{i2dk_3} - 1\right)c_3 \\
      E_2(0) &= ik_3\left(e^{i2dk_3} - 1\right)c_4 \\
      H_1(0) &= 
-         \frac{ik_1k_2}{\w\mu}\left(e^{i2dk_3} + 1\right)c_3 
-        + i\left(\w\eps-\frac{k_1^2}{\w\mu}\right)\left( e^{i2dk_3} + 1 \right)c_4 \\
+        -\frac{ik_1k_2}{\w\mu}\left(e^{i2dk_3} + 1\right)c_3 
+        - i\left(\w\eps-\frac{k_1^2}{\w\mu}\right)\left( e^{i2dk_3} + 1 \right)c_4 \\
      H_2(0) &=
-        - i\left(\w\eps-\frac{k_2^2}{\w\mu}\right)\left( e^{i2dk_3} + 1 \right)c_3
-        -\frac{ik_1k_2}{\w\mu}\left(e^{i2dk_3} + 1\right)c_4
+         i\left(\w\eps-\frac{k_2^2}{\w\mu}\right)\left( e^{i2dk_3} + 1 \right)c_3
+        + \frac{ik_1k_2}{\w\mu}\left(e^{i2dk_3} + 1\right)c_4
 \end{align}
 
 Notons
 \begin{align}
-    C &= i\left( e^{i2dk_3} + 1 \right)
+    C &=
     \begin{bmatrix}
         \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
         \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
     \end{bmatrix}
 \end{align}
 
-Comme $k_3$ est complexe et non nul, alors $\det(C) = -i\left( e^{i2dk_3} + 1 \right)k_3^2\frac{\eps}{\mu}$ n'est jamais nul.
+Comme $k_3$ est complexe et non nul, alors $\det(C) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ n'est jamais nul.
 
 On remarque que 
 
@@ -245,7 +243,7 @@ On remarque que
         -H_2(0)\\
         H_1(0)\\
     \end{bmatrix}
-    & = C
+    & =  -i\left( e^{i2dk_3} + 1 \right) C
     \begin{bmatrix}
         c_3 \\
         c_4 \\
@@ -271,26 +269,101 @@ On définit l'opérateur d'impédance comme la matrice $Z$ telle que
 
 On déduit donc que
 \begin{align}
-    Z &=  ik_3\left( e^{i2dk_3} -1 \right) C^{-1} \\
-    &=  - \frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}  
+    Z &=  - \frac{\eta^2}{k_3}\frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}  
         \begin{bmatrix}
            \left(\w\eps-\frac{k_1^2}{\w\mu}\right)  & -\frac{k_1k_2}{\w\mu}\\
             -\frac{k_1k_2}{\w\mu} &  \left(\w\eps-\frac{k_2^2}{\w\mu}\right)
         \end{bmatrix}\\
-    &= i\frac{\tan\left(k_3d\right)}{k\eta}
+    &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
         \begin{bmatrix}
            k^2-k_1^2  & -k_1k_2\\
             -k_1k_2 & k^2-k_2^2\\
         \end{bmatrix}
 \end{align}
 
-
-\TODO{Prouver que C est inversible. Calculer son inverse. Retrouver les résultats connus}
-
 \subsection{Cas d'un objet plan infini recouvert de plusieurs couches de matériaux homogènes isotropes}
+
+On remplace la condition en $z=-d$ par $\vE_t(-d) = \mat {Z_{-d}} \vn \times \vH$.
+
+\begin{equation}
+    \begin{bmatrix}
+        E_1(-d)\\
+        E_2(-d)\\
+    \end{bmatrix}
+    =
+    \mat {Z_{-d}} 
+    \begin{bmatrix}
+        -H_2(0)\\
+        H_1(0)\\
+    \end{bmatrix}
+\end{equation}
+\begin{equation}
+    \begin{bmatrix}
+        E_1(-d)\\
+        E_2(-d)\\
+    \end{bmatrix}
+    = \lambda_{+}
+    \begin{bmatrix}
+        c_1 e^{-\lambda_+ d} - c_3 e^{-\lambda_- d} \\
+        c_2 e^{-\lambda_+ d} - c_4 e^{-\lambda_- d}
+    \end{bmatrix}
+\end{equation}
+\begin{equation}
+    \begin{bmatrix}
+        -H_2(0)\\
+        H_1(0)\\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        -i\left(\w\eps-\frac{k_2^2}{\w\mu}\right)\left(c_1 e^{-\lambda_+ d} + c_3 e^{-\lambda_- d}\right) - i\frac{k_1k_2}{\w\mu}\left(c_2e^{-\lambda_+ d} + c_4e^{-\lambda_- d}\right)\\
+        -i\frac{k_1k_2}{\w\mu}\left(c_1 e^{-\lambda_+ d} + c_3 e^{-\lambda_- d} \right) - i\left(\w\eps-\frac{k_1^2}{\w\mu}\right)\left(c_2e^{-\lambda_+ d} + c_4e^{-\lambda_- d}\right)\\
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    \begin{bmatrix}
+        E_1(-d)\\
+        E_2(-d)\\
+    \end{bmatrix}
+    = ik_3\left( e^{-\lambda_+ d}
+    \begin{bmatrix}
+        c_1\\
+        c_2
+    \end{bmatrix}
+    - e^{-\lambda_- d}
+    \begin{bmatrix}
+        c_3 \\
+        c_4 
+    \end{bmatrix}
+    \right)
+\end{equation}
+
+\begin{multline}
+    \begin{bmatrix}
+        -H_2(0)\\
+        H_1(0)\\
+    \end{bmatrix}
+    =
+    -i\begin{bmatrix}
+        \left(\w\eps-\frac{k_2^2}{\w\mu}\right)& \frac{k_1k_2}{\w\mu} \\
+        \frac{k_1k_2}{\w\mu}& \left(\w\eps-\frac{k_1^2}{\w\mu}\right) \\
+    \end{bmatrix}
+    \left(
+    e^{-\lambda_+ d} 
+        \begin{bmatrix}
+        c_1\\
+        c_2
+    \end{bmatrix} + 
+    e^{-\lambda_- d}
+    \begin{bmatrix}
+        c_3 \\
+        c_4 \\
+    \end{bmatrix}
+    \right)
+\end{multline}
 
 \TODO{Changer la condition limite en $\z=-d$. Expliciter le résultat}
 
 \subsection{Cas d'un objet cylindrique recouvert d'une couche de matériau homogène isotrope}
 
-\TODO{Passer en cylindrique. Développer rot rot et trouver des équations de bessel pour Ez Hz. Déduire Er,Hr,Eo,Ho. Trouver Z}
+\TODO{Passer en cylindrique. Développer rot rot et trouver des équations de Bessel pour Ez Hz. Déduire Er,Hr,Eo,Ho. Trouver Z}
