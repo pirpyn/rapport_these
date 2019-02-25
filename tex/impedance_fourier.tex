@@ -366,4 +366,21 @@ On remplace la condition en $z=-d$ par $\vE_t(-d) = \mat {Z_{-d}} \vn \times \vH
 
 \subsection{Cas d'un objet cylindrique recouvert d'une couche de matériau homogène isotrope}
 
+En coordonnée cylindrique $(r,\theta,z)$, on a
+\begin{equation}
+\vrot \vE = \left(\frac{1}{r}\ddr{\theta}{E_z} - \ddr{z}{E_\theta}\right)\v{e_r} + 
+\left(\ddr{z}{E_r} - \ddr{r}{E_z}\right)\v{e_\theta} +
+\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-\ddr{\theta}{E_r}\right)\v{e_z}
+\end{equation}
+
+Sans pertes de généralité, on peut réaliser une transformée de Fourier en $z$ puisque l'on est invariant par translation et en $\theta$ car on est invariant par rotation. Cependant, le multiplicateur de Fourier associé à la coordonnée $\theta$ doit être un entier pour assurée la périodicité. On le note $n$. Ainsi on réécrit en identifiant $\vE \equiv \hat \vE$:
+
+\begin{equation}
+\vrot \vE = \left(\frac{1}{r}nE_z - k_zE_\theta\right)\v{e_r} + 
+\left(k_zE_r - \ddr{r}{E_z}\right)\v{e_\theta} +
+\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-nE_r\right)\v{e_z}
+\end{equation}
+
+On remarque que dans ce cas, la méthode utilisée pour le plan aboutie à une EDO à coefficients non constant de type $r^2\ddr{r}{X}(r) = M(r)X(r)$. Une solution générale de ce problème sur $\left]0,+\infty\right[$ nécessite de connaître la primitive de $\frac{M(r)}{r^2}$
+
 \TODO{Passer en cylindrique. Développer rot rot et trouver des équations de Bessel pour Ez Hz. Déduire Er,Hr,Eo,Ho. Trouver Z}
