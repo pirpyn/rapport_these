@@ -1,5 +1,5 @@
 \section{Analyse de Fourier de l'opérateur d'impédance}
-Soit $\OO$ un domaine fermé, bornée, de frontière régulière. Supposons que ces champs soient $L^2$ en espace et en temps: $(\vE,\vH) \in L^2(\OO \times \RR_+) \cap L^2(\OO^c\times\RR_+)$ et vérifient les équations de Maxwell:
+Soit $\OO$ un domaine fermé, bornée, de frontière régulière. Supposons que ces champs soient $L^2$ en espace et en temps: $(\vE(\v{x},t),\vH(\v{x},t)) \in L^2(\OO \times \RR_+) \cap L^2(\OO^c\times\RR_+)$ et vérifient les équations de Maxwell:
 \begin{equation}
     \left\lbrace 
     \begin{matrix}
@@ -9,20 +9,29 @@ Soit $\OO$ un domaine fermé, bornée, de frontière régulière. Supposons que 
     \right.
 \end{equation}
 
-Puisque ces champs $\vE(\v{x}),\vH(\v{x})$ sont $L^2$, on peut définir leurs transformées de Fourier $\hat{\vE}(\v{k}), \hat{\vH}(\v{k})$ (\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995}) telle que
+Puisque ces champs $\vE(\v{x},t),\vH(\v{x},t)$ sont $L^2$, on peut définir leurs transformées de Fourier $\hat{\vE}(\v{k},\w), \hat{\vH}(\v{k},\w)$ (\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995}) telle que
+
 \begin{equation}
-    \hat{\vE} (\v{k}) = \frac{1}{\sqrt{2\pi}^n}\int_{\RR^n} e^{-i(\v{k} \cdot \v{x})}\vE(\v{x}) dx\,, \quad dx = \prod\limits_{i=1}^n dx_i
+    \hat{\vE} (\v{k},\w) = \frac{1}{\sqrt{2\pi}^n}\int_{\RR^n} e^{-i(\v{k} \cdot \v{x}+\w t)}\vE(\v{x},t) dxdt\,, \quad dx = \prod\limits_{i=1}^n dx_i
 \end{equation}
 
 La méthode pour trouver une expression de l'opérateur d'impédance est la suivante.
 \begin{itemize}
-\item Faire une transformée partielle des champs dépendante de la géométrie.
-\item Obtenir le système d'équations en utilisant les relations multiplicative des dérivées de transformée de Fourier.
+\item Faire une transformée de Fourier partielle des champs, dépendante de la géométrie.
+\item Réécrire le système d'équation de Maxwell simplifié.
 \item Obtenir des EDO simple à résoudre sur les composantes des champs.
-\item Utiliser les conditions limites pour les déduire ainsi que l'opérateur d'impédance
+\item Utiliser les conditions limites pour les déduire 
+\item En déduire l'opérateur d'impédance en Fourier.
 \end{itemize}
 
-Dans ce qui suit, on réalise au moins une transformée partielle en temps. La variable de Fourier associée est $\omega$, et donc l'opérateur $\ddr{t}{~}$ est remplacé par $i\omega$. On étudie donc le problème (les champs $\vE,\vH$ qui suivent sont les transformées partielles de Fourier en temps par abus de notation)
+Dans ce qui suit, on réalise au moins une transformée partielle en temps. La variable de Fourier associée est $\w$, et donc l'opérateur $\ddr{t}{~}$ est remplacé par $i\w$.
+
+\begin{tcolorbox}
+On ne différencie pas les champs $\vE,\vH$ de leurs transformées de Fourier $\hat \vE, \hat \vH$.
+\end{tcolorbox}
+
+On va donc utiliser le système d'équations de Maxwell harmonique:
+
 \begin{equation}
     \left\lbrace 
     \begin{matrix}
@@ -30,8 +39,12 @@ Dans ce qui suit, on réalise au moins une transformée partielle en temps. La v
     \vrot \vH = -i \omega \eps \vE
     \end{matrix}
     \right.
+    \label{eq:imp_fourier:intro:maxwell_harmonique}
 \end{equation}
-\subsection{Le cas d'un objet plan infini recouvert d'une couche de matériau homogène isotrope}
+
+
+\subsection{Forme générale des solutions pour un plan infini}
+
 Ce cas est très bien documenté (\cite{senior_approximate_1995},\cite{hoppe_impedance_1995}) et pose la méthodologie à adopter pour les objets courbes. 
 
 Dans un premier temps, on peut sans perte de généralités faire une rotation du repère pour avoir le plan orthogonal à $\v e_3$. Comme il est infini dans les directions $\v e_1, \v e_2$ et que le matériau est homogène isotrope, on utilise la transformée partielle en $x_1, x_2$ seulement.
@@ -48,17 +61,7 @@ Dans un premier temps, on peut sans perte de généralités faire une rotation d
 \end{tikzpicture}
 \end{figure}
 
-On travaille donc avec 
-\begin{align}
-\hat{\vE} (x_3) &= \int_{\RR^4} e^{-i(k_1x_1+k_2x_2 )}\vE(x_1,x_2,x_3) dx_1dx_2dk_1dk_2\\
-\hat{\vH} (x_3) &= \int_{\RR^4} e^{-i(k_1x_1+k_2x_2 )}\vH(x_1,x_2,x_3) dk_1dx_2dx_1dk_2
-\end{align}
-
-\begin{tcolorbox}
-Par abus de notation, on ne différencie pas les champs $\vE,\vH$ de leurs transformées de Fourier $\hat \vE, \hat \vH$.
-\end{tcolorbox}
-
-En explicitant par composante l'opérateur $\vrot$ , le problème est 
+En explicitant par composante l'opérateur $\vrot$ , le problème \eqref{eq:imp_fourier:intro:maxwell_harmonique} s'écrit  
 \begin{align*}
     \left\lbrace 
     \begin{matrix}
@@ -176,7 +179,78 @@ On a donc une solution générale du système
     X(x_3) = c_1e^{\lambda_+ x_3}V_+  + c_2e^{\lambda_+ x_3}W_+ + c_3e^{\lambda_- x_3}V_- +c_4e^{\lambda_- x_3}W_- \quad c_i \in \CC
 \end{equation}
 
-Dans un premier temps, nous allons utiliser la condition limite 
+On exprime les champs $\vE_t(x)$ et $\v{e_3} \times \vH_t(x)$ car ce sont des quantités qui nous intéresse:
+
+\begin{align}
+    \begin{bmatrix}
+        E_1(x)\\
+        E_2(x)\\
+    \end{bmatrix}
+    &=
+    \begin{bmatrix}
+        c_1 e^{\lambda_+ x} \lambda_{+} + c_3 e^{\lambda_- x} \lambda_{-} \\
+        c_2 e^{\lambda_+ x} \lambda_{+} + c_4 e^{\lambda_- x} \lambda_{-}
+    \end{bmatrix}\\
+    &=ik_3\left( e^{ik_3 x}
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    -e^{-ik_3 x}
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+    \right)
+    \label{eq:imp_fourier:plan:generale_E}
+\end{align}
+
+\begin{align}
+    \begin{bmatrix}
+        -H_2(x)\\
+        H_1(x)\\
+    \end{bmatrix}
+    &=
+    \begin{bmatrix}
+        -i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \left( c_1 e^{ik_3 x} + c_3 e^{-ik_3 x} \right) - i\frac{k_1k_2}{\w\mu} \left( c_2 e^{ik_3 x} + c_4 e^{-ik_3 x} \right)
+        \\
+        -i\frac{k_1k_2}{\w\mu} \left( c_1 e^{ik_3 x} + c_3 e^{-ik_3 x} \right) - i\left(\w\eps - \frac{k_1^2}{\w\mu}\right)\left( c_2 e^{ik_3 x} + c_4 e^{-ik_3 x} \right)
+    \end{bmatrix} \\
+    &=-i
+    \begin{bmatrix}
+    \left(\w\eps - \frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}
+    \\
+    \frac{k_1k_2}{\w\mu} & \left(\w\eps - \frac{k_1^2}{\w\mu}\right) 
+    \end{bmatrix}
+    \left(
+        e^{ik_3 x}
+        \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix}
+        +e^{-ik_3 x}
+        \begin{bmatrix}
+            c_3 \\
+            c_4
+        \end{bmatrix}
+    \right)
+    \label{eq:imp_fourier:plan:generale_H}
+\end{align}
+
+Notons
+\begin{align}
+    \mat{C} &=
+    \begin{bmatrix}
+        \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
+        \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
+    \end{bmatrix}
+\end{align}
+
+Comme $k_3$ est complexe et non nul, alors $\det(\mat{C}) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ n'est jamais nul. Nous verrons que cette propriété sera importante.
+
+\subsection{Solutions particulières du plan infini recouvert d'une couche de matériau homogène isotrope}
+
+Nous utilisons la condition limite 
 \begin{equation}
     \begin{bmatrix}
         E_1(-d)\\
@@ -184,92 +258,57 @@ Dans un premier temps, nous allons utiliser la condition limite
     \end{bmatrix}
     =
     \begin{bmatrix}
-        c_1 e^{-\lambda_+ d} \lambda_{+} + c_3 e^{-\lambda_- d} \lambda_{-} \\
-        c_2 e^{-\lambda_+ d} \lambda_{+} + c_4 e^{-\lambda_- d} \lambda_{-}
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
         0\\
         0\\
     \end{bmatrix}
 \end{equation}
+
+De \eqref{eq:imp_fourier:plan:generale_E}, on déduit
+
 \begin{align}
-    c_1 &= -\frac{\lambda_-}{\lambda_+}\frac{e^{-\lambda_-d}}{e^{-\lambda_+d}}c_3 = e^{i2k_3d}c_3\\
-    c_2 &= -\frac{\lambda_-}{\lambda_+}\frac{e^{-\lambda_-d}}{e^{-\lambda_+d}}c_4 = e^{i2k_3d}c_4
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    = e^{2ik_3 d}
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
 \end{align}
 
-
-Immédiatement, on injecte ce résultat pour obtenir
+On définit l'opérateur d'impédance la matrice $\mat Z$ tel que 
 \begin{equation}
-    X(x_3) = c_3\left(e^{ik_3(x_3 + 2d)}V_+ + e^{-ik_3x_3}V_- \right)  + c_4\left(e^{ik_3(x_3 + 2d)}W_+ + e^{-ik_3 x_3}W_- \right) \quad c_i \in \CC
+    \vE_t(0) = \mat Z \left(\v{e_3} \times \vH_t(0)\right)
 \end{equation}
 
-Ainsi
-\begin{align}
-     E_1(0) &= ik_3\left(e^{i2dk_3} - 1\right)c_3 \\
-     E_2(0) &= ik_3\left(e^{i2dk_3} - 1\right)c_4 \\
-     H_1(0) &= 
-        -\frac{ik_1k_2}{\w\mu}\left(e^{i2dk_3} + 1\right)c_3 
-        - i\left(\w\eps-\frac{k_1^2}{\w\mu}\right)\left( e^{i2dk_3} + 1 \right)c_4 \\
-     H_2(0) &=
-         i\left(\w\eps-\frac{k_2^2}{\w\mu}\right)\left( e^{i2dk_3} + 1 \right)c_3
-        + \frac{ik_1k_2}{\w\mu}\left(e^{i2dk_3} + 1\right)c_4
-\end{align}
-
-Notons
-\begin{align}
-    C &=
-    \begin{bmatrix}
-        \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
-        \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
-    \end{bmatrix}
-\end{align}
-
-Comme $k_3$ est complexe et non nul, alors $\det(C) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ n'est jamais nul.
-
-On remarque que 
+De ce qui précède on déduit que,
 
 \begin{align}
     \begin{bmatrix}
         E_1(0)\\
         E_2(0)\\
     \end{bmatrix}
-    & = ik_3\left(e^{i2dk_3} - 1\right)
+    &=ik_3\left( e^{i2k_3 d} -1 \right)
     \begin{bmatrix}
         c_3 \\
-        c_4 \\
-    \end{bmatrix}\\
+        c_4
+    \end{bmatrix} \\
     \begin{bmatrix}
         -H_2(0)\\
         H_1(0)\\
     \end{bmatrix}
-    & =  -i\left( e^{i2dk_3} + 1 \right) C
+    & = - i\left(e^{i2k_3 d} +1 \right)
+    \mat{C}
     \begin{bmatrix}
-        c_3 \\
-        c_4 \\
+    c_3 \\
+    c_4
     \end{bmatrix}
 \end{align}
-
-On définit l'opérateur d'impédance comme la matrice $Z$ telle que 
-\begin{equation}
-    \begin{bmatrix}
-        E_1(0)\\
-        E_2(0)\\
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-        Z_{11} & Z_{12} \\
-        Z_{21} & Z_{22} \\
-    \end{bmatrix}
-    \begin{bmatrix}
-        -H_2(0)\\
-        H_1(0)\\
-    \end{bmatrix}
-\end{equation}
 
 On déduit donc que
 \begin{align}
-    Z &=  - \frac{\eta^2}{k_3}\frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}  
+    \mat{Z} &=  - \frac{\eta^2}{k_3}\frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}  
         \begin{bmatrix}
            \left(\w\eps-\frac{k_1^2}{\w\mu}\right)  & -\frac{k_1k_2}{\w\mu}\\
             -\frac{k_1k_2}{\w\mu} &  \left(\w\eps-\frac{k_2^2}{\w\mu}\right)
@@ -281,89 +320,214 @@ On déduit donc que
         \end{bmatrix}
 \end{align}
 
-\subsection{Cas d'un objet plan infini recouvert de plusieurs couches de matériaux homogènes isotropes}
 
-On remplace la condition en $z=-d$ par $\vE_t(-d) = \mat {Z_{-d}} \vn \times \vH$.
+\subsection{Solutions particulières du plan infini recouvert de couches de matériaux homogènes isotropes}
 
+En premier lieu, une empilement donné peut toujours se ramener à un empilement à deux couches, où l'on impose $z=-d$ la condition:
 \begin{equation}
     \begin{bmatrix}
         E_1(-d)\\
         E_2(-d)\\
     \end{bmatrix}
     =
-    \mat {Z_{-d}} 
+    \mat {Z_{d}} 
     \begin{bmatrix}
-        -H_2(0)\\
-        H_1(0)\\
+        -H_2(-d)\\
+        H_1(-d)\\
     \end{bmatrix}
 \end{equation}
-\begin{equation}
-    \begin{bmatrix}
-        E_1(-d)\\
-        E_2(-d)\\
-    \end{bmatrix}
-    = \lambda_{+}
-    \begin{bmatrix}
-        c_1 e^{-\lambda_+ d} - c_3 e^{-\lambda_- d} \\
-        c_2 e^{-\lambda_+ d} - c_4 e^{-\lambda_- d}
-    \end{bmatrix}
-\end{equation}
-\begin{equation}
-    \begin{bmatrix}
-        -H_2(0)\\
-        H_1(0)\\
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-        -i\left(\w\eps-\frac{k_2^2}{\w\mu}\right)\left(c_1 e^{-\lambda_+ d} + c_3 e^{-\lambda_- d}\right) - i\frac{k_1k_2}{\w\mu}\left(c_2e^{-\lambda_+ d} + c_4e^{-\lambda_- d}\right)\\
-        -i\frac{k_1k_2}{\w\mu}\left(c_1 e^{-\lambda_+ d} + c_3 e^{-\lambda_- d} \right) - i\left(\w\eps-\frac{k_1^2}{\w\mu}\right)\left(c_2e^{-\lambda_+ d} + c_4e^{-\lambda_- d}\right)\\
-    \end{bmatrix}
-\end{equation}
+
+D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:generale_H}, on déduit que
 
 \begin{equation}
     \begin{bmatrix}
         E_1(-d)\\
         E_2(-d)\\
     \end{bmatrix}
-    = ik_3\left( e^{-\lambda_+ d}
+    = ik_3\left( e^{-ik_3 d}
     \begin{bmatrix}
-        c_1\\
+        c_1 \\
         c_2
     \end{bmatrix}
-    - e^{-\lambda_- d}
+    -e^{ik_3 d}
     \begin{bmatrix}
         c_3 \\
-        c_4 
+        c_4
     \end{bmatrix}
     \right)
+\end{equation}
+
+\begin{equation}
+    \begin{bmatrix}
+        -H_2(-d)\\
+        H_1(-d)\\
+    \end{bmatrix}
+    =-i
+    \mat{C}
+    \left(
+        e^{-ik_3 d}
+        \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix}
+        +e^{ik_3 d}
+        \begin{bmatrix}
+            c_3 \\
+            c_4
+        \end{bmatrix}
+    \right)
+\end{equation}
+
+\begin{equation}
+    ik_3\left( e^{-ik_3 d}
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    -e^{ik_3 d}
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+    \right)
+    =-i\mat{Z_d}\mat{C}
+    \left(
+        e^{-ik_3 d}
+        \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix}
+        +e^{ik_3 d}
+        \begin{bmatrix}
+            c_3 \\
+            c_4
+        \end{bmatrix}
+    \right)
+\end{equation}
+
+\begin{equation}
+    \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    = e^{i2k_3 d} \left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+\end{equation}
+
+\TODO{Prouver que $k_3\mat{I} + \mat{Z_d}\mat{C}$ est inversible}
+
+\begin{equation}
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    = e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+\end{equation}
+
+\begin{align}
+    \begin{bmatrix}
+        E_1(0)\\
+        E_2(0)\\
+    \end{bmatrix}
+    &=ik_3\left(
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    -
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+    \right)\\
+    &=ik_3\left(e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) - \mat{I} \right)
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+\end{align}
+
+Et alors l'opérateur d'impédance $\mat{Z}$ est tel que
+
+\begin{align}
+    \mat{Z}
+    &=-k_3\left(e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) - \mat{I} \right)
+    \left( \mat{C} \left( e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) + \mat{I} \right)\right)^{-1}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% CYLINDRE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\subsection{Forme générale des solutions pour un cylindre}
+
+\newcommand{\mr}{r}
+\newcommand{\mt}{\theta}
+\newcommand{\mz}{z}
+
+\begin{figure}[htpb]
+\centering
+\begin{tikzpicture}
+\input{tikz/schema/cylindre.tikz}
+\end{tikzpicture}
+\end{figure}
+
+En coordonnée cylindrique $(r,\theta,z)$, on a
+\begin{equation}
+\vrot \vE = \left(\frac{1}{r}\ddr{\theta}{E_z} - \ddr{z}{E_\theta}\right)\v{e_r} + 
+\left(\ddr{z}{E_r} - \ddr{r}{E_z}\right)\v{e_\theta} +
+\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-\ddr{\theta}{E_r}\right)\v{e_z}
+\end{equation}
+
+Sans pertes de généralité, on peut réaliser une transformée de Fourier en $z$ par invariance en translation et en $\theta$ par invariance en rotation. Cependant, le multiplicateur de Fourier associé à la coordonnée $\theta$ doit être un entier pour assurer la périodicité. On le note $n$.
+
+\begin{equation}
+\vrot \vE = i\left(\frac{n}{r}E_z - k_zE_\theta\right)\v{e_r} + 
+\left(ik_zE_r - \ddr{r}{E_z}\right)\v{e_\theta} +
+\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\v{e_z}
+\end{equation}
+
+On remarque que dans ce cas, la méthode utilisée pour le plan aboutie à une EDO à coefficients non constant de type $r\ddr{r}{X}(r) = M(r)X(r)$.
+
+On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice. Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
+
+\begin{equation}
+\vrot \vrot \vE = \w^2\eps\mu \vE
 \end{equation}
 
 \begin{multline}
-    \begin{bmatrix}
-        -H_2(0)\\
-        H_1(0)\\
-    \end{bmatrix}
-    =
-    -i\begin{bmatrix}
-        \left(\w\eps-\frac{k_2^2}{\w\mu}\right)& \frac{k_1k_2}{\w\mu} \\
-        \frac{k_1k_2}{\w\mu}& \left(\w\eps-\frac{k_1^2}{\w\mu}\right) \\
-    \end{bmatrix}
-    \left(
-    e^{-\lambda_+ d} 
-        \begin{bmatrix}
-        c_1\\
-        c_2
-    \end{bmatrix} + 
-    e^{-\lambda_- d}
-    \begin{bmatrix}
-        c_3 \\
-        c_4 \\
-    \end{bmatrix}
-    \right)
+\vrot \vrot \vE = \dots\\
+i\left(\frac{n}{r^2}\left(\ddr{r}{(rE_\theta)} - inE_r\right) - k_z\left(ik_zE_r - \ddr{r}{E_z}\right)\right)    \v{e_r} \dots\\ 
++ \left(-k_z\left(\frac{n}{r}E_z - k_zE_\theta\right) -\ddr{r}{}\left(\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\right)\right)    \v{e_\theta} \dots\\
++ \frac{1}{r}\left(\ddr{r}{} \left(r\left(ik_zE_r - \ddr{r}{E_z}\right)\right) + n \left(\frac{n}{r}E_z - k_zE_\theta\right)\right) \v{e_z}
 \end{multline}
 
-\TODO{Changer la condition limite en $\z=-d$. Expliciter le résultat}
+\begin{equation}
+\left\lbrace
+\begin{array}{ccc}
+-\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)E_r  +i\frac{n}{r^2}\ddr{r}{(rE_\theta)}  +k_z\ddr{r}{E_z} & = & 0\\
+in\ddr{r}{}\left(\frac{E_r}{r}\right) -\left(\w^2\eps\mu - k_z^2\right)E_\theta + \ddr{r}{}\left(\frac{1}{r}\ddr{r}{(rE_\theta)}\right)  - n\frac{k_z}{r}E_z & = & 0\\
+i\frac{k_z}{r}\ddr{r}{(rE_r)}  - n\frac{k_z}{r}E_\theta  -\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)E_z - \frac{1}{r}\ddr{r}{}\left(r\ddr{r}{E_z}\right) & = & 0
+\end{array}
+\right.
+\end{equation}
 
-\subsection{Cas d'un objet cylindrique recouvert d'une couche de matériau homogène isotrope}
+%Une solution générale de ce problème sur $\left]0,+\infty\right[$ nécessite de connaître la primitive de $\frac{M(r)}{r}$
 
-\TODO{Passer en cylindrique. Développer rot rot et trouver des équations de Bessel pour Ez Hz. Déduire Er,Hr,Eo,Ho. Trouver Z}
+
+\TODO{Passer en cylindrique. Développer $\vrot \vrot$ et trouver des équations de Bessel pour $E_z$, $H_z$. Déduire $E_r$,$H_r$,$E_\theta$,$H_\theta$. Trouver $Z$}
