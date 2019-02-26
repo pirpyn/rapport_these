@@ -1,0 +1,31 @@
+% Ensemble de commande et de module pour ecrire/corriger plus facilement la these
+
+% Pour chaque \newcommand{cmd} présent ici, un \newcommand{cmd}{} doit être present dans final
+
+\newcounter{TODO}
+\newcommand{\TODO}[1]{%
+    \stepcounter{TODO}
+    \hypertarget{TODO\theTODO}{}%
+    \begin{tcolorbox}[%
+            title={TODO \theTODO},%
+            colback=red!30!white,%
+            colframe=red!75!black,%
+            halign=flush center%
+        ]
+        #1%
+    \end{tcolorbox}%
+    \bookmark[dest={TODO\theTODO},level=0]{TODO \theTODO}%
+}
+
+% Affiche devant chaque ligne en mode texte, le numéro de la ligne pour le corriger plus efficacement
+\usepackage{lineno}
+    \linenumbers
+
+
+\geometry{
+    showframe, % Afficher les marges pour voir ce qui dépasse
+    top    = 2.5cm,%
+    bottom = 2.5cm,%
+    inner  = 4.5cm,%
+    outer  = 1.5cm%
+    }

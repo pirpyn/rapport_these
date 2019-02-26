@@ -17,7 +17,6 @@
 
 \usepackage{xspace}
 \usepackage[%
-    %showframe,% Dessine une boite pour voir qui depasse. En mode draft
     % paperwidth=270.0mm,%  A supprimer si plus besoin de todonotes
     headheight=14pt,%
     top    = 2.5cm,%
@@ -30,8 +29,8 @@
 \usepackage{amsthm} % gestion des théoremes
 \usepackage{amsfonts} % gestions des polices mathématques
 \usepackage{amsmath}
-
 \usepackage[autostyle=true]{csquotes}
+
 \usepackage[%
     language=english,%
     sorting=nyt,%
@@ -56,21 +55,30 @@
     linkcolor=blue!70!black,%
     colorlinks=true,%
     citecolor=purple%
+    bookmarksopen=true,%
+    bookmarksnumbered=true,%
+    bookmarksopenlevel=5,
     ]{hyperref} % gestion des liens hypertexts et reférences
+
+
+% Mettre des signets manuellement
+\usepackage{bookmark}
 
 \usepackage[section]{placeins} % Place un FloatBarrier à chaque nouvelle section, les figures s'y arreterons
 
 \usepackage{epigraph} % Pour faire de jolie citations
     \newcommand{\citationChap}[2]{\epigraph{\og \textit{#1} \fg{}}{#2}}
 
-\usepackage[francais]{minitoc}   % Mini table des matières, en français
-    \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
-
 % Jolie en tete de chapitre
 \usepackage[Lenny]{fncychap}
     \makeatletter
         \ChNameVar{\huge} % On modifie la taille du môt ``CHapitre''
     \makeatother
+
+\usepackage[francais]{minitoc}   % Mini table des matières, en français
+    \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
+
+
 
 %\usepackage{multicol} % texte sur plusieurs colonnes
 %\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
@@ -86,6 +94,7 @@
     \pgfplotsset{compat=newest}
 \usepackage{tikz} 
     \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
+    \usetikzlibrary{patterns} % permet de faire des patterns
     
 % % permet d'ajouter des notes en marges
 % \setlength{\oddsidemargin}{25mm}
@@ -114,7 +123,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{pdflscape} % Pour pouvoir changer l'orientation des pages
-    %%% Solution pour avoir un paysage qui point vers l'intérieur du livre
+    %%% Solution pour avoir un paysage qui pointe vers l'intérieur du livre
     \makeatletter
     \global\let\orig@begin@landscape=\landscape%
     \global\let\orig@end@landscape=\endlandscape%

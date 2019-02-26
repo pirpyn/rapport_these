@@ -1,5 +1,4 @@
 \documentclass[12pt,%
-    %draft,% seulement brouillon
     twoside,% twoside si document final
     a4paper,%
     openright % openright si document final
@@ -8,7 +7,10 @@
 \input{tex/preambule/modules}
 \input{tex/preambule/alias}
 \input{tex/preambule/glossaires}
- 
+% Integrer final au lieu de review pour avoir le document en forme finale
+\input{tex/preambule/review}
+
+
 \newcommand{\doctitlefr}{Modélisation d'un matériau faible indice en hyperfréquence par une condition d'impédance d'ordre élevé}
 \newcommand{\doctitleeng}{Study of some high order boundary impedance conditions of a low index material in a hyperfrequency domain}
 \newcommand{\dockeywordsfr}{Électromagnétisme (EM), Impédance, Conditions suffisante d'unicité (CSU), Optimisation sous contraintes, Surface équvalente radar (SER), Méthode des éléments finis (FEM), Équations intégrales (EFIE,MFIE)}
@@ -48,7 +50,7 @@
         \setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
         \dominitoc
         \hypertarget{tableofcontent}{}%
-        \bookmark[dest={tableofcontent},level=0]{Table des matières}%
+        \bookmark[dest={tableofcontent},level=0]{Sommaire}%
         \tableofcontents
         \include{index}
         \restoregeometry

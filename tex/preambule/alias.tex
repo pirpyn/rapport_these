@@ -19,23 +19,6 @@
 % Pour renommer ``preuve'' en ``démonstration''
 \renewcommand{\proofname}{Démonstration}
 
-% POUR L'ECRITURE de la thèse
-\usepackage{bookmark}
-\newcounter{TODO}
-\newcommand{\TODO}[1]{%
-    \stepcounter{TODO}
-    \hypertarget{TODO\theTODO}{}%
-    \begin{tcolorbox}[%
-            title={TODO \theTODO},%
-            colback=red!30!white,%
-            colframe=red!75!black,%
-            halign=flush center%
-        ]
-        #1%
-    \end{tcolorbox}%
-    \bookmark[dest={TODO\theTODO},level=0]{TODO \theTODO}%
-}
-
 %redefinition
 \renewcommand{\frac}[2]{\dfrac{#1}{#2}}
 \renewcommand{\tilde}[1]{\widetilde{#1}}
