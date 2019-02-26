@@ -2,6 +2,10 @@
 
 % Pour chaque \newcommand{cmd} présent ici, un \newcommand{cmd}{} doit être present dans final
 
+\usepackage{draftwatermark}
+    \SetWatermarkText{BROUILLON}
+    \SetWatermarkScale{1}
+
 \newcounter{TODO}
 \newcommand{\TODO}[1]{%
     \stepcounter{TODO}
@@ -29,3 +33,4 @@
     inner  = 4.5cm,%
     outer  = 1.5cm%
     }
+
