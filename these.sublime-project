@@ -9,7 +9,7 @@
         "shell_cmd": "latexmk.exe"
       },
       "linux": {
-        "shell_cmd": "latexmk",
+        "shell_cmd": "latexmk -f",
       },
       "variants": [
         {

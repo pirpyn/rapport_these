@@ -3,14 +3,7 @@
 \coordinate (m) at ($(r)!0.5!(l)$);
 
 \fill [lightgray] (l) rectangle (2,1) ;
-\foreach \t in {-2.2,-2.1,...,2} {
-\draw plot[domain=0:0.3] (\t + \x, -\x, 0);
-}
-\coordinate (ll) at (-2.2,-0.3);
-\fill [white] (ll) rectangle (l) ;
-\coordinate (rr) at (2,-0.31);
-\fill [white] (rr) rectangle (2.3,0) ;
-
+\fill [pattern=north east lines] (-2,-0.5) rectangle (r) ;
 
 \coordinate (n) at (-4,0);
 
