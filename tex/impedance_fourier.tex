@@ -179,10 +179,78 @@ On a donc une solution générale du système
     X(x_3) = c_1e^{\lambda_+ x_3}V_+  + c_2e^{\lambda_+ x_3}W_+ + c_3e^{\lambda_- x_3}V_- +c_4e^{\lambda_- x_3}W_- \quad c_i \in \CC
 \end{equation}
 
+On exprime les champs $\vE_t(x)$ et $\v{e_3} \times \vH_t(x)$ car ce sont des quantités qui nous intéresse:
+
+\begin{align}
+    \begin{bmatrix}
+        E_1(x)\\
+        E_2(x)\\
+    \end{bmatrix}
+    &=
+    \begin{bmatrix}
+        c_1 e^{\lambda_+ x} \lambda_{+} + c_3 e^{\lambda_- x} \lambda_{-} \\
+        c_2 e^{\lambda_+ x} \lambda_{+} + c_4 e^{\lambda_- x} \lambda_{-}
+    \end{bmatrix}\\
+    &=ik_3\left( e^{ik_3 x}
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    -e^{-ik_3 x}
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+    \right)
+    \label{eq:imp_fourier:plan:generale_E}
+\end{align}
+
+\begin{align}
+    \begin{bmatrix}
+        -H_2(x)\\
+        H_1(x)\\
+    \end{bmatrix}
+    &=
+    \begin{bmatrix}
+        -i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \left( c_1 e^{ik_3 x} + c_3 e^{-ik_3 x} \right) - i\frac{k_1k_2}{\w\mu} \left( c_2 e^{ik_3 x} + c_4 e^{-ik_3 x} \right)
+        \\
+        -i\frac{k_1k_2}{\w\mu} \left( c_1 e^{ik_3 x} + c_3 e^{-ik_3 x} \right) - i\left(\w\eps - \frac{k_1^2}{\w\mu}\right)\left( c_2 e^{ik_3 x} + c_4 e^{-ik_3 x} \right)
+    \end{bmatrix} \\
+    &=-i
+    \begin{bmatrix}
+    \left(\w\eps - \frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}
+    \\
+    \frac{k_1k_2}{\w\mu} & \left(\w\eps - \frac{k_1^2}{\w\mu}\right) 
+    \end{bmatrix}
+    \left(
+        e^{ik_3 x}
+        \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix}
+        +e^{-ik_3 x}
+        \begin{bmatrix}
+            c_3 \\
+            c_4
+        \end{bmatrix}
+    \right)
+    \label{eq:imp_fourier:plan:generale_H}
+\end{align}
+
+Notons
+\begin{align}
+    \mat{C} &=
+    \begin{bmatrix}
+        \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
+        \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
+    \end{bmatrix}
+\end{align}
+
+Comme $k_3$ est complexe et non nul, alors $\det(\mat{C}) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ n'est jamais nul. Nous verrons que cette propriété sera importante.
+
 \subsection{Solutions particulières du plan infini recouvert d'une couche de matériau homogène isotrope}
 
-
-Dans un premier temps, nous allons utiliser la condition limite 
+Nous utilisons la condition limite 
 \begin{equation}
     \begin{bmatrix}
         E_1(-d)\\
@@ -190,92 +258,57 @@ Dans un premier temps, nous allons utiliser la condition limite
     \end{bmatrix}
     =
     \begin{bmatrix}
-        c_1 e^{-\lambda_+ d} \lambda_{+} + c_3 e^{-\lambda_- d} \lambda_{-} \\
-        c_2 e^{-\lambda_+ d} \lambda_{+} + c_4 e^{-\lambda_- d} \lambda_{-}
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
         0\\
         0\\
     \end{bmatrix}
 \end{equation}
+
+De \eqref{eq:imp_fourier:plan:generale_E}, on déduit
+
 \begin{align}
-    c_1 &= -\frac{\lambda_-}{\lambda_+}\frac{e^{-\lambda_-d}}{e^{-\lambda_+d}}c_3 = e^{i2k_3d}c_3\\
-    c_2 &= -\frac{\lambda_-}{\lambda_+}\frac{e^{-\lambda_-d}}{e^{-\lambda_+d}}c_4 = e^{i2k_3d}c_4
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    = e^{2ik_3 d}
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
 \end{align}
 
-
-Immédiatement, on injecte ce résultat pour obtenir
+On définit l'opérateur d'impédance la matrice $\mat Z$ tel que 
 \begin{equation}
-    X(x_3) = c_3\left(e^{ik_3(x_3 + 2d)}V_+ + e^{-ik_3x_3}V_- \right)  + c_4\left(e^{ik_3(x_3 + 2d)}W_+ + e^{-ik_3 x_3}W_- \right) \quad c_i \in \CC
+    \vE_t(0) = \mat Z \left(\v{e_3} \times \vH_t(0)\right)
 \end{equation}
 
-Ainsi
-\begin{align}
-     E_1(0) &= ik_3\left(e^{i2dk_3} - 1\right)c_3 \\
-     E_2(0) &= ik_3\left(e^{i2dk_3} - 1\right)c_4 \\
-     H_1(0) &= 
-        -\frac{ik_1k_2}{\w\mu}\left(e^{i2dk_3} + 1\right)c_3 
-        - i\left(\w\eps-\frac{k_1^2}{\w\mu}\right)\left( e^{i2dk_3} + 1 \right)c_4 \\
-     H_2(0) &=
-         i\left(\w\eps-\frac{k_2^2}{\w\mu}\right)\left( e^{i2dk_3} + 1 \right)c_3
-        + \frac{ik_1k_2}{\w\mu}\left(e^{i2dk_3} + 1\right)c_4
-\end{align}
-
-Notons
-\begin{align}
-    C &=
-    \begin{bmatrix}
-        \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
-        \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
-    \end{bmatrix}
-\end{align}
-
-Comme $k_3$ est complexe et non nul, alors $\det(C) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ n'est jamais nul.
-
-On remarque que 
+De ce qui précède on déduit que,
 
 \begin{align}
     \begin{bmatrix}
         E_1(0)\\
         E_2(0)\\
     \end{bmatrix}
-    & = ik_3\left(e^{i2dk_3} - 1\right)
+    &=ik_3\left( e^{i2k_3 d} -1 \right)
     \begin{bmatrix}
         c_3 \\
-        c_4 \\
-    \end{bmatrix}\\
+        c_4
+    \end{bmatrix} \\
     \begin{bmatrix}
         -H_2(0)\\
         H_1(0)\\
     \end{bmatrix}
-    & =  -i\left( e^{i2dk_3} + 1 \right) C
+    & = - i\left(e^{i2k_3 d} +1 \right)
+    \mat{C}
     \begin{bmatrix}
-        c_3 \\
-        c_4 \\
+    c_3 \\
+    c_4
     \end{bmatrix}
 \end{align}
-
-On définit l'opérateur d'impédance comme la matrice $Z$ telle que 
-\begin{equation}
-    \begin{bmatrix}
-        E_1(0)\\
-        E_2(0)\\
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-        Z_{11} & Z_{12} \\
-        Z_{21} & Z_{22} \\
-    \end{bmatrix}
-    \begin{bmatrix}
-        -H_2(0)\\
-        H_1(0)\\
-    \end{bmatrix}
-\end{equation}
 
 On déduit donc que
 \begin{align}
-    Z &=  - \frac{\eta^2}{k_3}\frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}  
+    \mat{Z} &=  - \frac{\eta^2}{k_3}\frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}  
         \begin{bmatrix}
            \left(\w\eps-\frac{k_1^2}{\w\mu}\right)  & -\frac{k_1k_2}{\w\mu}\\
             -\frac{k_1k_2}{\w\mu} &  \left(\w\eps-\frac{k_2^2}{\w\mu}\right)
@@ -290,91 +323,145 @@ On déduit donc que
 
 \subsection{Solutions particulières du plan infini recouvert de couches de matériaux homogènes isotropes}
 
-En premier lieu, une empilement donné peut toujours se ramener à un empilement à deux couches, où l'on impose $z=-d$ la condition $\vE_t(-d) = \mat {Z_{-d}} \vn \times \vH$.
-
+En premier lieu, une empilement donné peut toujours se ramener à un empilement à deux couches, où l'on impose $z=-d$ la condition:
 \begin{equation}
     \begin{bmatrix}
         E_1(-d)\\
         E_2(-d)\\
     \end{bmatrix}
     =
-    \mat {Z_{-d}} 
+    \mat {Z_{d}} 
     \begin{bmatrix}
         -H_2(-d)\\
         H_1(-d)\\
     \end{bmatrix}
 \end{equation}
-\begin{equation}
-    \begin{bmatrix}
-        E_1(-d)\\
-        E_2(-d)\\
-    \end{bmatrix}
-    = \lambda_{+}
-    \begin{bmatrix}
-        c_1 e^{-\lambda_+ d} - c_3 e^{-\lambda_- d} \\
-        c_2 e^{-\lambda_+ d} - c_4 e^{-\lambda_- d}
-    \end{bmatrix}
-\end{equation}
-\begin{equation}
-    \begin{bmatrix}
-        -H_2(-d)\\
-        H_1(-d)\\
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-        -i\left(\w\eps-\frac{k_2^2}{\w\mu}\right)\left(c_1 e^{-\lambda_+ d} + c_3 e^{-\lambda_- d}\right) - i\frac{k_1k_2}{\w\mu}\left(c_2e^{-\lambda_+ d} + c_4e^{-\lambda_- d}\right)\\
-        -i\frac{k_1k_2}{\w\mu}\left(c_1 e^{-\lambda_+ d} + c_3 e^{-\lambda_- d} \right) - i\left(\w\eps-\frac{k_1^2}{\w\mu}\right)\left(c_2e^{-\lambda_+ d} + c_4e^{-\lambda_- d}\right)\\
-    \end{bmatrix}
-\end{equation}
+
+D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:generale_H}, on déduit que
 
 \begin{equation}
     \begin{bmatrix}
         E_1(-d)\\
         E_2(-d)\\
     \end{bmatrix}
-    = ik_3\left( e^{-\lambda_+ d}
+    = ik_3\left( e^{-ik_3 d}
     \begin{bmatrix}
-        c_1\\
+        c_1 \\
         c_2
     \end{bmatrix}
-    - e^{-\lambda_- d}
+    -e^{ik_3 d}
     \begin{bmatrix}
         c_3 \\
-        c_4 
+        c_4
     \end{bmatrix}
     \right)
 \end{equation}
 
-\begin{multline}
+\begin{equation}
     \begin{bmatrix}
         -H_2(-d)\\
         H_1(-d)\\
     \end{bmatrix}
-    =
-    -i\begin{bmatrix}
-        \left(\w\eps-\frac{k_2^2}{\w\mu}\right)& \frac{k_1k_2}{\w\mu} \\
-        \frac{k_1k_2}{\w\mu}& \left(\w\eps-\frac{k_1^2}{\w\mu}\right) \\
-    \end{bmatrix}
+    =-i
+    \mat{C}
     \left(
-    e^{-\lambda_+ d} 
+        e^{-ik_3 d}
         \begin{bmatrix}
-        c_1\\
+            c_1 \\
+            c_2
+        \end{bmatrix}
+        +e^{ik_3 d}
+        \begin{bmatrix}
+            c_3 \\
+            c_4
+        \end{bmatrix}
+    \right)
+\end{equation}
+
+\begin{equation}
+    ik_3\left( e^{-ik_3 d}
+    \begin{bmatrix}
+        c_1 \\
         c_2
-    \end{bmatrix} + 
-    e^{-\lambda_- d}
+    \end{bmatrix}
+    -e^{ik_3 d}
     \begin{bmatrix}
         c_3 \\
-        c_4 \\
+        c_4
     \end{bmatrix}
     \right)
-\end{multline}
+    =-i\mat{Z_d}\mat{C}
+    \left(
+        e^{-ik_3 d}
+        \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix}
+        +e^{ik_3 d}
+        \begin{bmatrix}
+            c_3 \\
+            c_4
+        \end{bmatrix}
+    \right)
+\end{equation}
 
+\begin{equation}
+    \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    = e^{i2k_3 d} \left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+\end{equation}
 
+\TODO{Prouver que $k_3\mat{I} + \mat{Z_d}\mat{C}$ est inversible}
 
-\TODO{Changer la condition limite en $\z=-d$. Expliciter le résultat}
+\begin{equation}
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    = e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+\end{equation}
 
+\begin{align}
+    \begin{bmatrix}
+        E_1(0)\\
+        E_2(0)\\
+    \end{bmatrix}
+    &=ik_3\left(
+    \begin{bmatrix}
+        c_1 \\
+        c_2
+    \end{bmatrix}
+    -
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+    \right)\\
+    &=ik_3\left(e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) - \mat{I} \right)
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+\end{align}
 
+Et alors l'opérateur d'impédance $\mat{Z}$ est tel que
 
+\begin{align}
+    \mat{Z}
+    &=-k_3\left(e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) - \mat{I} \right)
+    \left( \mat{C} \left( e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) + \mat{I} \right)\right)^{-1}
+\end{align}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
