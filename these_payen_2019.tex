@@ -50,18 +50,18 @@
         \setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
         \dominitoc
         \hypertarget{tableofcontent}{}%
-        \bookmark[dest={tableofcontent},level=0]{Sommaire}%
+        \pdfbookmark[0]{Sommaire}{tableofcontent}%
         \tableofcontents
         \include{index}
         \restoregeometry
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \mainmatter
-        \include{chapitre_0}
+        %\include{chapitre_0}
         \include{chapitre_1}
-        \include{chapitre_2}
-        \include{chapitre_3}
-        \include{chapitre_4}
-        \include{chapitre_5}
+        %\include{chapitre_2}
+        %\include{chapitre_3}
+        %\include{chapitre_4}
+        %\include{chapitre_5}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \backmatter
         \printbibliography
