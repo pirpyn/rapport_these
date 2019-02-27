@@ -308,11 +308,14 @@ De ce qui précède on déduit que,
 
 On déduit donc que
 \begin{align}
-    \mat{Z} &=  - \frac{\eta^2}{k_3}\frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}  
+    \mat{Z} &=  - k_3 \frac{e^{i2dk_3} -1}{e^{i2dk_3} +1} \mat{C}^{-1} 
+    \\
+    &= -\frac{\eta^2}{k_3} \frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}
         \begin{bmatrix}
            \left(\w\eps-\frac{k_1^2}{\w\mu}\right)  & -\frac{k_1k_2}{\w\mu}\\
             -\frac{k_1k_2}{\w\mu} &  \left(\w\eps-\frac{k_2^2}{\w\mu}\right)
-        \end{bmatrix}\\
+        \end{bmatrix}
+    \\
     &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
         \begin{bmatrix}
            k^2-k_1^2  & -k_1k_2\\
@@ -320,6 +323,7 @@ On déduit donc que
         \end{bmatrix}
 \end{align}
 
+On remarque que $\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)$ et donc pour un matériau $(\eps,\mu,d)$ donné, l'opérateur d'impédance n'est pas inversible pour tous  $(k_1,k_2) \in \RR^2, n \in \NN$, $k_1^2+k_2^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2$
 
 \subsection{Solutions particulières du plan infini recouvert de couches de matériaux homogènes isotropes}
 
@@ -432,6 +436,12 @@ D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:ge
     \end{bmatrix}
 \end{equation}
 
+On pose 
+\begin{equation}
+    \mat{F} = e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)
+\end{equation}
+
+
 \begin{align}
     \begin{bmatrix}
         E_1(0)\\
@@ -448,21 +458,47 @@ D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:ge
         c_4
     \end{bmatrix}
     \right)\\
-    &=ik_3\left(e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) - \mat{I} \right)
+    &=ik_3\left(\mat{F} - \mat{I} \right)
     \begin{bmatrix}
         c_3 \\
         c_4
     \end{bmatrix}
 \end{align}
 
-Et alors l'opérateur d'impédance $\mat{Z}$ est tel que
+\begin{align}
+    \begin{bmatrix}
+        -H_2(0)\\
+        H_1(0)\\
+    \end{bmatrix}
+    &=-i
+    \mat{C}
+    \left(
+        \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix}
+        +
+        \begin{bmatrix}
+            c_3 \\
+            c_4
+        \end{bmatrix}
+    \right)
+    \\
+    &=-i\mat{C} \left(  \mat{F} + \mat{I}  \right)
+    \begin{bmatrix}
+            c_3 \\
+            c_4
+    \end{bmatrix}
+\end{align}
+
+Et alors l'opérateur d'impédance $\mat{Z}$ est
 
 \begin{align}
     \mat{Z}
-    &=-k_3\left(e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) - \mat{I} \right)
-    \left( \mat{C} \left( e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) + \mat{I} \right)\right)^{-1}
+    &=-k_3\left(\mat{F} - \mat{I} \right)\left(\mat{F}+ \mat{I} \right)^{-1}\mat{C}^{-1}
 \end{align}
 
+\TODO{ Améliorer cette formulation indigeste}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -473,8 +509,6 @@ Et alors l'opérateur d'impédance $\mat{Z}$ est tel que
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-
 \subsection{Forme générale des solutions pour un cylindre}
 
 \newcommand{\mr}{r}
@@ -482,25 +516,25 @@ Et alors l'opérateur d'impédance $\mat{Z}$ est tel que
 \newcommand{\mz}{z}
 
 \begin{figure}[htpb]
-\centering
-\begin{tikzpicture}
-\input{tikz/schema/cylindre.tikz}
-\end{tikzpicture}
+    \centering
+    \begin{tikzpicture}
+        \input{tikz/schema/cylindre.tikz}
+    \end{tikzpicture}
 \end{figure}
 
 En coordonnée cylindrique $(r,\theta,z)$, on a
 \begin{equation}
-\vrot \vE = \left(\frac{1}{r}\ddr{\theta}{E_z} - \ddr{z}{E_\theta}\right)\v{e_r} + 
-\left(\ddr{z}{E_r} - \ddr{r}{E_z}\right)\v{e_\theta} +
-\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-\ddr{\theta}{E_r}\right)\v{e_z}
+    \vrot \vE = \left(\frac{1}{r}\ddr{\theta}{E_z} - \ddr{z}{E_\theta}\right)\v{e_r} + 
+    \left(\ddr{z}{E_r} - \ddr{r}{E_z}\right)\v{e_\theta} +
+    \frac{1}{r}\left(\ddr{r}{(rE_\theta)}-\ddr{\theta}{E_r}\right)\v{e_z}
 \end{equation}
 
 Sans pertes de généralité, on peut réaliser une transformée de Fourier en $z$ par invariance en translation et en $\theta$ par invariance en rotation. Cependant, le multiplicateur de Fourier associé à la coordonnée $\theta$ doit être un entier pour assurer la périodicité. On le note $n$.
 
 \begin{equation}
-\vrot \vE = i\left(\frac{n}{r}E_z - k_zE_\theta\right)\v{e_r} + 
-\left(ik_zE_r - \ddr{r}{E_z}\right)\v{e_\theta} +
-\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\v{e_z}
+    \vrot \vE = i\left(\frac{n}{r}E_z - k_zE_\theta\right)\v{e_r} + 
+    \left(ik_zE_r - \ddr{r}{E_z}\right)\v{e_\theta} +
+    \frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\v{e_z}
 \end{equation}
 
 On remarque que dans ce cas, la méthode utilisée pour le plan aboutie à une EDO à coefficients non constant de type $r\ddr{r}{X}(r) = M(r)X(r)$.
@@ -508,24 +542,24 @@ On remarque que dans ce cas, la méthode utilisée pour le plan aboutie à une E
 On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice. Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
 
 \begin{equation}
-\vrot \vrot \vE = \w^2\eps\mu \vE
+    \vrot \vrot \vE = \w^2\eps\mu \vE
 \end{equation}
 
 \begin{multline}
-\vrot \vrot \vE = \dots\\
-i\left(\frac{n}{r^2}\left(\ddr{r}{(rE_\theta)} - inE_r\right) - k_z\left(ik_zE_r - \ddr{r}{E_z}\right)\right)    \v{e_r} \dots\\ 
-+ \left(-k_z\left(\frac{n}{r}E_z - k_zE_\theta\right) -\ddr{r}{}\left(\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\right)\right)    \v{e_\theta} \dots\\
-+ \frac{1}{r}\left(\ddr{r}{} \left(r\left(ik_zE_r - \ddr{r}{E_z}\right)\right) + n \left(\frac{n}{r}E_z - k_zE_\theta\right)\right) \v{e_z}
+    \vrot \vrot \vE = \dots\\
+    i\left(\frac{n}{r^2}\left(\ddr{r}{(rE_\theta)} - inE_r\right) - k_z\left(ik_zE_r - \ddr{r}{E_z}\right)\right)    \v{e_r} \dots\\ 
+    + \left(-k_z\left(\frac{n}{r}E_z - k_zE_\theta\right) -\ddr{r}{}\left(\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\right)\right)    \v{e_\theta} \dots\\
+    + \frac{1}{r}\left(\ddr{r}{} \left(r\left(ik_zE_r - \ddr{r}{E_z}\right)\right) + n \left(\frac{n}{r}E_z - k_zE_\theta\right)\right) \v{e_z}
 \end{multline}
 
 \begin{equation}
-\left\lbrace
-\begin{array}{ccc}
--\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)E_r  +i\frac{n}{r^2}\ddr{r}{(rE_\theta)}  +k_z\ddr{r}{E_z} & = & 0\\
-in\ddr{r}{}\left(\frac{E_r}{r}\right) -\left(\w^2\eps\mu - k_z^2\right)E_\theta + \ddr{r}{}\left(\frac{1}{r}\ddr{r}{(rE_\theta)}\right)  - n\frac{k_z}{r}E_z & = & 0\\
-i\frac{k_z}{r}\ddr{r}{(rE_r)}  - n\frac{k_z}{r}E_\theta  -\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)E_z - \frac{1}{r}\ddr{r}{}\left(r\ddr{r}{E_z}\right) & = & 0
-\end{array}
-\right.
+    \left\lbrace
+    \begin{array}{ccc}
+        -\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)E_r  +i\frac{n}{r^2}\ddr{r}{(rE_\theta)}  +k_z\ddr{r}{E_z} & = & 0\\
+        in\ddr{r}{}\left(\frac{E_r}{r}\right) -\left(\w^2\eps\mu - k_z^2\right)E_\theta + \ddr{r}{}\left(\frac{1}{r}\ddr{r}{(rE_\theta)}\right)  - n\frac{k_z}{r}E_z & = & 0\\
+        i\frac{k_z}{r}\ddr{r}{(rE_r)}  - n\frac{k_z}{r}E_\theta  -\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)E_z - \frac{1}{r}\ddr{r}{}\left(r\ddr{r}{E_z}\right) & = & 0
+    \end{array}
+    \right.
 \end{equation}
 
 %Une solution générale de ce problème sur $\left]0,+\infty\right[$ nécessite de connaître la primitive de $\frac{M(r)}{r}$
