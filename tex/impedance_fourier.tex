@@ -248,6 +248,13 @@ Notons
 
 Comme $k_3$ est complexe et non nul, alors $\det(\mC) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ n'est jamais nul. Nous verrons que cette propriété sera importante.
 
+On peut noter d'après \cite[eq.~(6)]{stupfel_2011}
+
+\begin{equation}
+    \mC^{-1}= \frac{\eta^2}{k_3^2}\left(k^2\mI - \mat{L_R}\right)
+    \label{eq:imp_fourier:plan:C}
+\end{equation}
+
 \subsection{Solutions particulières du plan infini recouvert d'une couche de matériau homogène isotrope}
 
 Nous utilisons la condition limite 
@@ -431,7 +438,15 @@ On pose
 
 On remarque que par définition, $\mA_+$ et $\mA_-$ commutent.
 
-\TODO{À quelles conditions $k_3\mI \pm \mat{Z_d}\mC$ est inversible}
+Pour continuer il faut exprimer un vecteur en fonction de l'autre. Pour cela, il est nécessaire que 
+
+\begin{equation}
+    \det(\mat{Z_d}) \not = \pm \eta^2
+    \label{eq:imp_fourier:plan:detZd}
+\end{equation}
+
+
+En supposant \eqref{eq:imp_fourier:plan:detZd}, on $\det(\mA_\pm) \not = 0 $ et on déduit que
 
 \begin{align}
     \begin{bmatrix}
@@ -456,17 +471,6 @@ On remarque que par définition, $\mA_+$ et $\mA_-$ commutent.
         E_1(0)\\
         E_2(0)\\
     \end{bmatrix}
-    &=ik_3\left(
-    \begin{bmatrix}
-        c_1 \\
-        c_2
-    \end{bmatrix}
-    -
-    \begin{bmatrix}
-        c_3 \\
-        c_4
-    \end{bmatrix}
-    \right)\\
     &=ik_3\left(\mat{F} - \mI \right)
     \begin{bmatrix}
         c_3 \\
@@ -479,20 +483,6 @@ On remarque que par définition, $\mA_+$ et $\mA_-$ commutent.
         -H_2(0)\\
         H_1(0)\\
     \end{bmatrix}
-    &=-i
-    \mC
-    \left(
-        \begin{bmatrix}
-            c_1 \\
-            c_2
-        \end{bmatrix}
-        +
-        \begin{bmatrix}
-            c_3 \\
-            c_4
-        \end{bmatrix}
-    \right)
-    \\
     &=-i\mC \left(  \mat{F} + \mI  \right)
     \begin{bmatrix}
             c_3 \\
@@ -500,7 +490,26 @@ On remarque que par définition, $\mA_+$ et $\mA_-$ commutent.
     \end{bmatrix}
 \end{align}
 
-Et alors l'opérateur d'impédance $\mat{Z}$ est
+D'après \eqref{eq:imp_fourier:plan:detZd}, les matrices $\mA_+$ et $\mA_-$ sont inversibles, donc
+
+\begin{align}
+    \det(\mat{F} + \mI) &= 1 + e^{i2k_3d}\frac{\det(\mA_-)}{\det(\mA_+)}
+    \\
+    &= 1 + e^{i2k_3d}\frac{\eta^2 - \det(\mat{Z_d})}{\eta^2 + \det(\mat{Z_d})}
+\end{align}
+
+Qui est inversible si
+
+\begin{align}
+1 + e^{i2k_3d}\frac{\eta^2 - \det(\mat{Z_d})}{\eta^2 + \det(\mat{Z_d})} \not = 0 
+\\
+\left(e^{i2k_3d} + 1\right)\eta^2 - \left(e^{i2k_3d} - 1 \right)\det(\mat{Z_d}) \not = 0 
+\\
+\det(\mat{Z_d}) \not =  i\frac{\eta^2}{\tan(k_3d)}
+\label{eq:imp_fourier:plan:detF+I}
+\end{align}
+
+On suppose \eqref{eq:imp_fourier:plan:detF+I} alors l'opérateur d'impédance $\mat{Z}$ est
 
 \begin{align}
     \mat{Z}
@@ -538,6 +547,10 @@ En supposant que $k_3d\not = \frac{\pi}{2}+n\pi$,
     Justifier l'inversibilité de $\mI - \tan(k_3 d)\mat{Z_d}\mC$.
 }
 
+
+\TODO{
+    Synthétiser toute les conditions à vérifier pour faire du multicouche.
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
