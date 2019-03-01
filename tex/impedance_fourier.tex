@@ -239,14 +239,14 @@ On exprime les champs $\vE_t(x)$ et $\v{e_3} \times \vH_t(x)$ car ce sont des qu
 
 Notons
 \begin{align}
-    \mat{C} &=
+    \mC &=
     \begin{bmatrix}
         \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
         \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
     \end{bmatrix}
 \end{align}
 
-Comme $k_3$ est complexe et non nul, alors $\det(\mat{C}) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ n'est jamais nul. Nous verrons que cette propriété sera importante.
+Comme $k_3$ est complexe et non nul, alors $\det(\mC) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ n'est jamais nul. Nous verrons que cette propriété sera importante.
 
 \subsection{Solutions particulières du plan infini recouvert d'une couche de matériau homogène isotrope}
 
@@ -299,18 +299,18 @@ De ce qui précède on déduit que,
         H_1(0)\\
     \end{bmatrix}
     & = - i\left(e^{i2k_3 d} +1 \right)
-    \mat{C}
+    \mC
     \begin{bmatrix}
     c_3 \\
     c_4
     \end{bmatrix}
 \end{align}
 
-On déduit donc que
+En supposant $k_3d \not = \frac{\pi}{2} + n\pi$, on déduit donc que
 \begin{align}
-    \mat{Z} &=  - k_3 \frac{e^{i2dk_3} -1}{e^{i2dk_3} +1} \mat{C}^{-1} 
+    \mat{Z} &=  - k_3 \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1} \mC^{-1} 
     \\
-    &= -\frac{\eta^2}{k_3} \frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}
+    &= -\frac{\eta^2}{k_3} \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1}
         \begin{bmatrix}
            \left(\w\eps-\frac{k_1^2}{\w\mu}\right)  & -\frac{k_1k_2}{\w\mu}\\
             -\frac{k_1k_2}{\w\mu} &  \left(\w\eps-\frac{k_2^2}{\w\mu}\right)
@@ -323,11 +323,11 @@ On déduit donc que
         \end{bmatrix}
 \end{align}
 
-On remarque que $\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)$ et donc pour un matériau $(\eps,\mu,d)$ donné, l'opérateur d'impédance n'est pas inversible pour tous  $(k_1,k_2) \in \RR^2, n \in \NN$, $k_1^2+k_2^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2$
+%On remarque que $\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)$ et donc pour un matériau $(\eps,\mu,d)$ donné, l'opérateur d'impédance n'est pas inversible pour tous  $(k_1,k_2) \in \RR^2, n \in \NN$, $k_1^2+k_2^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2$, qui ne peut être vérifié que si $\eps\mu$ est réel\footnote{Comme $\eps, \mu$ sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}. 
 
 \subsection{Solutions particulières du plan infini recouvert de couches de matériaux homogènes isotropes}
 
-En premier lieu, une empilement donné peut toujours se ramener à un empilement à deux couches, où l'on impose $z=-d$ la condition:
+En premier lieu, une empilement à $n$ couches donné peut toujours se ramener à un empilement à une couche avec en $z=-d$ la condition:
 \begin{equation}
     \begin{bmatrix}
         E_1(-d)\\
@@ -340,6 +340,8 @@ En premier lieu, une empilement donné peut toujours se ramener à un empilement
         H_1(-d)\\
     \end{bmatrix}
 \end{equation}
+
+Pour un empilement donnée, il suffit alors de trouver les opérateur impédances à chaque interface en partant du conducteur pour remonter jusqu'à la surface extérieur.
 
 D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:generale_H}, on déduit que
 
@@ -367,7 +369,7 @@ D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:ge
         H_1(-d)\\
     \end{bmatrix}
     =-i
-    \mat{C}
+    \mC
     \left(
         e^{-ik_3 d}
         \begin{bmatrix}
@@ -394,7 +396,7 @@ D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:ge
         c_4
     \end{bmatrix}
     \right)
-    =-i\mat{Z_d}\mat{C}
+    =-i\mat{Z_d}\mC
     \left(
         e^{-ik_3 d}
         \begin{bmatrix}
@@ -410,37 +412,44 @@ D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:ge
 \end{equation}
 
 \begin{equation}
-    \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)
+    \left(k_3\mI + \mat{Z_d}\mC\right)
     \begin{bmatrix}
         c_1 \\
         c_2
     \end{bmatrix}
-    = e^{i2k_3 d} \left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)
+    = e^{i2k_3 d} \left(k_3\mI - \mat{Z_d}\mC\right)
     \begin{bmatrix}
         c_3 \\
         c_4
     \end{bmatrix}
 \end{equation}
 
-\TODO{Prouver que $k_3\mat{I} + \mat{Z_d}\mat{C}$ est inversible}
+On pose
+\begin{align}
+    \mA_\pm &= k_3\mI \pm \mat{Z_d}\mC
+\end{align}
 
-\begin{equation}
+On remarque que par définition, $\mA_+$ et $\mA_-$ commutent.
+
+\TODO{À quelles conditions $k_3\mI \pm \mat{Z_d}\mC$ est inversible}
+
+\begin{align}
     \begin{bmatrix}
         c_1 \\
         c_2
     \end{bmatrix}
-    = e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)
+    &= e^{i2 k_3 d} \mA_+^{-1}\mA_-
     \begin{bmatrix}
         c_3 \\
         c_4
     \end{bmatrix}
-\end{equation}
-
-On pose 
-\begin{equation}
-    \mat{F} = e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)
-\end{equation}
-
+    \\
+    & = \mat{F}
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+\end{align}
 
 \begin{align}
     \begin{bmatrix}
@@ -458,7 +467,7 @@ On pose
         c_4
     \end{bmatrix}
     \right)\\
-    &=ik_3\left(\mat{F} - \mat{I} \right)
+    &=ik_3\left(\mat{F} - \mI \right)
     \begin{bmatrix}
         c_3 \\
         c_4
@@ -471,7 +480,7 @@ On pose
         H_1(0)\\
     \end{bmatrix}
     &=-i
-    \mat{C}
+    \mC
     \left(
         \begin{bmatrix}
             c_1 \\
@@ -484,7 +493,7 @@ On pose
         \end{bmatrix}
     \right)
     \\
-    &=-i\mat{C} \left(  \mat{F} + \mat{I}  \right)
+    &=-i\mC \left(  \mat{F} + \mI  \right)
     \begin{bmatrix}
             c_3 \\
             c_4
@@ -495,15 +504,39 @@ Et alors l'opérateur d'impédance $\mat{Z}$ est
 
 \begin{align}
     \mat{Z}
-    &=-k_3\left(\mat{F} - \mat{I} \right)\left(\mat{F}+ \mat{I} \right)^{-1}\mat{C}^{-1}
+    &=-k_3\left(\mat{F} - \mI \right)\left(\mat{F}+ \mI \right)^{-1}\mC^{-1}
+    \\
+    &=-k_3\left(\mat{F} - \mI \right)\mA_-^{-1}\mA_-\left(\mat{F}+ \mI \right)^{-1}\mC^{-1}
+    \\
+    &=-k_3\left(\left(\mat{F} - \mI \right)\mA_-^{-1}\right)\left(\left(\mat{F}+ \mI \right)\mA_-^{-1}\right)^{-1}\mC^{-1}
+    \\
+    &=-k_3\left( e^{i2 k_3 d} \mA_+^{-1} -  \mA_-^{-1} \right)
+    \left( e^{i2 k_3 d} \mA_+^{-1} + \mA_-^{-1} \right)^{-1}\mC^{-1}
 \end{align}
 
-\TODO{ Améliorer cette formulation indigeste}
+Comme $\mA_+$ et $\mA_-$ commutent
 
 \begin{align}
-    \mat{Z}
-    &=-k_3\left( e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1} -  \left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)^{-1} \right)\left( e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1} + \left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)^{-1} \right)^{-1}\mat{C}^{-1}
+    \mat{Z} &=-k_3\left( e^{i2 k_3 d} \mA_- -  \mA_+\right)\left(\mA_+\mA_-\right)^{-1}
+    \left(\left( e^{i2 k_3 d} \mA_- + \mA_+ \right)\left(\mA_+\mA_-\right)^{-1}\right)^{-1}\mC^{-1}
+    \\
+    &= -k_3\left( e^{i2 k_3 d} \mA_- -  \mA_+\right)
+    \left( e^{i2 k_3 d} \mA_- + \mA_+ \right)^{-1}\mC^{-1}
+    \\
+    &= -k_3\left(\left( e^{i2 k_3 d} - 1 \right)\mI - \left( e^{i2 k_3 d} + 1 \right) \mat{Z_d}\mC \right)
+    \left( \left( e^{i2 k_3 d} + 1 \right)\mI - \left( e^{i2 k_3 d} - 1 \right)\mat{Z_d}\mC \right)^{-1}\mC^{-1}   
 \end{align}
+
+En supposant que $k_3d\not = \frac{\pi}{2}+n\pi$, 
+
+\begin{equation}
+\mZ = ik_3\left(\tan(k_3 d)\mI - \mat{Z_d}\mC \right)
+    \left( \mI - \tan(k_3 d)\mat{Z_d}\mC \right)^{-1}\mC^{-1} 
+\end{equation}
+
+\TODO{
+    Justifier l'inversibilité de $\mI - \tan(k_3 d)\mat{Z_d}\mC$.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -514,18 +547,22 @@ Et alors l'opérateur d'impédance $\mat{Z}$ est
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+
+
 \subsection{Forme générale des solutions pour un cylindre}
 
 \newcommand{\mr}{r}
 \newcommand{\mt}{\theta}
 \newcommand{\mz}{z}
 
-\begin{figure}[htpb]
+\begin{figure}[!htb]
     \centering
     \begin{tikzpicture}
         \input{tikz/schema/cylindre.tikz}
     \end{tikzpicture}
 \end{figure}
+
+
 
 En coordonnée cylindrique $(r,\theta,z)$, on a
 \begin{equation}
