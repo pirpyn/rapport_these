@@ -239,14 +239,14 @@ On exprime les champs $\vE_t(x)$ et $\v{e_3} \times \vH_t(x)$ car ce sont des qu
 
 Notons
 \begin{align}
-    \mat{C} &=
+    \mC &=
     \begin{bmatrix}
         \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
         \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
     \end{bmatrix}
 \end{align}
 
-Comme $k_3$ est complexe et non nul, alors $\det(\mat{C}) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ n'est jamais nul. Nous verrons que cette propriété sera importante.
+Comme $k_3$ est complexe et non nul, alors $\det(\mC) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ n'est jamais nul. Nous verrons que cette propriété sera importante.
 
 \subsection{Solutions particulières du plan infini recouvert d'une couche de matériau homogène isotrope}
 
@@ -299,20 +299,23 @@ De ce qui précède on déduit que,
         H_1(0)\\
     \end{bmatrix}
     & = - i\left(e^{i2k_3 d} +1 \right)
-    \mat{C}
+    \mC
     \begin{bmatrix}
     c_3 \\
     c_4
     \end{bmatrix}
 \end{align}
 
-On déduit donc que
+En supposant $k_3d \not = \frac{\pi}{2} + n\pi$, on déduit donc que
 \begin{align}
-    \mat{Z} &=  - \frac{\eta^2}{k_3}\frac{e^{i2dk_3} -1}{e^{i2dk_3} +1}  
+    \mat{Z} &=  - k_3 \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1} \mC^{-1} 
+    \\
+    &= -\frac{\eta^2}{k_3} \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1}
         \begin{bmatrix}
            \left(\w\eps-\frac{k_1^2}{\w\mu}\right)  & -\frac{k_1k_2}{\w\mu}\\
             -\frac{k_1k_2}{\w\mu} &  \left(\w\eps-\frac{k_2^2}{\w\mu}\right)
-        \end{bmatrix}\\
+        \end{bmatrix}
+    \\
     &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
         \begin{bmatrix}
            k^2-k_1^2  & -k_1k_2\\
@@ -320,10 +323,11 @@ On déduit donc que
         \end{bmatrix}
 \end{align}
 
+%On remarque que $\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)$ et donc pour un matériau $(\eps,\mu,d)$ donné, l'opérateur d'impédance n'est pas inversible pour tous  $(k_1,k_2) \in \RR^2, n \in \NN$, $k_1^2+k_2^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2$, qui ne peut être vérifié que si $\eps\mu$ est réel\footnote{Comme $\eps, \mu$ sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}. 
 
 \subsection{Solutions particulières du plan infini recouvert de couches de matériaux homogènes isotropes}
 
-En premier lieu, une empilement donné peut toujours se ramener à un empilement à deux couches, où l'on impose $z=-d$ la condition:
+En premier lieu, une empilement à $n$ couches donné peut toujours se ramener à un empilement à une couche avec en $z=-d$ la condition:
 \begin{equation}
     \begin{bmatrix}
         E_1(-d)\\
@@ -336,6 +340,8 @@ En premier lieu, une empilement donné peut toujours se ramener à un empilement
         H_1(-d)\\
     \end{bmatrix}
 \end{equation}
+
+Pour un empilement donnée, il suffit alors de trouver les opérateur impédances à chaque interface en partant du conducteur pour remonter jusqu'à la surface extérieur.
 
 D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:generale_H}, on déduit que
 
@@ -363,7 +369,7 @@ D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:ge
         H_1(-d)\\
     \end{bmatrix}
     =-i
-    \mat{C}
+    \mC
     \left(
         e^{-ik_3 d}
         \begin{bmatrix}
@@ -390,7 +396,7 @@ D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:ge
         c_4
     \end{bmatrix}
     \right)
-    =-i\mat{Z_d}\mat{C}
+    =-i\mat{Z_d}\mC
     \left(
         e^{-ik_3 d}
         \begin{bmatrix}
@@ -406,31 +412,44 @@ D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:ge
 \end{equation}
 
 \begin{equation}
-    \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)
+    \left(k_3\mI + \mat{Z_d}\mC\right)
     \begin{bmatrix}
         c_1 \\
         c_2
     \end{bmatrix}
-    = e^{i2k_3 d} \left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)
+    = e^{i2k_3 d} \left(k_3\mI - \mat{Z_d}\mC\right)
     \begin{bmatrix}
         c_3 \\
         c_4
     \end{bmatrix}
 \end{equation}
 
-\TODO{Prouver que $k_3\mat{I} + \mat{Z_d}\mat{C}$ est inversible}
+On pose
+\begin{align}
+    \mA_\pm &= k_3\mI \pm \mat{Z_d}\mC
+\end{align}
 
-\begin{equation}
+On remarque que par définition, $\mA_+$ et $\mA_-$ commutent.
+
+\TODO{À quelles conditions $k_3\mI \pm \mat{Z_d}\mC$ est inversible}
+
+\begin{align}
     \begin{bmatrix}
         c_1 \\
         c_2
     \end{bmatrix}
-    = e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right)
+    &= e^{i2 k_3 d} \mA_+^{-1}\mA_-
     \begin{bmatrix}
         c_3 \\
         c_4
     \end{bmatrix}
-\end{equation}
+    \\
+    & = \mat{F}
+    \begin{bmatrix}
+        c_3 \\
+        c_4
+    \end{bmatrix}
+\end{align}
 
 \begin{align}
     \begin{bmatrix}
@@ -448,21 +467,76 @@ D'après \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:ge
         c_4
     \end{bmatrix}
     \right)\\
-    &=ik_3\left(e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) - \mat{I} \right)
+    &=ik_3\left(\mat{F} - \mI \right)
     \begin{bmatrix}
         c_3 \\
         c_4
     \end{bmatrix}
 \end{align}
 
-Et alors l'opérateur d'impédance $\mat{Z}$ est tel que
+\begin{align}
+    \begin{bmatrix}
+        -H_2(0)\\
+        H_1(0)\\
+    \end{bmatrix}
+    &=-i
+    \mC
+    \left(
+        \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix}
+        +
+        \begin{bmatrix}
+            c_3 \\
+            c_4
+        \end{bmatrix}
+    \right)
+    \\
+    &=-i\mC \left(  \mat{F} + \mI  \right)
+    \begin{bmatrix}
+            c_3 \\
+            c_4
+    \end{bmatrix}
+\end{align}
+
+Et alors l'opérateur d'impédance $\mat{Z}$ est
 
 \begin{align}
     \mat{Z}
-    &=-k_3\left(e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) - \mat{I} \right)
-    \left( \mat{C} \left( e^{i2 k_3 d} \left(k_3\mat{I} + \mat{Z_d}\mat{C}\right)^{-1}\left(k_3\mat{I} - \mat{Z_d}\mat{C}\right) + \mat{I} \right)\right)^{-1}
+    &=-k_3\left(\mat{F} - \mI \right)\left(\mat{F}+ \mI \right)^{-1}\mC^{-1}
+    \\
+    &=-k_3\left(\mat{F} - \mI \right)\mA_-^{-1}\mA_-\left(\mat{F}+ \mI \right)^{-1}\mC^{-1}
+    \\
+    &=-k_3\left(\left(\mat{F} - \mI \right)\mA_-^{-1}\right)\left(\left(\mat{F}+ \mI \right)\mA_-^{-1}\right)^{-1}\mC^{-1}
+    \\
+    &=-k_3\left( e^{i2 k_3 d} \mA_+^{-1} -  \mA_-^{-1} \right)
+    \left( e^{i2 k_3 d} \mA_+^{-1} + \mA_-^{-1} \right)^{-1}\mC^{-1}
 \end{align}
 
+Comme $\mA_+$ et $\mA_-$ commutent
+
+\begin{align}
+    \mat{Z} &=-k_3\left( e^{i2 k_3 d} \mA_- -  \mA_+\right)\left(\mA_+\mA_-\right)^{-1}
+    \left(\left( e^{i2 k_3 d} \mA_- + \mA_+ \right)\left(\mA_+\mA_-\right)^{-1}\right)^{-1}\mC^{-1}
+    \\
+    &= -k_3\left( e^{i2 k_3 d} \mA_- -  \mA_+\right)
+    \left( e^{i2 k_3 d} \mA_- + \mA_+ \right)^{-1}\mC^{-1}
+    \\
+    &= -k_3\left(\left( e^{i2 k_3 d} - 1 \right)\mI - \left( e^{i2 k_3 d} + 1 \right) \mat{Z_d}\mC \right)
+    \left( \left( e^{i2 k_3 d} + 1 \right)\mI - \left( e^{i2 k_3 d} - 1 \right)\mat{Z_d}\mC \right)^{-1}\mC^{-1}   
+\end{align}
+
+En supposant que $k_3d\not = \frac{\pi}{2}+n\pi$, 
+
+\begin{equation}
+\mZ = ik_3\left(\tan(k_3 d)\mI - \mat{Z_d}\mC \right)
+    \left( \mI - \tan(k_3 d)\mat{Z_d}\mC \right)^{-1}\mC^{-1} 
+\end{equation}
+
+\TODO{
+    Justifier l'inversibilité de $\mI - \tan(k_3 d)\mat{Z_d}\mC$.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -481,54 +555,90 @@ Et alors l'opérateur d'impédance $\mat{Z}$ est tel que
 \newcommand{\mt}{\theta}
 \newcommand{\mz}{z}
 
-\begin{figure}[htpb]
-\centering
-\begin{tikzpicture}
-\input{tikz/schema/cylindre.tikz}
-\end{tikzpicture}
+\begin{figure}[!htb]
+    \centering
+    \begin{tikzpicture}
+        \input{tikz/schema/cylindre.tikz}
+    \end{tikzpicture}
 \end{figure}
+
+
 
 En coordonnée cylindrique $(r,\theta,z)$, on a
 \begin{equation}
-\vrot \vE = \left(\frac{1}{r}\ddr{\theta}{E_z} - \ddr{z}{E_\theta}\right)\v{e_r} + 
-\left(\ddr{z}{E_r} - \ddr{r}{E_z}\right)\v{e_\theta} +
-\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-\ddr{\theta}{E_r}\right)\v{e_z}
+    \vrot \vE = \left(\frac{1}{r}\ddr{\theta}{E_z} - \ddr{z}{E_\theta}\right)\v{e_r} + 
+    \left(\ddr{z}{E_r} - \ddr{r}{E_z}\right)\v{e_\theta} +
+    \frac{1}{r}\left(\ddr{r}{(rE_\theta)}-\ddr{\theta}{E_r}\right)\v{e_z}
 \end{equation}
 
 Sans pertes de généralité, on peut réaliser une transformée de Fourier en $z$ par invariance en translation et en $\theta$ par invariance en rotation. Cependant, le multiplicateur de Fourier associé à la coordonnée $\theta$ doit être un entier pour assurer la périodicité. On le note $n$.
 
 \begin{equation}
-\vrot \vE = i\left(\frac{n}{r}E_z - k_zE_\theta\right)\v{e_r} + 
-\left(ik_zE_r - \ddr{r}{E_z}\right)\v{e_\theta} +
-\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\v{e_z}
+    \vrot \vE = i\left(\frac{n}{r}E_z - k_zE_\theta\right)\v{e_r} + 
+    \left(ik_zE_r - \ddr{r}{E_z}\right)\v{e_\theta} +
+    \frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\v{e_z}
 \end{equation}
 
 On remarque que dans ce cas, la méthode utilisée pour le plan aboutie à une EDO à coefficients non constant de type $r\ddr{r}{X}(r) = M(r)X(r)$.
 
-On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice. Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
+
+\TODO{
+    Passer en cylindrique. Développer $\vrot \vrot$ et trouver des équations de Bessel pour $E_z$, $H_z$.
+    \[
+    r^2\ddr[2]{r}{E_z} + r\ddr{r}{E_z} + (r^2 - n^2) E_z = 0
+    \]
+     Déduire $E_r$,$H_r$,$E_\theta$,$H_\theta$. Trouver $\mat{Z}$
+}
+
+On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice. 
+%Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
+On développe le système de Maxwell:
 
 \begin{equation}
-\vrot \vrot \vE = \w^2\eps\mu \vE
+    \vrot \vrot \vE = \w^2\eps\mu \vE
 \end{equation}
 
 \begin{multline}
-\vrot \vrot \vE = \dots\\
-i\left(\frac{n}{r^2}\left(\ddr{r}{(rE_\theta)} - inE_r\right) - k_z\left(ik_zE_r - \ddr{r}{E_z}\right)\right)    \v{e_r} \dots\\ 
-+ \left(-k_z\left(\frac{n}{r}E_z - k_zE_\theta\right) -\ddr{r}{}\left(\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\right)\right)    \v{e_\theta} \dots\\
-+ \frac{1}{r}\left(\ddr{r}{} \left(r\left(ik_zE_r - \ddr{r}{E_z}\right)\right) + n \left(\frac{n}{r}E_z - k_zE_\theta\right)\right) \v{e_z}
+    \vrot \vrot \vE = \dots\\
+    i\left(\frac{n}{r^2}\left(\ddr{r}{(rE_\theta)} - inE_r\right) - k_z\left(ik_zE_r - \ddr{r}{E_z}\right)\right)    \v{e_r} \dots\\ 
+    + \left(-k_z\left(\frac{n}{r}E_z - k_zE_\theta\right) -\ddr{r}{}\left(\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\right)\right)    \v{e_\theta} \dots\\
+    + \frac{1}{r}\left(\ddr{r}{} \left(r\left(ik_zE_r - \ddr{r}{E_z}\right)\right) + n \left(\frac{n}{r}E_z - k_zE_\theta\right)\right) \v{e_z}
 \end{multline}
 
+On aboutit au système suivant,
+
 \begin{equation}
-\left\lbrace
-\begin{array}{ccc}
--\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)E_r  +i\frac{n}{r^2}\ddr{r}{(rE_\theta)}  +k_z\ddr{r}{E_z} & = & 0\\
-in\ddr{r}{}\left(\frac{E_r}{r}\right) -\left(\w^2\eps\mu - k_z^2\right)E_\theta + \ddr{r}{}\left(\frac{1}{r}\ddr{r}{(rE_\theta)}\right)  - n\frac{k_z}{r}E_z & = & 0\\
-i\frac{k_z}{r}\ddr{r}{(rE_r)}  - n\frac{k_z}{r}E_\theta  -\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)E_z - \frac{1}{r}\ddr{r}{}\left(r\ddr{r}{E_z}\right) & = & 0
-\end{array}
-\right.
+    \left\lbrace
+    \begin{array}{ccc}
+        -\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)E_r  +i\frac{n}{r^2}\ddr{r}{(rE_\theta)}  +k_z\ddr{r}{E_z} & = & 0\\
+        in\ddr{r}{}\left(\frac{E_r}{r}\right) -\left(\w^2\eps\mu - k_z^2\right)E_\theta + \ddr{r}{}\left(\frac{1}{r}\ddr{r}{(rE_\theta)}\right)  - n\frac{k_z}{r}E_z & = & 0\\
+        i\frac{k_z}{r}\ddr{r}{(rE_r)}  - n\frac{k_z}{r}E_\theta  -\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)E_z - \frac{1}{r}\ddr{r}{}\left(r\ddr{r}{E_z}\right) & = & 0
+    \end{array}
+    \right.
 \end{equation}
 
-%Une solution générale de ce problème sur $\left]0,+\infty\right[$ nécessite de connaître la primitive de $\frac{M(r)}{r}$
+Comme l'on cherche $\vE_t, \vH_t$, on cherche une équation différentielle à résoudre sur $E_z$, puis on en déduira $\vE_t$.
 
+De la troisième  équation, on trouve pour $r\not=0$
 
-\TODO{Passer en cylindrique. Développer $\vrot \vrot$ et trouver des équations de Bessel pour $E_z$, $H_z$. Déduire $E_r$,$H_r$,$E_\theta$,$H_\theta$. Trouver $Z$}
+\begin{equation}
+r^2 \ddr[2]{r}{E_z} + r\ddr{r}{E_z} + \left(r^2\w^2\eps\mu - n^2\right)E_z =ik_zr\ddr{r}{(rE_r)} -  nk_zrE_\theta
+\end{equation}
+
+\TODO{Peut-on vraiment trouver une équation de Bessel ? Les termes ne disparaissent pas et sont inter-dépendant. Je cherche une référence.}
+
+\begin{equation}
+    \left\lbrace
+    \begin{array}{ccc}
+        \color{cyan}{-\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)E_r}  \color{purple}{+i\frac{n}{r^2}\ddr{r}{(rE_\theta)}}  \color{orange}{+k_z\ddr{r}{E_z}} & = & 0
+        \\
+        \color{cyan}{in\ddr{r}{}\left(\frac{E_r}{r}\right)} \color{purple}{-\left(\w^2\eps\mu - k_z^2\right)E_\theta + \ddr{r}{}\left(\frac{1}{r}\ddr{r}{(rE_\theta)}\right)}  - \color{orange}{n\frac{k_z}{r}E_z} & = & 0
+        \\
+        \color{cyan}{i\frac{k_z}{r}\ddr{r}{(rE_r)}}  \color{purple}{- n\frac{k_z}{r}E_\theta}  \color{orange}{-\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)E_z - \frac{1}{r}\ddr{r}{}\left(r\ddr{r}{E_z}\right)} & = & 0
+    \end{array}
+    \right.
+\end{equation}
+
+\begin{equation}
+       \color{purple}{E_\theta} = \color{cyan}{\frac{i}{n}\ddr{r}{(rE_r)}}  \color{orange}{-\frac{r}{nk_z}\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)E_z - \frac{1}{nk_z}\ddr{r}{}\left(r\ddr{r}{E_z}\right)}
+\end{equation}
