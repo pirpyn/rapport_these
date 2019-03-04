@@ -11,7 +11,7 @@ $pdf_mode = "1";
 $pdflatex = "pdflatex -file-line-error -interaction=nonstopmode %O %S";
 
 # Lets have builing directory
-$out_dir = "latex_out";
+$out_dir = "build";
 
 ## If LaTeX is installed in a custom way, please modify accordingly 
 ## (  dot (.) is a concatenation operator )

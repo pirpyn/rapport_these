@@ -72,15 +72,8 @@
     "dictionary": "Packages/Dictionnaries/French.dic",
 
     // For LatexTools Package
-    // https://latextools.readthedocs.io/en/latest/available-builders/
-    "builder": "traditional",
-    // Just call latexmk, even on miktex
-    "windows": {
-      "distro":"texlive",
-    },
-    "TEXroot": "main.tex",
     "tex_file_exts": [".tex", ".tikz", ".bib"],
-    "output_directory": "latex_out",
+    "output_directory": "build",
     "preview_math_mode": "none",
   },
 }
