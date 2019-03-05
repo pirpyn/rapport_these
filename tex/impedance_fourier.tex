@@ -45,7 +45,7 @@ On va donc utiliser le système d'équations de Maxwell harmonique:
 
 \subsection{Forme générale des solutions pour un plan infini}
 
-Ce cas est très bien documenté (\cite{senior_approximate_1995},\cite{hoppe_impedance_1995}) et pose la méthodologie à adopter pour les objets courbes. 
+% Ce cas est très bien documenté (\cite{senior_approximate_1995},\cite{hoppe_impedance_1995}) et pose la méthodologie à adopter pour les objets courbes. 
 
 Dans un premier temps, on peut sans perte de généralités faire une rotation du repère pour avoir le plan orthogonal à $\v e_3$. Comme il est infini dans les directions $\v e_1, \v e_2$ et que le matériau est homogène isotrope, on utilise la transformée partielle en $x_1, x_2$ seulement.
 
@@ -80,17 +80,17 @@ En explicitant par composante l'opérateur $\vrot$ , le problème \eqref{eq:imp_
 \end{align*}
 
 Les composantes normales se déduisant des composantes tangentielles, on résout l'EDO matricielle à coefficients constants 
-suivante $\ddr{x_3}{}X = M X$ où
+suivante $\ddr{x_3}{}\v{X} = \mat{M} \v{X}$ où
 
 \begin{equation}
-    X = 
+    \v{X} = 
     \begin{bmatrix}
     E_1 \\ 
     E_2 \\ 
     H_1 \\ 
     H_2 \\
-    \end{bmatrix}\,
-    M = \begin{bmatrix}
+    \end{bmatrix}\,,
+    \mat{M} = \begin{bmatrix}
     0 & 0 & i\frac{k_1k_2}{\w\eps} & i\left(\w\mu - \frac{k_1^2}{\w\eps}\right)\\
     0 & 0 & -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -i\frac{k_1k_2}{\w\eps}\\
     -i\frac{k_1k_2}{\w\mu} & -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) & 0 & 0 \\
@@ -100,29 +100,29 @@ suivante $\ddr{x_3}{}X = M X$ où
 
 Pour résoudre cette EDO, nous allons chercher les vecteurs propres $V_i$ et les valeurs propres $\lambda_i$ associées de ce système. En effet, une solution générale de ce système s'écrit
 \begin{equation}
-    X(x_3)= \sum\limits_{i=1}^{4}c_i e^{\lambda_i x_3} V_i \quad , c_i \in \CC
+    \v{X}(x_3)= \sum\limits_{i=1}^{4}c_i e^{\lambda_i x_3} \v{V}_i \, c_i \in \CC
 \end{equation}
 On pose 
 \begin{equation}
-    A = \begin{bmatrix}
+    \mat{A} = \begin{bmatrix}
         i\frac{k_1k_2}{i\w\eps} & i\left(\w\mu - \frac{k_1^2}{\w\eps}\right) \\
         -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -i\frac{k_1k_2}{i\w\eps} \\
     \end{bmatrix}
     \quad
-    B = \begin{bmatrix}
+    \mat{B} = \begin{bmatrix}
         -i\frac{k_1k_2}{\w\mu} & -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
         i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) & i\frac{k_1k_2}{\w\mu} \\
     \end{bmatrix}
 \end{equation}
-Le déterminant de $M-\lambda I$ est
+Le déterminant de $\mat{M}-\lambda \mat{I}$ est
 \begin{align*}
-    \det(M-\lambda I) &= 
+    \det(\mat{M}-\lambda \mat{I}) &= 
     \begin{vmatrix}
-        -\lambda I & A \\
-        B & -\lambda I
+        -\lambda \mI & \mA \\
+        \mB & -\lambda \mI
     \end{vmatrix}
-        = \frac{\det(- \lambda I - B(-\lambda I)^{-1} A)}{\det((-\lambda I)^{-1})} \\
-        &= \det(\lambda^2 I - BA) \\
+        = \frac{\det(- \lambda \mI - \mB(-\lambda \mI)^{-1} \mA)}{\det((-\lambda \mI)^{-1})} \\
+        &= \det(\lambda^2 \mI - \mB\mA) \\
         &= (\lambda^2 + (\w^2\eps\mu - k_1^2 -k_2^2))^2
 \end{align*}
 On note alors 
@@ -137,8 +137,8 @@ Les valeurs propres sont alors
 Les espaces propres associés sont de dimension 2, on a 
 
 \begin{align}
-\Ker(M-\lambda_+I)=\Vect{V_+;W_+} \\
-    V_+ = 
+\Ker(\mat{M}-\lambda_+\mI)=\Vect{\v{V_+};\v{W_+}} \\
+    \v{V_+} = 
     \begin{bmatrix}
     \lambda_+ \\
         0 \\
@@ -146,7 +146,7 @@ Les espaces propres associés sont de dimension 2, on a
         i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
     \end{bmatrix}
     \,
-    W_+ = 
+    \v{W_+} = 
         \begin{bmatrix}
         0 \\
         \lambda_+ \\
@@ -156,8 +156,8 @@ Les espaces propres associés sont de dimension 2, on a
 \end{align}
 
 \begin{align}
-\Ker(M-\lambda_-I)=\Vect{V_-;W_-}\\
-    V_- = 
+\Ker(\mat{M}-\lambda_-\mI)=\Vect{\v{V_-};\v{W_-}}\\
+    \v{V_-} = 
     \begin{bmatrix}
         \lambda_- \\
         0 \\
@@ -165,7 +165,7 @@ Les espaces propres associés sont de dimension 2, on a
         i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
     \end{bmatrix}
     \,
-    W_- = 
+    \v{W_-} = 
     \begin{bmatrix}
         0 \\
         \lambda_- \\
@@ -176,7 +176,7 @@ Les espaces propres associés sont de dimension 2, on a
 
 On a donc une solution générale du système 
 \begin{equation}
-    X(x_3) = c_1e^{\lambda_+ x_3}V_+  + c_2e^{\lambda_+ x_3}W_+ + c_3e^{\lambda_- x_3}V_- +c_4e^{\lambda_- x_3}W_- \quad c_i \in \CC
+    \v{X}(x_3) = c_1e^{\lambda_+ x_3}\v{V_+}  + c_2e^{\lambda_+ x_3}\v{W_+} + c_3e^{\lambda_- x_3}\v{V_-} +c_4e^{\lambda_- x_3}\v{W_-} \quad c_i \in \CC
 \end{equation}
 
 On exprime les champs $\vE_t(x)$ et $\v{e_3} \times \vH_t(x)$ car ce sont des quantités qui nous intéresse:
@@ -586,7 +586,7 @@ On définit ainsi $\mZ_m$ telle que $\vE_t(l_m) = \mZ_m\vH_t(l_m)$. On cherche d
     \end{align}
 
     \TODO{
-        Synthétiser toute les conditions à vérifier pour faire du multicouche.
+        Expliciter les résultats dans le cas $k_1 = 0$ , $k_2 = k_0s$.
     }
 
 
@@ -604,35 +604,37 @@ On définit ainsi $\mZ_m$ telle que $\vE_t(l_m) = \mZ_m\vH_t(l_m)$. On cherche d
 
 
 
-\subsection{Forme générale des solutions pour un cylindre}
+\subsection{Forme générale des solutions pour un cylindre recouvert de matériau homogène isotrope}
+
+On rappelle les formules des opérateurs $\vdiv, \vrot$ en coordonnée cylindrique $(r,\theta,z)$.
+\begin{align}
+    \vrot \v{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\v{e_r} + 
+    \left(\ddr{z}{V_r} - \ddr{r}{V_z}\right)\v{e_\theta} +
+    \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\v{e_z} 
+    \\
+    \vdiv \v{V} &= \frac{1}{r}\ddr{r}{(rV_r)}+\frac{1}{r}\ddr{\theta}{V_\theta}+\ddr{z}{V_z}
+\end{align}
 
 \newcommand{\mr}{r}
 \newcommand{\mt}{\theta}
 \newcommand{\mz}{z}
 
-\begin{figure}[!htb]
+\begin{figure}[!hbt]
     \centering
     \begin{tikzpicture}
         \input{tikz/schema/cylindre.tikz}
     \end{tikzpicture}
 \end{figure}
 
+On exprime les équations de Maxwell dans le matériau dans cette base et sans pertes de généralité, on peut réaliser une transformée de Fourier en $z$ par invariance en translation et en $\theta$ par invariance en rotation. Cependant, le multiplicateur de Fourier associé à la coordonnée $\theta$ doit être un entier pour assurer la périodicité. On le note $n$.
 
-
-En coordonnée cylindrique $(r,\theta,z)$, on a
-\begin{equation}
-    \vrot \vE = \left(\frac{1}{r}\ddr{\theta}{E_z} - \ddr{z}{E_\theta}\right)\v{e_r} + 
-    \left(\ddr{z}{E_r} - \ddr{r}{E_z}\right)\v{e_\theta} +
-    \frac{1}{r}\left(\ddr{r}{(rE_\theta)}-\ddr{\theta}{E_r}\right)\v{e_z}
-\end{equation}
-
-Sans pertes de généralité, on peut réaliser une transformée de Fourier en $z$ par invariance en translation et en $\theta$ par invariance en rotation. Cependant, le multiplicateur de Fourier associé à la coordonnée $\theta$ doit être un entier pour assurer la périodicité. On le note $n$.
-
-\begin{equation}
-    \vrot \vE = i\left(\frac{n}{r}E_z - k_zE_\theta\right)\v{e_r} + 
+\begin{align}
+    \vrot \vE &= i\left(\frac{n}{r}E_z - k_zE_\theta\right)\v{e_r} + 
     \left(ik_zE_r - \ddr{r}{E_z}\right)\v{e_\theta} +
     \frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\v{e_z}
-\end{equation}
+    \\
+    &=i\w\mu \vH
+\end{align}
 
 On remarque que dans ce cas, la méthode utilisée pour le plan aboutie à une EDO à coefficients non constant de type $r\ddr{r}{X}(r) = M(r)X(r)$.
 
@@ -649,9 +651,11 @@ On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la m
 %Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
 On développe le système de Maxwell:
 
-\begin{equation}
-    \vrot \vrot \vE = \w^2\eps\mu \vE
-\end{equation}
+\begin{align}
+    \vrot \vrot \vE &= \w^2\eps\mu \vE
+    \\
+    \vdiv \vE &= 0
+\end{align}
 
 \begin{multline}
     \vrot \vrot \vE = \dots\\
@@ -661,7 +665,6 @@ On développe le système de Maxwell:
 \end{multline}
 
 On aboutit au système suivant,
-
 \begin{equation}
     \left\lbrace
     \begin{array}{ccc}
@@ -675,25 +678,56 @@ On aboutit au système suivant,
 Comme l'on cherche $\vE_t, \vH_t$, on cherche une équation différentielle à résoudre sur $E_z$, puis on en déduira $\vE_t$.
 
 De la troisième  équation, on trouve pour $r\not=0$
-
 \begin{equation}
 r^2 \ddr[2]{r}{E_z} + r\ddr{r}{E_z} + \left(r^2\w^2\eps\mu - n^2\right)E_z =ik_zr\ddr{r}{(rE_r)} -  nk_zrE_\theta
 \end{equation}
 
-\TODO{Peut-on vraiment trouver une équation de Bessel ? Les termes ne disparaissent pas et sont inter-dépendant. Je cherche une référence.}
+\TODO{Vérifier que $\vdiv\vrot\v{V} = 0$ en cylindrique.}
 
+Or comme $\vdiv \vE = i\w\mu\vdiv\vrot\vH = 0$, on a
+\begin{align}
+    \vdiv\vE &= \frac{1}{r}\ddr{r}{(rE_r)} + \frac{in}{r}E_\theta + ik_zE_z
+    \\
+    &=0
+    \\
+    k_z^2r^2 E_z &= ik_zr\ddr{r}{(rE_r)} - nk_zrE_\theta
+\end{align}
+
+On obtient donc une équation sur la composante $E_z$:
 \begin{equation}
-    \left\lbrace
-    \begin{array}{ccc}
-        \color{cyan}{-\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)E_r}  \color{purple}{+i\frac{n}{r^2}\ddr{r}{(rE_\theta)}}  \color{orange}{+k_z\ddr{r}{E_z}} & = & 0
-        \\
-        \color{cyan}{in\ddr{r}{}\left(\frac{E_r}{r}\right)} \color{purple}{-\left(\w^2\eps\mu - k_z^2\right)E_\theta + \ddr{r}{}\left(\frac{1}{r}\ddr{r}{(rE_\theta)}\right)}  - \color{orange}{n\frac{k_z}{r}E_z} & = & 0
-        \\
-        \color{cyan}{i\frac{k_z}{r}\ddr{r}{(rE_r)}}  \color{purple}{- n\frac{k_z}{r}E_\theta}  \color{orange}{-\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)E_z - \frac{1}{r}\ddr{r}{}\left(r\ddr{r}{E_z}\right)} & = & 0
-    \end{array}
-    \right.
+    r^2 \ddr[2]{r}{E_z} + r\ddr{r}{E_z} + \left(r^2\left(\w^2\eps\mu - k_z^2\right) - n^2\right)E_z = 0
+\end{equation}
+\TODO{Que ce passe t'il si je prend des fonctions de Bessel différentes ? }
+On pose 
+\begin{equation}
+    k_3 = \sqrt{w^2\eps\mu - k_z^2}
 \end{equation}
 
+C'est une équation de Bessel (cf \cite[eq (6.80)]{bowman_introduction_1958}), dont des solutions générales sont: soient $(C_1,C_2) \in \CC^2$:
+\TODO{Expliquer que ces choix viennent de la condition limite infini. L'introduire ?}
 \begin{equation}
-       \color{purple}{E_\theta} = \color{cyan}{\frac{i}{n}\ddr{r}{(rE_r)}}  \color{orange}{-\frac{r}{nk_z}\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)E_z - \frac{1}{nk_z}\ddr{r}{}\left(r\ddr{r}{E_z}\right)}
+    E_z = C_1 J_n\left(k_3r\right) + C_2 H_n^{(2)}\left(k_3r\right)
 \end{equation}
+où $J_n$ est la fonction de Bessel du premier type, $H_n^{(2)}$ la fonction de Hankel de deuxième type. 
+
+On trouve exactement le même résultat pour $H_z$: soient $(C_3,C_4) \in \CC^2$
+\begin{equation}
+    H_z = C_3 J_n\left(k_3r\right) + C_4 H_n^{(2)}\left(k_3r\right)
+\end{equation}
+
+À partir des équations de Maxwell restante, on peut déterminer $E_r,E_\theta,H_r,H_\theta$.
+\begin{equation}
+\left\lbrace
+\begin{matrix}
+    -ik_zE_\theta - i\w\mu H_r = -\frac{in}{r}E_z
+    \\
+    ik_zE_r - i\w\mu H_\theta = \ddr{r}{E_z}
+    \\
+    -i\w\eps E_r + ik_z H_\theta = \frac{in}{r}H_z
+    \\
+    -i\w\eps E_\theta - ik_z H_r = \ddr{r}{H_z}
+\end{matrix}
+\right.
+\end{equation}
+
+On définit par $\mat{M}$
