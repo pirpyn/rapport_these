@@ -717,17 +717,60 @@ On trouve exactement le même résultat pour $H_z$: soient $(C_3,C_4) \in \CC^2$
 
 À partir des équations de Maxwell restante, on peut déterminer $E_r,E_\theta,H_r,H_\theta$.
 \begin{equation}
-\left\lbrace
-\begin{matrix}
-    -ik_zE_\theta - i\w\mu H_r = -\frac{in}{r}E_z
-    \\
-    ik_zE_r - i\w\mu H_\theta = \ddr{r}{E_z}
-    \\
-    -i\w\eps E_r + ik_z H_\theta = \frac{in}{r}H_z
-    \\
-    -i\w\eps E_\theta - ik_z H_r = \ddr{r}{H_z}
-\end{matrix}
-\right.
+    \left\lbrace
+    \begin{matrix}
+        -ik_zE_\theta - i\w\mu H_r = -\frac{in}{r}E_z
+        \\
+        ik_zE_r - i\w\mu H_\theta = \ddr{r}{E_z}
+        \\
+        -i\w\eps E_r + ik_z H_\theta = \frac{in}{r}H_z
+        \\
+        -i\w\eps E_\theta - ik_z H_r = -\ddr{r}{H_z}
+    \end{matrix}
+    \right.
 \end{equation}
 
-On définit par $\mat{M}$
+Cela revient à résoudre $\v{Y}= \mat{M}\v{X}$ où la matrice $\mat{M}$ et les vecteurs $\v{X}, \v{Y}$ sont définis tels que
+\begin{equation}
+    \mat{M} =
+    \begin{bmatrix}
+    0 & -ik_z & -i\w\mu & 0 
+    \\
+    ik_z & 0 & 0 & -i\w\mu
+    \\
+    -i\w\eps & 0 & 0 & ik_z
+    \\
+    0 & -i\w\eps & -ik_z & 0
+    \end{bmatrix}
+    \,,
+    \v{X} = 
+    \begin{bmatrix}
+        E_r\\
+        E_\theta\\
+        H_r\\
+        H_\theta
+    \end{bmatrix}
+    \,,
+    \v{Y} = 
+    \begin{bmatrix}
+        -\frac{in}{r}E_z\\
+        \ddr{r}{E_z}\\
+        \frac{in}{r}H_z\\
+        -\ddr{r}{H_z}
+    \end{bmatrix}
+    \,,
+\end{equation}
+
+À condition que $\det(\mat{M}) = (\w^2\eps\mu-k_z^2)^4$ soit non nul, peut déduire $\vE_t$ et $\v{e_r}\times \vH_t$:
+
+\begin{align}
+    E_\theta &= 
+    \\
+    E_z &= 
+\end{align}
+
+\begin{align}
+    -H_z &= 
+    \\
+    H_\theta &= 
+\end{align}
