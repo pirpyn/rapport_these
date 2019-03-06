@@ -1,7 +1,4 @@
-
-
-
-\subsection{Forme générale des solutions pour un cylindre recouvert d'un matériau homogène isotrope}
+\section{Cas d'un objet cylindrique}
 
 On rappelle les formules des opérateurs $\vdiv, \vrot$ en coordonnée cylindrique $(r,\theta,z)$.
 \begin{align}
@@ -11,18 +8,6 @@ On rappelle les formules des opérateurs $\vdiv, \vrot$ en coordonnée cylindriq
     \\
     \vdiv \v{V} &= \frac{1}{r}\ddr{r}{(rV_r)}+\frac{1}{r}\ddr{\theta}{V_\theta}+\ddr{z}{V_z}
 \end{align}
-
-\newcommand{\mr}{r}
-\newcommand{\mt}{\theta}
-\newcommand{\mz}{z}
-
-\TODO{Rajouter les rayons}
-\begin{figure}[!hbt]
-    \centering
-    \begin{tikzpicture}
-        \input{tikz/schema/cylindre.tikz}
-    \end{tikzpicture}
-\end{figure}
 
 On exprime les équations de Maxwell dans le matériau dans cette base et sans pertes de généralité, on peut réaliser une transformée de Fourier en $z$ par invariance en translation et en $\theta$ par invariance en rotation. Cependant, le multiplicateur de Fourier associé à la coordonnée $\theta$ doit être un entier pour assurer la périodicité. On le note $n$.
 
@@ -264,6 +249,21 @@ Pour simplifier les notations, on définit les matrices $\mJ_{E},\mH_{E},\mJ_{H}
     \end{bmatrix}
 \end{align}
 
+\subsection{Opérateur d'impédance pour une couche}
+
+\newcommand{\mr}{r}
+\newcommand{\mt}{\theta}
+\newcommand{\mz}{z}
+
+\TODO{Rajouter les rayons}
+\begin{figure}[!hbt]
+    \centering
+    \begin{tikzpicture}
+        \input{tikz/schema/cylindre_1_couche.tikz}
+    \end{tikzpicture}
+\end{figure}
+
+
 On applique la relation $\vE_t = 0$ en $r = r_0$.
 \begin{equation}
     \mJ_{H}(r_0)
@@ -314,4 +314,4 @@ Et à condition que $\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)$ s
 
 Contrairement au plan, les matrices  ne commutent pas et on ne peut pas simplifier le résultat.
 
-\subsection{Cylindre recouverts de plusieurs couches concentriques de matériaux homogène d'épaisseurs constantes}
+\subsection{Opérateur d'impédance pour plusieurs couches}
