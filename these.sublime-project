@@ -15,20 +15,20 @@
         {
           "name"  : "clean",
           "linux": {
-            "shell_cmd" : "/bin/rm -rf $project_path/latex_out",
+            "shell_cmd" : "/bin/rm -rf $project_path/build",
           },
           "windows":{
-            "shell_cmd":"del /F /Q \"$project_path\\latex_out\"",
+            "shell_cmd":"del /F /Q \"$project_path\\build\"",
           }
         },
         {
           "name"  : "show",
           "linux": {
 
-            "shell_cmd" : "evince $project_path/latex_out/these_payen_2019.pdf",
+            "shell_cmd" : "gio open $project_path/build/these_payen_2019.pdf",
           },
           "windows":{
-            "shell_cmd": "\"C:\\Program Files\\SumatraPDF\\SumatraPDF.exe\" \"$project_path\\latex_out\\these_payen_2019.pdf\"",
+            "shell_cmd": "\"C:\\Program Files\\SumatraPDF\\SumatraPDF.exe\" \"$project_path\\build\\these_payen_2019.pdf\"",
           }
         },
       ],
