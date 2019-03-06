@@ -34,7 +34,7 @@
 \usepackage[%
     language=english,%
     sorting=nyt,%
-    backend=biber,%
+    backend=bibtex8,%
     style=authoryear,%
     hyperref=true,%
     giveninits=true, % initialles pour prénoms
@@ -91,7 +91,10 @@
 \usepackage{tikz} 
     \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
     \usetikzlibrary{patterns} % permet de faire des patterns
-    
+    \usetikzlibrary{math} % permet de definir des variables
+    \tikzset{every picture/.style={execute at begin picture={
+        \shorthandoff{:;!?};}
+    }}
 % % permet d'ajouter des notes en marges
 % \setlength{\oddsidemargin}{25mm}
 % \setlength{\evensidemargin}{25mm}
