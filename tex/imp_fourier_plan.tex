@@ -1,554 +1,561 @@
 \section{Cas d'un objet plan infini}
 
-\TODO{Passer de $x_1,x_2,x_3$ à $x,y,z$ ? Peut être plus lisible.}
+    \TODO{Passer de $x_1,x_2,x_3$ à $x,y,z$ ? Peut être plus lisible.}
 
-% Ce cas est très bien documenté (\cite{senior_approximate_1995},\cite{hoppe_impedance_1995}) et pose la méthodologie à adopter pour les objets courbes. 
+    % Ce cas est très bien documenté (\cite{senior_approximate_1995},\cite{hoppe_impedance_1995}) et pose la méthodologie à adopter pour les objets courbes. 
 
-Dans un premier temps, on peut sans perte de généralités faire une rotation du repère pour avoir le plan orthogonal à $\v e_3$. Comme il est infini dans les directions $\v e_1, \v e_2$ et que le matériau est homogène isotrope, on utilise la transformée partielle en $x_1, x_2$ seulement.
+    Dans un premier temps, on peut sans perte de généralités faire une rotation du repère pour avoir le plan orthogonal à $\v e_3$. Comme il est infini dans les directions $\v e_1, \v e_2$ et que le matériau est homogène isotrope, on utilise la transformée partielle en $x_1, x_2$ seulement.
 
-En explicitant par composante l'opérateur $\vrot$ , le problème \eqref{eq:imp_fourier:intro:maxwell_harmonique} s'écrit  
-\begin{align*}
-    \left\lbrace 
-    \begin{matrix}
-    ik_2 E_3  - \ddr{x_3}{E_ 2} = i \w \mu H_1 \\
-    \ddr{x_3}{E_1} - ik_1 E_3 = i\w \mu H_2 \\
-    ik_1 E_2 - ik_2 E_1 = i\w \mu H_3 \\
-    \end{matrix}
-    \right. \quad 
-    \left\lbrace 
-    \begin{matrix}
-    ik_2 H_3  - \ddr{x_3}{H_ 2} = -i \w \eps E_1 \\
-    \ddr{x_3}{H_1} - ik_1 H_3 = -i\w \eps E_2 \\
-    ik_1 H_2 - ik_2 H_1 = -i\w \eps E_3 \\
-    \end{matrix}
-    \right.
-\end{align*}
+    En explicitant par composante l'opérateur $\vrot$ , le problème \eqref{eq:imp_fourier:intro:maxwell_harmonique} s'écrit  
+    \begin{align*}
+        \left\lbrace 
+        \begin{matrix}
+        ik_2 E_3  - \ddr{x_3}{E_ 2} = i \w \mu H_1 \\
+        \ddr{x_3}{E_1} - ik_1 E_3 = i\w \mu H_2 \\
+        ik_1 E_2 - ik_2 E_1 = i\w \mu H_3 \\
+        \end{matrix}
+        \right. \quad 
+        \left\lbrace 
+        \begin{matrix}
+        ik_2 H_3  - \ddr{x_3}{H_ 2} = -i \w \eps E_1 \\
+        \ddr{x_3}{H_1} - ik_1 H_3 = -i\w \eps E_2 \\
+        ik_1 H_2 - ik_2 H_1 = -i\w \eps E_3 \\
+        \end{matrix}
+        \right.
+    \end{align*}
 
-Les composantes normales se déduisant des composantes tangentielles, on résout l'EDO matricielle à coefficients constants 
-suivante $\ddr{x_3}{}\v{X} = \mat{M} \v{X}$ où
+    Les composantes normales se déduisant des composantes tangentielles, on résout l'EDO matricielle à coefficients constants 
+    suivante $\ddr{x_3}{}\v{X} = \mat{M} \v{X}$ où
 
-\begin{equation}
-    \v{X} = 
-    \begin{bmatrix}
-    E_1 \\ 
-    E_2 \\ 
-    H_1 \\ 
-    H_2 \\
-    \end{bmatrix}\,,
-    \mat{M} = \begin{bmatrix}
-    0 & 0 & i\frac{k_1k_2}{\w\eps} & i\left(\w\mu - \frac{k_1^2}{\w\eps}\right)\\
-    0 & 0 & -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -i\frac{k_1k_2}{\w\eps}\\
-    -i\frac{k_1k_2}{\w\mu} & -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) & 0 & 0 \\
-    i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) & i\frac{k_1k_2}{\w\mu} & 0 & 0 \\
-    \end{bmatrix}
-\end{equation}
-
-Pour résoudre cette EDO, nous allons chercher les vecteurs propres $V_i$ et les valeurs propres $\lambda_i$ associées de ce système. En effet, une solution générale de ce système s'écrit
-\begin{equation}
-    \v{X}(x_3)= \sum\limits_{i=1}^{4}c_i e^{\lambda_i x_3} \v{V}_i \, c_i \in \CC
-\end{equation}
-On pose 
-\begin{equation}
-    \mat{A} = \begin{bmatrix}
-        i\frac{k_1k_2}{i\w\eps} & i\left(\w\mu - \frac{k_1^2}{\w\eps}\right) \\
-        -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -i\frac{k_1k_2}{i\w\eps} \\
-    \end{bmatrix}
-    \quad
-    \mat{B} = \begin{bmatrix}
-        -i\frac{k_1k_2}{\w\mu} & -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
-        i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) & i\frac{k_1k_2}{\w\mu} \\
-    \end{bmatrix}
-\end{equation}
-Le déterminant de $\mat{M}-\lambda \mat{I}$ est
-\begin{align*}
-    \det(\mat{M}-\lambda \mat{I}) &= 
-    \begin{vmatrix}
-        -\lambda \mI & \mA \\
-        \mB & -\lambda \mI
-    \end{vmatrix}
-        = \frac{\det(- \lambda \mI - \mB(-\lambda \mI)^{-1} \mA)}{\det((-\lambda \mI)^{-1})} \\
-        &= \det(\lambda^2 \mI - \mB\mA) \\
-        &= (\lambda^2 + (\w^2\eps\mu - k_1^2 -k_2^2))^2
-\end{align*}
-On note alors 
-\begin{equation}
-k_3=\sqrt{\w^2\eps\mu - k_1^2 -k_2^2}
-\end{equation}
-
-Les valeurs propres sont alors 
-\begin{equation}
-    \lambda_\pm = \pm i k_3
-\end{equation}
-Les espaces propres associés sont de dimension 2, on a 
-
-\begin{align}
-\Ker(\mat{M}-\lambda_+\mI)=\Vect{\v{V_+};\v{W_+}} \\
-    \v{V_+} = 
-    \begin{bmatrix}
-    \lambda_+ \\
-        0 \\
-        -i\frac{k_1k_2}{\w\mu} \\
-        i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
-    \end{bmatrix}
-    \,
-    \v{W_+} = 
+    \begin{equation}
+        \v{X} = 
         \begin{bmatrix}
-        0 \\
+        E_1 \\ 
+        E_2 \\ 
+        H_1 \\ 
+        H_2 \\
+        \end{bmatrix}\,,
+        \mat{M} = \begin{bmatrix}
+        0 & 0 & i\frac{k_1k_2}{\w\eps} & i\left(\w\mu - \frac{k_1^2}{\w\eps}\right)\\
+        0 & 0 & -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -i\frac{k_1k_2}{\w\eps}\\
+        -i\frac{k_1k_2}{\w\mu} & -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) & 0 & 0 \\
+        i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) & i\frac{k_1k_2}{\w\mu} & 0 & 0 \\
+        \end{bmatrix}
+    \end{equation}
+
+    Pour résoudre cette EDO, nous allons chercher les vecteurs propres $V_i$ et les valeurs propres $\lambda_i$ associées de ce système. En effet, une solution générale de ce système s'écrit
+    \begin{equation}
+        \v{X}(x_3)= \sum\limits_{i=1}^{4}c_i e^{\lambda_i x_3} \v{V}_i \, c_i \in \CC
+    \end{equation}
+    On pose 
+    \begin{equation}
+        \mat{A} = \begin{bmatrix}
+            i\frac{k_1k_2}{i\w\eps} & i\left(\w\mu - \frac{k_1^2}{\w\eps}\right) \\
+            -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -i\frac{k_1k_2}{i\w\eps} \\
+        \end{bmatrix}
+        \quad
+        \mat{B} = \begin{bmatrix}
+            -i\frac{k_1k_2}{\w\mu} & -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
+            i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) & i\frac{k_1k_2}{\w\mu} \\
+        \end{bmatrix}
+    \end{equation}
+    Le déterminant de $\mat{M}-\lambda \mat{I}$ est
+    \begin{align*}
+        \det(\mat{M}-\lambda \mat{I}) &= 
+        \begin{vmatrix}
+            -\lambda \mI & \mA \\
+            \mB & -\lambda \mI
+        \end{vmatrix}
+            = \frac{\det(- \lambda \mI - \mB(-\lambda \mI)^{-1} \mA)}{\det((-\lambda \mI)^{-1})} \\
+            &= \det(\lambda^2 \mI - \mB\mA) \\
+            &= (\lambda^2 + (\w^2\eps\mu - k_1^2 -k_2^2))^2
+    \end{align*}
+    On note alors 
+    \begin{equation}
+    k_3=\sqrt{\w^2\eps\mu - k_1^2 -k_2^2}
+    \end{equation}
+
+    Les valeurs propres sont alors 
+    \begin{equation}
+        \lambda_\pm = \pm i k_3
+    \end{equation}
+    Les espaces propres associés sont de dimension 2, on a 
+
+    \begin{align}
+    \Ker(\mat{M}-\lambda_+\mI)=\Vect{\v{V_+};\v{W_+}} \\
+        \v{V_+} = 
+        \begin{bmatrix}
         \lambda_+ \\
-        -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
-        i\frac{k_1k_2}{\w\mu} \\
-    \end{bmatrix}
-\end{align}
+            0 \\
+            -i\frac{k_1k_2}{\w\mu} \\
+            i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
+        \end{bmatrix}
+        \,
+        \v{W_+} = 
+            \begin{bmatrix}
+            0 \\
+            \lambda_+ \\
+            -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
+            i\frac{k_1k_2}{\w\mu} \\
+        \end{bmatrix}
+    \end{align}
 
-\begin{align}
-\Ker(\mat{M}-\lambda_-\mI)=\Vect{\v{V_-};\v{W_-}}\\
-    \v{V_-} = 
-    \begin{bmatrix}
-        \lambda_- \\
-        0 \\
-        -i\frac{k_1k_2}{\w\mu} \\
-        i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
-    \end{bmatrix}
-    \,
-    \v{W_-} = 
-    \begin{bmatrix}
-        0 \\
-        \lambda_- \\
-        -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
-        i\frac{k_1k_2}{\w\mu} \\
-    \end{bmatrix}
-\end{align}
+    \begin{align}
+    \Ker(\mat{M}-\lambda_-\mI)=\Vect{\v{V_-};\v{W_-}}\\
+        \v{V_-} = 
+        \begin{bmatrix}
+            \lambda_- \\
+            0 \\
+            -i\frac{k_1k_2}{\w\mu} \\
+            i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
+        \end{bmatrix}
+        \,
+        \v{W_-} = 
+        \begin{bmatrix}
+            0 \\
+            \lambda_- \\
+            -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
+            i\frac{k_1k_2}{\w\mu} \\
+        \end{bmatrix}
+    \end{align}
 
-On a donc une solution générale du système: soient $(c_i)_{i} \in \CC^4$
-\begin{equation}
-    \v{X}(x_3) = c_1e^{\lambda_+ x_3}\v{V_+}  + c_2e^{\lambda_+ x_3}\v{W_+} + c_3e^{\lambda_- x_3}\v{V_-} +c_4e^{\lambda_- x_3}\v{W_-}
-\end{equation}
+    On a donc une solution générale du système: soient $(c_i)_{i} \in \CC^4$
+    \begin{equation}
+        \v{X}(x_3) = c_1e^{\lambda_+ x_3}\v{V_+}  + c_2e^{\lambda_+ x_3}\v{W_+} + c_3e^{\lambda_- x_3}\v{V_-} +c_4e^{\lambda_- x_3}\v{W_-}
+    \end{equation}
 
-On exprime les champs $\vE_t(x_3)$ et $\v{e_3} \times \vH_t(x_3)$ car ce sont des quantités qui nous intéresse:
+    On exprime les champs $\vE_t(x_3)$ et $\v{e_3} \times \vH_t(x_3)$ car ce sont des quantités qui nous intéresse:
 
-\begin{align}
-    \begin{bmatrix}
-        E_1(x_3)\\
-        E_2(x_3)\\
-    \end{bmatrix}
-    &=
-    \begin{bmatrix}
-        c_1 e^{\lambda_+ x_3} \lambda_{+} + c_3 e^{\lambda_- x_3} \lambda_{-} \\
-        c_2 e^{\lambda_+ x_3} \lambda_{+} + c_4 e^{\lambda_- x_3} \lambda_{-}
-    \end{bmatrix}\\
-    &=ik_3\left( e^{ik_3 x_3}
-    \begin{bmatrix}
-        c_1 \\
-        c_2
-    \end{bmatrix}
-    -e^{-ik_3 x_3}
-    \begin{bmatrix}
-        c_3 \\
-        c_4
-    \end{bmatrix}
-    \right)
-    \label{eq:imp_fourier:plan:generale_E}
-\end{align}
-
-\begin{align}
-    \begin{bmatrix}
-        -H_2(x_3)\\
-        H_1(x_3)\\
-    \end{bmatrix}
-    &=
-    \begin{bmatrix}
-        -i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \left( c_1 e^{ik_3 x_3} + c_3 e^{-ik_3 x_3} \right) - i\frac{k_1k_2}{\w\mu} \left( c_2 e^{ik_3 x_3} + c_4 e^{-ik_3 x_3} \right)
-        \\
-        -i\frac{k_1k_2}{\w\mu} \left( c_1 e^{ik_3 x_3} + c_3 e^{-ik_3 x_3} \right) - i\left(\w\eps - \frac{k_1^2}{\w\mu}\right)\left( c_2 e^{ik_3 x_3} + c_4 e^{-ik_3 x_3} \right)
-    \end{bmatrix} \\
-    &=-i
-    \begin{bmatrix}
-    \left(\w\eps - \frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}
-    \\
-    \frac{k_1k_2}{\w\mu} & \left(\w\eps - \frac{k_1^2}{\w\mu}\right) 
-    \end{bmatrix}
-    \left(
-        e^{ik_3 x_3}
+    \begin{align}
+        \begin{bmatrix}
+            E_1(x_3)\\
+            E_2(x_3)\\
+        \end{bmatrix}
+        &=
+        \begin{bmatrix}
+            c_1 e^{\lambda_+ x_3} \lambda_{+} + c_3 e^{\lambda_- x_3} \lambda_{-} \\
+            c_2 e^{\lambda_+ x_3} \lambda_{+} + c_4 e^{\lambda_- x_3} \lambda_{-}
+        \end{bmatrix}\\
+        &=ik_3\left( e^{ik_3 x_3}
         \begin{bmatrix}
             c_1 \\
             c_2
         \end{bmatrix}
-        +e^{-ik_3 x_3}
+        -e^{-ik_3 x_3}
         \begin{bmatrix}
             c_3 \\
             c_4
         \end{bmatrix}
-    \right)
-    \label{eq:imp_fourier:plan:generale_H}
-\end{align}
-
-Notons
-\begin{align}
-    \mC &=
-    \begin{bmatrix}
-        \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
-        \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
-    \end{bmatrix}
-\end{align}
-
-Comme $\det(\mC) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ alors une condition nécessaire pour trouver l'opérateur d'impédance est que $k_3$ soit non nul\footnote{$k_3$ peut s'annuler pour des $\eps,\mu$ réels.}.
-% On peut noter d'après \cite[eq.~(6)]{stupfel_2011}
-
-% \begin{equation}
-%     \mC^{-1}= \frac{\eta^2}{k_3^2}\left(k^2\mI - \mat{L_R}\right)
-%     \label{eq:imp_fourier:plan:C}
-% \end{equation}
-
-\subsection{Opérateur d'impédance pour une couche}
-
-\renewcommand{\x}{e_1}
-\renewcommand{\y}{e_2}
-\renewcommand{\z}{e_3}
-\renewcommand{\peps}{\eps}
-\renewcommand{\pmu}{{\mu}}
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}
-\input{tikz/schema/plan_1_couche.tikz}
-\end{tikzpicture}
-\end{figure}
-
-\begin{thm}
-    Si on suppose
-        \begin{align}
-        k_3d &\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN
+        \right)
+        \label{eq:imp_fourier:plan:generale_E}
     \end{align}
-    Alors l'opérateur d'impédance $\mZ$ est défini par la relation de récurrence : 
-    \begin{align}
-    \mZ_m &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
-        \begin{bmatrix}
-           k^2-k_1^2  & -k_1k_2\\
-            -k_1k_2 & k^2-k_2^2\\
-        \end{bmatrix}
-    \end{align}
-\end{thm}
-
-\begin{proof}
-    Nous utilisons la condition limite 
-    \begin{equation}
-        \begin{bmatrix}
-            E_1(-d)\\
-            E_2(-d)\\
-        \end{bmatrix}
-        =
-        \begin{bmatrix}
-            0\\
-            0\\
-        \end{bmatrix}
-    \end{equation}
-
-    De \eqref{eq:imp_fourier:plan:generale_E}, on déduit
 
     \begin{align}
         \begin{bmatrix}
-            c_1 \\
-            c_2
+            -H_2(x_3)\\
+            H_1(x_3)\\
         \end{bmatrix}
-        = e^{2ik_3 d}
+        &=
         \begin{bmatrix}
-            c_3 \\
-            c_4
-        \end{bmatrix}
-    \end{align}
-
-    On définit l'opérateur d'impédance la matrice $\mat Z$ tel que 
-    \begin{equation}
-        \vE_t(0) = \mat Z \left(\v{e_3} \times \vH_t(0)\right)
-    \end{equation}
-
-    De ce qui précède on déduit que,
-
-    \begin{align}
-        \begin{bmatrix}
-            E_1(0)\\
-            E_2(0)\\
-        \end{bmatrix}
-        &=ik_3\left( e^{i2k_3 d} -1 \right)
-        \begin{bmatrix}
-            c_3 \\
-            c_4
+            -i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \left( c_1 e^{ik_3 x_3} + c_3 e^{-ik_3 x_3} \right) - i\frac{k_1k_2}{\w\mu} \left( c_2 e^{ik_3 x_3} + c_4 e^{-ik_3 x_3} \right)
+            \\
+            -i\frac{k_1k_2}{\w\mu} \left( c_1 e^{ik_3 x_3} + c_3 e^{-ik_3 x_3} \right) - i\left(\w\eps - \frac{k_1^2}{\w\mu}\right)\left( c_2 e^{ik_3 x_3} + c_4 e^{-ik_3 x_3} \right)
         \end{bmatrix} \\
+        &=-i
         \begin{bmatrix}
-            -H_2(0)\\
-            H_1(0)\\
+        \left(\w\eps - \frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}
+        \\
+        \frac{k_1k_2}{\w\mu} & \left(\w\eps - \frac{k_1^2}{\w\mu}\right) 
         \end{bmatrix}
-        & = - i\left(e^{i2k_3 d} +1 \right)
-        \mC
-        \begin{bmatrix}
-        c_3 \\
-        c_4
-        \end{bmatrix}
+        \left(
+            e^{ik_3 x_3}
+            \begin{bmatrix}
+                c_1 \\
+                c_2
+            \end{bmatrix}
+            +e^{-ik_3 x_3}
+            \begin{bmatrix}
+                c_3 \\
+                c_4
+            \end{bmatrix}
+        \right)
+        \label{eq:imp_fourier:plan:generale_H}
     \end{align}
 
-    En supposant $k_3d \not = \frac{\pi}{2} + n\pi$, on déduit donc que
+    Notons
     \begin{align}
-        \mat{Z} &=  - k_3 \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1} \mC^{-1} 
-        \\
-        &= -\frac{\eta^2}{k_3} \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1}
-            \begin{bmatrix}
-               \left(\w\eps-\frac{k_1^2}{\w\mu}\right)  & -\frac{k_1k_2}{\w\mu}\\
-                -\frac{k_1k_2}{\w\mu} &  \left(\w\eps-\frac{k_2^2}{\w\mu}\right)
-            \end{bmatrix}
-        \\
-        &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
-            \begin{bmatrix}
-               k^2-k_1^2  & -k_1k_2\\
-                -k_1k_2 & k^2-k_2^2\\
-            \end{bmatrix}
+        \mC &=
+        \begin{bmatrix}
+            \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
+            \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
+        \end{bmatrix}
     \end{align}
 
-\end{proof}
-%On remarque que $\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)$ et donc pour un matériau $(\eps,\mu,d)$ donné, l'opérateur d'impédance n'est pas inversible pour tous  $(k_1,k_2) \in \RR^2, n \in \NN$, $k_1^2+k_2^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2$, qui ne peut être vérifié que si $\eps\mu$ est réel\footnote{Comme $\eps, \mu$ sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}. 
+    Comme $\det(\mC) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ alors une condition nécessaire pour trouver l'opérateur d'impédance est que $k_3$ soit non nul\footnote{$k_3$ peut s'annuler pour des $\eps,\mu$ réels.}.
+    % On peut noter d'après \cite[eq.~(6)]{stupfel_2011}
 
-En pratique, on simplifie $k_2 = 0$ soit des solutions se propageant dans le plan $xz$. Grâce à cette hypothèse, on trouve que $\mC, \mZ$ sont des matrices diagonales. 
+    % \begin{equation}
+    %     \mC^{-1}= \frac{\eta^2}{k_3^2}\left(k^2\mI - \mat{L_R}\right)
+    %     \label{eq:imp_fourier:plan:C}
+    % \end{equation}
 
-De plus, on exprime souvent l'impédance selon la polarisation. Dans le cas plan, le champ $\vE$-TE correspond à $E_2 \v{e_2}$, le champ $\vE$-TM à $E_1 \v{e_1}$, tandis que le champ $\vH$-TM correspond à $H_1 \v{e_1}$ et le champ $\vH$-TE correspond à $H_2 \v{e_2}$.
-L'opérateur $\mZ$ peut se réécrire comme 
-\begin{equation}
-    \mZ = 
-    \begin{bmatrix}
-        Z_{TM} & 0 
-        \\
-        0 & Z_{TE}
-    \end{bmatrix}
-\end{equation}
 
-\subsection{Opérateur d'impédance pour plusieurs couches}
-On suppose que l'on a $n$ couches de matériaux : 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand{\z}{e_3}
-\renewcommand{\x}{e_1}
-\renewcommand{\y}{e_2}
-\begin{figure}[h!btp]
-    \centering
-    \begin{tikzpicture}
-        \input{tikz/schema/plan_n_couches.tikz}
-    \end{tikzpicture}
-\end{figure}
 
-Pour chaque couche caractérisée par $(\eps_m,\mu_m,d_m)$, on définit:
-\begin{align}
-k_{3m} &= \sqrt{w^2\eps_m\mu_m - k_2^2 - k_1^2}
-\\
-\mC_m &=
-    \begin{bmatrix}
-        \left(\w\eps_m-\frac{k_2^2}{\w\mu_m}\right) & \frac{k_1k_2}{\w\mu_m}\\
-        \frac{k_1k_2}{\w\mu_m} & \left(\w\eps_m-\frac{k_1^2}{\w\mu_m}\right)
-    \end{bmatrix}
-\end{align}
+    \subsection{Opérateur d'impédance pour une couche}
 
-On définit aussi la profondeur de la couche $m$, $l_m = -\sum_{i=1}^{n-m} d_{m} $. On donc pour chaque interface, l'opérateur $\mZ_m$ tel que $\vE_t(l_m) = \mZ_m \left(\v{e_3} \times \vH_t(l_m)\right)$. 
+        \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+        \input{tikz/schema/plan_1_couche.tikz}
+        \end{tikzpicture}
+        \end{figure}
 
-On cherche alors l'opérateur pour la couche la moins profonde: $\mZ_n$ telle que $\vE_t(0) = \mZ_n\vH_t(0)$
+        \begin{thm}
+            Si on suppose
+                \begin{align}
+                k_3d &\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN
+            \end{align}
+            Alors l'opérateur d'impédance $\mZ$ est défini par la relation de récurrence : 
+            \begin{align}
+            \mZ_m &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
+                \begin{bmatrix}
+                   k^2-k_1^2  & -k_1k_2\\
+                    -k_1k_2 & k^2-k_2^2\\
+                \end{bmatrix}
+            \end{align}
+        \end{thm}
 
-\begin{thm}
-    Soit $\mZ_0 = \mat{0}_{\mathcal{M}_2(\CC)}$.
+        \begin{proof}
+            Nous utilisons la condition limite 
+            \begin{equation}
+                \begin{bmatrix}
+                    E_1(-d)\\
+                    E_2(-d)\\
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0\\
+                    0\\
+                \end{bmatrix}
+            \end{equation}
 
-    Si pour tout $0<m < n$
+            De \eqref{eq:imp_fourier:plan:generale_E}, on déduit
+
+            \begin{align}
+                \begin{bmatrix}
+                    c_1 \\
+                    c_2
+                \end{bmatrix}
+                = e^{2ik_3 d}
+                \begin{bmatrix}
+                    c_3 \\
+                    c_4
+                \end{bmatrix}
+            \end{align}
+
+            On définit l'opérateur d'impédance la matrice $\mat Z$ tel que 
+            \begin{equation}
+                \vE_t(0) = \mat Z \left(\v{e_3} \times \vH_t(0)\right)
+            \end{equation}
+
+            De ce qui précède on déduit que,
+
+            \begin{align}
+                \begin{bmatrix}
+                    E_1(0)\\
+                    E_2(0)\\
+                \end{bmatrix}
+                &=ik_3\left( e^{i2k_3 d} -1 \right)
+                \begin{bmatrix}
+                    c_3 \\
+                    c_4
+                \end{bmatrix} \\
+                \begin{bmatrix}
+                    -H_2(0)\\
+                    H_1(0)\\
+                \end{bmatrix}
+                & = - i\left(e^{i2k_3 d} +1 \right)
+                \mC
+                \begin{bmatrix}
+                c_3 \\
+                c_4
+                \end{bmatrix}
+            \end{align}
+
+            En supposant $k_3d \not = \frac{\pi}{2} + n\pi$, on déduit donc que
+            \begin{align}
+                \mat{Z} &=  - k_3 \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1} \mC^{-1} 
+                \\
+                &= -\frac{\eta^2}{k_3} \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1}
+                    \begin{bmatrix}
+                       \left(\w\eps-\frac{k_1^2}{\w\mu}\right)  & -\frac{k_1k_2}{\w\mu}\\
+                        -\frac{k_1k_2}{\w\mu} &  \left(\w\eps-\frac{k_2^2}{\w\mu}\right)
+                    \end{bmatrix}
+                \\
+                &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
+                    \begin{bmatrix}
+                       k^2-k_1^2  & -k_1k_2\\
+                        -k_1k_2 & k^2-k_2^2\\
+                    \end{bmatrix}
+            \end{align}
+
+        \end{proof}
+        %On remarque que $\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)$ et donc pour un matériau $(\eps,\mu,d)$ donné, l'opérateur d'impédance n'est pas inversible pour tous  $(k_1,k_2) \in \RR^2, n \in \NN$, $k_1^2+k_2^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2$, qui ne peut être vérifié que si $\eps\mu$ est réel\footnote{Comme $\eps, \mu$ sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}. 
+
+        En pratique, on simplifie $k_2 = 0$ soit des solutions se propageant dans le plan $xz$. Grâce à cette hypothèse, on trouve que $\mC, \mZ$ sont des matrices diagonales. 
+
+        De plus, on exprime souvent l'impédance selon la polarisation. Dans le cas plan, le champ $\vE$-TE correspond à $E_2 \v{e_2}$, le champ $\vE$-TM à $E_1 \v{e_1}$, tandis que le champ $\vH$-TM correspond à $H_1 \v{e_1}$ et le champ $\vH$-TE correspond à $H_2 \v{e_2}$.
+        L'opérateur $\mZ$ peut se réécrire comme 
+        \begin{equation}
+            \mZ = 
+            \begin{bmatrix}
+                Z_{TM} & 0 
+                \\
+                0 & Z_{TE}
+            \end{bmatrix}
+        \end{equation}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \subsection{Opérateur d'impédance pour plusieurs couches}
+        On suppose que l'on a $n$ couches de matériaux : 
+
+        \begin{figure}[h!btp]
+            \centering
+            \begin{tikzpicture}
+                \input{tikz/schema/plan_n_couches.tikz}
+            \end{tikzpicture}
+        \end{figure}
+
+        Pour chaque couche caractérisée par $(\eps_m,\mu_m,d_m)$, on définit:
         \begin{align}
-        \det{\mC_m} = \frac{k_{3m}\eps_m^2}{\mu_m^2} &\not = 0 \\
-        \det\left(k_{3m}\mI \pm \mZ_{m-1}\mC_m \right) &\not = 0 \\
-        k_{3m}d_m &\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN \\
-        \det\left(\mI + i\tan(k_{3m}d_m)\mZ_{m-1}\mC_m\right) &\not = 0
-    \end{align}
-    Alors l'opérateur d'impédance $\mZ =  \mZ_n$ est défini par la relation de récurrence : 
-    \begin{align}
-    \mZ_m &= k_{3m}
-    \left(i\tan\left(k_{3m}d_m\right)\mI + \mZ_{l_{m-1}}\mC_m\right)
-    \left(\mI + i\tan\left(k_{3m}d_m\right)\mZ_{l_{m-1}}\mC_m\right)^{-1}
-    \mC_m^{-1}
-    \end{align}
-\end{thm}
-
-\begin{proof}
-    Par récurrence, un empilement à $n$ couches se ramène à un empilement à une couche avec la condition:
-    \begin{equation}
-        \begin{bmatrix}
-            E_1(-d)\\
-            E_2(-d)\\
-        \end{bmatrix}
-        =
-        \mat {Z_{d}} 
-        \begin{bmatrix}
-            -H_2(-d)\\
-            H_1(-d)\\
-        \end{bmatrix}
-    \end{equation}
-
-    À l'initialisation, la condition limite sur le conducteur impose $\mat{Z} = \mat{0}_{\mathcal{M}_2(\CC)}$.
-
-    On reprend donc tous les résultats de la partie précédente. Notamment, de \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:generale_H}, on déduit que
-
-    \begin{equation}
-        \begin{bmatrix}
-            E_1(-d)\\
-            E_2(-d)\\
-        \end{bmatrix}
-        = ik_3\left( e^{-ik_3 d}
-        \begin{bmatrix}
-            c_1 \\
-            c_2
-        \end{bmatrix}
-        -e^{ik_3 d}
-        \begin{bmatrix}
-            c_3 \\
-            c_4
-        \end{bmatrix}
-        \right)
-    \end{equation}
-
-    \begin{equation}
-        \begin{bmatrix}
-            -H_2(-d)\\
-            H_1(-d)\\
-        \end{bmatrix}
-        =-i
-        \mC
-        \left(
-            e^{-ik_3 d}
-            \begin{bmatrix}
-                c_1 \\
-                c_2
-            \end{bmatrix}
-            +e^{ik_3 d}
-            \begin{bmatrix}
-                c_3 \\
-                c_4
-            \end{bmatrix}
-        \right)
-    \end{equation}
-
-    \begin{equation}
-        ik_3\left( e^{-ik_3 d}
-        \begin{bmatrix}
-            c_1 \\
-            c_2
-        \end{bmatrix}
-        -e^{ik_3 d}
-        \begin{bmatrix}
-            c_3 \\
-            c_4
-        \end{bmatrix}
-        \right)
-        =-i\mat{Z_d}\mC
-        \left(
-            e^{-ik_3 d}
-            \begin{bmatrix}
-                c_1 \\
-                c_2
-            \end{bmatrix}
-            +e^{ik_3 d}
-            \begin{bmatrix}
-                c_3 \\
-                c_4
-            \end{bmatrix}
-        \right)
-    \end{equation}
-
-    \begin{equation}
-        \left(k_3\mI + \mat{Z_d}\mC\right)
-        \begin{bmatrix}
-            c_1 \\
-            c_2
-        \end{bmatrix}
-        = e^{i2k_3 d} \left(k_3\mI - \mat{Z_d}\mC\right)
-        \begin{bmatrix}
-            c_3 \\
-            c_4
-        \end{bmatrix}
-    \end{equation}
-
-    On pose
-    \begin{align}
-        \mA_\pm &= k_3\mI \pm \mat{Z_d}\mC
-    \end{align}
-
-    On remarque que par définition, $\mA_+$ et $\mA_-$ commutent.
-
-    Pour continuer il faut exprimer un vecteur en fonction de l'autre. On suppose donc $\pm k_3$ ne sont pas des valeurs propres de $\mat{Z_d}\mC$ et l'on déduit que
-
-    \begin{align}
-        \begin{bmatrix}
-            c_1 \\
-            c_2
-        \end{bmatrix}
-        &= e^{i2 k_3 d} \mA_+^{-1}\mA_-
-        \begin{bmatrix}
-            c_3 \\
-            c_4
-        \end{bmatrix}
+        k_{3m} &= \sqrt{w^2\eps_m\mu_m - k_2^2 - k_1^2}
         \\
-        & = \mat{F}
-        \begin{bmatrix}
-            c_3 \\
-            c_4
-        \end{bmatrix}
-    \end{align}
+        \mC_m &=
+            \begin{bmatrix}
+                \left(\w\eps_m-\frac{k_2^2}{\w\mu_m}\right) & \frac{k_1k_2}{\w\mu_m}\\
+                \frac{k_1k_2}{\w\mu_m} & \left(\w\eps_m-\frac{k_1^2}{\w\mu_m}\right)
+            \end{bmatrix}
+        \end{align}
 
-    \begin{align}
-        \begin{bmatrix}
-            E_1(0)\\
-            E_2(0)\\
-        \end{bmatrix}
-        &=ik_3\left(\mat{F} - \mI \right)
-        \begin{bmatrix}
-            c_3 \\
-            c_4
-        \end{bmatrix}
-    \end{align}
+        On définit aussi la profondeur de la couche $m$, $l_m = -\sum_{i=1}^{n-m} d_{m} $. 
+        On définit pour chaque interface, l'opérateur $\mZ_m$ tel que $\vE_t(l_m) = \mZ_m \left(\v{e_3} \times \vH_t(l_m)\right)$. 
 
-    \begin{align}
-        \begin{bmatrix}
-            -H_2(0)\\
-            H_1(0)\\
-        \end{bmatrix}
-        &=-i\mC \left(  \mat{F} + \mI  \right)
-        \begin{bmatrix}
-                c_3 \\
-                c_4
-        \end{bmatrix}
-    \end{align}
+        On cherche alors l'opérateur pour la couche la moins profonde: $\mZ_n$ telle que $\vE_t(0) = \mZ_n\vH_t(0)$
 
-    On suppose qu'en plus de $\mA_+$ et $\mA_-$, $\mat{F} + \mI$ est inversible, on va utiliser la commutativité de $\mA_+$ et $\mA_-$.
+        \begin{thm}
+            Soit $\mZ_0 = \mat{0}_{\mathcal{M}_2(\CC)}$.
 
-    Alors l'opérateur d'impédance $\mat{Z}$ s'exprime
+            Si pour tout $0<m < n$
+                \begin{align}
+                \det{\mC_m} = \frac{k_{3m}\eps_m^2}{\mu_m^2} &\not = 0 \\
+                \det\left(k_{3m}\mI \pm \mZ_{m-1}\mC_m \right) &\not = 0 \\
+                k_{3m}d_m &\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN \\
+                \det\left(\mI + i\tan(k_{3m}d_m)\mZ_{m-1}\mC_m\right) &\not = 0
+            \end{align}
+            Alors l'opérateur d'impédance $\mZ =  \mZ_n$ est défini par la relation de récurrence : 
+            \begin{align}
+            \mZ_m &= k_{3m}
+            \left(i\tan\left(k_{3m}d_m\right)\mI + \mZ_{l_{m-1}}\mC_m\right)
+            \left(\mI + i\tan\left(k_{3m}d_m\right)\mZ_{l_{m-1}}\mC_m\right)^{-1}
+            \mC_m^{-1}
+            \end{align}
+        \end{thm}
 
-    \begin{align}
-        \mat{Z}
-        &=-k_3\left(\mat{F} - \mI \right)\left(\mat{F}+ \mI \right)^{-1}\mC^{-1}
-        \\
-        &=-k_3\mA_+^{-1}\left(e^{i2 k_3 d}\mA_- - \mA_+ \right)\left(e^{i2 k_3 d}\mA_- + \mA_+ \right)^{-1}\mA_+\mC^{-1}
-        \\
-        &= -k_3\left( e^{i2 k_3 d} \mA_- -  \mA_+\right)
-        \left( e^{i2 k_3 d} \mA_- + \mA_+ \right)^{-1}\mC^{-1}
-        \\
-        &= -k_3\left(\left( e^{i2 k_3 d} - 1 \right)\mI - \left( e^{i2 k_3 d} + 1 \right) \mat{Z_d}\mC \right)
-        \left( \left( e^{i2 k_3 d} + 1 \right)\mI - \left( e^{i2 k_3 d} - 1 \right)\mat{Z_d}\mC \right)^{-1}\mC^{-1}   
-    \end{align}
+        \begin{proof}
+            Par récurrence, un empilement à $n$ couches se ramène à un empilement à une couche avec la condition:
+            \begin{equation}
+                \begin{bmatrix}
+                    E_1(-d)\\
+                    E_2(-d)\\
+                \end{bmatrix}
+                =
+                \mat {Z_{d}} 
+                \begin{bmatrix}
+                    -H_2(-d)\\
+                    H_1(-d)\\
+                \end{bmatrix}
+            \end{equation}
 
-    En supposant que $\forall n \in \NN \,, k_3d\not = \frac{\pi}{2}+n\pi$, on a
+            À l'initialisation, la condition limite sur le conducteur impose $\mat{Z} = \mat{0}_{\mathcal{M}_2(\CC)}$.
 
-    \begin{equation}
-    \mZ = k_3\left(i\tan(k_3 d)\mI + \mat{Z_d}\mC \right)
-        \left( \mI + i\tan(k_3 d)\mat{Z_d}\mC \right)^{-1}\mC^{-1} 
-    \end{equation}
+            On reprend donc tous les résultats de la partie précédente. Notamment, de \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:generale_H}, on déduit que
 
-    à condition que 
-    \begin{align}
-        \det\left(k_3\mI \pm \mat{Z_d}\mC \right) \not = 0 \\
-        k_3d\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN \\
-        \det\left(\mI + i\tan(k_3d)\mat{Z_d}\mC\right) \not = 0
-    \end{align}
+            \begin{equation}
+                \begin{bmatrix}
+                    E_1(-d)\\
+                    E_2(-d)\\
+                \end{bmatrix}
+                = ik_3\left( e^{-ik_3 d}
+                \begin{bmatrix}
+                    c_1 \\
+                    c_2
+                \end{bmatrix}
+                -e^{ik_3 d}
+                \begin{bmatrix}
+                    c_3 \\
+                    c_4
+                \end{bmatrix}
+                \right)
+            \end{equation}
 
-\end{proof}
+            \begin{equation}
+                \begin{bmatrix}
+                    -H_2(-d)\\
+                    H_1(-d)\\
+                \end{bmatrix}
+                =-i
+                \mC
+                \left(
+                    e^{-ik_3 d}
+                    \begin{bmatrix}
+                        c_1 \\
+                        c_2
+                    \end{bmatrix}
+                    +e^{ik_3 d}
+                    \begin{bmatrix}
+                        c_3 \\
+                        c_4
+                    \end{bmatrix}
+                \right)
+            \end{equation}
 
-\subsection{Applications numériques}
+            \begin{equation}
+                ik_3\left( e^{-ik_3 d}
+                \begin{bmatrix}
+                    c_1 \\
+                    c_2
+                \end{bmatrix}
+                -e^{ik_3 d}
+                \begin{bmatrix}
+                    c_3 \\
+                    c_4
+                \end{bmatrix}
+                \right)
+                =-i\mat{Z_d}\mC
+                \left(
+                    e^{-ik_3 d}
+                    \begin{bmatrix}
+                        c_1 \\
+                        c_2
+                    \end{bmatrix}
+                    +e^{ik_3 d}
+                    \begin{bmatrix}
+                        c_3 \\
+                        c_4
+                    \end{bmatrix}
+                \right)
+            \end{equation}
 
-\TODO{
-    Mettre des applications numériques sur les cas litigieux.
-}
+            \begin{equation}
+                \left(k_3\mI + \mat{Z_d}\mC\right)
+                \begin{bmatrix}
+                    c_1 \\
+                    c_2
+                \end{bmatrix}
+                = e^{i2k_3 d} \left(k_3\mI - \mat{Z_d}\mC\right)
+                \begin{bmatrix}
+                    c_3 \\
+                    c_4
+                \end{bmatrix}
+            \end{equation}
+
+            On pose
+            \begin{align}
+                \mA_\pm &= k_3\mI \pm \mat{Z_d}\mC
+            \end{align}
+
+            On remarque que par définition, $\mA_+$ et $\mA_-$ commutent.
+
+            Pour continuer il faut exprimer un vecteur en fonction de l'autre. On suppose donc $\pm k_3$ ne sont pas des valeurs propres de $\mat{Z_d}\mC$ et l'on déduit que
+
+            \begin{align}
+                \begin{bmatrix}
+                    c_1 \\
+                    c_2
+                \end{bmatrix}
+                &= e^{i2 k_3 d} \mA_+^{-1}\mA_-
+                \begin{bmatrix}
+                    c_3 \\
+                    c_4
+                \end{bmatrix}
+                \\
+                & = \mat{F}
+                \begin{bmatrix}
+                    c_3 \\
+                    c_4
+                \end{bmatrix}
+            \end{align}
+
+            \begin{align}
+                \begin{bmatrix}
+                    E_1(0)\\
+                    E_2(0)\\
+                \end{bmatrix}
+                &=ik_3\left(\mat{F} - \mI \right)
+                \begin{bmatrix}
+                    c_3 \\
+                    c_4
+                \end{bmatrix}
+            \end{align}
+
+            \begin{align}
+                \begin{bmatrix}
+                    -H_2(0)\\
+                    H_1(0)\\
+                \end{bmatrix}
+                &=-i\mC \left(  \mat{F} + \mI  \right)
+                \begin{bmatrix}
+                        c_3 \\
+                        c_4
+                \end{bmatrix}
+            \end{align}
+
+            On suppose qu'en plus de $\mA_+$ et $\mA_-$, $\mat{F} + \mI$ est inversible, on va utiliser la commutativité de $\mA_+$ et $\mA_-$.
+
+            Alors l'opérateur d'impédance $\mat{Z}$ s'exprime
+
+            \begin{align}
+                \mat{Z}
+                &=-k_3\left(\mat{F} - \mI \right)\left(\mat{F}+ \mI \right)^{-1}\mC^{-1}
+                \\
+                &=-k_3\mA_+^{-1}\left(e^{i2 k_3 d}\mA_- - \mA_+ \right)\left(e^{i2 k_3 d}\mA_- + \mA_+ \right)^{-1}\mA_+\mC^{-1}
+                \\
+                &= -k_3\left( e^{i2 k_3 d} \mA_- -  \mA_+\right)
+                \left( e^{i2 k_3 d} \mA_- + \mA_+ \right)^{-1}\mC^{-1}
+                \\
+                &= -k_3\left(\left( e^{i2 k_3 d} - 1 \right)\mI - \left( e^{i2 k_3 d} + 1 \right) \mat{Z_d}\mC \right)
+                \left( \left( e^{i2 k_3 d} + 1 \right)\mI - \left( e^{i2 k_3 d} - 1 \right)\mat{Z_d}\mC \right)^{-1}\mC^{-1}   
+            \end{align}
+
+            En supposant que $\forall n \in \NN \,, k_3d\not = \frac{\pi}{2}+n\pi$, on a
+
+            \begin{equation}
+            \mZ = k_3\left(i\tan(k_3 d)\mI + \mat{Z_d}\mC \right)
+                \left( \mI + i\tan(k_3 d)\mat{Z_d}\mC \right)^{-1}\mC^{-1} 
+            \end{equation}
+
+            à condition que 
+            \begin{align}
+                \det\left(k_3\mI \pm \mat{Z_d}\mC \right) \not = 0 \\
+                k_3d\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN \\
+                \det\left(\mI + i\tan(k_3d)\mat{Z_d}\mC\right) \not = 0
+            \end{align}
+
+        \end{proof}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \subsection{Applications numériques}
+
+        \TODO{
+            Mettre des applications numériques sur les cas litigieux.
+        }
