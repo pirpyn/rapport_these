@@ -280,8 +280,16 @@
             \end{bmatrix}
         \end{equation}
 
+        Or par définition des matrices,
+        \begin{align}
+            \det(\mJ_E(r_0)) &= -\frac{i\w\mu}{k_3}J_n(k_3r_0)J_n'(k_3r_0)
+            \\
+            \det(\mH_E(r_0)) &= -\frac{i\w\mu}{k_3}H_n^{(2)}(k_3r_0)H_n^{(2)}{}'(k_3r_0)
+        \end{align}
+        \TODO{Trouver les zéros des Bessels : \url{http://mathworld.wolfram.com/BesselFunctionZeros.html}}
+
+        
         À condition de l'inversibilité de ces deux matrices, on peut donc exprimer certaines constantes $c_i$ en fonction des autres
-        \TODO{Inversibilité des matrices $\mJ_E(r_0),\mH_E(r_0)$.}
 
         Sur la surface extérieur du cylindre ($r=r_1= r_0 + d$), on a donc 
         \begin{align}
