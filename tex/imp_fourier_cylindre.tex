@@ -1,7 +1,7 @@
 
 
 
-\subsection{Forme générale des solutions pour un cylindre recouvert de matériau homogène isotrope}
+\subsection{Forme générale des solutions pour un cylindre recouvert d'un matériau homogène isotrope}
 
 On rappelle les formules des opérateurs $\vdiv, \vrot$ en coordonnée cylindrique $(r,\theta,z)$.
 \begin{align}
@@ -16,6 +16,7 @@ On rappelle les formules des opérateurs $\vdiv, \vrot$ en coordonnée cylindriq
 \newcommand{\mt}{\theta}
 \newcommand{\mz}{z}
 
+\TODO{Rajouter les rayons}
 \begin{figure}[!hbt]
     \centering
     \begin{tikzpicture}
@@ -34,15 +35,6 @@ On exprime les équations de Maxwell dans le matériau dans cette base et sans p
 \end{align}
 
 On remarque que dans ce cas, la méthode utilisée pour le plan aboutie à une EDO à coefficients non constant de type $r\ddr{r}{X}(r) = M(r)X(r)$.
-
-
-\TODO{
-    Passer en cylindrique. Développer $\vrot \vrot$ et trouver des équations de Bessel pour $E_z$, $H_z$.
-    \[
-    r^2\ddr[2]{r}{E_z} + r\ddr{r}{E_z} + (r^2 - n^2) E_z = 0
-    \]
-     Déduire $E_r$,$H_r$,$E_\theta$,$H_\theta$. Trouver $\mat{Z}$
-}
 
 On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice. 
 %Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
@@ -198,45 +190,128 @@ Cela revient à résoudre $\v{Y}= \mat{M}\v{X}$ où la matrice $\mat{M}$ et les 
 \end{align}
 
 \begin{align}
-\vE_t &= 
-\begin{bmatrix}
-    -\frac{nk_z}{rk_3^2}J_n(k_3r) & \frac{i\w\mu}{k_3}J_n'(k_3r)
+    \vE_t &= 
+    \begin{bmatrix}
+        -\frac{nk_z}{rk_3^2}J_n(k_3r) & \frac{i\w\mu}{k_3}J_n'(k_3r)
+        \\
+        J_n(k_3r) & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        c_1 \\
+        c_3
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & \frac{i\w\mu}{k_3}H_n^{(2)}{}'(k_3r)
+        \\
+        H_n^{(2)}(k_3r) & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        c_2 \\
+        c_4
+    \end{bmatrix}
     \\
-    J_n(k_3r) & 0
-\end{bmatrix}
-\begin{bmatrix}
-c_1 \\
-c_3
-\end{bmatrix}
-+
-\begin{bmatrix}
-    -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & \frac{i\w\mu}{k_3}H_n^{(2)}{}'(k_3r)
-    \\
-    H_n^{(2)}(k_3r) & 0
-\end{bmatrix}
-\begin{bmatrix}
-c_2 \\
-c_4
-\end{bmatrix}
-\\
-\v{e_r}\times\vH_t &= 
-\begin{bmatrix}
-    -J_n(k_3r) & 0
-    \\
-    -\frac{i\w\eps}{k_3^2}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
-\end{bmatrix}
-\begin{bmatrix}
-c_1 \\
-c_3
-\end{bmatrix}
-+
-\begin{bmatrix}
-    -H_n^{(2)}(k_3r) & 0
-    \\
-    -\frac{i\w\eps}{k_3^2}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
-\end{bmatrix}
-\begin{bmatrix}
-c_2 \\
-c_4
-\end{bmatrix}
+    \v{e_r}\times\vH_t &= 
+    \begin{bmatrix}
+        -J_n(k_3r) & 0
+        \\
+        -\frac{i\w\eps}{k_3^2}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
+    \end{bmatrix}
+    \begin{bmatrix}
+        c_1 \\
+        c_3
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        -H_n^{(2)}(k_3r) & 0
+        \\
+        -\frac{i\w\eps}{k_3^2}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
+    \end{bmatrix}
+    \begin{bmatrix}
+        c_2 \\
+        c_4
+    \end{bmatrix}
 \end{align}
+
+\newcommand{\mJ}{\mat{J}}
+\newcommand{\mH}{\mat{H}}
+
+Pour simplifier les notations, on définit les matrices $\mJ_{E},\mH_{E},\mJ_{H},\mH_{H}$ telles que
+\begin{align}
+    \vE_t(r) &= \mJ_{E}(r)
+    \begin{bmatrix}
+        c_1 \\
+        c_3
+    \end{bmatrix}
+    +
+    \mH_{E}(r)
+    \begin{bmatrix}
+        c_2 \\
+        c_4
+    \end{bmatrix}
+    \\
+    \v{e_r}\times\vH_t(r) &= 
+    \mJ_{H}(r)
+    \begin{bmatrix}
+        c_1 \\
+        c_3
+    \end{bmatrix}
+    +
+    \mH_{H}(r)
+    \begin{bmatrix}
+        c_2 \\
+        c_4
+    \end{bmatrix}
+\end{align}
+
+On applique la relation $\vE_t = 0$ en $r = r_0$.
+\begin{equation}
+    \mJ_{H}(r_0)
+    \begin{bmatrix}
+        c_1 \\
+        c_3
+    \end{bmatrix}
+    =-\mH_{E}(r_0)
+    \begin{bmatrix}
+        c_2 \\
+        c_4
+    \end{bmatrix}
+\end{equation}
+
+À condition de l'inversibilité de ces deux matrices, on peut donc exprimer certaines constantes $c_i$ en fonction des autres
+\TODO{Inversibilité des matrices $\mJ_E(r_0),\mH_E(r_0)$.}
+
+Sur la surface extérieur du cylindre ($r=r_1$), on a donc 
+\begin{align}
+    \vE_t &= 
+    \left(\mH_{E}(r_1) - \mJ_{E}(r_1)(\mJ_{E}(r_0))^{-1}\mH_{E}(r_0)\right)
+    \begin{bmatrix}
+        c_2 \\
+        c_4
+    \end{bmatrix}
+    \\
+    \v{e_r}\times\vH_t &= 
+    \left(\mH_{H}(r_1) - \mJ_{H}(r_1)(\mJ_{E}(r_0))^{-1}\mH_{E}(r_0) \right)
+    \begin{bmatrix}
+        c_2 \\
+        c_4
+    \end{bmatrix}
+\end{align}
+
+Et à condition que $\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)$ soit inversible, l'opérateur d'impédance est:
+
+\TODO{Inversibilité de $\mH_{H}(r_1) - \mJ_{H}(r_1)(\mJ_{E}(r_0))^{-1}\mH_{E}(r_0)$}
+
+\begin{align}
+    \mZ &= 
+    \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)
+    \left(\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)^{-1}
+    \\
+    &=
+    \left(\mH_{E}(r_1)\mH_{E}(r_0)^{-1} - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\right)
+    \left(\mH_{H}(r_1)\mH_{E}(r_0)^{-1} - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\right)^{-1}
+\end{align}
+
+Contrairement au plan, les matrices  ne commutent pas et on ne peut pas simplifier le résultat.
+
+\subsection{Cylindre recouverts de plusieurs couches concentriques de matériaux homogène d'épaisseurs constantes}
