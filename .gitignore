@@ -1,2 +1,2 @@
-latex_out/
+build/
 *.sublime-workspace

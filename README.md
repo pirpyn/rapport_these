@@ -1,29 +1,16 @@
-# Overleaf et Git/Github
+# Overview
 
-Cette thèse utilise Overleaf et Github pour plusieurs raisons:
- - Overleaf permet de collaborer à plusieurs (2 max) et via un navigateur : lent mais parfait en déplacement.
- - Github permet d'avoir autant de collaborateur que possible, mais ne fournit pas d'interface : contraignant mais plus efficace.
- - Les deux fournissent un bon moyen à la thèse d'être pérenne
+This repository contains all the source file mandatory to build the thesis.
 
-Afin de garantir la sécurité des publications, les deux projets sont privés, et seul les adresses autorisées y ont accès.
+It has been builded with [TeX Live](https://tug.org/texlive/) 2018 and should compile fine with future versions.
 
-# Git/Github
+# Citing
 
-[Url du projet](https://github.com/pirpyn/rapport_these), il est privé.
 
-Versionnée par git, la thèse possède 2 branches principales
-- `master` est la branche d'interaction GitHub <-> Overleaf
-- `final` contiendra un avancement de la thèse.
+# Building
 
-# Méthodologie 
+At the root of the project, run
 
-En local, travailler sur une branche locale `perso`, commiter puis fusionner avec `master`
+    latexmk
 
-    git commit
-    git checkout master
-    git merge --no-ff perso
-    git push origin master
-
-Dans un navigateur,sur Overleaf, fusionner ces modifications via le menu du bandeau latéral, et travailler sur Overleaf si besoin.
-Dans ce cas, penser à propager les résultats sur le GitHub via le même menu
-
+This tool is shipped with Tex Live.
