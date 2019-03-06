@@ -1,8 +1,8 @@
 \tikzmath{
-    \a = 80;
-    \b = 100;
+    \a = 83;
+    \b = 97;
     \d = 0.5;
-    \ri = 20;
+    \ri = 30;
     \re = \ri;
 }
 
@@ -23,7 +23,6 @@
 \draw (a) arc (\a:\b:\re);
 \draw (a) node [right] {$r_0$};
 
-
 % Le repère
 \coordinate (n) at ($(a)+(0.5,-1)$);
 % 
@@ -35,8 +34,8 @@
 \draw (n) ++(0.2,0.2) +(135:0.1cm) -- +(315:0.1cm);
 \draw (n) ++(0.2,0.2) +(45:0.1cm) -- +(225:0.1cm);
 
+% 1 ere couche
 
-% 1ere couche
 \tikzmath{
     \ri = \re;
     \re = \ri + \d;
@@ -54,7 +53,50 @@
 
 \fill [lightgray] (a) arc (\a:\b:\re) -- (b) arc (\b:\a:\ri) -- cycle;
 \draw (a) arc (\a:\b:\re);
-\draw (c) node {$\eps,\mu,d$};
+\draw (c) node {$\eps_1,\mu_1,d_1$};
+
+
+% Des couches
+
+\tikzmath{
+    \ri = \re;
+    \re = \ri + 2*\d;
+    \xa = cos(\a)*\re;
+    \ya = sin(\a)*\re;
+    \xb = cos(\b)*\ri;
+    \yb = sin(\b)*\ri;
+    \xc = cos(0.5*(\b+\a))*(\ri+0.5*\d);
+    \yc = sin(0.5*(\b+\a))*(\ri+0.5*\d);
+}
+
+\coordinate (a) at (\xa,\ya);
+\coordinate (b) at (\xb,\yb);
+\coordinate (c) at (\xc,\yc);
+
+\fill [lightgray]    (a) arc (\a:\b:\re) -- (b) arc (\b:\a:\ri) -- cycle;
+\fill [pattern=dots] (a) arc (\a:\b:\re) -- (b) arc (\b:\a:\ri) -- cycle;
+\draw (a) arc (\a:\b:\re);
+
+% n eme couche
+
+\tikzmath{
+    \ri = \re;
+    \re = \ri + \d;
+    \xa = cos(\a)*\re;
+    \ya = sin(\a)*\re;
+    \xb = cos(\b)*\ri;
+    \yb = sin(\b)*\ri;
+    \xc = cos(0.5*(\b+\a))*(\ri+0.5*\d);
+    \yc = sin(0.5*(\b+\a))*(\ri+0.5*\d);
+}
+
+\coordinate (a) at (\xa,\ya);
+\coordinate (b) at (\xb,\yb);
+\coordinate (c) at (\xc,\yc);
+
+\fill [lightgray] (a) arc (\a:\b:\re) -- (b) arc (\b:\a:\ri) -- cycle;
+\draw (a) arc (\a:\b:\re);
+\draw (c) node {$\eps_m,\mu_m,d_m$};
 
 % Le vide
 \tikzmath{
@@ -63,3 +105,4 @@
 }
 
 \draw (\xc,\yc) node [above] {vide};
+
