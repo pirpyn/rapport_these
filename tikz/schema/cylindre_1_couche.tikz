@@ -5,6 +5,7 @@
 \fill [lightgray] (c) circle (2);
 \fill [white] (c) circle (1.5);
 \fill [pattern=north east lines] (c) circle (1.5);
+
 \draw (c) circle (2);
 \draw (c) circle (1.5);
 
