@@ -1,23 +1,10 @@
-
-\subsection{Forme générale des solutions pour un plan infini}
+\section{Cas d'un objet plan infini}
 
 \TODO{Passer de $x_1,x_2,x_3$ à $x,y,z$ ? Peut être plus lisible.}
 
 % Ce cas est très bien documenté (\cite{senior_approximate_1995},\cite{hoppe_impedance_1995}) et pose la méthodologie à adopter pour les objets courbes. 
 
 Dans un premier temps, on peut sans perte de généralités faire une rotation du repère pour avoir le plan orthogonal à $\v e_3$. Comme il est infini dans les directions $\v e_1, \v e_2$ et que le matériau est homogène isotrope, on utilise la transformée partielle en $x_1, x_2$ seulement.
-
-\renewcommand{\x}{e_1}
-\renewcommand{\y}{e_2}
-\renewcommand{\z}{e_3}
-\renewcommand{\peps}{\eps}
-\renewcommand{\pmu}{{\mu}}
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}
-\input{tikz/schema/plan.tikz}
-\end{tikzpicture}
-\end{figure}
 
 En explicitant par composante l'opérateur $\vrot$ , le problème \eqref{eq:imp_fourier:intro:maxwell_harmonique} s'écrit  
 \begin{align*}
@@ -212,7 +199,19 @@ Comme $\det(\mC) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}$ alors une conditi
 %     \label{eq:imp_fourier:plan:C}
 % \end{equation}
 
-\subsection{Plan infini avec une couche}
+\subsection{Opérateur d'impédance pour une couche}
+
+\renewcommand{\x}{e_1}
+\renewcommand{\y}{e_2}
+\renewcommand{\z}{e_3}
+\renewcommand{\peps}{\eps}
+\renewcommand{\pmu}{{\mu}}
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\input{tikz/schema/plan_1_couche.tikz}
+\end{tikzpicture}
+\end{figure}
 
 \begin{thm}
     Si on suppose
@@ -319,7 +318,7 @@ L'opérateur $\mZ$ peut se réécrire comme
     \end{bmatrix}
 \end{equation}
 
-\subsection{Plan infini avec plusieurs couches}
+\subsection{Opérateur d'impédance pour plusieurs couches}
 On suppose que l'on a $n$ couches de matériaux : 
 
 \renewcommand{\z}{e_3}
@@ -328,7 +327,7 @@ On suppose que l'on a $n$ couches de matériaux :
 \begin{figure}[h!btp]
     \centering
     \begin{tikzpicture}
-        \input{tikz/schema/multi_couche.tikz}
+        \input{tikz/schema/plan_n_couches.tikz}
     \end{tikzpicture}
 \end{figure}
 
