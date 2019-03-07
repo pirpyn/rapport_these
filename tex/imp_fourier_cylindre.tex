@@ -135,7 +135,7 @@
         \end{bmatrix}
     \end{equation}
 
-    À condition que $\det(\mat{M}) = (\w^2\eps\mu-k_z^2)^4$ soit non nul, on peut déduire $\v{X}$:
+    À condition que $\det(\mat{M}) = (\w^2\eps\mu-k_z^2)^2$ soit non nul, on peut déduire $\v{X}$:
 
     \begin{equation}
         \begin{bmatrix}
@@ -199,9 +199,9 @@
         \\
         \v{e_r}\times\vH_t &= 
         \begin{bmatrix}
-            -J_n(k_3r) & 0
+            0 & -J_n(k_3r)
             \\
-            -\frac{i\w\eps}{k_3^2}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
+            -\frac{i\w\eps}{k_3}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
         \end{bmatrix}
         \begin{bmatrix}
             c_1 \\
@@ -209,9 +209,9 @@
         \end{bmatrix}
         +
         \begin{bmatrix}
-            -H_n^{(2)}(k_3r) & 0
+            0 & -H_n^{(2)}(k_3r)
             \\
-            -\frac{i\w\eps}{k_3^2}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
+            -\frac{i\w\eps}{k_3}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
         \end{bmatrix}
         \begin{bmatrix}
             c_2 \\
