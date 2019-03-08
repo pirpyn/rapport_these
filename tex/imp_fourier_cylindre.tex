@@ -1,3 +1,4 @@
+\newpage
 \section{Cas d'un objet cylindrique}
 
     On rappelle les formules des opérateurs $\vdiv, \vrot$ en coordonnée cylindrique $(r,\theta,z)$.
@@ -165,20 +166,30 @@
     On extrait alors $E_\theta, H_\theta$ pour obtenir les champs tangentielles à $\v{e_r}$ en tout point, sachant déjà $E_z, H_z$.
 
     \begin{align}
-        E_\theta &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}E_z - i\w\mu\ddr{r}{H_z}\right)
+        E_\theta &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}E_z + i\w\mu\ddr{r}{H_z}\right)
         \\
         E_z &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
         \\
         -H_z &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
         \\
-        H_\theta &= -\frac{1}{k_3^2}\left(-i\w\eps\ddr{r}{E_z} + \frac{nk_z}{r}H_z\right)
+        H_\theta &= \frac{1}{k_3^2}\left(i\w\eps\ddr{r}{E_z} - \frac{nk_z}{r}H_z\right)
+    \end{align}
+
+   \begin{align}
+        E_\theta &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) - \frac{i\w\mu}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'\right)
+        \\
+        E_z &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
+        \\
+        -H_z &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
+        \\
+        H_\theta &= \frac{i\w\eps}{k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}\right)
     \end{align}
 
     Ce qui peut s'écrire matriciellement:
     \begin{align}
         \vE_t &= 
         \begin{bmatrix}
-            -\frac{nk_z}{rk_3^2}J_n(k_3r) & \frac{i\w\mu}{k_3}J_n'(k_3r)
+            -\frac{nk_z}{rk_3^2}J_n(k_3r) & -\frac{i\w\mu}{k_3}J_n'(k_3r)
             \\
             J_n(k_3r) & 0
         \end{bmatrix}
@@ -188,7 +199,7 @@
         \end{bmatrix}
         +
         \begin{bmatrix}
-            -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & \frac{i\w\mu}{k_3}H_n^{(2)}{}'(k_3r)
+            -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & -\frac{i\w\mu}{k_3}H_n^{(2)}{}'(k_3r)
             \\
             H_n^{(2)}(k_3r) & 0
         \end{bmatrix}
@@ -201,7 +212,7 @@
         \begin{bmatrix}
             0 & -J_n(k_3r)
             \\
-            -\frac{i\w\eps}{k_3}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
+            \frac{i\w\eps}{k_3}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
         \end{bmatrix}
         \begin{bmatrix}
             c_1 \\
@@ -211,7 +222,7 @@
         \begin{bmatrix}
             0 & -H_n^{(2)}(k_3r)
             \\
-            -\frac{i\w\eps}{k_3}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
+            \frac{i\w\eps}{k_3}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
         \end{bmatrix}
         \begin{bmatrix}
             c_2 \\

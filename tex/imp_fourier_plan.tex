@@ -556,6 +556,21 @@
 
     \subsection{Applications numériques}
 
-        \TODO{
-            Mettre des applications numériques sur les cas litigieux.
-        }
+        \pgfplotstableread[col sep=semicolon]{tikz/csv/impedance_plan_1_couche.csv}{\planunecouche}
+        \begin{figure}[!hbt]
+            \centering
+            \begin{tikzpicture}[scale=1]
+                \begin{axis}[
+                        title={},
+                        ylabel={$\Im(Z)$},
+                        xlabel={$k_x\slash k_0$},
+                        legend pos=outer north east
+                    ]
+                    \legend{TM,TE}
+                    \addplot [black,dashed] table [x={s}, y={imag(z.tm)}] {\planunecouche};
+                    \addplot [black,dotted] table [x={s}, y={imag(z.te)}] {\planunecouche};
+                \end{axis}
+            \end{tikzpicture}
+            \caption{Impédance du plan infini pour la cas \cite[p.~33]{hoppe_impedance_1995}}
+            \label{fig:imp_fourier:plan:1_couche}
+        \end{figure}
