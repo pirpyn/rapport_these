@@ -200,9 +200,9 @@
     % \end{equation}
 
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
     \subsection{Opérateur d'impédance pour une couche}
@@ -319,9 +319,9 @@
             \end{bmatrix}
         \end{equation}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \subsection{Opérateur d'impédance pour plusieurs couches}
         On suppose que l'on a $n$ couches de matériaux : 
@@ -550,13 +550,15 @@
 
         \end{proof}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \subsection{Applications numériques}
 
-        \pgfplotstableread[col sep=semicolon]{tikz/csv/impedance_plan_1_couche.csv}{\planunecouche}
+        La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte.
+
+        \pgfplotstableread[col sep=semicolon]{tikz/csv/impedance_plan_1_couche.csv}{\hoppeimpplan}
         \begin{figure}[!hbt]
             \centering
             \begin{tikzpicture}[scale=1]
@@ -564,13 +566,36 @@
                         title={},
                         ylabel={$\Im(Z)$},
                         xlabel={$k_x\slash k_0$},
+                        mark repeat=20,
                         legend pos=outer north east
                     ]
                     \legend{TM,TE}
-                    \addplot [black,dashed] table [x={s}, y={imag(z.tm)}] {\planunecouche};
-                    \addplot [black,dotted] table [x={s}, y={imag(z.te)}] {\planunecouche};
+                    \addplot [black,thick,mark=x] table [x={s}, y={imag(z.tm)}] {\hoppeimpplan};
+                    \addplot [black,thick,mark=*] table [x={s}, y={imag(z.te)}] {\hoppeimpplan};
                 \end{axis}
             \end{tikzpicture}
-            \caption{Impédance du plan infini pour la cas \cite[p.~33]{hoppe_impedance_1995}}
-            \label{fig:imp_fourier:plan:1_couche}
+            \caption{$\eps = 4, \mu = 1, d=0.015\text{m}, f=1\text{GHz}$}
+            \label{fig:imp_fourier:plan:hoppe}
+        \end{figure}
+
+        La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où $\mC$ n'est pas inversible pour un $s\simeq 0.9$.
+
+        \pgfplotstableread[col sep=semicolon]{tikz/csv/impedance_plan_1_couche_soudais.csv}{\soudaisimpplan}
+        \begin{figure}[!hbt]
+            \centering
+            \begin{tikzpicture}[scale=1]
+                \begin{axis}[
+                        title={},
+                        ylabel={$\Im(Z)$},
+                        xlabel={$k_x\slash k_0$},
+                        mark repeat=20,
+                        legend pos=outer north east
+                    ]
+                    \legend{TM,TE}
+                    \addplot [black,thick,mark=x] table [x={s}, y={imag(z.tm)}] {\soudaisimpplan};
+                    \addplot [black,thick,mark=*] table [x={s}, y={imag(z.te)}] {\soudaisimpplan};
+                \end{axis}
+            \end{tikzpicture}
+            \caption{$\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}$}
+            \label{fig:imp_fourier:plan:soudais}
         \end{figure}
