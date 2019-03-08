@@ -68,16 +68,15 @@
         k_z^2r^2 E_z &= ik_zr\ddr{r}{(rE_r)} - nk_zrE_\theta
     \end{align}
 
-    On obtient donc une équation sur la composante $E_z$:
+    On obtient donc sur la composante $E_z$:
     \begin{equation}
         r^2 \ddr[2]{r}{E_z} + r\ddr{r}{E_z} + \left(r^2\left(\w^2\eps\mu - k_z^2\right) - n^2\right)E_z = 0
     \end{equation}
-    \TODO{Que ce passe t'il si je prend des fonctions de Bessel différentes ? }
+    \TODO{Que se passe t'il si je prend des fonctions de Bessel différentes ? }
     On pose 
     \begin{equation}
         k_3 = \sqrt{\w^2\eps\mu - k_z^2}
     \end{equation}
-    Ce nombre est un complexe et par convention $k_3^2 = \w^2\eps\mu - k_z^2$.
 
     C'est une équation de Bessel (cf \cite[eq (6.80)]{bowman_introduction_1958}), dont des solutions générales sont: soient $(c_1,c_2) \in \CC^2$:
     \TODO{Expliquer que ces choix viennent de la condition limite infini. L'introduire ?}
@@ -175,14 +174,16 @@
         H_\theta &= \frac{1}{k_3^2}\left(i\w\eps\ddr{r}{E_z} - \frac{nk_z}{r}H_z\right)
     \end{align}
 
+    On dérive les fonctions de Bessel:
+
    \begin{align}
-        E_\theta &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) - \frac{i\w\mu}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'\right)
+        E_\theta &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) - \frac{i\w\mu}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
         \\
         E_z &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
         \\
         -H_z &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
         \\
-        H_\theta &= \frac{i\w\eps}{k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}\right)
+        H_\theta &= \frac{i\w\eps}{k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
     \end{align}
 
     Ce qui peut s'écrire matriciellement:
@@ -445,3 +446,28 @@
             \left(\mH_{E}(r_1)\mA_{H}(r_0)^{-1} - \mJ_{E}(r_1)\mA_{J}(r_0)^{-1}\right)
             \left(\mH_{H}(r_1)\mA_{H}(r_0)^{-1} - \mJ_{H}(r_1)\mA_{J}(r_0)^{-1}\right)^{-1}
         \end{align}
+
+
+    \subsection{Applications numérique}
+
+        La figure \ref{fig:imp_fourier:cylindre:hoppe} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
+
+        \pgfplotstableread[col sep=semicolon]{tikz/csv/impedance_cylindre_1_couche_hoppe_p62.csv}{\hoppeimpcylindre}
+        \begin{figure}[!hbt]
+            \centering
+            \begin{tikzpicture}[scale=1]
+                \begin{axis}[
+                        title={},
+                        ylabel={$\Im(Z)$},
+                        xlabel={$k_t\slash k_0$},
+                        mark repeat=20,
+                        legend pos=outer north east
+                    ]
+                    \legend{TM,TE}
+                    \addplot [black,thick,mark=x] table [x={s}, y={imag(z.tm)}] {\hoppeimpcylindre};
+                    \addplot [black,thick,mark=*] table [x={s}, y={imag(z.te)}] {\hoppeimpcylindre};
+                \end{axis}
+            \end{tikzpicture}
+            \caption{$\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}$}
+            \label{fig:imp_fourier:cylindre:hoppe}
+        \end{figure}
