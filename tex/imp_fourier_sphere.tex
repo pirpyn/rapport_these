@@ -1,0 +1,36 @@
+\section{Cas d'un objet sphérique}
+
+
+    On rappelle les formules des opérateurs $\vdiv, \vrot$ en coordonnée sphérique $(r,\theta,\phi)$.
+    \begin{multline}
+        \vrot \v{V} = \frac{1}{r\sin\theta}\left(\ddr{\theta}{}\left(\sin(\theta)V_\phi\right) - \ddr{\phi}{V_\theta}\right)\v{e_r}\dots 
+        \\
+        + \left(\frac{1}{r\sin\theta}\ddr{\phi}{V_r} - \frac{1}{r}\ddr{r}{(rV_\phi)} \right)\v{e_\theta} \dots
+        \\
+        + \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\v{e_\phi}
+    \end{multline}
+
+    \begin{equation}
+        \vdiv \v{V} = \frac{1}{r^2}\ddr{r}{(r^2V_r)}
+        + \frac{1}{r\sin\theta}\ddr{\theta}{}\left(\sin(\theta)V_\theta\right) + \frac{1}{r\sin\theta}\ddr{\phi}{V_\phi}
+    \end{equation}
+
+    On exprime les équations de Maxwell dans le matériau et sans pertes de généralité, on peut réaliser une transformée de Fourier en $\theta$ et $\phi$ par invariance en rotation. Cependant, les multiplicateur de Fourier associés aux coordonnées $\theta,\phi$ doivent être des entiers pour assurer la périodicité. On les note $n,m$.
+
+    \begin{multline}
+        \vrot \v{E} = \frac{1}{r\sin\theta}\left(\left(\cos(\theta) + im\sin(\theta)\right)E_\phi - im E_\theta\right)\v{e_r}\dots 
+        \\
+        + \left(\frac{im}{r\sin\theta}E_r - \frac{1}{r}\ddr{r}{(rE_\phi)} \right)\v{e_\theta} \dots
+        \\
+        + \frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\v{e_\phi}
+    \end{multline}
+
+    De même qu'avec un cylindre, on cherche à isoler une composante.
+
+    \begin{multline}
+        \vrot \vrot \v{E} = \frac{1}{r\sin\theta}\left(\left(\cos(\theta) + im\sin(\theta)\right)\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inV_r\right) - im \left(\frac{im}{r\sin\theta}E_r - \frac{1}{r}\ddr{r}{(rE_\phi)} \right)\right)\v{e_r}\dots 
+        \\
+        + \left(\frac{im}{r\sin\theta}\frac{1}{r\sin\theta}\left(\left(\cos(\theta) + im\sin(\theta)\right)E_\phi - im E_\theta\right) - \frac{1}{r}\ddr{r}{}\left(r\frac{1}{r}\left(\ddr{r}{}\left(r\left(\frac{im}{r\sin\theta}E_r - \frac{1}{r}\ddr{r}{(rE_\phi)} \right)\right)-inE_r\right)\right) \right)\v{e_\theta} \dots
+        \\
+        + \frac{1}{r}\left(\ddr{r}{}\left(r\left(\frac{im}{r\sin\theta}\frac{1}{r\sin\theta}\left(\left(\cos(\theta) + im\sin(\theta)\right)E_\phi - im E_\theta\right) - \frac{1}{r}\ddr{r}{(rE_\phi)} \right)\right)-inE_r\right)\v{e_\phi}
+    \end{multline}
