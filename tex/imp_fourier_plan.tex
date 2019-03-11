@@ -1,62 +1,59 @@
 \section{Cas d'un objet plan infini}
+    % Ce cas est très bien documenté (\cite{senior_approximate_x995},\cite{hoppe_impedance_x995}) et pose la méthodologie à adopter pour les objets courbes. 
 
-    \TODO{Passer de $x_1,x_2,x_3$ à $x,y,z$ ? Peut être plus lisible.}
-
-    % Ce cas est très bien documenté (\cite{senior_approximate_1995},\cite{hoppe_impedance_1995}) et pose la méthodologie à adopter pour les objets courbes. 
-
-    Dans un premier temps, on peut sans perte de généralités faire une rotation du repère pour avoir le plan orthogonal à $\v e_3$. Comme il est infini dans les directions $\v e_1, \v e_2$ et que le matériau est homogène isotrope, on utilise la transformée partielle en $x_1, x_2$ seulement.
+    Dans un premier temps, on peut sans perte de généralités faire une rotation du repère pour avoir le plan orthogonal à $\v e_z$. Comme il est infini dans les directions $\v e_x, \v e_y$ et que le matériau est homogène isotrope, on utilise la transformée partielle en $x_1, x_2$ seulement.
 
     En explicitant par composante l'opérateur $\vrot$ , le problème \eqref{eq:imp_fourier:intro:maxwell_harmonique} s'écrit  
     \begin{align*}
         \left\lbrace 
         \begin{matrix}
-        ik_2 E_3  - \ddr{x_3}{E_ 2} = i \w \mu H_1 \\
-        \ddr{x_3}{E_1} - ik_1 E_3 = i\w \mu H_2 \\
-        ik_1 E_2 - ik_2 E_1 = i\w \mu H_3 \\
+        ik_y E_z  - \ddr{z}{E_y} = i \w \mu H_x \\
+        \ddr{z}{E_x} - ik_x E_z = i\w \mu H_y \\
+        ik_x E_y - ik_y E_x = i\w \mu H_z \\
         \end{matrix}
         \right. \quad 
         \left\lbrace 
         \begin{matrix}
-        ik_2 H_3  - \ddr{x_3}{H_ 2} = -i \w \eps E_1 \\
-        \ddr{x_3}{H_1} - ik_1 H_3 = -i\w \eps E_2 \\
-        ik_1 H_2 - ik_2 H_1 = -i\w \eps E_3 \\
+        ik_y H_z  - \ddr{z}{H_y} = -i \w \eps E_x \\
+        \ddr{z}{H_x} - ik_x H_z = -i\w \eps E_y \\
+        ik_x H_y - ik_y H_x = -i\w \eps E_z \\
         \end{matrix}
         \right.
     \end{align*}
 
     Les composantes normales se déduisant des composantes tangentielles, on résout l'EDO matricielle à coefficients constants 
-    suivante $\ddr{x_3}{}\v{X} = \mat{M} \v{X}$ où
+    suivante $\ddr{z}{}\v{X} = \mat{M} \v{X}$ où
 
     \begin{equation}
         \v{X} = 
         \begin{bmatrix}
-        E_1 \\ 
-        E_2 \\ 
-        H_1 \\ 
-        H_2 \\
+        E_x \\ 
+        E_y \\ 
+        H_x \\ 
+        H_y \\
         \end{bmatrix}\,,
         \mat{M} = \begin{bmatrix}
-        0 & 0 & i\frac{k_1k_2}{\w\eps} & i\left(\w\mu - \frac{k_1^2}{\w\eps}\right)\\
-        0 & 0 & -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -i\frac{k_1k_2}{\w\eps}\\
-        -i\frac{k_1k_2}{\w\mu} & -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) & 0 & 0 \\
-        i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) & i\frac{k_1k_2}{\w\mu} & 0 & 0 \\
+        0 & 0 & i\frac{k_xk_y}{\w\eps} & i\left(\w\mu - \frac{k_x^2}{\w\eps}\right)\\
+        0 & 0 & -i\left(\w\mu - \frac{k_y^2}{\w\eps}\right) & -i\frac{k_xk_y}{\w\eps}\\
+        -i\frac{k_xk_y}{\w\mu} & -i\left(\w\eps - \frac{k_x^2}{\w\mu}\right) & 0 & 0 \\
+        i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) & i\frac{k_xk_y}{\w\mu} & 0 & 0 \\
         \end{bmatrix}
     \end{equation}
 
     Pour résoudre cette EDO, nous allons chercher les vecteurs propres $V_i$ et les valeurs propres $\lambda_i$ associées de ce système. En effet, une solution générale de ce système s'écrit
     \begin{equation}
-        \v{X}(x_3)= \sum\limits_{i=1}^{4}c_i e^{\lambda_i x_3} \v{V}_i \, c_i \in \CC
+        \v{X}(z)= \sum\limits_{i=1}^{4}c_i e^{\lambda_i z} \v{V}_i \, c_i \in \CC
     \end{equation}
     On pose 
     \begin{equation}
         \mat{A} = \begin{bmatrix}
-            i\frac{k_1k_2}{i\w\eps} & i\left(\w\mu - \frac{k_1^2}{\w\eps}\right) \\
-            -i\left(\w\mu - \frac{k_2^2}{\w\eps}\right) & -i\frac{k_1k_2}{i\w\eps} \\
+            i\frac{k_xk_y}{i\w\eps} & i\left(\w\mu - \frac{k_x^2}{\w\eps}\right) \\
+            -i\left(\w\mu - \frac{k_y^2}{\w\eps}\right) & -i\frac{k_xk_y}{i\w\eps} \\
         \end{bmatrix}
         \quad
         \mat{B} = \begin{bmatrix}
-            -i\frac{k_1k_2}{\w\mu} & -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
-            i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) & i\frac{k_1k_2}{\w\mu} \\
+            -i\frac{k_xk_y}{\w\mu} & -i\left(\w\eps - \frac{k_x^2}{\w\mu}\right) \\
+            i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) & i\frac{k_xk_y}{\w\mu} \\
         \end{bmatrix}
     \end{equation}
     Le déterminant de $\mat{M}-\lambda \mat{I}$ est
@@ -68,11 +65,11 @@
         \end{vmatrix}
             = \frac{\det(- \lambda \mI - \mB(-\lambda \mI)^{-1} \mA)}{\det((-\lambda \mI)^{-1})} \\
             &= \det(\lambda^2 \mI - \mB\mA) \\
-            &= (\lambda^2 + (\w^2\eps\mu - k_1^2 -k_2^2))^2
+            &= (\lambda^2 + (\w^2\eps\mu - k_x^2 -k_y^2))^2
     \end{align*}
     On note alors 
     \begin{equation}
-    k_3=\sqrt{\w^2\eps\mu - k_1^2 -k_2^2}
+    k_3=\sqrt{\w^2\eps\mu - k_x^2 -k_y^2}
     \end{equation}
 
     Les valeurs propres sont alors 
@@ -87,16 +84,16 @@
         \begin{bmatrix}
         \lambda_+ \\
             0 \\
-            -i\frac{k_1k_2}{\w\mu} \\
-            i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
+            -i\frac{k_xk_y}{\w\mu} \\
+            i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) \\
         \end{bmatrix}
         \,
         \v{W_+} = 
             \begin{bmatrix}
             0 \\
             \lambda_+ \\
-            -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
-            i\frac{k_1k_2}{\w\mu} \\
+            -i\left(\w\eps - \frac{k_x^2}{\w\mu}\right) \\
+            i\frac{k_xk_y}{\w\mu} \\
         \end{bmatrix}
     \end{align}
 
@@ -106,42 +103,42 @@
         \begin{bmatrix}
             \lambda_- \\
             0 \\
-            -i\frac{k_1k_2}{\w\mu} \\
-            i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \\
+            -i\frac{k_xk_y}{\w\mu} \\
+            i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) \\
         \end{bmatrix}
         \,
         \v{W_-} = 
         \begin{bmatrix}
             0 \\
             \lambda_- \\
-            -i\left(\w\eps - \frac{k_1^2}{\w\mu}\right) \\
-            i\frac{k_1k_2}{\w\mu} \\
+            -i\left(\w\eps - \frac{k_x^2}{\w\mu}\right) \\
+            i\frac{k_xk_y}{\w\mu} \\
         \end{bmatrix}
     \end{align}
 
     On a donc une solution générale du système: soient $(c_i)_{i} \in \CC^4$
     \begin{equation}
-        \v{X}(x_3) = c_1e^{\lambda_+ x_3}\v{V_+}  + c_2e^{\lambda_+ x_3}\v{W_+} + c_3e^{\lambda_- x_3}\v{V_-} +c_4e^{\lambda_- x_3}\v{W_-}
+        \v{X}(z) = c_1e^{\lambda_+ z}\v{V_+}  + c_2e^{\lambda_+ z}\v{W_+} + c_3e^{\lambda_- z}\v{V_-} +c_4e^{\lambda_- z}\v{W_-}
     \end{equation}
 
-    On exprime les champs $\vE_t(x_3)$ et $\v{e_3} \times \vH_t(x_3)$ car ce sont des quantités qui nous intéresse:
+    On exprime les champs $\vE_t(z)$ et $\v{e_z} \times \vH_t(z)$ car ce sont des quantités qui nous intéresse:
 
     \begin{align}
         \begin{bmatrix}
-            E_1(x_3)\\
-            E_2(x_3)\\
+            E_x(z)\\
+            E_y(z)\\
         \end{bmatrix}
         &=
         \begin{bmatrix}
-            c_1 e^{\lambda_+ x_3} \lambda_{+} + c_3 e^{\lambda_- x_3} \lambda_{-} \\
-            c_2 e^{\lambda_+ x_3} \lambda_{+} + c_4 e^{\lambda_- x_3} \lambda_{-}
+            c_1 e^{\lambda_+ z} \lambda_{+} + c_3 e^{\lambda_- z} \lambda_{-} \\
+            c_2 e^{\lambda_+ z} \lambda_{+} + c_4 e^{\lambda_- z} \lambda_{-}
         \end{bmatrix}\\
-        &=ik_3\left( e^{ik_3 x_3}
+        &=ik_3\left( e^{ik_3 z}
         \begin{bmatrix}
             c_1 \\
             c_2
         \end{bmatrix}
-        -e^{-ik_3 x_3}
+        -e^{-ik_3 z}
         \begin{bmatrix}
             c_3 \\
             c_4
@@ -152,28 +149,28 @@
 
     \begin{align}
         \begin{bmatrix}
-            -H_2(x_3)\\
-            H_1(x_3)\\
+            -H_y(z)\\
+            H_x(z)\\
         \end{bmatrix}
         &=
         \begin{bmatrix}
-            -i\left(\w\eps - \frac{k_2^2}{\w\mu}\right) \left( c_1 e^{ik_3 x_3} + c_3 e^{-ik_3 x_3} \right) - i\frac{k_1k_2}{\w\mu} \left( c_2 e^{ik_3 x_3} + c_4 e^{-ik_3 x_3} \right)
+            -i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) \left( c_1 e^{ik_3 z} + c_3 e^{-ik_3 z} \right) - i\frac{k_xk_y}{\w\mu} \left( c_2 e^{ik_3 z} + c_4 e^{-ik_3 z} \right)
             \\
-            -i\frac{k_1k_2}{\w\mu} \left( c_1 e^{ik_3 x_3} + c_3 e^{-ik_3 x_3} \right) - i\left(\w\eps - \frac{k_1^2}{\w\mu}\right)\left( c_2 e^{ik_3 x_3} + c_4 e^{-ik_3 x_3} \right)
+            -i\frac{k_xk_y}{\w\mu} \left( c_1 e^{ik_3 z} + c_3 e^{-ik_3 z} \right) - i\left(\w\eps - \frac{k_x^2}{\w\mu}\right)\left( c_2 e^{ik_3 z} + c_4 e^{-ik_3 z} \right)
         \end{bmatrix} \\
         &=-i
         \begin{bmatrix}
-        \left(\w\eps - \frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}
+        \left(\w\eps - \frac{k_y^2}{\w\mu}\right) & \frac{k_xk_y}{\w\mu}
         \\
-        \frac{k_1k_2}{\w\mu} & \left(\w\eps - \frac{k_1^2}{\w\mu}\right) 
+        \frac{k_xk_y}{\w\mu} & \left(\w\eps - \frac{k_x^2}{\w\mu}\right) 
         \end{bmatrix}
         \left(
-            e^{ik_3 x_3}
+            e^{ik_3 z}
             \begin{bmatrix}
                 c_1 \\
                 c_2
             \end{bmatrix}
-            +e^{-ik_3 x_3}
+            +e^{-ik_3 z}
             \begin{bmatrix}
                 c_3 \\
                 c_4
@@ -186,8 +183,8 @@
     \begin{align}
         \mC &=
         \begin{bmatrix}
-            \left(\w\eps-\frac{k_2^2}{\w\mu}\right) & \frac{k_1k_2}{\w\mu}\\
-            \frac{k_1k_2}{\w\mu} & \left(\w\eps-\frac{k_1^2}{\w\mu}\right)
+            \left(\w\eps-\frac{k_y^2}{\w\mu}\right) & \frac{k_xk_y}{\w\mu}\\
+            \frac{k_xk_y}{\w\mu} & \left(\w\eps-\frac{k_x^2}{\w\mu}\right)
         \end{bmatrix}
     \end{align}
 
@@ -223,8 +220,8 @@
             \begin{align}
             \mZ_m &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
                 \begin{bmatrix}
-                   k^2-k_1^2  & -k_1k_2\\
-                    -k_1k_2 & k^2-k_2^2\\
+                   k^2-k_x^2  & -k_xk_y\\
+                    -k_xk_y & k^2-k_y^2\\
                 \end{bmatrix}
             \end{align}
         \end{thm}
@@ -233,8 +230,8 @@
             Nous utilisons la condition limite 
             \begin{equation}
                 \begin{bmatrix}
-                    E_1(-d)\\
-                    E_2(-d)\\
+                    E_x(-d)\\
+                    E_y(-d)\\
                 \end{bmatrix}
                 =
                 \begin{bmatrix}
@@ -259,15 +256,15 @@
 
             On définit l'opérateur d'impédance la matrice $\mat Z$ tel que 
             \begin{equation}
-                \vE_t(0) = \mat Z \left(\v{e_3} \times \vH_t(0)\right)
+                \vE_t(0) = \mat Z \left(\v{e_z} \times \vH_t(0)\right)
             \end{equation}
 
             De ce qui précède on déduit que,
 
             \begin{align}
                 \begin{bmatrix}
-                    E_1(0)\\
-                    E_2(0)\\
+                    E_x(0)\\
+                    E_y(0)\\
                 \end{bmatrix}
                 &=ik_3\left( e^{i2k_3 d} -1 \right)
                 \begin{bmatrix}
@@ -275,8 +272,8 @@
                     c_4
                 \end{bmatrix} \\
                 \begin{bmatrix}
-                    -H_2(0)\\
-                    H_1(0)\\
+                    -H_y(0)\\
+                    H_x(0)\\
                 \end{bmatrix}
                 & = - i\left(e^{i2k_3 d} +1 \right)
                 \mC
@@ -292,23 +289,23 @@
                 \\
                 &= -\frac{\eta^2}{k_3} \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1}
                     \begin{bmatrix}
-                       \left(\w\eps-\frac{k_1^2}{\w\mu}\right)  & -\frac{k_1k_2}{\w\mu}\\
-                        -\frac{k_1k_2}{\w\mu} &  \left(\w\eps-\frac{k_2^2}{\w\mu}\right)
+                       \left(\w\eps-\frac{k_x^2}{\w\mu}\right)  & -\frac{k_xk_y}{\w\mu}\\
+                        -\frac{k_xk_y}{\w\mu} &  \left(\w\eps-\frac{k_y^2}{\w\mu}\right)
                     \end{bmatrix}
                 \\
                 &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
                     \begin{bmatrix}
-                       k^2-k_1^2  & -k_1k_2\\
-                        -k_1k_2 & k^2-k_2^2\\
+                       k^2-k_x^2  & -k_xk_y\\
+                        -k_xk_y & k^2-k_y^2\\
                     \end{bmatrix}
             \end{align}
 
         \end{proof}
-        %On remarque que $\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)$ et donc pour un matériau $(\eps,\mu,d)$ donné, l'opérateur d'impédance n'est pas inversible pour tous  $(k_1,k_2) \in \RR^2, n \in \NN$, $k_1^2+k_2^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2$, qui ne peut être vérifié que si $\eps\mu$ est réel\footnote{Comme $\eps, \mu$ sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}. 
+        %On remarque que $\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)$ et donc pour un matériau $(\eps,\mu,d)$ donné, l'opérateur d'impédance n'est pas inversible pour tous  $(k_x,k_y) \in \RR^2, n \in \NN$, $k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2$, qui ne peut être vérifié que si $\eps\mu$ est réel\footnote{Comme $\eps, \mu$ sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}. 
 
-        En pratique, on simplifie $k_2 = 0$ soit des solutions se propageant dans le plan $xz$. Grâce à cette hypothèse, on trouve que $\mC, \mZ$ sont des matrices diagonales. 
+        En pratique, on simplifie $k_y = 0$ soit des solutions se propageant dans le plan $xz$. Grâce à cette hypothèse, on trouve que $\mC, \mZ$ sont des matrices diagonales. 
 
-        De plus, on exprime souvent l'impédance selon la polarisation. Dans le cas plan, le champ $\vE$-TE correspond à $E_2 \v{e_2}$, le champ $\vE$-TM à $E_1 \v{e_1}$, tandis que le champ $\vH$-TM correspond à $H_1 \v{e_1}$ et le champ $\vH$-TE correspond à $H_2 \v{e_2}$.
+        De plus, on exprime souvent l'impédance selon la polarisation. Dans le cas plan, le champ $\vE$-TE correspond à $E_y \v{e_y}$, le champ $\vE$-TM à $E_x \v{e_x}$, tandis que le champ $\vH$-TM correspond à $H_x \v{e_x}$ et le champ $\vH$-TE correspond à $H_y \v{e_y}$.
         L'opérateur $\mZ$ peut se réécrire comme 
         \begin{equation}
             \mZ = 
@@ -335,17 +332,17 @@
 
         Pour chaque couche caractérisée par $(\eps_m,\mu_m,d_m)$, on définit:
         \begin{align}
-        k_{3m} &= \sqrt{w^2\eps_m\mu_m - k_2^2 - k_1^2}
+        k_{3m} &= \sqrt{w^2\eps_m\mu_m - k_y^2 - k_x^2}
         \\
         \mC_m &=
             \begin{bmatrix}
-                \left(\w\eps_m-\frac{k_2^2}{\w\mu_m}\right) & \frac{k_1k_2}{\w\mu_m}\\
-                \frac{k_1k_2}{\w\mu_m} & \left(\w\eps_m-\frac{k_1^2}{\w\mu_m}\right)
+                \left(\w\eps_m-\frac{k_y^2}{\w\mu_m}\right) & \frac{k_xk_y}{\w\mu_m}\\
+                \frac{k_xk_y}{\w\mu_m} & \left(\w\eps_m-\frac{k_x^2}{\w\mu_m}\right)
             \end{bmatrix}
         \end{align}
 
         On définit aussi la profondeur de la couche $m$, $l_m = -\sum_{i=1}^{n-m} d_{m} $. 
-        On définit pour chaque interface, l'opérateur $\mZ_m$ tel que $\vE_t(l_m) = \mZ_m \left(\v{e_3} \times \vH_t(l_m)\right)$. 
+        On définit pour chaque interface, l'opérateur $\mZ_m$ tel que $\vE_t(l_m) = \mZ_m \left(\v{e_z} \times \vH_t(l_m)\right)$. 
 
         On cherche alors l'opérateur pour la couche la moins profonde: $\mZ_n$ telle que $\vE_t(0) = \mZ_n\vH_t(0)$
 
@@ -372,14 +369,14 @@
             Par récurrence, un empilement à $n$ couches se ramène à un empilement à une couche avec la condition:
             \begin{equation}
                 \begin{bmatrix}
-                    E_1(-d)\\
-                    E_2(-d)\\
+                    E_x(-d)\\
+                    E_y(-d)\\
                 \end{bmatrix}
                 =
                 \mat {Z_{d}} 
                 \begin{bmatrix}
-                    -H_2(-d)\\
-                    H_1(-d)\\
+                    -H_y(-d)\\
+                    H_x(-d)\\
                 \end{bmatrix}
             \end{equation}
 
@@ -389,8 +386,8 @@
 
             \begin{equation}
                 \begin{bmatrix}
-                    E_1(-d)\\
-                    E_2(-d)\\
+                    E_x(-d)\\
+                    E_y(-d)\\
                 \end{bmatrix}
                 = ik_3\left( e^{-ik_3 d}
                 \begin{bmatrix}
@@ -407,8 +404,8 @@
 
             \begin{equation}
                 \begin{bmatrix}
-                    -H_2(-d)\\
-                    H_1(-d)\\
+                    -H_y(-d)\\
+                    H_x(-d)\\
                 \end{bmatrix}
                 =-i
                 \mC
@@ -495,8 +492,8 @@
 
             \begin{align}
                 \begin{bmatrix}
-                    E_1(0)\\
-                    E_2(0)\\
+                    E_x(0)\\
+                    E_y(0)\\
                 \end{bmatrix}
                 &=ik_3\left(\mat{F} - \mI \right)
                 \begin{bmatrix}
@@ -507,8 +504,8 @@
 
             \begin{align}
                 \begin{bmatrix}
-                    -H_2(0)\\
-                    H_1(0)\\
+                    -H_y(0)\\
+                    H_x(0)\\
                 \end{bmatrix}
                 &=-i\mC \left(  \mat{F} + \mI  \right)
                 \begin{bmatrix}
