@@ -354,13 +354,13 @@
                 \det{\mC_m} = \frac{k_{3m}\eps_m^2}{\mu_m^2} &\not = 0 \\
                 \det\left(k_{3m}\mI \pm \mZ_{m-1}\mC_m \right) &\not = 0 \\
                 k_{3m}d_m &\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN \\
-                \det\left(\mI + i\tan(k_{3m}d_m)\mZ_{m-1}\mC_m\right) &\not = 0
+                \det\left(k_3\mI - i\tan(k_{3m}d_m)\mZ_{m-1}\mC_m\right) &\not = 0
             \end{align}
             Alors l'opérateur d'impédance $\mZ =  \mZ_n$ est défini par la relation de récurrence : 
             \begin{align}
-            \mZ_m &= k_{3m}
-            \left(i\tan\left(k_{3m}d_m\right)\mI + \mZ_{l_{m-1}}\mC_m\right)
-            \left(\mI + i\tan\left(k_{3m}d_m\right)\mZ_{l_{m-1}}\mC_m\right)^{-1}
+            \mZ_m &= -k_{3m}
+            \left(ik_3\tan\left(k_{3m}d_m\right)\mI - \mZ_{l_{m-1}}\mC_m\right)
+            \left(k_3\mI - i\tan\left(k_{3m}d_m\right)\mZ_{l_{m-1}}\mC_m\right)^{-1}
             \mC_m^{-1}
             \end{align}
         \end{thm}
@@ -534,15 +534,15 @@
             En supposant que $\forall n \in \NN \,, k_3d\not = \frac{\pi}{2}+n\pi$, on a
 
             \begin{equation}
-            \mZ = k_3\left(i\tan(k_3 d)\mI + \mat{Z_d}\mC \right)
-                \left( \mI + i\tan(k_3 d)\mat{Z_d}\mC \right)^{-1}\mC^{-1} 
+            \mZ = -k_3\left(ik_3\tan(k_3 d)\mI - \mat{Z_d}\mC \right)
+                \left( k_3\mI - i\tan(k_3 d)\mat{Z_d}\mC \right)^{-1}\mC^{-1} 
             \end{equation}
 
             à condition que 
             \begin{align}
                 \det\left(k_3\mI \pm \mat{Z_d}\mC \right) \not = 0 \\
                 k_3d\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN \\
-                \det\left(\mI + i\tan(k_3d)\mat{Z_d}\mC\right) \not = 0
+                \det\left(k_3\mI - i\tan(k_3d)\mat{Z_d}\mC\right) \not = 0
             \end{align}
 
         \end{proof}
