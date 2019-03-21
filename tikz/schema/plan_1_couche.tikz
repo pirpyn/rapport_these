@@ -21,7 +21,7 @@
 
 \fill [lightgray] (A) rectangle (C);
 \draw ($(A)!0.5!(C)$) node {$\eps,\mu,d$};
-\draw (B) -- (C) node [right] {$e_3 = 0$};
+\draw (B) -- (C) node [right] {$e_z = 0$};
 
 %% Le repère
 \tikzmath{
@@ -30,10 +30,10 @@
 
 \coordinate (n) at (\xD,\yA);
 
-\draw [->] (n) -- ++(1,0) node [at end, right] {$\v{e_1}$};
-\draw [->] (n) -- ++(0,1) node [at end, right] {$\v{e_3}$};
+\draw [->] (n) -- ++(1,0) node [at end, right] {$\v{e_x}$};
+\draw [->] (n) -- ++(0,1) node [at end, right] {$\v{e_z}$};
 
-\draw (n) circle(0.1cm) node [below=0.1cm] {$\v{e_2}$};
+\draw (n) circle(0.1cm) node [below=0.1cm] {$\v{e_y}$};
 \draw (n) +(135:0.1cm) -- +(315:0.1cm);
 \draw (n) +(45:0.1cm) -- +(225:0.1cm);
 
