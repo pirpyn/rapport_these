@@ -1,13 +1,33 @@
 %\usepackage{cmbright} % fichier + lisible sur ordi, - lisible sur papier
 \usepackage[utf8]{inputenc} %gestion des accents par le compilateurs
-\usepackage[T1]{fontenc} %gestion des accents par l'afficheurs et la césure
-\usepackage[french]{babel} % traduction des packages
+\usepackage[T1]{fontenc}
 
+%%% LES POLICES
+
+%% Fonte Latin Modern
 \usepackage{lmodern} % fontes tailles variables
     % substitution des petites capitales grasses manquantes
     \rmfamily
     \DeclareFontShape{T1}{lmr}{b}{sc}{<->ssub*cmr/bx/sc}{}
     \DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*cmr/bx/sc}{}
+
+%% Fonte Fourier + Utopia
+% \usepackage{fourier}
+%     \usepackage[scaled=0.875]{helvet} % completement empatemment
+%     \usepackage{courier} % completement chasse fixe
+
+%% Fonte MathDesign + Utopia
+% \usepackage[utopia]{mathdesign}
+
+%% Fonte KP
+% \usepackage{kpfonts}
+
+%% Fonte Computer Modern Bright
+% \usepackage{cmbright}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[french]{babel} % traduction des packages
 
 \usepackage{microtype}
 
