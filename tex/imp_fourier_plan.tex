@@ -218,7 +218,7 @@
             \end{align}
             Alors l'opérateur d'impédance $\mZ$ est défini par la relation de récurrence : 
             \begin{align}
-            \mZ_m &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
+            \mZ_m &= -i\eta\frac{\tan\left(k_3d\right)}{kk_3}
                 \begin{bmatrix}
                    k^2-k_x^2  & -k_xk_y\\
                     -k_xk_y & k^2-k_y^2\\
@@ -293,7 +293,7 @@
                         -\frac{k_xk_y}{\w\mu} &  \left(\w\eps-\frac{k_y^2}{\w\mu}\right)
                     \end{bmatrix}
                 \\
-                &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
+                &= -i\eta\frac{\tan\left(k_3d\right)}{kk_3}
                     \begin{bmatrix}
                        k^2-k_x^2  & -k_xk_y\\
                         -k_xk_y & k^2-k_y^2\\
@@ -354,13 +354,13 @@
                 \det{\mC_m} = \frac{k_{3m}\eps_m^2}{\mu_m^2} &\not = 0 \\
                 \det\left(k_{3m}\mI \pm \mZ_{m-1}\mC_m \right) &\not = 0 \\
                 k_{3m}d_m &\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN \\
-                \det\left(k_3\mI - i\tan(k_{3m}d_m)\mZ_{m-1}\mC_m\right) &\not = 0
+                \det\left(k_{3m}\mI - i\tan(k_{3m}d_m)\mZ_{m-1}\mC_m\right) &\not = 0
             \end{align}
             Alors l'opérateur d'impédance $\mZ =  \mZ_n$ est défini par la relation de récurrence : 
             \begin{align}
             \mZ_m &= -k_{3m}
-            \left(ik_3\tan\left(k_{3m}d_m\right)\mI - \mZ_{l_{m-1}}\mC_m\right)
-            \left(k_3\mI - i\tan\left(k_{3m}d_m\right)\mZ_{l_{m-1}}\mC_m\right)^{-1}
+            \left(ik_{3m}\tan\left(k_{3m}d_m\right)\mI - \mZ_{m-1}\mC_m\right)
+            \left(k_{3m}\mI - i\tan\left(k_{3m}d_m\right)\mZ_{m-1}\mC_m\right)^{-1}
             \mC_m^{-1}
             \end{align}
         \end{thm}
