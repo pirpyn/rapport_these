@@ -1,4 +1,3 @@
-\newpage
 \section{Cas d'un objet cylindrique}
 
     On rappelle les formules des opérateurs $\vdiv, \vrot$ en coordonnée cylindrique $(r,\theta,z)$.
@@ -8,8 +7,10 @@
         \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\v{e_z} 
         \\
         \vdiv \v{V} &= \frac{1}{r}\ddr{r}{(rV_r)}+\frac{1}{r}\ddr{\theta}{V_\theta}+\ddr{z}{V_z}
+        \\
+        \vgrad f &= \ddr{r}{f}\v{e_r}
+        +\frac{1}{r}\ddr{\theta}{f}\v{e_\theta} + \ddr{z}{f}\v{e_z}
     \end{align}
-
     On exprime les équations de Maxwell dans le matériau dans cette base et sans pertes de généralité, on peut réaliser une transformée de Fourier en $z$ par invariance en translation et en $\theta$ par invariance en rotation. Cependant, le multiplicateur de Fourier associé à la coordonnée $\theta$ doit être un entier pour assurer la périodicité. On le note $n$.
 
     \begin{align}
@@ -57,8 +58,6 @@
     r^2 \ddr[2]{r}{E_z} + r\ddr{r}{E_z} + \left(r^2\w^2\eps\mu - n^2\right)E_z =ik_zr\ddr{r}{(rE_r)} -  nk_zrE_\theta
     \end{equation}
 
-    \TODO{Vérifier que $\vdiv\vrot\v{V} = 0$ en cylindrique.}
-
     Or comme $\vdiv \vE = i\w\mu\vdiv\vrot\vH = 0$, on a
     \begin{align}
         \vdiv\vE &= \frac{1}{r}\ddr{r}{(rE_r)} + \frac{in}{r}E_\theta + ik_zE_z
@@ -72,14 +71,14 @@
     \begin{equation}
         r^2 \ddr[2]{r}{E_z} + r\ddr{r}{E_z} + \left(r^2\left(\w^2\eps\mu - k_z^2\right) - n^2\right)E_z = 0
     \end{equation}
-    \TODO{Que se passe t'il si je prend des fonctions de Bessel différentes ? }
+
     On pose 
     \begin{equation}
         k_3 = \sqrt{\w^2\eps\mu - k_z^2}
     \end{equation}
 
     C'est une équation de Bessel (cf \cite[eq (6.80)]{bowman_introduction_1958}), dont des solutions générales sont: soient $(c_1,c_2) \in \CC^2$:
-    \TODO{Expliquer que ces choix viennent de la condition limite infini. L'introduire ?}
+    \TODO{Numériquement, le choix des fonctions de Bessels, importe peu pour $\mZ$. L'expliquer}
     \begin{equation}
         E_z = c_1 J_n\left(k_3r\right) + c_2 H_n^{(2)}\left(k_3r\right)
     \end{equation}
@@ -452,6 +451,8 @@
 
         La figure \ref{fig:imp_fourier:cylindre:hoppe} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
 
+        \TODO{Mettre le rayon}
+
         \pgfplotstableread[col sep=semicolon]{tikz/csv/impedance_cylindre_1_couche_hoppe_p62.csv}{\hoppeimpcylindre}
         \begin{figure}[!hbt]
             \centering
@@ -471,3 +472,5 @@
             \caption{$\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}$}
             \label{fig:imp_fourier:cylindre:hoppe}
         \end{figure}
+
+        \TODO{Mettre un rayon grand}
