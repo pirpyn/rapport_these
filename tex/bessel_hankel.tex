@@ -1,5 +1,20 @@
 \section{Fonctions de Bessel et Hankel}
 
-Cette annexe référence les résultats de \cite{abramowitz_handbook_1964} afin de permettre au lecteur de ne pas avoir à rechercher cet ouvrage ancien.
+Cette annexe référence les résultats de \cite{abramowitz_handbook_1964}.
 
-Soit $J_m{x}$ la fonction de Bessel de degré $m$.
+Soit $J_n(z)$ la fonction de Bessel de degré $n$ de 1ere espèce, $Y_n(z)$ la fonction de Bessel de degré $n$ de 2eme espèce.
+La fonctions de Hankel de degré $n$ de 1er et 2eme type sont définis comme $H_n^{(1)}(z) = J_n(z) + iY_n(z)$, $H_n^{(2)}(z) = J_n(z) - iY_n(z)$.
+
+On remarque que $\forall (z_1,z_2) \in \CC^2$
+
+\begin{equation}
+\begin{aligned}
+z_1 J_n(z) + z_2 Y_n(z) 
+&= ( z_1 - i z_2 ) J_n(z) + iz_2 H_n^{(2)}(z) \\
+&= ( z_1 + i z_2 ) J_n(z) - iz_2 H_n^{(1)}(z) \\
+&= z_1 H_n^{(2)}(z) + ( z_2 + i z_1 ) Y_n(z) \\
+&= z_1 H_n^{(1)}(z) + ( z_2 - i z_1 ) Y_n(z) \\
+&= \frac{z_1-iz_2}{2}H_n^{(1)}(z) + \frac{z_1+iz_2}{2}H_n^{(2)}(z)
+\end{aligned}
+\label{eq:annex:bessel:equiv_bessel}
+\end{equation}
