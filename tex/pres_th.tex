@@ -1,14 +1,23 @@
-\TODO{Introduire le contexte industriel}
+\subsection*{Contexte industriel}
+La diffraction des ondes est un problème commun à de nombreux secteurs d'activités: défense, aéronautique, médical, pétrolier. Selon le secteur, la nature des ondes et des matériaux diffèrent mais les problématique sont les mêmes. On étudient souvent la propagation d'une onde autour d'obstacles dans un milieu d’intérêt. Cette onde est émise et réceptionnée à un endroit qui selon le problème est loin ou proche de l'objet. Le problème réel est alors souvent non borné, car les ondes continuent à se propager souvent en dehors du domaine. 
+
+Cela introduit une première contrainte: comment modéliser fidèlement cette propagation alors que les outils informatique, ne peuvent, par nature, que modéliser des domaines bornés. Rien que pour cette question, plusieurs solutions existent. L'on peut par exemple, restreindre le domaine, puis ajouter à l'extérieur de celui-ci un domaine virtuel dans lequel les ondes seront absorbées sans se réfléchir: c'est la méthode des \gls{acr-pml}, notamment introduite par \cite{berenger_perfectly_1994}. Une autre approche consiste à introduire sur la surface extérieur du domaine une condition limite discrétisable qui reproduit le même phénomène: ce sont les \glspl{acr-cla} sur lesquelles ont travaillés récemment \cite{barucq_etude_1993} et \cite{duprat_conditions_2011}. Cependant, ces méthodes nécessitent toujours de modéliser entièrement le domaine d’intérêt et pour des objets dont la géométrie ou les matériaux sont complexes, alors le nombre d'inconnus issus de la discrétisation du problème peut rendre ces méthodes en pratique insolvable.
+
+L'approche d’intérêt dans cette thèse et qui est très largement répandue consiste à utiliser une représentation intégrale des champs qui fait intervenir la solution fondamentale de l'équation des ondes. Alors à partir du moment où l'on connaît la trace tangentielles des champs sur le bord de notre objet, ces derniers sont connus en tout point du domaine. Cette méthode à plusieurs avantages: le problème devient borné, on passe de 3D volumique à 3D surfacique car seul le bord de l'objet devient caractéristique. Les traces tangentielles sont alors déterminées grâce à la résolution d'une \gls{acr-ei}, qui revient à l'inversion d'un système linaire dense, qui l'un des principaux inconvénient de cette méthode. De plus, l'unicité des solutions n'est pas garanties par cette méthode. Enfin, pour des matériaux fins ou dont les constantes varient beaucoup, la prise en compte de la contribution des matériaux dans l'équation intégrale est aussi un problème complexe.
+
+Là encore, une approche consiste à introduire une condition limite sur la surface extérieure de l'objet, qui rend compte des matériaux. On sait depuis \cite{cessenat_mathematical_1996} qu'une telle condition existe toujours mais n'est en pratique pas utilisable dans les codes numérique car c'est un opérateur pseudo-différentiel . Il faut alors approcher ce dernier et cette approximation est appelée \gls{acr-ci}. 
+
+Cette thèse étudie alors l'une de ces approximations et ajoute à cette dernière des résultats nouveaux pour assurer l'unicité des solutions.
 
 \subsection*{Historique de l’intérêt des conditions d'impédances}
 
-L’intérêt des conditions d'impédances a été résumé par \cite{senior_approximate_1995}:
-"Prenez par exemple, un objet fini immergé dans un milieu homogène et éclairé par un champ électromagnétique.
-Connaissant les propriétés du matériau, il est possible en principe, de trouver les champ rayonnés à l'extérieur de l'objet.
-Cependant, ce travail serait grandement facilité si les propriétés pouvait être modélisées par une condition limite ne faisant intervenir que la trace des champs à la surface extérieur de l'objet, de fait, transformant un problème à deux (ou plus) matériaux en un problème à un unique matériau."
+% L’intérêt des conditions d'impédances a été résumé par \cite{senior_approximate_1995}:
+% "Prenez par exemple, un objet fini immergé dans un milieu homogène et éclairé par un champ électromagnétique.
+% Connaissant les propriétés du matériau, il est possible en principe, de trouver les champ rayonnés à l'extérieur de l'objet.
+% Cependant, ce travail serait grandement facilité si les propriétés pouvait être modélisées par une condition limite ne faisant intervenir que la trace des champs à la surface extérieur de l'objet, de fait, transformant un problème à deux (ou plus) matériaux en un problème à un unique matériau."
 
-Avec l'essor des premiers ordinateur permettant de démultiplier les puissances de calculs, l'étude de la diffraction des ondes électromagnétiques a beaucoup évoluée. Cependant pour l'époque, les moyens dont ils disposaient ne permettait l'utilisation que de condition simple tel que celle de \cite{leontovich_investigations_1948}. Avec l'augmentation en puissance, de nouvelles conditions purent être utilisée (\cite{ruck_radar_1970}) couplée à de nouvelles méthodes de résolutions (\cite{mautz_h-field_1977}), et ce jusqu'à nos jours (\cite{senior_approximate_1995,hoppe_impedance_1995,bendali_boundary-element_1999,nedelec_acoustic_2001,yuferev_surface_2009}). 
-
+Avec l'essor des premiers ordinateur permettant de démultiplier les puissances de calculs, l'étude de la diffraction des ondes électromagnétiques a beaucoup évoluée. Cependant pour l'époque, les moyens dont ils disposaient ne permettait l'utilisation que de condition simple tel que celle de \cite{leontovich_investigations_1948}, ne rendant compte que matériaux simple, éclairés perpendiculairement à la surface. Cependant, cette approximation reste largement répandue de pars sa simplicité. Avec l'augmentation en puissance, de nouvelles conditions purent être utilisée %(\cite{ruck_radar_1970}) couplée à de nouvelles méthodes de résolutions (\cite{mautz_h-field_1977}), et ce jusqu'à nos jours (\cite{senior_approximate_1995,hoppe_impedance_1995,bendali_boundary-element_1999,nedelec_acoustic_2001,yuferev_surface_2009}). 
+pour rendre compte de matériaux plus généraux et éclairé d'une manière quelconque.
 
 \subsection*{Intérêt mathématique des conditions d'impédances}
 Nous traitons le problème des équations Maxwell sous forme harmonique, en convention $e^{i\w t}$ pour la dépendance temporelle.
@@ -58,7 +67,7 @@ Enfin comme nous considérons un milieu extérieur non-borné, nous nous dotons 
 Tel que l'a démontré \cite[p.~109]{cessenat_mathematical_1996}, le problème \eqref{eq:pres_th:intro:maxwell}  posé à l'intérieur et à l'extérieur de l'objet, doté de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} est équivalent au problème \eqref{eq:pres_th:intro:maxwell} à l'extérieur de l'objet doté de de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} et de la \gls{acr-ci} \eqref{eq:pres_th:ci:ci-calderon} sur la surface extérieur de l'objet : 
 \begin{equation}
 \label{eq:pres_th:ci:ci-calderon}
-\vn \pvect \vE = \mathcal{C}\left(\vn \pvect \vn \pvect \vH\right)
+\vn \pvect \vE (\v x , \w ) = \mathcal{C}\left(\vn \pvect \vn \pvect \vH\right)(\v x, \w )
 \end{equation}
 où $ \mathcal{C}$ est l'opérateur de Calderón.
 L'opérateur d'impédance est alors une approximation de cet opérateur de Calderón.

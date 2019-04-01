@@ -58,12 +58,13 @@
     style=authoryear,%
     hyperref=true,%
     giveninits=true, % initialles pour prénoms
-    isbn=false,%
+    isbn=true,%
     url=false,%
-    doi=false,%
+    doi=true,%
     backref=true,%
     backrefstyle=three% si cité en page 1,2,3, ecrire 1-3, 
     ]{biblatex}
+
     \renewbibmacro{in:}{} 
     \DeclareFieldFormat[book,report]{title}{\mkbibquote{#1\isdot}}
     \DefineBibliographyStrings{french}{%
