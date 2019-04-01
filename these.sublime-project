@@ -72,6 +72,7 @@
     "dictionary": "Packages/Dictionnaries/French.dic",
 
     // For LatexTools Package
+    "TEXroot": "these_payen_2019.tex",
     "tex_file_exts": [".tex", ".tikz", ".bib"],
     "output_directory": "build",
     "preview_math_mode": "none",
