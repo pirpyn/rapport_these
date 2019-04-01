@@ -78,11 +78,10 @@
     \end{equation}
 
     C'est une équation de Bessel (cf \cite[eq (6.80)]{bowman_introduction_1958}), dont des solutions générales sont: soient $(c_1,c_2) \in \CC^2$:
-    \TODO{Numériquement, le choix des fonctions de Bessels, importe peu pour $\mZ$. L'expliquer}
-    \begin{equation}
+   \begin{equation}
         E_z = c_1 J_n\left(k_3r\right) + c_2 H_n^{(2)}\left(k_3r\right)
     \end{equation}
-    où $J_n$ est la fonction de Bessel du premier type, $H_n^{(2)}$ la fonction de Hankel de deuxième type. 
+    où $J_n$ est la fonction de Bessel du premier type, $H_n^{(2)}$ la fonction de Hankel de deuxième type. On sait que l'on peut prendre n'importe quel couple de fonctions de Bessel (cf \eqref{eq:annex:bessel:equiv_bessel}), on choisit ce dernier car les $J_n$ sont régulières et les $H_n$ évoluent en $\frac{1}{\sqrt{r}}$ à l'infini, donc ce choix est adapté à une décomposition en une onde incidente partout définie et une onde réfléchie décroissante à l'infini.
 
     On trouve exactement le même résultat pour $H_z$: soient $(c_3,c_4) \in \CC^2$
     \begin{equation}
