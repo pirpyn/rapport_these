@@ -38,6 +38,8 @@
 \newcommand{\mB}{\mat{B}}
 \newcommand{\mC}{\mat{C}}
 
+\newcommand{\Op}[2]{{\operatorname{Op}\left(#1\right)\left(#2\right)}}
+
 
 \newcommand{\w}{\omega}
 
@@ -47,10 +49,11 @@
 \newcommand{\NN}{\mathbb N}
 \newcommand{\ZZ}{\mathbb Z}
 \newcommand{\eps}{\epsilon}
-\newcommand{\dd}{\partial}
+\newcommand{\dd}[1]{\operatorname{d#1}}
 \newcommand{\OO}{\Omega}
 
-\newcommand{\ddr}[3][{}]{\dfrac{\dd^{#1} #3}{{\dd #2}^{#1}}}
+\newcommand{\ddp}[3][{}]{\dfrac{\dd{}^{#1} #3}{{\dd{}#2}^{#1}}}
+\newcommand{\ddr}[3][{}]{\dfrac{\partial^{#1} #3}{{\partial #2}^{#1}}}
 
 %Operator
 \newcommand{\Hgrad}{\operatorname{H_{grad}}}
