@@ -17,9 +17,7 @@
 \newcommand{\dockeywordseng}{Electromagnetism (EM), Impedance, Sufficient uniqueness conditions (SUC), Constrained optimisation, Radar cross section (RCS), Finite elements method (FEM), Integral equation (EFI,MFIE)}
 \newcommand{\docauthor}{Pierre Payen}
 
-% On propage les noms et titre
-\author{\docauthor}
-\title{\doctitlefr}
+
 
 % On parametrise le PDF
 \hypersetup{
@@ -40,6 +38,12 @@
     % filecolor=magenta,      % color of file links
     % urlcolor=cyan           % color of external links
 }
+
+ \AtBeginDocument{
+    % On propage les noms et titre
+    \author{\docauthor}
+    \title{\doctitlefr}
+}   
 \begin{document}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % \frontmatter
@@ -56,7 +60,7 @@
     %     \restoregeometry
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \mainmatter
-        %\include{chapitre_0}
+        \include{chapitre_0}
         \include{chapitre_1}
         % \include{chapitre_2}
         % \include{chapitre_3}
@@ -64,9 +68,10 @@
         % \include{chapitre_5}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \backmatter
-        \printbibliography
         \appendix
         % On change la numération des annexes en alphabétique
         \renewcommand\thesection{\Alph{section}}
-    %    \include{annexes}
+        \include{annexes}
+    \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+    \printbibliography
 \end{document}
