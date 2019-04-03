@@ -132,43 +132,6 @@
         % Les espaces propres associés sont de dimension 2, on a 
 
         Par un calcul immédiat, on vérifie que $\mat{M}\v{V}_\pm = \lambda_\pm\v{V}_\pm$ et $\mat{M}\v{W}_\pm = \lambda_\pm\v{W}_\pm$.
-        % \begin{align}
-        % \Ker(\mat{M}-\lambda_+\mI)=\Vect{\v{V_+};\v{W_+}} \\
-        %     \v{V_+} = 
-        %     \begin{bmatrix}
-        %     \lambda_+ \\
-        %         0 \\
-        %         -i\frac{k_xk_y}{\w\mu} \\
-        %         i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) \\
-        %     \end{bmatrix}
-        %     \,
-        %     \v{W_+} = 
-        %         \begin{bmatrix}
-        %         0 \\
-        %         \lambda_+ \\
-        %         -i\left(\w\eps - \frac{k_x^2}{\w\mu}\right) \\
-        %         i\frac{k_xk_y}{\w\mu} \\
-        %     \end{bmatrix}
-        % \end{align}
-
-        % \begin{align}
-        % \Ker(\mat{M}-\lambda_-\mI)=\Vect{\v{V_-};\v{W_-}}\\
-        %     \v{V_-} = 
-        %     \begin{bmatrix}
-        %         \lambda_- \\
-        %         0 \\
-        %         -i\frac{k_xk_y}{\w\mu} \\
-        %         i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) \\
-        %     \end{bmatrix}
-        %     \,
-        %     \v{W_-} = 
-        %     \begin{bmatrix}
-        %         0 \\
-        %         \lambda_- \\
-        %         -i\left(\w\eps - \frac{k_x^2}{\w\mu}\right) \\
-        %         i\frac{k_xk_y}{\w\mu} \\
-        %     \end{bmatrix}
-        % \end{align}
     \end{proof}
 
     \begin{prop}
@@ -182,6 +145,7 @@
         \end{align}
         alors 
         \begin{subequations}
+            \label{eq:imp_fourier:plan:champs}
             \begin{align}
                 \begin{bmatrix}
                     \hat{E_x}(k_x,k_y,z)\\
@@ -198,7 +162,7 @@
                     c_4
                 \end{bmatrix}
                 \right)
-                \label{eq:imp_fourier:plan:generale_E}
+                \label{eq:imp_fourier:plan:champs:E}
                 \\
                 \begin{bmatrix}
                     -\hat{H_y}(k_x,k_y,z)\\
@@ -218,7 +182,7 @@
                         c_4
                     \end{bmatrix}
                 \right)
-                \label{eq:imp_fourier:plan:generale_H}
+                \label{eq:imp_fourier:plan:champs:H}
             \end{align}
         \end{subequations}
     \end{prop}
@@ -309,9 +273,14 @@
 
         \begin{thm}
             Supposons que
+            \begin{subequations}
+                \label{eq:imp_fourier:plan:hyp_1_c}
                 \begin{align}
-                k_3d &\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN
-            \end{align}
+                    k_3     & \not =0 \\
+                    k_3d    & \not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN
+                \end{align}
+            \end{subequations}
+
             Alors
             \begin{align}
             \hat \mZ(k_x,k_y) &= -i\eta\frac{\tan\left(k_3d\right)}{kk_3}
@@ -336,7 +305,7 @@
                 \end{bmatrix}
             \end{equation}
 
-            De \eqref{eq:imp_fourier:plan:generale_E}, on déduit
+            De \eqref{eq:imp_fourier:plan:champs:E}, on déduit
             \begin{align}
                 \begin{bmatrix}
                     c_1 \\
@@ -349,7 +318,7 @@
                 \end{bmatrix}
             \end{align}
 
-            En injectant ce qui précède dans \eqref{eq:imp_fourier:plan:generale_E},\eqref{eq:imp_fourier:plan:generale_H}, on déduit que
+            En injectant ce qui précède dans \eqref{eq:imp_fourier:plan:champs}, on déduit que
             \begin{align}
                 \begin{bmatrix}
                     \hat{E_x}(k_x,k_y,0)\\
@@ -434,19 +403,20 @@
         On rappelle que $\det{\mC_m} = \frac{k_{3m}\eps_m^2}{\mu_m^2}$
 
         On définit aussi la profondeur de la couche $m$, $l_m = -\sum_{i=0}^{n-m} d_{n-i} $. 
-        On définit pour chaque interface, le symbole $\hat \mZ_m$ tel que $\hat \vE_t(k_x,k_y,l_m) = \hat \mZ_m(k_x,k_y) \left(\v{e_z} \pvect \hat \vH_t(k_x,k_y,l_m)\right)$. 
 
-        On cherche alors le symbole $\hat \mZ_n(k_x,k_y)$  de la couche la moins profonde tel que 
-        \begin{equation}
-            \hat \vE_t(k_x,k_y,0) = \hat \mZ_n (k_x,k_y) \left(\v{e_z} \pvect \hat \vH_t(k_x,k_y,0)\right)
-        \end{equation}
+        \begin{defn}
+            On définit pour chaque interface, le symbole $\hat \mZ_m$ tel que
+            \begin{equation}
+                \hat \vE_t(k_x,k_y,l_m) = \hat \mZ_m(k_x,k_y) \left(\v{e_z} \pvect \hat \vH_t(k_x,k_y,l_m)\right)
+            \end{equation}
+        \end{defn}
 
         \begin{thm}
             Soit $\hat \mZ_0(k_x,k_y) = \mat{0}_{\mathcal{M}_2(\CC)}$.
 
             Si pour tout $0<m < n$
             \begin{align}
-                \det{\mC_m} &\not = 0 \\
+                k_{3m} &\not = 0 \\
                 \det\left(k_{3m}\mI \pm \hat \mZ_{m-1}\mC_m \right) &\not = 0 \\
                 k_{3m}d_m &\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN \\
                 \det\left(k_{3m}\mI - i\tan(k_{3m}d_m)\mZ_{m-1}\mC_m\right) &\not = 0
@@ -477,7 +447,7 @@
                 \end{bmatrix}
             \end{equation}
 
-            On reprend donc tous les résultats de la partie précédente. Notamment, de \eqref{eq:imp_fourier:plan:generale_E} et \eqref{eq:imp_fourier:plan:generale_H}, on déduit que
+            On reprend donc tous les résultats de la partie précédente. Notamment, de \eqref{eq:imp_fourier:plan:champs:E} et \eqref{eq:imp_fourier:plan:champs:H}, on déduit que
 
             \begin{equation}
                 \begin{bmatrix}
@@ -645,7 +615,7 @@
 
     \subsection{Applications numériques}
 
-        La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte On remarque que pour $s=2$, $k_3 = 0$ et donc $\mC$ n'est pas inversible.
+        La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte. On remarque que pour $s=2$, $k_3 = 0$ et donc $\mC$ n'est pas inversible.
 
         \pgfplotstableread[col sep=semicolon]{tikz/csv/impedance_plan_1_couche.csv}{\hoppeimpplan}
         \begin{figure}[!hbt]
@@ -653,8 +623,12 @@
             \begin{tikzpicture}[scale=1]
                 \begin{axis}[
                         title={},
-                        ylabel={$\Im(Z)$},
+                        ylabel={$\Im(\hat{\mZ}(k_x,0)$},
                         xlabel={$k_x\slash k_0$},
+                        width=0.8\textwidth,
+                        height=6cm,
+                        xmin=0,
+                        xmax=2,
                         mark repeat=20,
                         legend pos=outer north east
                     ]
@@ -667,24 +641,46 @@
             \label{fig:imp_fourier:plan:hoppe}
         \end{figure}
 
-        La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où $\mC$ n'est pas inversible pour $s\simeq 0.9$.
+        La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où $k_3d = \frac{\pi}{2}$ pour $k_x \simeq 0.9 k_0$.
 
-        \pgfplotstableread[col sep=semicolon]{tikz/csv/impedance_plan_1_couche_soudais.csv}{\soudaisimpplan}
         \begin{figure}[!hbt]
             \centering
             \begin{tikzpicture}[scale=1]
                 \begin{axis}[
                         title={},
-                        ylabel={$\Im(Z)$},
+                        width=0.4\textwidth,
+                        height=6cm,
+                        xmin=0,
+                        xmax=2,
+                        ylabel={$\Im(\hat{\mZ}(k_x,0))$},
+                        xlabel={$k_x\slash k_0$},
+                        mark repeat=20,
+                        legend pos=outer north east
+                    ]
+                    \addplot [blue,thick,mark=*] table [x={s}, y={imag(z.tm)},col sep=semicolon] {tikz/csv/impedance_plan_1_couche_soudais.csv};
+                    \addplot [red,thick,mark=x] table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance_plan_1_couche_soudais.csv};
+                \end{axis}
+            \end{tikzpicture}
+            \begin{tikzpicture}[scale=1]
+                \begin{axis}[
+                        title={},
+                        height=6cm,
+                        width=0.4\textwidth,
+                        ymin=-100,
+                        ymax=100,
+                        xmin=0.8,
+                        xmax=1,
+                        ylabel={},
                         xlabel={$k_x\slash k_0$},
                         mark repeat=20,
                         legend pos=outer north east
                     ]
                     \legend{TM,TE}
-                    \addplot [blue,thick,mark=*] table [x={s}, y={imag(z.tm)}] {\soudaisimpplan};
-                    \addplot [red,thick,mark=x] table [x={s}, y={imag(z.te)}] {\soudaisimpplan};
+                    \addplot [blue,thick,mark=*] table [x={s}, y={imag(z.tm)},col sep=semicolon] {tikz/csv/impedance_plan_1_couche_soudais_agrandis.csv};
+                    \addplot [red,thick,mark=x] table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance_plan_1_couche_soudais_agrandis.csv};
                 \end{axis}
             \end{tikzpicture}
             \caption[Reproduction résultat P. Soudais]{$\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}$}
             \label{fig:imp_fourier:plan:soudais}
         \end{figure}
+        
