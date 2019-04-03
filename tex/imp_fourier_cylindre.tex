@@ -32,7 +32,7 @@
         \end{equation}
         et $J_n$ et $H_n^{(2)}$ des solutions de l'équation de Bessel d'ordre $n$.
         
-        Alors $\exists (c_i)_{i<4} \in \CC^4$
+        Alors $\exists (c_1,c_2,c_3,c_4) \in \CC^4$ tels que la 3\ieme composante des champs soit
         \begin{subequations}
             \begin{align}
                 \hat{E_z}(r,n,k_z) &= c_1 J_n\left(k_3r\right) + c_2 H_n^{(2)}\left(k_3r\right)
@@ -109,184 +109,217 @@
         \end{equation}
         où $J_n$ est la fonction de Bessel du premier type, $H_n^{(2)}$ la fonction de Hankel de deuxième type. On sait que l'on peut prendre n'importe quel couple de fonctions de Bessel (cf \eqref{eq:annex:bessel:equiv_bessel}), on choisit ce dernier car les $J_n$ sont régulières et les $H_n$ évoluent en $\frac{1}{\sqrt{r}}$ à l'infini, donc ce choix est adapté à une décomposition en une onde incidente partout définie et une onde réfléchie décroissante à l'infini.
 
+        De plus, d'après \cite[p.~358]{abramowitz_handbook_1964}, on sait qu'une fonction de Bessel d'ordre $n$ est linéairement dépendante de celle d'ordre $-n$. On peut donc se restreindre à $n$ entier naturel
+
         On trouve exactement le même résultat pour $\hat{H_z}$: soient $(c_3,c_4) \in \CC^2$
         \begin{equation}
             \hat{H_z}(r,n,k_z) = c_3 J_n\left(k_3r\right) + c_4 H_n^{(2)}\left(k_3r\right)
         \end{equation}
     \end{proof}
 
-    À partir des équations de Maxwell restantes, on peut déterminer $\hat{E_r},\hat{E_\theta},\hat{H_r},\hat{H_\theta}$.
-    \begin{equation}
-        \left\lbrace
-        \begin{matrix}
-            -ik_z\hat{E_\theta} - i\w\mu \hat{H_r} = -\frac{in}{r}\hat{E_z}
-            \\
-            ik_z\hat{E_r} - i\w\mu \hat{H_\theta} = \ddr{r}{\hat{E_z}}
-            \\
-            -i\w\eps \hat{E_r} + ik_z \hat{H_\theta} = \frac{in}{r}\hat{H_z}
-            \\
-            -i\w\eps \hat{E_\theta} - ik_z \hat{H_r} = -\ddr{r}{\hat{H_z}}
-        \end{matrix}
-        \right.
-    \end{equation}
-
-    Cela revient à résoudre $\v{Y} = \mat{M}\v{X}$ où la matrice $\mat{M}$ et les vecteurs $\v{X}, \v{Y}$ sont définis tels que
-    \begin{equation}
-        \mat{M} =
-        \begin{bmatrix}
-        0 & -ik_z & -i\w\mu & 0 
-        \\
-        ik_z & 0 & 0 & -i\w\mu
-        \\
-        -i\w\eps & 0 & 0 & ik_z
-        \\
-        0 & -i\w\eps & -ik_z & 0
-        \end{bmatrix}
-        \,
-        \v{X} = 
-        \begin{bmatrix}
-            \hat{E_r}(r,n,k_z)\\
-            \hat{E_\theta}(r,n,k_z)\\
-            \hat{H_r}(r,n,k_z)\\
-            \hat{H_\theta}(r,n,k_z)
-        \end{bmatrix}
-        \,
-        \v{Y} = 
-        \begin{bmatrix}
-            -\frac{in}{r}\hat{E_z}\\
-            \ddr{r}{\hat{E_z}}\\
-            \frac{in}{r}\hat{H_z}\\
-            -\ddr{r}{\hat{H_z}}
-        \end{bmatrix}
-    \end{equation}
-
-    À condition que $\det(\mat{M}) = (\w^2\eps\mu-k_z^2)^2$ soit non nul, on peut déduire $\v{X}$:
-
-    \begin{equation}
-        \begin{bmatrix}
-            \hat{E_r}(r,n,k_z)\\
-            \hat{E_\theta}(r,n,k_z)\\
-            \hat{H_r}(r,n,k_z)\\
-            \hat{H_\theta}(r,n,k_z)
-        \end{bmatrix} =
-        \frac{1}{k_z^2 - \w^2\eps\mu}
-        \begin{bmatrix}
-        0 & -ik_z & -i\w\mu & 0 
-        \\
-        ik_z & 0 & 0 & -i\w\mu
-        \\
-        -i\w\eps & 0 & 0 & ik_z
-        \\
-        0 & -i\w\eps & -ik_z & 0
-        \end{bmatrix}
-        \begin{bmatrix}
-            -\frac{in}{r}\hat{E_z}\\
-            \ddr{r}{\hat{E_z}}\\
-            \frac{in}{r}\hat{H_z}\\
-            -\ddr{r}{\hat{H_z}}
-        \end{bmatrix}
-    \end{equation}
-
-    On extrait alors $\hat{E_\theta}, \hat{H_\theta}$ pour obtenir les champs tangentielles à $\v{e_r}$ en tout point, sachant déjà $\hat{E_z}, \hat{H_z}$.
-
-    \begin{align}
-        \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} + i\w\mu\ddr{r}{\hat{H_z}}\right)
-        \\
-        \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
-        \\
-        -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
-        \\
-        \hat{H_\theta} &= \frac{1}{k_3^2}\left(i\w\eps\ddr{r}{\hat{E_z}} - \frac{nk_z}{r}\hat{H_z}\right)
-    \end{align}
-
-    On dérive les fonctions de Bessel:
-
-   \begin{align}
-        \hat{E_\theta} &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) - \frac{i\w\mu}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
-        \\
-        \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
-        \\
-        -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
-        \\
-        \hat{H_\theta} &= \frac{i\w\eps}{k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
-    \end{align}
-
-    Ce qui peut s'écrire matriciellement:
-    \begin{align}
-        \hat \vE_t(r,n,k_z) &= 
-        \begin{bmatrix}
-            -\frac{nk_z}{rk_3^2}J_n(k_3r) & -\frac{i\w\mu}{k_3}J_n'(k_3r)
-            \\
-            J_n(k_3r) & 0
-        \end{bmatrix}
-        \begin{bmatrix}
-            c_1 \\
-            c_3
-        \end{bmatrix}
-        +
-        \begin{bmatrix}
-            -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & -\frac{i\w\mu}{k_3}H_n^{(2)}{}'(k_3r)
-            \\
-            H_n^{(2)}(k_3r) & 0
-        \end{bmatrix}
-        \begin{bmatrix}
-            c_2 \\
-            c_4
-        \end{bmatrix}
-        \\
-        \v{e_r}\times\hat \vH_t(r,n,k_z) &= 
-        \begin{bmatrix}
-            0 & -J_n(k_3r)
-            \\
-            \frac{i\w\eps}{k_3}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
-        \end{bmatrix}
-        \begin{bmatrix}
-            c_1 \\
-            c_3
-        \end{bmatrix}
-        +
-        \begin{bmatrix}
-            0 & -H_n^{(2)}(k_3r)
-            \\
-            \frac{i\w\eps}{k_3}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
-        \end{bmatrix}
-        \begin{bmatrix}
-            c_2 \\
-            c_4
-        \end{bmatrix}
-    \end{align}
 
     \newcommand{\mJ}{\mat{J}}
     \newcommand{\mH}{\mat{H}}
 
-    Pour simplifier les notations, on définit les matrices $\mJ_{E},\mH_{E},\mJ_{H},\mH_{H}$ telles que
-    \begin{align}
-        \hat \vE_t(r,n,k_z) &= \mJ_{E}(r)
-        \begin{bmatrix}
-            c_1 \\
-            c_3
-        \end{bmatrix}
-        +
-        \mH_{E}(r)
-        \begin{bmatrix}
-            c_2 \\
-            c_4
-        \end{bmatrix}
-        \\
-        \v{e_r}\times\hat \vH_t(r,n,k_z) &= 
-        \mJ_{H}(r)
-        \begin{bmatrix}
-            c_1 \\
-            c_3
-        \end{bmatrix}
-        +
-        \mH_{H}(r)
-        \begin{bmatrix}
-            c_2 \\
-            c_4
-        \end{bmatrix}
-    \end{align}
+    \begin{defn}
+        On définit les matrices $\mJ_{E}(r,n,k_z),\mH_{E}(r,n,k_z),\mJ_{H}(r,n,k_z),\mH_{H}(r,n,k_z)$
+        \begin{align}
+            \mJ_{E}(r,n,k_z) &= 
+            \begin{bmatrix}
+                -\frac{nk_z}{rk_3^2}J_n(k_3r) & -\frac{i\w\mu}{k_3}J_n'(k_3r)
+                \\
+                J_n(k_3r) & 0
+            \end{bmatrix}
+            \\
+            \mH_{E}(r,n,k_z) &= 
+            \begin{bmatrix}
+                -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & -\frac{i\w\mu}{k_3}H_n^{(2)}{}'(k_3r)
+                \\
+                H_n^{(2)}(k_3r) & 0
+            \end{bmatrix}
+            \\
+            \mJ_{H}(r,n,k_z) &= 
+            \begin{bmatrix}
+                0 & -J_n(k_3r)
+                \\
+                \frac{i\w\eps}{k_3}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
+            \end{bmatrix}
+            \\
+            \mH_{H}(r,n,k_z) &= 
+            \begin{bmatrix}
+                0 & -H_n^{(2)}(k_3r)
+                \\
+                \frac{i\w\eps}{k_3}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
+            \end{bmatrix}
+        \end{align}
+    \end{defn}
 
+    \begin{prop}
+        Alors les champs tangentiels s'écrivent
+        \begin{subequations}
+            \begin{align}
+                \hat \vE_t(r,n,k_z) &= \mJ_{E}(r,n,k_z)
+                \begin{bmatrix}
+                    c_1 \\
+                    c_3
+                \end{bmatrix}
+                +
+                \mH_{E}(r,n,k_z)
+                \begin{bmatrix}
+                    c_2 \\
+                    c_4
+                \end{bmatrix}
+                \label{eq:imp_fourier:cylindre:Et}\\
+                \v{e_r}\times\hat \vH_t(r,n,k_z) &= 
+                \mJ_{H}(r,n,k_z)
+                \begin{bmatrix}
+                    c_1 \\
+                    c_3
+                \end{bmatrix}
+                +
+                \mH_{H}(r,n,k_z)
+                \begin{bmatrix}
+                    c_2 \\
+                    c_4
+                \end{bmatrix}
+                \label{eq:imp_fourier:cylindre:Ht}
+            \end{align}
+        \end{subequations}
+    \end{prop}
+
+
+    \begin{proof}
+        À partir des équations de Maxwell restantes, on peut déterminer $\hat{E_r},\hat{E_\theta},\hat{H_r},\hat{H_\theta}$.
+        \begin{equation}
+            \left\lbrace
+            \begin{matrix}
+                -ik_z\hat{E_\theta} - i\w\mu \hat{H_r} = -\frac{in}{r}\hat{E_z}
+                \\
+                ik_z\hat{E_r} - i\w\mu \hat{H_\theta} = \ddr{r}{\hat{E_z}}
+                \\
+                -i\w\eps \hat{E_r} + ik_z \hat{H_\theta} = \frac{in}{r}\hat{H_z}
+                \\
+                -i\w\eps \hat{E_\theta} - ik_z \hat{H_r} = -\ddr{r}{\hat{H_z}}
+            \end{matrix}
+            \right.
+        \end{equation}
+
+        Cela revient à résoudre $\v{Y} = \mat{M}\v{X}$ où la matrice $\mat{M}$ et les vecteurs $\v{X}, \v{Y}$ sont définis tels que
+        \begin{equation}
+            \mat{M} =
+            \begin{bmatrix}
+            0 & -ik_z & -i\w\mu & 0 
+            \\
+            ik_z & 0 & 0 & -i\w\mu
+            \\
+            -i\w\eps & 0 & 0 & ik_z
+            \\
+            0 & -i\w\eps & -ik_z & 0
+            \end{bmatrix}
+            \,
+            \v{X} = 
+            \begin{bmatrix}
+                \hat{E_r}\\
+                \hat{E_\theta}\\
+                \hat{H_r}\\
+                \hat{H_\theta}
+            \end{bmatrix}
+            \,
+            \v{Y} = 
+            \begin{bmatrix}
+                -\frac{in}{r}\hat{E_z}\\
+                \ddr{r}{\hat{E_z}}\\
+                \frac{in}{r}\hat{H_z}\\
+                -\ddr{r}{\hat{H_z}}
+            \end{bmatrix}
+        \end{equation}
+
+        À condition que $\det(\mat{M}) = (\w^2\eps\mu-k_z^2)^2$ soit non nul, on peut déduire $\v{X}$:
+
+        \begin{equation}
+            \begin{bmatrix}
+                \hat{E_r}\
+                \hat{E_\theta}\\
+                \hat{H_r}\\
+                \hat{H_\theta}
+            \end{bmatrix} =
+            \frac{1}{k_z^2 - \w^2\eps\mu}
+            \begin{bmatrix}
+            0 & -ik_z & -i\w\mu & 0 
+            \\
+            ik_z & 0 & 0 & -i\w\mu
+            \\
+            -i\w\eps & 0 & 0 & ik_z
+            \\
+            0 & -i\w\eps & -ik_z & 0
+            \end{bmatrix}
+            \begin{bmatrix}
+                -\frac{in}{r}\hat{E_z}\\
+                \ddr{r}{\hat{E_z}}\\
+                \frac{in}{r}\hat{H_z}\\
+                -\ddr{r}{\hat{H_z}}
+            \end{bmatrix}
+        \end{equation}
+
+        On extrait alors $\hat{E_\theta}, \hat{H_\theta}$ pour obtenir les champs tangentielles à $\v{e_r}$ en tout point, sachant déjà $\hat{E_z}, \hat{H_z}$.
+
+        \begin{align}
+            \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} + i\w\mu\ddr{r}{\hat{H_z}}\right)
+            \\
+            \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
+            \\
+            -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
+            \\
+            \hat{H_\theta} &= \frac{1}{k_3^2}\left(i\w\eps\ddr{r}{\hat{E_z}} - \frac{nk_z}{r}\hat{H_z}\right)
+        \end{align}
+
+        On dérive les fonctions de Bessel:
+
+       \begin{align}
+            \hat{E_\theta} &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) - \frac{i\w\mu}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
+            \\
+            \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
+            \\
+            -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
+            \\
+            \hat{H_\theta} &= \frac{i\w\eps}{k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
+        \end{align}
+
+        Et on obtient
+
+        \begin{subequations}
+            \label{eq:imp_fourier:cylindre:champs}
+            \begin{align}
+                \label{eq:imp_fourier:cylindre:champs:E}
+                \hat \vE_t(r,n,k_z) &= \mJ_{E}(r)
+                \begin{bmatrix}
+                    c_1 \\
+                    c_3
+                \end{bmatrix}
+                +
+                \mH_{E}(r)
+                \begin{bmatrix}
+                    c_2 \\
+                    c_4
+                \end{bmatrix}
+                \\
+                \label{eq:imp_fourier:cylindre:champs:H}
+                \v{e_r}\times\hat \vH_t(r,n,k_z) &= 
+                \mJ_{H}(r)
+                \begin{bmatrix}
+                    c_1 \\
+                    c_3
+                \end{bmatrix}
+                +
+                \mH_{H}(r)
+                \begin{bmatrix}
+                    c_2 \\
+                    c_4
+                \end{bmatrix}
+            \end{align}
+        \end{subequations}
+
+    \end{proof}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -295,64 +328,83 @@
 
     \subsection{Opérateur d'impédance pour une couche}
 
-        On applique la relation $\vE_t(r_0,\theta,z) = 0$ équivalente à $\hat \vE(r_0,n,k_z) = 0$.
-        \begin{equation}
-            \mJ_{E}(r_0)
-            \begin{bmatrix}
-                c_1 \\
-                c_3
-            \end{bmatrix}
-            =-\mH_{E}(r_0)
-            \begin{bmatrix}
-                c_2 \\
-                c_4
-            \end{bmatrix}
-        \end{equation}
+        Soit $r_1 = r_0 + d$
+        \begin{defn}
+            On définit le symbole $\hat \mZ(n,k_z)$ de l'opérateur d'impédance la matrice telle que
+            \begin{equation}
+                \hat \vE_t(r_1,n,k_z) = \hat \mZ(n,k_z) \left(\v{e_r}\pvect \hat \vH_t(r_1,n,k_z)\right)
+            \end{equation}
+        \end{defn}
 
-        Or par définition des matrices,
-        \begin{align}
-            \det(\mJ_E(r_0)) &= -\frac{i\w\mu}{k_3}J_n(k_3r_0)J_n'(k_3r_0)
-            \\
-            \det(\mH_E(r_0)) &= -\frac{i\w\mu}{k_3}H_n^{(2)}(k_3r_0)H_n^{(2)}{}'(k_3r_0)
-        \end{align}
-        \TODO{Trouver les zéros des Bessels : \url{http://mathworld.wolfram.com/BesselFunctionZeros.html}}
+        \begin{thm}
+            Si on suppose que les fonctions de Bessel et leurs dérivées ne s’annulent pas en $k_3r_0$ et que 
+            la matrice $\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)$ est inversible
 
-        
-        À condition de l'inversibilité de ces deux matrices, on peut donc exprimer certaines constantes $c_i$ en fonction des autres
+            Alors le symbole $\hat \mZ(n,k_z)$ de l'opérateur d'impédance est
+            \begin{multline}
+                \hat \mZ(n,k_z) = 
+                \left(\mH_{E}(r_1)\mH_{E}(r_0)^{-1} - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\right)\\
+                \left(\mH_{H}(r_1)\mH_{E}(r_0)^{-1} - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\right)^{-1}
+            \end{multline}
+        \end{thm}
 
-        Sur la surface extérieur du cylindre ($r=r_1= r_0 + d$), on a donc 
-        \begin{align}
-            \hat \vE_t(r_1,n,k_z) &= 
-            \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)
-            \begin{bmatrix}
-                c_2 \\
-                c_4
-            \end{bmatrix}
-            \\
-            \v{e_r}\times \hat \vH_t(r_1,n,k_z) &= 
-            \left(\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0) \right)
-            \begin{bmatrix}
-                c_2 \\
-                c_4
-            \end{bmatrix}
-        \end{align}
+        \begin{proof}
 
-        Et à condition que $\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)$ soit inversible, l'opérateur d'impédance est:
+            On injecte la relation $\vE_t(r_0,\theta,z) = 0$ équivalente à $\hat \vE(r_0,n,k_z) = 0$ dans \eqref{eq:imp_fourier:cylindre:Et}.
+            \begin{equation}
+                \mJ_{E}(r_0)
+                \begin{bmatrix}
+                    c_1 \\
+                    c_3
+                \end{bmatrix}
+                =-\mH_{E}(r_0)
+                \begin{bmatrix}
+                    c_2 \\
+                    c_4
+                \end{bmatrix}
+            \end{equation}
 
-        \TODO{Inversibilité de $\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)$}
+            Or par définition des matrices,
+            \begin{align}
+                \det(\mJ_E(r_0)) &= -\frac{i\w\mu}{k_3}J_n(k_3r_0)J_n'(k_3r_0)
+                \\
+                \det(\mH_E(r_0)) &= -\frac{i\w\mu}{k_3}H_n^{(2)}(k_3r_0)H_n^{(2)}{}'(k_3r_0)
+            \end{align}
 
-        \begin{align}
-            \hat \mZ &= 
-            \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)
-            \left(\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)^{-1}
-            \\
-            &=
-            \left(\mH_{E}(r_1)\mH_{E}(r_0)^{-1} - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\right)
-            \left(\mH_{H}(r_1)\mH_{E}(r_0)^{-1} - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\right)^{-1}
-        \end{align}
+            D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel $>-1$ sont tous réels. Donc à condition d'avoir $k_3$ complexe, comme l'ordre est entier et que l'on se restreint au entiers naturels, ces matrices sont inversibles\footnote{Là encore, il faut étudier le cas des matériaux sans pertes où $k_3$ est réel pour $k_z < w\sqrt{\mu\eps}$}.
+            
+            À condition de l'inversibilité de ces deux matrices, on peut donc exprimer uniquement grâce à la moitié des constantes
+            \begin{align}
+                \hat \vE_t(r_1,n,k_z) &= 
+                \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)
+                \begin{bmatrix}
+                    c_2 \\
+                    c_4
+                \end{bmatrix}
+                \\
+                \v{e_r}\pvect \hat \vH_t(r_1,n,k_z) &= 
+                \left(\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0) \right)
+                \begin{bmatrix}
+                    c_2 \\
+                    c_4
+                \end{bmatrix}
+            \end{align}
 
-        Contrairement au plan, les matrices ne commutent pas et on ne peut pas simplifier le résultat.
+            Et à condition que $\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)$ soit inversible, le symbole de l'opérateur d'impédance est:
+            \TODO{Inversibilité de $\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)$}
+            \begin{align}
+                \hat \mZ &= 
+                \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)
+                \left(\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)^{-1}
+                \\
+                &=
+                \left(\mH_{E}(r_1)\mH_{E}(r_0)^{-1} - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\right)
+                \left(\mH_{H}(r_1)\mH_{E}(r_0)^{-1} - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\right)^{-1}
+            \end{align}
 
+            Contrairement au plan, les matrices ne commutent pas et on ne peut pas simplifier le résultat.
+
+        \end{proof}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -370,60 +422,66 @@
 
         Soit $r_m$ le rayon de la couche $m$, $r_m = r_0 +\sum_{i=1}^{m} d_{i}$. 
 
-        Pour chaque couche caractérisée par $(\eps_m,\mu_m,d_m)$, on définit:
-
-        \begin{align}
-            k_{3m} &= \sqrt{w^2\eps_m\mu_m - k_z^2}
-            \\
-            \mJ_{Em}(r) &= 
-                \begin{bmatrix}
-                    -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r) & -\frac{i\w\mu_m}{k_{3m}}J_n'(k_{3m}r)
+        \begin{defn}
+            Pour chaque couche caractérisée par $(\eps_m,\mu_m,d_m)$, définissons
+            \begin{subequations}
+                \begin{align}
+                    k_{3m} &= \sqrt{w^2\eps_m\mu_m - k_z^2}
                     \\
-                    J_n(k_{3m}r) & 0
-                \end{bmatrix}
-            \\
-            \mH_{Em}(r) &= 
-                \begin{bmatrix}
-                    -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r) & -\frac{i\w\mu_m}{k_{3m}}H_n^{(2)}{}'(k_{3m}r)
+                    \mJ_{Em}(r) &= 
+                        \begin{bmatrix}
+                            -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r) & -\frac{i\w\mu_m}{k_{3m}}J_n'(k_{3m}r)
+                            \\
+                            J_n(k_{3m}r) & 0
+                        \end{bmatrix}
                     \\
-                    H_n^{(2)}(k_{3m}r) & 0
-                \end{bmatrix}
-            \\
-            \mJ_{Hm}(r) &= 
-                \begin{bmatrix}
-                    0 & -J_n(k_{3m}r)
+                    \mH_{Em}(r) &= 
+                        \begin{bmatrix}
+                            -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r) & -\frac{i\w\mu_m}{k_{3m}}H_n^{(2)}{}'(k_{3m}r)
+                            \\
+                            H_n^{(2)}(k_{3m}r) & 0
+                        \end{bmatrix}
                     \\
-                    \frac{i\w\eps_m}{k_{3m}}J_n'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r)
-                \end{bmatrix}
-            \\
-            \mH_{Hm}(r) &= 
-                \begin{bmatrix}
-                    0 & -H_n^{(2)}(k_{3m}r)
+                    \mJ_{Hm}(r) &= 
+                        \begin{bmatrix}
+                            0 & -J_n(k_{3m}r)
+                            \\
+                            \frac{i\w\eps_m}{k_{3m}}J_n'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r)
+                        \end{bmatrix}
                     \\
-                    \frac{i\w\eps_m}{k_{m3}}H_n^{(2)}{}'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r)
-                \end{bmatrix}
-            \\
-            \mA_{Em}(r) &= \mJ_{Em}(r) -  \mZ_{m-1} \mJ_{Hm}(r)
-            \\
-            \mA_{Hm}(r) &= \mH_{Em}(r) -  \mZ_{m-1} \mH_{Hm}(r)
-        \end{align}
+                    \mH_{Hm}(r) &= 
+                        \begin{bmatrix}
+                            0 & -H_n^{(2)}(k_{3m}r)
+                            \\
+                            \frac{i\w\eps_m}{k_{m3}}H_n^{(2)}{}'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r)
+                        \end{bmatrix}
+                    \\
+                    \mA_{Jm}(r) &= \mJ_{Em}(r) -  \mZ_{m-1} \mJ_{Hm}(r)
+                    \\
+                    \mA_{Hm}(r) &= \mH_{Em}(r) -  \mZ_{m-1} \mH_{Hm}(r)
+                \end{align}
+            \end{subequations}
 
-
-        On définit pour chaque interface, le symbole $\hat \mZ_m$ tel que 
-        \begin{equation}
-            \hat \vE_t(r_m,n,k_z) = \hat \mZ_m(n,k_z) \left(\v{e_r} \pvect \hat \vH_t(r_m,n,k_z)\right)
-        \end{equation}
-
-        On cherche alors le symbole $\hat \mZ_n(n,k_z)$  de la couche la moins profonde tel que 
-        \begin{equation}
-            \hat \vE_t(r_n,k_x,k_y) = \hat \mZ_n (n,k_z) \left(\v{e_r} \pvect \hat \vH_t(r_n,n,k_z)\right)
-        \end{equation}
+            On définit pour chaque interface, le symbole $\hat \mZ_m$ tel que 
+            \begin{equation}
+                \hat \vE_t(r_m,n,k_z) = \hat \mZ_m(n,k_z) \left(\v{e_r} \pvect \hat \vH_t(r_m,n,k_z)\right)
+            \end{equation}
+        \end{defn}
 
         \begin{thm}
             Soit $\hat \mZ_0(n,k_z) = \mat{0}_{\mathcal{M}_2(\CC)}$.
 
             Si pour tout $0 < m < n$
-            \TODO{Mettre conditions à vérifier}
+
+            \begin{subequations}
+                \begin{align}
+                    k_{3m} & \not = 0 \\
+                    \det\left(\mA_{Jm}(r_{m-1})\right) & \not = 0 \\
+                    \det\left(\mA_{Hm}(r_{m-1})\right) & \not = 0 \\
+                    \det\left(\mH_{Hm}(r_{m})\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Hm}(r_{m})(\mA_{Jm}(r_{m-1}))^{-1}\right) &\not = 0
+                \end{align}
+            \end{subequations}
+
             Alors le symbole $\hat \mZ_n$ est défini par la relation de récurrence : 
             \begin{multline}
                 \mZ_m = \left(\mH_{Em}(r_m)\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Em}(r_m)\mA_{Jm}(r_{m-1})^{-1}\right) \\
@@ -432,101 +490,97 @@
         \end{thm}
 
         \begin{proof}
+            À l'initialisation, on retrouve le résultat pour une couche.
 
-            On résonne par récursivité: on se ramène à un empilement à une seule couche, avec en $r=r_0$ la relation
+            On résonne par récursivité: 
+
+            On se situe dans la couche $m$ et l'on sait que les champs vérifient
             \begin{equation}
                 \begin{bmatrix}
-                    \hat{E_\theta}(r_0)\\
-                    \hat{E_z}(r_0)\\
+                    \hat{E_\theta}(r_{m-1},n,k_z)\\
+                    \hat{E_z}(r_{m-1},n,k_z)\\
                 \end{bmatrix}
                 =
-                \hat \mZ_m
+                \hat \mZ_{m-1}(n,k_z)
                 \begin{bmatrix}
-                    -\hat{H_z}(r_0)\\
-                    \hat{H_\theta}(r_0)\\
+                    -\hat{H_z}(r_{m-1},n,k_z)\\
+                    \hat{H_\theta}(r_{m-1},n,k_z)\\
                 \end{bmatrix}
             \end{equation}
 
+            En injectant ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en $r = r_{m-1}$
             \begin{align}
-                \mJ_{E}(r_0)
+                \mJ_{Em}(r_{m-1})
                 \begin{bmatrix}
                     c_1 \\
                     c_3
                 \end{bmatrix}
                 +
-                \mH_{E}(r_0)
+                \mH_{Em}(r_{m-1})
                 \begin{bmatrix}
                     c_2 \\
                     c_4
                 \end{bmatrix}
                 &=
-                \hat \mZ_m
+                \hat \mZ_{m-1}
                 \left(
-                    \mJ_{H}(r_0)
+                    \mJ_{Hm}(r_{m-1})
                     \begin{bmatrix}
                         c_1 \\
                         c_3
                     \end{bmatrix}
                     +
-                    \mH_{H}(r_0)
+                    \mH_{Hm}(r_{m-1})
                     \begin{bmatrix}
                         c_2 \\
                         c_4
                     \end{bmatrix}
                 \right)
                 \\
-                \left( \mJ_{E}(r_0) -  \mZ_d \mJ_{H}(r_0) \right)
+                \mA_{Jm}(r_{m-1})
                 \begin{bmatrix}
                     c_1 \\
                     c_3
                 \end{bmatrix}
                 &=
-                -\left( \mH_{E}(r_0) -  \mZ_d \mH_{H}(r_0) \right)
+                -\mA_{Hm}(r_{m-1})
                 \begin{bmatrix}
                     c_2 \\
                     c_4
                 \end{bmatrix}
             \end{align}
 
-            On pose 
-            \begin{align}
-                \mA_J(r_0) &= \mJ_{E}(r_0) -  \mZ_d \mJ_{H}(r_0)
-                \\
-                \mA_H(r_0) &= \mH_{E}(r_0) -  \mZ_d \mH_{H}(r_0)
-            \end{align}
+            \TODO{Inversibilité de $\mA_{Jm}(r_m), \mA_{Hm}(r_m)$.}
 
-            \TODO{Inversibilité de $\mA_J(r_0), \mA_H(r_0)$.}
-
-            On en déduit directement les champs en $r=r_1=r_0+d$
-
+            On injecte ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en $r = r_{m}$
             \begin{align}
                 \vE_t &= 
-                \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mA_{J}(r_0)^{-1}\mA_{H}(r_0)\right)
+                \left(\mH_{Em}(r_{m}) - \mJ_{Em}(r_{m})\mA_{Jm}(r_{m-1})^{-1}\mA_{Hm}(r_{m-1})\right)
                 \begin{bmatrix}
                     c_2 \\
                     c_4
                 \end{bmatrix}
                 \\
                 \v{e_r}\times\vH_t &= 
-                \left(\mH_{H}(r_1) - \mJ_{H}(r_1)\mA_{J}(r_0)^{-1}\mA_{H}(r_0) \right)
+                \left(\mH_{Hm}(r_{m}) - \mJ_{Hm}(r_{m})\mA_{Jm}(r_{m-1})^{-1}\mA_{Hm}(r_{m-1}) \right)
                 \begin{bmatrix}
                     c_2 \\
                     c_4
                 \end{bmatrix}
             \end{align}
 
-            \TODO{Inversibilité de $\mH_{H}(r_1) - \mJ_{H}(r_1)(\mA_{J}(r_0))^{-1}\mA_{H}(r_0)$.}
+            \TODO{Inversibilité de $\mH_{Hm}(r_m) - \mJ_{Hm}(r_m)(\mA_{Jm}(r_{m-1}))^{-1}\mA_{Hm}(r_{m-1})$.}
 
             On peut alors conclure sur le symbole
 
             \begin{align}
-                \hat \mZ_{m+1} &= 
-                \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mA_{J}(r_0)^{-1}\mA_{H}(r_0)\right)
-                \left(\mH_{H}(r_1) - \mJ_{H}(r_1)\mA_{J}(r_0)^{-1}\mA_{H}(r_0)\right)^{-1}
+                \hat \mZ_{m} &= 
+                \left(\mH_{Em}(r_m) - \mJ_{Em}(r_m)\mA_{Jm}(r_{m-1})^{-1}\mA_{Hm}(r_{m-1})\right)
+                \left(\mH_{Hm}(r_m) - \mJ_{Hm}(r_m)\mA_{Jm}(r_{m-1})^{-1}\mA_{Hm}(r_{m-1})\right)^{-1}
                 \\
                 &=
-                \left(\mH_{E}(r_1)\mA_{H}(r_0)^{-1} - \mJ_{E}(r_1)\mA_{J}(r_0)^{-1}\right)
-                \left(\mH_{H}(r_1)\mA_{H}(r_0)^{-1} - \mJ_{H}(r_1)\mA_{J}(r_0)^{-1}\right)^{-1}
+                \left(\mH_{Em}(r_m)\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Em}(r_m)\mA_{Jm}(r_{m-1})^{-1}\right)
+                \left(\mH_{Hm}(r_m)\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Hm}(r_m)\mA_{Jm}(r_{m-1})^{-1}\right)^{-1}
             \end{align}
 
         \end{proof}
@@ -543,8 +597,12 @@
             \begin{tikzpicture}[scale=1]
                 \begin{axis}[
                         title={},
-                        ylabel={$\Im(Z)$},
+                        ylabel={$\Im(\hat{\mZ}(k_t r_1,0))$},
                         xlabel={$k_t\slash k_0$},
+                        width=0.8\textwidth,
+                        height=6cm,
+                        xmin=0,
+                        xmax=1.5,
                         mark repeat=20,
                         legend pos=outer north east
                     ]
@@ -557,4 +615,4 @@
             \label{fig:imp_fourier:cylindre:hoppe}
         \end{figure}
 
-        \TODO{Mettre un rayon grand}
+        
