@@ -573,15 +573,17 @@
 
             On peut alors conclure sur le symbole
 
-            \begin{align}
-                \hat \mZ_{m} &= 
-                \left(\mH_{Em}(r_m) - \mJ_{Em}(r_m)\mA_{Jm}(r_{m-1})^{-1}\mA_{Hm}(r_{m-1})\right)
-                \left(\mH_{Hm}(r_m) - \mJ_{Hm}(r_m)\mA_{Jm}(r_{m-1})^{-1}\mA_{Hm}(r_{m-1})\right)^{-1}
-                \\
-                &=
-                \left(\mH_{Em}(r_m)\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Em}(r_m)\mA_{Jm}(r_{m-1})^{-1}\right)
-                \left(\mH_{Hm}(r_m)\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Hm}(r_m)\mA_{Jm}(r_{m-1})^{-1}\right)^{-1}
-            \end{align}
+            \begin{multline}
+                \hat \mZ_{m} = 
+                    \left(\mH_{Em}(r_m) - \mJ_{Em}(r_m)\mA_{Jm}(r_{m-1})^{-1}\mA_{Hm}(r_{m-1})\right) \\
+                    \left(\mH_{Hm}(r_m) - \mJ_{Hm}(r_m)\mA_{Jm}(r_{m-1})^{-1}\mA_{Hm}(r_{m-1})\right)^{-1}
+            \end{multline}
+
+            \begin{multline}
+                \hat \mZ_{m} =
+                    \left(\mH_{Em}(r_m)\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Em}(r_m)\mA_{Jm}(r_{m-1})^{-1}\right) \\
+                    \left(\mH_{Hm}(r_m)\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Hm}(r_m)\mA_{Jm}(r_{m-1})^{-1}\right)^{-1}
+            \end{multline}
 
         \end{proof}
 
@@ -591,7 +593,6 @@
 
         \TODO{Expliquer pourquoi on prendre des valeurs continues de $n$ et non discrètes}
 
-        \pgfplotstableread[col sep=semicolon]{tikz/csv/impedance_cylindre_1_couche_hoppe_p62.csv}{\hoppeimpcylindre}
         \begin{figure}[!hbt]
             \centering
             \begin{tikzpicture}[scale=1]
@@ -607,12 +608,38 @@
                         legend pos=outer north east
                     ]
                     \legend{TM,TE}
-                    \addplot [blue,thick,mark=*] table [x={s}, y={imag(z.tm)}] {\hoppeimpcylindre};
-                    \addplot [red,thick,mark=x] table [x={s}, y={imag(z.te)}] {\hoppeimpcylindre};
+                    \addplot [blue,thick,mark=*] table [x={s}, y={imag(z.tm)},col sep=semicolon] {tikz/csv/impedance_cylindre_1_couche_hoppe_p62.csv};
+                    \addplot [red,thick,mark=x] table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance_cylindre_1_couche_hoppe_p62.csv};
                 \end{axis}
             \end{tikzpicture}
             \caption{$\eps = 6, \mu = 1, r_0 = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}$}
             \label{fig:imp_fourier:cylindre:hoppe}
         \end{figure}
 
+        \begin{figure}[!hbt]
+            \centering
+            \begin{tikzpicture}[scale=1]
+                \begin{axis}[
+                        title={},
+                        ylabel={$\Im(\hat{\mZ}(\cdot,0))$},
+                        xlabel={$k_t \slash k_0; k_x \slash k_0$},
+                        width=0.6\textwidth,
+                        height=6cm,
+                        xmin=0,
+                        xmax=1.5,
+                        mark repeat=20,
+                        legend pos=outer north east
+                    ]
+                    \addplot [blue,thick,mark=*] table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance_1_couche_hoppe_p62_plan.csv};
+                    \addplot [red,thick,mark=x]  table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance_1_couche_hoppe_p62_plan.csv};
+                    \addplot [cyan,thick,mark=*,dashed] table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance_1_couche_hoppe_p62_1_r_cylindre.csv};
+                    \addplot [magenta,thick,mark=x,dashed]  table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance_1_couche_hoppe_p62_1_r_cylindre.csv};
+                    \addplot [violet,thick,mark=*,dotted] table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance_1_couche_hoppe_p62_100_r_cylindre.csv};
+                    \addplot [purple,thick,mark=x,dotted]  table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance_1_couche_hoppe_p62_100_r_cylindre.csv};
+                    \legend{TM plan,TE plan,TM cylindre $r_0=r_i$,TE cylindre $r_0=r_i$,TM cylindre $r_0=100r_i$,TE cylindre $r_0=100r_i$}
+                \end{axis}
+            \end{tikzpicture}
+            \caption{$\eps = 6, \mu = 1, r_i = 0.0300m, d=0.0225\text{m}, f=1\text{GHz}$}
+            \label{fig:imp_fourier:cylindre:hoppe}
+        \end{figure}
         
