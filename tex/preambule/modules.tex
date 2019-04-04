@@ -116,6 +116,29 @@
     \tikzset{every picture/.style={execute at begin picture={
         \shorthandoff{:;!?};}
     }}
+    \pgfplotscreateplotcyclelist{my cycle}{%
+        solid,          every mark/.append style={solid, fill=gray}, mark=*\\%
+        solid,          every mark/.append style={solid, fill=gray}, mark=square*\\%
+        dashed,         every mark/.append style={solid, fill=gray}, mark=triangle*\\%
+        dashed,         every mark/.append style={solid, fill=gray}, mark=diamond*\\%
+        densely dotted, every mark/.append style={solid},            mark=+\\%
+        densely dotted, every mark/.append style={solid},            mark=x\\%
+        dashdotted,     every mark/.append style={solid, fill=gray}, mark=*\\%
+        dashdotted,     every mark/.append style={solid, fill=gray}, mark=square*\\%
+        dotted,         every mark/.append style={solid},            mark=triangle*\\%
+        dotted,         every mark/.append style={solid, fill=gray}, mark=diamond*\\%
+        loosely dashed, every mark/.append style={solid, fill=gray}, mark=+*\\%
+        loosely dashed, every mark/.append style={solid, fill=gray}, mark=x\\%
+    }
+    \pgfplotsset{%
+        height=6cm,
+        cycle list name=my cycle,
+        every axis legend/.style={
+            cells={anchor=west},
+            draw=black,
+        },
+    }
+
 % % permet d'ajouter des notes en marges
 % \setlength{\oddsidemargin}{25mm}
 % \setlength{\evensidemargin}{25mm}

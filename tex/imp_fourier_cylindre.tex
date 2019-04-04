@@ -589,7 +589,7 @@
 
     \subsection{Applications numérique}
 
-        La figure \ref{fig:imp_fourier:cylindre:hoppe} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
+        La figure \ref{fig:imp_fourier:cylindre:hoppe_p62} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
 
         \TODO{Expliquer pourquoi on prendre des valeurs continues de $n$ et non discrètes}
 
@@ -601,20 +601,21 @@
                         ylabel={$\Im(\hat{\mZ}(k_t r_1,0))$},
                         xlabel={$k_t\slash k_0$},
                         width=0.8\textwidth,
-                        height=6cm,
                         xmin=0,
                         xmax=1.5,
                         mark repeat=20,
                         legend pos=outer north east
                     ]
                     \legend{TM,TE}
-                    \addplot [blue,thick,mark=*] table [x={s}, y={imag(z.tm)},col sep=semicolon] {tikz/csv/impedance_cylindre_1_couche_hoppe_p62.csv};
-                    \addplot [red,thick,mark=x] table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance_cylindre_1_couche_hoppe_p62.csv};
+                    \addplot table [x={s}, y={imag(z.tm)},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
+                    \addplot table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
                 \end{axis}
             \end{tikzpicture}
             \caption{$\eps = 6, \mu = 1, r_0 = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}$}
-            \label{fig:imp_fourier:cylindre:hoppe}
+            \label{fig:imp_fourier:cylindre:hoppe_p62}
         \end{figure}
+        
+        La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon} montre la converge du symbole de l'impédance d'un cylindre vers le symbole du plan en fonction du rayon du cylindre.
 
         \begin{figure}[!hbt]
             \centering
@@ -624,22 +625,42 @@
                         ylabel={$\Im(\hat{\mZ}(\cdot,0))$},
                         xlabel={$k_t \slash k_0; k_x \slash k_0$},
                         width=0.6\textwidth,
-                        height=6cm,
                         xmin=0,
                         xmax=1.5,
                         mark repeat=20,
                         legend pos=outer north east
                     ]
-                    \addplot [blue,thick,mark=*] table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance_1_couche_hoppe_p62_plan.csv};
-                    \addplot [red,thick,mark=x]  table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance_1_couche_hoppe_p62_plan.csv};
-                    \addplot [cyan,thick,mark=*,dashed] table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance_1_couche_hoppe_p62_1_r_cylindre.csv};
-                    \addplot [magenta,thick,mark=x,dashed]  table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance_1_couche_hoppe_p62_1_r_cylindre.csv};
-                    \addplot [violet,thick,mark=*,dotted] table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance_1_couche_hoppe_p62_100_r_cylindre.csv};
-                    \addplot [purple,thick,mark=x,dotted]  table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance_1_couche_hoppe_p62_100_r_cylindre.csv};
+                    \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/plan/hoppe_p62.csv};
+                    \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/plan/hoppe_p62.csv};
+                    \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
+                    \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
+                    \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/cylindre/hoppe_p62_100_r.csv};
+                    \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/cylindre/hoppe_p62_100_r.csv};
                     \legend{TM plan,TE plan,TM cylindre $r_0=r_i$,TE cylindre $r_0=r_i$,TM cylindre $r_0=100r_i$,TE cylindre $r_0=100r_i$}
                 \end{axis}
             \end{tikzpicture}
             \caption{$\eps = 6, \mu = 1, r_i = 0.0300m, d=0.0225\text{m}, f=1\text{GHz}$}
-            \label{fig:imp_fourier:cylindre:hoppe}
+            \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon}
         \end{figure}
         
+        \begin{figure}[!hbt]
+            \centering
+            \begin{tikzpicture}[scale=1]
+                \begin{semilogxaxis}[
+                        title={},
+                        ylabel={$||\hat{\mZ}_{plan} - \hat{\mZ}_{cyl}||_2$},
+                        xlabel={$r_0/r_i$},
+                        width=0.8\textwidth,
+                        xmin=0,
+                        xmax=100,
+                        % mark repeat=20,
+                        legend pos=outer north east
+                    ]
+                    \legend{TM,TE}
+                    \addplot table [x={r0/ri}, y={tm},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
+                    \addplot table [x={r0/ri}, y={te},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
+                \end{semilogxaxis}
+            \end{tikzpicture}
+            \caption{$\eps = 6, \mu = 1, r_i = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}$}
+            \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon:error}
+        \end{figure}
