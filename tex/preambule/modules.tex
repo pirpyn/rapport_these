@@ -108,14 +108,6 @@
 
 % Permet de tracer des figures et schémas
 \usepackage{pgfplots}
-    \pgfplotsset{compat=newest}
-\usepackage{tikz} 
-    \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
-    \usetikzlibrary{patterns} % permet de faire des patterns
-    \usetikzlibrary{math} % permet de definir des variables
-    \tikzset{every picture/.style={execute at begin picture={
-        \shorthandoff{:;!?};}
-    }}
     \pgfplotscreateplotcyclelist{my cycle}{%
         solid,          every mark/.append style={solid, fill=gray}, mark=*\\%
         solid,          every mark/.append style={solid, fill=gray}, mark=square*\\%
@@ -131,6 +123,7 @@
         loosely dashed, every mark/.append style={solid, fill=gray}, mark=x\\%
     }
     \pgfplotsset{%
+        compat=newest,
         height=6cm,
         cycle list name=my cycle,
         every axis legend/.style={
@@ -138,6 +131,15 @@
             draw=black,
         },
     }
+    
+    \usepackage{tikz} 
+    \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
+    \usetikzlibrary{patterns} % permet de faire des patterns
+    \usetikzlibrary{math} % permet de definir des variables
+    \tikzset{every picture/.style={execute at begin picture={
+        \shorthandoff{:;!?};}
+    }}
+
 
 % % permet d'ajouter des notes en marges
 % \setlength{\oddsidemargin}{25mm}
@@ -156,9 +158,9 @@
 
 \usepackage{array}   % for \newcolumntype macro
 \usepackage{multirow}
-    \newcolumntype{L}{>{$}l<{$}} % math-mode version of column type
-    \newcolumntype{C}{>{$}c<{$}}
-    \newcolumntype{R}{>{$}r<{$}}
+    \newcolumntype{L}{>{\(}l<{\)}} % math-mode version of column type
+    \newcolumntype{C}{>{\(}c<{\)}}
+    \newcolumntype{R}{>{\(}r<{\)}}
 
 \usepackage{tcolorbox} % Pour faire de jolie boite, un peu visible
 \usepackage{lettrine} % Pour faire de jolie lettre
@@ -245,4 +247,4 @@
 \let\cleardoublepage\clearemptydoublepage
 
 \setcounter{tocdepth}{1} % Sommaire n'inclus que les niveau 1 à 2 : section, sous-section
-\setlength\parindent{0pt} % pas d'alinéa à chaque paragraphe
+\setlength{\parindent}{0pt} % pas d'alinéa à chaque paragraphe

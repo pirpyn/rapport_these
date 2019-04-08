@@ -1,6 +1,6 @@
 \section{Cas d'un objet cylindrique}
 
-    % On rappelle les formules des opérateurs $\vdiv, \vrot$ en coordonnée cylindrique $(r,\theta,z)$.
+    % On rappelle les formules des opérateurs \(\vdiv, \vrot\) en coordonnée cylindrique \((r,\theta,z)\).
     % \begin{align}
     %     \vrot \v{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\v{e_r} + 
     %     \left(\ddr{z}{V_r} - \ddr{r}{V_z}\right)\v{e_\theta} +
@@ -19,7 +19,8 @@
         \end{tikzpicture}
     \end{figure}
 
-    On exprime les équations de Maxwell dans le matériau dans la base cylindrique et sans pertes de généralité, on peut réaliser une transformée de Fourier en $z$ par invariance en translation et en $\theta$ par invariance en rotation. Cependant, le multiplicateur de Fourier associé à la coordonnée $\theta$ doit être un entier pour assurer la périodicité. On le note $n$.
+    On exprime les équations de Maxwell dans le matériau dans la base cylindrique et sans pertes de généralité, on peut réaliser une transformée de Fourier en \(z\) par invariance en translation et en \(\theta\) par invariance en rotation.
+    Cependant, le multiplicateur de Fourier associé à la coordonnée \(\theta\) doit être un entier pour assurer la périodicité. On le note \(n\).
 
     \begin{equation}
         \vE(r,\theta,z) = \frac{1}{2\pi}\sum_{i=-\infty}^{\infty}\int_{\RR} e^{i(n \theta + k_z z )}\hat{\vE} (r,n,k_z) \dd{k_z}
@@ -30,9 +31,9 @@
         \begin{equation}
             k_3 = \sqrt{\w^2\eps\mu - k_z^2}
         \end{equation}
-        et $J_n$ et $H_n^{(2)}$ des solutions de l'équation de Bessel d'ordre $n$.
+        et \(J_n\) et \(H_n^{(2)}\) des solutions de l'équation de Bessel d'ordre \(n\).
         
-        Alors $\exists (c_1,c_2,c_3,c_4) \in \CC^4$ tels que la 3\ieme composante des champs soit
+        Alors \(\exists (c_1,c_2,c_3,c_4) \in \CC^4\) tels que la 3\ieme composante des champs soit
         \begin{subequations}
             \begin{align}
                 \hat{E_z}(r,n,k_z) &= c_1 J_n\left(k_3r\right) + c_2 H_n^{(2)}\left(k_3r\right)
@@ -54,7 +55,8 @@
             &=i\w\mu \hat \vH(r,n,k_z)
         \end{align}
 
-        On remarque que la méthode utilisée pour le plan aboutie à une équation différentielle à coefficients non constant de type $r\ddr{r}{X}(r,n,k_z) = M(r,n,k_z)X(r,n,k_z)$. On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice. 
+        On remarque que la méthode utilisée pour le plan aboutie à une équation différentielle à coefficients non constant de type \(r\ddr{r}{X}(r,n,k_z) = M(r,n,k_z)X(r,n,k_z)\).
+        On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice. 
         %Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
         On développe le système de Maxwell:
 
@@ -82,14 +84,14 @@
             \right.
         \end{equation}
 
-        Comme l'on cherche $\hat \vE_t, \hat \vH_t$, on remarque que les 2\ieme composantes des équations de Maxwell permettent de déduire $\hat\vE_t, \hat\vH_t$ de $ \hat E_z, \hat H_z$
+        Comme l'on cherche \(\hat \vE_t, \hat \vH_t\), on remarque que les 2\ieme composantes des équations de Maxwell permettent de déduire \(\hat\vE_t, \hat\vH_t\) de \( \hat E_z, \hat H_z\)
 
-        De la troisième  équation, on trouve pour $r\not=0$
+        De la troisième  équation, on trouve pour \(r\not=0\)
         \begin{equation}
         r^2 \ddr[2]{r}{\hat{E_z}} + r\ddr{r}{\hat{E_z}} + \left(r^2\w^2\eps\mu - n^2\right)\hat{E_z} =ik_zr\ddr{r}{(r\hat{E_r})} -  nk_zr\hat{E_\theta}
         \end{equation}
 
-        Or comme $\vdiv \hat \vE = i\w\mu\vdiv\vrot \hat \vH = 0$, on a
+        Or comme \(\vdiv \hat \vE = i\w\mu\vdiv\vrot \hat \vH = 0\), on a
         \begin{align}
             \vdiv\hat \vE &= \frac{1}{r}\ddr{r}{(r\hat{E_r})} + \frac{in}{r}\hat{E_\theta} + ik_z\hat{E_z}
             \\
@@ -98,20 +100,22 @@
             k_z^2r^2 \hat{E_z} &= ik_zr\ddr{r}{(r\hat{E_r})} - nk_zr\hat{E_\theta}
         \end{align}
 
-        On obtient donc sur la composante $\hat{E_z}$:
+        On obtient donc sur la composante \(\hat{E_z}\):
         \begin{equation}
             r^2 \ddr[2]{r}{\hat{E_z}} + r\ddr{r}{\hat{E_z}} + \left(r^2\left(\w^2\eps\mu - k_z^2\right) - n^2\right)\hat{E_z} = 0
         \end{equation}
 
-        C'est une équation de Bessel (cf \cite[eq (6.80)]{bowman_introduction_1958}), dont des solutions générales sont: soient $(c_1,c_2) \in \CC^2$:
+        C'est une équation de Bessel (cf \cite[eq (6.80)]{bowman_introduction_1958}), dont des solutions générales sont: soient \((c_1,c_2) \in \CC^2\):
        \begin{equation}
             \hat{E_z}(r,n,k_z) = c_1 J_n\left(k_3r\right) + c_2 H_n^{(2)}\left(k_3r\right)
         \end{equation}
-        où $J_n$ est la fonction de Bessel du premier type, $H_n^{(2)}$ la fonction de Hankel de deuxième type. On sait que l'on peut prendre n'importe quel couple de fonctions de Bessel (cf \eqref{eq:annex:bessel:equiv_bessel}), on choisit ce dernier car les $J_n$ sont régulières et les $H_n$ évoluent en $\frac{1}{\sqrt{r}}$ à l'infini, donc ce choix est adapté à une décomposition en une onde incidente partout définie et une onde réfléchie décroissante à l'infini.
+        où \(J_n\) est la fonction de Bessel du premier type, \(H_n^{(2)}\) la fonction de Hankel de deuxième type.
+        On sait que l'on peut prendre n'importe quel couple de fonctions de Bessel (cf \eqref{eq:annex:bessel:equiv_bessel}), on choisit ce dernier car les \(J_n\) sont régulières et les \(H_n\) évoluent en \(\frac{1}{\sqrt{r}}\) à l'infini, donc ce choix est adapté à une décomposition en une onde incidente partout définie et une onde réfléchie décroissante à l'infini.
 
-        De plus, d'après \cite[p.~358]{abramowitz_handbook_1964}, on sait qu'une fonction de Bessel d'ordre $n$ est linéairement dépendante de celle d'ordre $-n$. On peut donc se restreindre à $n$ entier naturel
+        De plus, d'après \cite[p.~358]{abramowitz_handbook_1964}, on sait qu'une fonction de Bessel d'ordre \(n\) est linéairement dépendante de celle d'ordre \(-n\).
+        On peut donc se restreindre à \(n\) entier naturel
 
-        On trouve exactement le même résultat pour $\hat{H_z}$: soient $(c_3,c_4) \in \CC^2$
+        On trouve exactement le même résultat pour \(\hat{H_z}\): soient \((c_3,c_4) \in \CC^2\)
         \begin{equation}
             \hat{H_z}(r,n,k_z) = c_3 J_n\left(k_3r\right) + c_4 H_n^{(2)}\left(k_3r\right)
         \end{equation}
@@ -122,7 +126,7 @@
     \newcommand{\mH}{\mat{H}}
 
     \begin{defn}
-        On définit les matrices $\mJ_{E}(r,n,k_z),\mH_{E}(r,n,k_z),\mJ_{H}(r,n,k_z),\mH_{H}(r,n,k_z)$
+        On définit les matrices \(\mJ_{E}(r,n,k_z),\mH_{E}(r,n,k_z),\mJ_{H}(r,n,k_z),\mH_{H}(r,n,k_z)\)
         \begin{align}
             \mJ_{E}(r,n,k_z) &= 
             \begin{bmatrix}
@@ -189,7 +193,7 @@
 
 
     \begin{proof}
-        À partir des équations de Maxwell restantes, on peut déterminer $\hat{E_r},\hat{E_\theta},\hat{H_r},\hat{H_\theta}$.
+        À partir des équations de Maxwell restantes, on peut déterminer \(\hat{E_r},\hat{E_\theta},\hat{H_r},\hat{H_\theta}\).
         \begin{equation}
             \left\lbrace
             \begin{matrix}
@@ -204,7 +208,7 @@
             \right.
         \end{equation}
 
-        Cela revient à résoudre $\v{Y} = \mat{M}\v{X}$ où la matrice $\mat{M}$ et les vecteurs $\v{X}, \v{Y}$ sont définis tels que
+        Cela revient à résoudre \(\v{Y} = \mat{M}\v{X}\) où la matrice \(\mat{M}\) et les vecteurs \(\v{X}, \v{Y}\) sont définis tels que
         \begin{equation}
             \mat{M} =
             \begin{bmatrix}
@@ -234,7 +238,7 @@
             \end{bmatrix}
         \end{equation}
 
-        À condition que $\det(\mat{M}) = (\w^2\eps\mu-k_z^2)^2$ soit non nul, on peut déduire $\v{X}$:
+        À condition que \(\det(\mat{M}) = (\w^2\eps\mu-k_z^2)^2\) soit non nul, on peut déduire \(\v{X}\):
 
         \begin{equation}
             \begin{bmatrix}
@@ -261,7 +265,7 @@
             \end{bmatrix}
         \end{equation}
 
-        On extrait alors $\hat{E_\theta}, \hat{H_\theta}$ pour obtenir les champs tangentielles à $\v{e_r}$ en tout point, sachant déjà $\hat{E_z}, \hat{H_z}$.
+        On extrait alors \(\hat{E_\theta}, \hat{H_\theta}\) pour obtenir les champs tangentielles à \(\v{e_r}\) en tout point, sachant déjà \(\hat{E_z}, \hat{H_z}\).
 
         \begin{align}
             \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} + i\w\mu\ddr{r}{\hat{H_z}}\right)
@@ -328,19 +332,19 @@
 
     \subsection{Opérateur d'impédance pour une couche}
 
-        Soit $r_1 = r_0 + d$
+        Soit \(r_1 = r_0 + d\)
         \begin{defn}
-            On définit le symbole $\hat \mZ(n,k_z)$ de l'opérateur d'impédance la matrice telle que
+            On définit le symbole \(\hat \mZ(n,k_z)\) de l'opérateur d'impédance la matrice telle que
             \begin{equation}
                 \hat \vE_t(r_1,n,k_z) = \hat \mZ(n,k_z) \left(\v{e_r}\pvect \hat \vH_t(r_1,n,k_z)\right)
             \end{equation}
         \end{defn}
 
         \begin{thm}
-            Si on suppose que les fonctions de Bessel et leurs dérivées ne s’annulent pas en $k_3r_0$ et que 
-            la matrice $\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)$ est inversible
+            Si on suppose que les fonctions de Bessel et leurs dérivées ne s’annulent pas en \(k_3r_0\) et que 
+            la matrice \(\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\) est inversible
 
-            Alors le symbole $\hat \mZ(n,k_z)$ de l'opérateur d'impédance est
+            Alors le symbole \(\hat \mZ(n,k_z)\) de l'opérateur d'impédance est
             \begin{multline}
                 \hat \mZ(n,k_z) = 
                 \left(\mH_{E}(r_1)\mH_{E}(r_0)^{-1} - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\right)\\
@@ -350,7 +354,7 @@
 
         \begin{proof}
 
-            On injecte la relation $\vE_t(r_0,\theta,z) = 0$ équivalente à $\hat \vE(r_0,n,k_z) = 0$ dans \eqref{eq:imp_fourier:cylindre:Et}.
+            On injecte la relation \(\vE_t(r_0,\theta,z) = 0\) équivalente à \(\hat \vE(r_0,n,k_z) = 0\) dans \eqref{eq:imp_fourier:cylindre:Et}.
             \begin{equation}
                 \mJ_{E}(r_0)
                 \begin{bmatrix}
@@ -371,7 +375,8 @@
                 \det(\mH_E(r_0)) &= -\frac{i\w\mu}{k_3}H_n^{(2)}(k_3r_0)H_n^{(2)}{}'(k_3r_0)
             \end{align}
 
-            D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel $>-1$ sont tous réels. Donc à condition d'avoir $k_3$ complexe, comme l'ordre est entier et que l'on se restreint au entiers naturels, ces matrices sont inversibles\footnote{Là encore, il faut étudier le cas des matériaux sans pertes où $k_3$ est réel pour $k_z < w\sqrt{\mu\eps}$}.
+            D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(>-1\) sont tous réels.
+            Donc à condition d'avoir \(k_3\) complexe, comme l'ordre est entier et que l'on se restreint au entiers naturels, ces matrices sont inversibles\footnote{Là encore, il faut étudier le cas des matériaux sans pertes où \(k_3\) est réel pour \(k_z < w\sqrt{\mu\eps}\)}.
             
             À condition de l'inversibilité de ces deux matrices, on peut donc exprimer uniquement grâce à la moitié des constantes
             \begin{align}
@@ -390,8 +395,10 @@
                 \end{bmatrix}
             \end{align}
 
-            Et à condition que $\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)$ soit inversible, le symbole de l'opérateur d'impédance est:
-            \TODO{Inversibilité de $\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)$}
+            Et à condition que \(\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\) soit inversible, le symbole de l'opérateur d'impédance est:
+            \begin{TODO}
+  Inversibilité de \(\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\)
+\end{TODO}
             \begin{align}
                 \hat \mZ &= 
                 \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)
@@ -420,10 +427,10 @@
             \end{tikzpicture}
         \end{figure}
 
-        Soit $r_m$ le rayon de la couche $m$, $r_m = r_0 +\sum_{i=1}^{m} d_{i}$. 
+        Soit \(r_m\) le rayon de la couche \(m\), \(r_m = r_0 +\sum_{i=1}^{m} d_{i}\). 
 
         \begin{defn}
-            Pour chaque couche caractérisée par $(\eps_m,\mu_m,d_m)$, définissons
+            Pour chaque couche caractérisée par \((\eps_m,\mu_m,d_m)\), définissons
             \begin{subequations}
                 \begin{align}
                     k_{3m} &= \sqrt{w^2\eps_m\mu_m - k_z^2}
@@ -462,16 +469,16 @@
                 \end{align}
             \end{subequations}
 
-            On définit pour chaque interface, le symbole $\hat \mZ_m$ tel que 
+            On définit pour chaque interface, le symbole \(\hat \mZ_m\) tel que 
             \begin{equation}
                 \hat \vE_t(r_m,n,k_z) = \hat \mZ_m(n,k_z) \left(\v{e_r} \pvect \hat \vH_t(r_m,n,k_z)\right)
             \end{equation}
         \end{defn}
 
         \begin{thm}
-            Soit $\hat \mZ_0(n,k_z) = \mat{0}_{\mathcal{M}_2(\CC)}$.
+            Soit \(\hat \mZ_0(n,k_z) = \mat{0}_{\mathcal{M}_2(\CC)}\).
 
-            Si pour tout $0 < m < n$
+            Si pour tout \(0 < m < n\)
 
             \begin{subequations}
                 \begin{align}
@@ -482,7 +489,7 @@
                 \end{align}
             \end{subequations}
 
-            Alors le symbole $\hat \mZ_n$ est défini par la relation de récurrence : 
+            Alors le symbole \(\hat \mZ_n\) est défini par la relation de récurrence : 
             \begin{multline}
                 \mZ_m = \left(\mH_{Em}(r_m)\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Em}(r_m)\mA_{Jm}(r_{m-1})^{-1}\right) \\
                         \left(\mH_{Hm}(r_m)\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Hm}(r_m)\mA_{Jm}(r_{m-1})^{-1}\right)^{-1}
@@ -494,7 +501,7 @@
 
             On résonne par récursivité: 
 
-            On se situe dans la couche $m$ et l'on sait que les champs vérifient
+            On se situe dans la couche \(m\) et l'on sait que les champs vérifient
             \begin{equation}
                 \begin{bmatrix}
                     \hat{E_\theta}(r_{m-1},n,k_z)\\
@@ -508,7 +515,7 @@
                 \end{bmatrix}
             \end{equation}
 
-            En injectant ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en $r = r_{m-1}$
+            En injectant ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en \(r = r_{m-1}\)
             \begin{align}
                 \mJ_{Em}(r_{m-1})
                 \begin{bmatrix}
@@ -550,9 +557,11 @@
                 \end{bmatrix}
             \end{align}
 
-            \TODO{Inversibilité de $\mA_{Jm}(r_m), \mA_{Hm}(r_m)$.}
+            \begin{TODO}
+  Inversibilité de \(\mA_{Jm}(r_m), \mA_{Hm}(r_m)\).
+\end{TODO}
 
-            On injecte ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en $r = r_{m}$
+            On injecte ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en \(r = r_{m}\)
             \begin{align}
                 \vE_t &= 
                 \left(\mH_{Em}(r_{m}) - \mJ_{Em}(r_{m})\mA_{Jm}(r_{m-1})^{-1}\mA_{Hm}(r_{m-1})\right)
@@ -569,7 +578,9 @@
                 \end{bmatrix}
             \end{align}
 
-            \TODO{Inversibilité de $\mH_{Hm}(r_m) - \mJ_{Hm}(r_m)(\mA_{Jm}(r_{m-1}))^{-1}\mA_{Hm}(r_{m-1})$.}
+            \begin{TODO}
+  Inversibilité de \(\mH_{Hm}(r_m) - \mJ_{Hm}(r_m)(\mA_{Jm}(r_{m-1}))^{-1}\mA_{Hm}(r_{m-1})\).
+\end{TODO}
 
             On peut alors conclure sur le symbole
 
@@ -589,17 +600,19 @@
 
     \subsection{Applications numérique}
 
-        La figure \ref{fig:imp_fourier:cylindre:hoppe_p62} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
+        La figure \ref{fig:imp_fourier:cylindre:hoppe_p62} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte (voir Figure \ref{fig:annex:hoppe:p62}).
 
-        \TODO{Expliquer pourquoi on prendre des valeurs continues de $n$ et non discrètes}
+        \begin{TODO}
+  Expliquer pourquoi on prendre des valeurs continues de \(n\) et non discrètes
+\end{TODO}
 
         \begin{figure}[!hbt]
             \centering
             \begin{tikzpicture}[scale=1]
                 \begin{axis}[
                         title={},
-                        ylabel={$\Im(\hat{\mZ}(k_t r_1,0))$},
-                        xlabel={$k_t\slash k_0$},
+                        ylabel={\(\Im(\hat{\mZ}(k_t r_1,0))\)},
+                        xlabel={\(k_t\slash k_0\)},
                         width=0.8\textwidth,
                         xmin=0,
                         xmax=1.5,
@@ -611,7 +624,7 @@
                     \addplot table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
                 \end{axis}
             \end{tikzpicture}
-            \caption{$\eps = 6, \mu = 1, r_0 = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}$}
+            \caption{\(\eps = 6, \mu = 1, r_0 = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}\)}
             \label{fig:imp_fourier:cylindre:hoppe_p62}
         \end{figure}
         
@@ -622,24 +635,29 @@
             \begin{tikzpicture}[scale=1]
                 \begin{axis}[
                         title={},
-                        ylabel={$\Im(\hat{\mZ}(\cdot,0))$},
-                        xlabel={$k_t \slash k_0; k_x \slash k_0$},
-                        width=0.6\textwidth,
+                        ylabel={\(\Im(\hat{\mZ}(k_tr_1,0))\)},
+                        xlabel={\(k_t \slash k_0\)},
+                        width=0.7\textwidth,
                         xmin=0,
                         xmax=1.5,
                         mark repeat=20,
                         legend pos=outer north east
                     ]
-                    \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/plan/hoppe_p62.csv};
-                    \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/plan/hoppe_p62.csv};
+                    % \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/plan/hoppe_p62.csv};
+                    % \addlegendentry{TM plan}
+                    % \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/plan/hoppe_p62.csv};
+                    % \addlegendentry{TE plan}
                     \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
+                    \addlegendentry{TM \(r_0=r_i\)}
                     \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
+                    \addlegendentry{TE \(r_0=r_i\)}
                     \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/cylindre/hoppe_p62_100_r.csv};
+                    \addlegendentry{TM \(r_0=100r_i\)}
                     \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/cylindre/hoppe_p62_100_r.csv};
-                    \legend{TM plan,TE plan,TM cylindre $r_0=r_i$,TE cylindre $r_0=r_i$,TM cylindre $r_0=100r_i$,TE cylindre $r_0=100r_i$}
+                    \addlegendentry{TE \(r_0=100r_i\)}
                 \end{axis}
             \end{tikzpicture}
-            \caption{$\eps = 6, \mu = 1, r_i = 0.0300m, d=0.0225\text{m}, f=1\text{GHz}$}
+            \caption{\(\eps = 6, \mu = 1, r_i = 0.0300m, d=0.0225\text{m}, f=1\text{GHz}\)}
             \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon}
         \end{figure}
         
@@ -648,10 +666,10 @@
             \begin{tikzpicture}[scale=1]
                 \begin{semilogxaxis}[
                         title={},
-                        ylabel={$||\hat{\mZ}_{plan} - \hat{\mZ}_{cyl}||_2$},
-                        xlabel={$r_0/r_i$},
+                        ylabel={\(||\hat{\mZ}_{plan} - \hat{\mZ}_{cyl}||_2\)},
+                        xlabel={\(r_0/r_i\)},
                         width=0.8\textwidth,
-                        xmin=0,
+                        xmin=0.1,
                         xmax=100,
                         % mark repeat=20,
                         legend pos=outer north east
@@ -661,6 +679,6 @@
                     \addplot table [x={r0/ri}, y={te},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
                 \end{semilogxaxis}
             \end{tikzpicture}
-            \caption{$\eps = 6, \mu = 1, r_i = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}$}
+            \caption{\(\eps = 6, \mu = 1, r_i = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}\)}
             \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon:error}
         \end{figure}
