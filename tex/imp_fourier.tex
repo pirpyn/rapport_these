@@ -1,12 +1,13 @@
 \section{Analyse de Fourier de l'opérateur d'impédance}
 
-Des résultat sur l'analyse spectrale de l'opérateur d'impédance ont déjà été présenté par \cite{hoppe_impedance_1995} pour des conducteurs plans et des cylindriques recouvert d'une couche de matériau. Nous les rappellerons ainsi la méthode pour les obtenir puis nous expliciterons ces derniers à des matériaux multi-couches sur les même objets
+Des résultat sur l'analyse spectrale de l'opérateur d'impédance ont déjà été présenté par \cite{hoppe_impedance_1995} pour des conducteurs plans et des cylindriques recouvert d'une couche de matériau.
+Nous les rappellerons ainsi la méthode pour les obtenir puis nous expliciterons ces derniers à des matériaux multi-couches sur les même objets
 
 % \TODO{
 %     Généraliser ce qui suit à des matériaux non borné à l'aide de fonctions rapidement décroissantes
 % }
 
-Soit $\OO$ un domaine fermé, bornée, de frontière régulière. Supposons que ces champs soient $L^2$ en espace et en temps: $(\vE(\v{x},t),\vH(\v{x},t)) \in L^2(\OO \times \RR_+) \cap L^2(\OO^c\times\RR_+)$ et vérifient les équations de Maxwell:
+Soit \(\OO\) un domaine fermé, bornée, de frontière régulière. Supposons que ces champs soient \(L^2\) en espace et en temps: \((\vE(\v{x},t),\vH(\v{x},t)) \in L^2(\OO \times \RR_+) \cap L^2(\OO^c\times\RR_+)\) et vérifient les équations de Maxwell:
 \begin{equation}
     \left\lbrace 
     \begin{matrix}
@@ -16,13 +17,13 @@ Soit $\OO$ un domaine fermé, bornée, de frontière régulière. Supposons que 
     \right.
 \end{equation}
 
-Puisque ces champs $\vE(\v{x},t),\vH(\v{x},t)$ sont $L^2$, on peut définir leurs transformées de Fourier $\hat{\vE}(\v{k},\w), \hat{\vH}(\v{k},\w)$ (\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995}) telle que
+Puisque ces champs \(\vE(\v{x},t),\vH(\v{x},t)\) sont \(L^2\), on peut définir leurs transformées de Fourier \(\hat{\vE}(\v{k},\w), \hat{\vH}(\v{k},\w)\) (\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995}) telle que
 
 \begin{equation}
-    \hat{\vE} (\v{k},\w) = \frac{1}{\sqrt{2\pi}^3}\int_{\RR^3\times\RR_+} e^{-i(\v{k} \cdot \v{x}+\w t)}\vE(\v{x},t) \dd{x}\dd{t}\,, \quad \dd x = \prod\limits_{i=1}^3 \dd{x_i}
+    \hat{\vE} (\v{k},\w) = \frac{1}{\sqrt{2\pi}^3}\int_{\RR^3\times\RR_+} e^{-i(\v{k} \cdot \v{x}+\w t)}\vE(\v{x},t) \dd{x}\dd{t}\,, \quad \dd x = \prod\limits_{i=1}^3 \dd{x}_i
 \end{equation}
 \begin{equation}
-    \vE(\v{x},t) = \frac{1}{\sqrt{2\pi}^3}\int_{\RR^3\times\RR_+} e^{i(\v{k} \cdot \v{x}+\w t)}\hat{\vE} (\v{k},\w) \dd{k} \dd{\w}\,, \quad \dd k = \prod\limits_{i=1}^3 \dd{k_i}
+    \vE(\v{x},t) = \frac{1}{\sqrt{2\pi}^3}\int_{\RR^3\times\RR_+} e^{i(\v{k} \cdot \v{x}+\w t)}\hat{\vE} (\v{k},\w) \dd{k} \dd{\w}\,, \quad \dd k = \prod\limits_{i=1}^3 \dd{k}_i
 \end{equation}
 La méthode pour trouver une expression de l'opérateur d'impédance est la suivante.
 \begin{itemize}
@@ -33,10 +34,10 @@ La méthode pour trouver une expression de l'opérateur d'impédance est la suiv
 \item En déduire l'opérateur d'impédance en Fourier.
 \end{itemize}
 
-Dans ce qui suit, on réalise au moins une transformée partielle en temps. La variable de Fourier associée est $\w$, et donc l'opérateur $\ddr{t}{~}$ est remplacé par $i\w$.
+Dans ce qui suit, on réalise au moins une transformée partielle en temps. La variable de Fourier associée est \(\w\), et donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\w\).
 
 % \begin{tcolorbox}
-% On ne différencie pas les champs $\vE,\vH$ de leurs transformées de Fourier $\hat \vE, \hat \vH$.
+% On ne différencie pas les champs \(\vE,\vH\) de leurs transformées de Fourier \(\hat \vE, \hat \vH\).
 % \end{tcolorbox}
 
 On va donc utiliser le système d'équations de Maxwell harmonique:
@@ -50,4 +51,4 @@ On va donc utiliser le système d'équations de Maxwell harmonique:
     \label{eq:imp_fourier:intro:maxwell_harmonique}
 \end{equation}
 
-A partir de maintenant, la dépendance en $\w$ sera implicite: $\hat \vE(\v x) \equiv \hat \vE (\v x, \w)$.
+A partir de maintenant, la dépendance en \(\w\) sera implicite: \(\hat \vE(\v x) \equiv \hat \vE (\v x, \w)\).
