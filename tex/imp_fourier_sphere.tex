@@ -1,27 +1,74 @@
 \section{Cas d'un objet sphérique}
 
-    On exprime les équations de Maxwell dans le matériau et sans pertes de généralité, on peut réaliser une transformée de Fourier en $\theta$ et $\phi$ par invariance en rotation. Cependant, les multiplicateur de Fourier associés aux coordonnées $\theta,\phi$ doivent être des entiers pour assurer la périodicité. On les note $n,m$.
+    On exprime les équations de Maxwell dans le matériau et sans pertes de généralité, on peut réaliser une transformée de Fourier en \(\theta\) et \(\phi\) par invariance en rotation.
+    Cependant, les multiplicateur de Fourier associés aux coordonnées \(\theta,\phi\) doivent être des entiers pour assurer la \(2\pi\)-périodicité. On les note \(n,m\).
+
+    Par définition du repère sphérique \(\vE(r,\theta+\pi,\phi) =  \vE(r,\pi-\theta,\phi + \pi)\) alors
+
+    \begin{align}
+        \vE(r,\theta+\pi,\phi) &= \frac{1}{2\pi}\sum_{n\in\ZZ}\sum_{m\in\ZZ} \hat{\vE}(r,n,m) e^{-in(\theta+\pi)} e^{-im\phi}
+        \\
+        \vE(r,\phi-\theta,\phi+\pi)&=\frac{1}{2\pi}\sum_{n\in\ZZ}\sum_{m\in\ZZ} \hat{\vE}(r,n,m) e^{-in( \pi - \theta)} e^{-im(\phi+ \pi)}
+        \\
+        \vE(r,\phi-\theta,\phi+\pi)&=\frac{1}{2\pi}\sum_{n'\in\ZZ}\sum_{m\in\ZZ} \hat{\vE}(r,-n',m) e^{-in'(\theta-\pi)} e^{-im(\phi+ \pi)}
+        \\
+        0&=\frac{1}{2\pi}\sum_{n\in\ZZ}\sum_{m\in\ZZ} \left( \hat{\vE}(r,-n,m) - \hat{\vE}(r,n,m)e^{-i2n\pi}e^{im\pi}\right)e^{-in\theta}e^{-im\phi}
+    \end{align}
+
+    On en déduit donc une relation entre les termes \(n\)-positifs et \(n\)-négatifs de la série
+
+    \begin{align}
+        \hat{\vE}(r,-n,m) = \hat{\vE}(r,n,m)e^{im\pi} && \forall n \in\ZZ^*
+    \end{align}
+
+    On peut donc récrire la série uniquement avec \(n\in\NN\)
+
+    \begin{align}
+        \vE(r,\theta,\phi) &= \frac{1}{2\pi}\sum_{n\in\ZZ}\sum_{m\in\ZZ} \hat{\vE}(r,n,m) e^{-in\theta} e^{-im\phi}
+        \\
+        &= \frac{1}{2\pi}\sum_{n\in\NN}\sum_{m\in\ZZ} \hat{\vE}(r,n,m) \left( e^{-in\theta} + e^{in\theta}e^{im\pi}\right)e^{-im\phi}
+    \end{align}
+
+    Une autre propriété est 
+    \begin{equation}
+        \ds\ddr{\phi}{\vE}(r,0,\phi) = -\frac{1}{2\pi}\sum_{n\in\ZZ}\sum_{m\in\ZZ} im\hat{\vE}(r,n,m) e^{-im\phi}= 0
+    \end{equation}
+
+    Et la dernière est 
+    \begin{equation}
+        \ds\ddr{\phi}{\vE}(r,\pi,\phi) = -\frac{1}{2\pi}\sum_{n\in\ZZ}\sum_{m\in\ZZ} im\hat{\vE}(r,n,m) e^{-in\pi}e^{-im\phi}= 0
+    \end{equation}
+
+    \begin{TODO}
+        Problème: les \(e^{in\theta}\) ne sont pas orthogonales sur \([0,\pi]\)
+    \end{TODO}
+
+    On réécrit les opérateurs sur les transformées de Fourier afin de déterminer des conditions à vérifié sur ces dernières.
 
     \begin{multline}
-        \vrot \v{E} = \frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)E_\phi - im E_\theta\right)\v{e_r}\dots 
+        \vrot \hat{\vE} = \frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)\hat{E}_\phi - im \hat{E}_\theta\right)\vect{e_r}\dots 
         \\
-        + \left(\frac{im}{r\sin\theta}E_r - \frac{1}{r}\ddr{r}{(rE_\phi)} \right)\v{e_\theta} \dots
+        + \left(\frac{im}{r\sin\theta}\hat{E}_r - \frac{1}{r}\ddr{r}{(r\hat{E}_\phi)} \right)\vect{e_\theta} \dots
         \\
-        + \frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\v{e_\phi}
+        + \frac{1}{r}\left(\ddr{r}{(r\hat{E}_\theta)}-in\hat{E}_r\right)\vect{e_\phi}
     \end{multline}
 
     \begin{align}
-        \vdiv \v{E} &= \frac{1}{r^2}\ddr{r}{(r^2E_r)}
-        + \frac{1}{r\sin\theta}\left(\cos(\theta) + in\sin(\theta)\right)E_\theta + \frac{im}{r\sin\theta}{E_\phi}
+        \vdiv \hat{\vE} &= \frac{1}{r^2}\ddr{r}{(r^2\hat{E}_r)}
+        + \frac{1}{r\sin\theta}\left(\cos(\theta) + in\sin(\theta)\right)\hat{E}_\theta + \frac{im}{r\sin\theta}{\hat{E}_\phi}
     \end{align}
 
     De même qu'avec un cylindre, on cherche à isoler une composante.
 
     \begin{multline}
-        \vrot \vrot \v{E} = \\
-        \frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)\frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right) - im \left(\frac{im}{r\sin\theta}E_r - \frac{1}{r}\ddr{r}{(rE_\phi)} \right)\right)\v{e_r}\dots 
+        \vrot \vrot \hat{\vE} = \\
+        \frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)\frac{1}{r}\left(\ddr{r}{(r\hat{E}_\theta)}-in\hat{E}_r\right) - im \left(\frac{im}{r\sin\theta}\hat{E}_r - \frac{1}{r}\ddr{r}{(r\hat{E}_\phi)} \right)\right)\vect{e_r}\dots 
         \\
-        + \left(\frac{im}{r\sin\theta}\frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)E_\phi - im E_\theta\right) - \frac{1}{r}\ddr{r}{}\left(r \frac{1}{r}\left(\ddr{r}{(rE_\theta)}-inE_r\right)\right) \right)\v{e_\theta} \dots
+        + \left(\frac{im}{r\sin\theta}\frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)\hat{E}_\phi - im \hat{E}_\theta\right) - \frac{1}{r}\ddr{r}{}\left(r \frac{1}{r}\left(\ddr{r}{(r\hat{E}_\theta)}-in\hat{E}_r\right)\right) \right)\vect{e_\theta} \dots
         \\
-        + \frac{1}{r}\left(\ddr{r}{}\left(r \left(\frac{im}{r\sin\theta}E_r - \frac{1}{r}\ddr{r}{(rE_\phi)} \right)\right)-in\frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)E_\phi - im E_\theta\right)\right)\v{e_\phi}
+        + \frac{1}{r}\left(\ddr{r}{}\left(r \left(\frac{im}{r\sin\theta}\hat{E}_r - \frac{1}{r}\ddr{r}{(r\hat{E}_\phi)} \right)\right)-in\frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)\hat{E}_\phi - im \hat{E}_\theta\right)\right)\vect{e_\phi}
     \end{multline}
+
+    \begin{TODO}
+      Ce cas est plus complexe: les relations de périodicités donnent une série de Fourier en \(\theta,\phi\) mais il faut rajouter aussi les relations en \(u(r,\theta+\pi,\phi) = u(r,\pi-\theta,\phi + \pi)\), \(u(r,0,\phi) = u(r,0,\phi')\) et \(u(r,\pi,\phi) = u(r,\pi,\phi')\). De plus, les \(e^{i\theta}\) ne sont pas orthogonale sur \([0,\pi]\) ce qui va aussi complexifier les calculs
+    \end{TODO}

@@ -1,136 +1,137 @@
 \section{Solution problème de Maxwell dans la sphère}
 \label{sec:sol_maxwell}
 
-% Dans cette section, nous allons résouddre le problème de Maxwell \eqref{eq:pres_th:intro:maxwell} dans le cas d'un objet sphérique de constantes $\eps$ et $\mu$, éclairé par une onde électro-magnétique  de pulsation $w$ et de nombre d'onde $k$, tel que $k_0^2 = w^2\eps_0\mu_0$.
+% Dans cette section, nous allons résouddre le problème de Maxwell \eqref{eq:pres_th:intro:maxwell} dans le cas d'un objet sphérique de constantes \(\eps\) et \(\mu\), éclairé par une onde électro-magnétique  de pulsation \(w\) et de nombre d'onde \(k\), tel que \(k_0^2 = w^2\eps_0\mu_0\).
 
-% Nous allons montrer que le problème de Maxwell en champs $(\E,\H)$ peut être reformulé en potentiels vectoriels $(\v \Phi_E,\v \Phi_H)$, dit de Hertz. Ces potentiels sont alors solution d'un problème de Helmholtz. 
+% Nous allons montrer que le problème de Maxwell en champs \((\E,\H)\) peut être reformulé en potentiels vectoriels \((\vect \Phi_E,\vect \Phi_H)\), dit de Hertz. Ces potentiels sont alors solution d'un problème de Helmholtz. 
 
-% Alors nous exhiberons une solution qui permet de passer du potentiel vectoriel $\v \Phi$ à un potentiel scalaire $\Psi$. Ce dernier doit-être alors solution du problème de Helmholtz, ce qui sera étudié dans la section suivante (section \ref{sec:sol_maxwellhelmholtz_scal}).
+% Alors nous exhiberons une solution qui permet de passer du potentiel vectoriel \(\vect \Phi\) à un potentiel scalaire \(\Psi\). Ce dernier doit-être alors solution du problème de Helmholtz, ce qui sera étudié dans la section suivante (section \ref{sec:sol_maxwellhelmholtz_scal}).
 
 % Afin de résouddre le problème de Maxwell \eqref{eq:maxwell}, nous allons faire apparaître le problème de Helmholtz vectoriel que nous résouddrons à l'aide du problème de Helmholtz scalaire .
 
 \subsection{Des équations de Maxwell à l'équation de Helmholtz}
 % Afin de faire apparaitre le problème de Helmholtz vectoriel, nous allons nous donner des potentiels qui soient des solutions de ce problème et nous montrerons qu'ils résolvent le problème de Maxwell :
 % \begin{prop}
-%   Soient $(\v \Phi_E,\v \Phi_H)$ tels que
+%   Soient \((\vect \Phi_E,\vect \Phi_H)\) tels que
 %   \begin{equation}
 %     \label{eq:sol_maxwell:potentiel}
 %     %\left\lbrace 
 %     \begin{matrix}
-%       %\ddriv \v \Phi_{X} &=& 0 \\
-%       \exists U_X, -\rot \rot \v \Phi_X + k^2 \v \Phi_X &=&  \grad U_X \\
+%       %\ddriv \vect \Phi_{X} &=& 0 \\
+%       \exists U_X, -\rot \rot \vect \Phi_X + k^2 \vect \Phi_X &=&  \grad U_X \\
 %     \end{matrix} \quad 
 %     %\right| 
 %     k^2 = w^2 \eps\mu
 %   \end{equation}
 % 
-%   alors les champs $(\E,\H)$ définis ci-dessous sont solutions de \eqref{eq:maxwell}.
+%   alors les champs \((\E,\H)\) définis ci-dessous sont solutions de \eqref{eq:maxwell}.
 % 
 %   \begin{equation}
 %     \label{eq:sol_maxwell:maxwell_potentiel}
 %     \left\lbrace
 %       \begin{matrix}
-%         \E &=&  \rot \v \Phi_E +  \frac{\rot \rot \v \Phi_H}{iw\eps} \\
-%         \H &=&  \rot \v \Phi_H -  \frac{\rot \rot \v \Phi_E}{iw\mu} \\
+%         \E &=&  \rot \vect \Phi_E +  \frac{\rot \rot \vect \Phi_H}{iw\eps} \\
+%         \H &=&  \rot \vect \Phi_H -  \frac{\rot \rot \vect \Phi_E}{iw\mu} \\
 %       \end{matrix}
 %     \right.
 %   \end{equation}
 % \end{prop}
 % \begin{proof}
 
-Soit le problème de Maxwell \eqref{eq:pres_th:intro:maxwell} dans le cas d'un objet sphérique de constantes $\eps$ et $\mu$%, éclairé par une onde électro-magnétique  de pulsation $w$ et de nombre d'onde $k$, tel que $k^2 = w^2\eps\mu$
+Soit le problème de Maxwell \eqref{eq:pres_th:intro:maxwell} dans le cas d'un objet sphérique de constantes \(\eps\) et \(\mu\)%, éclairé par une onde électro-magnétique  de pulsation \(w\) et de nombre d'onde \(k\), tel que \(k^2 = w^2\eps\mu\)
 .
 
 Comme le domaine est un ouvert étoilé et que par définition, la divergence des champs est nulle, d'après le Théorème de Helmholtz-Hodge \cite{gui_rigorous_2007}, on peut les représenter comme issus de rotationnels.\\
 On peut donc choisir une représentation en potentiel pour l'un et définir l'autre grâce à une équation du système de Maxwell:\\
- $\exists \v \Phi \in (C^\infty(\OO))^3$ tels que
+ \(\exists \vect \Phi \in (C^\infty(\OO))^3\) tels que
 \begin{equation}
   \label{eq:sol_maxwell:pot_hertz}
   \left\lbrace\begin{matrix}
-    \vE &=& \vrot \v \Phi \\
-    \vH &=& - \frac{\vrot \vrot \v \Phi}{ik\eta}
+    \vE &=& \vrot \vect \Phi \\
+    \vH &=& - \frac{\vrot \vrot \vect \Phi}{ik\eta}
   \end{matrix} \right.
   \qquad \text{ ou alors } \qquad
   \left\lbrace\begin{matrix}
-    \vH &=& \vrot \v \Phi\\
-    \vE &=& \frac{\vrot \vrot \v \Phi}{ik\eta^{-1}}\\
+    \vH &=& \vrot \vect \Phi\\
+    \vE &=& \frac{\vrot \vrot \vect \Phi}{ik\eta^{-1}}\\
   \end{matrix}\right.
 \end{equation}
-Dans le domaine extérieur, les constantes $k,\eta$ sont $k_0$ et $\eta_0$. Une solution du problème général est alors une combinaison linéaire des deux problème ci-dessus.
+Dans le domaine extérieur, les constantes \(k,\eta\) sont \(k_0\) et \(\eta_0\).
+Une solution du problème général est alors une combinaison linéaire des deux problème ci-dessus.
 
 On utilise alors l'équation de Maxwell restante:
 \[
-    \vrot \vrot \vrot \v \Phi = k^2 \vrot \v \Phi
+    \vrot \vrot \vrot \vect \Phi = k^2 \vrot \vect \Phi
 \]
-Puisque $\vrot  \vgrad  V  \equiv 0$ et que $\vrot\, \vrot \v V = -\lapl \v V + \vgrad \vdiv \v V$, le potentiel $\v \Phi$ doit être solution de 
+Puisque \(\vrot  \vgrad  V  \equiv 0\) et que \(\vrot\, \vrot \vect V = -\lapl \vect V + \vgrad \vdiv \vect V\), le potentiel \(\vect \Phi\) doit être solution de 
 \begin{equation}
   \label{eq:sol_maxwell:helmholtz_vect}
-  \vrot ( \lapl \v \Phi + k^2 \v \Phi ) = 0
+  \vrot ( \lapl \vect \Phi + k^2 \vect \Phi ) = 0
 \end{equation}
 
-On choisit $\v \Phi$ comme un vecteur radial: $\v \Phi = r \Psi \v e_r$ \cite[p.~84]{bohren_absorption_2004}. On va alors montrer que $\Psi$ doit satisfaire à l'équation de Helmholtz scalaire.\\
+On choisit \(\vect \Phi\) comme un vecteur radial: \(\vect \Phi = r \Psi \vect e_r\) \cite[p.~84]{bohren_absorption_2004}. On va alors montrer que \(\Psi\) doit satisfaire à l'équation de Helmholtz scalaire.\\
 
-Rappel: dans base une sphérique $(\v e_r, \v e_\theta, \v e_\phi)$, pour 
-%un vecteur radial $\v A$,
-un vecteur $\v V$ 
-et un scalaire $\Psi$, on a:
+Rappel: dans base une sphérique \((\vect e_r, \vect e_\theta, \vect e_\phi)\), pour 
+%un vecteur radial \(\vect A\),
+un vecteur \(\vect V\) 
+et un scalaire \(\Psi\), on a:
 
 \begin{align*}
 % \grad \Psi 
-% &= \left(\ddr{r}{\Psi}\right) \v e_r  
-% + \left(\frac{1}{r}\ddr{\theta}{\Psi}\right) \v e_\theta  
-% + \left(\frac{1}{r\sin(\theta)}\ddr{\phi}{\Psi}\right) \v e_\phi \\
-\vgrad \Psi &= \ddr{r}{\Psi} \v e_r + \frac{1}{r}\ddr{\theta}{\Psi}\v e_\theta + \frac{1}{r\sin\theta}\ddr{\phi}{\Psi} \v e_\phi\\
+% &= \left(\ddr{r}{\Psi}\right) \vect e_r  
+% + \left(\frac{1}{r}\ddr{\theta}{\Psi}\right) \vect e_\theta  
+% + \left(\frac{1}{r\sin(\theta)}\ddr{\phi}{\Psi}\right) \vect e_\phi \\
+\vgrad \Psi &= \ddr{r}{\Psi} \vect e_r + \frac{1}{r}\ddr{\theta}{\Psi}\vect e_\theta + \frac{1}{r\sin\theta}\ddr{\phi}{\Psi} \vect e_\phi\\
  \Delta \Psi & = \frac{1}{r^2}\ddr{r}{}\left(r^2\ddr{r}{\Psi}\right)
 + \frac{1}{r^2\sin\theta}\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{\Psi}\right)
 + \frac{1}{r^2\sin^2\theta}\ddr[2]{\phi}{\Psi} \\
-% \Delta \v A 
-% &= \left(\Delta A_r - \frac{2}{r^2}A_r \right) \v e_r  
-% + \left(\frac{2}{r^2}\ddr{\theta}{A_r}\right) \v e_\theta  
-% + \left(\frac{2}{r^2\sin(\theta)}\ddr{\phi}{A_r}\right) \v e_\phi
-\vrot \v V &= \frac{1}{r\sin\theta}\left(\ddr{\theta}{}(\sin\theta V_\phi)-\ddr{\phi}{V_\theta}\right)\v e_r \dots\\
-&+ \left(\frac{1}{r\sin\theta}\ddr{\phi}{V_r} - \frac{1}{r}\ddr{r}{}(rV_\phi)\right) \v e_\theta \dots \\
-&+ \frac{1}{r}\left( \ddr{r}{}(rV_\theta) - \ddr{\theta}{V_r}\right)\v e_\phi
+% \Delta \vect A 
+% &= \left(\Delta A_r - \frac{2}{r^2}A_r \right) \vect e_r  
+% + \left(\frac{2}{r^2}\ddr{\theta}{A_r}\right) \vect e_\theta  
+% + \left(\frac{2}{r^2\sin(\theta)}\ddr{\phi}{A_r}\right) \vect e_\phi
+\vrot \vect V &= \frac{1}{r\sin\theta}\left(\ddr{\theta}{}(\sin\theta V_\phi)-\ddr{\phi}{V_\theta}\right)\vect e_r \dots\\
+&+ \left(\frac{1}{r\sin\theta}\ddr{\phi}{V_r} - \frac{1}{r}\ddr{r}{}(rV_\phi)\right) \vect e_\theta \dots \\
+&+ \frac{1}{r}\left( \ddr{r}{}(rV_\theta) - \ddr{\theta}{V_r}\right)\vect e_\phi
 \end{align*}
 
 
 % En utilisant ces propriétés nous calculons le terme à l'intérieur du rotationnel dans \eqref{eq:helmholtz_vect}:
 % \begin{align*}
-%  \lapl \v \Phi + k^2 \v \Phi
-% &= \left(\Delta (r\Psi) - \frac{2}{r}\Psi + k^2 r \Psi \right) \v e_r  
-% + \left(\frac{2}{r}\ddr{\theta}{\Psi}\right) \v e_\theta  
-% + \left(\frac{2}{r\sin(\theta)}\ddr{\phi}{\Psi}\right) \v e_\phi \\
-% &= \left(r\Delta (\Psi) +  \Psi\Delta r  + 2 \grad r \cdot \grad \Psi - \frac{2}{r}\Psi + k^2 r \Psi \right) \v e_r  
+%  \lapl \vect \Phi + k^2 \vect \Phi
+% &= \left(\Delta (r\Psi) - \frac{2}{r}\Psi + k^2 r \Psi \right) \vect e_r  
+% + \left(\frac{2}{r}\ddr{\theta}{\Psi}\right) \vect e_\theta  
+% + \left(\frac{2}{r\sin(\theta)}\ddr{\phi}{\Psi}\right) \vect e_\phi \\
+% &= \left(r\Delta (\Psi) +  \Psi\Delta r  + 2 \grad r \cdot \grad \Psi - \frac{2}{r}\Psi + k^2 r \Psi \right) \vect e_r  
 % + \cdots \\
-% &= \left(r \left[ \Delta \Psi + k^2 \Psi \right] + 2 \ddr{r}{\Psi} \right) \v e_r  
+% &= \left(r \left[ \Delta \Psi + k^2 \Psi \right] + 2 \ddr{r}{\Psi} \right) \vect e_r  
 % + \cdots \\
-% &= \left(r \left[ \Delta \Psi + k^2 \Psi \right] \right) \v e_r + 2\grad\Psi
+% &= \left(r \left[ \Delta \Psi + k^2 \Psi \right] \right) \vect e_r + 2\grad\Psi
 % \end{align*}
 % En injectant ceci dans \eqref{eq:helmholtz_vect}, on a le résultat suivant:
 % 
 En développant les calculs on obtient
 \begin{align*}
-  \vrot \vrot \v \Phi - k^2 \v \Phi 
-  &= \left(\frac{1}{r\sin\theta}\left(-\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{\Psi}\right)-\frac{1}{\sin\theta}\ddr[2]{\phi}{\Psi}\right)-k^2\Psi\right)\v e_r \cdots \\
-  &+ \left(\frac{1}{r}\ddr{r}{}\left(r\ddr{\theta}{\Psi}\right)\right)\v e_\theta \cdots \\
-  &+ \left(\frac{1}{r\sin\theta}\ddr{r}{}\left(r\ddr{\phi}{\Psi}\right)\right)\v e_\phi
+  \vrot \vrot \vect \Phi - k^2 \vect \Phi 
+  &= \left(\frac{1}{r\sin\theta}\left(-\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{\Psi}\right)-\frac{1}{\sin\theta}\ddr[2]{\phi}{\Psi}\right)-k^2\Psi\right)\vect e_r \cdots \\
+  &+ \left(\frac{1}{r}\ddr{r}{}\left(r\ddr{\theta}{\Psi}\right)\right)\vect e_\theta \cdots \\
+  &+ \left(\frac{1}{r\sin\theta}\ddr{r}{}\left(r\ddr{\phi}{\Psi}\right)\right)\vect e_\phi
 \end{align*}
-En définitive, nous avons dans tout $\OO$:
+En définitive, nous avons dans tout \(\OO\):
 \begin{align*}
-  \vrot\left(\vrot \vrot \v \Phi - k^2 \v \Phi\right) 
+  \vrot\left(\vrot \vrot \vect \Phi - k^2 \vect \Phi\right) 
   &= %\left(\frac{1}{r\sin\theta}\left[\ddrd{\theta}\left(\frac{\sin\theta}{r\sin\theta}\frac{\ddr^2}{\ddr r\phi}\Psi\right)-\ddrd{\phi}\left(\frac{1}{r}\frac{\ddr^2}{\ddr r\theta}\Psi\right)\right]\right)
-   0 ~ \v e_r 
-  + \left(-\frac{1}{\sin\theta}\ddr{\phi}{}\left(\Delta \Psi + k^2 \Psi \right)\right)\v e_\theta 
-  + \left(\ddr{\theta}{}\left(\Delta \Psi + k^2 \Psi \right)\right)\v e_\phi \\
-  0 &= -\vrot \left( \left(\Delta \Psi + k^2\Psi\right)\v r e_r\right]
-  %// \Rightarrow \exists V \in \Hgrad(\OO), \quad \grad V  &= (\Delta \Psi + k^2\Psi)\v e_r
+   0 ~ \vect e_r 
+  + \left(-\frac{1}{\sin\theta}\ddr{\phi}{}\left(\Delta \Psi + k^2 \Psi \right)\right)\vect e_\theta 
+  + \left(\ddr{\theta}{}\left(\Delta \Psi + k^2 \Psi \right)\right)\vect e_\phi \\
+  0 &= -\vrot \left( \left(\Delta \Psi + k^2\Psi\right)\vect r e_r\right]
+  %// \Rightarrow \exists V \in \Hgrad(\OO), \quad \grad V  &= (\Delta \Psi + k^2\Psi)\vect e_r
 \end{align*}
 
-On voit donc $\Psi$ solution l'équation de Helmholtz homogène  \eqref{eq:sol_maxwell:helmholtz_scal} implique que $\v \Phi$ satisfait \eqref{eq:sol_maxwell:helmholtz_vect}.
+On voit donc \(\Psi\) solution l'équation de Helmholtz homogène  \eqref{eq:sol_maxwell:helmholtz_scal} implique que \(\vect \Phi\) satisfait \eqref{eq:sol_maxwell:helmholtz_vect}.
 \begin{equation}
   \label{eq:sol_maxwell:helmholtz_scal}
-   \Delta \Psi + k^2\Psi = 0 \quad \text{dans $\OO$}
+   \Delta \Psi + k^2\Psi = 0 \quad \text{dans \(\OO\)}
 \end{equation}
 
 Et alors on obtient des solutions du problème de Maxwell \eqref{eq:pres_th:intro:maxwell} grâce aux formulations en potentiels \eqref{eq:sol_maxwell:pot_hertz}.
-% On choisit de prenddre $f \equiv 0$ et nous allons détailler les solutions de l'équation de Helmholtz dans le cas d'un objet sphérique dans le \secref{sec:helmholtz_scal}.
+% On choisit de prenddre \(f \equiv 0\) et nous allons détailler les solutions de l'équation de Helmholtz dans le cas d'un objet sphérique dans le \secref{sec:helmholtz_scal}.

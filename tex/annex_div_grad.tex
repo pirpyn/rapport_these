@@ -3,9 +3,9 @@
 \subsection{Cartésien}
 
     \begin{align}
-        \vgrad f &= \ddr{x}{f}\v{e_x} + \ddr{y}{f}\v{e_y}  + \ddr{z}{f}\v{e_z} \\
-        \vdiv \v{V} &= \ddr{x}{V_x} + \ddr{y}{V_y} + \ddr{z}{V_z} \\
-        \vrot\v{V} &= \left(\ddr{y}{V_z}-\ddr{z}{V_y}\right)\v{e_x} + \left(\ddr{z}{V_x}-\ddr{x}{V_y}\right)\v{e_y} + \left(\ddr{x}{V_y}-\ddr{y}{V_x}\right)\v{e_z} 
+        \vgrad f &= \ddr{x}{f}\vect{e_x} + \ddr{y}{f}\vect{e_y}  + \ddr{z}{f}\vect{e_z} \\
+        \vdiv \vect{V} &= \ddr{x}{V_x} + \ddr{y}{V_y} + \ddr{z}{V_z} \\
+        \vrot\vect{V} &= \left(\ddr{y}{V_z}-\ddr{z}{V_y}\right)\vect{e_x} + \left(\ddr{z}{V_x}-\ddr{x}{V_y}\right)\vect{e_y} + \left(\ddr{x}{V_y}-\ddr{y}{V_x}\right)\vect{e_z} 
     \end{align}
 
 \subsection{Cylindrique}
@@ -15,14 +15,14 @@
     \]
 
     \begin{align}
-        \vgrad f &= \ddr{r}{f}\v{e_r}
-        +\frac{1}{r}\ddr{\theta}{f}\v{e_\theta} + \ddr{z}{f}\v{e_z}
+        \vgrad f &= \ddr{r}{f}\vect{e_r}
+        +\frac{1}{r}\ddr{\theta}{f}\vect{e_\theta} + \ddr{z}{f}\vect{e_z}
         \\
-        \vdiv \v{V} &= \frac{1}{r}\ddr{r}{(rV_r)}+\frac{1}{r}\ddr{\theta}{V_\theta}+\ddr{z}{V_z}
+        \vdiv \vect{V} &= \frac{1}{r}\ddr{r}{(rV_r)}+\frac{1}{r}\ddr{\theta}{V_\theta}+\ddr{z}{V_z}
         \\
-        \vrot \v{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\v{e_r} + 
-        \left(\ddr{z}{V_r} - \ddr{r}{V_z}\right)\v{e_\theta} +
-        \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\v{e_z} 
+        \vrot \vect{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\vect{e_r} + 
+        \left(\ddr{z}{V_r} - \ddr{r}{V_z}\right)\vect{e_\theta} +
+        \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\vect{e_z} 
     \end{align}
 
 \subsection{Sphérique}
@@ -32,17 +32,17 @@
     \]
 
     \begin{align}
-        \vgrad f &= \ddr{r}{f}\v{e_r}
-        +\frac{1}{r}\ddr{\theta}{f}\v{e_\theta} + \frac{1}{r\sin\theta}\ddr{\phi}{f}\v{e_\phi}
+        \vgrad f &= \ddr{r}{f}\vect{e_r}
+        +\frac{1}{r}\ddr{\theta}{f}\vect{e_\theta} + \frac{1}{r\sin\theta}\ddr{\phi}{f}\vect{e_\phi}
         \\
-        \vdiv \v{V} &= \frac{1}{r^2}\ddr{r}{(r^2V_r)}
+        \vdiv \vect{V} &= \frac{1}{r^2}\ddr{r}{(r^2V_r)}
         + \frac{1}{r\sin\theta}\ddr{\theta}{}\left(\sin(\theta)V_\theta\right) + \frac{1}{r\sin\theta}\ddr{\phi}{V_\phi}
     \end{align}
 
     \begin{multline}
-        \vrot \v{V} = \frac{1}{r\sin\theta}\left(\ddr{\theta}{}\left(\sin(\theta)V_\phi\right) - \ddr{\phi}{V_\theta}\right)\v{e_r}\dots 
+        \vrot \vect{V} = \frac{1}{r\sin\theta}\left(\ddr{\theta}{}\left(\sin(\theta)V_\phi\right) - \ddr{\phi}{V_\theta}\right)\vect{e_r}\dots 
         \\
-        + \left(\frac{1}{r\sin\theta}\ddr{\phi}{V_r} - \frac{1}{r}\ddr{r}{(rV_\phi)} \right)\v{e_\theta} \dots
+        + \left(\frac{1}{r\sin\theta}\ddr{\phi}{V_r} - \frac{1}{r}\ddr{r}{(rV_\phi)} \right)\vect{e_\theta} \dots
         \\
-        + \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\v{e_\phi}
+        + \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\vect{e_\phi}
     \end{multline}
