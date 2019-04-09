@@ -1,45 +1,38 @@
-\theoremstyle{plain} % style plain
-\newtheorem{thm}{Théorème}[chapter]
-\newtheorem{cor}[thm]{Corollaire}
+
+\newtheorem[style=M,bodystyle={\noindent}]{thm}{Théorème}[chapter]
 \newtheorem{prop}[thm]{Proposition}
-\newtheorem{lem}[thm]{Lemme}
-%\newtheorem{conj}[thm]{Conjecture}
-\newtheorem{rmq}[thm]{Remarque}
-\newtheorem*{thmstar}{Théorème} % théorème non numéroté
-\newtheorem*{conjstar}{Conjecture} % conjecture non numérotée
 \newtheorem{defn}[thm]{Définition}
 \newtheorem{hyp}[thm]{Hypothèse}
 
-\theoremstyle{definition} % style definition
-\newtheorem{exemple}[thm]{Exemple}
-\newtheorem{question}[thm]{Question}
-\newtheorem{remarque}[thm]{Remarque}
-\newtheorem{notation}[thm]{Notation}
-
-% Pour renommer ``preuve'' en ``démonstration''
-\renewcommand{\proofname}{Démonstration}
 %redefinition
-\renewcommand{\frac}[2]{\dfrac{#1}{#2}}
-\renewcommand{\tilde}[1]{\widetilde{#1}}
+\renewcommand{\frac}[2]{\dfrac{#1}{#2}} % Toujours de grandes fractions
+\renewcommand{\tilde}[1]{\widetilde{#1}} % Toujours un grand tilde
 \newcommand{\tagit}{\addtocounter{equation}{1}\tag{\theequation}}
 \newcommand{\ds}{\displaystyle}
 
 \newcommand{\secref}[1]{(\S \ref{#1})}
-\newcommand{\pvect}{\wedge}
-%vectorial notation
-\renewcommand{\v}{}
-    \DeclareRobustCommand\v[1]{\underline{#1}}
 
-%matricial notation
+% Notation produit vectoriel
+\newcommand{\pvect}{\wedge}
+
+% Notation vectorielle
+\newcommand{\vect}[1]{\underline{#1}}
+
+% Notation matricielle
 \newcommand{\mat}[1]{\mathbf{#1}}
+
+% Le conjugé
+\newcommand{\conj}[1]{{{#1}^*}} 
+
+% Quelques matrices qui reviennent
 \newcommand{\mI}{\mat{I}}
 \newcommand{\mZ}{\mat{Z}}
 \newcommand{\mA}{\mat{A}}
 \newcommand{\mB}{\mat{B}}
 \newcommand{\mC}{\mat{C}}
 
+% Opérateur pseudo diff
 \newcommand{\Op}[2]{{\operatorname{Op}\left(#1\right)\left(#2\right)}}
-
 
 \newcommand{\w}{\omega}
 
@@ -59,13 +52,12 @@
 \newcommand{\Hgrad}{\operatorname{H_{grad}}}
 \newcommand{\Hrot}{\operatorname{H_{rot}}}
 \newcommand{\Hdiv}{\operatorname{H_{div}}}
-\newcommand{\Hess}{\v{\v{\operatorname{Hess}}}}
+\newcommand{\Hess}{\vect{\vect{\operatorname{Hess}}}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 
 \newcommand{\sign}[1]{{\operatorname{sign}\left(#1\right)}}
 \newcommand{\argmin}[1]{{\operatorname{argmin}_{#1}}}
-\newcommand{\conj}[1]{{{#1}^*}} % opérateur conjugé
 \newcommand{\Ker}{\operatorname{Ker}}
 \newcommand{\Img}{\operatorname{Img}}
 \newcommand{\Vect}[1]{\operatorname{Vect}\left\lbrace#1\right\rbrace}
@@ -79,39 +71,41 @@
 \newcommand{\CFIE}{\operatorname{CFIE}}
 
 %Maxwell notations
-\newcommand{\vE}{\v{E}}
-\newcommand{\vH}{\v{H}}
-\newcommand{\vn}{\v{n}}
-\newcommand{\vJ}{\v{J}}
-\newcommand{\vK}{\v{K}}
-\newcommand{\vM}{\v{M}}
-\newcommand{\vA}{\v{A}}
+\newcommand{\vE}{\vect{E}}
+\newcommand{\vH}{\vect{H}}
+\newcommand{\vn}{\vect{n}}
+\newcommand{\vx}{\vect{x}}
+\newcommand{\vk}{\vect{k}}
+\newcommand{\vJ}{\vect{J}}
+\newcommand{\vK}{\vect{K}}
+\newcommand{\vM}{\vect{M}}
+\newcommand{\vA}{\vect{A}}
 
 %differential operator
-\newcommand{\vgrad}{\v{\nabla}}
-\newcommand{\vdiv}{\v{\nabla}\cdot}
-\newcommand{\vrot}{\v{\nabla}\pvect}
+\newcommand{\vgrad}{\vect{\nabla}}
+\newcommand{\vdiv}{\vect{\nabla}\cdot}
+\newcommand{\vrot}{\vect{\nabla}\pvect}
 
-\newcommand{\tgrad}{{\v{\operatorname{grad}}}}
-\newcommand{\trot}{{\v{\operatorname{rot}}}}
+\newcommand{\tgrad}{{\vect{\operatorname{grad}}}}
+\newcommand{\trot}{{\vect{\operatorname{rot}}}}
 \newcommand{\tdiv}{{\operatorname{div}}}
 
-\newcommand{\vgrads}{\v{\nabla_s}}
-\newcommand{\vdivs}{\v{\nabla_s} \cdot}
-\newcommand{\vrots}{\v{\nabla_s} \pvect}
+\newcommand{\vgrads}{\vect{\nabla_s}}
+\newcommand{\vdivs}{\vect{\nabla_s} \cdot}
+\newcommand{\vrots}{\vect{\nabla_s} \pvect}
 
-\newcommand{\tgrads}{{\v{\operatorname{grad}}_t}}
-\newcommand{\trots}{{\v{\operatorname{rot}}_t}}
+\newcommand{\tgrads}{{\vect{\operatorname{grad}}_t}}
+\newcommand{\trots}{{\vect{\operatorname{rot}}_t}}
 \newcommand{\tdivs}{{\operatorname{div}_t}}
 
-\newcommand{\lapl}{\v{\Delta}}
+\newcommand{\lapl}{\vect{\Delta}}
 
 % helmotlz
 \newcommand{\rtp}{r,\theta,\phi}
 \newcommand{\tp}{\theta,\phi}
 
 \newcommand{\PP}{\mathbb{P}}
-\newcommand{\Pmn}{\P^m_n}
+\newcommand{\Pmn}{\PP^m_n}
 
 % cioe
 \newcommand{\ov}[1]{\overline{#1}}

@@ -8,19 +8,20 @@
 
 % Creation de boite TODO, qui apparaissent dans les signets
 \newcounter{TODO}
-\newcommand{\TODO}[1]{%
-    \stepcounter{TODO}
-    \hypertarget{TODO\theTODO}{}%
-    \begin{tcolorbox}[%
-            title={TODO \theTODO},%
-            colback=red!30!white,%
-            colframe=red!75!black,%
-            halign=flush center%
-        ]
-        #1%
-    \end{tcolorbox}%
-    \pdfbookmark[0]{TODO \theTODO}{TODO\theTODO}%
-}
+\newenvironment{TODO}{%
+        \stepcounter{TODO}
+        \hypertarget{TODO\theTODO}{}%
+        \begin{tcolorbox}[%
+                title={TODO \theTODO},%
+                colback=red!30!white,%
+                colframe=red!75!black,%
+                halign=flush center%
+            ]
+    }
+    {
+        \end{tcolorbox}%
+        \pdfbookmark[0]{TODO \theTODO}{TODO\theTODO}%
+    }%
 
 % Affiche devant chaque ligne en mode texte, le numéro de la ligne pour le corriger plus efficacement
 \usepackage{lineno}

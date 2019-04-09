@@ -1,0 +1,30 @@
+\section{Approximation de l'opérateur d'impédance pour un plan infini}
+
+    On sait que le symbole \(\hat{\mZ}(k_x,k_y)\) s'écrit
+
+    \begin{multline}
+        \hat \mZ_m = -k_{3m}
+        \left(ik_{3m}\tan\left(k_{3m}d_m\right)\mI - \hat \mZ_{m-1}\mC_m\right) \\
+        \left(k_{3m}\mI - i\tan\left(k_{3m}d_m\right)\hat \mZ_{m-1}\mC_m\right)^{-1}
+        \mC_m^{-1}
+    \end{multline}
+
+    où la matrice \(\mC_m\) est telle que
+    \begin{align}
+       \mC_m &= \frac{1}{k_m\eta_m}
+        \begin{bmatrix}
+            k_m^2 - k_y^2 & k_xk_y\\
+            k_xk_y & k_m^2 - k_y^2
+        \end{bmatrix}
+    \end{align}
+
+    \subsection{Approximation constante}
+
+    Cette approximation est très facile à calculer : on fixe \(k_x,k_y\) à $0$:
+
+    \begin{equation}
+        \hat \mZ_m \sim -
+        \left(i\eta_m\tan\left(k_{m}d_m\right)\mI - \hat \mZ_{m-1}\right)
+        \left(\eta_m\mI - i\tan\left(k_{m}d_m\right)\hat \mZ_{m-1}\right)^{-1}
+        \eta_m
+    \end{equation}

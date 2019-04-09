@@ -30,10 +30,10 @@
 
 \coordinate (n) at (\xD,\yA);
 
-\draw [->] (n) -- ++(1,0) node [at end, right] {$\v{e_x}$};
-\draw [->] (n) -- ++(0,1) node [at end, right] {$\v{e_z}$};
+\draw [->] (n) -- ++(1,0) node [at end, right] {$\vect{e_x}$};
+\draw [->] (n) -- ++(0,1) node [at end, right] {$\vect{e_z}$};
 
-\draw (n) circle(0.1cm) node [below=0.1cm] {$\v{e_y}$};
+\draw (n) circle(0.1cm) node [below=0.1cm] {$\vect{e_y}$};
 \draw (n) +(135:0.1cm) -- +(315:0.1cm);
 \draw (n) +(45:0.1cm) -- +(225:0.1cm);
 
