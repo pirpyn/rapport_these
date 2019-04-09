@@ -11,7 +11,7 @@ Soit \(\phi_j\) la fonction de base associée à l’arête orientée \(v_j\) co
 
 En notations globale au repère 3D. 
 %En prenant en compte l'orientation des arêtes entre 2 éléments. 
-Soit \(\v x = (x_1,x_2,x_3)\).
+Soit \(\vect x = (x_1,x_2,x_3)\).
 
 %TODO
 \begin{TODO}
@@ -22,8 +22,8 @@ Soit \(\v x = (x_1,x_2,x_3)\).
 \begin{align*}
 	\color{red}{\phi_j(x)} &= \mathbf{1}_{K_j^l}(x)\frac{x-o_j^l}{2|K_j^l|} \\&- \mathbf{1}_{K_j^r}(x)\frac{x-o_j^r}{2|K_j^r|}\\
 	\color{black!60!green}{p_j(x)} &= -\vn \pvect \phi_j(x)\\
-	\color{black!60!blue}{q_j(x)} &= \mathbf{1}_{K_j^l}(x) ( { \color{purple}{\v v_j } } \pvect \vn ) \cdot ( x - \frac{o^l_j + o^d_j}{2} ) \\
- &- \mathbf{1}_{K_j^r}(x) ( { \color{purple}{\v v_j } } \pvect \vn ) \cdot ( x - \frac{o^r_j + o^d_j}{2} )
+	\color{black!60!blue}{q_j(x)} &= \mathbf{1}_{K_j^l}(x) ( { \color{purple}{\vect{v}_j } } \pvect \vn ) \cdot ( x - \frac{o^l_j + o^d_j}{2} ) \\
+ &- \mathbf{1}_{K_j^r}(x) ( { \color{purple}{\vect{v}_j } } \pvect \vn ) \cdot ( x - \frac{o^r_j + o^d_j}{2} )
 \end{align*}
 \end{minipage}
 \begin{minipage}{0.58\textwidth}
@@ -33,13 +33,13 @@ Soit \(\v x = (x_1,x_2,x_3)\).
 	\end{tikzpicture}
 \end{minipage} 
 
-En notations locale au triangle \(K_j^l, \xi_i = \frac{\sqrt{(x-o^l_j).\v e_i}}{||e_i||}\).
+En notations locale au triangle \(K_j^l, \xi_i = \frac{\sqrt{(x-o^l_j).\vect e_i}}{||e_i||}\).
 
 \begin{minipage}{0.45\textwidth}
 \begin{align*}
-	\color{red}{\phi_j(x)} &= \frac{1}{2|K_j^l|}\left(\xi_1 \v e_1 + \xi_2 \v e_2\right)\\
-	\color{black!60!green}{p_j(x)} &= \frac{1}{2|K_j^l|}\left(\xi_2 \v e_1 -\xi_1 \v e_2\right)\\
-	\color{black!60!blue}{q_j(x)} &= \frac{1}{2|K_j^l|}(1-2(\xi_1+\xi_2))(\v e_1 -\v e_2)
+	\color{red}{\phi_j(x)} &= \frac{1}{2|K_j^l|}\left(\xi_1 \vect{e_1} + \xi_2 \vect{e_2}\right)\\
+	\color{black!60!green}{p_j(x)} &= \frac{1}{2|K_j^l|}\left(\xi_2 \vect{e_1} -\xi_1 \vect{e_2}\right)\\
+	\color{black!60!blue}{q_j(x)} &= \frac{1}{2|K_j^l|}(1-2(\xi_1+\xi_2))(\vect{e_1} -\vect{e_2})
 \end{align*}
 Les fonctions \(q_j\) s'annulent notamment sur le segment \(\xi_1+\xi_2=\frac{1}{2}\) représenté en pointillés. 
 \end{minipage}
@@ -66,17 +66,17 @@ Soit \( U \simeq \sum\limits_{j=1}^N u_j \phi_j \simeq \sum\limits_{j=1}^N v_j p
 
 On définit les matrices \(M,\tilde M, N,\tilde N\) telles que:
 \begin{align*}
-  \int U \cdot \phi_i &\simeq \sum u_j \int \phi_j \cdot \phi_i = M\v u \\
-  & \simeq \sum v_j \int p_j \cdot \phi_i = -N\v v\\
-  & \simeq \sum w_j \int q_j \cdot \phi_i = \tilde{N}\v w \\
-  \int U \cdot p_i &\simeq \sum v_j \int p_j \cdot p_i = M\v v \\
-  &\simeq \sum w_j \int q_j \cdot p_i = \tilde M\v w
+  \int U \cdot \phi_i &\simeq \sum u_j \int \phi_j \cdot \phi_i = M\vect{u} \\
+  & \simeq \sum v_j \int p_j \cdot \phi_i = -N\vect{v}\\
+  & \simeq \sum w_j \int q_j \cdot \phi_i = \tilde{N}\vect{w} \\
+  \int U \cdot p_i &\simeq \sum v_j \int p_j \cdot p_i = M\vect{v} \\
+  &\simeq \sum w_j \int q_j \cdot p_i = \tilde M\vect{w}
 \end{align*}
 %TODO 
 %On a donc les relations de passage des bases \( H_{\text{div}}\) vers \(H_{\text{rot}}\)
 %\begin{align*}
-%  \v v &= G'^{-1} G\v u \\
-%  \v v &= -G^{-1}G'\v u \\
+%  \vect{v} &= G'^{-1} G\vect{u} \\
+%  \vect{v} &= -G^{-1}G'\vect{u} \\
 %\end{align*}
 %%% SECTION EFIE
 \subsection{EFIE}
@@ -103,19 +103,19 @@ Soit \(\tilde S^G_{ij} = 4\pi\left(\int(\int \vgrad g \pvect \phi_i) \cdot \phi_
 Soit \(b_i^E = \int \vE_i \cdot \phi_i\).
 On obtient alors 
 \[
-  \left[\frac{a_0}{2}M + \frac{a_1}{2}L + \frac{S^0}{4\pi}\right]\v I - \frac{b}{2}L\v e+ \frac{\tilde  S^G \v k}{4\pi} = \v b_i^E
+  \left[\frac{a_0}{2}M + \frac{a_1}{2}L + \frac{S^0}{4\pi}\right]\vect I - \frac{b}{2}L\vect e+ \frac{\tilde  S^G \vect k}{4\pi} = \vect b_i^E
 \]
 \subsubsection{E en fonction de J}
-D’après la CIOE \(\vE_t = Z\vJ\) : \(M\v e = Z M\v I\).
+D’après la CIOE \(\vE_t = Z\vJ\) : \(M\vect e = Z M\vect I\).
 \[
-  \left[\frac{a_0}{2}M + \frac{L}{2}(a_1I_d - bM^{-1}ZM) + \frac{S^0}{4\pi}\right]\v I + \frac{\tilde S^G }{4\pi}\v k = \v b_i^E
+  \left[\frac{a_0}{2}M + \frac{L}{2}(a_1I_d - bM^{-1}ZM) + \frac{S^0}{4\pi}\right]\vect I + \frac{\tilde S^G }{4\pi}\vect k = \vect b_i^E
 \]
 \subsubsection{E en fonction de K}
 \(\vn \pvect \vE_t = \vK\).
 \(\vK = \sum k_j \phi_j = \sum e_j \vn \pvect \phi_j = -\sum e_j p_j \).
-\(M \v k = - \tilde M \v e\)
+\(M \vect k = - \tilde M \vect e\)
 \[
-  \left[\frac{a_0}{2}G + \frac{a_1}{2}L+\frac{S^0}{4\pi}\right]\v I + \left[\frac{\tilde S^G }{4\pi}+  \frac{b}{2}L\tilde M^{-1}M \right]\v k = \v b_i^E
+  \left[\frac{a_0}{2}G + \frac{a_1}{2}L+\frac{S^0}{4\pi}\right]\vect I + \left[\frac{\tilde S^G }{4\pi}+  \frac{b}{2}L\tilde M^{-1}M \right]\vect k = \vect b_i^E
 \]
 %%% SECTION MFIE
 \subsection{MFIE}
@@ -139,16 +139,16 @@ On va injecter la CIOE dans la MFIE, faire un produit scalaire avec une fonction
 \end{multline}
 On remarque \( \vn \pvect L(p_j)\cdot \phi_i = L(p_j)\cdot(\phi_i\pvect\vn) = L(p_j)\cdot p_i = X_{ij}\). 
 \[
-  \left[\frac{1}{2a_0}M + \frac{S^0}{4\pi}\right]\v I + \frac{a_1}{2a_0}X\v I' - \frac{b}{2a_0}X\v e' - \left[ \frac{\tilde S^G}{4\pi}\right]\v k = \v b_i^H
+  \left[\frac{1}{2a_0}M + \frac{S^0}{4\pi}\right]\vect I + \frac{a_1}{2a_0}X\vect I' - \frac{b}{2a_0}X\vect e' - \left[ \frac{\tilde S^G}{4\pi}\right]\vect k = \vect b_i^H
 \]
 D’après Bruno TODO \(X = -9\tilde N^tL^D\tilde N - L^D\) %TODO
 
-\(\v I' = \tilde M^{-1}M\v I\)
+\(\vect I' = \tilde M^{-1}M\vect I\)
 
-\(\v e' = \v k\)
+\(\vect e' = \vect k\)
 
 On obtient alors 
 \[
-  \left[\frac{1}{2a_0}M + \frac{a_1}{2a_0}X\tilde M^{-1}M + \frac{S^0}{4\pi}\right]\v I - \left[\frac{b}{2a_0}X+ \frac{\tilde S^G}{4\pi}\right]\v k = \v b_i^H
+  \left[\frac{1}{2a_0}M + \frac{a_1}{2a_0}X\tilde M^{-1}M + \frac{S^0}{4\pi}\right]\vect I - \left[\frac{b}{2a_0}X+ \frac{\tilde S^G}{4\pi}\right]\vect k = \vect b_i^H
 \]
 

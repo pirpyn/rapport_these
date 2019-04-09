@@ -2,14 +2,14 @@
 
     % On rappelle les formules des opérateurs \(\vdiv, \vrot\) en coordonnée cylindrique \((r,\theta,z)\).
     % \begin{align}
-    %     \vrot \v{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\v{e_r} + 
-    %     \left(\ddr{z}{V_r} - \ddr{r}{V_z}\right)\v{e_\theta} +
-    %     \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\v{e_z} 
+    %     \vrot \vect{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\vect{e_r} + 
+    %     \left(\ddr{z}{V_r} - \ddr{r}{V_z}\right)\vect{e_\theta} +
+    %     \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\vect{e_z} 
     %     \\
-    %     \vdiv \v{V} &= \frac{1}{r}\ddr{r}{(rV_r)}+\frac{1}{r}\ddr{\theta}{V_\theta}+\ddr{z}{V_z}
+    %     \vdiv \vect{V} &= \frac{1}{r}\ddr{r}{(rV_r)}+\frac{1}{r}\ddr{\theta}{V_\theta}+\ddr{z}{V_z}
     %     \\
-    %     \vgrad f &= \ddr{r}{f}\v{e_r}
-    %     +\frac{1}{r}\ddr{\theta}{f}\v{e_\theta} + \ddr{z}{f}\v{e_z}
+    %     \vgrad f &= \ddr{r}{f}\vect{e_r}
+    %     +\frac{1}{r}\ddr{\theta}{f}\vect{e_\theta} + \ddr{z}{f}\vect{e_z}
     % \end{align}
 
     \begin{figure}[!hbt]
@@ -33,7 +33,7 @@
         \end{equation}
         et \(J_n\) et \(H_n^{(2)}\) des solutions de l'équation de Bessel d'ordre \(n\).
         
-        Alors \(\exists (c_1,c_2,c_3,c_4) \in \CC^4\) tels que la 3\ieme composante des champs soit
+        Alors \(\exists (c_1,c_2,c_3,c_4) \in \CC^4\) tels que 
         \begin{subequations}
             \begin{align}
                 \hat{E_z}(r,n,k_z) &= c_1 J_n\left(k_3r\right) + c_2 H_n^{(2)}\left(k_3r\right)
@@ -48,32 +48,32 @@
         On peut simplifier les opérateurs différentiels:
 
         \begin{align}
-            \vrot \hat \vE(r,n,k_z) &= i\left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right)\v{e_r} + 
-            \left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\v{e_\theta} +
-            \frac{1}{r}\left(\ddr{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\v{e_z}
+            \vrot \hat \vE(r,n,k_z) &= i\left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right)\vect{e_r} + 
+            \left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\vect{e_\theta} +
+            \frac{1}{r}\left(\ddr{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\vect{e_z}
             \\
             &=i\w\mu \hat \vH(r,n,k_z)
         \end{align}
 
-        On remarque que la méthode utilisée pour le plan aboutie à une équation différentielle à coefficients non constant de type \(r\ddr{r}{X}(r,n,k_z) = M(r,n,k_z)X(r,n,k_z)\).
+        On remarque que la méthode utilisée pour le plan aboutie à une équation différentielle à coefficients non constant de type \(r\ddr{r}{\vect{X}}(r,n,k_z) = \mat{M}(r,n,k_z)\vect{X}(r,n,k_z)\).
         On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice. 
         %Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
-        On développe le système de Maxwell:
+        On couple  les 2 équations du système de Maxwell pour aboutir à une équation sur \(\hat \vE\) seul:
 
-        \begin{align}
-            \vrot \vrot \hat \vE &= \w^2\eps\mu \hat \vE
-            \\
-            \vdiv \hat \vE &= 0
-        \end{align}
+        % \begin{align}
+        %     \vrot \vrot \hat \vE &= \w^2\eps\mu \hat \vE
+        %     \\
+        %     \vdiv \hat \vE &= 0
+        % \end{align}
 
-        \begin{multline}
-            \vrot \vrot \hat \vE = \dots\\
-            i\left(\frac{n}{r^2}\left(\ddr{r}{(r\hat{E_\theta})} - in\hat{E_r}\right) - k_z\left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\right)    \v{e_r} \dots\\ 
-            + \left(-k_z\left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right) -\ddr{r}{}\left(\frac{1}{r}\left(\ddr{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\right)\right)    \v{e_\theta} \dots\\
-            + \frac{1}{r}\left(\ddr{r}{} \left(r\left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\right) + n \left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right)\right) \v{e_z}
-        \end{multline}
+        % \begin{multline}
+        %     \vrot \vrot \hat \vE = \dots\\
+        %     i\left(\frac{n}{r^2}\left(\ddr{r}{(r\hat{E_\theta})} - in\hat{E_r}\right) - k_z\left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\right)    \vect{e_r} \dots\\ 
+        %     + \left(-k_z\left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right) -\ddr{r}{}\left(\frac{1}{r}\left(\ddr{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\right)\right)    \vect{e_\theta} \dots\\
+        %     + \frac{1}{r}\left(\ddr{r}{} \left(r\left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\right) + n \left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right)\right) \vect{e_z}
+        % \end{multline}
 
-        On aboutit au système suivant
+        % On aboutit au système suivant
         \begin{equation}
             \left\lbrace
             \begin{array}{ccc}
@@ -93,9 +93,7 @@
 
         Or comme \(\vdiv \hat \vE = i\w\mu\vdiv\vrot \hat \vH = 0\), on a
         \begin{align}
-            \vdiv\hat \vE &= \frac{1}{r}\ddr{r}{(r\hat{E_r})} + \frac{in}{r}\hat{E_\theta} + ik_z\hat{E_z}
-            \\
-            &=0
+            \vdiv\hat \vE &= \frac{1}{r}\ddr{r}{(r\hat{E_r})} + \frac{in}{r}\hat{E_\theta} + ik_z\hat{E_z} &=
             \\
             k_z^2r^2 \hat{E_z} &= ik_zr\ddr{r}{(r\hat{E_r})} - nk_zr\hat{E_\theta}
         \end{align}
@@ -174,7 +172,7 @@
                     c_4
                 \end{bmatrix}
                 \label{eq:imp_fourier:cylindre:Et}\\
-                \v{e_r}\times\hat \vH_t(r,n,k_z) &= 
+                \vect{e_r}\times\hat \vH_t(r,n,k_z) &= 
                 \mJ_{H}(r,n,k_z)
                 \begin{bmatrix}
                     c_1 \\
@@ -208,7 +206,7 @@
             \right.
         \end{equation}
 
-        Cela revient à résoudre \(\v{Y} = \mat{M}\v{X}\) où la matrice \(\mat{M}\) et les vecteurs \(\v{X}, \v{Y}\) sont définis tels que
+        Cela revient à résoudre \(\vect{Y} = \mat{M}\vect{X}\) où la matrice \(\mat{M}\) et les vecteurs \(\vect{X}, \vect{Y}\) sont définis tels que
         \begin{equation}
             \mat{M} =
             \begin{bmatrix}
@@ -221,7 +219,7 @@
             0 & -i\w\eps & -ik_z & 0
             \end{bmatrix}
             \,
-            \v{X} = 
+            \vect{X} = 
             \begin{bmatrix}
                 \hat{E_r}\\
                 \hat{E_\theta}\\
@@ -229,7 +227,7 @@
                 \hat{H_\theta}
             \end{bmatrix}
             \,
-            \v{Y} = 
+            \vect{Y} = 
             \begin{bmatrix}
                 -\frac{in}{r}\hat{E_z}\\
                 \ddr{r}{\hat{E_z}}\\
@@ -238,7 +236,7 @@
             \end{bmatrix}
         \end{equation}
 
-        À condition que \(\det(\mat{M}) = (\w^2\eps\mu-k_z^2)^2\) soit non nul, on peut déduire \(\v{X}\):
+        À condition que \(\det(\mat{M}) = (\w^2\eps\mu-k_z^2)^2\) soit non nul, on peut déduire \(\vect{X}\):
 
         \begin{equation}
             \begin{bmatrix}
@@ -265,7 +263,7 @@
             \end{bmatrix}
         \end{equation}
 
-        On extrait alors \(\hat{E_\theta}, \hat{H_\theta}\) pour obtenir les champs tangentielles à \(\v{e_r}\) en tout point, sachant déjà \(\hat{E_z}, \hat{H_z}\).
+        On extrait alors \(\hat{E_\theta}, \hat{H_\theta}\) pour obtenir les champs tangentielles à \(\vect{e_r}\) en tout point, sachant déjà \(\hat{E_z}, \hat{H_z}\).
 
         \begin{align}
             \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} + i\w\mu\ddr{r}{\hat{H_z}}\right)
@@ -308,7 +306,7 @@
                 \end{bmatrix}
                 \\
                 \label{eq:imp_fourier:cylindre:champs:H}
-                \v{e_r}\times\hat \vH_t(r,n,k_z) &= 
+                \vect{e_r}\times\hat \vH_t(r,n,k_z) &= 
                 \mJ_{H}(r)
                 \begin{bmatrix}
                     c_1 \\
@@ -336,7 +334,7 @@
         \begin{defn}
             On définit le symbole \(\hat \mZ(n,k_z)\) de l'opérateur d'impédance la matrice telle que
             \begin{equation}
-                \hat \vE_t(r_1,n,k_z) = \hat \mZ(n,k_z) \left(\v{e_r}\pvect \hat \vH_t(r_1,n,k_z)\right)
+                \hat \vE_t(r_1,n,k_z) = \hat \mZ(n,k_z) \left(\vect{e_r}\pvect \hat \vH_t(r_1,n,k_z)\right)
             \end{equation}
         \end{defn}
 
@@ -387,7 +385,7 @@
                     c_4
                 \end{bmatrix}
                 \\
-                \v{e_r}\pvect \hat \vH_t(r_1,n,k_z) &= 
+                \vect{e_r}\pvect \hat \vH_t(r_1,n,k_z) &= 
                 \left(\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0) \right)
                 \begin{bmatrix}
                     c_2 \\
@@ -471,7 +469,7 @@
 
             On définit pour chaque interface, le symbole \(\hat \mZ_m\) tel que 
             \begin{equation}
-                \hat \vE_t(r_m,n,k_z) = \hat \mZ_m(n,k_z) \left(\v{e_r} \pvect \hat \vH_t(r_m,n,k_z)\right)
+                \hat \vE_t(r_m,n,k_z) = \hat \mZ_m(n,k_z) \left(\vect{e_r} \pvect \hat \vH_t(r_m,n,k_z)\right)
             \end{equation}
         \end{defn}
 
@@ -570,7 +568,7 @@
                     c_4
                 \end{bmatrix}
                 \\
-                \v{e_r}\times\vH_t &= 
+                \vect{e_r}\times\vH_t &= 
                 \left(\mH_{Hm}(r_{m}) - \mJ_{Hm}(r_{m})\mA_{Jm}(r_{m-1})^{-1}\mA_{Hm}(r_{m-1}) \right)
                 \begin{bmatrix}
                     c_2 \\
@@ -628,7 +626,7 @@
             \label{fig:imp_fourier:cylindre:hoppe_p62}
         \end{figure}
         
-        La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon} montre la converge du symbole de l'impédance d'un cylindre vers le symbole du plan en fonction du rayon du cylindre.
+        La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon} montre la convergence du symbole de l'impédance d'un cylindre vers le symbole du plan en fonction du rayon du cylindre.
 
         \begin{figure}[!hbt]
             \centering
