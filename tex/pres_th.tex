@@ -52,12 +52,12 @@ Soit \((\vE,\vH)\) dans \((\Hrot(\OO\cup\OO^c))^3 \times (\Hrot(\OO\cup\OO^c))^3
 \begin{equation}
 \label{eq:pres_th:intro:maxwell}
 \left\lbrace \begin{matrix}
-\vrot \vE(\v x) + i\w\mu'(\v x) \vH(\v x) &=& 0 \\
-\vrot \vH(\v x) - i\w\eps'(\v x) \vE(\v x) &=& 0 \\
+\vrot \vE(\vx) + i\w\mu'(\vx) \vH(\vx) &=& 0 \\
+\vrot \vH(\vx) - i\w\eps'(\vx) \vE(\vx) &=& 0 \\
 \end{matrix} \right.
 \quad \text{dans \(\OO\cup\OO^c\)}
 \end{equation}
-A l'extérieur de \(\OO\), les paramètres sont \(\eps'(\v x),\mu'(\v x)\) sont \(\eps_0,\mu_0\) et à l'intérieur elles sont \(\eps(\v x),\mu(\v x)\).
+A l'extérieur de \(\OO\), les paramètres sont \(\eps'(\vx),\mu'(\vx)\) sont \(\eps_0,\mu_0\) et à l'intérieur elles sont \(\eps(\vx),\mu(\vx)\).
 
 
 Nous complétons ces équations par des conditions aux limites à la surface \(S\) de \(\OO\), supposée régulière et dont on note la normale sortante \(\vn\):
@@ -76,7 +76,7 @@ Enfin comme nous considérons un milieu extérieur non-borné, nous nous dotons 
 
 \begin{equation}
 \label{eq:pres_th:intro:silver-muller}
-\lim_{r\rightarrow\infty} r \left|\left|\sqrt{\eps'}\vE - \sqrt{\mu'}\vH\pvect\frac{\v r}{r}\right|\right| = 0
+\lim_{r\rightarrow\infty} r \left|\left|\sqrt{\eps'}\vE - \sqrt{\mu'}\vH\pvect\frac{\vect{r}}{r}\right|\right| = 0
 \end{equation} 
 
 \subsection*{Les conditions d'impédance comme approximation d'un opérateur de Calderón}
@@ -84,7 +84,7 @@ Enfin comme nous considérons un milieu extérieur non-borné, nous nous dotons 
 Tel que l'a démontré \cite[p.~109]{cessenat_mathematical_1996}, le problème \eqref{eq:pres_th:intro:maxwell}  posé à l'intérieur et à l'extérieur de l'objet, doté de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} est équivalent au problème \eqref{eq:pres_th:intro:maxwell} à l'extérieur de l'objet doté de de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} et d'une condition limite type opérateur de Calderón sur la surface extérieur de l'objet : 
 \begin{equation}
 \label{eq:pres_th:ci:ci-calderon}
-\vn \pvect \vn \pvect \vE (\v x , \w ) = \Op{\mathcal Z} {\vn \pvect \vH }(\v x, \w )
+\vn \pvect \vn \pvect \vE (\vx , \w ) = \Op{\mathcal Z} {\vn \pvect \vH }(\vx, \w )
 \end{equation}
 Une \gls{acr-ci} est une approximation de l'opérateur \(\Op{\mathcal Z} {\cdot}\).
 

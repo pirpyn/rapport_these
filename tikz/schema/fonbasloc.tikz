@@ -10,10 +10,10 @@
 %\draw ($1/3*(od) + 1/3*(ou)$) node [above=2pt] {$K_j^l$};
 \draw (ol) -- (ou) -- (od) -- cycle;
 
-\draw [->,black!10!orange,thick] (ol) -- (od) node [midway,below] {\color{black!30!orange}{$\v e_1$}};
-\draw [->,black!10!orange,thick] (ol) -- (ou) node [midway,left] {\color{black!30!orange}{$\v e_2$}};
+\draw [->,black!10!orange,thick] (ol) -- (od) node [midway,below] {\color{black!30!orange}{$\vect e_1$}};
+\draw [->,black!10!orange,thick] (ol) -- (ou) node [midway,left] {\color{black!30!orange}{$\vect e_2$}};
 
-\draw[thick] (ou) +(0.3,0) circle(0.05cm) node [right=0.06cm] {$\v n$};
+\draw[thick] (ou) +(0.3,0) circle(0.05cm) node [right=0.06cm] {$\vn$};
 \fill (ou) + (0.3,0) circle(0.01cm);
 
 \draw [dashdotted] ($0.5*(ou)+0.5*(ol)$) -- ($0.5*(od)+0.5*(ol)$);

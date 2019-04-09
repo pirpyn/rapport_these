@@ -8,13 +8,13 @@
     \end{tikzpicture}
     \end{figure}
 
-    Dans un premier temps, on peut sans perte de généralités faire une rotation du repère pour avoir le plan orthogonal à \(\v e_z\). Comme il est infini dans les directions \(\v e_x, \v e_y\) et que le matériau est homogène isotrope, on utilise la transformée partielle en \(x, y\) seulement.
+    Dans un premier temps, on peut sans perte de généralités faire une rotation du repère pour avoir le plan orthogonal à \(\vect{z}\). Comme il est infini dans les directions \(\vect{e_x} \vect{e_y}\) et que le matériau est homogène isotrope, on utilise la transformée partielle en \(x, y\) seulement.
     \begin{equation}
         \vE(x,y,z) = \frac{1}{2\pi}\iint_{\RR^2} e^{i(k_x x + k_y y)}\hat{\vE} (k_x,k_y,z) \dd{k_x}\dd{k_y}
     \end{equation}
 
     \begin{prop}
-        Soient \(\v{X}(k_x,k_z,z) =
+        Soient \(\vect{X}(k_x,k_z,z) =
         \begin{bmatrix}
         \hat{E_x} &
         \hat{E_y} &
@@ -23,7 +23,7 @@
         \end{bmatrix}^t\),
         où \((\hat \vE,\hat \vH)\) sont des solutions du problème \eqref{eq:imp_fourier:intro:maxwell_harmonique}, alors il existe une matrice \(\mat{M}\) ne dépendant pas de \(z\) telle que 
         \begin{equation}
-            \ddr{z}{}\v{X}(k_x,k_z,z) = \mat{M}(k_x,k_z) \v{X}(k_x,k_z,z)
+            \ddr{z}{}\vect{X}(k_x,k_z,z) = \mat{M}(k_x,k_z) \vect{X}(k_x,k_z,z)
             \label{eq:imp_fourier:plan:edo}
         \end{equation}
     \end{prop}
@@ -48,7 +48,7 @@
         \end{align*}
 
         Les composantes normales se déduisant des composantes tangentielles, on résout l'équation différentielle  matricielle à coefficients constants 
-        suivante \(\ddr{z}{}\v{X} = \mat{M} \v{X}\) où
+        suivante \(\ddr{z}{}\vect{X} = \mat{M} \vect{X}\) où
 
         \begin{equation}
             \mat{M} = \begin{bmatrix}
@@ -66,7 +66,7 @@
             k_3=\sqrt{\w^2\eps\mu - k_x^2 -k_y^2} \quad \lambda_\pm=\pm i k_3
         \end{equation}
         \begin{equation}
-            \v{V_\pm} = 
+            \vect{V_\pm} = 
             \begin{bmatrix}
             \lambda_\pm \\
                 0 \\
@@ -74,7 +74,7 @@
                 i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) \\
             \end{bmatrix}
             \quad
-            \v{W_\pm} = 
+            \vect{W_\pm} = 
                 \begin{bmatrix}
                 0 \\
                 \lambda_\pm \\
@@ -85,8 +85,8 @@
         alors
         \begin{subequations}
             \begin{align}
-                \Ker(\mat{M}-\lambda_+\mI)=\Vect{\v{V_+};\v{W_+}}\\
-                \Ker(\mat{M}-\lambda_-\mI)=\Vect{\v{V_-};\v{W_-}}
+                \Ker(\mat{M}-\lambda_+\mI)=\Vect{\vect{V_+};\vect{W_+}}\\
+                \Ker(\mat{M}-\lambda_-\mI)=\Vect{\vect{V_-};\vect{W_-}}
             \end{align}
         \end{subequations}
     \end{prop}
@@ -94,7 +94,7 @@
     \begin{proof}
         % Pour résoudre cette EDO, nous allons chercher les vecteurs propres \(V_i\) et les valeurs propres \(\lambda_i\) associées de ce système. En effet, une solution générale de ce système s'écrit
         % \begin{equation}
-        %     \v{X}(z)= \sum\limits_{i=1}^{4}c_i e^{\lambda_i z} \v{V}_i \, c_i \in \CC
+        %     \vect{X}(z)= \sum\limits_{i=1}^{4}c_i e^{\lambda_i z} \vect{V}_i \, c_i \in \CC
         % \end{equation}
         On pose 
         \begin{equation*}
@@ -131,7 +131,7 @@
         % \end{equation}
         % Les espaces propres associés sont de dimension 2, on a 
 
-        Par un calcul immédiat, on vérifie que \(\mat{M}\v{V}_\pm = \lambda_\pm\v{V}_\pm\) et \(\mat{M}\v{W}_\pm = \lambda_\pm\v{W}_\pm\).
+        Par un calcul immédiat, on vérifie que \(\mat{M}\vect{V}_\pm = \lambda_\pm\vect{V}_\pm\) et \(\mat{M}\vect{W}_\pm = \lambda_\pm\vect{W}_\pm\).
     \end{proof}
 
     \begin{prop}
@@ -192,10 +192,10 @@
 
         Soient \((c_i)_{i} \in \CC^4\)
         \begin{equation}
-            \v{X}(k_x,k_y,z) = c_1e^{\lambda_+ z}\v{V_+}  + c_2e^{\lambda_+ z}\v{W_+} + c_3e^{\lambda_- z}\v{V_-} +c_4e^{\lambda_- z}\v{W_-}
+            \vect{X}(k_x,k_y,z) = c_1e^{\lambda_+ z}\vect{V_+}  + c_2e^{\lambda_+ z}\vect{W_+} + c_3e^{\lambda_- z}\vect{V_-} +c_4e^{\lambda_- z}\vect{W_-}
         \end{equation}
 
-        On exprime \(\hat \vE_t(k_x,k_y,z)\) et \(\v{e_z} \pvect \hat \vH_t(k_x,k_y,z)\) 
+        On exprime \(\hat \vE_t(k_x,k_y,z)\) et \(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,z)\) 
         \begin{align}
             \begin{bmatrix}
                 \hat{E_x}(k_x,k_y,z)\\
@@ -267,7 +267,7 @@
         \begin{defn}
             On définit le symbole de l'opérateur d'impédance, la matrice \(\hat \mZ(k_x,k_y)\) tel que 
             \begin{equation}
-                \hat \vE_t(k_x,k_y,0) = \hat \mZ(k_x,k_y) \left(\v{e_z} \pvect \hat \vH_t(k_x,k_y,0)\right)
+                \hat \vE_t(k_x,k_y,0) = \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0)\right)
             \end{equation}
         \end{defn}
 
@@ -364,7 +364,7 @@
         En pratique, on néglige toute les dépendance en \(y\) : \(k_y = 0\) ce qui revient à une propagation dans le plan \(xz\). Grâce à cette hypothèse, on trouve que \(\mC, \hat \mZ\) sont des matrices diagonales. 
 
         De plus, on exprime souvent l'impédance selon la polarisation. 
-        Dans le cas plan, le champ \(\vE\)-TE correspond à \({E_y} \v{e_y}\), le champ \(\vE\)-TM à \({E_x} \v{e_x}\), tandis que le champ \(\vH\)-TM correspond à \({H_x} \v{e_x}\) et le champ \(\vH\)-TE correspond à \({H_y} \v{e_y}\).
+        Dans le cas plan, le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x}\), tandis que le champ \(\vH\)-TM correspond à \({H_x} \vect{e_x}\) et le champ \(\vH\)-TE correspond à \({H_y} \vect{e_y}\).
         Dans ce cas, le symbole \(\hat \mZ\) peut se réécrire comme
         \begin{equation}
             \hat \mZ = 
@@ -407,7 +407,7 @@
         \begin{defn}
             On définit pour chaque interface, le symbole \(\hat \mZ_m\) tel que
             \begin{equation}
-                \hat \vE_t(k_x,k_y,l_m) = \hat \mZ_m(k_x,k_y) \left(\v{e_z} \pvect \hat \vH_t(k_x,k_y,l_m)\right)
+                \hat \vE_t(k_x,k_y,l_m) = \hat \mZ_m(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,l_m)\right)
             \end{equation}
         \end{defn}
 
@@ -423,10 +423,10 @@
             \end{align}
             Alors le symbole \(\hat \mZ_n\) est défini par la relation de récurrence : 
             \begin{multline}
-            \hat \mZ_m = -k_{3m}
-            \left(ik_{3m}\tan\left(k_{3m}d_m\right)\mI - \hat \mZ_{m-1}\mC_m\right) \\
-            \left(k_{3m}\mI - i\tan\left(k_{3m}d_m\right)\hat \mZ_{m-1}\mC_m\right)^{-1}
-            \mC_m^{-1}
+                \hat \mZ_m = -k_{3m}
+                \left(ik_{3m}\tan\left(k_{3m}d_m\right)\mI - \hat \mZ_{m-1}\mC_m\right) \\
+                \left(k_{3m}\mI - i\tan\left(k_{3m}d_m\right)\hat \mZ_{m-1}\mC_m\right)^{-1}
+                \mC_m^{-1}
             \end{multline}
         \end{thm}
 
