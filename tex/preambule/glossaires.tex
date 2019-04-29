@@ -30,24 +30,24 @@
   type={mat},
   sort={om},
   name={\ensuremath{\OO}},
-  description={domaine,objet},
+  description={domaine, objet},
 }
 \newglossaryentry{mat-ga}{
   type={mat},
   sort={ga},
   name={\ensuremath{\Gamma}},
-  description={frontière de \(\OOmega\)},
+  description={frontière de \(\OO\)},
 }
 \newglossaryentry{mat-vx}{
   type={mat},
   sort={vx},
-  name={\ensuremath{\vect x}},
+  name={\ensuremath{\vect{x}}},
   description={point de \(\OO\)},
 }
 \newglossaryentry{mat-vn}{
   type={mat},
   sort={vn},
-  name={\ensuremath{\vect n}},
+  name={\ensuremath{\vect{n}}},
   description={normale unitaire sortante de \(\OO\)},
 }
 \newglossaryentry{mat-boulexr}{
@@ -167,7 +167,7 @@
 \newglossaryentry{mat-vect-abstract}{
   type={mat},
   sort={vect-abstract},
-  name={\ensuremath{\v{x}}},
+  name={\ensuremath{\vect{x}}},
   description={Un vecteur.},
 }
 \newglossaryentry{mat-mat-abstract}{
@@ -185,7 +185,7 @@
 \newglossaryentry{ope-pv}{
   type={ope},
   sort={pv},
-  name={\ensuremath{\cdot \pvect \cdot }},
+  name={\ensuremath{\pvect}},
   description={produit vectoriel},
 }
 \newglossaryentry{ope-grad}{
@@ -198,7 +198,7 @@
   type={ope},
   sort={grads},
   name={\ensuremath{\vgrads}},
-  description={Gradient surfacique : \(\grads u:= \grad u - \vn ( \vn \cdot \vgrad u )},
+  description={gradient surfacique : \(\vgrads u:= \vgrad u - \vn ( \vn \cdot \vgrad u )\)},
 }
 \newglossaryentry{ope-div}{
   type={ope},
@@ -240,31 +240,31 @@
   type={ope},
   sort={hodge-LD},
   name={\ensuremath{L_D}},
-  description={\) \int_\Gamma \LD( u)\cdot  v := - \int_S \vdivs  u \vdivs  v \(},
+  description={\( \int_\Gamma \LD( u)\cdot  v := - \int_S \vdivs  u \vdivs  v \)},
 }
 \newglossaryentry{ope-LR}{
   type={ope},
   sort={hodge-LR},
   name={\ensuremath{L_R}},
-  description={\) \int_\Gamma \LR( u)\cdot  v :=  \int_S \left( \vn \cdot \vrots  u \right)\left(\vn \cdot \vrots  v \right)\(},
+  description={\( \int_\Gamma \LR( u)\cdot  v :=  \int_S \left( \vn \cdot \vrots  u \right)\left(\vn \cdot \vrots  v \right)\)},
 }
 \newglossaryentry{ope-L}{
   type={ope},
   sort={hodge-L},
   name={\ensuremath{L}},
-  description={\):=L_D - L_R\(},
+  description={\( = L_D - L_R\)},
 }
 \newglossaryentry{ope-real}{
   type={ope},
   sort={creal},
   name={\ensuremath{\Re(z)}},
-  description={partie réelle de \)z\(},
+  description={partie réelle de \(z\)},
 }
 \newglossaryentry{ope-imag}{
   type={ope},
   sort={cimag},
   name={\ensuremath{\Im(z)}},
-  description={partie imaginaire de \)z\(},
+  description={partie imaginaire de \(z\)},
 }
 \newglossaryentry{ope-trans}{
   type={ope},
@@ -275,14 +275,14 @@
 \newglossaryentry{ope-imp}{
   type={ope},
   sort={imp},
-  name={\ensuremath{\Op{\mZ}{\vn \pvect \vH}}},
-  description={Opérateur d'impédance associé au symbole \)\mZ\( appliqué à \)\vn \pvect \vH,
+  name={\ensuremath{\Op{\sigma}{f}}},
+  description={Opérateur pseudo-différentiel associé au symbole \(\sigma\) appliqué à \(f\)},
 }
 \newglossaryentry{ope-saut}{
   type=ope,
   sort=saut,
   name={\ensuremath{[\hat U]_{s}}},
-  description={Saut de U à travers la surface \(s\) \(U(s+) - U_(s-)\).},
+  description={Saut de U à travers la surface \(s\): \(U(s+) - U(s-)\).},
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -290,7 +290,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\newglossaryentry{phy-e}
+\newglossaryentry{phy-e}{
   type={phy},
   sort={E},
   name={\ensuremath{\vE}},
@@ -300,7 +300,7 @@
   type={phy},
   sort={H},
   name={\ensuremath{\vH}},
-  description={champ magnétique normalisé par \gls{phy-eta}_0},
+  description={champ magnétique normalisé par \(\gls{phy-eta}_0\)},
 }
 \newglossaryentry{phy-f}{
   type={phy},
@@ -354,7 +354,7 @@
   type={phy},
   sort={eta},
   name={\ensuremath{\eta}},
-  description={impédance diélectrique \(\eta=\srqt{\mu\slash\eps}\)},
+  description={impédance diélectrique \(\eta=\sqrt{\mu\slash\eps}\)},
 }
 \newglossaryentry{phy-eta_zero}{
   type={phy},
@@ -366,7 +366,7 @@
   type={phy},
   sort={nu},
   name={\ensuremath{\nu}},
-  description={indice du matériau \(\nu = \srqt{\mu\eps}\)},
+  description={indice du matériau \(\nu = \sqrt{\mu\eps}\)},
 }
 \newglossaryentry{phy-k0}{
   type={phy},
@@ -513,4 +513,16 @@
   descriptionplural={équations intégrales},
   first={\glsentrydesc{acr-ei} (\glsentrytext{acr-ei})},
   firstplural={\glsentrydescplural{acr-ei} (\glsentryplural{acr-ei})},
+}
+\newglossaryentry{acr-efie}{
+  type={acr},
+  name={EFIE},
+  description={Electric Field Integral Equation},
+  first={\glsentrydesc{acr-efie} (\glsentrytext{acr-efie})},
+}
+\newglossaryentry{acr-mfie}{
+  type={acr},
+  name={MFIE},
+  description={Magnetic Field Integral Equation},
+  first={\glsentrydesc{acr-mfie} (\glsentrytext{acr-mfie})},
 }
