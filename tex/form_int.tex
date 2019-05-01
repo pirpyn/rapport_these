@@ -2,7 +2,7 @@
   \subsection{Fonctions de base}
     Soit \(\O_h\) un maillage fermé de \(\O\) en \(N_e\) éléments triangulaires. Soit \(N\) le nombre d'arête du maillage.
 
-    Soit \(\phi_j\) la fonction de base associée à l’arête orientée \(v_j\) conjointe aux éléments  \(K_j^l\) (orientation directe) et \(K_j^r\) (orientation indirecte) (voir \cite{nedelec_acoustic_2001}.\\
+    Soit \(\phi_j\) la fonction de base associée à l’arête orientée \(v_j\) conjointe aux éléments  \(K_j^l\) (orientation directe) et \(K_j^r\) (orientation indirecte).\\
 
     Soit \(\vx = (x_1,x_2,x_3)\).
 
@@ -121,9 +121,18 @@
         S_{pq} 
           &= 4\pi ik \int_\Gamma \left( \int_\Gamma g(\vx,\vy) \phi_p(\vy) \dd{s}(\vy) \right) \cdot \phi_q (\vx)\dd{s}(\vx) \cdots\\
           &~+ 4\pi \frac{i}{k}\int_\Gamma \left( \int_\Gamma g(\vx,\vy) \vdiv \phi_p (\vy) \dd{s}(\vy) \right) \vdiv \phi_q(\vx)\dd{s}(\vx)\\ 
-        \tilde{S}_{pq} 
+        \tilde{S}_{pq}
           &= 4\pi \int_\Gamma \left( \int_\Gamma \vgrad g(\vx,\vy) \pvect \phi_p(\vy) \dd{s}(\vy) \right) \cdot \phi_q(\vx)\dd{s}(\vx)
       \end{align}
+
+      \begin{prop}
+        Les matrices \(\mS\) et \(\mSt\) sont symétriques.
+      \end{prop}
+      \begin{proof}
+        Pour \(\mS\), c'est une conséquence immédiate des propriétés de l'intégrale et de la symétrie de la fonction de Green.
+        Pour \(\mSt\), 
+      \end{proof}
+
       Le second membre est obtenu en projetant le champ incident 
       \begin{equation}
         b_i^E = \int_\Gamma \vE^{inc}_t(\vx) \cdot \phi_i(\vx)\dd{s}(\vx)
