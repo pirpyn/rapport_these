@@ -1,6 +1,64 @@
 \section{Résolution des équations intégrales par la méthode des éléments finis}
   \subsection{Fonctions de base}
-    Soit \(\O_h\) un maillage fermé de \(\O\) en \(N_e\) éléments triangulaires. Soit \(N\) le nombre d'arête du maillage.
+    Soit \(\OO_h\) un maillage fermé de \(\OO\) en \(N_e\) éléments triangulaires. Soit \(N\) le nombre d'arête du maillage.
+
+    % Les commandes qui suivent servent pour les 3 prochains schémas
+    \newcommand{\ncouche}{8}
+    \newcommand{\xa}{-3}
+    \newcommand{\ya}{0.5}
+    \newcommand{\xb}{-0.5}
+    \newcommand{\yb}{-2}
+    \newcommand{\xc}{0.5}
+    \newcommand{\yc}{2.5}
+    \newcommand{\xd}{5}
+    \newcommand{\yd}{-0.5}
+
+    \subsubsection[Fonctions phi Hdiv-conforme]{Fonctions \(\vect{\phi}\) \(\Hdiv\)-conforme}
+
+      Ces fonctions ont été introduites par \cite[eq.~6]{rao_electromagnetic_1982}.
+    \begin{minipage}{0.58\textwidth}
+      \begin{center}
+        \begin{tikzpicture}[scale=1]
+          \input{tikz/schema/fonbasloc_phi.tikz}
+        \end{tikzpicture}
+      \end{center}
+    \end{minipage} 
+    \begin{minipage}{0.4\textwidth}
+      En coordonnées locales au triangle \(T_j^l\) \(\vx = (\xi_1,\xi_2\),
+      \begin{align*}
+        phi_j(\vx) &= \frac{1}{2|K_j^l|}\left(\xi_1 \vect{e_1} + \xi_2 \vect{e_2}\right)
+      \end{align*}
+
+      En coordonnées globales  \((x_1,x_2,x_3)\),
+      \begin{align*}
+        \phi_j(\vx) &= \mathbf{1}_{K_j^l}(\vx)\frac{\vx-\vect{o_j^l}}{2|K_j^l|} \\&- \mathbf{1}_{K_j^r}(\vx)\frac{\vx-\vect{o_j^r}}{2|K_j^r|}
+      \end{align*}
+    \end{minipage}
+
+    \subsubsection[Fonctions p Hcurl-conforme]{Fonctions \(\vect{p}\) \(\Hrot\)-conforme}
+
+      \begin{center}
+        \begin{tikzpicture}[scale=1]
+          \input{tikz/schema/fonbasloc_p.tikz}
+        \end{tikzpicture}
+      \end{center}
+
+
+    \subsubsection[Fonctions q Hcurl-conforme]{Fonctions \(\vect{q}\) \(\Hrot\)-conforme}
+
+      Ces fonctions ont été introduites par \cite[eq.~28]{bendali_boundary-element_1999}.
+
+      \begin{center}
+        \begin{tikzpicture}[scale=1]
+          \input{tikz/schema/fonbasloc_q.tikz}
+        \end{tikzpicture}
+      \end{center}
+
+      \begin{TODO}
+        Les fonctions \(\vect{p}\) ne semblent pas conforme. A vérifier.
+      \end{TODO}
+
+    \subsection{Fonction de bases}
 
     Soit \(\phi_j\) la fonction de base associée à l’arête orientée \(v_j\) conjointe aux éléments  \(K_j^l\) (orientation directe) et \(K_j^r\) (orientation indirecte).\\
 
@@ -186,7 +244,7 @@
 
     Les CIOE font intervenir les opérateurs différentiels \gls{ope-LD}, \gls{ope-LR}, \gls{ope-L}. On introduit donc les matrices de rigidités \(\mLD,\mLR,\mL\).
 
-    Comme les \(\phi_j\) sont dans \(\Hdiv\), on définit \(\mLD\):
+    Comme les \(\phi_j\) sont dans \(\Hdiv\), de l'opérateur \gls{ope-LD}, on définit la matrice \(\mLD\) :
     \begin{align}
       \int_\Gamma L_D(U)(\vx) \cdot \phi_i(\vx) \dd{s}(\vx)  
         & \simeq - \sum_{j=1}^N u_j \int_\Gamma \vdiv \phi_j(\vx) \vdiv \phi_i(\vx) \dd{s}(\vx) = \mLD \vu

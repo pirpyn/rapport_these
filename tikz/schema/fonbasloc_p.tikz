@@ -1,0 +1,75 @@
+%%% Triangle de gauche
+
+\tikzmath
+{
+    \ra = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
+    \rb = sqrt((\xc-\xa)^2 + (\yc-\ya)^2);
+    \rc = sqrt((\xa-\xb)^2 + (\ya-\yb)^2);
+    \aire = 0.25*sqrt((\ra+\rb-\rc)*(\ra-\rb+\rc)*(-\ra+\rb+\rc)*(\ra+\rb+\rc));
+}
+
+\coordinate (na) at (\xa,\ya);
+\coordinate (nb) at (\xb,\yb);
+\coordinate (nc) at (\xc,\yc);
+
+\coordinate (ec) at ($(nb)-(na)$);
+\coordinate (ea) at ($(nc)-(nb)$);
+
+\draw (na) -- (nc) -- (nb) -- cycle;
+
+\foreach \couche in {1,...,\ncouche}
+{
+    \tikzmath
+    {
+        \a = \couche/\ncouche;
+    }
+    \foreach \n in {0,...,\couche}
+    {
+        \tikzmath
+        {
+            \b = \n/\couche;
+        }
+        \coordinate (phi) at ($\a*(ec)+\a*\b*(ea)$);
+        \coordinate (x) at ($(na)+(phi)$);
+        \path let \p1=(phi) in coordinate (p) at (\y1,-\x1);
+        % \draw (x) node {\(x_\n^\couche\)};
+        \draw [->] (x) -- ($(x)+1/\aire*(p)$);
+    }
+}
+
+%%% Triangle de droite
+
+\tikzmath
+{
+    \rd = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
+    \rb = sqrt((\xc-\xd)^2 + (\yc-\yd)^2);
+    \rc = sqrt((\xd-\xb)^2 + (\yd-\yb)^2);
+    \aire = 0.25*sqrt((\rd+\rb-\rc)*(\rd-\rb+\rc)*(-\rd+\rb+\rc)*(\rd+\rb+\rc));
+}
+
+\coordinate (nd) at (\xd,\yd);
+
+\coordinate (ed) at ($(nc)-(nb)$);
+\coordinate (ec) at ($(nb)-(nd)$);
+
+\draw (nb) -- (nd) -- (nc) -- cycle;
+
+\foreach \couche in {1,...,\ncouche}
+{
+    \tikzmath
+    {
+        \a = \couche/\ncouche;
+    }
+    \foreach \n in {0,...,\couche}
+    {
+        \tikzmath
+        {
+            \b = \n/\couche;
+        }
+        \coordinate (phi) at ($\a*(ec)+\a*\b*(ed)$);
+        \coordinate (x) at ($(nd)+(phi)$);
+        \path let \p1=(phi) in coordinate (p) at (\y1,-\x1);
+        % \draw (x) node {\(x_\n^\couche\)};
+        \draw [->] (x) -- ($(x)-1/\aire*(p)$);
+    }
+}
