@@ -1,0 +1,96 @@
+%%% Triangle de gauche
+
+\tikzmath
+{
+    \ra = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
+    \rb = sqrt((\xc-\xa)^2 + (\yc-\ya)^2);
+    \rc = sqrt((\xa-\xb)^2 + (\ya-\yb)^2);
+    \aire = 0.25*sqrt((\ra+\rb-\rc)*(\ra-\rb+\rc)*(-\ra+\rb+\rc)*(\ra+\rb+\rc));
+}
+
+
+\coordinate (na) at (\xa,\ya);
+\coordinate (nb) at (\xb,\yb);
+\coordinate (nc) at (\xc,\yc);
+
+\coordinate (ec) at ($(nb)-(na)$);
+\coordinate (ea) at ($(nc)-(nb)$);
+
+\draw (na) -- (nc) -- (nb) -- cycle;
+
+%\def \couche {1}
+\coordinate (q) at (ea);
+%\def \n {1}
+\coordinate (phi) at (0,0);
+\coordinate (x) at ($(na)+(phi)$);
+%\draw (x) nnbe {\(x_\n^\couche\)};
+\draw [->] (x) -- ($(x)+1/\aire*(q)$);
+
+
+\foreach \couche in {2,...,\ncouche}
+{
+    \tikzmath
+    {
+        \a = (\couche-1)/(\ncouche-1);
+        \c = 1 - 2*\a;
+    }
+    \coordinate (q) at ($\c*(ea)$);
+    \foreach \n in {1,...,\couche}
+    {
+        \tikzmath
+        {
+            \b = (\n-1)/(\couche-1);
+        }
+        \coordinate (phi) at ($\a*(ec)+\a*\b*(ea)$);
+        \coordinate (x) at ($(na)+(phi)$);
+%        \draw (x) nnbe {\(x_\n^\couche\)};
+        \draw [->] (x) -- ($(x)+1/\aire*(q)$);
+    }
+}
+
+%%% Triangle de droite
+
+\tikzmath
+{
+    \rd = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
+    \rb = sqrt((\xc-\xd)^2 + (\yc-\yd)^2);
+    \rc = sqrt((\xd-\xb)^2 + (\yd-\yb)^2);
+    \aire = 0.25*sqrt((\rd+\rb-\rc)*(\rd-\rb+\rc)*(-\rd+\rb+\rc)*(\rd+\rb+\rc));
+}
+
+\coordinate (nd) at (\xd,\yd);
+
+\coordinate (ed) at ($(nc)-(nb)$);
+\coordinate (ec) at ($(nb)-(nd)$);
+
+\draw (nb) -- (nd) -- (nc) -- cycle;
+
+%\def \couche {1}
+\coordinate (q) at (ed);
+%\def \n {1}
+\coordinate (phi) at (0,0);
+\coordinate (x) at ($(nd)+(phi)$);
+%\draw (x) nnbe {\(x_\n^\couche\)};
+\draw [->] (x) -- ($(x)+1/\aire*(q)$);
+
+
+\foreach \couche in {2,...,\ncouche}
+{
+    \tikzmath
+    {
+        \a = (\couche-1)/(\ncouche-1);
+        \c = 1 - 2*\a;
+    }
+    \coordinate (q) at ($\c*(ed)$);
+    \foreach \n in {1,...,\couche}
+    {
+        \tikzmath
+        {
+            \b = (\n-1)/(\couche-1);
+        }
+        \coordinate (phi) at ($\a*(ec)+\a*\b*(ed)$);
+        \coordinate (x) at ($(nd)+(phi)$);
+%        \draw (x) nnbe {\(x_\n^\couche\)};
+        \draw [->] (x) -- ($(x)+1/\aire*(q)$);
+    }
+}

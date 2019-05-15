@@ -19,7 +19,7 @@
 \draw[thick] (ou) +(0.3,0) circle(0.05cm) node [right=0.06cm] {\(\vn\)};
 \fill (ou) + (0.3,0) circle(0.01cm);
 
-\draw [dashdotted] ($0.5*(ou)+0.5*(ol)$) -- ($0.5*(od)+0.5*(ol)$);
+% \draw [dashdotted] ($0.5*(ou)+0.5*(ol)$) -- ($0.5*(od)+0.5*(ol)$);
 
 % 1
 \coordinate (x) at ($1/2*(ou)+1/4*(od)$);
