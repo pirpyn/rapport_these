@@ -1,0 +1,96 @@
+\section[Espaces Hdiv Hrot]{Espaces \(\Hdiv\), \(\Hrot\)}
+
+Ces espaces ont été étudié par \cite{nedelec_mixed_1980}. Nous rappelons dans cette annexe, les résultats principaux et les relations de compatibilité pour des fonctions de bases associées à ces espaces.
+
+Soit \(\Gamma\) une surface fermée bornée régulière de \(\RR^3\). 
+Soit \(\Gamma_h\) une approximation de \(\Gamma\) par un maillage triangulaire, on désigne notamment un triangle de \(\Gamma_h\) par \(T\).
+
+\begin{defn}
+    Pour tout \(T \in \Gamma_h\), soit \(\phi_{|T}\) une fonction intégrable sur \(T\) alors
+    on définit la notion de fonction intégrale sur \(\Gamma_h\), la fonction \(\phi_h\) telle que
+    \begin{equation}
+        \int_{\Gamma_h} \phi_h \dd{\Gamma_h} = \sum_{T\in\Gamma_h} \int_T \phi_{|T} \dd{T}
+    \end{equation}
+\end{defn}
+
+\begin{defn}
+    On dit que \(\phi_h \in L^2(\Gamma_h)\) si et seulement si \(\phi_{|T} \in L^2(T)\) pour tout \(T \in \Gamma_h\)
+\end{defn}
+
+\subsection[Hdiv]{\(\Hdiv\)}
+
+\begin{defn}
+    On dit que \(\vect{\Psi_h} \in \Hdiv(\Gamma_h)\) si et seulement si \(\vect{\Psi}_{|T} \in \Hdiv(T)\) pour tout \(T \in \Gamma_h\)
+    Alors on définit sous forme faible \(\vdivs \vect{\Psi_h} \).
+    Soit \(\phi \in C^1(\Gamma)\) 
+    \begin{equation}
+        \left< \vdivs \vect{\Psi_h}, \phi \right> %\int_{\Gamma_h} \vdivs \vect{\Psi_h} \phi \dd{\Gamma_h} 
+        = - \sum_{T\in\Gamma_h} \int_T \vect{\Psi}_{|T} \cdot \vgrads \phi\dd{T}
+    \end{equation}
+\end{defn}
+
+Autrement dit, \cite[eq.~5.3]{bendali_equations_2014}
+\begin{defn}
+    On dit que \(\vect{\Psi_h} \in \Hdiv(\Gamma_h)\) si et seulement si il existe \(\psi\in L^2(\Gamma)\) telle que pour toute \(\phi \in C^1(\Gamma)\) 
+    \begin{equation}
+        \left< \vdivs \vect{\Psi_h}, \phi \right> = \int_\Gamma \psi \phi \dd{\Gamma}
+    \end{equation}
+\end{defn}
+
+On déduit la relation de compatibilité \(\Hdiv\) suivante (\cite[Lemme.~8]{nedelec_mixed_1980})
+\begin{prop}
+    \label{prop:annex:hdiv_hrot:hdiv}
+    Soit \(\vect{\Psi}\) tel que \(\vect{\Psi}_{|T}\) soit régulier pour tout \(T\in\Gamma_h\).\\
+    Alors \(\vect{\Psi} \in \Hdiv(\Gamma_h)\) si et seulement si pour toute arête \(v_j\) séparant les triangles \(T_j^g\) et \(T_j^d\) où \(\vect{\nu}_j\) est le vecteur unitaire sortant du triangle \(T_j^g\) vers \(T_j^d\), on a
+    \begin{equation}
+        \left( \vect{\Psi}_{|T_j^g} - \vect{\Psi}_{|T_j^d} \right ) \cdot \vect{\nu}_j = 0
+    \end{equation}
+\end{prop}
+    
+\begin{proof}
+    Cela ce démontre grâce aux formules de Green pour la divergence surfacique (voir \cite[eq.~(A3.47)]{bladel_electromagnetic_2007}) en remarquant que la surface \(\Gamma_h\) est fermée et qu'un triangle possède toujours une arête en commun avec un autre.
+
+    \begin{align}
+    \left< \vdivs \vect{\Psi_h}, \phi \right> 
+    & = - \sum_{T\in\Gamma_h} \int_T \vect{\Psi}_{|T} \cdot \vgrads \phi\dd{T} \\
+    & = \sum_{T\in\Gamma_h} \int_T \vdivs \vect{\Psi}_{|T} \phi \dd{T} - \sum_{T\in\Gamma_h} \int_{\partial T} \vect{\Psi}_{|T} \cdot \nu_T \phi \dd{\gamma} \\
+    & = \int_\Gamma \psi \phi \dd{\Gamma} - \sum_{T\in\Gamma_h} \int_{\partial T} \vect{\Psi}_{|T} \cdot \nu_T \phi \dd{\gamma} \\
+    & = \int_\Gamma \psi \phi \dd{\Gamma} - \sum_{j=1}^{N_{vj}} \int_{v_j} \left( \vect{\Psi}_{|T_j^g} - \vect{\Psi}_{|T_j^d} \right) \cdot \nu_j \phi \dd{\gamma} 
+    \end{align}
+\end{proof}
+
+\subsection[Hrot]{\(\Hrot\)}
+
+L'espace \(\Hrot\) à déjà été étudié par \cite[Lemme.~ 6]{nedelec_mixed_1980}. Nous rappelons les résultats de compatibilité et leurs démonstration.
+
+\begin{defn}
+    On dit que \(\vect{\Psi_h} \in \Hrot(\Gamma_h)\) si et seulement si \(\vect{\Psi}_{|T} \in \Hrot(T)\) pour tout \(T \in \Gamma_h\).\\
+    Alors on définit sous forme faible \(\vrots \vect{\Psi_h} \).
+    Soit \(\phi \in C^1(\Gamma)\) 
+    \begin{equation}
+        \left< \vn_\Gamma \cdot \vrots \vect{\Psi_h}, \phi \right> %\int_{\Gamma_h} \vdivs \vect{\Psi_h} \phi \dd{\Gamma_h} 
+        = - \sum_{T\in\Gamma_h} \int_T \vect{\Psi}_{|T}  \cdot \left( \vn_T \pvect \vgrads \phi \right) \dd{T}
+    \end{equation}
+\end{defn}
+
+On déduit la relation de compatibilité \(\Hrot\) suivante
+\begin{prop}
+    \label{prop:annex:hdiv_hrot:rot}
+    Soit \(\vect{\Psi}\) tel que \(\vect{\Psi}_{|T}\) soit régulier pour tout \(T\in\Gamma_h\).\\
+    Alors \(\vect{\Psi} \in \Hdiv(\Gamma_h)\) si et seulement si pour toute arête \(v_j\) séparant les triangles \(T_j^g\) et \(T_j^d\) où \(\vect{\nu}_j\) est le vecteur unitaire sortant du triangle \(T_j^g\) vers \(T_j^d\), et \(\tau_j = \vn_T \pvect \nu_j\) on a
+    \begin{equation}
+        \left(\vect{\Psi}_{|T_j^g} - \vect{\Psi}_{|T_j^d} \right) \cdot \tau_j = 0
+    \end{equation}
+\end{prop}
+
+De même que pour \(\Hdiv\), cela ce démontre grâce aux formules de Green pour le rotationnel surfacique (voir \cite[eq.~(A3.57)]{bladel_electromagnetic_2007}) en remarquant que la surface \(\Gamma_h\) est fermée et qu'un triangle possède toujours une arête en commun avec un autre.
+
+\begin{proof}
+    \begin{align}
+    \left< \vn_\Gamma \cdot \vrots \vect{\Psi_h}, \phi \right>
+    & = - \sum_{T\in\Gamma_h} \int_T \vect{\Psi}_{|T}  \cdot \left( \vn_T \pvect \vgrads \phi \right) \dd{T} \\
+    & = \sum_{T\in\Gamma_h} \int_T \vn_T \cdot \vrots \vect{\Psi}_{|T} \phi \dd{T} - \sum_{T\in\Gamma_h} \int_{\partial T}  \vect{\Psi}_{|T} \cdot \left(\vn_T \pvect \nu_T \right)\phi\dd{\gamma}\\
+    & = \int_\Gamma \psi \phi \dd{\Gamma} - \sum_{T\in\Gamma_h} \int_{\partial T}  \vect{\Psi}_{|T} \cdot \tau_j \phi\dd{\gamma}\\
+    &= \int_\Gamma \psi \phi \dd{\Gamma} - \sum_{j=1}^{N_{vj}} \int_{v_j}  \left(\vect{\Psi}_{|T_j^g} - \vect{\Psi}_{|T_j^d} \right) \cdot \tau_j \phi\dd{\gamma}
+    \end{align}
+\end{proof}

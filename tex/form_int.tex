@@ -1,154 +1,472 @@
-\section{Résolution des formulation intégrales des équations de Maxwell par éléments finis}
-On écrit la CIOE comme
-\[
-  (I_d + bL)E_t = (a_0I_d+a_1L)J
-\]
-où L est l'opérateur de Hodge.
-\subsection{Fonction de base}
-On a maillage 3D surfacique de \(N_e\) éléments triangulaires.
+\section{Résolution des équations intégrales par la méthode des éléments finis}
 
-Soit \(\phi_j\) la fonction de base associée à l’arête orientée \(v_j\) conjointe aux éléments \(K_p\) (orientation directe) et \(K_q\) (orientation indirecte), et l'on notera \(K_j^l\) pour \(K_p\) et \(K_j^r\) pour \(K_q\).\\
+    \newcommand{\phij}{\vect{\phi_j}}
+    \newcommand{\pj}{\vect{p_j}}
+    \newcommand{\qj}{\vect{q_j}}
+    \newcommand{\nuj}{\vect{\nu_j}}
+    \newcommand{\uj}{\vect{u_j}}
 
-En notations globale au repère 3D. 
-%En prenant en compte l'orientation des arêtes entre 2 éléments. 
-Soit \(\vect x = (x_1,x_2,x_3)\).
+  \subsection{Fonctions de base}
 
-%TODO
-\begin{TODO}
-  mettre source des fonctions RT - RWG.
-\end{TODO}
+    Soit \(\OO_h\) un maillage fermé de \(\OO\) en \(N_e\) éléments triangulaires. Soit \(N\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
 
-\begin{minipage}{0.4\textwidth}
-\begin{align*}
-	\color{red}{\phi_j(x)} &= \mathbf{1}_{K_j^l}(x)\frac{x-o_j^l}{2|K_j^l|} \\&- \mathbf{1}_{K_j^r}(x)\frac{x-o_j^r}{2|K_j^r|}\\
-	\color{black!60!green}{p_j(x)} &= -\vn \pvect \phi_j(x)\\
-	\color{black!60!blue}{q_j(x)} &= \mathbf{1}_{K_j^l}(x) ( { \color{purple}{\vect{v}_j } } \pvect \vn ) \cdot ( x - \frac{o^l_j + o^d_j}{2} ) \\
- &- \mathbf{1}_{K_j^r}(x) ( { \color{purple}{\vect{v}_j } } \pvect \vn ) \cdot ( x - \frac{o^r_j + o^d_j}{2} )
-\end{align*}
-\end{minipage}
-\begin{minipage}{0.58\textwidth}
-	\centering
-	\begin{tikzpicture}[scale=2.5]
-	\input{tikz/schema/fonbasglob.tikz}
-	\end{tikzpicture}
-\end{minipage} 
+    Soit \(\uj\) une arête orientée commune aux triangles \(T_j^g\) (orientation directe) et \(T_j^d\) (orientation indirecte). Dans cette convention d'orientation, \(\uj = \vect{a_j^h}-\vect{a_j^b}\). Cette arête défini \(\vect{\nu}_j\), le vecteur unitaire sortante du triangle \(T_j^g\) vers \(T_j^d\).  De plus on définit les vecteurs suivants: 
+    \begin{align}
+      \vect{v_j^{g/d}} &= \vect{a_j^b} - \vect{a_j^{g/d}} \\
+      \vect{w_j^{g/d}} &= \vect{a_j^h} - \vect{a_j^{g/d}}
+    \end{align}
 
-En notations locale au triangle \(K_j^l, \xi_i = \frac{\sqrt{(x-o^l_j).\vect e_i}}{||e_i||}\).
+    % Les commandes qui suivent servent pour les 4 prochains schémas
+    \newcommand{\ncouche}{6}
+    \newcommand{\xa}{-0.2}
+    \newcommand{\ya}{0.0}
+    \newcommand{\xb}{3}
+    \newcommand{\yb}{0.3}
+    \newcommand{\xc}{0.4}
+    \newcommand{\yc}{4}
+    \newcommand{\xd}{4}
+    \newcommand{\yd}{3.4}
 
-\begin{minipage}{0.45\textwidth}
-\begin{align*}
-	\color{red}{\phi_j(x)} &= \frac{1}{2|K_j^l|}\left(\xi_1 \vect{e_1} + \xi_2 \vect{e_2}\right)\\
-	\color{black!60!green}{p_j(x)} &= \frac{1}{2|K_j^l|}\left(\xi_2 \vect{e_1} -\xi_1 \vect{e_2}\right)\\
-	\color{black!60!blue}{q_j(x)} &= \frac{1}{2|K_j^l|}(1-2(\xi_1+\xi_2))(\vect{e_1} -\vect{e_2})
-\end{align*}
-Les fonctions \(q_j\) s'annulent notamment sur le segment \(\xi_1+\xi_2=\frac{1}{2}\) représenté en pointillés. 
-\end{minipage}
-\begin{minipage}{0.53\textwidth}
-	\centering
-	\begin{tikzpicture}[scale=2.5]
-	\input{tikz/schema/fonbasloc.tikz}
-	\end{tikzpicture}
-\end{minipage}
+    \begin{minipage}{0.45\textwidth}
+      \begin{center}
+        \begin{tikzpicture}[scale=1]
+          \input{tikz/schema/fonbasloc_triangles.tikz}
+        \end{tikzpicture}
+      \end{center}
+      \captionof{figure}{Triangles, arêtes et nœuds définis par l'arête \(\uj\)}
+      \label{fig:form_int:fon_base:tri}
+    \end{minipage} 
+    \begin{minipage}{0.54\textwidth}
+      Dans la suite, on représente ces éléments dans le même plan tel que ci-contre, mais on note qu'en général, ils ne le sont pas (voir \cite[fig.~2]{rao_electromagnetic_1982}).\\
 
-\begin{prop}
-Au sens des distributions, \(\forall j,\, \vrot \phi_j =
-\delta_x\)
-\end{prop}
-\begin{proof}
-\end{proof}
+      En coordonnées locales, \(\vx = (\xi_1,\xi_2) \in \lbrace (\xi_1,\xi_2) \in [0,1]^2, \xi_1 + \xi_2 \le 1\rbrace\),
+      En coordonnées globales, \(\vx = (x_1,x_2,x_3) \in \Gamma_h\),
 
-\begin{TODO}
-  Montrer que les RT sont dans Hdiv et non Hrot
-\end{TODO}
+      Le passage de l'un à l'autre se fait grâce aux relations:
+      \begin{align}
+        \xi_1 &= |\vx \cdot \vect{v_j^{g/d}}| \\
+        \xi_2 &= |\vx \cdot \vect{v_j^{g/d}}| \\
+        \vx &= \vect{a_j^{g/d}}+ \xi_1 \vect{v_j^{g/d}} + \xi_2 \vect{w_j^{g/d}}
+      \end{align}
+    \end{minipage} 
 
-\subsection{Relations de passages et matrices}
-Soit \( U \simeq \sum\limits_{j=1}^N u_j \phi_j \simeq \sum\limits_{j=1}^N v_j p_j \simeq \sum\limits_{j=1}^N w_j q_j\)
+    \subsubsection[Fonctions phi Hdiv-conforme]{Fonctions \(\vect{\phi}\) \(\Hdiv\)-conforme}
 
-On définit les matrices \(M,\tilde M, N,\tilde N\) telles que:
-\begin{align*}
-  \int U \cdot \phi_i &\simeq \sum u_j \int \phi_j \cdot \phi_i = M\vect{u} \\
-  & \simeq \sum v_j \int p_j \cdot \phi_i = -N\vect{v}\\
-  & \simeq \sum w_j \int q_j \cdot \phi_i = \tilde{N}\vect{w} \\
-  \int U \cdot p_i &\simeq \sum v_j \int p_j \cdot p_i = M\vect{v} \\
-  &\simeq \sum w_j \int q_j \cdot p_i = \tilde M\vect{w}
-\end{align*}
-%TODO 
-%On a donc les relations de passage des bases \( H_{\text{div}}\) vers \(H_{\text{rot}}\)
-%\begin{align*}
-%  \vect{v} &= G'^{-1} G\vect{u} \\
-%  \vect{v} &= -G^{-1}G'\vect{u} \\
-%\end{align*}
-%%% SECTION EFIE
-\subsection{EFIE}
-Soit g la fonction de Green
-\[
-  \frac{\vE_t}{2}+\vgrad{i}{k}\vgrad \int  g\vdiv\vJ +  ik\int g\vJ - \int \vgrad g \pvect \vK = \vE_i
-  \]
-On décompose \(\vJ,\vK,\vE^t\) sur les fonctions de bases \(\phi_j\) : \(\vJ = \sum I_j \phi_j,\vK = \sum k_j \phi_j,\vE_t = \sum e_j \phi_j\). 
+      Ces fonctions ont été introduites par \cite{raviart_mixed_1977,rao_electromagnetic_1982}.
 
-On rappelle que d’après la CIOE,
-\[
-  \vE_t = (a_0I_d+a_1L)\vJ -bL\vE_t
-\]
+      \begin{minipage}{0.45\textwidth}
+          \begin{center}
+            \begin{tikzpicture}[scale=1]
+              \input{tikz/schema/fonbasloc_phi.tikz}
+            \end{tikzpicture}
+          \end{center}
+          \captionof{figure}{Fonction de base \(\phij\)}
+          \label{fig:form_int:fon_base:phi}
+      \end{minipage} 
+      \begin{minipage}{0.54\textwidth}
+        En coordonnées locales au triangle \(T_j^{g/d}\),
+        \begin{align*}
+         \phij(\vx) &= \frac{\epsilon^{g/d}}{2|T_j^{g/d}|}\left(\xi_1 \vect{v_j^{g/d}} + \xi_2 \vect{w_j^{g/d}}\right)
+        \end{align*}
 
-On va injecter la CIOE dans l'EFIE, faire un produit scalaire avec une fonction de base \(\phi_i\) puis intégrer : 
-\begin{multline}
-  \sum_j \left(\frac{I_j(a_0\int \phi_j \cdot \phi_i +a_1\int L(\phi_j) \cdot \phi_i) -be_j \int L(\phi_j)\cdot \phi_i}{2} \right. \\
-  +I_j\frac{i}{k}\int (\int g\vdiv\phi_j)\vdiv \phi_i +  I_j ik\int (\int g\phi_j)\cdot \phi_i\\
-  \left. -  k_j\int(\int \vgrad g \pvect \phi_j) \cdot \phi_i \right)= \int \vE_i \cdot \phi_i
-\end{multline}
-Soit \(L_{ij} = \int L(\phi_i)\cdot\phi_j\)\\
-Soit \(S^0_{ij}=4\pi i\left(k\int(\int g\phi_i)\cdot\phi_j + \frac{1}{k}\int(\int g\vdiv\phi_i)\vdiv\phi_j\right)\)\\ 
-Soit \(\tilde S^G_{ij} = 4\pi\left(\int(\int \vgrad g \pvect \phi_i) \cdot \phi_j \right)\)\\
-Soit \(b_i^E = \int \vE_i \cdot \phi_i\).
-On obtient alors 
-\[
-  \left[\frac{a_0}{2}M + \frac{a_1}{2}L + \frac{S^0}{4\pi}\right]\vect I - \frac{b}{2}L\vect e+ \frac{\tilde  S^G \vect k}{4\pi} = \vect b_i^E
-\]
-\subsubsection{E en fonction de J}
-D’après la CIOE \(\vE_t = Z\vJ\) : \(M\vect e = Z M\vect I\).
-\[
-  \left[\frac{a_0}{2}M + \frac{L}{2}(a_1I_d - bM^{-1}ZM) + \frac{S^0}{4\pi}\right]\vect I + \frac{\tilde S^G }{4\pi}\vect k = \vect b_i^E
-\]
-\subsubsection{E en fonction de K}
-\(\vn \pvect \vE_t = \vK\).
-\(\vK = \sum k_j \phi_j = \sum e_j \vn \pvect \phi_j = -\sum e_j p_j \).
-\(M \vect k = - \tilde M \vect e\)
-\[
-  \left[\frac{a_0}{2}G + \frac{a_1}{2}L+\frac{S^0}{4\pi}\right]\vect I + \left[\frac{\tilde S^G }{4\pi}+  \frac{b}{2}L\tilde M^{-1}M \right]\vect k = \vect b_i^E
-\]
-%%% SECTION MFIE
-\subsection{MFIE}
-Soit g la fonction de Green
-\[
-  \frac{\vH_t}{2}-\frac{i}{k}\vgrad \int  g\vdiv\vK -  ik\int g\vK - \int \vgrad g \pvect \vJ = \vH_i
-\]
+        En coordonnées globales,
+        \begin{align*}
+          \phij(\vx) &= \mathbf{1}_{T_j^g}(\vx)\frac{\vx-\vect{a_j^g}}{2|T_j^g|} - \mathbf{1}_{T_j^d}(\vx)\frac{\vx-\vect{a_j^d}}{2|T_j^d|}
+        \end{align*}
+      \end{minipage}
 
-On rappelle que d’après la CIOE, \(\vn \pvect \vE_t = \vn \pvect (a_0I_d+a_1L)\vJ -b\vn\pvect L\vE_t\). Or \(\vn\pvect \vJ = -\vH_t\). Donc la CIOE peut s'exprimer
-\[
-  \vH_t = \frac{1}{a_0}\left(-\vK + a_1 \vn\pvect L\vJ -b\vn\pvect L\vE_t\right)
-\]
+    \subsubsection[Fonctions p Hcurl-conforme]{Fonctions \(\vect{p}\) \(\Hrot\)-conforme}
 
-On décompose les fonctions sur les \(\phi_j\) sauf les termes sur lesquels s'applique \(L\), où l'on décompose sur \(p_j\) 
+      \begin{minipage}{0.45\textwidth}
+        \begin{center}
+          \begin{tikzpicture}[scale=1]
+            \input{tikz/schema/fonbasloc_p.tikz}
+          \end{tikzpicture}
+        \end{center}
+        \captionof{figure}{Fonction de base \(\pj\)}
+        \label{fig:form_int:fon_base:p}
+      \end{minipage} 
+      \begin{minipage}{0.54\textwidth}
+        En coordonnées locales au triangle \(T_j^{g/d}\),
+        \begin{align*}
+          \pj(\vx) &= \frac{\epsilon^{g/d}}{2|T_j^{g/d}|}\left(\xi_2 \vect{v_j^{g/d}}-\xi_1 \vect{w_j^{g/d}}\right)
+        \end{align*}
 
-On va injecter la CIOE dans la MFIE, faire un produit scalaire avec une fonction de base \(\phi_i\) puis intégrer : 
-\begin{multline}
-  \sum_j \left(\frac{-k_j\int\phi_j\cdot\phi_i + a_1 I'_j \int \vn \pvect L (p_j) \cdot \phi_i  -be'_j\int \vn \pvect L(p_j)\cdot \phi_i}{2a_0} \right. \\
-  +\left(k_j\frac{i}{k}\int (\int g\vdiv\phi_j)\vdiv \phi_i + ik\int (\int g\phi_j)\cdot \phi_i \right)\\
-  \left. -  I_j\int(\int \vgrad g \pvect \phi_j) \cdot \phi_i \right)= \int \vH_i \cdot \phi_i
-\end{multline}
-On remarque \( \vn \pvect L(p_j)\cdot \phi_i = L(p_j)\cdot(\phi_i\pvect\vn) = L(p_j)\cdot p_i = X_{ij}\). 
-\[
-  \left[\frac{1}{2a_0}M + \frac{S^0}{4\pi}\right]\vect I + \frac{a_1}{2a_0}X\vect I' - \frac{b}{2a_0}X\vect e' - \left[ \frac{\tilde S^G}{4\pi}\right]\vect k = \vect b_i^H
-\]
-D’après Bruno TODO \(X = -9\tilde N^tL^D\tilde N - L^D\) %TODO
+        En coordonnées globales,
+        \begin{align*}
+          \pj(\vx) 
+          &= \mathbf{1}_{T_j^g}(\vx)\vect{n^g} \pvect \frac{\vx-\vect{a_j^g}}{2|T_j^g|} \\
+          &- \mathbf{1}_{T_j^d}(\vx)\vect{n^d} \pvect \frac{\vx-\vect{a_j^d}}{2|T_j^d|}
+        \end{align*}
+      \end{minipage}
 
-\(\vect I' = \tilde M^{-1}M\vect I\)
+    \subsubsection[Fonctions q Hcurl-conforme]{Fonctions \(\vect{q}\) \(\Hrot\)-conforme}
 
-\(\vect e' = \vect k\)
+      Ces fonctions ont été introduites par \cite[eq.~28]{bendali_boundary-element_1999}.
 
-On obtient alors 
-\[
-  \left[\frac{1}{2a_0}M + \frac{a_1}{2a_0}X\tilde M^{-1}M + \frac{S^0}{4\pi}\right]\vect I - \left[\frac{b}{2a_0}X+ \frac{\tilde S^G}{4\pi}\right]\vect k = \vect b_i^H
-\]
+      \begin{minipage}{0.45\textwidth}
+        \begin{center}
+          \begin{tikzpicture}[scale=1]
+            \input{tikz/schema/fonbasloc_q.tikz}
+          \end{tikzpicture}
+        \end{center}
+          \captionof{figure}{Fonction de base \(\qj\)}
+          \label{fig:form_int:fon_base:q}
+      \end{minipage} 
+      \begin{minipage}{0.54\textwidth}
+        En coordonnées locales au triangle \(T_j^{g/d}\),
+        \begin{align*}
+          \qj(\vx) &= \left(1-2(\xi_1+\xi_2)\right)\left(\vect{w_j}^{g/d} - \vect{v_j}^{g/d} \right)
+        \end{align*}
 
+        En coordonnées globales,
+        \begin{align*}
+          \qj(\vx) 
+          &= - \mathbf{1}_{T_j^g}(\vx) \frac{\nuj\cdot\left(2\vx - {\vect{a_j^g} + \vect{a_j^t}}\right)}{\nuj\cdot \vect{w_j^g}} \uj \\
+          &- \mathbf{1}_{T_j^d}(\vx) \frac{\nuj\cdot\left(2\vx - {\vect{a_j^d} + \vect{a_j^t}}\right)}{\nuj\cdot\vect{w_j^d}}\uj
+        \end{align*}
+      \end{minipage}
+
+    \begin{REF}
+      Quelles sont les bonnes références à choisir ? \cite{raviart_mixed_1977,nedelec_mixed_1980,rao_electromagnetic_1982} ? Nédelec introduit les espaces Hdiv et Hrot mais ses fonctions de bases sont volumiques, Rao fait les hdiv R2 mais pas les HRot et je dois lire Raviart.
+    \end{REF}
+
+    % \subsection{Fonction de bases}
+
+    % Soit \(\phi_j\) la fonction de base associée à l’arête orientée \(u_j\) conjointe aux éléments  \(K_j^l\) (orientation directe) et \(K_j^r\) (orientation indirecte).\\
+
+    % Soit \(\vx = (x_1,x_2,x_3)\).
+
+    % \begin{minipage}{0.58\textwidth}
+    %   \centering
+    %   \begin{tikzpicture}[scale=2.5]
+    %     \input{tikz/schema/fonbasglob.tikz}
+    %   \end{tikzpicture}
+    % \end{minipage} 
+    % \begin{minipage}{0.4\textwidth}
+    %   \begin{align*}
+    %     \color{red}{\phi_j(\vx)} &= \mathbf{1}_{K_j^l}(\vx)\frac{\vx-\vect{o_j^l}}{2|K_j^l|} \\&- \mathbf{1}_{K_j^r}(\vx)\frac{\vx-\vect{o_j^r}}{2|K_j^r|}\\
+    %     \color{black!60!green}{p_j(\vx)} &= -\vn \pvect \phi_j(\vx)\\
+    %     \color{black!60!blue}{q_j(\vx)} &= \mathbf{1}_{K_j^l}(\vx) ( { \color{purple}{\vect{v}_j } } \pvect \vn ) \cdot ( \vx - \frac{\vect{o^l_j} + \vect{o^d_j}}{2} ) \\
+    %     &- \mathbf{1}_{K_j^r}(\vx) ( { \color{purple}{\vect{v}_j } } \pvect \vn ) \cdot ( \vx - \frac{\vect{o^r_j} + \vect{o^d_j}}{2} )
+    %   \end{align*}
+    % \end{minipage}
+
+    % En notations locale au triangle \(K_j^l, \xi_i = \frac{\sqrt{(\vx-\vect{o^l_j}).\vect{e_i}}}{||\vect{e_i}||}\).
+
+    % \begin{minipage}{0.53\textwidth}
+    %   \centering
+    %   \begin{tikzpicture}[scale=2.5]
+    %     \input{tikz/schema/fonbasloc.tikz}
+    %   \end{tikzpicture}
+    % \end{minipage}
+    % \begin{minipage}{0.45\textwidth}
+    %   \begin{align*}
+    %     \color{red}{\phi_j(\vx)} &= \frac{1}{2|K_j^l|}\left(\xi_1 \vect{e_1} + \xi_2 \vect{e_2}\right)\\
+    %     \color{black!60!green}{p_j(\vx)} &= \frac{1}{2|K_j^l|}\left(\xi_2 \vect{e_1} -\xi_1 \vect{e_2}\right)\\
+    %     \color{black!60!blue}{q_j(\vx)} &= \frac{1}{2|K_j^l|}(1-2(\xi_1+\xi_2))(\vect{e_1} -\vect{e_2})
+    %   \end{align*}
+    %   %Les fonctions \(q_j\) s'annulent notamment sur le segment \(\xi_1+\xi_2=\frac{1}{2}\) représenté en pointillés. 
+    % \end{minipage}
+
+    \begin{prop}
+      Les fonctions de bases \(\phij\) sont dans \(\Hdiv\)
+    \end{prop}
+    \begin{prop}
+      Les fonctions de bases \(\pj\) sont dans \(\Hrot\)
+    \end{prop}
+    \begin{proof}
+      Nous renvoyons au travail de \cite{nedelec_mixed_1980} (voir prop.~\ref{prop:annex:hdiv_hrot:rot} et prop.~\ref{prop:annex:hdiv_hrot:hdiv}).
+    \end{proof}
+
+    \begin{TODO}
+      Les fonctions qj ne sont pas dans Hrot il y a un saut sur les bords des 2 triangles
+    \end{TODO}
+    \begin{prop}
+      Les fonctions de bases \(\qj\) sont dans \(\Hrot\)
+    \end{prop}
+    \begin{proof}
+
+    \end{proof}
+
+
+  \subsection{Matrices de masses}
+    Soit \(U\) une fonction définit sur \(\Gamma\), approchée par ces fonctions: 
+    \[ U(\vx) \simeq \sum\limits_{j=1}^N u_j \phi_j(\vx) \simeq \sum\limits_{j=1}^N u_j p_j(\vx) \simeq \sum\limits_{j=1}^N w_j q_j(\vx)
+    \]
+
+    \begin{TODO}
+      A priori les espaces fonctionnels ne sont pas les mêmes. Il faut corriger la relation ci-dessous.
+    \end{TODO}
+
+    \begin{defn}
+      On définit la matrice \(\mG{u}{v}\) telle que
+      \begin{equation}
+        \mG{u}{v}_{ij} = \int_\Gamma u_i(\vx)\cdot u_j(\vx) \dd{s}(\vx)
+      \end{equation}
+    \end{defn}
+
+    \begin{prop}
+      Par définition
+      \begin{equation}
+        \left(\mG{u}{v}\right)^t = \mG{v}{u}
+      \end{equation}
+    \end{prop}
+
+    On remarque alors que les matrices \(\mG{\phi}{\phi}\) et \(\mG{p}{p}\) sont identiques tandis que la matrice \(\mG{p}{\phi}\) est anti-symétrique.
+
+  \subsection{Discrétisation de l'équation intégrale}
+    Soit \(g\) la fonction de Green. Soit \(\vE^{inc}_t,\vH^{inc}_t\) le champ incident tangentiel à \(\Gamma\).
+
+    \subsubsection{EFIE}
+      On définit l'\gls{acr-efie} telle que
+      \begin{multline}
+        \label{eq:form_int:EFIE}
+        \vE^{inc}_t(\vx) =
+          \frac{\vE_t(\vx)}{2} 
+            - \int_\Gamma \vgrad g(\vx,\vy) \pvect \vK(\vy) \dd{s}(\vy) \cdots \\
+          + \frac{i}{k}\vgrad \int_\Gamma  g(\vx,\vy)\vdiv\vJ(\vy)(\vx) \dd{s}(\vy)
+            +  ik\int_\Gamma g(\vx,\vy)\vJ(\vy) \dd{s}(\vy)
+      \end{multline}
+
+      \begin{REF}
+        Mettre source de l'EFIE (Nédélec)
+      \end{REF}
+
+      On décompose \(\vJ,\vK,\vE_t,\vH_t\) sur les fonctions de base \(\phi_j\):
+      \begin{subequations}
+        \begin{align}
+          \vJ &\simeq \sum_{j=1}^N I_j \phi_j & \vE_t &\simeq \sum_{j=1}^N e_j \phi_j\\
+          \vK &\simeq \sum_{j=1}^N k_j \phi_j & \vH_t &\simeq \sum_{j=1}^N h_j \phi_j
+        \end{align}
+      \end{subequations}
+
+      On utilise la méthode de Galerkin, on prend comme fonction test \(\phi_i\): 
+      \begin{multline}
+      \int_\Gamma \vE^{inc}_t(\vx) \cdot \phi_i(\vx) \dd{s}(\vx) = \sum_{j=1}^{N} \left( 
+        \frac{e_j}{2} \int_\Gamma \phi_j(\vx) \cdot \phi_i(\vx) \dd{s}(\vx)\right. \\
+        -  k_j \int_\Gamma\left(\int_\Gamma \vgrad g(\vx,\vy) \pvect \phi_j(\vy) \dd{s}(\vy)\right) \cdot \phi_i(\vx) \dd{s}(\vx) \\
+        + I_j\frac{i}{k}\int_\Gamma
+          \left(\int_\Gamma g(\vx,\vy)\vdiv\phi_j(\vy) \dd{s}(\vy)\right) \vdiv \phi_i(\vx) \dd{s}(\vx) \\
+      \left.
+        + I_j ik \int_\Gamma \left(\int_\Gamma g(\vx,\vy)\phi_j(\vy) \dd{s}(\vy)\right)\cdot \phi_i(\vx) \dd{s}(\vx)
+      \right)
+      \end{multline}
+
+      On définit alors les matrices \(\mS\), \(\mSt\) telles que
+      \begin{align}
+        S_{pq} 
+          &= 4\pi ik \int_\Gamma \left( \int_\Gamma g(\vx,\vy) \phi_p(\vy) \dd{s}(\vy) \right) \cdot \phi_q (\vx)\dd{s}(\vx) \cdots\\
+          &~+ 4\pi \frac{i}{k}\int_\Gamma \left( \int_\Gamma g(\vx,\vy) \vdiv \phi_p (\vy) \dd{s}(\vy) \right) \vdiv \phi_q(\vx)\dd{s}(\vx)\\ 
+        \tilde{S}_{pq}
+          &= 4\pi \int_\Gamma \left( \int_\Gamma \vgrad g(\vx,\vy) \pvect \phi_p(\vy) \dd{s}(\vy) \right) \cdot \phi_q(\vx)\dd{s}(\vx)
+      \end{align}
+
+      \begin{prop}
+        Les matrices \(\mS\) et \(\mSt\) sont symétriques.
+      \end{prop}
+      \begin{proof}
+        Pour \(\mS\), c'est une conséquence immédiate des propriétés de l'intégrale et de la symétrie de la fonction de Green.
+        Pour \(\mSt\), 
+      \end{proof}
+
+      Le second membre est obtenu en projetant le champ incident 
+      \begin{equation}
+        b_i^E = \int_\Gamma \vE^{inc}_t(\vx) \cdot \phi_i(\vx)\dd{s}(\vx)
+      \end{equation}
+
+      On obtient alors 
+      \begin{equation}
+        \frac{\mS}{4\pi}\vect{I}
+        + \frac{\mG{\phi}{\phi}}{2}\vect{e}
+        + \frac{\mSt^t}{4\pi}\vect{k}
+        = \vect{b^E}
+      \end{equation}
+    
+    \subsubsection{MFIE}
+      On définit la \gls{acr-mfie} telle que
+      \begin{multline}
+        \label{eq:form_int:MFIE}
+        \vH_i(\vx) = 
+        \frac{\vH_t(\vx)}{2} 
+          - \int_\Gamma \vgrad g(\vx,\vy) \pvect \vJ(\vy) \dd{s}(\vy) \cdots \\
+        - \frac{i}{k} \vgrad \int_\Gamma  g(\vx,\vy)\vdiv\vK(\vy)\dd{s}(\vy) 
+          - ik \int_\Gamma g(\vx,\vy)\vK(\vy)\dd{s}(\vy)
+      \end{multline}
+      
+      On utilise la méthode de Galerkin, on prend comme fonction test \(\phi_i\): 
+      \begin{multline}
+        \int_\Gamma \vH^{inc}_t(\vx) \cdot \phi_i(\vx) \dd{s}(\vx) = \sum_{j=1}^{N} \left(
+          \frac{h_j}{2}\int_\Gamma \phi_j(\vx) \cdot \phi_i(\vx) \dd{s}(\vx) \right. \\
+          -  I_j\int_\Gamma  \left(\int_\Gamma \vgrad g(\vx,\vy) \pvect \phi_j(\vy) \dd{s}(\vy) \right) \cdot \phi_i(\vx) \dd{s}(\vx) \\
+          - k_j\frac{i}{k} \int_\Gamma \left(\int_\Gamma g(\vx,\vy)\vdiv \phi_j(\vy) \dd{s}(\vy) \right) \vdiv \phi_i(\vx) \dd{s}(\vx) \\
+        \left.
+          + ik\int_\Gamma \left(\int_\Gamma g(\vx,\vy)\phi_j(\vy)\dd{s}{(\vy)}\right)\cdot \phi_i(\vx)\dd{s}(\vx)
+        \right)
+      \end{multline}
+
+      Le second membre est obtenu en projetant le champ incident 
+      \begin{equation}
+        b_i^H = \int_\Gamma \vH^{inc}_t(\vx) \cdot \phi_i(\vx)\dd{s}(\vx)
+      \end{equation}
+
+      On obtient alors 
+      \begin{equation}
+        \frac{\mSt}{4\pi}\vect{I} 
+        + \frac{\mG{\phi}{\phi}}{2}\vect{h}
+        - \frac{\mS}{4\pi}\vect{k} 
+        = \vect{b^H}
+      \end{equation}
+
+  \subsection{Discrétisation de l'équation intégrale avec condition d'impédance}
+    Pour diminuer le nombre d'inconnus, on utilise une \gls{acr-cioe} pour exprimer \(\vect{e}, \vect{h}\) selon \(\vect{J}, \vect{K}\). Selon la CIOE, nous pourrons aboutir à différents systèmes linéaire selon la projection employée. 
+
+    Les CIOE font intervenir les opérateurs différentiels \gls{ope-LD}, \gls{ope-LR}, \gls{ope-L}. On introduit donc les matrices de rigidités \(\mLD,\mLR,\mL\).
+
+    Comme les \(\phi_j\) sont dans \(\Hdiv\), de l'opérateur \gls{ope-LD}, on définit la matrice \(\mLD\) :
+    \begin{align}
+      \int_\Gamma L_D(U)(\vx) \cdot \phi_i(\vx) \dd{s}(\vx)  
+        & \simeq - \sum_{j=1}^N u_j \int_\Gamma \vdiv \phi_j(\vx) \vdiv \phi_i(\vx) \dd{s}(\vx) = \mLD \vu
+    \end{align}
+
+    L'opérateur \(L_R\) est définit sur \(\Hrot\) et nécessite donc un changement de base (voir \cite[(13)]{stupfel_implementation_2015}):
+
+    \begin{defn}
+      On suppose que la matrice \(\mG{w}{u}\) est inversible alors on définit la projection sur la base \(w\) de la base \(u\) vers \(v\)
+      \begin{equation}
+        \mP{u}{v}{w} = \left(\mG{w}{u}\right)^{-1}\mG{w}{v}
+      \end{equation}
+    \end{defn}
+
+    \begin{prop}
+      Par définition
+      \begin{equation}
+        \left(\mP{u}{v}{w}\right)^t = \mG{v}{w}\left(\mG{u}{w}\right)^{-1}
+      \end{equation}
+    \end{prop}
+
+    \begin{prop}
+      On suppose de plus que la matrice \(\mG{w}{v}\) est inversible alors
+      \begin{equation}
+        \left(\mP{u}{v}{w}\right)^{-1} = \mP{v}{u}{w}
+      \end{equation}
+    \end{prop}
+
+    Alors on définit \(\mLR\) telle que (voir \cite{stupfel_implementation_2015})
+    \begin{align}
+      \mLR & = \left(\mP{p}{\phi}{p}\right)^t\mLD\mP{p}{\phi}{p} \\
+      \intertext{ou alors}
+      \mLR & = \left(\mP{p}{\phi}{q}\right)^t\mLD\mP{p}{\phi}{q} 
+    \end{align}
+
+    \begin{TODO}
+      Le choix du LR doit dépendre de certains propriétés des fdb ou des matrices. Les expliciter.
+    \end{TODO}
+
+    La matrice \(\mL\) s’obtient immédiatement de la définition de l'opérateur \gls{ope-L}: 
+    \begin{equation}
+      \mL = \mLD - \mLR
+    \end{equation}
+        
+    \subsection{CI0}
+      Par définition de la CIOE,
+      \begin{equation}
+          \vE_t = a_0 \vJ
+      \end{equation}
+
+      En projetant sur la base des \(\phi_j\)
+      \begin{align}
+        \vect{e} &= a_0 \vect{I} \\
+        \vect{h} &= -\frac{1}{a_0} \vect{k}
+      \end{align}
+
+    On cherche alors \(\vect{I},\vect{k}\) solution de 
+
+    \begin{equation}
+      4\pi
+      \begin{bmatrix}
+        \mat{S^0}+2\pi a_0 \mM & \mat{S^G} \\
+        \mat{S^G} & -\mat{S^0} - \frac{2\pi}{a_0}\mM
+      \end{bmatrix}
+      \begin{bmatrix}
+        \vect{I}\\
+        \vect{k}
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+        \vect{b^E}\\
+        \vect{b^H}
+      \end{bmatrix}     
+    \end{equation}
+
+    \subsection{CI01}
+      Par définition de la CIOE,
+      \begin{equation}
+          \vE_t = \left(a_0I_d + a_1 L\right) \vJ
+      \end{equation}
+
+      L'opérateur différentiel \gls{ope-L} nécessite que les fonctions de base appartiennent à \(\Hdiv\cap\Hrot\). Une projection des $\phi_j$ sur les $p_j$ ou $q_j$ est alors nécessaire.
+
+      En projetant sur la base des \(\phi_j\)
+      \begin{align}
+        \vect{e} &= a_0 \vect{I} \\
+        \vect{h} &= \frac{1}{a_0} \vect{k}
+      \end{align}
+
+    On cherche alors \(\vect{I},\vect{k}\) solution de 
+
+    \begin{equation}
+      4\pi
+      \begin{bmatrix}
+        \mat{S^0}+2\pi a_0 \mM & \mat{S^G} \\
+        \mat{S^G} & -\mat{S^0} +  \frac{2\pi}{a_0}\mM
+      \end{bmatrix}
+      \begin{bmatrix}
+        \vect{I}\\
+        \vect{k}
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+        \vect{b^E}\\
+        \vect{b^H}
+      \end{bmatrix}     
+    \end{equation}
+
+    \subsection{CI1}
+      On rappelle,
+      \begin{equation}
+        \vE_t = (a_0I_d+a_1L)\vJ -bL\vE_t
+      \end{equation}
+      \subsubsection{E en fonction de J}
+    D’après la CIOE \(\vE_t = Z\vJ\) : \(M\vect e = Z M\vect I\).
+    \[
+    \left[\frac{a_0}{2}M + \frac{L}{2}(a_1I_d - bM^{-1}ZM) + \frac{S^0}{4\pi}\right]\vect I + \frac{\tilde S^G }{4\pi}\vect k = \vect b_i^E
+    \]
+    \subsubsection{E en fonction de K}
+    \(\vn \pvect \vE_t = \vK\).
+    \(\vK = \sum k_j \phi_j = \sum e_j \vn \pvect \phi_j = -\sum e_j p_j \).
+    \(M \vect k = - \tilde M \vect e\)
+    \[
+    \left[\frac{a_0}{2}G + \frac{a_1}{2}L+\frac{S^0}{4\pi}\right]\vect I + \left[\frac{\tilde S^G }{4\pi}+  \frac{b}{2}L\tilde M^{-1}M \right]\vect k = \vect b_i^E
+    \]
+    On rappelle que d’après la CIOE, \(\vn \pvect \vE_t = \vn \pvect (a_0I_d+a_1L)\vJ -b\vn\pvect L\vE_t\). Or \(\vn\pvect \vJ = -\vH_t\). Donc la CIOE peut s'exprimer
+    \[
+    \vH_t = \frac{1}{a_0}\left(-\vK + a_1 \vn\pvect L\vJ -b\vn\pvect L\vE_t\right)
+    \]
+        On remarque \( \vn \pvect L(p_j)\cdot \phi_i = L(p_j)\cdot(\phi_i\pvect\vn) = L(p_j)\cdot p_i = X_{ij}\). 
+    \[
+    \left[\frac{1}{2a_0}M + \frac{S^0}{4\pi}\right]\vect I + \frac{a_1}{2a_0}X\vect I' - \frac{b}{2a_0}X\vect e' - \left[ \frac{\tilde S^G}{4\pi}\right]\vect k = \vect b_i^H
+    \]
+    D’après Bruno TODO \(X = -9\tilde N^tL^D\tilde N - L^D\) %TODO
+
+    \(\vect I' = \tilde M^{-1}M\vect I\)
+
+    \(\vect e' = \vect k\)
+
+    On obtient alors 
+    \[
+    \left[\frac{1}{2a_0}M + \frac{a_1}{2a_0}X\tilde M^{-1}M + \frac{S^0}{4\pi}\right]\vect I - \left[\frac{b}{2a_0}X+ \frac{\tilde S^G}{4\pi}\right]\vect k = \vect b_i^H
+    \]
+
+    \subsection{CI4}
+    \subsection{CI3}

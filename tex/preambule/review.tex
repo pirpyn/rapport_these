@@ -23,13 +23,29 @@
         \pdfbookmark[0]{TODO \theTODO}{TODO\theTODO}%
     }%
 
+\newcounter{REF}
+\newenvironment{REF}{%
+        \stepcounter{REF}
+        \hypertarget{REF\theREF}{}%
+        \begin{tcolorbox}[%
+                title={REF \theREF},%
+                colback=green!30!white,%
+                colframe=green!35!black,%
+                halign=flush center%
+            ]
+    }
+    {
+        \end{tcolorbox}%
+        \pdfbookmark[0]{REF \theREF}{REF\theREF}%
+    }%
+
 % Affiche devant chaque ligne en mode texte, le numéro de la ligne pour le corriger plus efficacement
 \usepackage{lineno}
     \linenumbers
 
 
 \geometry{
-    %showframe, % Afficher les marges pour voir ce qui dépasse
+    showframe, % Afficher les marges pour voir ce qui dépasse
     top    = 2.5cm,%
     bottom = 2.5cm,%
     inner  = 4.5cm,% On décale pour avoir une marge plus grande pour annoter

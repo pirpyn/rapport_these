@@ -47,7 +47,8 @@
 
 % suite de paquets mathematiques
 \usepackage{amsfonts} % gestions des polices mathématques
-\usepackage{amsmath}
+\usepackage[leqno]{amsmath}
+    \everymath{\displaystyle} % Tout en grand !
 
 \usepackage{amsthm} % gestion des théoremes
 \usepackage{thmbox}
@@ -101,7 +102,7 @@
 
 
 %\usepackage{multicol} % texte sur plusieurs colonnes
-%\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
+\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
 
 \usepackage[%
     nomain,%
@@ -139,9 +140,13 @@
     \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
     \usetikzlibrary{patterns} % permet de faire des patterns
     \usetikzlibrary{math} % permet de definir des variables
+    \usetikzlibrary{arrows.meta} % permet de spécifier les tailles des pointes de fleches
     \tikzset{every picture/.style={execute at begin picture={
-        \shorthandoff{:;!?};}
+        \shorthandoff{:;!?};} % permet de prendre en compte la ponctuation française dans tikz
     }}
+
+
+\usepackage{caption} % Faire des caption en dehors de figure
 
 
 % % permet d'ajouter des notes en marges
