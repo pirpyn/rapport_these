@@ -1,4 +1,5 @@
 %%% Triangle de droite
+\coordinate (na) at (\xa,\ya);
 \coordinate (nb) at (\xb,\yb);
 \coordinate (nc) at (\xc,\yc);
 \coordinate (nd) at (\xd,\yd);

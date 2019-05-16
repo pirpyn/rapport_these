@@ -6,8 +6,13 @@
     \ra = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
     \rb = sqrt((\xc-\xa)^2 + (\yc-\ya)^2);
     \rc = sqrt((\xa-\xb)^2 + (\ya-\yb)^2);
-    \aire = 0.25*sqrt((\ra+\rb-\rc)*(\ra-\rb+\rc)*(-\ra+\rb+\rc)*(\ra+\rb+\rc));
+    \rd = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
+    \aire = 0.125*sqrt((\ra+\rb-\rc)*(\ra-\rb+\rc)*(-\ra+\rb+\rc)*(\ra+\rb+\rc));
+    \aire = \aire + 0.125*sqrt((\rd+\rb-\rc)*(\rd-\rb+\rc)*(-\rd+\rb+\rc)*(\rd+\rb+\rc));
 }
+
+% normalement il n'y pas de facteur normaliseur devant les q,
+% mais sinon le schéma est trop grand
 
 \coordinate (q) at (ea);
 \coordinate (phi) at (0,0);
@@ -37,14 +42,6 @@
 
 %%% Triangle de droite
 \input{tikz/schema/fonbasloc_Tjr.tikz}
-
-\tikzmath
-{
-    \rd = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
-    \rb = sqrt((\xc-\xd)^2 + (\yc-\yd)^2);
-    \rc = sqrt((\xd-\xb)^2 + (\yd-\yb)^2);
-    \aire = 0.25*sqrt((\rd+\rb-\rc)*(\rd-\rb+\rc)*(-\rd+\rb+\rc)*(\rd+\rb+\rc));
-}
 
 \coordinate (q) at (ed);
 \coordinate (phi) at (0,0);
