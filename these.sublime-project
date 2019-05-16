@@ -15,7 +15,7 @@
         {
           "name"  : "clean",
           "linux": {
-            "shell_cmd" : "/bin/rm -rf $project_path/build",
+            "shell_cmd" : "/bin/rm -rf $project_path/build/*",
           },
           "windows":{
             "shell_cmd":"del /F /Q \"$project_path\\build\"",

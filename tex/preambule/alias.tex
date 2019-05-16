@@ -16,7 +16,7 @@
 \newcommand{\pvect}{\wedge}
 
 % Notation vectorielle
-\newcommand{\vect}[1]{\underline{#1}}
+\newcommand{\vect}[1]{{\underline{#1}}} % {\overset{\rightarrow{}}{#1}}
 
 % Notation matricielle
 \newcommand{\mat}[1]{\mathbf{#1}}
@@ -30,6 +30,23 @@
 \newcommand{\mA}{\mat{A}}
 \newcommand{\mB}{\mat{B}}
 \newcommand{\mC}{\mat{C}}
+\newcommand{\mM}{\mat{M}}
+\newcommand{\mN}{\mat{N}}
+\newcommand{\mMt}{\mat{\tilde{M}}}
+\newcommand{\mNt}{\mat{\tilde{N}}}
+\newcommand{\mLD}{\mat{L_D}}
+\newcommand{\mLR}{\mat{L_R}}
+\newcommand{\mL}{\mat{L}}
+%\newcommand{\mPt}{\mat{\tilde{P}}}
+%\newcommand{\mP}{\mat{P}}
+\newcommand{\mS}{\mat{S}}
+\newcommand{\mSt}{\mat{\tilde{S}}}
+
+% Matrices de Gramm de la base #1 vers #2
+\newcommand{\mG}[2]{{\mat{G}_{#1}^{#2}}}
+
+% Matrices de passage de la base #1 vers #2 projeté sur #3
+\newcommand{\mP}[3]{{\overset{#3}{\underset{#1 \rightarrow #2}{\mat{P}}}}}
 
 % Opérateur pseudo diff
 \newcommand{\Op}[2]{{\operatorname{Op}\left(#1\right)\left(#2\right)}}
@@ -75,11 +92,15 @@
 \newcommand{\vH}{\vect{H}}
 \newcommand{\vn}{\vect{n}}
 \newcommand{\vx}{\vect{x}}
+\newcommand{\vy}{\vect{y}}
 \newcommand{\vk}{\vect{k}}
 \newcommand{\vJ}{\vect{J}}
 \newcommand{\vK}{\vect{K}}
 \newcommand{\vM}{\vect{M}}
 \newcommand{\vA}{\vect{A}}
+\newcommand{\vu}{\vect{u}}
+\newcommand{\vv}{\vect{v}}
+\newcommand{\vw}{\vect{w}}
 
 %differential operator
 \newcommand{\vgrad}{\vect{\nabla}}

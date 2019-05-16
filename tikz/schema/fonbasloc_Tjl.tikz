@@ -1,0 +1,11 @@
+%%% Triangle de gauche
+
+\coordinate (na) at (\xa,\ya);
+\coordinate (nb) at (\xb,\yb);
+\coordinate (nc) at (\xc,\yc);
+\coordinate (nd) at (\xd,\yd);
+
+\coordinate (ec) at ($(nb)-(na)$);
+\coordinate (ea) at ($(nc)-(nb)$);
+
+\draw (na) -- (nc) -- (nb) -- cycle;
