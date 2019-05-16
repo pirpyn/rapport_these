@@ -1,0 +1,11 @@
+%%% Triangle de droite
+\coordinate (nb) at (\xb,\yb);
+\coordinate (nc) at (\xc,\yc);
+\coordinate (nd) at (\xd,\yd);
+
+\coordinate (ed) at ($(nc)-(nb)$);
+\coordinate (ec) at ($(nb)-(nd)$);
+
+\draw (nb) -- (nd) -- (nc) -- cycle;
+
+

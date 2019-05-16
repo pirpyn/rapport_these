@@ -1,5 +1,7 @@
 %%% Triangle de gauche
 
+\input{tikz/schema/fonbasloc_Tjl.tikz}
+
 \tikzmath
 {
     \ra = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
@@ -7,15 +9,6 @@
     \rc = sqrt((\xa-\xb)^2 + (\ya-\yb)^2);
     \aire = 0.25*sqrt((\ra+\rb-\rc)*(\ra-\rb+\rc)*(-\ra+\rb+\rc)*(\ra+\rb+\rc));
 }
-
-\coordinate (na) at (\xa,\ya);
-\coordinate (nb) at (\xb,\yb);
-\coordinate (nc) at (\xc,\yc);
-
-\coordinate (ec) at ($(nb)-(na)$);
-\coordinate (ea) at ($(nc)-(nb)$);
-
-\draw (na) -- (nc) -- (nb) -- cycle;
 
 \foreach \couche in {1,...,\ncouche}
 {
@@ -32,11 +25,13 @@
         \coordinate (phi) at ($\a*(ec)+\a*\b*(ea)$);
         \coordinate (x) at ($(na)+(phi)$);
         % \draw (x) node {\(x_\n^\couche\)};
-        \draw [->] (x) -- ($(x)+1/\aire*(phi)$);
+        \draw [-Latex] (x) -- ($(x)+1/\aire*(phi)$);
     }
 }
 
 %%% Triangle de droite
+
+\input{tikz/schema/fonbasloc_Tjr.tikz}
 
 \tikzmath
 {
@@ -45,13 +40,6 @@
     \rc = sqrt((\xd-\xb)^2 + (\yd-\yb)^2);
     \aire = 0.25*sqrt((\rd+\rb-\rc)*(\rd-\rb+\rc)*(-\rd+\rb+\rc)*(\rd+\rb+\rc));
 }
-
-\coordinate (nd) at (\xd,\yd);
-
-\coordinate (ed) at ($(nc)-(nb)$);
-\coordinate (ec) at ($(nb)-(nd)$);
-
-\draw (nb) -- (nd) -- (nc) -- cycle;
 
 \foreach \couche in {1,...,\ncouche}
 {
@@ -68,6 +56,6 @@
         \coordinate (phi) at ($\a*(ec)+\a*\b*(ed)$);
         \coordinate (x) at ($(nd)+(phi)$);
         % \draw (x) node {\(x_\n^\couche\)};
-        \draw [->] (x) -- ($(x)-1/\aire*(phi)$);
+        \draw [-Latex] (x) -- ($(x)-1/\aire*(phi)$);
     }
 }
