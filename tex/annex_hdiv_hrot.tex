@@ -1,0 +1,62 @@
+\section[Espaces Hdiv Hrot]{Espaces \(\Hdiv\), \(\Hrot\)}
+
+Nous reprenons les résultats du cours de \cite{bendali_equations_2014}.
+
+Soit \(\Gamma\) une surface fermée bornée régulière de \(\RR^3\). 
+Soit \(\Gamma_h\) une approximation de \(\Gamma\) par un maillage triangulaire, on désigne notamment un triangle de \(\Gamma_h\) par \(T\).
+
+\begin{defn}
+    Pour tout \(T \in \Gamma_h\), soit \(\phi_{|T}\) une fonction intégrable sur \(T\) alors
+    on définit la notion de fonction intégrale sur \(\Gamma_h\), la fonction \(\phi_h\) telle que
+    \begin{equation}
+        \int_{\Gamma_h} \phi_h \dd{\Gamma_h} = \sum_{T\in\Gamma_h} \int_T \phi_{|T} \dd{T}
+    \end{equation}
+\end{defn}
+
+\begin{defn}
+    On dit que \(\phi_h \in L^2(\Gamma_h)\) si et seulement si \(\phi_{|T} \in L^2(T)\) pour tout \(T \in \Gamma_h\)
+\end{defn}
+
+\subsection[Hdiv]{\(\Hdiv\)}
+
+\begin{defn}
+    On dit que \(\vect{\Phi_h} \in \Hdiv(\Gamma_h)\) si et seulement si \(\vect{\Phi}_{|T} \in \Hdiv(T)\) pour tout \(T \in \Gamma_h\)
+    Alors on définit sous forme faible \(\vdivs \vect{\Phi_h} \).
+    Soit \(\phi \in C^1(\Gamma)\) 
+    \begin{equation}
+        \left< \vdivs \vect{\Phi_h}, \phi \right> %\int_{\Gamma_h} \vdivs \vect{\Phi_h} \phi \dd{\Gamma_h} 
+        = - \sum_{T\in\Gamma_h} \int_T \vect{\Phi}_{|T} \cdot \vgrads \phi\dd{T}
+    \end{equation}
+\end{defn}
+
+Autrement dit, \cite[eq.~5.3]{bendali_equations_2014}
+\begin{defn}
+    On dit que \(\vect{\Phi_h} \in \Hdiv(\Gamma_h)\) si et seulement si il existe \(\psi\in L^2(\Gamma)\) telle que pour toute \(\phi \in C^1(\Gamma)\) 
+    \begin{equation}
+        \left< \vdivs \vect{\Phi_h}, \phi \right> = \int_\Gamma \psi \phi \dd{\Gamma}
+    \end{equation}
+\end{defn}
+
+On déduit la relation de compatibilité \(\Hdiv\) suivante (\cite[Prop.~5.1]{bendali_equations_2014})
+\begin{prop}
+    Soit \(\vect{\Phi}\) tel que \(\vect{\Phi}_{|T}\) soit régulier pour tout \(T\in\Gamma_h\).\\
+    Alors \(\vect{\Phi} \in \Hdiv(\Gamma_h)\) si et seulement si pour toute arête \(k\) séparant les triangles \(T_{k-}\) et \(T_{k+}\) où \(\vect{\nu}_k\) est la normale unitaire sortante du triangle \(T_{k+}\) vers \(T_{k-}\), on a
+    \begin{equation}
+        \left( \vect{\Psi}_{|T_{k+}} - \vect{\Psi}_{|T_{k-}} \right ) \cdot \vect{\nu}_k = 0
+    \end{equation}
+\end{prop}
+    
+\subsection[Hrot]{\(\Hrot\)}
+
+On déduit des résultats de Bendali sur \(\Hdiv\) les résultats sur \(\Hrot\)
+
+\begin{defn}
+    On dit que \(\vect{\Phi_h} \in \Hrot(\Gamma_h)\) si et seulement si \(\vect{\Phi}_{|T} \in \Hrot(T)\) pour tout \(T \in \Gamma_h\).\\
+    Alors on définit sous forme faible \(\vrots \vect{\Phi_h} \).
+    Soit \(\phi \in C^1(\Gamma)\) 
+    \begin{equation}
+        \left< \vn_\Gamma \cdot \vrots \vect{\Phi_h}, \phi \right> %\int_{\Gamma_h} \vdivs \vect{\Phi_h} \phi \dd{\Gamma_h} 
+        = - \sum_{T\in\Gamma_h} \int_T \vect{\Phi}_{|T}  \cdot \left( \vn_T \pvect \vgrads \phi \right) \dd{T}
+    \end{equation}
+\end{defn}
+
