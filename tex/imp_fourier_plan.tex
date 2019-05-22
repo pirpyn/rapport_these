@@ -1,6 +1,6 @@
 \section{Cas d'un objet plan infini}
-    % Ce cas est très bien documenté (\cite{senior_approximate_x995},\cite{hoppe_impedance_x995}) et pose la méthodologie à adopter pour les objets courbes. 
-    
+    % Ce cas est très bien documenté (\cite{senior_approximate_x995},\cite{hoppe_impedance_x995}) et pose la méthodologie à adopter pour les objets courbes.
+
     \begin{figure}[!h]
     \centering
     \begin{tikzpicture}
@@ -21,7 +21,7 @@
         \hat{H_x} &
         \hat{H_y}
         \end{bmatrix}^t\),
-        où \((\hat \vE,\hat \vH)\) sont des solutions du problème \eqref{eq:imp_fourier:intro:maxwell_harmonique}, alors il existe une matrice \(\mat{M}\) ne dépendant pas de \(z\) telle que 
+        où \((\hat \vE,\hat \vH)\) sont des solutions du problème \eqref{eq:imp_fourier:intro:maxwell_harmonique}, alors il existe une matrice \(\mat{M}\) ne dépendant pas de \(z\) telle que
         \begin{equation}
             \ddr{z}{}\vect{X}(k_x,k_z,z) = \mat{M}(k_x,k_z) \vect{X}(k_x,k_z,z)
             \label{eq:imp_fourier:plan:edo}
@@ -31,14 +31,14 @@
     \begin{proof}
         En utilisant les multiplicateur de Fourier associés aux opérateurs différentiels, le problème \eqref{eq:imp_fourier:intro:maxwell_harmonique} s'écrit
         \begin{align*}
-            \left\lbrace 
+            \left\lbrace
             \begin{matrix}
             ik_y \hat{E_z}  - \ddr{z}{\hat{E_y}} = -i \w \mu \hat{H_x} \\
             \ddr{z}{\hat{E_x}} - ik_x \hat{E_z} = -i\w \mu \hat{H_y} \\
             ik_x \hat{E_y} - ik_y \hat{E_x} = -i\w \mu \hat{H_z} \\
             \end{matrix}
-            \right. \quad 
-            \left\lbrace 
+            \right. \quad
+            \left\lbrace
             \begin{matrix}
             ik_y \hat{H_z}  - \ddr{z}{\hat{H_y}} = i \w \eps \hat{E_x} \\
             \ddr{z}{\hat{H_x}} - ik_x \hat{H_z} = i\w \eps \hat{E_y} \\
@@ -47,7 +47,7 @@
             \right.
         \end{align*}
 
-        Les composantes normales se déduisant des composantes tangentielles, on résout l'équation différentielle  matricielle à coefficients constants 
+        Les composantes normales se déduisant des composantes tangentielles, on résout l'équation différentielle  matricielle à coefficients constants
         suivante \(\ddr{z}{}\vect{X} = \mat{M} \vect{X}\) où
 
         \begin{equation}
@@ -66,7 +66,7 @@
             k_3=\sqrt{\w^2\eps\mu - k_x^2 -k_y^2} \quad \lambda_\pm=\pm i k_3
         \end{equation}
         \begin{equation}
-            \vect{V_\pm} = 
+            \vect{V_\pm} =
             \begin{bmatrix}
             \lambda_\pm \\
                 0 \\
@@ -74,7 +74,7 @@
                 i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) \\
             \end{bmatrix}
             \quad
-            \vect{W_\pm} = 
+            \vect{W_\pm} =
                 \begin{bmatrix}
                 0 \\
                 \lambda_\pm \\
@@ -96,7 +96,7 @@
         % \begin{equation}
         %     \vect{X}(z)= \sum\limits_{i=1}^{4}c_i e^{\lambda_i z} \vect{V}_i \, c_i \in \CC
         % \end{equation}
-        On pose 
+        On pose
         \begin{equation*}
             \mat{A} = -\begin{bmatrix}
                 i\frac{k_xk_y}{i\w\eps} & i\left(\w\mu - \frac{k_x^2}{\w\eps}\right) \\
@@ -110,7 +110,7 @@
         \end{equation*}
         Le déterminant de \(\mat{M}-\lambda \mat{I}\) est
         \begin{align*}
-            \det(\mat{M}-\lambda \mat{I}) &= 
+            \det(\mat{M}-\lambda \mat{I}) &=
             \begin{vmatrix}
                 -\lambda \mI & \mA \\
                 \mB & -\lambda \mI
@@ -120,22 +120,22 @@
                 &= (\lambda^2 + (\w^2\eps\mu - k_x^2 -k_y^2))^2 \\
                 &= (\lambda^2 - \lambda_\pm^2)^2
         \end{align*}
-        % On note alors 
+        % On note alors
         % \begin{equation}
         % k_3=\sqrt{\w^2\eps\mu - k_x^2 -k_y^2}
         % \end{equation}
 
-        % Les valeurs propres sont alors 
+        % Les valeurs propres sont alors
         % \begin{equation}
         %     \lambda_\pm = \pm i k_3
         % \end{equation}
-        % Les espaces propres associés sont de dimension 2, on a 
+        % Les espaces propres associés sont de dimension 2, on a
 
         Par un calcul immédiat, on vérifie que \(\mat{M}\vect{V}_\pm = \lambda_\pm\vect{V}_\pm\) et \(\mat{M}\vect{W}_\pm = \lambda_\pm\vect{W}_\pm\).
     \end{proof}
 
     \begin{prop}
-        On pose 
+        On pose
         \begin{align}
             \mC &=
             \begin{bmatrix}
@@ -143,7 +143,7 @@
                 \frac{k_xk_y}{\w\mu} & \left(\w\eps-\frac{k_x^2}{\w\mu}\right)
             \end{bmatrix}
         \end{align}
-        alors 
+        alors
         \begin{subequations}
             \label{eq:imp_fourier:plan:champs}
             \begin{align}
@@ -195,7 +195,7 @@
             \vect{X}(k_x,k_y,z) = c_1e^{\lambda_+ z}\vect{V_+}  + c_2e^{\lambda_+ z}\vect{W_+} + c_3e^{\lambda_- z}\vect{V_-} +c_4e^{\lambda_- z}\vect{W_-}
         \end{equation}
 
-        On exprime \(\hat \vE_t(k_x,k_y,z)\) et \(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,z)\) 
+        On exprime \(\hat \vE_t(k_x,k_y,z)\) et \(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,z)\)
         \begin{align}
             \begin{bmatrix}
                 \hat{E_x}(k_x,k_y,z)\\
@@ -265,7 +265,7 @@
     \subsection{Opérateur d'impédance pour une couche}
 
         \begin{defn}
-            On définit le symbole de l'opérateur d'impédance, la matrice \(\hat \mZ(k_x,k_y)\) tel que 
+            On définit le symbole de l'opérateur d'impédance, la matrice \(\hat \mZ(k_x,k_y)\) tel que
             \begin{equation}
                 \hat \vE_t(k_x,k_y,0) = \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0)\right)
             \end{equation}
@@ -292,7 +292,7 @@
         \end{thm}
 
         \begin{proof}
-            Nous utilisons la condition limite 
+            Nous utilisons la condition limite
             \begin{equation}
                 \begin{bmatrix}
                     \hat{E_x}(k_x,k_y,-d)\\
@@ -343,7 +343,7 @@
 
             En supposant \(k_3d \not = \frac{\pi}{2} + n\pi\), on déduit donc que
             \begin{align}
-                \hat \mZ(k_x,k_y) &=  - k_3 \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1} \mC^{-1} 
+                \hat \mZ(k_x,k_y) &=  - k_3 \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1} \mC^{-1}
                 \\
                 &= -\frac{\eta^2}{k_3} \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1}
                     \begin{bmatrix}
@@ -359,17 +359,17 @@
             \end{align}
 
         \end{proof}
-        %On remarque que \(\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)\) et donc pour un matériau \((\eps,\mu,d)\) donné, l'opérateur d'impédance n'est pas inversible pour tous  \((k_x,k_y) \in \RR^2, n \in \NN\), \(k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2\), qui ne peut être vérifié que si \(\eps\mu\) est réel\footnote{Comme \(\eps, \mu\) sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}. 
+        %On remarque que \(\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)\) et donc pour un matériau \((\eps,\mu,d)\) donné, l'opérateur d'impédance n'est pas inversible pour tous  \((k_x,k_y) \in \RR^2, n \in \NN\), \(k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2\), qui ne peut être vérifié que si \(\eps\mu\) est réel\footnote{Comme \(\eps, \mu\) sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}.
 
-        En pratique, on néglige toute les dépendance en \(y\) : \(k_y = 0\) ce qui revient à une propagation dans le plan \(xz\). Grâce à cette hypothèse, on trouve que \(\mC, \hat \mZ\) sont des matrices diagonales. 
+        En pratique, on néglige toute les dépendance en \(y\) : \(k_y = 0\) ce qui revient à une propagation dans le plan \(xz\). Grâce à cette hypothèse, on trouve que \(\mC, \hat \mZ\) sont des matrices diagonales.
 
-        De plus, on exprime souvent l'impédance selon la polarisation. 
+        De plus, on exprime souvent l'impédance selon la polarisation.
         Dans le cas plan, le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x}\), tandis que le champ \(\vH\)-TM correspond à \({H_x} \vect{e_x}\) et le champ \(\vH\)-TE correspond à \({H_y} \vect{e_y}\).
         Dans ce cas, le symbole \(\hat \mZ\) peut se réécrire comme
         \begin{equation}
-            \hat \mZ = 
+            \hat \mZ =
             \begin{bmatrix}
-                \hat Z_{TM} & 0 
+                \hat Z_{TM} & 0
                 \\
                 0 & \hat Z_{TE}
             \end{bmatrix}
@@ -380,7 +380,7 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \subsection{Opérateur d'impédance pour plusieurs couches}
-        On suppose que l'on a \(n\) couches de matériaux : 
+        On suppose que l'on a \(n\) couches de matériaux :
 
         \begin{figure}[h!btp]
             \centering
@@ -402,7 +402,7 @@
 
         On rappelle que \(\det{\mC_m} = \frac{k_{3m}\eps_m^2}{\mu_m^2}\)
 
-        On définit aussi la profondeur de la couche \(m\), \(l_m = -\sum_{i=0}^{n-m} d_{n-i} \). 
+        On définit aussi la profondeur de la couche \(m\), \(l_m = -\sum_{i=0}^{n-m} d_{n-i} \).
 
         \begin{defn}
             On définit pour chaque interface, le symbole \(\hat \mZ_m\) tel que
@@ -421,7 +421,7 @@
                 k_{3m}d_m &\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN \\
                 \det\left(k_{3m}\mI - i\tan(k_{3m}d_m)\mZ_{m-1}\mC_m\right) &\not = 0
             \end{align}
-            Alors le symbole \(\hat \mZ_n\) est défini par la relation de récurrence : 
+            Alors le symbole \(\hat \mZ_n\) est défini par la relation de récurrence :
             \begin{multline}
                 \hat \mZ_m = -k_{3m}
                 \left(ik_{3m}\tan\left(k_{3m}d_m\right)\mI - \hat \mZ_{m-1}\mC_m\right) \\
@@ -597,10 +597,10 @@
 
             \begin{equation}
                 \hat\mZ_{m+1} = -k_3\left(ik_3\tan(k_3 d)\mI - \hat\mZ_m\mC \right)
-                    \left( k_3\mI - i\tan(k_3 d)\hat\mZ_m\mC \right)^{-1}\mC^{-1} 
+                    \left( k_3\mI - i\tan(k_3 d)\hat\mZ_m\mC \right)^{-1}\mC^{-1}
             \end{equation}
 
-            % à condition que 
+            % à condition que
             % \begin{align}
             %     \det\left(k_3\mI \pm \hat\mZ_m\mC \right) \not = 0 \\
             %     k_3d\not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN \\
@@ -679,4 +679,3 @@
             \caption[Reproduction résultat P. Soudais]{\(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
             \label{fig:imp_fourier:plan:soudais}
         \end{figure}
-        

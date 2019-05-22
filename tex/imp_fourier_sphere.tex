@@ -29,12 +29,12 @@
         &= \frac{1}{2\pi}\sum_{n\in\NN}\sum_{m\in\ZZ} \hat{\vE}(r,n,m) \left( e^{-in\theta} + e^{in\theta}e^{im\pi}\right)e^{-im\phi}
     \end{align}
 
-    Une autre propriété est 
+    Une autre propriété est
     \begin{equation}
         \ds\ddr{\phi}{\vE}(r,0,\phi) = -\frac{1}{2\pi}\sum_{n\in\ZZ}\sum_{m\in\ZZ} im\hat{\vE}(r,n,m) e^{-im\phi}= 0
     \end{equation}
 
-    Et la dernière est 
+    Et la dernière est
     \begin{equation}
         \ds\ddr{\phi}{\vE}(r,\pi,\phi) = -\frac{1}{2\pi}\sum_{n\in\ZZ}\sum_{m\in\ZZ} im\hat{\vE}(r,n,m) e^{-in\pi}e^{-im\phi}= 0
     \end{equation}
@@ -46,7 +46,7 @@
     On réécrit les opérateurs sur les transformées de Fourier afin de déterminer des conditions à vérifié sur ces dernières.
 
     \begin{multline}
-        \vrot \hat{\vE} = \frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)\hat{E}_\phi - im \hat{E}_\theta\right)\vect{e_r}\dots 
+        \vrot \hat{\vE} = \frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)\hat{E}_\phi - im \hat{E}_\theta\right)\vect{e_r}\dots
         \\
         + \left(\frac{im}{r\sin\theta}\hat{E}_r - \frac{1}{r}\ddr{r}{(r\hat{E}_\phi)} \right)\vect{e_\theta} \dots
         \\
@@ -62,7 +62,7 @@
 
     \begin{multline}
         \vrot \vrot \hat{\vE} = \\
-        \frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)\frac{1}{r}\left(\ddr{r}{(r\hat{E}_\theta)}-in\hat{E}_r\right) - im \left(\frac{im}{r\sin\theta}\hat{E}_r - \frac{1}{r}\ddr{r}{(r\hat{E}_\phi)} \right)\right)\vect{e_r}\dots 
+        \frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)\frac{1}{r}\left(\ddr{r}{(r\hat{E}_\theta)}-in\hat{E}_r\right) - im \left(\frac{im}{r\sin\theta}\hat{E}_r - \frac{1}{r}\ddr{r}{(r\hat{E}_\phi)} \right)\right)\vect{e_r}\dots
         \\
         + \left(\frac{im}{r\sin\theta}\frac{1}{r\sin\theta}\left(\left(\cos(\theta) + in\sin(\theta)\right)\hat{E}_\phi - im \hat{E}_\theta\right) - \frac{1}{r}\ddr{r}{}\left(r \frac{1}{r}\left(\ddr{r}{(r\hat{E}_\theta)}-in\hat{E}_r\right)\right) \right)\vect{e_\theta} \dots
         \\

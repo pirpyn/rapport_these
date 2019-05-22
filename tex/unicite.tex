@@ -3,7 +3,7 @@
 		\subsubsection{Forme variationnelle du problème de Maxwell}
 
 			%Considérons le problème énoncé dans \cite{stupfel_sufficient_2011} (convention \(e^{i\omega t}\)).
-			Soit une \(\Gamma\) une surface régulière fermée dans \(\RR^3\). 
+			Soit une \(\Gamma\) une surface régulière fermée dans \(\RR^3\).
 			À l'extérieur de cette surface, on définit \(k_0 \in \RR_+^*\), le nombre d'onde dans le vide et \(\eta_0 \in \RR^*\) l'impédance du vide.
 			À l'intérieur, on définit les constantes relatives \(\eps,\mu \in \CC\), invariantes par translation.
 
@@ -12,9 +12,9 @@
 				La dépendance temporelle est en \(e^{i\w t}\), et l'on identifie \(\vH \equiv \eta _0 \vH\).
 			\end{tcolorbox}
 
-			Soit \((\vE,\vH)\) dans \((\Hrot(\OO))^3 \times (\Hrot(\OO))^3\). 
+			Soit \((\vE,\vH)\) dans \((\Hrot(\OO))^3 \times (\Hrot(\OO))^3\).
 
-			Alors \((\vE,\vH)\) sont solutions de Maxwell si 
+			Alors \((\vE,\vH)\) sont solutions de Maxwell si
 			\begin{align}
 				\label{eq:unicite:form_var:maxwell-E}
 				\trot \vE + ik_0 \mu \vH &= 0 && \text{dans \(\OO\)}
@@ -38,7 +38,7 @@
 			 \end{align*}
 
 			\begin{defn}[Coercivité]
-				Une forme sesquilinéaire \(a(u,v)\) est coercive dans \(\Hrot(\OO)\) si \(\exists \alpha > 0\) tel que 
+				Une forme sesquilinéaire \(a(u,v)\) est coercive dans \(\Hrot(\OO)\) si \(\exists \alpha > 0\) tel que
 				\[
 					|\Re(a(u,u))| \ge \alpha ||u||_{\Hrot(\OO)}^2 = \alpha \left( || \trot u ||_{L^2}^2 + || u ||_{L^2}^2\right) \, \forall u \in \Hrot(\OO)
 				\]
@@ -59,7 +59,7 @@
 			\begin{equation}
 				\label{eq:unicite:form_var:decomp_form_bilin_1}
 				|\Re(a(\vE,\vE))| = \left|\frac{\Im(\mu)}{k_0} || \trot \vE ||_{L^2}^2  + k_0 \Im(\eps) || \vE ||_{L^2}^2
-				%+ \Re(C) 
+				%+ \Re(C)
 				- \Re(X)\right|
 			\end{equation}
 
@@ -99,7 +99,7 @@
 
 		% On impose sur \(\Gamma\)  la relation \(\vE_t = Z \vJ\), où \(Z\) est un opérateur explicité ci-après.
 
-		Pour tous \(\forall u, v \in (\mathcal C^\infty(\Gamma))^3\) des fonctions vecteurs complexes tangentes à la surface \(\Gamma\), on définit \(L\) un opérateur antisymétrique négatif, i.e : 
+		Pour tous \(\forall u, v \in (\mathcal C^\infty(\Gamma))^3\) des fonctions vecteurs complexes tangentes à la surface \(\Gamma\), on définit \(L\) un opérateur antisymétrique négatif, i.e :
 		\begin{align*}
 			\int_\Gamma \vect u\cdot L(\conj{\vect v}) &= \int_\Gamma \conj{\vect v}\cdot L(\vect u)\\
 			\int_\Gamma \vect u\cdot L(\conj{\vect u}) &\le 0
@@ -107,7 +107,7 @@
 
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsubsection{Cas de la condition d'ordre 0 (\cite{stupfel_sufficient_2011})}
-			Utilisons la condition d’impédance d'ordre 0, valable sur la surface \(\Gamma\): 
+			Utilisons la condition d’impédance d'ordre 0, valable sur la surface \(\Gamma\):
 
 			Soit \(a_0 \in \CC\) tel que
 			\[
@@ -152,7 +152,7 @@
 		\subsubsection{Cas de la condition d'ordre 1}
 
 
-			Utilisons la condition d’impédance d'ordre 1, valable sur la surface \(\Gamma\): 
+			Utilisons la condition d’impédance d'ordre 1, valable sur la surface \(\Gamma\):
 
 			Soit \((a_0, a_1,b) \in \CC^3\) tel que
 			\[
@@ -170,7 +170,7 @@
 					&= a_1\conj{a_0} ||\vJ||^2 + |a_1|^2 \int_\Gamma \vJ L \conj{\vJ} ds - \conj{b} ||\vE_t||^2 - |b|^2 \int_\Gamma \vE_t L \conj{\vE_t} ds
 				\end{align*}
 
-				On note \(\Delta = a_1 -a_0\conj{b}\), \(F = -\int_\Gamma \vJ L \conj{\vJ} ds \ge 0 \), \(G = -\int_\Gamma \vE_t L \conj{\vE_t} ds \ge 0 \) . 
+				On note \(\Delta = a_1 -a_0\conj{b}\), \(F = -\int_\Gamma \vJ L \conj{\vJ} ds \ge 0 \), \(G = -\int_\Gamma \vE_t L \conj{\vE_t} ds \ge 0 \) .
 
 				Si on décompose les parties réelles et imaginaires de cette expression, on a
 				\begin{align*}
@@ -540,12 +540,12 @@
 
 			\begin{align}
 				Y_R &= \frac{1}{\Delta_2}\left(a_2\left[\conj{a_0}\int_\Gamma \vJ\cdot\LR\conj{\vJ} - \conj{a_2}||\LR J||^2\right]  -\conj{b_2}\left[\int_\Gamma \conj{\vE}\LR{\vE} - b_2 ||\LR \vE ||^2\right]\right) \\
-				Y_D &= \frac{1}{\Delta_1}\left(a_1\left[\conj{a_0}\int_\Gamma \vJ\cdot\LD\conj{\vJ} + \conj{a_1}||\LD J||^2\right]  -\conj{b_1}\left[\int_\Gamma \conj{\vE}\LD{\vE} + b_1 ||\LD \vE ||^2\right]\right) 
+				Y_D &= \frac{1}{\Delta_1}\left(a_1\left[\conj{a_0}\int_\Gamma \vJ\cdot\LD\conj{\vJ} + \conj{a_1}||\LD J||^2\right]  -\conj{b_1}\left[\int_\Gamma \conj{\vE}\LD{\vE} + b_1 ||\LD \vE ||^2\right]\right)
 			\end{align}
 
 			Il reste alors à utiliser l'équation \eqref{eq:unicite:ci3:csu3-1} pour obtenir
 			\begin{equation}
-				X = -\conj{b_1} Y_D + \conj{b_2} Y_R + \conj{a_0} || \vJ ||^2 + \conj{a_1} \int_\Gamma \vJ \LD \conj{J} - \conj{a_2} \int_\Gamma \vJ \LR \conj{J} 
+				X = -\conj{b_1} Y_D + \conj{b_2} Y_R + \conj{a_0} || \vJ ||^2 + \conj{a_1} \int_\Gamma \vJ \LD \conj{J} - \conj{a_2} \int_\Gamma \vJ \LR \conj{J}
 			\end{equation}
 
 			\begin{multline}
@@ -572,7 +572,7 @@
 			  Copier la démonstration
 			\end{TODO}
 
-			On pose 
+			On pose
 			\begin{equation}
 				z = \left(1 - \frac{b_1}{a_1}a_0 - \frac{b_2}{a_2}a_0\right)
 			\end{equation}

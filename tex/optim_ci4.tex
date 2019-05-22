@@ -1,6 +1,6 @@
 \section{Étude de la CI4 par optimisation sous contraintes}
 
-%Soit la condition d'impédance 
+%Soit la condition d'impédance
 %\begin{equation}\label{eq:ci4}
 %\E_t = ( a_0 + a_1 \LD - a_2 \LR )(\J)
 %\end{equation}
@@ -33,7 +33,7 @@ Soit \(F = \begin{bmatrix}
 0 & 0 & 1 \\
 0 & 0 & 0 \\
 0 & 0 & 0 \\
-0 & 0 & 0 
+0 & 0 & 0
 \end{bmatrix}\) et soit \(P\) un vecteur de \(\RR^6\) tel que \( F^tP  \in (\RR_-)^3\).
 
 On cherche \(X=(a_0', a_1', a_2',a_0'',a_1'',a_2'') \in \RR^6\) tel que
@@ -43,10 +43,10 @@ X = \argmin{X\in \RR^6} \frac{1}{2}\left<QX,X\right> - \left<P,X\right> + D \tex
 
 Cette fonctionnelle possède un unique minimum global car Q est inversible (démontré ci-après) et un unique minimum local à l'espace des contrainte car ce dernier est convexe et  \(Q\) est quadratique ( car correspondante à \(|| Z_{ap}(X)||_2^2\) ).
 
-Pour résoudre ce problème nous allons appliquer la théorie des multiplicateurs de Karush-Khun-Lagrange-Tucker. 
+Pour résoudre ce problème nous allons appliquer la théorie des multiplicateurs de Karush-Khun-Lagrange-Tucker.
 
 Le Lagrangien de ce problème est le suivant :
-Soient \(\lambda \in (\RR_+)^3\) 
+Soient \(\lambda \in (\RR_+)^3\)
 \begin{equation}
 \mathcal{L}(X,\lambda) = \frac{1}{2}\left<Q X, X\right>  - \left<P, X\right> + D + \left<\lambda, F^tX\right>
 \end{equation}
@@ -75,7 +75,7 @@ Si \(t\) possède au moins deux composantes différentes alors
 \end{prop}
 
 \begin{proof}
-Par définition \( \det(Q) = \det(M)^2\). Or 
+Par définition \( \det(Q) = \det(M)^2\). Or
   % \[
   % M = \begin{bmatrix}
   % 2n & \st & \st \\
@@ -88,7 +88,7 @@ Par définition \( \det(Q) = \det(M)^2\). Or
   &= 2\left<t,t\right>\left( \left<1,1\right> \left<t,t\right> - \left<t,1\right>^2\right)
   \end{align}
   et d'après Cauchy–Schwarz, le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est à dire n'importe quel vecteur ayant au moins  deux composantes différentes.
-% De plus, on note que 
+% De plus, on note que
 
 % \begin{equation}
 %   M^{-1} = \frac{1}{\ddet(M)}
@@ -109,7 +109,7 @@ M^{-1} & 0_{3 \times 3} \\
 \end{equation}
 
 \end{proof}
-Puisque \(Q\) est inversible, on a la 
+Puisque \(Q\) est inversible, on a la
 \begin{prop}[Condition de stationnarité de K.K.T]
 \begin{equation}
 \nabla_X\mathcal{L}(X,\lambda) = 0 \Leftrightarrow X = Q^{-1}\left(P - F\lambda \right)
@@ -180,7 +180,7 @@ Cependant comme \(Q\) n'est pas diagonale, en annulant un multiplicateur, les au
 % \end{bmatrix}
 % \begin{bmatrix}
 % a\\b\\c
-% \end{bmatrix} = 
+% \end{bmatrix} =
 % \begin{bmatrix}
 % X\cdot F_1\\
 % X\cdot F_2\\
@@ -188,4 +188,4 @@ Cependant comme \(Q\) n'est pas diagonale, en annulant un multiplicateur, les au
 % \end{bmatrix}
 % \]
 
-% Si l'une des ces composantes est négative alors le point appartient à l'une des pyramides duales, c'est dire de sommet \((0)\) 
+% Si l'une des ces composantes est négative alors le point appartient à l'une des pyramides duales, c'est dire de sommet \((0)\)

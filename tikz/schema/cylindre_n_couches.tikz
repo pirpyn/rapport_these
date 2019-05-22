@@ -25,11 +25,11 @@
 
 % Le repère
 \coordinate (n) at ($(a)+(0.5,-1)$);
-% 
-% 
+%
+%
 %\draw [->] (n) -- ++(0,1) node [at end, right] {$\v{\pr}$};
 %\draw [->] (n) -- ++(1,0) node [at end, right] {$\v{\pt}$};
-% 
+%
 \draw (n) ++(0.2,0.2) circle(0.1cm) node [above=0.1cm] {$\vect{e_z}$};
 \draw (n) ++(0.2,0.2) +(135:0.1cm) -- +(315:0.1cm);
 \draw (n) ++(0.2,0.2) +(45:0.1cm) -- +(225:0.1cm);

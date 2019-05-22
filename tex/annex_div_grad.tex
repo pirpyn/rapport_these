@@ -5,7 +5,7 @@
     \begin{align}
         \vgrad f &= \ddr{x}{f}\vect{e_x} + \ddr{y}{f}\vect{e_y}  + \ddr{z}{f}\vect{e_z} \\
         \vdiv \vect{V} &= \ddr{x}{V_x} + \ddr{y}{V_y} + \ddr{z}{V_z} \\
-        \vrot\vect{V} &= \left(\ddr{y}{V_z}-\ddr{z}{V_y}\right)\vect{e_x} + \left(\ddr{z}{V_x}-\ddr{x}{V_y}\right)\vect{e_y} + \left(\ddr{x}{V_y}-\ddr{y}{V_x}\right)\vect{e_z} 
+        \vrot\vect{V} &= \left(\ddr{y}{V_z}-\ddr{z}{V_y}\right)\vect{e_x} + \left(\ddr{z}{V_x}-\ddr{x}{V_y}\right)\vect{e_y} + \left(\ddr{x}{V_y}-\ddr{y}{V_x}\right)\vect{e_z}
     \end{align}
 
 \subsection{Cylindrique}
@@ -20,9 +20,9 @@
         \\
         \vdiv \vect{V} &= \frac{1}{r}\ddr{r}{(rV_r)}+\frac{1}{r}\ddr{\theta}{V_\theta}+\ddr{z}{V_z}
         \\
-        \vrot \vect{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\vect{e_r} + 
+        \vrot \vect{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\vect{e_r} +
         \left(\ddr{z}{V_r} - \ddr{r}{V_z}\right)\vect{e_\theta} +
-        \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\vect{e_z} 
+        \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\vect{e_z}
     \end{align}
 
 \subsection{Sphérique}
@@ -40,7 +40,7 @@
     \end{align}
 
     \begin{multline}
-        \vrot \vect{V} = \frac{1}{r\sin\theta}\left(\ddr{\theta}{}\left(\sin(\theta)V_\phi\right) - \ddr{\phi}{V_\theta}\right)\vect{e_r}\dots 
+        \vrot \vect{V} = \frac{1}{r\sin\theta}\left(\ddr{\theta}{}\left(\sin(\theta)V_\phi\right) - \ddr{\phi}{V_\theta}\right)\vect{e_r}\dots
         \\
         + \left(\frac{1}{r\sin\theta}\ddr{\phi}{V_r} - \frac{1}{r}\ddr{r}{(rV_\phi)} \right)\vect{e_\theta} \dots
         \\

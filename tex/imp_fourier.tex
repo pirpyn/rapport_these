@@ -9,7 +9,7 @@ Nous les rappellerons ainsi la méthode pour les obtenir puis nous expliciterons
 
 Soit \(\OO\) un domaine fermé, bornée, de frontière régulière. Supposons que ces champs soient \(L^2\) en espace et en temps: \((\vE(\vect{x},t),\vH(\vect{x},t)) \in L^2(\OO \times \RR_+) \cap L^2(\OO^c\times\RR_+)\) et vérifient les équations de Maxwell:
 \begin{equation}
-    \left\lbrace 
+    \left\lbrace
     \begin{matrix}
     \vrot \vE(\vect{x},t) &=& -\mu(\vx) \ddr{t}{\vH}(\vx,t) \\
     \vrot \vH(\vect{x},t) &=& \eps(\vx) \ddr{t}{\vE}(\vx,t)
@@ -32,7 +32,7 @@ La méthode pour trouver une expression de l'opérateur d'impédance est la suiv
 \item Faire une transformée de Fourier partielle des champs, dépendante de la géométrie.
 \item Réécrire le système d'équation de Maxwell simplifié.
 \item Obtenir des EDO simple à résoudre sur les composantes des champs.
-\item Utiliser les conditions limites pour obtenir les solutions particulières de cette EDO. 
+\item Utiliser les conditions limites pour obtenir les solutions particulières de cette EDO.
 \item En déduire l'opérateur d'impédance en Fourier.
 \end{itemize}
 
@@ -44,10 +44,10 @@ Dans ce qui suit, on réalise au moins une transformée partielle en temps. La v
 
 On va donc utiliser le système d'équations de Maxwell harmonique:
 \begin{equation}
-    \left\lbrace 
+    \left\lbrace
     \begin{matrix}
     \vrot \hat \vE(\vx,\w)  &=& -i \omega \mu \hat \vH(\vx,\w)  \\
-    \vrot \hat \vH(\vx,\w)  &=& i \omega \eps \hat \vE(\vx,\w) 
+    \vrot \hat \vH(\vx,\w)  &=& i \omega \eps \hat \vE(\vx,\w)
     \end{matrix}
     \right.
     \label{eq:imp_fourier:intro:maxwell_harmonique}

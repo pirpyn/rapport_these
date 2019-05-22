@@ -51,10 +51,10 @@ On note \(\eta_p = \sqrt{\frac{\mu_p}{\eps_p}}\) et \(\nu_p = \sqrt{\mu_p \eps_p
 On a donc \(k_p = \kO\nu_p\)\footnote{Évidemment \(k_0 = \kO\)} et \(k_{z,p} = \sqrt{k_p^2 - k_{x,p}^2}\).
 
 \begin{hyp}[Principe de superposition]{}~\\
-La solution générale est une combinaison linéaire de deux problèmes: 
+La solution générale est une combinaison linéaire de deux problèmes:
 \begin{enumerate}
     \item \gls{acr-te} : \(\vE = (0,E_y,0)\).
-    \item \gls{acr-tm} : \(\vH = (0,H_y,0)\). 
+    \item \gls{acr-tm} : \(\vH = (0,H_y,0)\).
 \end{enumerate}
 \end{hyp}
 
@@ -66,9 +66,9 @@ La dépendance temporelle est en \(e^{i \omega t}\), et l'on identifie \(\vH \eq
 \end{tcolorbox}
 
 
-Soit \((\vE,\vH)\) dans \((\Hrot(\OO))^3 \times (\Hrot(\OO))^3\). 
+Soit \((\vE,\vH)\) dans \((\Hrot(\OO))^3 \times (\Hrot(\OO))^3\).
 
-Alors \((\vE,\vH)\) sont solutions de Maxwell si 
+Alors \((\vE,\vH)\) sont solutions de Maxwell si
 \begin{align}
 \label{eq:coeffs_ref:maxwell-E}
 \trot \vE + i k_p \eta_p \vH &= 0 && \text{dans \(\OO\)}\\
@@ -78,9 +78,9 @@ Alors \((\vE,\vH)\) sont solutions de Maxwell si
 
 Les équations de Maxwell donnent dans chacun des domaines (indicé par le \(p = \lbrace0,1\rbrace\)) et pour chacune des polarisations:
 
-\Gls{acr-te}: \( \vE(\x,\z) = (0,E_y,0), \vH(\x,\y) = (H_x,0,H_z)\). 
+\Gls{acr-te}: \( \vE(\x,\z) = (0,E_y,0), \vH(\x,\y) = (H_x,0,H_z)\).
 \[
-\left\lbrace 
+\left\lbrace
 \begin{matrix}
 -\dd_{\z} E_\y + i k_p \eta_p H_\x & = & 0 \\
 \dd_{\x} E_\y + i k_p \eta_p H_\z &= & 0 \\
@@ -97,9 +97,9 @@ H_\y =  -\frac{\dd_{\x} E_\z}{i k_p \eta_p }
 \right.
 \]
 
-\Gls{acr-tm} : \( \vE(\x,\z) = (E_\x,0,E_\z), \vH(\x,\z) = (0,H_\y,0)\). 
+\Gls{acr-tm} : \( \vE(\x,\z) = (E_\x,0,E_\z), \vH(\x,\z) = (0,H_\y,0)\).
 \[
-\left\lbrace 
+\left\lbrace
 \begin{matrix}
 \dd_{\z} E_\x - \dd_{\x} E_\z + i k_p \eta_p  H_\y &= & 0 \\
 - \dd_{\z} H_\y - i\frac{k_p}{\eta_p} E_\x & = & 0\\
@@ -118,7 +118,7 @@ E_\y = \eta_p\frac{\dd_{\x} H_\y}{i k_p}
 
 On obtient alors une équation de Helmholtz à résoudre respectivement pour \(E_\y\) et \(H_\y\).
 
-Dans la suite, nous allons donc considérer comme inconnu \(U\), solution du problème suivant : 
+Dans la suite, nous allons donc considérer comme inconnu \(U\), solution du problème suivant :
 
 \begin{equation}
 \dd_{\z\z}^2 U + \dd_{\x\x}^2 U + k_p^2 U = 0 \quad \text { dans \(\OO\cup\OO^c\)}
@@ -131,19 +131,19 @@ Dans la suite, nous allons donc considérer comme inconnu \(U\), solution du pro
 % \]
 % \end{hyp}
 
-% 
+%
 % \iffalse
 % \subsection{Onde plane et transformée de Fourier}
-% Une onde plane harmonique (dépendance \(e^{i\wt}\)) est de type \(U(x_1,x_2,\z) = U_0e^{i(k_1x_1+k_2x_2+k_3\z)}\), dont on remarque que . 
-% 
-% Or une propriété de la transformée de Fourier \( U\) de \(U\) est \({ \dd_j U}(\xi) = i\xi_j  U\). 
+% Une onde plane harmonique (dépendance \(e^{i\wt}\)) est de type \(U(x_1,x_2,\z) = U_0e^{i(k_1x_1+k_2x_2+k_3\z)}\), dont on remarque que .
+%
+% Or une propriété de la transformée de Fourier \( U\) de \(U\) est \({ \dd_j U}(\xi) = i\xi_j  U\).
 % Donc on peut faire l'analogie entre l'hypothèse d'une onde plane et la transformée de Fourier de \(U\),
 %  avec l'analogie \(\xi_j \leftrightarrow  k_j\).
 % \fi
 % %%%% SECTION Z
 % \subsection{Impédance de surface pour une couche de matériau}
 % Comme le plan est infini, on peut prendre les transformées de Fourier des 2 équations trouvées précédemment afin que les opérateur différentiels issus des équations de Maxwell deviennent des coefficients multiplicatifs. On peut alors rechercher une CI tel que \(\mathcal{Z} = Z\operatorname{Id}\) et on note \( \kO = \w^2 \eps_p \mu_p\).
-% 
+%
 % Rappellons que dans le domaine de Fourier, \({ \dd_j U}(\xi) = i\xi_j  U\) %(on rappelle que \(k_{\z,1} \leftrightarrow k_1\))
 
 %%% OLD FOURIER
@@ -189,14 +189,14 @@ On suivra comme convention qu'en polarisation TE, \( U = E_\y\) et en polarisati
 
 Les conditions limites sur le matériau vont permettre de déterminer les valeurs des constantes \(A_p, B_p\).
 \begin{itemize}
-    \item 
+    \item
     Conducteur parfait (\gls{acr-cp})\footcite[p.~217]{morse_methods_1953} : \(\vE_t(-d) = 0  \)
-    \item 
+    \item
     Continuité des champs tangents: \(
-    \left\lbrace 
+    \left\lbrace
     \begin{matrix}
     [ \vE_t]_{\z=0} &=& 0 \\
-    [ \vH_t]_{\z=0} &=& 0 
+    [ \vH_t]_{\z=0} &=& 0
     \end{matrix}
     \right.\)
 \end{itemize}
@@ -244,7 +244,7 @@ où \(L_R = diag(0,k_{\x,1}^2)\). C'est la forme que l'on retrouve dans \cite{ma
 
 %%%% SECTION REFLEXION
 \subsection{Coefficients de réflexions}
-Le rapport \(R=B_0/A_0\) est appelé coefficient de réflexion. On cherche à l'exprimer en fonction de l'impédance de surface \(Z\). On réutilise les équations de continuités: 
+Le rapport \(R=B_0/A_0\) est appelé coefficient de réflexion. On cherche à l'exprimer en fonction de l'impédance de surface \(Z\). On réutilise les équations de continuités:
 
 \begin{center}
 \begin{tabular}{| C | C | C |}
@@ -252,7 +252,7 @@ Le rapport \(R=B_0/A_0\) est appelé coefficient de réflexion. On cherche à l'
 & \text{\textbf{TE}} & \text{\textbf{TM}} \\
 \hline\hline
 
-1+R & \frac{B_1(1-e^{-ik_{\z,1}2d})}{A_0}& \frac{B_1(1+e^{-ik_{\z,1}2d})}{A_0} \\ 
+1+R & \frac{B_1(1-e^{-ik_{\z,1}2d})}{A_0}& \frac{B_1(1+e^{-ik_{\z,1}2d})}{A_0} \\
 \hline
 
 -1+R & \frac{k_{\z,1}\mu_0 B_1(1+e^{-ik_{\z,1}2d})}{k_{\z,0} \mu_1 A_0} & \frac{k_{\z,1}\eps_0 B_1(1-e^{-ik_{\z,1}2d})}{k_{\z,0} \eps_1A_0}\\
@@ -317,7 +317,7 @@ Z & \frac{k_1\eta_1}{k_{\z,1}}\tanh\left(ik_{\z,1}d-\frac{\log(\alpha(\gamma_{TE
 P = \frac{ik_1}{k_{\z,1}}diag\left(\frac{1-\alpha(\gamma_{TE}) e^{ik_{\z,1}2d}}{1+\alpha(\gamma_{TE}) e^{ik_{\z,1}2d}},\frac{1-\alpha(\gamma_{TM}) e^{ik_{\z,1}2d}}{1+\alpha(\gamma_{TM}) e^{ik_{\z,1}2d}}\right)
 \]
 % {
-%   \color{blue}Valeur particulière en \(Z_d = -\gamma\). À étudier si l'occasion se présente. 
+%   \color{blue}Valeur particulière en \(Z_d = -\gamma\). À étudier si l'occasion se présente.
 % }
 Alors, la condition d'impédance en \(\z=0\) est
 \begin{align}
