@@ -14,7 +14,7 @@ On cherche à déterminer les coefficients des CIOE \((a_0,a_1,b) \in \CC^3\) qu
 % -\left(1 + b t \right)\n \pvect \n \pvect \E = \left(a_0 + a_1 t \right)\n \pvect \H
 % \end{equation}
 
-On se place en un point de la surface. 
+On se place en un point de la surface.
 Si la surface y est suffisamment régulière, on peut trouver un voisinage de ce point tel que le problème à résoudre soit celui étudié en section \ref{sec:coeffs_ref}.
 
 \subsection{Formulation exacte dans le cadre de l'approximation plan tangent}
@@ -52,7 +52,7 @@ On peut écrire le problème à résoudre comme
 	\end{bmatrix}
 \end{align*}
 
-On résout ce genre de système non inversible en utilisant la transposée conjuguée. 
+On résout ce genre de système non inversible en utilisant la transposée conjuguée.
 \begin{equation}
    \conj{M^t}MX = \conj{M^t} Z
 \end{equation}
@@ -86,9 +86,9 @@ Si Q est inversible alors le minimum de cette fonctionnelle est atteint en \(X_{
 
 Si l'on cherche des inconnus réelles, on a :
 
-Soit \((x_i)_{i=1..6} \in \RR^6\), 
+Soit \((x_i)_{i=1..6} \in \RR^6\),
 \begin{align*}
-g_t(x) &= 
+g_t(x) &=
 \x_1 + \x_3 t - \left(x_5 Z_{th}(t)' - x_6 Z_{th}(t)''\right)t  \\
 &+ i\left(
 \x_2 + \x_4 t - \left(x_5 Z_{th}(t)'' + x_6 Z_{th}(t)'\right)t
@@ -185,11 +185,11 @@ Cependant, la matrice Q semble définie pour \(N \ge 6\) ce qui a été constat�
 
 %   On remarque que \(A\v{e_1} = ( 1, {x_j} , -{y_j})^t =: \v{\tau}\). Donc \(\v{\tau}\) appartient à l'image de A.
 
-%   De plus, \(A\v{e_2} = {x_j}\v{\tau}\), puis \(A\v{e_3} = -{y_j}\v{\tau}+{z_j}^2\v{e_3}\). On peut en déduire que \(A(\v{e_3} + {y_j} \v{e_1}) = {z_j}^2 \v{e_3}\). 
+%   De plus, \(A\v{e_2} = {x_j}\v{\tau}\), puis \(A\v{e_3} = -{y_j}\v{\tau}+{z_j}^2\v{e_3}\). On peut en déduire que \(A(\v{e_3} + {y_j} \v{e_1}) = {z_j}^2 \v{e_3}\).
 
 %   Donc \(\v{e_3}\) appartient à l'image de \(A\). La famille \((\v{\tau},\v{e_3})\) est libre et génératrice, l'image est au plus de dimensions 2 donc c'est une base de l'image.
 
-%   On va prendre alors la base orthonormale associée : 
+%   On va prendre alors la base orthonormale associée :
 
 %   Soit \[
 %   {\v{v_j}} := \frac{\v{\tau}}{||\v{\tau}||} = \frac{1}{\sqrt{1 + {x_j}^2 +{y_j}^2}}\begin{bmatrix} 1\\{x_j}\\-{y_j}\end{bmatrix}\]
@@ -396,7 +396,7 @@ Cependant, la matrice Q semble définie pour \(N \ge 6\) ce qui a été constat�
 % \end{prop}
 
 % \begin{proof}
-% Dans ce cas, on a 
+% Dans ce cas, on a
 % \[
 % \tilde{Q_j} = \begin{bmatrix} A & 0_{\mathcal M(3,3)} \\ 0_{\mathcal M(3,3)} & A\end{bmatrix}\]
 % \[A = \begin{bmatrix}

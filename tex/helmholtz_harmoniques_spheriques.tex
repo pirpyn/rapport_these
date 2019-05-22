@@ -4,19 +4,19 @@ Nous cherchons une solution de l'équation de Helmholtz \eqref{eq:sol_maxwell:he
 , nous allons exhiber des solutions fondamentales appelées harmoniques sphériques.
 %% subsection intro
 
-Soient \(k \in \CC, \OO = B(0,1), \OO^c = \RR^3 \backslash \overline{\OO}\). 
+Soient \(k \in \CC, \OO = B(0,1), \OO^c = \RR^3 \backslash \overline{\OO}\).
 
-Le Laplacien s'écrit en coordonnées sphériques : 
-\[ 
+Le Laplacien s'écrit en coordonnées sphériques :
+\[
   \gls{ope-laps} \Psi := \frac{1}{r^2}\left(
-  \ddr{r}{}\left(r^2\ddr{r}{\Psi}\right) 
+  \ddr{r}{}\left(r^2\ddr{r}{\Psi}\right)
   + \frac{1}{\sin(\theta)}\ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Psi}\right)
   + \frac{1}{\sin^2(\theta)} \ddr[2]{\phi}{\Psi}\right)
 \]
 
 \subsection{Solution particulière de Helmholtz par séparation des variables}
 \begin{hyp}
-On suppose que l'on peut écrire \(\Psi(\rtp) : = f(r)g(\theta)h(\phi)\). 
+On suppose que l'on peut écrire \(\Psi(\rtp) : = f(r)g(\theta)h(\phi)\).
 \end{hyp}
 \begin{prop}
 \begin{equation}
@@ -26,23 +26,23 @@ On suppose que l'on peut écrire \(\Psi(\rtp) : = f(r)g(\theta)h(\phi)\).
 \begin{proof}
 On note \(f' =\ddr{r}{f}, g' = \ddr{\theta}{g} , h' = \ddr{\phi}{h}\). On omettra les dépendances en \(\rtp\) dans \(f,g,h\) pour alléger les notations.
 
-L'équation de Helmholtz s'écrie à l'intérieur\footnote{Le cas extérieur est analogue en changeant \(k\) pour \(k_0\).} de la sphère : 
+L'équation de Helmholtz s'écrie à l'intérieur\footnote{Le cas extérieur est analogue en changeant \(k\) pour \(k_0\).} de la sphère :
 \begin{equation}\label{eq:helm:helm}
   \Delta \Psi + k^2 \Psi = gh\frac{1}{r^2}\ddr{r}{r^2f'} + \frac{1}{r^2}\left(\frac{fh}{\sin(\theta)}\ddr{\theta}{}(\sin(\theta)g')+\frac{fg}{\sin^2(\theta)}h''\right) + k^2 fgh = 0 \; \forall (r,\tp)
 \end{equation}
 
-On suppose que \( \frac{r^2\sin^2(\theta)}{f(r)g(\theta)h(\phi)}\) ne peut pas s'annuler. Alors on multiplie l'équation de Helmholtz par ce terme pour faire apparaître 2 termes dépendant de variables différentes: un terme variant selon \((r)\), l'autre selon \((\tp)\). 
+On suppose que \( \frac{r^2\sin^2(\theta)}{f(r)g(\theta)h(\phi)}\) ne peut pas s'annuler. Alors on multiplie l'équation de Helmholtz par ce terme pour faire apparaître 2 termes dépendant de variables différentes: un terme variant selon \((r)\), l'autre selon \((\tp)\).
 
 \begin{align*}
-\frac{r^2}{fgh} \left(\Delta \Psi + k^2 \Psi\right) &= 
-\left(\frac{1}{f}\ddr{r}{r^2f'} + (kr)^2\right) + 
+\frac{r^2}{fgh} \left(\Delta \Psi + k^2 \Psi\right) &=
+\left(\frac{1}{f}\ddr{r}{r^2f'} + (kr)^2\right) +
 \left(\frac{1}{ \sin(\theta)g} \ddr{\theta}{}(\sin(\theta)g') +  \frac{1}{ \sin^2(\theta)}\frac{h''}{h} \right)\\
 0 &=R(r) + \Theta(\tp)
 \end{align*}
 Chaque terme doit donc être égal à une constante dont le somme sera nulle. En séparent les dépendances en \(\theta\) et \(\phi\) dans \(\Theta\), on trouve que chaque terme est aussi constant:
 
   %On notera que les deux termes doivent être constant.\\
-\[ 
+\[
 \exists z_h \in \CC,\; \frac{h''}{h} = z_h^2 \Rightarrow h(\phi) = e^{z_h\phi}
 \]
 
@@ -56,9 +56,9 @@ h(\phi) = h(\phi + 2\pi) \Leftrightarrow e^{z_h2\pi}= 1 \Rightarrow \forall m \i
 %\end{equation}
 \end{proof}
 
-%%% subsection g 
+%%% subsection g
 \begin{prop}\(\forall m \in \ZZ, \forall \nu \in \CC\), soit \(\PP^m_\nu\) la fonction de Legendre associée. Alors
-  \begin{equation} 
+  \begin{equation}
     g(\theta) := \PP^m_\nu(\cos \theta)
   \end{equation}
 \end{prop}
@@ -66,8 +66,8 @@ h(\phi) = h(\phi + 2\pi) \Leftrightarrow e^{z_h2\pi}= 1 \Rightarrow \forall m \i
 
 En injectant \(h\) dans l'équation de Helmholtz normalisée par un facteur \(\frac{r^2}{fgh}\) on obtient
 \begin{align*}
-     \frac{r^2}{fgh} \left(\Delta \Psi + k^2 \Psi\right) &= 
-     \left(\frac{1}{f}\ddr{r}{r^2f'} + (kr)^2\right) + 
+     \frac{r^2}{fgh} \left(\Delta \Psi + k^2 \Psi\right) &=
+     \left(\frac{1}{f}\ddr{r}{r^2f'} + (kr)^2\right) +
      \left(\frac{1}{g\sin(\theta)} \ddr{\theta}{}(\sin(\theta)g') -  \frac{m^2}{\sin^2(\theta)}\right) \\
  0 &= R(r) + A(\theta)
 \end{align*}
@@ -83,10 +83,10 @@ En injectant \(h\) dans l'équation de Helmholtz normalisée par un facteur \(\f
     \label{eq:helm:legendre}\frac{1}{\sin\theta}\left(\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{g}\right)\right) + \left(- A -\frac{m^2}{\sin^2\theta}\right)g = 0
   \end{equation*}
 
-%On obtient une équation qui n'a de solution non triviales qui si \(A\) est valeur propre de l'opérateur \(\frac{1}{\sin\theta}\left(\ddd{\theta}\left(\sin\theta\ddr{\theta}{\cdot}\right)\right) -\frac{m^2}{\sin^2\theta}\operatorname{id}\). Plus précisément, 
+%On obtient une équation qui n'a de solution non triviales qui si \(A\) est valeur propre de l'opérateur \(\frac{1}{\sin\theta}\left(\ddd{\theta}\left(\sin\theta\ddr{\theta}{\cdot}\right)\right) -\frac{m^2}{\sin^2\theta}\operatorname{id}\). Plus précisément,
 Dans la littérature \cite{abramowitz_handbook_1964}, on fait apparaître "l'équation différentielle associée de Legendre" car il existe \(
 %\forall A \in \CC,
-\nu \in \CC,-A = \nu(\nu + 1)\). Des solutions de ce problème sont les fonctions associées de Legendre du 1er type, notées \(\PP^m_\nu(\cos \theta)\) 
+\nu \in \CC,-A = \nu(\nu + 1)\). Des solutions de ce problème sont les fonctions associées de Legendre du 1er type, notées \(\PP^m_\nu(\cos \theta)\)
 
 D'apres \cite[p.~1264]{abramowitz_handbook_1964}, \cite[p.~84]{bohren_absorption_2004}, \(\nu \in \NN, n\ge m \). On pose alors \(n = \nu\).
 
@@ -126,8 +126,8 @@ On normalise l'équation de Helmholtz en remplaçant les derniers termes par la 
 \frac{r^2}{gh} \left(\Delta \Psi + k^2 \Psi\right) &= 0 \\
 &= \ddr{r}{}\left(r^2f'\right) + \left((kr)^2 - n(n+1)\right)f
 \end{align*}
-  On voit alors apparaître l'équation de Bessel d'ordre \(n +1/2\) dont des solutions linéairement indépendantes sont les fonctions de Bessel du 1\ier type \(J_{n+1/2}\) et du 2\ieme type \(Y_{n+1/2}\)\cite[p.~86]{bohren_absorption_2004}\cite[p.~1465]{morse_methods_1953}. 
-  On crée de \(J_{n+1/2}\) et \(Y_{n+1/2}\) les fonction de Bessel sphériques \(j_n\) et \(y_n\) 
+  On voit alors apparaître l'équation de Bessel d'ordre \(n +1/2\) dont des solutions linéairement indépendantes sont les fonctions de Bessel du 1\ier type \(J_{n+1/2}\) et du 2\ieme type \(Y_{n+1/2}\)\cite[p.~86]{bohren_absorption_2004}\cite[p.~1465]{morse_methods_1953}.
+  On crée de \(J_{n+1/2}\) et \(Y_{n+1/2}\) les fonction de Bessel sphériques \(j_n\) et \(y_n\)
   \begin{align*}
   j_n(kr) &= \sqrt{\frac{\pi}{2kr}}J_{n+1/2}(kr) &
   y_n(kr) &= \sqrt{\frac{\pi}{2kr}}Y_{n+1/2}(kr)
@@ -160,7 +160,7 @@ De fait, ces fonctions forment une base des fonctions \(L_2\) sur la sphère uni
 On peut étendre ces solutions à tout l'espace pour obtenir une solution pour un champ scalaire .
 
 Tout champ scalaire \(\Psi\) solution de l'équation de Helmholtz s'écrit dans \(\OO\cup\OO^c\):
-\begin{align} 
+\begin{align}
 \label{eq:helm:sol_helmoltz_scal_somme}
 \Psi(\rtp) &= \sum\limits_{n=1}^\infty\sum\limits_{m=-n}^n a_{m,n} \Psi_{m,n}(\rtp) \\
 \Psi_{m,n}(\rtp) &= z_n(r) Y_{m,n}(\tp) \\

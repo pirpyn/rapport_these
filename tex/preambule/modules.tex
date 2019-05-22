@@ -43,7 +43,7 @@
     bottom = 2.5cm,%
     inner  = 3.5cm,%
     outer  = 2.5cm,%
-    a4paper]{geometry} % feuille a4 de taille 21.0 x 29.7 
+    a4paper]{geometry} % feuille a4 de taille 21.0 x 29.7
 
 % suite de paquets mathematiques
 \usepackage{amsfonts} % gestions des polices mathématques
@@ -66,10 +66,10 @@
     url=false,%
     doi=true,%
     backref=true,%
-    backrefstyle=three% si cité en page 1,2,3, ecrire 1-3, 
+    backrefstyle=three% si cité en page 1,2,3, ecrire 1-3,
     ]{biblatex}
 
-    \renewbibmacro{in:}{} 
+    \renewbibmacro{in:}{}
     \DeclareFieldFormat[book,report]{title}{\mkbibquote{#1\isdot}}
     \DefineBibliographyStrings{french}{%
     bibliography = {Références},
@@ -79,7 +79,7 @@
 \usepackage[%
     linkcolor=blue!70!black,%
     colorlinks=true,%
-    citecolor=purple%
+    citecolor=purple,%
     bookmarksopen=true,%
     bookmarksnumbered=true,%
     bookmarksopenlevel=5,
@@ -135,8 +135,8 @@
             draw=black,
         },
     }
-    
-    \usepackage{tikz} 
+
+    \usepackage{tikz}
     \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
     \usetikzlibrary{patterns} % permet de faire des patterns
     \usetikzlibrary{math} % permet de definir des variables
@@ -152,9 +152,9 @@
 % % permet d'ajouter des notes en marges
 % \setlength{\oddsidemargin}{25mm}
 % \setlength{\evensidemargin}{25mm}
-% \setlength{\textwidth}{170mm} 
+% \setlength{\textwidth}{170mm}
 % \reversemarginpar
-% \usepackage{todonotes} 
+% \usepackage{todonotes}
 
 \usepackage{fancyhdr}      % Entête et pieds de page. Doit être placé APRES geometry
     \pagestyle{fancy}    % Indique que le style de la page sera justement fancy
