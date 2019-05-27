@@ -16,13 +16,17 @@
 \newcommand{\pvect}{\wedge}
 
 % Notation vectorielle
-\newcommand{\vect}[1]{{\underline{#1}}} % {\overset{\rightarrow{}}{#1}}
+\newcommand{\comp}[1]{{\underline{#1}}} % {\overset{\rightarrow{}}{#1}}
+
+\newcommand{\vect}[1]{{\overset{\rightarrow}{#1}}}
 
 % Notation matricielle
 \newcommand{\mat}[1]{\mathbf{#1}}
 
 % Le conjugé
 \newcommand{\conj}[1]{{{#1}^*}}
+
+\newcommand{\norm}[1]{\left\vert\left\vert#1\right\vert\right\vert}
 
 % Quelques matrices qui reviennent
 \newcommand{\mI}{\mat{I}}
@@ -44,7 +48,7 @@
 \newcommand{\mSt}{\mat{\tilde{S}}}
 
 % Matrices de Gramm de la base #1 vers #2
-\newcommand{\mG}[2]{{\mat{G}_{#1}^{#2}}}
+\newcommand{\mG}[2]{\mat{G}^{#1#2}}
 
 % Matrices de passage de la base #1 vers #2 projeté sur #3
 \newcommand{\mP}[3]{{\overset{#3}{\underset{#1 \rightarrow #2}{\mat{P}}}}}
@@ -145,3 +149,12 @@
 %
 \newcommand{\peps}{{\epsilon}}
 \newcommand{\pmu}{{\mu}}
+
+\newcommand{\phii}{\vect{\phi_i}}
+\newcommand{\pii}{\vect{p_i}}
+\newcommand{\phip}{\vect{\phi_p}}
+\newcommand{\phiq}{\vect{\phi_q}}
+\newcommand{\pj}{\vect{p_j}}
+\newcommand{\qj}{\vect{q_j}}
+\newcommand{\nuj}{\vect{\nu_j}}
+\newcommand{\uj}{\vect{u_j}}
