@@ -14,7 +14,13 @@
 
   \subsection{Équations intégrales}
 
-      Soit \(g\) la fonction de Green. Soit \(\vE^{inc}_t,\vH^{inc}_t\) le champ incident tangentiel à \(\Gamma_h\). On définit le long de la surface \(\Gamma_h\), les traces tangentielles des champs \(\vJ = \vn \pvect \vH\), \(\vK = \vn \pvect \vE\).
+      Soit \(G\) la fonction de Green défini telle que
+      \begin{equation}
+        G(\vz) = \frac{e^{-ik|\vz|}}{4\pi|\vz|}
+      \end{equation}
+      On définit \(g(\vx,,\vy) := G(\vx - \vy)\).
+
+      Soit \(\vE^{inc}_t,\vH^{inc}_t\) le champ incident tangentiel à \(\Gamma_h\). On définit le long de la surface \(\Gamma_h\), les traces tangentielles des champs \(\vJ = \vn \pvect \vH\), \(\vK = \vn \pvect \vE\).
 
       \subsubsection{EFIE}
 
@@ -54,78 +60,95 @@
 
   \subsection{Fonctions de base}
 
-    Soit \(\OO_h\) un maillage fermé de \(\OO\) en \(N_e\) éléments triangulaires. Soit \(N\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
+    Soit \(\OO_h\) un maillage fermé de \(\OO\) en \(N_e\) éléments triangulaires. Soit \(N=\frac{3}{2}N_e\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
 
-    Soit \(\uj\) une arête orientée commune aux triangles \(T_j^g\) (orientation directe) et \(T_j^d\) (orientation indirecte). Dans cette convention d'orientation. Cette arête défini \(\vect{\tau_j}\), le vecteur unitaire le long de l'arête. De part et d'autre de cette dernière on définit \(\vect{\nu_j}^{g/d} = \vect{\tau_j} \pvect \vn^{g/d} \), le vecteur unitaire sortant du triangle \(T_j^g\) vers \(T_j^d\).  De plus on définit les vecteurs suivants:
-    \begin{align}
-      \vect{v_j^{g/d}} &= \vect{a_j^b} - \vect{a_j^{g/d}} \\
-      \vect{w_j^{g/d}} &= \vect{a_j^h} - \vect{a_j^{g/d}}
-    \end{align}
+    Soit \(T\) un triangle défini par un nœud \(N_1\) et deux vecteurs \(\vect{e_1}\) et \(\vect{e_2}\). On rappelle la relation entre l'aire du triangle et ces vecteurs 
+    \begin{equation}
+      2|T| = |\vect{e_1}\pvect\vect{e_2}|
+    \end{equation}
 
-    % Les commandes qui suivent servent pour les 4 prochains schémas
+    % Les commandes qui suivent servent pour les prochains schémas
     \newcommand{\ncouche}{6}
-    \newcommand{\xa}{-0.2}
+    \newcommand{\setnodes}[6]{
+        \renewcommand{\xa}{#1}
+        \renewcommand{\ya}{#2}
+        \renewcommand{\xb}{#3}
+        \renewcommand{\yb}{#4}
+        \renewcommand{\xc}{#5}
+        \renewcommand{\yc}{#6}
+    }
+    \newcommand{\xa}{0.0}
     \newcommand{\ya}{0.0}
-    \newcommand{\xb}{3}
-    \newcommand{\yb}{0.3}
-    \newcommand{\xc}{0.4}
-    \newcommand{\yc}{4}
-    \newcommand{\xd}{4}
-    \newcommand{\yd}{3.4}
-
+    \newcommand{\xb}{3.0}
+    \newcommand{\yb}{0.0}
+    \newcommand{\xc}{0.0}
+    \newcommand{\yc}{3.0}
     \begin{minipage}{0.45\textwidth}
       \begin{center}
         \begin{tikzpicture}[scale=1]
-          \input{tikz/schema/fonbasloc_triangles.tikz}
+          \input{tikz/schema/fonbasloc_triangle_loc.tikz}
         \end{tikzpicture}
       \end{center}
       \captionof{figure}{Triangles, arêtes et nœuds définis par l'arête \(\uj\)}
       \label{fig:form_int:fon_base:tri}
     \end{minipage}
     \begin{minipage}{0.54\textwidth}
-      Dans la suite, on représente ces éléments dans le même plan tel que ci-contre, mais on note qu'en général, ils ne le sont pas (voir \cite[fig.~2]{rao_electromagnetic_1982}).\\
-
-      En coordonnées locales, \(\vx = (\xi_1,\xi_2) \in \lbrace (\xi_1,\xi_2) \in [0,1]^2, \xi_1 + \xi_2 \le 1\rbrace\),
-      En coordonnées globales, \(\vx = (x_1,x_2,x_3) \in \Gamma_h\),
-
-      Le passage de l'un à l'autre se fait grâce aux relations:
-      \begin{align}
-        \xi_1 &= |\vx \cdot \vect{v_j^{g/d}}| \\
-        \xi_2 &= |\vx \cdot \vect{v_j^{g/d}}| \\
-        \vx &= \vect{a_j^{g/d}}+ \xi_1 \vect{v_j^{g/d}} + \xi_2 \vect{w_j^{g/d}}
-      \end{align}
+     On se place dans le repère local au triangle, on fait donc les changement de coordonnées suivant:
+    \begin{align*}
+      \RR^3 &\rightarrow \RR^2 \\
+      (x_1,x_2,x_3) & \mapsto (\xi_1,\xi_2)
+    \end{align*}
+      tel que \(\vx =\vect{N_1}+ \xi_1 \vect{e_1} + \xi_2 \vect{e_2}\).
     \end{minipage}
 
     \subsubsection[Fonctions de Raviart-Thomas phi Hdiv-conforme]{Fonctions de Raviart-Thomas \(\vect{\phi}\) \(\Hdiv\)-conforme}
 
-      Ces fonctions ont été introduites par \cite{raviart_mixed_1977,rao_electromagnetic_1982}.
+      Ces fonctions ont été introduites par \cite{raviart_mixed_1977}. Nous présentons ici les fonctions Raviart-Thomas de degré 0, c'est à dire telles que les degrés de libertés soient au milieu de chaque arête (voir \cite[eq.~(3.10)]{raviart_mixed_1977}).
 
-      \begin{minipage}{0.45\textwidth}
-          \begin{center}
-            \begin{tikzpicture}[scale=1]
-              \input{tikz/schema/fonbasloc_phi.tikz}
-            \end{tikzpicture}
-          \end{center}
-          \captionof{figure}{Fonction de base \(\phij\)}
-          \label{fig:form_int:fon_base:phi}
-      \end{minipage}
-      \begin{minipage}{0.54\textwidth}
-        En coordonnées locales au triangle \(T_j^{g/d}\),
-        \begin{align*}
-         \phij(\vx) &= \frac{\epsilon^{g/d}}{2|T_j^{g/d}|}\left(\xi_1 \vect{v_j^{g/d}} + \xi_2 \vect{w_j^{g/d}}\right)
-        \end{align*}
-
-        En coordonnées globales,
-        \begin{align*}
-          \phij(\vx) &= \mathbf{1}_{T_j^g}(\vx)\frac{\vx-\vect{a_j^g}}{2|T_j^g|} - \mathbf{1}_{T_j^d}(\vx)\frac{\vx-\vect{a_j^d}}{2|T_j^d|}
-        \end{align*}
+      \begin{minipage}{\textwidth}
+        \begin{minipage}{0.329\textwidth}
+            % Les commandes qui suivent servent pour les 4 prochains schémas
+            \setnodes{0}{0}{3}{0}{0}{3}
+            \begin{center}
+              \begin{tikzpicture}[scale=1]
+                \input{tikz/schema/fonbasloc_phi.tikz}
+              \end{tikzpicture}
+            \end{center}
+            \begin{equation*}
+              \vect{\phi_1}=\frac{\xi_1}{2|T|}\vect{e_1} + \frac{\xi_2}{{2|T|}}\vect{e_2}
+            \end{equation*}
+        \end{minipage}
+        \begin{minipage}{0.329\textwidth}
+            \setnodes{3}{0}{0}{3}{0}{0}
+            \begin{center}
+              \begin{tikzpicture}[scale=1]
+                \input{tikz/schema/fonbasloc_phi.tikz}
+              \end{tikzpicture}
+               \begin{equation*}
+                \vect{\phi_2}=\frac{1-\xi_1}{2|T|}\vect{e_1} + \frac{\xi_2}{2|T|}\vect{e_2}
+              \end{equation*}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}{0.329\textwidth}
+            \setnodes{0}{3}{0}{0}{3}{0}
+            \begin{center}
+              \begin{tikzpicture}[scale=1]
+                \input{tikz/schema/fonbasloc_phi.tikz}
+              \end{tikzpicture}
+              \begin{equation*}
+                \vect{\phi_3}=\frac{\xi_1}{2|T|}\vect{e_1} + \frac{1-\xi_2}{2|T|}\vect{e_2}
+              \end{equation*}
+            \end{center}
+        \end{minipage}
+        \captionof{figure}{Fonctions \(\phij\) locales}
+        \label{fig:form_int:fon_base:phi}
       \end{minipage}
 
       \begin{prop}
         Les fonctions \(\phij\) forment un base de \(\Hdiv(\Gamma_h)\)
       \end{prop}
       \begin{proof}
-        Nous renvoyons au travail de \cite{nedelec_mixed_1980} (voir Annexe prop.~\ref{prop:annex:hdiv_hrot:hdiv}).
+        Concernant la relation de compatibilité \(\Hdiv\), nous renvoyons à la propriété~\ref{prop:annex:hdiv_hrot:hdiv} en annexe.
       \end{proof}
 
       \begin{defn}
@@ -140,29 +163,48 @@
 
   \subsection{Fonctions de projections}
 
+
     \subsubsection[Fonctions de Nédélec p Hrot-conforme]{Fonctions de Nédelec \(\vect{p}\) \(\Hrot\)-conforme}
+    
+      Une première famille est celle des \(\pj=-\vn\pvect\phij\), où la normale est défini dans un triangle. On les nomme fonctions de Nédélec car elles correspondent en 2D aux fonctions volumiques de Nédélec (voir \cite{nedelec_mixed_1980}).
 
-      \begin{minipage}{0.45\textwidth}
-        \begin{center}
-          \begin{tikzpicture}[scale=1]
-            \input{tikz/schema/fonbasloc_p.tikz}
-          \end{tikzpicture}
-        \end{center}
-        \captionof{figure}{Fonction de base \(\pj\)}
+      \begin{minipage}{\textwidth}
+        \begin{minipage}{0.329\textwidth}
+            % Les commandes qui suivent servent pour les 4 prochains schémas
+            \setnodes{0}{0}{3}{0}{0}{3}
+            \begin{center}
+              \begin{tikzpicture}[scale=1]
+                \input{tikz/schema/fonbasloc_p.tikz}
+              \end{tikzpicture}
+            \end{center}
+            \begin{equation*}
+              \vect{p_1}=\frac{\xi_2}{2|T|}\vect{e_1}-\frac{\xi_1}{2|T|}\vect{e_2}
+            \end{equation*}
+        \end{minipage}
+        \begin{minipage}{0.329\textwidth}
+            \setnodes{3}{0}{0}{3}{0}{0}
+            \begin{center}
+              \begin{tikzpicture}[scale=1]
+                \input{tikz/schema/fonbasloc_p.tikz}
+              \end{tikzpicture}
+               \begin{equation*}
+                \vect{p_2}= \frac{\xi_2}{2|T|}\vect{e_1} + \frac{\xi_1-1}{2|T|}\vect{e_2}
+              \end{equation*}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}{0.329\textwidth}
+            \setnodes{0}{3}{0}{0}{3}{0}
+            \begin{center}
+              \begin{tikzpicture}[scale=1]
+                \input{tikz/schema/fonbasloc_p.tikz}
+              \end{tikzpicture}
+              \begin{equation*}
+                \vect{p_3}= \frac{\xi_2-1}{2|T|}\vect{e_1} - \frac{\xi_1}{2|T|}\vect{e_2}
+              \end{equation*}
+            \end{center}
+        \end{minipage}
+        \captionof{figure}{Fonctions \(\pj\) locales}
         \label{fig:form_int:fon_base:p}
-      \end{minipage}
-      \begin{minipage}{0.54\textwidth}
-        En coordonnées locales au triangle \(T_j^{g/d}\),
-        \begin{align*}
-          \pj(\vx) &= \frac{\epsilon^{g/d}}{2|T_j^{g/d}|}\left(\xi_2 \vect{v_j^{g/d}}-\xi_1 \vect{w_j^{g/d}}\right)
-        \end{align*}
-
-        En coordonnées globales,
-        \begin{align*}
-          \pj(\vx)
-          &= -\mathbf{1}_{T_j^g}(\vx)\vect{n^g} \pvect \frac{\vx-\vect{a_j^g}}{2|T_j^g|} \\
-          & + \mathbf{1}_{T_j^d}(\vx)\vect{n^d} \pvect \frac{\vx-\vect{a_j^d}}{2|T_j^d|}
-        \end{align*}
       \end{minipage}
 
       \begin{prop}
@@ -182,29 +224,46 @@
 
     \subsubsection[Fonctions de Bendali q]{Fonctions de Bendali \(\vect{q}\)}
 
-      Ces fonctions ont été introduites par \cite[eq.~28]{bendali_boundary-element_1999}.
+      Ces fonctions ont été introduites par \cite[eq.~28]{bendali_boundary-element_1999}. Elles sont linéairement indépendantes. Nous modifions ces fonctions en les divisant par 2 fois l'aire du triangle. Ainsi, la matrice de passage (défini plus tard) sera plus simple.
 
-      \begin{minipage}{0.45\textwidth}
-        \begin{center}
-          \begin{tikzpicture}[scale=1]
-            \input{tikz/schema/fonbasloc_q.tikz}
-          \end{tikzpicture}
-        \end{center}
-          \captionof{figure}{Fonction de base \(\qj\)}
-          \label{fig:form_int:fon_base:q}
-      \end{minipage}
-      \begin{minipage}{0.54\textwidth}
-        En coordonnées locales au triangle \(T_j^{g/d}\),
-        \begin{align*}
-          \qj(\vx) &= \left(1-2(\xi_1+\xi_2)\right)\left(\vect{w_j}^{g/d} - \vect{v_j}^{g/d} \right)
-        \end{align*}
-
-        En coordonnées globales,
-        \begin{align*}
-          \qj(\vx)
-          &= - \frac{\mathbf{1}_{T_j^g}(\vx)}{2} \frac{\nuj\cdot\left(2\vx - {\vect{a_j^g} + \vect{a_j^t}}\right)}{\nuj\cdot \vect{w_j^g}} \uj \\
-          &- \frac{\mathbf{1}_{T_j^d}(\vx)}{2} \frac{\nuj\cdot\left(2\vx - {\vect{a_j^d} + \vect{a_j^t}}\right)}{\nuj\cdot\vect{w_j^d}}\uj
-        \end{align*}
+     
+      \begin{minipage}{\textwidth}
+        \begin{minipage}{0.329\textwidth}
+            % Les commandes qui suivent servent pour les 4 prochains schémas
+            \setnodes{0}{0}{3}{0}{0}{3}
+            \begin{center}
+              \begin{tikzpicture}[scale=1]
+                \input{tikz/schema/fonbasloc_q.tikz}
+              \end{tikzpicture}
+            \end{center}
+            \begin{equation*}
+              \vect{q_1}=\frac{1-2(\xi_1+\xi_2)}{2|T|}(\vect{e_2}-\vect{e_1})
+            \end{equation*}
+        \end{minipage}
+        \begin{minipage}{0.329\textwidth}
+            \setnodes{3}{0}{0}{3}{0}{0}
+            \begin{center}
+              \begin{tikzpicture}[scale=1]
+                \input{tikz/schema/fonbasloc_q.tikz}
+              \end{tikzpicture}
+               \begin{equation*}
+                \vect{q_2}=\frac{1-2\xi_1}{2|T|}\vect{e_2}
+              \end{equation*}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}{0.329\textwidth}
+            \setnodes{0}{3}{0}{0}{3}{0}
+            \begin{center}
+              \begin{tikzpicture}[scale=1]
+                \input{tikz/schema/fonbasloc_q.tikz}
+              \end{tikzpicture}
+              \begin{equation*}
+                \vect{q_3}=\frac{2\xi_2-1}{2|T|}\vect{e_1}
+              \end{equation*}
+            \end{center}
+        \end{minipage}
+        \captionof{figure}{Fonctions \(\qj\) locales}
+        \label{fig:form_int:fon_base:q}
       \end{minipage}
 
       \begin{prop}
@@ -217,6 +276,10 @@
       \begin{prop}
         Les fonctions \(\qj\) forment un base de \(L^2(\Gamma_h)\)
       \end{prop}
+      \begin{proof}
+        Les fonctions sont linéairement indépendantes, car le produit scalaire est inférieur au normes de deux fonctions par l'inégalité de Schwarz qui sont nulles car la fonction est un polynôme de degré 1 dont la valeur au milieu d'une arête est nulle. La famille est libre.
+        De plus, le nombre de fonctions correspond au nombre d'arêtes, la famille est génératrice. Donc la famille est une base.
+      \end{proof}
 
       \begin{defn}
         Pour tout \(\vect{W} \in L^2(\Gamma_h)\), alors 
@@ -273,24 +336,7 @@
     \begin{defn}
       On désigne par \(\mM\) la matrice \(\mG{\phi}{\phi} = \mG{p}{p}\).
     \end{defn}
-
-    % Soit  \(\vect{W}(\vx) = \sum_{j=1}^N w_j \qj(\vx) \in L^2(\Gamma_h)\).
-
-    % Soit \(\vect{U}(\vx) = \sum_{j=1}^N u_j \phij(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\phij(\vy)\dd{s}(\vy) \phij(\vx) \)
-
-    % Alors on a \(\comp{u} = \mG{\phi}{q}\comp{w}\) les composantes des \(\qj\) projetés sur les  \(\phij\).
-
-    Soit  \(\vect{W}(\vx) = \sum_{j=1}^N w_j \qj(\vx) \in L^2(\Gamma_h)\).
-
-    On définit alors deux éléments de \(L^2(\Gamma_h)\) :
-    \begin{align}
-      \vect{U}(\vx) &= \sum_{j=1}^N u_j \phij(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\phij(\vy)\dd{s}(\vy) \phij(\vx  )
-      \\
-      \vect{V}(\vx) &= \sum_{j=1}^N v_j \pj(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\pj(\vy)\dd{s}(\vy) \pj(\vx)
-    \end{align}
-
     
-    On définit alors la projection des \(\qj\) sur les \(\phij\) telle que
     \begin{prop}
       Pour toute fonction \(\vect{W}(\vx) \in L^2(\Gamma_h)\cap\Vect{(\qj)_j}\),
 
@@ -300,7 +346,6 @@
       \end{equation*}
     \end{prop}
 
-    On définit alors la projection des \(\qj\) sur les \(\pj\) telle que
     \begin{prop}
       Pour toute fonction \(\vect{W}(\vx) \in L^2(\Gamma_h)\cap\Vect{(\qj)_j}\),
 
@@ -310,14 +355,40 @@
       \end{equation*}
     \end{prop}
 
+    \begin{proof}
+      Soit  \(\vect{W}(\vx) = \sum_{j=1}^N w_j \qj(\vx) \in L^2(\Gamma_h)\).
+
+      On définit alors deux éléments de \(L^2(\Gamma_h)\) :
+      \begin{align}
+        \vect{U}(\vx) &= \sum_{j=1}^N u_j \phij(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\phij(\vy)\dd{s}(\vy) \phij(\vx  )
+        \\
+        \vect{V}(\vx) &= \sum_{j=1}^N v_j \pj(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\pj(\vy)\dd{s}(\vy) \pj(\vx)
+      \end{align}
+
+      Les deux propriétés se déduisent en injectant \(\vect{W}\) dans \(\vect{U}\) et \(\vect{V}\).
+    \end{proof}
+
+
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \subsection{Matrice de changement de base}
 
+    \begin{TODO}
+      La projection selon Bruno est la suivante: on prend deux fonctions dans \(\Vect{\phij}\) et \(\Vect{\pj}\). On réalise le produit scalaire avec \(\vect{q_i}\). On suppose l'égalité \(\mG{q}{\phi}\comp{u} = \mG{q}{p}\comp{v}\). On en déduit \(\comp{u} = (\mG{q}{\phi})^{-1} \mG{q}{p} \comp{v} \). Le problème est de justifier l'égalité.
+
+      D'après Olivier, il faut faire comme suit: soit W dans \(\Vect{\qj}\). 
+      On définit U et V dans \(\Vect{\phij}\) et \(\Vect{\pj}\) tels que \(\comp{u}=\mG{\phi}{q}\comp{w}\) et  \(\comp{v}=\mG{p}{q}\comp{w}\).
+      On suppose la deuxième inversible alors  \(\comp{u} =\mG{\phi}{q} (\mG{p}{q})^{-1} \comp{v} \). Le problème est que numériquement c'est plus compliqué car la première est multiple de l'identité.
+
+
+
+    \end{TODO}
+
     \begin{defn}
-      On définit alors le changement de la base qui permet de passer de \(\vect{u}\) à \(\vect{v}\)
+      On définit alors le changement de la base qui permet de passer de \(\comp{u}\) à \(\comp{v}\)
       \begin{equation*}
         \mP{\phi}{p}{q} = \left(\mG{q}{\phi}\right)^{-1}\mG{q}{p}
       \end{equation*}
@@ -357,7 +428,7 @@
   
 
   \subsection{Forme variationnelle des équations intégrales}
-    Étant donné \((k,\vE^{inc},\vH^{inc})\) on cherche \(\vJ = \vn \pvect \vH, \vK = \vn \pvect \vE\) tel que
+    Étant donné \((k,\vE^{inc},\vH^{inc})\) on cherche \(\vJ = \vn \pvect \vH, \vK = \vn \pvect \vE \in \Hdiv(\Gamma_h)^2\)  tel que
 
     Pour tout \(\vect{\phi} \in \Hdiv(\Gamma_h)\), on a
 
@@ -385,12 +456,12 @@
   \subsection{Contribution de la CIOE dans la discrétisation de la forme variationnelle}
 
 
-    On prend comme fonction test \(\phii\), la fonction de base associée à l'arête \(j\).
-    On décompose \(\vJ,\vK\) sur les fonctions de base \(\phij\):
+    On prend comme fonction test \(\phii\), la fonction de base associée à l'arête \(i\).
+    On décompose \(\vJ,\vK \in \Hdiv(\Gamma_h)\) sur les fonctions de base \(\phij\):
     \begin{subequations}
       \begin{align}
-        \vJ &\simeq \sum_{j=1}^N I_j \phij\\
-        \vK &\simeq \sum_{j=1}^N k_j \phij
+        \vJ & = \sum_{j=1}^N I_j \phij\\
+        \vK & = \sum_{j=1}^N k_j \phij
       \end{align}
     \end{subequations}
 
@@ -400,7 +471,7 @@
       Comme les \(\phij\) sont dans \(\Hdiv\), de l'opérateur \gls{ope-LD}, on définit la matrice \(\mLD\) :
       \begin{align}
         \int_{\Gamma_h} L_D(\vect{U})(\vx) \cdot \phii(\vx) \dd{s}(\vx)
-          & \simeq - \sum_{j=1}^N u_j \int_{\Gamma_h} \vdiv \phij(\vx) \vdiv \phii(\vx) \dd{s}(\vx) \\
+          & = - \sum_{j=1}^N u_j \int_{\Gamma_h} \vdiv \phij(\vx) \vdiv \phii(\vx) \dd{s}(\vx) \\
           & = \mLD \vu
       \end{align}
 
@@ -412,18 +483,12 @@
         \end{align}
       \end{prop}
       \begin{proof}
-        Cette propriété est démontré par \cite[eq.~(13)]{stupfel_implementation_2015}).
+        Cette propriété est démontré par \cite[eq.~(13)]{stupfel_implementation_2015}). On projette les fonctions \(\phij\) sur les fonctions \(\pj\).
         \begin{equation}
           \begin{aligned}
             \int_{\Gamma_h} L_R (\phij) (\vx) \cdot \phii(\vx) \dd{s}(\vx) & \simeq \sum_{p=1}^{N} \sum_{q=1}^{N} \int_{\Gamma_h} c_q^j c_p^i L_R (\vn \pvect \phiq) (\vx) \cdot (\vn \pvect \phip)(\vx) \dd{s}(\vx)
             \\
             & \simeq -\sum_{p=1}^{N} \sum_{q=1}^{N} c_q^j c_p^i \int_{\Gamma_h} L_D (\phiq) (\vx) \cdot (\phip)(\vx) \dd{s}(\vx)
-            % \\
-            % & \simeq \sum_{p=1}^{N} c_p^i \sum_{q=1}^{N} c_q^j \mLD_{qp}
-            % \\
-            % & \simeq \sum_{p=1}^{N} c_p^i \left( \mLD \vect{c^j} \right)_{p}
-            % \\
-            % & \simeq \vect{c^i}^t  \mLD \vect{c^j}
             \\
             & \simeq -\vect{\delta_i}^t \mPP^t \mLD \mPP \vect{\delta_j}
           \end{aligned}

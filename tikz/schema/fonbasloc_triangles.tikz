@@ -14,18 +14,18 @@
 
 \draw ($1/2*(na)+1/4*(nb)+1/4*(nc)$) node {\(T_j^g\)};
 
-%%% Triangle de droite
+% %%% Triangle de droite
 
-\input{tikz/schema/fonbasloc_Tjr.tikz}
+% \input{tikz/schema/fonbasloc_Tjr.tikz}
 
-\draw ($1/2*(nd)+1/4*(nb)+1/4*(nc)$) node {\(T_j^d\)};
+% \draw ($1/2*(nd)+1/4*(nb)+1/4*(nc)$) node {\(T_j^d\)};
 
-% Le noeud de droite
+% % Le noeud de droite
 
-\draw (nd) node [right] {\(a_j^d\)};
+% \draw (nd) node [right] {\(a_j^d\)};
 
-\draw [-Latex] (nd) -- (nb) node [midway,sloped,below] {\(\vect{v_j^d}\)};
-\draw [-Latex] (nd) -- (nc) node [midway,sloped,above] {\(\vect{w_j^d}\)};
+% \draw [-Latex] (nd) -- (nb) node [midway,below] {\(\vect{v_j^d}\)};
+% \draw [-Latex] (nd) -- (nc) node [midway,right] {\(\vect{w_j^d}\)};
 
 % la normale nu_j
 \path let \p1=(ea) in coordinate (nu) at (\y1,-\x1);

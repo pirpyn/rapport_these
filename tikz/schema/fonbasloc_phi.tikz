@@ -4,10 +4,10 @@
 
 \tikzmath
 {
-    \ra = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
-    \rb = sqrt((\xc-\xa)^2 + (\yc-\ya)^2);
-    \rc = sqrt((\xa-\xb)^2 + (\ya-\yb)^2);
-    \aire = 0.25*sqrt((\ra+\rb-\rc)*(\ra-\rb+\rc)*(-\ra+\rb+\rc)*(\ra+\rb+\rc));
+    \r1 = sqrt((\xc-\xb)^2 + (\yc-\yb)^2);
+    \r3 = sqrt((\xb-\xa)^2 + (\yb-\ya)^2);
+    \r2 = sqrt((\xa-\xc)^2 + (\ya-\yc)^2);
+    \aire = 0.25*sqrt((\r1+\r3-\r2)*(\r1-\r3+\r2)*(-\r1+\r3+\r2)*(\r1+\r3+\r2));
 }
 
 \foreach \couche in {1,...,\ncouche}
@@ -22,40 +22,9 @@
         {
             \b = \n/\couche;
         }
-        \coordinate (phi) at ($\a*(ec)+\a*\b*(ea)$);
-        \coordinate (x) at ($(na)+(phi)$);
+        \coordinate (phi) at ($\a*(e2)+\a*\b*(e1)$);
+        \coordinate (x) at ($(n1)+(phi)$);
         % \draw (x) node {\(x_\n^\couche\)};
         \draw [-Latex] (x) -- ($(x)+1/\aire*(phi)$);
-    }
-}
-
-%%% Triangle de droite
-
-\input{tikz/schema/fonbasloc_Tjr.tikz}
-
-\tikzmath
-{
-    \rd = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
-    \rb = sqrt((\xc-\xd)^2 + (\yc-\yd)^2);
-    \rc = sqrt((\xd-\xb)^2 + (\yd-\yb)^2);
-    \aire = 0.25*sqrt((\rd+\rb-\rc)*(\rd-\rb+\rc)*(-\rd+\rb+\rc)*(\rd+\rb+\rc));
-}
-
-\foreach \couche in {1,...,\ncouche}
-{
-    \tikzmath
-    {
-        \a = \couche/\ncouche;
-    }
-    \foreach \n in {0,...,\couche}
-    {
-        \tikzmath
-        {
-            \b = \n/\couche;
-        }
-        \coordinate (phi) at ($\a*(ec)+\a*\b*(ed)$);
-        \coordinate (x) at ($(nd)+(phi)$);
-        % \draw (x) node {\(x_\n^\couche\)};
-        \draw [-Latex] (x) -- ($(x)-1/\aire*(phi)$);
     }
 }
