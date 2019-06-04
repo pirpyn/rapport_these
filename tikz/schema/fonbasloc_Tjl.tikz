@@ -1,11 +1,12 @@
 %%% Triangle de gauche
 
-\coordinate (na) at (\xa,\ya);
-\coordinate (nb) at (\xb,\yb);
-\coordinate (nc) at (\xc,\yc);
-\coordinate (nd) at (\xd,\yd);
+\coordinate (n1) at (\xa,\ya);
+\coordinate (n2) at (\xc,\yc);
+\coordinate (n3) at (\xb,\yb);
 
-\coordinate (ec) at ($(nb)-(na)$);
-\coordinate (ea) at ($(nc)-(nb)$);
+\coordinate (e1) at ($(n2)-(n3)$);
+\coordinate (e2) at ($(n3)-(n1)$);
+\coordinate (e3) at ($(n1)-(n2)$);
 
-\draw (na) -- (nc) -- (nb) -- cycle;
+
+\draw (n1) -- (n2) -- (n3) -- cycle;
