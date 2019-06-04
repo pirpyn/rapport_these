@@ -425,69 +425,69 @@
       \end{tikzpicture}
     \end{figure}
 
-    \begin{defn}
-      Soit \(r_m\) le rayon de la couche \(m\), \(r_m = r_0 +\sum_{i=1}^{m} d_{i}\).
+    Soit \(r_m\) le rayon de la couche \(m\), \(r_m = r_0 +\sum_{i=1}^{m} d_{i}\).
 
+    \begin{defn}
       On définit pour chaque interface, le symbole \(\hat \mZ_m\) tel que
       \begin{equation}
         \hat \vE_t(r_m,n,k_z) = \hat \mZ_m(n,k_z) \left(\vect{e_r} \pvect \hat \vH_t(r_m,n,k_z)\right)
       \end{equation}
     \end{defn}
 
-    \begin{defn}
-      Pour chaque couche caractérisée par \((\eps_m,\mu_m,d_m)\), définissons
-      \begin{subequations}
-        \begin{align}
-          k_{3m} &= \sqrt{w^2\eps_m\mu_m - k_z^2}
-          \\
-          \mJ_{Em}(r) &=
-            \begin{bmatrix}
-              -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r) & -\frac{i\w\mu_m}{k_{3m}}J_n'(k_{3m}r)
-              \\
-              J_n(k_{3m}r) & 0
-            \end{bmatrix}
-          \\
-          \mH_{Em}(r) &=
-            \begin{bmatrix}
-              -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r) & -\frac{i\w\mu_m}{k_{3m}}H_n^{(2)}{}'(k_{3m}r)
-              \\
-              H_n^{(2)}(k_{3m}r) & 0
-            \end{bmatrix}
-          \\
-          \mJ_{Hm}(r) &=
-            \begin{bmatrix}
-              0 & -J_n(k_{3m}r)
-              \\
-              \frac{i\w\eps_m}{k_{3m}}J_n'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r)
-            \end{bmatrix}
-          \\
-          \mH_{Hm}(r) &=
-            \begin{bmatrix}
-              0 & -H_n^{(2)}(k_{3m}r)
-              \\
-              \frac{i\w\eps_m}{k_{m3}}H_n^{(2)}{}'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r)
-            \end{bmatrix}
-          \\
-          \mA_{Jm}(r) &= \mJ_{Em}(r) -  \mZ_{m-1} \mJ_{Hm}(r)
-          \\
-          \mA_{Hm}(r) &= \mH_{Em}(r) -  \mZ_{m-1} \mH_{Hm}(r)
-        \end{align}
-      \end{subequations}
-    \end{defn}
+    Pour chaque couche caractérisée par \((\eps_m,\mu_m,d_m)\), définissons
+    \begin{subequations}
+      \begin{align}
+        k_{3m} &= \sqrt{w^2\eps_m\mu_m - k_z^2}
+        \\
+        \mJ_{Em}(r) &=
+          \begin{bmatrix}
+            -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r) & -\frac{i\w\mu_m}{k_{3m}}J_n'(k_{3m}r)
+            \\
+            J_n(k_{3m}r) & 0
+          \end{bmatrix}
+        \\
+        \mH_{Em}(r) &=
+          \begin{bmatrix}
+            -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r) & -\frac{i\w\mu_m}{k_{3m}}H_n^{(2)}{}'(k_{3m}r)
+            \\
+            H_n^{(2)}(k_{3m}r) & 0
+          \end{bmatrix}
+        \\
+        \mJ_{Hm}(r) &=
+          \begin{bmatrix}
+            0 & -J_n(k_{3m}r)
+            \\
+            \frac{i\w\eps_m}{k_{3m}}J_n'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r)
+          \end{bmatrix}
+        \\
+        \mH_{Hm}(r) &=
+          \begin{bmatrix}
+            0 & -H_n^{(2)}(k_{3m}r)
+            \\
+            \frac{i\w\eps_m}{k_{m3}}H_n^{(2)}{}'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r)
+          \end{bmatrix}
+        \\
+        \mA_{Jm}(r) &= \mJ_{Em}(r) -  \mZ_{m-1} \mJ_{Hm}(r)
+        \\
+        \mA_{Hm}(r) &= \mH_{Em}(r) -  \mZ_{m-1} \mH_{Hm}(r)
+      \end{align}
+    \end{subequations}
 
     \begin{thm}
       Soit \(\hat \mZ_0(n,k_z) = \mat{0}_{\mathcal{M}_2(\CC)}\).
 
       Si pour tout \(0 < m < n\)
 
-      \begin{subequations}
-        \begin{align}
+      \begin{equation}
+        \begin{aligned}
           k_{3m} & \not = 0 \\
-          \det\left(\mA_{Jm}(r_{m-1})\right) & \not = 0 \\
-          \det\left(\mA_{Hm}(r_{m-1})\right) & \not = 0 \\
+          \det\left(\mA_{Jm}(r_{m-1})\right) & \not = 0 
+          \\
+          \det\left(\mA_{Hm}(r_{m-1})\right) & \not = 0 
+          \\
           \det\left(\mH_{Hm}(r_{m})\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Hm}(r_{m})(\mA_{Jm}(r_{m-1}))^{-1}\right) &\not = 0
-        \end{align}
-      \end{subequations}
+        \end{aligned}
+      \end{equation}
 
       Alors le symbole \(\hat \mZ_n\) est défini par la relation de récurrence :
       \begin{multline}
