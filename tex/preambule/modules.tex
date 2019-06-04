@@ -145,7 +145,6 @@
         \shorthandoff{:;!?};} % permet de prendre en compte la ponctuation française dans tikz
     }}
 
-
 \usepackage{caption} % Faire des caption en dehors de figure
 
 
@@ -225,8 +224,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
 %%% Pas de numéro de page sur la première page des chapitres
 \makeatletter
 \let\ps@plain=\ps@empty
@@ -235,14 +232,6 @@
 % Réglage fin des notes de bas de page
 \FrenchFootnotes % pour les notes de bas de page à la française
 \AddThinSpaceBeforeFootnotes % pour avoir une espace fine entre le mot et l'appel de note
-
-%% CHAPITRE ETOILE
-%% avec référence dans la table des matières et les bons en-têtes
-%% il sert pour l'introduction, la page de notations, etc
-\newcommand{\chapterstar}[1]{%
-  \chapter*{#1}%
-  \addcontentsline{toc}{chapter}{#1}%
-  \markboth{#1}{#1}}
 
 % Pour que les pages paires sans texte (par exemple, à la fin d'un chapitre et
 % avant un autre), ne contiennent ni en-tête ni pied de page (source :
@@ -255,4 +244,5 @@
 \let\cleardoublepage\clearemptydoublepage
 
 \setcounter{tocdepth}{1} % Sommaire n'inclus que les niveau 1 à 2 : section, sous-section
+
 \setlength{\parindent}{0pt} % pas d'alinéa à chaque paragraphe

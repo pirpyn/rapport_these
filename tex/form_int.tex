@@ -1,4 +1,4 @@
-\section{Résolution des équations intégrales avec CIOE par la méthode des éléments finis}
+\section{Résolution des équations intégrales avec CIOE par la méthode des éléments finis de frontières}
 
   \newcommand{\phij}{\vect{\phi_j}}
 
@@ -52,7 +52,7 @@
           Mettre source de la MFIE (Nédélec, p243 - 253)
         \end{REF}
 
-  \subsection{Fonctions de base}
+  \subsection{Discrétisation de la surface de l'objet}
 
     Soit \(\OO_h\) un maillage fermé de \(\OO\) en \(N_e\) éléments triangulaires. Soit \(N\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
 
@@ -90,8 +90,10 @@
 
       Le passage de l'un à l'autre se fait grâce aux relations:
       \begin{align}
-        \xi_1 &= |\vx \cdot \vect{v_j^{g/d}}| \\
-        \xi_2 &= |\vx \cdot \vect{v_j^{g/d}}| \\
+        \xi_1 &= \left(\vect{x} - \vect{a_j}^{g/d} \right) \cdot \frac{\vect{e_2}}{||\vect{e_2}||^2}
+        \\
+        \xi_2 &= \left(\vect{x} - \vect{a_j}^{g/d} \right) \cdot \frac{\vect{e_3}}{||\vect{e_3}||^2}
+        \\
         \vx &= \vect{a_j^{g/d}}+ \xi_1 \vect{v_j^{g/d}} + \xi_2 \vect{w_j^{g/d}}
       \end{align}
     \end{minipage}
@@ -122,7 +124,7 @@
       \end{minipage}
 
       \begin{prop}
-        Les fonctions \(\phij\) forment un base de \(\Hdiv(\Gamma_h)\)
+        Les fonctions \(\phij\) sont dans \(\Hdiv(\Gamma_h)\)
       \end{prop}
       \begin{proof}
         Nous renvoyons au travail de \cite{nedelec_mixed_1980} (voir Annexe prop.~\ref{prop:annex:hdiv_hrot:hdiv}).
@@ -166,7 +168,7 @@
       \end{minipage}
 
       \begin{prop}
-        Les fonctions \(\pj\) forment un base de \(\Hrot(\Gamma_h)\)
+        Les fonctions \(\pj\) sont dans \(\Hrot(\Gamma_h)\)
       \end{prop}
       \begin{proof}
         Nous renvoyons au travail de \cite{nedelec_mixed_1980} (voir Annexe prop.~\ref{prop:annex:hdiv_hrot:hrot}).
@@ -217,6 +219,9 @@
       \begin{prop}
         Les fonctions \(\qj\) forment un base de \(L^2(\Gamma_h)\)
       \end{prop}
+      \begin{proof}
+        Les fonctions \(\qj\) sont linéairement indépendantes, et la famille est de taille N.
+      \end{proof}
 
       \begin{defn}
         Pour tout \(\vect{W} \in L^2(\Gamma_h)\), alors 
@@ -230,6 +235,8 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \subsection{Matrices de projections}
+
+    De ces familles de fonctions, on va définir les produits scalaire associés
 
     \begin{defn}
       Soient \(f \in \Vect{\vect{f_1},\ldots,\vect{f_N}}\) et \(g \in \Vect{\vect{g_1},\ldots,\vect{g_N}}\), on définit la matrice \(\mG{f}{g}\) telle que
