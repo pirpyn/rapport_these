@@ -96,6 +96,8 @@
         \ChNameVar{\huge} % On modifie la taille du môt ``Chapitre''
     \makeatother
 
+\usepackage{caption} % Faire des caption en dehors de figure
+
 \usepackage[francais]{minitoc}   % Mini table des matières, en français
     \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
 
@@ -143,9 +145,6 @@
     \tikzset{every picture/.style={execute at begin picture={
         \shorthandoff{:;!?};} % permet de prendre en compte la ponctuation française dans tikz
     }}
-
-\usepackage{caption} % Faire des caption en dehors de figure
-
 
 % % permet d'ajouter des notes en marges
 % \setlength{\oddsidemargin}{25mm}

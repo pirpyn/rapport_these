@@ -1,0 +1,65 @@
+\tikzmath{
+    \a = 80;
+    \b = 100;
+    \d = 0.5;
+    \ri = 20;
+    \re = \ri;
+}
+
+% Le conducteur
+\tikzmath{
+    \ri = \re;
+    \re = \ri + 0.5*\d;
+    \xa = cos(\a)*\re;
+    \ya = sin(\a)*\re;
+    \xb = cos(\b)*\ri;
+    \yb = sin(\b)*\ri;
+}
+
+\coordinate (a) at (\xa,\ya);
+\coordinate (b) at (\xb,\yb);
+
+\fill [pattern=north east lines] (a) arc (\a:\b:\re) -- (b) arc (\b:\a:\ri) -- cycle;
+\draw (a) arc (\a:\b:\re);
+\draw (a) node [right] {$r_0$};
+
+
+% Le repère
+\coordinate (n) at ($(a)+(0.5,-1)$);
+%
+%
+%\draw [->] (n) -- ++(0,1) node [at end, right] {$\v{\pr}$};
+%\draw [->] (n) -- ++(1,0) node [at end, right] {$\v{\pt}$};
+%
+\draw (n) ++(0.2,0.2) circle(0.1cm) node [above=0.1cm] {\(\vect{e_\phi}\)};
+\draw (n) ++(0.2,0.2) +(135:0.1cm) -- +(315:0.1cm);
+\draw (n) ++(0.2,0.2) +(45:0.1cm) -- +(225:0.1cm);
+
+
+% 1ere couche
+\tikzmath{
+    \ri = \re;
+    \re = \ri + \d;
+    \xa = cos(\a)*\re;
+    \ya = sin(\a)*\re;
+    \xb = cos(\b)*\ri;
+    \yb = sin(\b)*\ri;
+    \xc = cos(0.5*(\b+\a))*(\ri+0.5*\d);
+    \yc = sin(0.5*(\b+\a))*(\ri+0.5*\d);
+}
+
+\coordinate (a) at (\xa,\ya);
+\coordinate (b) at (\xb,\yb);
+\coordinate (c) at (\xc,\yc);
+
+\fill [lightgray] (a) arc (\a:\b:\re) -- (b) arc (\b:\a:\ri) -- cycle;
+\draw (a) arc (\a:\b:\re);
+\draw (c) node {$\nu,\eta,d$};
+
+% Le vide
+\tikzmath{
+    \xc = cos(0.5*(\b+\a))*(\re);
+    \yc = sin(0.5*(\b+\a))*(\re);
+}
+
+\draw (\xc,\yc) node [above] {vide};
