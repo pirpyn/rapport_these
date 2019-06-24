@@ -1,37 +1,478 @@
 \section{Cas d'un objet sphérique}
 
-    Les champs solutions de Maxwell dans le cas d'un repère sphérique sont décomposables en harmoniques sphériques, qui sont des combinaisons linéaires de série de Fourier. 
+    Les champs solutions de Maxwell dans le cas d'un repère sphérique sont décomposables en harmoniques sphériques. Nous rappelons d'abord l’expression de ces dernières puis nous donnerons l'expression du symbole de l'opérateur de d'impédance de la même manière que \cite{cheng_spectral_1993}.
 
-    On définit les harmoniques sphériques comme les fonctions \(Y_n^m = C(m,n) e^{im\phi}\PP^m_n(\cos \theta) \) avec \(C(m,n)\) tel que,
-    \[
-     \ds\int_S Y_{m,n} \conj{Y_{p,q}} ds = \delta_m^p \delta_n^q
-    \]
+    \subsection{Les harmoniques sphériques}
 
-    D’après \cite[p.~24]{nedelec_acoustic_2001}, \( C(m,n) = (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}}\)
+        \begin{TODO}
+          Mettre ici la démonstration des harmoniques sphériques? Ou une référence vers annexe ?
+        \end{TODO}
 
-    On définit les vecteurs \(\gls{phy-Mmn} ,\gls{phy-Nmn}\) tels que:
-    \begin{align}
-     \label{eq:defMmn}
-      M_{mn}(\rtp) &:= \vrot \vect r \Psi_{mn} \\
-      &= z_n(kr)
-      \begin{bmatrix}
-        0 \\ \frac{im}{\sin\theta}Y_{mn}\\
-        - \ddr{\theta}{Y_{mn}}
-      \end{bmatrix}
-    \end{align}
-    \begin{align}
-    \label{eq:defmnn}
-      N_{mn}(\rtp) &:= \frac{\vrot M_{mn}}{k} \\
-      &= \frac{1}{kr}\begin{bmatrix}
-        \frac{z_n(kr)}{\sin\theta}\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{Y_{mn}}\right)\\
-        \tilde z_n(kr)\ddr{\theta}{Y_{mn}}\\
-        -\tilde z_n(kr)\frac{m^2}{\sin\theta}Y_{mn}\\
-      \end{bmatrix}
-    \end{align}
+        On définit les harmoniques sphériques les solutions de \(\Delta U + k^2 U = 0 \). Ce sont les fonctions \(Y_{m,n} = C(m,n) e^{im\phi}\PP^m_n(\cos \theta) \) avec \(C(m,n)\) tel que,
+        \[
+         \ds\int_S Y_{m,n} \conj{Y_{p,q}} ds = \delta_m^p \delta_n^q
+        \]
 
-    Ainsi l'on a 
-    \begin{align}
-        \vE(r,\theta,\phi) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \vect{M_{mn}^{j_n}}(r,\theta,\phi) + b_{mn} \vect{N_{mn}^{j_n}}(r,\theta,\phi) + c_{mn} \vect{M_{mn}^{h_n}}(r,\theta,\phi) + d_{mn} \vect{N_{mn}^{h_n}}(r,\theta,\phi)
-        \\
-        \vH(r,\theta,\phi) &= \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \vect{N_{mn}^{j_n}}(r,\theta,\phi) + b_{mn} \vect{M_{mn}^{j_n}}(r,\theta,\phi) + c_{mn} \vect{N_{mn}^{h_n}}(r,\theta,\phi) + d_{mn} \vect{M_{mn}^{h_n}}(r,\theta,\phi)
-    \end{align}
+        D’après \cite[p.~24]{nedelec_acoustic_2001}, \( C(m,n) = (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}}\)
+
+        On définit les vecteurs harmonique sphériques\(\gls{phy-Mmn} ,\gls{phy-Nmn}\) solution de \(\vrot \vrot \vect{U} - k^2 \vect{U} = 0 \):
+        \begin{align}
+         \label{eq:defMmn}
+          \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(kr) Y_{m,n} \right)\\
+          &= z_n(kr)
+          \begin{bmatrix}
+            0 
+            \\
+            \frac{im}{\sin\theta}Y_{mn}
+            \\
+            - \ddr{\theta}{Y_{mn}}
+          \end{bmatrix}
+        \end{align}
+
+        \begin{align}
+        \label{eq:defNnn}
+          \Nmn[z_n](\rtp) &:= \frac{\vrot \Mmn[z_n]}{k} \\
+          &= \frac{1}{kr}\begin{bmatrix}
+            \frac{z_n(kr)}{\sin\theta}\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{Y_{mn}}\right)
+            \\
+            \ddr{r}{z_n}(kr)\ddr{\theta}{Y_{mn}}
+            \\
+            \ddr{r}{z_n}(kr)\frac{im}{\sin\theta}Y_{mn}
+          \end{bmatrix}
+        \end{align}
+
+        % Ces vecteurs harmoniques sphériques possèdent les propriétés suivantes
+
+        % \begin{align}
+        % \int_{S(0,R)} \vect{M_{m,n}^{z_n}} \cdot \conj{\vect{N_{p,q}^{z_n}}} ds &= 0
+        % \\
+        % \int_{S(0,R)} \vect{M_{m,n}^{z_n}} \cdot \conj{\vect{M_{p,q}^{z_n}}} ds &= \gamma_{m,n}R^2 \delta_{mp}\delta_{nq}
+        % \\
+        % \int_{S(0,R)} \vect{N_{m,n}^{z_n}} \cdot \conj{\vect{N_{p,q}^{z_n}}} ds &= \frac{\gamma_{m,n}}{k^2} \delta_{mp}\delta_{nq}
+        % \end{align}
+
+        On définit les parties tangentielles de ces vecteurs par séparation des variables \(r\) et \((\theta,\phi)\):
+     
+        \begin{align}
+          \Mmn[z_n]_t(\rtp) &= z_n(kr)\hat{\Mmn}(\tp)
+          \\
+          \Nmn[z_n]_t(\rtp) &= \ddr{r}{z_n}(kr)\hat{\Nmn}(\tp))
+        \end{align}
+
+        On a alors les propriétés supplémentaires
+
+        \begin{align}
+          \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= krz_n(kr)\hat{\Nmn}(\tp)
+          \\
+          \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{kr}\ddr{r}{z_n}(kr)\hat{\Mmn}(\tp)
+        \end{align}
+
+
+        On a ( \cite{cheng_spectral_1993})
+        \begin{multline}
+            \vE(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Mmn[j_n](\rtp) + b_{mn} \Nmn[j_n](\rtp)
+            \\
+            + c_{mn} \Mmn[h_n](\rtp) + d_{mn} \Nmn[h_n](\rtp)
+        \end{multline}
+
+        D'après les équations de Maxwell, \(\vH = i\frac{\vrot \vE}{k\eta}\)
+
+        \begin{multline}
+            \vH(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Nmn[j_n](\rtp) + b_{mn} \Mmn[j_n](\rtp)
+            \\
+            + c_{mn} \Nmn[h_n](\rtp) + d_{mn} \Mmn[h_n](\rtp)
+        \end{multline}
+
+        Donc \(\vJ = \vect{e_r} \pvect \vH\) s'écrit en série de Mie
+
+        \begin{multline}
+            \vJ(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \ddr{r}{j_n}\hat{\Mmn}(\tp) + b_{mn} j_n \hat{\Mmn}(\tp)
+            \\
+            -  \ddr{r}{h_n} c_{mn} \hat{\Mmn}(\tp) + h_n d_{mn} \hat{\Nmn}(\tp)
+        \end{multline}
+
+        Dans la suite, pour simplifier les écritures, on utilisera la notation tilde \gls{mat-tild}, telle que \( \tilde{z_n}(k_r) = \ddr{r}{z_n}(kr) \). On omettra aussi les dépendances en \(kr\) lorsqu'il n'y a pas d’ambiguïtés.
+
+        On réécrit alors matriciellement les expressions de \(\vE_t,\vJ\).
+
+        \begin{equation}
+            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+              \hat{\Nmn} & \hat{\Mmn}
+            \end{bmatrix}
+            \left( 
+              \begin{bmatrix}
+                  0 & \tilde{j_n}
+                  \\
+                  j_n & 0
+              \end{bmatrix}
+              \begin{bmatrix}
+                  a_{mn}
+                  \\
+                  b_{mn}
+              \end{bmatrix}
+              + 
+              \begin{bmatrix}
+                  0 & \tilde{h_n}
+                  \\
+                  h_n & 0
+              \end{bmatrix}
+              \begin{bmatrix}
+                  c_{mn}
+                  \\
+                  d_{mn}
+              \end{bmatrix}
+            \right)
+        \end{equation}
+
+
+        \begin{equation}
+            \vJ(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+                \hat{\Nmn} & \hat{\Mmn}
+            \end{bmatrix}
+            \left( 
+                \begin{bmatrix}
+                    0 & j_n
+                    \\
+                    -\tilde{j_n} & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    a_{mn}
+                    \\
+                    b_{mn}
+                \end{bmatrix}
+                + 
+                \begin{bmatrix}
+                    0 & h_n
+                    \\
+                    -\tilde{h_n} & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    c_{mn}
+                    \\
+                    d_{mn}
+                \end{bmatrix}
+            \right)
+        \end{equation}
+
+        \begin{defn}
+            On définit les matrices \(\mJ_{E}(r,n),\mH_{E}(r,n),\mJ_{H}(r,n),\mH_{H}(r,n)\)
+            \begin{align}
+                \mJ_{E}(r,n,) &=
+                \begin{bmatrix}
+                    0 & \tilde{j_n}(kr)
+                    \\
+                    j_n(kr) & 0
+                \end{bmatrix}
+                \\
+                \mH_{E}(r,n) &=
+                \begin{bmatrix}
+                    0 & \tilde{h_n}(kr)
+                    \\
+                    h_n(kr) & 0
+                \end{bmatrix}
+                \\
+                \mJ_{H}(r,n,) &=
+                \begin{bmatrix}
+                    0 & j_n(kr)
+                    \\
+                    -\tilde{j_n}(kr) & 0
+                \end{bmatrix}
+                \\
+                \mH_{H}(r,n) &=
+                \begin{bmatrix}
+                    0 & h_n(kr)
+                    \\
+                    -\tilde{h_n}(kr) & 0
+                \end{bmatrix}
+            \end{align}
+        \end{defn}
+
+        \begin{equation}
+            \hat{\vE_t}(r,m,n) = 
+            \mJ_{E}(r,n)
+            \begin{bmatrix}
+                a_{mn}
+                \\
+                b_{mn}
+            \end{bmatrix}
+            + 
+            \mH_{E}(r,n)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+        \begin{equation}
+            \hat{\vJ}(r,m,n) = \frac{i}{\eta}
+            \left(
+            \mJ_{H}(r,n)
+            \begin{bmatrix}
+                a_{mn}
+                \\
+                b_{mn}
+            \end{bmatrix}
+            + 
+            \mH_{H}(r,n)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+            \right)
+        \end{equation}
+
+    \subsection{Symbole de l'opérateur d'impédance pour une couche}
+
+        \begin{figure}[!hbt]
+          \centering
+          \begin{tikzpicture}
+            \input{tikz/schema/sphere_1_couche.tikz}
+          \end{tikzpicture}
+        \end{figure}
+
+        \begin{TODO}
+          Cette partie a été faite à la truelle. La reprendre.
+        \end{TODO}
+
+        \begin{defn}
+          On définit le symbole de l'opérateur d'impédance \(\hat{\mZ}(m,n)\) tel que 
+          \[
+              \hat{\vE_t}(r_1,m,n) = \hat{\mZ}(m,n)\hat{\vJ}(r_1,m,n)
+          \]
+        \end{defn}
+
+        En \(r=r_0\), on a la relation \(\vE_t(\rtp) = 0\) donc \(\hat{\vE_t}(r_0,m,n) = 0 \)
+
+        \begin{equation}
+            \mJ_{E}(r_0,n)
+            \begin{bmatrix}
+                a_{mn}
+                \\
+                b_{mn}
+            \end{bmatrix}
+            = - 
+            \mH_{E}(r_0,n)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+        On suppose que les matrices \(\mJ_{E}(r_0,n)\) et \(\mH_{E}(r_0,n)\) soient inversibles.
+
+        \begin{TODO}
+          Inversibilité \(\mJ_{E}(r,n), \mH_{E}(r,n)\)
+        \end{TODO}
+
+        \begin{equation}
+            \hat{\vE_t}(r,m,n) = 
+            \left(
+                \mH_{E}(r,n)
+                -
+                \mJ_{E}(r,n)
+                \mJ_{E}(r_0,n)^{-1}
+                \mH_{E}(r_0,n)
+            \right)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+
+        \begin{equation}
+            \hat{\vJ}(r,m,n) = \frac{i}{\eta}
+            \left(
+                \mH_{H}(r,n)
+                -
+                \mJ_{H}(r,n)
+                \mJ_{E}(r_0,n)^{-1}
+                \mH_{E}(r_0,n)
+            \right)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+        De la même manière que pour le plan et le cylindre, on en déduit le symbole de l'opérateur d'impédance
+
+        \begin{multline}
+            \hat{\mZ}(m,n) = -i\eta
+            \left(
+                \mH_{E}(r_1,n)
+                \mH_{E}(r_0,n)^{-1}
+                -
+                \mJ_{E}(r_1,n)
+                \mJ_{E}(r_0,n)^{-1}
+            \right)
+            \\
+            \left(
+                \mH_{H}(r_1,n)
+                \mH_{E}(r_0,n)^{-1}
+                -
+                \mJ_{H}(r_1,n)
+                \mJ_{E}(r_0,n)^{-1}
+            \right)^{-1}
+        \end{multline}
+
+        Par définition des matrices \(\mJ_E,\mH_E,\mJ_H,\mH_H\), elle sont anti-diagonale. Donc leur inverse l'est aussi. Donc le produit de l'une avec l'inverse d'une autre est une matrice diagonale. Donc le symbole de l'opérateur d'impédance est une matrice diagonale.
+
+        \begin{equation}
+            \hat{\mZ}(m,n) = -i\eta
+            \begin{bmatrix}
+                \frac
+                {\tilde{h_n}(kr_1)\tilde{j_n}(kr_0)-\tilde{j_n}(kr_1)\tilde{h_n}(kr_0)}
+                {{h_n}(kr_1)\tilde{j_n}(kr_0)-{j_n}(kr_1)\tilde{h_n}(kr_0)} & 0
+                \\
+                0 & \frac
+                {{j_n}(kr_1){h_n}(kr_0)-{h_n}(kr_1){j_n}(kr_0)}
+                {\tilde{h_n}(kr_1){j_n}(kr_0)-\tilde{j_n}(kr_1){h_n}(kr_0)}
+            \end{bmatrix}
+        \end{equation}
+
+    \subsection{Symbole de l'opérateur d'impédance pour plusieurs couche}
+
+        \begin{figure}[!hbt]
+          \centering
+          \begin{tikzpicture}
+            \input{tikz/schema/sphere_n_couche.tikz}
+          \end{tikzpicture}
+        \end{figure}
+
+
+        \begin{defn}
+          Pour chaque couche \(p\), on définit le symbole de l'opérateur d'impédance \(\hat{\mZ_p}(m,n)\) tel que 
+          \[
+              \hat{\vE_t}(r_p,m,n) = \hat{\mZ_p}(m,n)\hat{\vJ}(r_p,m,n)
+          \]
+        \end{defn}
+
+        On résonne par récurrence: on suppose connu le symbole de l'opérateur d'impédance de la couche \(p\) et on cherche le suivant
+
+        En \(r=r_{p}=r_0+\sum_{i=1}^p d_p\), on a la relation \( \hat{\vE_t}(r_p,m,n) = \hat{\mZ_p}(m,n)\hat{\vJ}(r_p,m,n)\) où \(\hat{\mZ_p}(m,n)\) est un matrice diagonale
+
+        \begin{equation}
+            \left(\mJ_{E}(r_p,n) - \hat{\mZ_p}(m,n)\mJ_{H}(r_p,n) \right)
+            \begin{bmatrix}
+                a_{mn}
+                \\
+                b_{mn}
+            \end{bmatrix}
+            = -
+            \left(\mH_{E}(r_p,n) + \hat{\mZ_p}(m,n)\mH_{H}(r_p,n) \right)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+        On définit les matrices \(\mA_{J}(r,n)\) et \(\mA_{H}(r,n)\) telle que
+
+        \begin{align}
+            \mA_{J}(r,n) &= \mJ_{E}(r,n) - \hat{\mZ}_p(m,n)\mJ_{H}(r,n)
+            \\
+            \mA_{H}(r,n) &= \mH_{E}(r,n) - \hat{\mZ}_p(m,n)\mH_{H}(r,n)
+        \end{align}
+
+        On suppose que les matrices \(\mA_{E}(r,n)\) et \(\mA_{H}(r,n)\) soient inversibles.
+
+        \begin{TODO}
+          Inversibilité \(\mA_{E}(r_p,n)\) et \(\mA_{H}(r_p,n)\)
+        \end{TODO}
+
+        Par hypothèse sur \(\hat{\mZ_p}(m,n)\), ces matrices sont anti-diagonale.
+
+        On en déduit
+
+        \begin{equation}
+            \hat{\vE_t}(r_{p+1},m,n) = 
+            \left(
+                \mH_{E}(r_{p+1},n)
+                -
+                \mJ_{E}(r_{p+1},n)
+                \mA_{J}(r_p,n)^{-1}
+                \mA_{H}(r_p,n)
+            \right)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+
+        \begin{equation}
+            \hat{\vJ}(r_{p+1},m,n) = \frac{i}{\eta}
+            \left(
+                \mH_{H}(r_{p+1},n)
+                -
+                \mJ_{H}(r_{p+1},n)
+                \mA_{J}(r_{p+1},n)^{-1}
+                \mA_{H}(r_{p+1},n)
+            \right)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+        On en déduit aisément le symbole de la couche \(p+1\)
+
+        \begin{multline}
+            \hat{\mZ}_{p+1}(m,n) = -i\eta
+            \left(
+                \mH_{E}(r_{p+1},n)
+                \mA_{H}(r_p,n)^{-1}
+                -
+                \mJ_{E}(r_{p+1},n)
+                \mA_{E}(r_p,n)^{-1}
+            \right)
+            \\
+            \left(
+                \mH_{H}(r_{p+1},n)
+                \mA_{H}(r_p,n)^{-1}
+                -
+                \mJ_{H}(r_{p+1},n)
+                \mA_{E}(r_p,n)^{-1}
+            \right)^{-1}
+        \end{multline}
+
+        Pour les mêmes raisons que dans le cas d'une couche, ce symbole est diagonal. Cependant son expression n'est plus aussi simple et ne sera pas explicité.
+
+        \begin{equation}
+            \hat{\mZ}_{11}(m,n) = -i\eta
+              \frac 
+              {-\tilde{j_{n}}  ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) + ( \tilde{j_{n}}  ( kr_{0} ) -\hat{\mZ}_{11}(m,n)\,j_{n} ( kr_{0} )  ) \tilde{h_{n}}  ( kr_{1} ) +\tilde{j_{n}}  ( kr_{1} ) h_{n} ( kr_{0} ) \hat{\mZ}_{11}(m,n)}
+              {-j_{n} ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) +h_{n} ( kr_{1} ) \tilde{j_{n}}  ( kr_{0} ) +\hat{\mZ}_{11}(m,n)\, ( j_{n} ( kr_{1} ) h_{n} ( kr_{0} ) -h_{n} ( kr_{1} ) j_{n} ( kr_{0} )  ) }
+      \end{equation}
+
+      \begin{equation}
+            \hat{\mZ}_{p+1,11}(m,n) = -i\eta
+              \frac 
+              {\hat{\mZ}_{p,11}(m,n) \left( \tilde{j_n}(kr_{p+1})h_n(kr_p) - \tilde{h_n}(kr_{p+1})j_n(kr_p) \right) + \tilde{h_n}(kr_{p+1})\tilde{j_n}(kr_p) - \tilde{j_n}(kr_{p+1})\tilde{h_n}(kr_p)}
+              {\hat{\mZ}_{p,11}(m,n) \left( j_n(kr_{p+1})h_n(kr_p) - h_n(kr_{p+1})j_n(kr_p) \right) + h_n(kr_{p+1})\tilde{j_n}(kr_p) - j_n(kr_{p+1})\tilde{h_n}(kr_p)}
+      \end{equation}
+
+      \begin{equation}
+            \hat{\mZ}_{22}(m,n) = -i\eta
+            \frac 
+            {-h_{n} ( kr_{1} ) \tilde{j_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)+j_{n} ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)-h_{n} ( kr_{1} ) j_{n} ( kr_{0} ) +j_{n} ( kr_{1} ) h_{n} ( kr_{0} ) }
+            {-\tilde{j_{n}}  ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)+ ( j_{n} ( kr_{0} ) +\hat{\mZ}_{22}(m,n)\,\tilde{j_{n}}  ( kr_{0} )  ) \tilde{h_{n}}  ( kr_{1} ) -\tilde{j_{n}}  ( kr_{1} ) h_{n} ( kr_{0} ) }
+      \end{equation}
+
+      \begin{equation}
+            \hat{\mZ}_{22}(m,n) = -i\eta
+            \frac 
+            {-h_{n} ( kr_{1} ) \tilde{j_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)+j_{n} ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)-h_{n} ( kr_{1} ) j_{n} ( kr_{0} ) +j_{n} ( kr_{1} ) h_{n} ( kr_{0} ) }
+            {-\tilde{j_{n}}  ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)+ ( j_{n} ( kr_{0} ) +\hat{\mZ}_{22}(m,n)\,\tilde{j_{n}}  ( kr_{0} )  ) \tilde{h_{n}}  ( kr_{1} ) -\tilde{j_{n}}  ( kr_{1} ) h_{n} ( kr_{0} ) }
+      \end{equation}

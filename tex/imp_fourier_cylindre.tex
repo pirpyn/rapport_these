@@ -664,7 +664,7 @@
     \begin{figure}[!hbt]
       \centering
       \begin{tikzpicture}[scale=1]
-        \begin{semilogxaxis}[
+        \begin{loglogaxis}[
             title={},
             ylabel={\(||\hat{\mZ}_{plan} - \hat{\mZ}_{cyl}||_2\)},
             xlabel={\(r_0/r_i\)},
@@ -677,7 +677,7 @@
           \legend{TM,TE}
           \addplot table [x={r0/ri}, y={tm},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
           \addplot table [x={r0/ri}, y={te},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
-        \end{semilogxaxis}
+        \end{loglogaxis}
       \end{tikzpicture}
       \caption{\(\eps = 6, \mu = 1, r_i = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}\)}
       \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon:error}
