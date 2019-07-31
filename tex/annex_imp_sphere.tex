@@ -1,0 +1,33 @@
+\section{Expression du symbole de l'opérateur d'impédance pour une sphère}
+\label{sec:annex:imp_sphere}
+
+% \begin{equation}
+%       \hat{\mZ}_{p+1,11}(m,n) = -i\eta_p
+%         \frac 
+%         {\hat{\mZ}_{p,11}(m,n) \left( \tilde{j_n}(kr_{p+1})h_n(kr_p) - \tilde{h_n}(kr_{p+1})j_n(kr_p) \right) + \tilde{h_n}(kr_{p+1})\tilde{j_n}(kr_p) - \tilde{j_n}(kr_{p+1})\tilde{h_n}(kr_p)}
+%         {\hat{\mZ}_{p,11}(m,n) \left( j_n(kr_{p+1})h_n(kr_p) - h_n(kr_{p+1})j_n(kr_p) \right) \\ + h_n(kr_{p+1})\tilde{j_n}(kr_p) - j_n(kr_{p+1})\tilde{h_n}(kr_p)
+%         }
+% \end{equation}
+
+% \begin{equation}
+%       \hat{\mZ}_{p+1,22}(m,n) = -i\eta_p
+%       \frac 
+%       {\hat{\mZ}_{p,22}(m,n) \left( j_n(kr_{p+1})\tilde{h_n}(kr_p) - h_n(kr_{p+1})\tilde{j_n}(kr_p) \right) + j_n(kr_{p+1})h_n(kr_p) - h_n(kr_{p+1})j_n(kr_p) }
+%       {\hat{\mZ}_{p,22}(m,n) \left( \tilde{h_n}(kr_{p+1})\tilde{j_n}(kr_p) - \tilde{j_n}(kr_{p+1})\tilde{h_n}(kr_p) \right) + \tilde{h_n}(kr_{p+1})j_n(kr_p) - \tilde{j_n}(kr_{p+1})h_n(kr_p)}
+% \end{equation}
+
+On pose pour simplifier les notations \(f(a,b)=a(kr_{p+1})b(kr_p)\)
+
+\begin{equation}
+      \hat{\mZ}_{p+1,11}(m,n) = -i\eta_p
+        \frac 
+        {\hat{\mZ}_{p,11}(m,n) \left( f(\tilde{j_n},h_n) - f(\tilde{h_n},j_n) \right) + f(\tilde{h_n},\tilde{j_n}) - f(\tilde{j_n},\tilde{h_n})}
+        {\hat{\mZ}_{p,11}(m,n) \left( f(j_n,h_n) - f(h_n,j_n) \right) \\ + f(h_n,\tilde{j_n}) - f(j_n,\tilde{h_n})}
+\end{equation}
+
+\begin{equation}
+      \hat{\mZ}_{p+1,22}(m,n) = -i\eta_p
+      \frac 
+      {\hat{\mZ}_{p,22}(m,n) \left( f(j_n,\tilde{h_n}) - f(h_n,\tilde{j_n}) \right) + f(j_n,h_n) - f(h_n,j_n) }
+      {\hat{\mZ}_{p,22}(m,n) \left( f(\tilde{h_n},\tilde{j_n}) - f(\tilde{j_n},\tilde{h_n}) \right) + f(\tilde{h_n},j_n) - f(\tilde{j_n},h_n)}
+\end{equation}
