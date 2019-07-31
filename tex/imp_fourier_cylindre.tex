@@ -23,7 +23,7 @@
   Cependant, le multiplicateur de Fourier associé à la coordonnée \(\theta\) doit être un entier pour assurer la périodicité. On le note \(n\).
 
   \begin{equation}
-    \vE(r,\theta,z) = \frac{1}{2\pi}\sum_{i=-\infty}^{\infty}\int_{\RR} e^{i(n \theta + k_z z )}\hat{\vE} (r,n,k_z) \dd{k_z}
+    \vE(r,\theta,z) = \frac{1}{2\pi}\sum_{n=-\infty}^{\infty}\int_{\RR} e^{i(n \theta + k_z z )}\hat{\vE} (r,n,k_z) \dd{k_z}
   \end{equation}
 
   \begin{prop}
@@ -52,7 +52,7 @@
       \left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\vect{e_\theta} +
       \frac{1}{r}\left(\ddr{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\vect{e_z}
       \\
-      &=i\w\mu \hat \vH(r,n,k_z)
+      &=-i\w\mu \hat \vH(r,n,k_z)
     \end{align}
 
     On remarque que la méthode utilisée pour le plan aboutie à une équation différentielle à coefficients non constant de type \(r\ddr{r}{\vect{X}}(r,n,k_z) = \mat{M}(r,n,k_z)\vect{X}(r,n,k_z)\).
@@ -91,9 +91,9 @@
     r^2 \ddr[2]{r}{\hat{E_z}} + r\ddr{r}{\hat{E_z}} + \left(r^2\w^2\eps\mu - n^2\right)\hat{E_z} =ik_zr\ddr{r}{(r\hat{E_r})} -  nk_zr\hat{E_\theta}
     \end{equation}
 
-    Or comme \(\vdiv \hat \vE = i\w\mu\vdiv\vrot \hat \vH = 0\), on a
+    Or comme \(\vdiv \hat \vE = 0\), on a
     \begin{align}
-      \vdiv\hat \vE &= \frac{1}{r}\ddr{r}{(r\hat{E_r})} + \frac{in}{r}\hat{E_\theta} + ik_z\hat{E_z} &=
+      \vdiv\hat \vE &= \frac{1}{r}\ddr{r}{(r\hat{E_r})} + \frac{in}{r}\hat{E_\theta} + ik_z\hat{E_z}
       \\
       k_z^2r^2 \hat{E_z} &= ik_zr\ddr{r}{(r\hat{E_r})} - nk_zr\hat{E_\theta}
     \end{align}
@@ -240,7 +240,7 @@
 
     \begin{equation}
       \begin{bmatrix}
-        \hat{E_r}\
+        \hat{E_r}\\
         \hat{E_\theta}\\
         \hat{H_r}\\
         \hat{H_\theta}
@@ -376,7 +376,7 @@
       D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(>-1\) sont tous réels.
       Donc à condition d'avoir \(k_3\) complexe, comme l'ordre est entier et que l'on se restreint au entiers naturels, ces matrices sont inversibles\footnote{Là encore, il faut étudier le cas des matériaux sans pertes où \(k_3\) est réel pour \(k_z < w\sqrt{\mu\eps}\)}.
 
-      À condition de l'inversibilité de ces deux matrices, on peut donc exprimer uniquement grâce à la moitié des constantes
+      À condition de l'inversibilité de ces deux matrices, on peut donc exprimer les composantes tangentielles
       \begin{align}
         \hat \vE_t(r_1,n,k_z) &=
         \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)
@@ -667,7 +667,7 @@
         \begin{loglogaxis}[
             title={},
             ylabel={\(||\hat{\mZ}_{plan} - \hat{\mZ}_{cyl}||_2\)},
-            xlabel={\(r_0/r_i\)},
+            xlabel={\(r_0/d\)},
             width=0.8\textwidth,
             xmin=0.1,
             xmax=100,
@@ -675,10 +675,10 @@
             legend pos=outer north east
           ]
           \legend{TM,TE}
-          \addplot table [x={r0/ri}, y={tm},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
-          \addplot table [x={r0/ri}, y={te},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
+          \addplot table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
+          \addplot table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
         \end{loglogaxis}
       \end{tikzpicture}
-      \caption{\(\eps = 6, \mu = 1, r_i = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}\)}
+      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
       \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon:error}
     \end{figure}

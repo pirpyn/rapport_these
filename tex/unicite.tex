@@ -28,11 +28,11 @@
 			Les relations \eqref{eq:unicite:form_var:maxwell-E} et \eqref{eq:unicite:form_var:maxwell-H} permettent grâce aux formules de Green d'obtenir la forme variationnelle suivante :
 			Trouver \(\vE \in \left(\Hrot(\OO)\right)^3\), \(\forall \vect \phi \in \left(\Hrot(\OO)\right)^3\)
 			\[
-				a(\vE,\v\phi) = 0
+				a(\vE,\vect\phi) = 0
 			\]
 			où a est une forme sesquilinéaire telle que, soit \(\vn\) la normale unitaire sortante à \(\Gamma\).
 			\begin{align*}
-				a(\vE,\v\phi) &:=  \frac{1}{-ik_0\mu} \int_\OO \trot \vE \cdot \trot \conj{\v{\phi}} dx + -ik_0\eps\int_\OO\vE\cdot\conj{\v{\phi}} dx
+				a(\vE,\vect\phi) &:=  \frac{1}{-ik_0\mu} \int_\OO \trot \vE \cdot \trot \conj{\vect{\phi}} dx + -ik_0\eps\int_\OO\vE\cdot\conj{\vect{\phi}} dx
 				 %+ \int_{Y_R} \conj{ \vect \phi } \cdot \Tr(\vE_t)ds
 				 - \int_\Gamma \left(\vn \pvect \frac{\trot \vE}{-ik_0\mu}\right) \cdot \conj{\vect \phi} ds \\
 			 \end{align*}
@@ -53,9 +53,10 @@
 				% \\B&:= \int_\OO | \vE | ^2 dx  = || \vE ||_{L^2}^2
 				%\\CC&:= \int_{Y_R} \conj{E_t}\cdot T_R \vE_t ds
 				\vJ &:=  \vn \pvect \frac{\trot \vE}{-ik_0\mu} && \text{sur \(\Gamma\)}
-				\\X&:= \int_\Gamma \vJ \cdot \conj{\vE_t} ds
+				\\
+				X&:= \int_\Gamma \vJ \cdot \conj{\vE_t} ds
 			\end{align*}
-			La partie réelle de la forme bilinéaire \(a\) écrit donc
+			La partie réelle de la forme bilinéaire \(a\) s'écrit donc
 			\begin{equation}
 				\label{eq:unicite:form_var:decomp_form_bilin_1}
 				|\Re(a(\vE,\vE))| = \left|\frac{\Im(\mu)}{k_0} || \trot \vE ||_{L^2}^2  + k_0 \Im(\eps) || \vE ||_{L^2}^2

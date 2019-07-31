@@ -56,7 +56,7 @@
         \begin{align}
           \Mmn[z_n]_t(\rtp) &= z_n(kr)\hat{\Mmn}(\tp)
           \\
-          \Nmn[z_n]_t(\rtp) &= \ddr{r}{z_n}(kr)\hat{\Nmn}(\tp))
+          \Nmn[z_n]_t(\rtp) &= \frac{1}{kr}\ddr{r}{z_n}(kr)\hat{\Nmn}(\tp))
         \end{align}
 
         On a alors les propriétés supplémentaires
@@ -86,9 +86,9 @@
         Donc \(\vJ = \vect{e_r} \pvect \vH\) s'écrit en série de Mie
 
         \begin{multline}
-            \vJ(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \ddr{r}{j_n}\hat{\Mmn}(\tp) + b_{mn} j_n \hat{\Mmn}(\tp)
+            \vJ(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{1}{kr}\ddr{r}{j_n}\hat{\Mmn}(\tp) + b_{mn} k r j_n \hat{\Mmn}(\tp)
             \\
-            -  \ddr{r}{h_n} c_{mn} \hat{\Mmn}(\tp) + h_n d_{mn} \hat{\Nmn}(\tp)
+            -  \frac{1}{kr}\ddr{r}{h_n} c_{mn} \hat{\Mmn}(\tp) + k r h_n d_{mn} \hat{\Nmn}(\tp)
         \end{multline}
 
         Dans la suite, pour simplifier les écritures, on utilisera la notation tilde \gls{mat-tild}, telle que \( \tilde{z_n}(k_r) = \ddr{r}{z_n}(kr) \). On omettra aussi les dépendances en \(kr\) lorsqu'il n'y a pas d’ambiguïtés.
@@ -127,13 +127,13 @@
 
 
         \begin{equation}
-            \vJ(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \vJ(\rtp) = \frac{i}{\eta kr}\sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
                 \hat{\Nmn} & \hat{\Mmn}
             \end{bmatrix}
             \left( 
                 \begin{bmatrix}
-                    0 & j_n
+                    0 & (kr)^2 j_n
                     \\
                     -\tilde{j_n} & 0
                 \end{bmatrix}
@@ -144,7 +144,7 @@
                 \end{bmatrix}
                 + 
                 \begin{bmatrix}
-                    0 & h_n
+                    0 & (kr)^2 h_n
                     \\
                     -\tilde{h_n} & 0
                 \end{bmatrix}
@@ -159,7 +159,7 @@
         \begin{defn}
             On définit les matrices \(\mJ_{E}(r,n),\mH_{E}(r,n),\mJ_{H}(r,n),\mH_{H}(r,n)\)
             \begin{align}
-                \mJ_{E}(r,n,) &=
+                \mJ_{E}(r,n) &=
                 \begin{bmatrix}
                     0 & \tilde{j_n}(kr)
                     \\
@@ -173,16 +173,16 @@
                     h_n(kr) & 0
                 \end{bmatrix}
                 \\
-                \mJ_{H}(r,n,) &=
+                \mJ_{H}(r,n) &=
                 \begin{bmatrix}
-                    0 & j_n(kr)
+                    0 & (kr)^2 j_n(kr)
                     \\
                     -\tilde{j_n}(kr) & 0
                 \end{bmatrix}
                 \\
                 \mH_{H}(r,n) &=
                 \begin{bmatrix}
-                    0 & h_n(kr)
+                    0 & (kr)^2 h_n(kr)
                     \\
                     -\tilde{h_n}(kr) & 0
                 \end{bmatrix}
@@ -207,7 +207,7 @@
         \end{equation}
 
         \begin{equation}
-            \hat{\vJ}(r,m,n) = \frac{i}{\eta}
+            \hat{\vJ}(r,m,n) = \frac{i}{\eta k r}
             \left(
             \mJ_{H}(r,n)
             \begin{bmatrix}
@@ -233,10 +233,6 @@
             \input{tikz/schema/sphere_1_couche.tikz}
           \end{tikzpicture}
         \end{figure}
-
-        \begin{TODO}
-          Cette partie a été faite à la truelle. La reprendre.
-        \end{TODO}
 
         \begin{defn}
           On définit le symbole de l'opérateur d'impédance \(\hat{\mZ}(m,n)\) tel que 
@@ -340,6 +336,10 @@
 
     \subsection{Symbole de l'opérateur d'impédance pour plusieurs couche}
 
+        \begin{TODO}
+            Les matrices J,H dépendent de k donc de nu qui depend de la couche. Corriger.
+        \end{TODO}
+
         \begin{figure}[!hbt]
           \centering
           \begin{tikzpicture}
@@ -349,25 +349,25 @@
 
 
         \begin{defn}
-          Pour chaque couche \(p\), on définit le symbole de l'opérateur d'impédance \(\hat{\mZ_p}(m,n)\) tel que 
+          Pour chaque couche \(p\), on définit le symbole de l'opérateur d'impédance \(\hat{\mZ}_p(m,n)\) tel que 
           \[
-              \hat{\vE_t}(r_p,m,n) = \hat{\mZ_p}(m,n)\hat{\vJ}(r_p,m,n)
+              \hat{\vE_t}(r_p,m,n) = \hat{\mZ}_p(m,n)\hat{\vJ}(r_p,m,n)
           \]
         \end{defn}
 
         On résonne par récurrence: on suppose connu le symbole de l'opérateur d'impédance de la couche \(p\) et on cherche le suivant
 
-        En \(r=r_{p}=r_0+\sum_{i=1}^p d_p\), on a la relation \( \hat{\vE_t}(r_p,m,n) = \hat{\mZ_p}(m,n)\hat{\vJ}(r_p,m,n)\) où \(\hat{\mZ_p}(m,n)\) est un matrice diagonale
+        En \(r=r_{p}=r_0+\sum_{i=1}^p d_p\), on a la relation \( \hat{\vE_t}(r_p,m,n) = \hat{\mZ}_p(m,n)\hat{\vJ}(r_p,m,n)\) où \(\hat{\mZ}_p(m,n)\) est un matrice diagonale
 
         \begin{equation}
-            \left(\mJ_{E}(r_p,n) - \hat{\mZ_p}(m,n)\mJ_{H}(r_p,n) \right)
+            \left(\mJ_{E}(r_p,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mJ_{H}(r_p,n) \right)
             \begin{bmatrix}
                 a_{mn}
                 \\
                 b_{mn}
             \end{bmatrix}
             = -
-            \left(\mH_{E}(r_p,n) + \hat{\mZ_p}(m,n)\mH_{H}(r_p,n) \right)
+            \left(\mH_{E}(r_p,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mH_{H}(r_p,n) \right)
             \begin{bmatrix}
                 c_{mn}
                 \\
@@ -378,9 +378,9 @@
         On définit les matrices \(\mA_{J}(r,n)\) et \(\mA_{H}(r,n)\) telle que
 
         \begin{align}
-            \mA_{J}(r,n) &= \mJ_{E}(r,n) - \hat{\mZ}_p(m,n)\mJ_{H}(r,n)
+            \mA_{J}(r,n) &= \mJ_{E}(r,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mJ_{H}(r,n)
             \\
-            \mA_{H}(r,n) &= \mH_{E}(r,n) - \hat{\mZ}_p(m,n)\mH_{H}(r,n)
+            \mA_{H}(r,n) &= \mH_{E}(r,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mH_{H}(r,n)
         \end{align}
 
         On suppose que les matrices \(\mA_{E}(r,n)\) et \(\mA_{H}(r,n)\) soient inversibles.
@@ -411,7 +411,7 @@
 
 
         \begin{equation}
-            \hat{\vJ}(r_{p+1},m,n) = \frac{i}{\eta}
+            \hat{\vJ}(r_{p+1},m,n) = \frac{i}{\eta_p}
             \left(
                 \mH_{H}(r_{p+1},n)
                 -
@@ -429,7 +429,7 @@
         On en déduit aisément le symbole de la couche \(p+1\)
 
         \begin{multline}
-            \hat{\mZ}_{p+1}(m,n) = -i\eta
+            \hat{\mZ}_{p+1}(m,n) = -i\eta_p
             \left(
                 \mH_{E}(r_{p+1},n)
                 \mA_{H}(r_p,n)^{-1}
@@ -447,32 +447,28 @@
             \right)^{-1}
         \end{multline}
 
-        Pour les mêmes raisons que dans le cas d'une couche, ce symbole est diagonal. Cependant son expression n'est plus aussi simple et ne sera pas explicité.
+        Pour les mêmes raisons que dans le cas d'une couche, ce symbole est diagonal. Cependant son expression n'est plus aussi simple (voir annexe \ref{sec:annex:imp_sphere} ).
 
-        \begin{equation}
-            \hat{\mZ}_{11}(m,n) = -i\eta
-              \frac 
-              {-\tilde{j_{n}}  ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) + ( \tilde{j_{n}}  ( kr_{0} ) -\hat{\mZ}_{11}(m,n)\,j_{n} ( kr_{0} )  ) \tilde{h_{n}}  ( kr_{1} ) +\tilde{j_{n}}  ( kr_{1} ) h_{n} ( kr_{0} ) \hat{\mZ}_{11}(m,n)}
-              {-j_{n} ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) +h_{n} ( kr_{1} ) \tilde{j_{n}}  ( kr_{0} ) +\hat{\mZ}_{11}(m,n)\, ( j_{n} ( kr_{1} ) h_{n} ( kr_{0} ) -h_{n} ( kr_{1} ) j_{n} ( kr_{0} )  ) }
-      \end{equation}
+  \subsection{Applications numérique}
 
-      \begin{equation}
-            \hat{\mZ}_{p+1,11}(m,n) = -i\eta
-              \frac 
-              {\hat{\mZ}_{p,11}(m,n) \left( \tilde{j_n}(kr_{p+1})h_n(kr_p) - \tilde{h_n}(kr_{p+1})j_n(kr_p) \right) + \tilde{h_n}(kr_{p+1})\tilde{j_n}(kr_p) - \tilde{j_n}(kr_{p+1})\tilde{h_n}(kr_p)}
-              {\hat{\mZ}_{p,11}(m,n) \left( j_n(kr_{p+1})h_n(kr_p) - h_n(kr_{p+1})j_n(kr_p) \right) + h_n(kr_{p+1})\tilde{j_n}(kr_p) - j_n(kr_{p+1})\tilde{h_n}(kr_p)}
-      \end{equation}
-
-      \begin{equation}
-            \hat{\mZ}_{22}(m,n) = -i\eta
-            \frac 
-            {-h_{n} ( kr_{1} ) \tilde{j_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)+j_{n} ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)-h_{n} ( kr_{1} ) j_{n} ( kr_{0} ) +j_{n} ( kr_{1} ) h_{n} ( kr_{0} ) }
-            {-\tilde{j_{n}}  ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)+ ( j_{n} ( kr_{0} ) +\hat{\mZ}_{22}(m,n)\,\tilde{j_{n}}  ( kr_{0} )  ) \tilde{h_{n}}  ( kr_{1} ) -\tilde{j_{n}}  ( kr_{1} ) h_{n} ( kr_{0} ) }
-      \end{equation}
-
-      \begin{equation}
-            \hat{\mZ}_{22}(m,n) = -i\eta
-            \frac 
-            {-h_{n} ( kr_{1} ) \tilde{j_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)+j_{n} ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)-h_{n} ( kr_{1} ) j_{n} ( kr_{0} ) +j_{n} ( kr_{1} ) h_{n} ( kr_{0} ) }
-            {-\tilde{j_{n}}  ( kr_{1} ) \tilde{h_{n}}  ( kr_{0} ) \hat{\mZ}_{22}(m,n)+ ( j_{n} ( kr_{0} ) +\hat{\mZ}_{22}(m,n)\,\tilde{j_{n}}  ( kr_{0} )  ) \tilde{h_{n}}  ( kr_{1} ) -\tilde{j_{n}}  ( kr_{1} ) h_{n} ( kr_{0} ) }
-      \end{equation}
+    \begin{figure}[!hbt]
+      \centering
+      \begin{tikzpicture}[scale=1]
+        \begin{loglogaxis}[
+            title={},
+            ylabel={\(||\hat{\mZ}_{plan} - \hat{\mZ}_{sphere}||_2\)},
+            xlabel={\(r_0/d\)},
+            width=0.8\textwidth,
+            xmin=0.1,
+            xmax=100,
+            % mark repeat=20,
+            legend pos=outer north east
+          ]
+          \legend{TM,TE}
+          \addplot table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
+          \addplot table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
+        \end{loglogaxis}
+      \end{tikzpicture}
+      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
+      \label{fig:imp_fourier:sphere:hoppe_p62:converge_rayon:error}
+    \end{figure}
