@@ -48,6 +48,16 @@
           \end{bmatrix}
         \end{align}
 
+        Par définition de ces vecteurs, on a les propriétés suivantes
+        \begin{prop}
+            \label{prop:Mmn_Nmn_rot}
+            \begin{align}
+                \vrot \Mmn[z_n](\rtp) &= k\Nmn[z_n](\rtp)
+                \\
+                \vrot \Nmn[z_n](\rtp) &= k\Mmn[z_n](\rtp)
+            \end{align}
+        \end{prop}
+
         % Ces vecteurs harmoniques sphériques possèdent les propriétés suivantes
 
         % \begin{align}
@@ -104,17 +114,18 @@
         \begin{align}
           \Mmn[z_n]_t(\rtp) &= z_n(kr)\Umn(\tp)
           \\
-          \Nmn[z_n]_t(\rtp) &= \frac{1}{kr}\ddr{r}{z_n}(kr)\Umn^\perp(\tp))
+          \Nmn[z_n]_t(\rtp) &= \frac{1}{kr}\ddr{r}{z_n}(kr)\Umn^\perp(\tp)
         \end{align}
 
         On a alors les propriétés supplémentaires
-
-        \begin{align}
-          \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= krz_n(kr)\Umn^\perp(\tp)
-          \\
-          \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{kr}\ddr{r}{z_n}(kr)\Umn(\tp)
-        \end{align}
-
+        \begin{prop}
+            \label{prop:Mmn_Nmn_vect}
+            \begin{align}
+              \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= krz_n(kr)\Umn^\perp(\tp)
+              \\
+              \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{kr}\ddr{r}{z_n}(kr)\Umn(\tp)
+            \end{align}
+        \end{prop}
         Sachant donc que les composantes tangentielles du champs \(\vE\) s'écrivent
 
         \begin{multline}
