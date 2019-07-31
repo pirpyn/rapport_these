@@ -8,25 +8,32 @@
           Mettre ici la démonstration des harmoniques sphériques? Ou une référence vers annexe ?
         \end{TODO}
 
-        On définit les harmoniques sphériques les solutions de \(\Delta U + k^2 U = 0 \). Ce sont les fonctions \(Y_{m,n} = C(m,n) e^{im\phi}\PP^m_n(\cos \theta) \) avec \(C(m,n)\) tel que,
+        On définit les harmoniques sphériques les solutions de \(\Delta U + k^2 U = 0 \). Ce sont les fonctions \(Y_{m,n} = C(m,n) e^{im\phi}\PP^m_n(\cos \theta) \) avec \(C(m,n)\)\footnote{D’après \cite[p.~24]{nedelec_acoustic_2001}, \( C(m,n) = (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}}\)} tel que
         \[
          \ds\int_S Y_{m,n} \conj{Y_{p,q}} ds = \delta_m^p \delta_n^q
         \]
 
-        D’après \cite[p.~24]{nedelec_acoustic_2001}, \( C(m,n) = (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}}\)
 
-        On définit les vecteurs harmonique sphériques\(\gls{phy-Mmn} ,\gls{phy-Nmn}\) solution de \(\vrot \vrot \vect{U} - k^2 \vect{U} = 0 \):
+        On définit les vecteurs harmonique sphériques\(\gls{phy-Mmn} ,\gls{phy-Nmn}\) solution de 
+        \[
+            \left\lbrace
+                \begin{aligned}
+                    \vrot \vrot \vect{U} - k^2 \vect{U} = 0\\
+                    \vdiv \vect{U} = 0
+                \end{aligned}
+            \right.
+        \]
         \begin{align}
-         \label{eq:defMmn}
-          \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(kr) Y_{m,n} \right)\\
-          &= z_n(kr)
-          \begin{bmatrix}
-            0 
-            \\
-            \frac{im}{\sin\theta}Y_{mn}
-            \\
-            - \ddr{\theta}{Y_{mn}}
-          \end{bmatrix}
+            \label{eq:defMmn}
+            \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(kr) Y_{m,n} \right)\\
+            &= z_n(kr)
+            \begin{bmatrix}
+                0 
+                \\
+                \frac{im}{\sin\theta}Y_{mn}
+                \\
+                - \ddr{\theta}{Y_{mn}}
+            \end{bmatrix}
         \end{align}
 
         \begin{align}
@@ -51,24 +58,7 @@
         % \int_{S(0,R)} \vect{N_{m,n}^{z_n}} \cdot \conj{\vect{N_{p,q}^{z_n}}} ds &= \frac{\gamma_{m,n}}{k^2} \delta_{mp}\delta_{nq}
         % \end{align}
 
-        On définit les parties tangentielles de ces vecteurs par séparation des variables \(r\) et \((\theta,\phi)\):
-     
-        \begin{align}
-          \Mmn[z_n]_t(\rtp) &= z_n(kr)\hat{\Mmn}(\tp)
-          \\
-          \Nmn[z_n]_t(\rtp) &= \frac{1}{kr}\ddr{r}{z_n}(kr)\hat{\Nmn}(\tp))
-        \end{align}
-
-        On a alors les propriétés supplémentaires
-
-        \begin{align}
-          \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= krz_n(kr)\hat{\Nmn}(\tp)
-          \\
-          \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{kr}\ddr{r}{z_n}(kr)\hat{\Mmn}(\tp)
-        \end{align}
-
-
-        On a ( \cite{cheng_spectral_1993})
+        On a (\cite{cheng_spectral_1993})
         \begin{multline}
             \vE(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Mmn[j_n](\rtp) + b_{mn} \Nmn[j_n](\rtp)
             \\
@@ -83,12 +73,63 @@
             + c_{mn} \Nmn[h_n](\rtp) + d_{mn} \Mmn[h_n](\rtp)
         \end{multline}
 
-        Donc \(\vJ = \vect{e_r} \pvect \vH\) s'écrit en série de Mie
+        \begin{TODO}
+            Ce sont des vecteurs 3D égaux à des vecteurs 2D. Corriger
+        \end{TODO}
+
+        On définit alors le vecteur de \(\RR^2\) suivant ( resp. son orthogonal ), la réduction du vecteur harmonique sphérique \gls{phy-Mmn} ( resp. \gls{phy-Nmn} ) aux composantes tangentielles et indépendant du rayon:
+
+        \begin{align}
+            \label{eq:defUmn_tgt}
+            \Umn(\tp) &:= 
+            \begin{bmatrix}
+                \frac{im}{\sin\theta}Y_{mn}(\tp)
+                \\
+                - \ddr{\theta}{Y_{mn}}(\tp)
+            \end{bmatrix}
+        \end{align}
+
+        \begin{align}
+        \label{eq:defNmn_tgt}
+          \Umn^\perp(\tp) &:=
+          \begin{bmatrix}
+            \ddr{\theta}{Y_{mn}}(\tp)
+            \\
+            \frac{im}{\sin\theta}Y_{mn}(\tp)
+          \end{bmatrix}
+        \end{align}
+
+
+        On remarque alors que les parties tangentielles des vecteurs harmoniques sphériques peuvent s'écrire:
+        \begin{align}
+          \Mmn[z_n]_t(\rtp) &= z_n(kr)\Umn(\tp)
+          \\
+          \Nmn[z_n]_t(\rtp) &= \frac{1}{kr}\ddr{r}{z_n}(kr)\Umn^\perp(\tp))
+        \end{align}
+
+        On a alors les propriétés supplémentaires
+
+        \begin{align}
+          \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= krz_n(kr)\Umn^\perp(\tp)
+          \\
+          \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{kr}\ddr{r}{z_n}(kr)\Umn(\tp)
+        \end{align}
+
+        Sachant donc que les composantes tangentielles du champs \(\vE\) s'écrivent
 
         \begin{multline}
-            \vJ(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{1}{kr}\ddr{r}{j_n}\hat{\Mmn}(\tp) + b_{mn} k r j_n \hat{\Mmn}(\tp)
+            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} j_n(kr)\Umn(\tp) + b_{mn} \frac{1}{kr}\ddr{r}{j_n}(kr)\Umn^\perp(\tp)
             \\
-            -  \frac{1}{kr}\ddr{r}{h_n} c_{mn} \hat{\Mmn}(\tp) + k r h_n d_{mn} \hat{\Nmn}(\tp)
+            + c_{mn} h_n(kr)\Umn(\tp) + d_{mn} \frac{1}{kr}\ddr{r}{j_n}(kr)\Umn^\perp(\tp)
+        \end{multline}
+
+
+        Donc \(\vJ = \vect{e_r} \pvect \vH\) s'écrit
+
+        \begin{multline}
+            \vJ(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{1}{kr}\ddr{r}{j_n}\Umn(\tp) + b_{mn} k r j_n \Umn^\perp(\tp)
+            \\
+            -  \frac{1}{kr}\ddr{r}{h_n} c_{mn} \Umn(\tp) + k r h_n d_{mn} \Umn^\perp(\tp)
         \end{multline}
 
         Dans la suite, pour simplifier les écritures, on utilisera la notation tilde \gls{mat-tild}, telle que \( \tilde{z_n}(k_r) = \ddr{r}{z_n}(kr) \). On omettra aussi les dépendances en \(kr\) lorsqu'il n'y a pas d’ambiguïtés.
@@ -98,7 +139,7 @@
         \begin{equation}
             \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
-              \hat{\Nmn} & \hat{\Mmn}
+              \Umn^\perp & \Umn
             \end{bmatrix}
             \left( 
               \begin{bmatrix}
@@ -129,7 +170,7 @@
         \begin{equation}
             \vJ(\rtp) = \frac{i}{\eta kr}\sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
-                \hat{\Nmn} & \hat{\Mmn}
+                \Umn^\perp & \Umn
             \end{bmatrix}
             \left( 
                 \begin{bmatrix}
@@ -155,6 +196,21 @@
                 \end{bmatrix}
             \right)
         \end{equation}
+
+        \begin{defn}
+            On définit les vecteurs de \(\RR^2\) \(\hat{\vE_t}(r,m,n)\) et \(\hat{\vJ}(r,m,n)\) tels que
+            \begin{align}
+                \vE_t(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+                \begin{bmatrix}
+                  \Umn^\perp & \Umn
+                \end{bmatrix}\hat{\vE_t}(r,m,n)
+                \\
+                \vJ(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+                \begin{bmatrix}
+                  \Umn^\perp & \Umn
+                \end{bmatrix}\hat{\vJ}(r,m,n)
+            \end{align}
+        \end{defn}
 
         \begin{defn}
             On définit les matrices \(\mJ_{E}(r,n),\mH_{E}(r,n),\mJ_{H}(r,n),\mH_{H}(r,n)\)
@@ -188,6 +244,8 @@
                 \end{bmatrix}
             \end{align}
         \end{defn}
+
+        On peut donc expliciter les vecteurs précédemment introduits
 
         \begin{equation}
             \hat{\vE_t}(r,m,n) = 
