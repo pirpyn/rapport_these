@@ -14,7 +14,7 @@
         \]
 
 
-        On définit les vecteurs harmonique sphériques\(\gls{phy-Mmn} ,\gls{phy-Nmn}\) solution de 
+        On définit les vecteurs harmonique sphériques\(\gls{phy-Mmn} ,\gls{phy-Nmn}\) solution dans la base des coordonnées sphériques de 
         \[
             \left\lbrace
                 \begin{aligned}
@@ -25,28 +25,30 @@
         \]
         \begin{align}
             \label{eq:defMmn}
-            \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(kr) Y_{m,n} \right)\\
+            \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(kr) Y_{m,n}(\tp) \right)\\
             &= z_n(kr)
             \begin{bmatrix}
                 0 
                 \\
-                \frac{im}{\sin\theta}Y_{mn}
+                \frac{im}{\sin\theta}Y_{mn}(\tp)
                 \\
-                - \ddr{\theta}{Y_{mn}}
+                - \ddr{\theta}{Y_{mn}}(\tp)
             \end{bmatrix}
         \end{align}
 
         \begin{align}
         \label{eq:defNnn}
-          \Nmn[z_n](\rtp) &:= \frac{\vrot \Mmn[z_n]}{k} \\
+          \Nmn[z_n](\rtp) &:= \frac{\vrot \Mmn[z_n]}{k}(\rtp) \\
           &= \frac{1}{kr}\begin{bmatrix}
-            \frac{z_n(kr)}{\sin\theta}\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{Y_{mn}}\right)
+            z_n(kr)n(n+1)Y_{mn}(\tp)
             \\
-            \ddr{r}{z_n}(kr)\ddr{\theta}{Y_{mn}}
+            \ddr{r}{z_n}(kr)\ddr{\theta}{Y_{mn}}(\tp)
             \\
-            \ddr{r}{z_n}(kr)\frac{im}{\sin\theta}Y_{mn}
+            \ddr{r}{z_n}(kr)\frac{im}{\sin\theta}Y_{mn}(\tp)
           \end{bmatrix}
         \end{align}
+
+        L'obtention de ces vecteurs est disponible en annexes \ref{sec:annex:harmoniques_spheriques}.
 
         Par définition de ces vecteurs, on a les propriétés suivantes
         \begin{prop}
