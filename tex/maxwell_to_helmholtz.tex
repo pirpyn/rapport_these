@@ -1,42 +1,5 @@
-\section{Solution problème de Maxwell dans la sphère}
+\subsection{Solutions vectorielles à divergence nulles des équations de Maxwell harmoniques}
 \label{sec:sol_maxwell}
-
-% Dans cette section, nous allons résouddre le problème de Maxwell \eqref{eq:pres_th:intro:maxwell} dans le cas d'un objet sphérique de constantes \(\eps\) et \(\mu\), éclairé par une onde électro-magnétique  de pulsation \(w\) et de nombre d'onde \(k\), tel que \(k_0^2 = w^2\eps_0\mu_0\).
-
-% Nous allons montrer que le problème de Maxwell en champs \((\E,\H)\) peut être reformulé en potentiels vectoriels \((\vect \Phi_E,\vect \Phi_H)\), dit de Hertz. Ces potentiels sont alors solution d'un problème de Helmholtz.
-
-% Alors nous exhiberons une solution qui permet de passer du potentiel vectoriel \(\vect \Phi\) à un potentiel scalaire \(\Psi\). Ce dernier doit-être alors solution du problème de Helmholtz, ce qui sera étudié dans la section suivante (section \ref{sec:sol_maxwellhelmholtz_scal}).
-
-% Afin de résouddre le problème de Maxwell \eqref{eq:maxwell}, nous allons faire apparaître le problème de Helmholtz vectoriel que nous résouddrons à l'aide du problème de Helmholtz scalaire .
-
-\subsection{Des équations de Maxwell à l'équation de Helmholtz}
-% Afin de faire apparaitre le problème de Helmholtz vectoriel, nous allons nous donner des potentiels qui soient des solutions de ce problème et nous montrerons qu'ils résolvent le problème de Maxwell :
-% \begin{prop}
-%   Soient \((\vect \Phi_E,\vect \Phi_H)\) tels que
-%   \begin{equation}
-%     \label{eq:sol_maxwell:potentiel}
-%     %\left\lbrace
-%     \begin{matrix}
-%       %\ddriv \vect \Phi_{X} &=& 0 \\
-%       \exists U_X, -\rot \rot \vect \Phi_X + k^2 \vect \Phi_X &=&  \grad U_X \\
-%     \end{matrix} \quad
-%     %\right|
-%     k^2 = w^2 \eps\mu
-%   \end{equation}
-%
-%   alors les champs \((\E,\H)\) définis ci-dessous sont solutions de \eqref{eq:maxwell}.
-%
-%   \begin{equation}
-%     \label{eq:sol_maxwell:maxwell_potentiel}
-%     \left\lbrace
-%       \begin{matrix}
-%         \E &=&  \rot \vect \Phi_E +  \frac{\rot \rot \vect \Phi_H}{iw\eps} \\
-%         \H &=&  \rot \vect \Phi_H -  \frac{\rot \rot \vect \Phi_E}{iw\mu} \\
-%       \end{matrix}
-%     \right.
-%   \end{equation}
-% \end{prop}
-% \begin{proof}
 
 Soit le problème de Maxwell \eqref{eq:pres_th:intro:maxwell} dans le cas d'un objet sphérique de constantes \(\eps\) et \(\mu\)%, éclairé par une onde électro-magnétique  de pulsation \(w\) et de nombre d'onde \(k\), tel que \(k^2 = w^2\eps\mu\)
 .
@@ -127,7 +90,7 @@ En définitive, nous avons dans tout \(\OO\):
   %// \Rightarrow \exists V \in \Hgrad(\OO), \quad \grad V  &= (\Delta \Psi + k^2\Psi)\vect e_r
 \end{align*}
 
-On voit donc \(\Psi\) solution l'équation de Helmholtz homogène  \eqref{eq:sol_maxwell:helmholtz_scal} implique que \(\vect \Phi\) satisfait \eqref{eq:sol_maxwell:helmholtz_vect}.
+On voit donc que si on a \(\Psi\) solution l'équation de Helmholtz homogène  \eqref{eq:sol_maxwell:helmholtz_scal} alors  \(\vect \Phi:=r\Psi\vect{e_r}\) satisfait \eqref{eq:sol_maxwell:helmholtz_vect}.
 \begin{equation}
   \label{eq:sol_maxwell:helmholtz_scal}
    \Delta \Psi + k^2\Psi = 0 \quad \text{dans \(\OO\)}

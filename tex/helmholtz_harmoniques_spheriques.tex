@@ -1,8 +1,9 @@
-\section{Solutions du problème de Helmholtz dans la sphère}\label{sec:helmholtz_scal}
+\subsection{Solutions du problème de Helmholtz dans la sphère}
+\label{sec:helmholtz_scal}
 
 Nous cherchons une solution de l'équation de Helmholtz \eqref{eq:sol_maxwell:helmholtz_scal} dans le cas où \(\OO\) est la sphère unité. Par séparation des variables%\footcite[p.~1264]{morse_methods_1953}
 , nous allons exhiber des solutions fondamentales appelées harmoniques sphériques.
-%% subsection intro
+%% subsubsection intro
 
 Soient \(k \in \CC, \OO = B(0,1), \OO^c = \RR^3 \backslash \overline{\OO}\).
 
@@ -14,7 +15,7 @@ Le Laplacien s'écrit en coordonnées sphériques :
   + \frac{1}{\sin^2(\theta)} \ddr[2]{\phi}{\Psi}\right)
 \]
 
-\subsection{Solution particulière de Helmholtz par séparation des variables}
+\subsubsection{Solution particulière de Helmholtz par séparation des variables}
 \begin{hyp}
 On suppose que l'on peut écrire \(\Psi(\rtp) : = f(r)g(\theta)h(\phi)\).
 \end{hyp}
@@ -56,7 +57,7 @@ h(\phi) = h(\phi + 2\pi) \Leftrightarrow e^{z_h2\pi}= 1 \Rightarrow \forall m \i
 %\end{equation}
 \end{proof}
 
-%%% subsection g
+%%% subsubsection g
 \begin{prop}\(\forall m \in \ZZ, \forall \nu \in \CC\), soit \(\PP^m_\nu\) la fonction de Legendre associée. Alors
   \begin{equation}
     g(\theta) := \PP^m_\nu(\cos \theta)
@@ -109,7 +110,7 @@ On conclus que pour obtenir des solutions définis pour tout \(m\), alors \(\nu:
 \end{proof}
 
 
-%%% subsection f
+%%% subsubsection f
 \begin{prop} Soit \(j_n\) (resp. \(h_n\) la fonction de Bessel (resp. Hankel) d'ordre \(n\).
   \begin{equation}
     f(r) := \left\lbrace
@@ -126,8 +127,8 @@ On normalise l'équation de Helmholtz en remplaçant les derniers termes par la 
 \frac{r^2}{gh} \left(\Delta \Psi + k^2 \Psi\right) &= 0 \\
 &= \ddr{r}{}\left(r^2f'\right) + \left((kr)^2 - n(n+1)\right)f
 \end{align*}
-  On voit alors apparaître l'équation de Bessel d'ordre \(n +1/2\) dont des solutions linéairement indépendantes sont les fonctions de Bessel du 1\ier type \(J_{n+1/2}\) et du 2\ieme type \(Y_{n+1/2}\)\cite[p.~86]{bohren_absorption_2004}\cite[p.~1465]{morse_methods_1953}.
-  On crée de \(J_{n+1/2}\) et \(Y_{n+1/2}\) les fonction de Bessel sphériques \(j_n\) et \(y_n\)
+  On voit alors apparaître l'équation de Bessel d'ordre \(n +1/2\) dont des solutions linéairement indépendantes sont les fonctions de Bessel d'ordre \(n +1/2\) du 1\ier type \(J_{n+1/2}\) et du 2\ieme type \(Y_{n+1/2}\)\cite[p.~86]{bohren_absorption_2004}\cite[p.~1465]{morse_methods_1953}.
+  À partir de ces dernières, on définit les fonction de Bessel sphériques \(j_n\) et \(y_n\)
   \begin{align*}
   j_n(kr) &= \sqrt{\frac{\pi}{2kr}}J_{n+1/2}(kr) &
   y_n(kr) &= \sqrt{\frac{\pi}{2kr}}Y_{n+1/2}(kr)
@@ -140,7 +141,7 @@ On normalise l'équation de Helmholtz en remplaçant les derniers termes par la 
   \end{proof}
 
 
-\subsection{Solutions scalaire de l'équation de Helmholtz sur la sphère}
+\subsubsection{Solutions scalaire de l'équation de Helmholtz sur la sphère}
 
 On définit les harmoniques sphériques comme les fonctions \(Y_n^m = C(m,n) e^{im\phi}\PP^m_n(\cos \theta) \) avec \(C(m,n)\) tel que,
 \[
@@ -156,7 +157,7 @@ De fait, ces fonctions forment une base des fonctions \(L_2\) sur la sphère uni
   \end{align}
 
 
-\subsection{Solutions scalaires de l'équation de Helmholtz dans \(\RR^3\)}
+\subsubsection{Solutions scalaires de l'équation de Helmholtz dans \(\RR^3\)}
 On peut étendre ces solutions à tout l'espace pour obtenir une solution pour un champ scalaire .
 
 Tout champ scalaire \(\Psi\) solution de l'équation de Helmholtz s'écrit dans \(\OO\cup\OO^c\):
