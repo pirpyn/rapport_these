@@ -682,61 +682,72 @@
             \label{fig:imp_fourier:plan:soudais}
         \end{figure}
 
-        \begin{figure}[!hbt]
-            \begin{tikzpicture}
-                \begin{axis}
-                    \addplot[%
-                        contour prepared,%
-                        contour prepared format=matlab%
-                    ] table { 
-                        % (0.2,6) ==> contour `0.2' (x), 5 points follow (y): 
-                        0.3000000e+00 6.0000000e+00 
-                        3.0000000e+00 4.0000000e-01 
-                        2.0000000e+00 2.8571429e-01 
-                        1.0000000e+00 3.3333333e-01 
-                        3.3333333e-01 1.0000000e+00 
-                        2.8571429e-01 2.0000000e+00
-                        3.3333333e-01 3.0000000e+00                         
-                        % (0.4,5) ==> contour `0.4', consists of 5 points 
-                        4.0000000e-01 5.0000000e+00 
-                        3.0000000e+00 8.0000000e-01 
-                        2.0000000e+00 5.7142857e-01 
-                        1.0000000e+00 6.6666667e-01 
-                        6.6666667e-01 1.0000000e+00 
-                        5.7142857e-01 2.0000000e+00 
-                        % (0.6,6) ==> contour `0.6', has 6 points 
-                        6.0000000e-01 6.0000000e+00 
-                        2.6666667e+00 2.0000000e+00 
-                        2.5000000e+00 1.0000000e+00 
-                        2.0000000e+00 8.5714286e-01 
-                        1.0000000e+00 1.0000000e+00 
-                        1.0000000e+00 1.0000000e+00 
-                        8.5714286e-01 2.0000000e+00 
-                    }; 
-                \end{axis} 
-            \end{tikzpicture}
-        \end{figure}
+        % \begin{figure}[!hbt]
+        %     \begin{tikzpicture}
+        %         \begin{axis}
+        %             \addplot[%
+        %                 contour prepared,%
+        %                 contour prepared format=matlab%
+        %             ] table { 
+        %                 % (0.2,6) ==> contour `0.2' (x), 5 points follow (y): 
+        %                 0.3000000e+00 6.0000000e+00 
+        %                 3.0000000e+00 4.0000000e-01 
+        %                 2.0000000e+00 2.8571429e-01 
+        %                 1.0000000e+00 3.3333333e-01 
+        %                 3.3333333e-01 1.0000000e+00 
+        %                 2.8571429e-01 2.0000000e+00
+        %                 3.3333333e-01 3.0000000e+00                         
+        %                 % (0.4,5) ==> contour `0.4', consists of 5 points 
+        %                 4.0000000e-01 5.0000000e+00 
+        %                 3.0000000e+00 8.0000000e-01 
+        %                 2.0000000e+00 5.7142857e-01 
+        %                 1.0000000e+00 6.6666667e-01 
+        %                 6.6666667e-01 1.0000000e+00 
+        %                 5.7142857e-01 2.0000000e+00 
+        %                 % (0.6,6) ==> contour `0.6', has 6 points 
+        %                 6.0000000e-01 6.0000000e+00 
+        %                 2.6666667e+00 2.0000000e+00 
+        %                 2.5000000e+00 1.0000000e+00 
+        %                 2.0000000e+00 8.5714286e-01 
+        %                 1.0000000e+00 1.0000000e+00 
+        %                 1.0000000e+00 1.0000000e+00 
+        %                 8.5714286e-01 2.0000000e+00 
+        %             }; 
+        %         \end{axis} 
+        %     \end{tikzpicture}
+        % \end{figure}
 
-
-
-        \begin{figure}[!hbt]
-            \begin{tikzpicture}
-                \begin{axis}
-                    \addplot3[
-                        mesh/rows=4,
-                        mesh/num points=4,
-                        contour gnuplot={
-                            number=4,
-                            % cdata should not be affected by z filter:
-                            output point meta=rawz,
-                            labels=false,
-                        }
-                    ] table [x index={1}, y index={2}, z index={3},col sep=comma] { 
-                    1,-6.2832,-6.2832,0.74038,
-                    2,-6.2832,-6.1563,0.74997,
-                    3,-6.2832,-6.0293,0.75982,
-                    4,-6.2832,-5.9024,0.76986,
-                    }; 
-                \end{axis} 
-            \end{tikzpicture}
-        \end{figure}
+        \def\tmpfile{graphes.txt}
+        \immediate\write18{rm -rf "\tmpfile"}
+        \immediate\write18{touch "\tmpfile"}
+        \immediate\write18{date >> "\tmpfile"}        
+        \immediate\write18{gnuplot --version >> "\tmpfile"}
+        % \begin{figure}[!hbt]
+        %     \begin{tikzpicture}
+        %         \begin{axis}
+        %             \addplot3[
+        %                 mesh/rows=4,
+        %                 mesh/num points=12,
+        %                 contour gnuplot={
+        %                     number=5,
+        %                     % cdata should not be affected by z filter:
+        %                     output point meta=rawz,
+        %                     labels=false,
+        %                 }
+        %             ] table [x index={1}, y index={2}, z index={3},col sep=comma] { 
+        %             1,-6.2832,-6.2832,0.74038,
+        %             2,-6.2832,-6.1563,0.74997,
+        %             3,-6.2832,-6.0293,0.75982,
+        %             4,-6.2832,-5.9024,0.76986,
+        %             5,-16.2832,-16.2832,10.74038,
+        %             6,-16.2832,-16.1563,10.74997,
+        %             7,-16.2832,-16.0293,10.75982,
+        %             8,-16.2832,-15.9024,10.76986,
+        %             9,-26.2832,-26.2832,20.74038,
+        %             10,-26.2832,-26.1563,20.74997,
+        %             11,-26.2832,-26.0293,20.75982,
+        %             12,-26.2832,-25.9024,20.76986,                                        
+        %             }; 
+        %         \end{axis} 
+        %     \end{tikzpicture}
+        % \end{figure}
