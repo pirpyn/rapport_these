@@ -2,81 +2,82 @@
 	\subsection{Condition générale d'unicité}
 		\subsubsection{Forme variationnelle du problème de Maxwell}
 
-			%Considérons le problème énoncé dans \cite{stupfel_sufficient_2011} (convention $e^{i\omega t}$).
-			Soit une $\Gamma$ une surface régulière fermée dans $\RR^3$. 
-			À l'extérieur de cette surface, on définit $k_0 \in \RR_+^*$, le nombre d'onde dans le vide et $\eta_0 \in \RR^*$ l'impédance du vide.
-			À l'intérieur, on définit les constantes relatives $\eps,\mu \in \CC$, invariantes par translation.
+			%Considérons le problème énoncé dans \cite{stupfel_sufficient_2011} (convention \(e^{i\omega t}\)).
+			Soit une \(\Gamma\) une surface régulière fermée dans \(\RR^3\).
+			À l'extérieur de cette surface, on définit \(k_0 \in \RR_+^*\), le nombre d'onde dans le vide et \(\eta_0 \in \RR^*\) l'impédance du vide.
+			À l'intérieur, on définit les constantes relatives \(\eps,\mu \in \CC\), invariantes par translation.
 
 			\begin{tcolorbox}
 				\centering
-				La dépendance temporelle est en $e^{i\w t}$, et l'on identifie $\vH \equiv \eta _0 \vH$.
+				La dépendance temporelle est en \(e^{i\w t}\), et l'on identifie \(\vH \equiv \eta _0 \vH\).
 			\end{tcolorbox}
 
-			Soit $(\vE,\vH)$ dans $(\Hrot(\OO))^3 \times (\Hrot(\OO))^3$. 
+			Soit \((\vE,\vH)\) dans \((\Hrot(\OO))^3 \times (\Hrot(\OO))^3\).
 
-			Alors $(\vE,\vH)$ sont solutions de Maxwell si 
+			Alors \((\vE,\vH)\) sont solutions de Maxwell si
 			\begin{align}
 				\label{eq:unicite:form_var:maxwell-E}
-				\trot \vE + ik_0 \mu \vH &= 0 && \text{dans $\OO$}
+				\trot \vE + ik_0 \mu \vH &= 0 && \text{dans \(\OO\)}
 				\\\label{eq:unicite:form_var:maxwell-H}
-				\trot \vH - ik_0\eps \vE &= 0 && \text{dans $\OO$}
+				\trot \vH - ik_0\eps \vE &= 0 && \text{dans \(\OO\)}
 				% \\\label{eq:unicite:form_var:TR}
-				% \Tr(\vE_t) &= - \vn_{Y_R} \pvect \vH && \text{sur $\Gamma(0,R)$}
+				% \Tr(\vE_t) &= - \vn_{Y_R} \pvect \vH && \text{sur \(\Gamma(0,R)\)}
 			\end{align}
-			% Où $\Tr$ est l'opérateur de capacité \cite[p.~200]{nedelec_acoustic_2001}, $\vn_{Y_R}$ la normale unitaire sortante à $\Gamma(0,R)$.\\
+			% Où \(\Tr\) est l'opérateur de capacité \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{Y_R}\) la normale unitaire sortante à \(\Gamma(0,R)\).\\
 
 			Les relations \eqref{eq:unicite:form_var:maxwell-E} et \eqref{eq:unicite:form_var:maxwell-H} permettent grâce aux formules de Green d'obtenir la forme variationnelle suivante :
-			Trouver $\vE \in \left(\Hrot(\OO)\right)^3$, $\forall \v \phi \in \left(\Hrot(\OO)\right)^3$
+			Trouver \(\vE \in \left(\Hrot(\OO)\right)^3\), \(\forall \vect \phi \in \left(\Hrot(\OO)\right)^3\)
 			\[
-				a(\vE,\v\phi) = 0
+				a(\vE,\vect\phi) = 0
 			\]
-			où a est une forme sesquilinéaire telle que, soit $\vn$ la normale unitaire sortante à $\Gamma$.
+			où a est une forme sesquilinéaire telle que, soit \(\vn\) la normale unitaire sortante à \(\Gamma\).
 			\begin{align*}
-				a(\vE,\v\phi) &:=  \frac{1}{-ik_0\mu} \int_\OO \trot \vE \cdot \trot \conj{\v{\phi}} dx + -ik_0\eps\int_\OO\vE\cdot\conj{\v{\phi}} dx
-				 %+ \int_{Y_R} \conj{ \v \phi } \cdot \Tr(\vE_t)ds
-				 - \int_\Gamma \left(\vn \pvect \frac{\trot \vE}{-ik_0\mu}\right) \cdot \conj{\v \phi} ds \\
+				a(\vE,\vect\phi) &:=  \frac{1}{-ik_0\mu} \int_\OO \trot \vE \cdot \trot \conj{\vect{\phi}} dx + -ik_0\eps\int_\OO\vE\cdot\conj{\vect{\phi}} dx
+				 %+ \int_{Y_R} \conj{ \vect \phi } \cdot \Tr(\vE_t)ds
+				 - \int_\Gamma \left(\vn \pvect \frac{\trot \vE}{-ik_0\mu}\right) \cdot \conj{\vect \phi} ds \\
 			 \end{align*}
 
 			\begin{defn}[Coercivité]
-				Une forme sesquilinéaire $a(u,v)$ est coercive dans $\Hrot(\OO)$ si $\exists \alpha > 0$ tel que 
+				Une forme sesquilinéaire \(a(u,v)\) est coercive dans \(\Hrot(\OO)\) si \(\exists \alpha > 0\) tel que
 				\[
 					|\Re(a(u,u))| \ge \alpha ||u||_{\Hrot(\OO)}^2 = \alpha \left( || \trot u ||_{L^2}^2 + || u ||_{L^2}^2\right) \, \forall u \in \Hrot(\OO)
 				\]
 			 \end{defn}
 
-			%La forme bilinéaire $a$ est coercive \Gamma'il existe une constante réel positive $\mathcal{C}$ telle que $|a(\vE,\vE)|^2 \ge \mathcal{C}  || \vE ||_{\Hrot}^4 = \mathcal{C}\left( || \trot \vE ||_{L^2}^2  + || \vE ||_{L^2}^2 \right)^2 $.
+			%La forme bilinéaire \(a\) est coercive \Gamma'il existe une constante réel positive \(\mathcal{C}\) telle que \(|a(\vE,\vE)|^2 \ge \mathcal{C}  || \vE ||_{\Hrot}^4 = \mathcal{C}\left( || \trot \vE ||_{L^2}^2  + || \vE ||_{L^2}^2 \right)^2 \).
 
-			%Supposons $\eps, \mu$ constants et
+			%Supposons \(\eps, \mu\) constants et
 			Posons les définitions suivantes:
 			\begin{align*}
 				% X&:= \int_\OO | \trot \vE | ^2 dx  =|| \trot \vE ||_{L^2}^2
 				% \\B&:= \int_\OO | \vE | ^2 dx  = || \vE ||_{L^2}^2
 				%\\CC&:= \int_{Y_R} \conj{E_t}\cdot T_R \vE_t ds
-				\vJ &:=  \vn \pvect \frac{\trot \vE}{-ik_0\mu} && \text{sur $\Gamma$}
-				\\X&:= \int_\Gamma \vJ \cdot \conj{\vE_t} ds
+				\vJ &:=  \vn \pvect \frac{\trot \vE}{-ik_0\mu} && \text{sur \(\Gamma\)}
+				\\
+				X&:= \int_\Gamma \vJ \cdot \conj{\vE_t} ds
 			\end{align*}
-			La partie réelle de la forme bilinéaire $a$ écrit donc
+			La partie réelle de la forme bilinéaire \(a\) s'écrit donc
 			\begin{equation}
 				\label{eq:unicite:form_var:decomp_form_bilin_1}
 				|\Re(a(\vE,\vE))| = \left|\frac{\Im(\mu)}{k_0} || \trot \vE ||_{L^2}^2  + k_0 \Im(\eps) || \vE ||_{L^2}^2
-				%+ \Re(C) 
+				%+ \Re(C)
 				- \Re(X)\right|
 			\end{equation}
 
-			\begin{hyp}[Hypothèses de coercivité en convention $i\omega t$]\label{hyp:unicite:form_var:hyp_coercivite}
+			\begin{hyp}[Hypothèses de coercivité en convention \(i\omega t\)]\label{hyp:unicite:form_var:hyp_coercivite}
 				~{}
 
 				\begin{enumerate}
-					\item $\Im(\eps)$ et $\Im(\mu)$ sont de même signe.
-					\item $\Im(\eps)$ et $\Re(X)$ sont de signes opposés\footnote{En convention $-i\omega t$, il faut que le signe soit le même, et donc $\Re(X) \le 0$.}.
-					%\item $\Re(C)$ et $\Re(X)$ sont de même signe.
+					\item \(\Im(\eps)\) et \(\Im(\mu)\) sont de même signe.
+					\item \(\Im(\eps)\) et \(\Re(X)\) sont de signes opposés\footnote{En convention \(-i\omega t\), il faut que le signe soit le même, et donc \(\Re(X) \le 0\).}.
+					%\item \(\Re(C)\) et \(\Re(X)\) sont de même signe.
 				\end{enumerate}
 			\end{hyp}
 
-			Si l'hypothèse \ref{hyp:unicite:form_var:hyp_coercivite} est vérifiée alors $a$ est coercive ( $\alpha = \min(-\Im(\mu)k_0^{-1},-\Im(\eps)k_0)$) donc il y a unicité des solutions du problème de Maxwell avec conditions d'impédance.
+			Si l'hypothèse \ref{hyp:unicite:form_var:hyp_coercivite} est vérifiée alors \(a\) est coercive ( \(\alpha = \min(-\Im(\mu)k_0^{-1},-\Im(\eps)k_0)\)) donc il y a unicité des solutions du problème de Maxwell avec conditions d'impédance.
 
-			Comme en convention $e^{i\omega t}$, le signe de $\Im(\eps)$ et $\Im(\mu)$ est négatif
-			%, sachant que d'après \cite[p.~97]{nedelec_acoustic_2001} $\Re(C)\ge 0$
+			Comme en convention \(e^{i\omega t}\), le signe de \(\Im(\eps)\) et \(\Im(\mu)\) est négatif
+			%, sachant que d'après \cite[p.~97]{nedelec_acoustic_2001} \(\Re(C)\ge 0\)
 			alors l'unicité est assurée par la
 			\begin{defn}[\gls{acr-cgu}]~\\
 				\begin{equation}\label{eq:unicite:form_var:cgu}
@@ -86,28 +87,30 @@
 
 		\subsubsection{Cas des matériaux sans pertes}
 
-			Si $\Im(\mu) = \Im(\eps) = 0$, le résultat précédent n'est plus valable car $\alpha = 0$.
+			Si \(\Im(\mu) = \Im(\eps) = 0\), le résultat précédent n'est plus valable car \(\alpha = 0\).
 
-			\TODO{Fredholm}
+			\begin{REF}
+  				Fredholm
+			\end{REF}
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\subsection{CSU des conditions d'impédance d'ordre élevé}
 
 		La plupart des résultats de cette section ont déjà été trouvés dans \cite{stupfel_sufficient_2011}.
 
-		% On impose sur $\Gamma$  la relation $\vE_t = Z \vJ$, où $Z$ est un opérateur explicité ci-après.
+		% On impose sur \(\Gamma\)  la relation \(\vE_t = Z \vJ\), où \(Z\) est un opérateur explicité ci-après.
 
-		Pour tous $\forall u, v \in (\mathcal C^\infty(\Gamma))^3$ des fonctions vecteurs complexes tangentes à la surface $\Gamma$, on définit $L$ un opérateur antisymétrique négatif, i.e : 
+		Pour tous \(\forall u, v \in (\mathcal C^\infty(\Gamma))^3\) des fonctions vecteurs complexes tangentes à la surface \(\Gamma\), on définit \(L\) un opérateur antisymétrique négatif, i.e :
 		\begin{align*}
-			\int_\Gamma \v u\cdot L(\conj{\v v}) &= \int_\Gamma \conj{\v v}\cdot L(\v u)\\
-			\int_\Gamma \v u\cdot L(\conj{\v u}) &\le 0
+			\int_\Gamma \vect u\cdot L(\conj{\vect v}) &= \int_\Gamma \conj{\vect v}\cdot L(\vect u)\\
+			\int_\Gamma \vect u\cdot L(\conj{\vect u}) &\le 0
 		\end{align*}
 
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsubsection{Cas de la condition d'ordre 0 (\cite{stupfel_sufficient_2011})}
-			Utilisons la condition d’impédance d'ordre 0, valable sur la surface $\Gamma$: 
+			Utilisons la condition d’impédance d'ordre 0, valable sur la surface \(\Gamma\):
 
-			Soit $a_0 \in \CC$ tel que
+			Soit \(a_0 \in \CC\) tel que
 			\[
 				\vE_t = a_0 \vJ
 			\]
@@ -124,9 +127,9 @@
 
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsubsection{Cas de la condition d'ordre 01 (\cite{stupfel_sufficient_2011})}
-			Utilisons la condition d’impédance d'ordre 01, valable sur la surface $\Gamma$:
+			Utilisons la condition d’impédance d'ordre 01, valable sur la surface \(\Gamma\):
 
-			Soit $(a_0, a_1) \in \CC\times\CC$ tel que
+			Soit \((a_0, a_1) \in \CC\times\CC\) tel que
 
 			\[
 				\vE_t = (a_0 +a_1L)\vJ
@@ -150,16 +153,16 @@
 		\subsubsection{Cas de la condition d'ordre 1}
 
 
-			Utilisons la condition d’impédance d'ordre 1, valable sur la surface $\Gamma$: 
+			Utilisons la condition d’impédance d'ordre 1, valable sur la surface \(\Gamma\):
 
-			Soit $(a_0, a_1,b) \in \CC^3$ tel que
+			Soit \((a_0, a_1,b) \in \CC^3\) tel que
 			\[
 				\vE_t = (1 + b L)^{-1} (a_0 + a_1 L) \vJ
 			\]
 
 			\paragraph{Première méthode (\cite{stupfel_sufficient_2011})}~
 
-				On utilise l'identité $(a_1-a_0\conj{b}) = (a_1(1+\conj{b}L) - \conj{b}(a_0+a_1L))$:
+				On utilise l'identité \((a_1-a_0\conj{b}) = (a_1(1+\conj{b}L) - \conj{b}(a_0+a_1L))\):
 
 				\begin{align*}
 					(a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(1+\conj{b}L) \vJ\right)\cdot\conj{\vE_t} - \left(\conj{b}(a_0+a_1L)\vJ\right)\cdot\conj{\vE_t} ds\\
@@ -168,14 +171,14 @@
 					&= a_1\conj{a_0} ||\vJ||^2 + |a_1|^2 \int_\Gamma \vJ L \conj{\vJ} ds - \conj{b} ||\vE_t||^2 - |b|^2 \int_\Gamma \vE_t L \conj{\vE_t} ds
 				\end{align*}
 
-				On note $\Delta = a_1 -a_0\conj{b}$, $F = -\int_\Gamma \vJ L \conj{\vJ} ds \ge 0 $, $G = -\int_\Gamma \vE_t L \conj{\vE_t} ds \ge 0 $ . 
+				On note \(\Delta = a_1 -a_0\conj{b}\), \(F = -\int_\Gamma \vJ L \conj{\vJ} ds \ge 0 \), \(G = -\int_\Gamma \vE_t L \conj{\vE_t} ds \ge 0 \) .
 
 				Si on décompose les parties réelles et imaginaires de cette expression, on a
 				\begin{align*}
 					\Re(\Delta)\Re(X) - \Im(\Delta)\Im(X) &= \Re(a_1\conj{a_0}) ||\vJ||^2 - \Re(\conj{b})||\vE_t||^2 -|a_1|^2 F + |b|^2 G \\
 					\Im(\Delta)\Re(X) + \Re(\Delta)\Im(X) &= \Im(a_1\conj{a_0}) ||\vJ||^2 - \Im(\conj{b})||\vE_t||^2
 				\end{align*}
-				La première relation nous empêche de conclure sur le signe de $\Re(X)$ car il y des signes différents entre les deux derniers termes, sauf si nous imposons $\Re( \Delta)= 0$ auquel cas, nous pouvons conclure grâce à la deuxième relation. Les CSU sont alors
+				La première relation nous empêche de conclure sur le signe de \(\Re(X)\) car il y des signes différents entre les deux derniers termes, sauf si nous imposons \(\Re( \Delta)= 0\) auquel cas, nous pouvons conclure grâce à la deuxième relation. Les CSU sont alors
 
 				\begin{align}
 					&\Re(\Delta) &= 0\\
@@ -185,20 +188,20 @@
 
 			\paragraph{Deuxième méthode}
 				~
-				\subparagraph{Cas $a_1\not=0$}
+				\subparagraph{Cas \(a_1\not=0\)}
 					~
 
-					En supposant $a_1 \not=0$, on utilise l'identité $(a_0 + a_1 L)^{-1}(1 + b L)  = \frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1L)^{-1}$:
+					En supposant \(a_1 \not=0\), on utilise l'identité \((a_0 + a_1 L)^{-1}(1 + b L)  = \frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1L)^{-1}\):
 					\[
 						X = \int_\Gamma \left(\left(\frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1L)^{-1}\right)\vE_t\right) \cdot \conj{\vE_t} ds
 					\]
 
 					On pose:
 					\begin{align*}
-						\v D &:= (a_0 + a_1 L)^{-1}\vE_t & F&:= || \v D || ^2 \ge 0  \\
-						G&:= -\int_\Gamma \v D \cdot L\conj{\v{D}} ds \ge 0 & H &:= || \vE_t || ^2 \ge 0
+						\vect D &:= (a_0 + a_1 L)^{-1}\vE_t & F&:= || \vect D || ^2 \ge 0  \\
+						G&:= -\int_\Gamma \vect D \cdot L\conj{\v{D}} ds \ge 0 & H &:= || \vE_t || ^2 \ge 0
 					\end{align*}
-					Comme $\conj{E_t} = (\conj{a_0} + \conj{a_1}L)D$ alors $\ds\int_\Gamma (a_0 +a_1 L) ^{-1}\vE_t\cdot \conj{\vE_t} ds = \conj{a_0} F - \conj{a_1} G$ et l'on peut alors écrire
+					Comme \(\conj{E_t} = (\conj{a_0} + \conj{a_1}L)D\) alors \(\ds\int_\Gamma (a_0 +a_1 L) ^{-1}\vE_t\cdot \conj{\vE_t} ds = \conj{a_0} F - \conj{a_1} G\) et l'on peut alors écrire
 
 					\begin{equation}
 						\label{eq:unicite:form_var:decomp_cgu_ci1_a1}
@@ -211,7 +214,7 @@
 						\Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_1}}{a_1}\right) \le 0
 					\end{align}
 
-				\subparagraph{Cas $a_1=0$}
+				\subparagraph{Cas \(a_1=0\)}
 					~
 					\[
 						X = \int_\Gamma \left( \frac{1}{a_0}\left(1+bL\right)\vE_t\right) \cdot \conj{\vE_t} ds
@@ -255,7 +258,7 @@
 			\end{bmatrix}
 		\]
 
-		Si la matrice est inversible, on pose $\Delta = a_1 - a_0\conj{b}$ et alors
+		Si la matrice est inversible, on pose \(\Delta = a_1 - a_0\conj{b}\) et alors
 		\[
 		\begin{bmatrix}
 			\int_\Gamma \vJ \cdot \conj{\vE_t} \\
@@ -301,8 +304,8 @@
 			\end{bmatrix}
 		\]
 
-		Le noyau de la matrice est alors $\Vect{\begin{bmatrix}\conj{b}\\-1\end{bmatrix}}$ dont l'orthogonal est  $\Vect{\begin{bmatrix}1\\\conj{b}\end{bmatrix}}$.
-		Pour tout $\int_\Gamma \vJ\cdot L\conj{\vE_t} = \conj{b} \int_\Gamma \vJ \cdot \conj{\vE_t} $, on a unicité des solutions. On déduit alors que
+		Le noyau de la matrice est alors \(\Vect{\begin{bmatrix}\conj{b}\\-1\end{bmatrix}}\) dont l'orthogonal est  \(\Vect{\begin{bmatrix}1\\\conj{b}\end{bmatrix}}\).
+		Pour tout \(\int_\Gamma \vJ\cdot L\conj{\vE_t} = \conj{b} \int_\Gamma \vJ \cdot \conj{\vE_t} \), on a unicité des solutions. On déduit alors que
 
 		\[
 			(1 + \conj{b}^2) X = \conj{a_0} ||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot L\conj{\vJ}
@@ -318,11 +321,11 @@
 		% \begin{proof}
 		% Les 3 CSU originales sont
 
-		% $\hfill
+		% \(\hfill
 		% \bullet \Re\left(\frac{b}{a_1}\right) \ge 0 \hfill
 		% \bullet \Re\left(\left(1-a_0\frac{b}{a_1}\right)\conj{a_0}\right) \ge 0 \hfill
 		% \bullet \Re\left(\left(1-a_0\frac{b}{a_1}\right)\conj{a_1}\right) \le 0
-		% \hfill$
+		% \hfill\)
 
 		% On va séparer la deuxième CSU et faire apparaître la première CSU dont on va utiliser le résultat pour simplifier le résultat.
 		% \begin{align*}
@@ -343,41 +346,41 @@
 				( 1 + b_1 L_D - b_2 L_R)\vE_t = (a_0 + a_1 L_D - a_2 L_R ) \vJ
 			\end{equation}
 
-			On rappelle les expressions des opérateurs \gls{ope-LD} et \gls{ope-LR} pour des vecteurs tangents $\v U \in (C^\infty(\Gamma))^3$, $ \v V \in (C^\infty(\Gamma))^3$ :
+			On rappelle les expressions des opérateurs \gls{ope-LD} et \gls{ope-LR} pour des vecteurs tangents \(\vect U \in (C^\infty(\Gamma))^3\), \( \vect V \in (C^\infty(\Gamma))^3\) :
 			\begin{align*}
-				\LD(\v U) &= \tgrads \tdivs \v U\\
-				\LR(\v V) &= \trots( \vn ( \vn \cdot \trots \v V))\\
+				\LD(\vect U) &= \tgrads \tdivs \vect U\\
+				\LR(\vect V) &= \trots( \vn ( \vn \cdot \trots \vect V))\\
 			\end{align*}
 			\begin{prop}
-				Soit $\OO$ un domaine borné de $\RR^3$ , de surface $\Gamma$ fermée et régulière, où $\v n$ y est la normale unitaire
+				Soit \(\OO\) un domaine borné de \(\RR^3\) , de surface \(\Gamma\) fermée et régulière, où \(\vect n\) y est la normale unitaire
 				sortante
 				\begin{equation}
 					\begin{matrix}
-						\forall \v U \in (C^\infty(\Gamma))^3 ,& \LR(\LD(\v U)) = \LD(\LR(\v U)) = 0
+						\forall \vect U \in (C^\infty(\Gamma))^3 ,& \LR(\LD(\vect U)) = \LD(\LR(\vect U)) = 0
 					\end{matrix}
 				\end{equation}
 			\end{prop}
 			\begin{proof}
-				Soient un vecteur \textbf{tangent} $\v U \in (C^\infty(\Gamma))^3$.
+				Soient un vecteur \textbf{tangent} \(\vect U \in (C^\infty(\Gamma))^3\).
 
-				Montrons que $\LR\LD = 0$. D’après \cite[p.~1029, A3.42]{bladel_electromagnetic_2007}, $\vn \cdot \trots\tgrads f = 0$
+				Montrons que \(\LR\LD = 0\). D’après \cite[p.~1029, A3.42]{bladel_electromagnetic_2007}, \(\vn \cdot \trots\tgrads f = 0\)
 				\begin{align*}
-					\LR(\LD \v U)  &= \trots \left(\vn \left(\vn \cdot \trots \left( \tgrads \left(\tdivs \v U\right)\right)\right)\right) \\
+					\LR(\LD \vect U)  &= \trots \left(\vn \left(\vn \cdot \trots \left( \tgrads \left(\tdivs \vect U\right)\right)\right)\right) \\
 					&= 0
 				\end{align*}
-				Montrons que $\LD\LR = 0$. D’après \cite[p.~1029, A3.43]{bladel_electromagnetic_2007}, $\tdivs \trots (X\vn) = 0$.
+				Montrons que \(\LD\LR = 0\). D’après \cite[p.~1029, A3.43]{bladel_electromagnetic_2007}, \(\tdivs \trots (X\vn) = 0\).
 				\begin{align*}
-					\LD(\LR \v U) &= \tgrads \tdivs \trots (\vn (\vn \cdot \trots \v U)) \\
+					\LD(\LR \vect U) &= \tgrads \tdivs \trots (\vn (\vn \cdot \trots \vect U)) \\
 					&= 0
 				\end{align*}
 			\end{proof}
 			% Une relation importante qui découle des propriétés des opérateurs différentiels surfacique \secref{eq:op-LD-LR:prop:LDLR0} est :
 
 			% \begin{equation}
-			% \int_\Gamma L_D(\v U) \cdot L_R(\v V) ds = 0 , \forall \v U, \v V \in (H^1(\OO))^3
+			% \int_\Gamma L_D(\vect U) \cdot L_R(\vect V) ds = 0 , \forall \vect U, \vect V \in (H^1(\OO))^3
 			% \end{equation}
 
-			% Cette relation \Gamma'exprime sous forme forte par $L_DL_R\equiv0$. Elle est là aussi symétrique entre les deux opérateurs.
+			% Cette relation \Gamma'exprime sous forme forte par \(L_DL_R\equiv0\). Elle est là aussi symétrique entre les deux opérateurs.
 			On prend \eqref{eq:unicite:ci3:ci3} et on l’intègre avec des produits scalaires judicieusement choisis.
 
 			\begin{multline}
@@ -425,7 +428,7 @@
 				&Z_R&:= \int_\Gamma L_R \vJ \cdot L_R \conj{\vE_t} ds
 			\end{align*}
 
-			Les équations \eqref{eq:unicite:ci3:csu3-1} à \eqref{eq:unicite:ci3:csu3-4} sont équivalentes au système $M_R X_R = F_R$ où
+			Les équations \eqref{eq:unicite:ci3:csu3-1} à \eqref{eq:unicite:ci3:csu3-4} sont équivalentes au système \(M_R X_R = F_R\) où
 
 			\begin{align*}
 				M_R&:=
@@ -451,7 +454,7 @@
 				\end{bmatrix}
 			\end{align*}
 
-			Tandis que les équations \eqref{eq:unicite:ci3:csu3-1},\eqref{eq:unicite:ci3:csu3-2},\eqref{eq:unicite:ci3:csu3-5},\eqref{eq:unicite:ci3:csu3-6} sont équivalentes au système $M_D X_D= F_D$ où
+			Tandis que les équations \eqref{eq:unicite:ci3:csu3-1},\eqref{eq:unicite:ci3:csu3-2},\eqref{eq:unicite:ci3:csu3-5},\eqref{eq:unicite:ci3:csu3-6} sont équivalentes au système \(M_D X_D= F_D\) où
 
 			\begin{align*}
 				M_D&:=
@@ -477,7 +480,7 @@
 				\end{bmatrix},\;
 			\end{align*}
 
-			On note dans la suite $\Delta_i = a_i-\conj{b_i}a_0$, $i=1,2$. On suppose que ces système aient une unique solution. Alors on obtient la première condition suffisante:
+			On note dans la suite \(\Delta_i = a_i-\conj{b_i}a_0\), \(i=1,2\). On suppose que ces système aient une unique solution. Alors on obtient la première condition suffisante:
 
 			\begin{equation}
 				\label{eq:unicite:ci3:csu3-cn-det}
@@ -527,23 +530,23 @@
 				\end{equation}
 			\end{minipage}
 
-			%Pour le système $M_D X_D = F_D$, les conditions sont identiques à une permutation des indices 1 et 2 près.
-			Ces CSU sont très contraignantes et ne permettent pas de retrouver des CSU des CIOE d'ordres inférieurs lorsque l'on annule les coefficients $b_1, b_2$.
+			%Pour le système \(M_D X_D = F_D\), les conditions sont identiques à une permutation des indices 1 et 2 près.
+			Ces CSU sont très contraignantes et ne permettent pas de retrouver des CSU des CIOE d'ordres inférieurs lorsque l'on annule les coefficients \(b_1, b_2\).
 
 
 		\subsubsection{CSU de Payen}
-			On remarque que les inconnus $(Y_R,Z_R)$ (resp. $(Y_D,Z_R)$) sont déterminées par les équations \eqref{eq:unicite:ci3:csu3-3} et \eqref{eq:unicite:ci3:csu3-4} (resp. \eqref{eq:unicite:ci3:csu3-5} et \eqref{eq:unicite:ci3:csu3-6})
+			On remarque que les inconnus \((Y_R,Z_R)\) (resp. \((Y_D,Z_R)\)) sont déterminées par les équations \eqref{eq:unicite:ci3:csu3-3} et \eqref{eq:unicite:ci3:csu3-4} (resp. \eqref{eq:unicite:ci3:csu3-5} et \eqref{eq:unicite:ci3:csu3-6})
 
-			On déduit donc que si $\Delta_1 \not = 0$ et $\Delta_2 \not = 0$ alors
+			On déduit donc que si \(\Delta_1 \not = 0\) et \(\Delta_2 \not = 0\) alors
 
 			\begin{align}
 				Y_R &= \frac{1}{\Delta_2}\left(a_2\left[\conj{a_0}\int_\Gamma \vJ\cdot\LR\conj{\vJ} - \conj{a_2}||\LR J||^2\right]  -\conj{b_2}\left[\int_\Gamma \conj{\vE}\LR{\vE} - b_2 ||\LR \vE ||^2\right]\right) \\
-				Y_D &= \frac{1}{\Delta_1}\left(a_1\left[\conj{a_0}\int_\Gamma \vJ\cdot\LD\conj{\vJ} + \conj{a_1}||\LD J||^2\right]  -\conj{b_1}\left[\int_\Gamma \conj{\vE}\LD{\vE} + b_1 ||\LD \vE ||^2\right]\right) 
+				Y_D &= \frac{1}{\Delta_1}\left(a_1\left[\conj{a_0}\int_\Gamma \vJ\cdot\LD\conj{\vJ} + \conj{a_1}||\LD J||^2\right]  -\conj{b_1}\left[\int_\Gamma \conj{\vE}\LD{\vE} + b_1 ||\LD \vE ||^2\right]\right)
 			\end{align}
 
 			Il reste alors à utiliser l'équation \eqref{eq:unicite:ci3:csu3-1} pour obtenir
 			\begin{equation}
-				X = -\conj{b_1} Y_D + \conj{b_2} Y_R + \conj{a_0} || \vJ ||^2 + \conj{a_1} \int_\Gamma \vJ \LD \conj{J} - \conj{a_2} \int_\Gamma \vJ \LR \conj{J} 
+				X = -\conj{b_1} Y_D + \conj{b_2} Y_R + \conj{a_0} || \vJ ||^2 + \conj{a_1} \int_\Gamma \vJ \LD \conj{J} - \conj{a_2} \int_\Gamma \vJ \LR \conj{J}
 			\end{equation}
 
 			\begin{multline}
@@ -566,9 +569,11 @@
 
 		\subsubsection{CSU de Lafitte-Stupfel}
 
-			\TODO{Copier la démonstration}
+			\begin{TODO}
+			  Copier la démonstration
+			\end{TODO}
 
-			On pose 
+			On pose
 			\begin{equation}
 				z = \left(1 - \frac{b_1}{a_1}a_0 - \frac{b_2}{a_2}a_0\right)
 			\end{equation}

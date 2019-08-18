@@ -1,0 +1,541 @@
+\section{Cas d'un objet sphérique}
+
+    Les champs solutions de Maxwell dans le cas d'un repère sphérique sont décomposables en harmoniques sphériques. Nous rappelons d'abord l’expression de ces dernières puis nous donnerons l'expression du symbole de l'opérateur de d'impédance de la même manière que \cite{cheng_spectral_1993}.
+
+    \subsection{Les harmoniques sphériques}
+
+        \begin{TODO}
+          Mettre ici la démonstration des harmoniques sphériques? Ou une référence vers annexe ?
+        \end{TODO}
+
+        On définit les harmoniques sphériques les solutions de \(\Delta U + k^2 U = 0 \). Ce sont les fonctions \(Y_{m,n} = C(m,n) e^{im\phi}\PP^m_n(\cos \theta) \) avec \(C(m,n)\)\footnote{D’après \cite[p.~24]{nedelec_acoustic_2001}, \( C(m,n) = (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}}\)} tel que
+        \[
+         \ds\int_S Y_{m,n} \conj{Y_{p,q}} ds = \delta_m^p \delta_n^q
+        \]
+
+
+        On définit les vecteurs harmonique sphériques\(\gls{phy-Mmn} ,\gls{phy-Nmn}\) solution dans la base des coordonnées sphériques de 
+        \[
+            \left\lbrace
+                \begin{aligned}
+                    \vrot \vrot \vect{U} - k^2 \vect{U} = 0\\
+                    \vdiv \vect{U} = 0
+                \end{aligned}
+            \right.
+        \]
+        \begin{align}
+            \label{eq:defMmn}
+            \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(kr) Y_{m,n}(\tp) \right)\\
+            &= z_n(kr)
+            \begin{bmatrix}
+                0 
+                \\
+                \frac{im}{\sin\theta}Y_{mn}(\tp)
+                \\
+                - \ddr{\theta}{Y_{mn}}(\tp)
+            \end{bmatrix}
+        \end{align}
+
+        \begin{align}
+        \label{eq:defNnn}
+          \Nmn[z_n](\rtp) &:= \frac{\vrot \Mmn[z_n]}{k}(\rtp) \\
+          &= \frac{1}{kr}\begin{bmatrix}
+            z_n(kr)n(n+1)Y_{mn}(\tp)
+            \\
+            \ddr{r}{z_n}(kr)\ddr{\theta}{Y_{mn}}(\tp)
+            \\
+            \ddr{r}{z_n}(kr)\frac{im}{\sin\theta}Y_{mn}(\tp)
+          \end{bmatrix}
+        \end{align}
+
+        L'obtention de ces vecteurs est disponible en annexes \ref{sec:annex:harmoniques_spheriques}.
+
+        Par définition de ces vecteurs, on a les propriétés suivantes
+        \begin{prop}
+            \label{prop:Mmn_Nmn_rot}
+            \begin{align}
+                \vrot \Mmn[z_n](\rtp) &= k\Nmn[z_n](\rtp)
+                \\
+                \vrot \Nmn[z_n](\rtp) &= k\Mmn[z_n](\rtp)
+            \end{align}
+        \end{prop}
+
+        % Ces vecteurs harmoniques sphériques possèdent les propriétés suivantes
+
+        % \begin{align}
+        % \int_{S(0,R)} \vect{M_{m,n}^{z_n}} \cdot \conj{\vect{N_{p,q}^{z_n}}} ds &= 0
+        % \\
+        % \int_{S(0,R)} \vect{M_{m,n}^{z_n}} \cdot \conj{\vect{M_{p,q}^{z_n}}} ds &= \gamma_{m,n}R^2 \delta_{mp}\delta_{nq}
+        % \\
+        % \int_{S(0,R)} \vect{N_{m,n}^{z_n}} \cdot \conj{\vect{N_{p,q}^{z_n}}} ds &= \frac{\gamma_{m,n}}{k^2} \delta_{mp}\delta_{nq}
+        % \end{align}
+
+        On a (\cite{cheng_spectral_1993})
+        \begin{multline}
+            \vE(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Mmn[j_n](\rtp) + b_{mn} \Nmn[j_n](\rtp)
+            \\
+            + c_{mn} \Mmn[h_n](\rtp) + d_{mn} \Nmn[h_n](\rtp)
+        \end{multline}
+
+        D'après les équations de Maxwell, \(\vH = i\frac{\vrot \vE}{k\eta}\)
+
+        \begin{multline}
+            \vH(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Nmn[j_n](\rtp) + b_{mn} \Mmn[j_n](\rtp)
+            \\
+            + c_{mn} \Nmn[h_n](\rtp) + d_{mn} \Mmn[h_n](\rtp)
+        \end{multline}
+
+        On définit alors le vecteur de \(\RR^2\) suivant ( resp. son orthogonal ), la réduction du vecteur harmonique sphérique \gls{phy-Mmn} ( resp. \gls{phy-Nmn} ) aux composantes tangentielles et indépendant du rayon:
+
+        \begin{align}
+            \label{eq:defUmn_tgt}
+            \Umn(\tp) &:= 
+            \begin{bmatrix}
+                \frac{im}{\sin\theta}Y_{mn}(\tp)
+                \\
+                - \ddr{\theta}{Y_{mn}}(\tp)
+            \end{bmatrix}
+        \end{align}
+
+        \begin{align}
+        \label{eq:defNmn_tgt}
+          \Umn^\perp(\tp) &:=
+          \begin{bmatrix}
+            \ddr{\theta}{Y_{mn}}(\tp)
+            \\
+            \frac{im}{\sin\theta}Y_{mn}(\tp)
+          \end{bmatrix}
+        \end{align}
+
+
+        On remarque alors que les parties tangentielles des vecteurs harmoniques sphériques peuvent s'écrire:
+        \begin{align}
+          \Mmn[z_n]_t(\rtp) &= z_n(kr)\Umn(\tp)
+          \\
+          \Nmn[z_n]_t(\rtp) &= \frac{1}{kr}\ddr{r}{z_n}(kr)\Umn^\perp(\tp)
+        \end{align}
+
+        On a alors les propriétés supplémentaires
+        \begin{prop}
+            \label{prop:Mmn_Nmn_vect}
+            \begin{align}
+              \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= krz_n(kr)\Umn^\perp(\tp)
+              \\
+              \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{kr}\ddr{r}{z_n}(kr)\Umn(\tp)
+            \end{align}
+        \end{prop}
+        Sachant donc que les composantes tangentielles du champs \(\vE\) s'écrivent
+
+        \begin{multline}
+            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} j_n(kr)\Umn(\tp) + b_{mn} \frac{1}{kr}\ddr{r}{j_n}(kr)\Umn^\perp(\tp)
+            \\
+            + c_{mn} h_n(kr)\Umn(\tp) + d_{mn} \frac{1}{kr}\ddr{r}{j_n}(kr)\Umn^\perp(\tp)
+        \end{multline}
+
+
+        Donc \(\vJ = \vect{e_r} \pvect \vH\) s'écrit
+
+        \begin{multline}
+            \vJ(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{1}{kr}\ddr{r}{j_n}\Umn(\tp) + b_{mn} k r j_n \Umn^\perp(\tp)
+            \\
+            -  \frac{1}{kr}\ddr{r}{h_n} c_{mn} \Umn(\tp) + k r h_n d_{mn} \Umn^\perp(\tp)
+        \end{multline}
+
+        Dans la suite, pour simplifier les écritures, on utilisera la notation tilde \gls{mat-tild}, telle que \( \tilde{z_n}(k_r) = \ddr{r}{z_n}(kr) \). On omettra aussi les dépendances en \(kr\) lorsqu'il n'y a pas d’ambiguïtés.
+
+        On réécrit alors matriciellement les expressions de \(\vE_t,\vJ\).
+
+        \begin{equation}
+            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+              \Umn^\perp & \Umn
+            \end{bmatrix}
+            \left( 
+              \begin{bmatrix}
+                  0 & \tilde{j_n}
+                  \\
+                  j_n & 0
+              \end{bmatrix}
+              \begin{bmatrix}
+                  a_{mn}
+                  \\
+                  b_{mn}
+              \end{bmatrix}
+              + 
+              \begin{bmatrix}
+                  0 & \tilde{h_n}
+                  \\
+                  h_n & 0
+              \end{bmatrix}
+              \begin{bmatrix}
+                  c_{mn}
+                  \\
+                  d_{mn}
+              \end{bmatrix}
+            \right)
+        \end{equation}
+
+
+        \begin{equation}
+            \vJ(\rtp) = \frac{i}{\eta kr}\sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+                \Umn^\perp & \Umn
+            \end{bmatrix}
+            \left( 
+                \begin{bmatrix}
+                    0 & (kr)^2 j_n
+                    \\
+                    -\tilde{j_n} & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    a_{mn}
+                    \\
+                    b_{mn}
+                \end{bmatrix}
+                + 
+                \begin{bmatrix}
+                    0 & (kr)^2 h_n
+                    \\
+                    -\tilde{h_n} & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    c_{mn}
+                    \\
+                    d_{mn}
+                \end{bmatrix}
+            \right)
+        \end{equation}
+
+        \begin{defn}
+            On définit les vecteurs de \(\RR^2\) \(\hat{\vE_t}(r,m,n)\) et \(\hat{\vJ}(r,m,n)\) tels que
+            \begin{align}
+                \vE_t(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+                \begin{bmatrix}
+                  \Umn^\perp & \Umn
+                \end{bmatrix}\hat{\vE_t}(r,m,n)
+                \\
+                \vJ(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+                \begin{bmatrix}
+                  \Umn^\perp & \Umn
+                \end{bmatrix}\hat{\vJ}(r,m,n)
+            \end{align}
+        \end{defn}
+
+        \begin{defn}
+            On définit les matrices \(\mJ_{E}(r,n),\mH_{E}(r,n),\mJ_{H}(r,n),\mH_{H}(r,n)\)
+            \begin{align}
+                \mJ_{E}(r,n) &=
+                \begin{bmatrix}
+                    0 & \tilde{j_n}(kr)
+                    \\
+                    j_n(kr) & 0
+                \end{bmatrix}
+                \\
+                \mH_{E}(r,n) &=
+                \begin{bmatrix}
+                    0 & \tilde{h_n}(kr)
+                    \\
+                    h_n(kr) & 0
+                \end{bmatrix}
+                \\
+                \mJ_{H}(r,n) &=
+                \begin{bmatrix}
+                    0 & (kr)^2 j_n(kr)
+                    \\
+                    -\tilde{j_n}(kr) & 0
+                \end{bmatrix}
+                \\
+                \mH_{H}(r,n) &=
+                \begin{bmatrix}
+                    0 & (kr)^2 h_n(kr)
+                    \\
+                    -\tilde{h_n}(kr) & 0
+                \end{bmatrix}
+            \end{align}
+        \end{defn}
+
+        On peut donc expliciter les vecteurs précédemment introduits
+
+        \begin{equation}
+            \hat{\vE_t}(r,m,n) = 
+            \mJ_{E}(r,n)
+            \begin{bmatrix}
+                a_{mn}
+                \\
+                b_{mn}
+            \end{bmatrix}
+            + 
+            \mH_{E}(r,n)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+        \begin{equation}
+            \hat{\vJ}(r,m,n) = \frac{i}{\eta k r}
+            \left(
+            \mJ_{H}(r,n)
+            \begin{bmatrix}
+                a_{mn}
+                \\
+                b_{mn}
+            \end{bmatrix}
+            + 
+            \mH_{H}(r,n)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+            \right)
+        \end{equation}
+
+    \subsection{Symbole de l'opérateur d'impédance pour une couche}
+
+        \begin{figure}[!hbt]
+          \centering
+          \begin{tikzpicture}
+            \input{tikz/schema/sphere_1_couche.tikz}
+          \end{tikzpicture}
+        \end{figure}
+
+        \begin{defn}
+          On définit le symbole de l'opérateur d'impédance \(\hat{\mZ}(m,n)\) tel que 
+          \[
+              \hat{\vE_t}(r_1,m,n) = \hat{\mZ}(m,n)\hat{\vJ}(r_1,m,n)
+          \]
+        \end{defn}
+
+        En \(r=r_0\), on a la relation \(\vE_t(\rtp) = 0\) donc \(\hat{\vE_t}(r_0,m,n) = 0 \)
+
+        \begin{equation}
+            \mJ_{E}(r_0,n)
+            \begin{bmatrix}
+                a_{mn}
+                \\
+                b_{mn}
+            \end{bmatrix}
+            = - 
+            \mH_{E}(r_0,n)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+        On suppose que les matrices \(\mJ_{E}(r_0,n)\) et \(\mH_{E}(r_0,n)\) soient inversibles.
+
+        \begin{TODO}
+          Inversibilité \(\mJ_{E}(r,n), \mH_{E}(r,n)\)
+        \end{TODO}
+
+        \begin{equation}
+            \hat{\vE_t}(r,m,n) = 
+            \left(
+                \mH_{E}(r,n)
+                -
+                \mJ_{E}(r,n)
+                \mJ_{E}(r_0,n)^{-1}
+                \mH_{E}(r_0,n)
+            \right)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+
+        \begin{equation}
+            \hat{\vJ}(r,m,n) = \frac{i}{\eta}
+            \left(
+                \mH_{H}(r,n)
+                -
+                \mJ_{H}(r,n)
+                \mJ_{E}(r_0,n)^{-1}
+                \mH_{E}(r_0,n)
+            \right)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+        De la même manière que pour le plan et le cylindre, on en déduit le symbole de l'opérateur d'impédance
+
+        \begin{multline}
+            \hat{\mZ}(m,n) = -i\eta
+            \left(
+                \mH_{E}(r_1,n)
+                \mH_{E}(r_0,n)^{-1}
+                -
+                \mJ_{E}(r_1,n)
+                \mJ_{E}(r_0,n)^{-1}
+            \right)
+            \\
+            \left(
+                \mH_{H}(r_1,n)
+                \mH_{E}(r_0,n)^{-1}
+                -
+                \mJ_{H}(r_1,n)
+                \mJ_{E}(r_0,n)^{-1}
+            \right)^{-1}
+        \end{multline}
+
+        Par définition des matrices \(\mJ_E,\mH_E,\mJ_H,\mH_H\), elle sont anti-diagonale. Donc leur inverse l'est aussi. Donc le produit de l'une avec l'inverse d'une autre est une matrice diagonale. Donc le symbole de l'opérateur d'impédance est une matrice diagonale.
+
+        \begin{equation}
+            \hat{\mZ}(m,n) = -i\eta
+            \begin{bmatrix}
+                \frac
+                {\tilde{h_n}(kr_1)\tilde{j_n}(kr_0)-\tilde{j_n}(kr_1)\tilde{h_n}(kr_0)}
+                {{h_n}(kr_1)\tilde{j_n}(kr_0)-{j_n}(kr_1)\tilde{h_n}(kr_0)} & 0
+                \\
+                0 & \frac
+                {{j_n}(kr_1){h_n}(kr_0)-{h_n}(kr_1){j_n}(kr_0)}
+                {\tilde{h_n}(kr_1){j_n}(kr_0)-\tilde{j_n}(kr_1){h_n}(kr_0)}
+            \end{bmatrix}
+        \end{equation}
+
+    \subsection{Symbole de l'opérateur d'impédance pour plusieurs couche}
+
+        \begin{TODO}
+            Les matrices J,H dépendent de k donc de nu qui depend de la couche. Corriger.
+        \end{TODO}
+
+        \begin{figure}[!hbt]
+          \centering
+          \begin{tikzpicture}
+            \input{tikz/schema/sphere_n_couche.tikz}
+          \end{tikzpicture}
+        \end{figure}
+
+
+        \begin{defn}
+          Pour chaque couche \(p\), on définit le symbole de l'opérateur d'impédance \(\hat{\mZ}_p(m,n)\) tel que 
+          \[
+              \hat{\vE_t}(r_p,m,n) = \hat{\mZ}_p(m,n)\hat{\vJ}(r_p,m,n)
+          \]
+        \end{defn}
+
+        On résonne par récurrence: on suppose connu le symbole de l'opérateur d'impédance de la couche \(p\) et on cherche le suivant
+
+        En \(r=r_{p}=r_0+\sum_{i=1}^p d_p\), on a la relation \( \hat{\vE_t}(r_p,m,n) = \hat{\mZ}_p(m,n)\hat{\vJ}(r_p,m,n)\) où \(\hat{\mZ}_p(m,n)\) est un matrice diagonale
+
+        \begin{equation}
+            \left(\mJ_{E}(r_p,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mJ_{H}(r_p,n) \right)
+            \begin{bmatrix}
+                a_{mn}
+                \\
+                b_{mn}
+            \end{bmatrix}
+            = -
+            \left(\mH_{E}(r_p,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mH_{H}(r_p,n) \right)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+        On définit les matrices \(\mA_{J}(r,n)\) et \(\mA_{H}(r,n)\) telle que
+
+        \begin{align}
+            \mA_{J}(r,n) &= \mJ_{E}(r,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mJ_{H}(r,n)
+            \\
+            \mA_{H}(r,n) &= \mH_{E}(r,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mH_{H}(r,n)
+        \end{align}
+
+        On suppose que les matrices \(\mA_{E}(r,n)\) et \(\mA_{H}(r,n)\) soient inversibles.
+
+        \begin{TODO}
+          Inversibilité \(\mA_{E}(r_p,n)\) et \(\mA_{H}(r_p,n)\)
+        \end{TODO}
+
+        Par hypothèse sur \(\hat{\mZ_p}(m,n)\), ces matrices sont anti-diagonale.
+
+        On en déduit
+
+        \begin{equation}
+            \hat{\vE_t}(r_{p+1},m,n) = 
+            \left(
+                \mH_{E}(r_{p+1},n)
+                -
+                \mJ_{E}(r_{p+1},n)
+                \mA_{J}(r_p,n)^{-1}
+                \mA_{H}(r_p,n)
+            \right)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+
+        \begin{equation}
+            \hat{\vJ}(r_{p+1},m,n) = \frac{i}{\eta_p}
+            \left(
+                \mH_{H}(r_{p+1},n)
+                -
+                \mJ_{H}(r_{p+1},n)
+                \mA_{J}(r_{p+1},n)^{-1}
+                \mA_{H}(r_{p+1},n)
+            \right)
+            \begin{bmatrix}
+                c_{mn}
+                \\
+                d_{mn}
+            \end{bmatrix}
+        \end{equation}
+
+        On en déduit aisément le symbole de la couche \(p+1\)
+
+        \begin{multline}
+            \hat{\mZ}_{p+1}(m,n) = -i\eta_p
+            \left(
+                \mH_{E}(r_{p+1},n)
+                \mA_{H}(r_p,n)^{-1}
+                -
+                \mJ_{E}(r_{p+1},n)
+                \mA_{E}(r_p,n)^{-1}
+            \right)
+            \\
+            \left(
+                \mH_{H}(r_{p+1},n)
+                \mA_{H}(r_p,n)^{-1}
+                -
+                \mJ_{H}(r_{p+1},n)
+                \mA_{E}(r_p,n)^{-1}
+            \right)^{-1}
+        \end{multline}
+
+        Pour les mêmes raisons que dans le cas d'une couche, ce symbole est diagonal. Cependant son expression n'est plus aussi simple (voir annexe \ref{sec:annex:imp_sphere} ).
+
+  \subsection{Applications numérique}
+
+    \begin{figure}[!hbt]
+      \centering
+      \begin{tikzpicture}[scale=1]
+        \begin{loglogaxis}[
+            title={},
+            ylabel={\(||\hat{\mZ}_{plan} - \hat{\mZ}_{sphere}||_2\)},
+            xlabel={\(r_0/d\)},
+            width=0.8\textwidth,
+            xmin=0.1,
+            xmax=100,
+            % mark repeat=20,
+            legend pos=outer north east
+          ]
+          \legend{TM,TE}
+          \addplot table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
+          \addplot table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
+        \end{loglogaxis}
+      \end{tikzpicture}
+      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
+      \label{fig:imp_fourier:sphere:hoppe_p62:converge_rayon:error}
+    \end{figure}

@@ -1,0 +1,41 @@
+\section{Formulation des équations de Maxwell}
+
+Les équations de Maxwell harmoniques (\(e^{i\w t}\)) posées dans tout l'espace
+\begin{equation}
+  \left\lbrace \begin{matrix}
+  \vrot \vE + i\w\mu \vH &=& 0 \\
+  \vrot \vH - i\w\eps \vE &=& 0 \\
+  \end{matrix} \right.
+\end{equation}
+
+On pose \(\mu_r = \mu \slash \mu_0\), \(\eps_r = \eps \slash \eps_0\), \(k_0 = \w \sqrt {\eps_0\mu_0}\), \(\eta_0=\sqrt {\mu_0/\eps_0}\)
+
+\begin{equation}
+\left\lbrace \begin{matrix}
+\vrot \vE + ik_0\eta_0\mu_r \vH &=& 0 \\
+\vrot \vH - ik_0\eta_0^{-1}\eps_r \vE &=& 0 \\
+\end{matrix} \right.
+\quad
+\overset{\vH' = \eta_0 \vH}{\Rightarrow}
+\quad
+\left\lbrace \begin{matrix}
+\vrot \vE + ik_0\mu_r \vH' &=& 0 \\
+\vrot \vH' - ik_0\eps_r \vE &=& 0 \\
+\end{matrix} \right.
+\end{equation}
+
+On pose \(k=k_0\nu_r\), \(\nu_r = \sqrt{\mu_r\eps_r}\), \(\eta_r = \sqrt{\mu_r \slash \eps_r}\)
+
+\begin{equation}
+\left\lbrace \begin{matrix}
+\vrot \vE + ik\eta_0\eta_r \vH &=& 0 \\
+\vrot \vH - ik\eta_0^{-1}\eta_r^{-1} \vE &=& 0 \\
+\end{matrix} \right.
+\quad
+\overset{\vH' = \eta_0 \vH}{\Rightarrow}
+\quad
+\left\lbrace \begin{matrix}
+\vrot \vE + ik\eta_r \vH' &=& 0 \\
+\vrot \vH' - ik\eta_r^{-1} \vE &=& 0 \\
+\end{matrix} \right.
+\end{equation}

@@ -1,0 +1,39 @@
+%%% Triangle de gauche
+\input{tikz/schema/fonbasloc_Tjl.tikz}
+
+\tikzmath
+{
+    \ra = sqrt((\xb-\xc)^2 + (\yb-\yc)^2);
+    \rb = sqrt((\xc-\xa)^2 + (\yc-\ya)^2);
+    \rc = sqrt((\xa-\xb)^2 + (\ya-\yb)^2);
+    \aire = 0.25*sqrt((\ra+\rb-\rc)*(\ra-\rb+\rc)*(-\ra+\rb+\rc)*(\ra+\rb+\rc));
+}
+
+% normalement il n'y pas de facteur normaliseur devant les q,
+% mais sinon le schéma est trop grand
+
+\coordinate (q) at (e1);
+\coordinate (phi) at (0,0);
+\coordinate (x) at ($(n1)+(phi)$);
+\draw [-Latex] (x) -- ($(x)+1/\aire*(q)$);
+
+
+\foreach \couche in {2,...,\ncouche}
+{
+    \tikzmath
+    {
+        \a = (\couche-1)/(\ncouche-1);
+        \c = 1 - 2*\a;
+    }
+    \coordinate (q) at ($\c*(e1)$);
+    \foreach \n in {1,...,\couche}
+    {
+        \tikzmath
+        {
+            \b = (\n-1)/(\couche-1);
+        }
+        \coordinate (phi) at ($\a*(e2)+\a*\b*(e1)$);
+        \coordinate (x) at ($(n1)+(phi)$);
+        \draw [-Latex] (x) -- ($(x)+1/\aire*(q)$);
+    }
+}

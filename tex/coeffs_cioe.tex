@@ -5,7 +5,7 @@
 
 Nous allons maintenant étudier comment approcher l'opérateur d'impédance. Ce travail complète les résultats de \cite[Annexe~A]{stupfel_implementation_2015} car nous caractérisons l'image et le noyau de la fonctionnelle.
 
-On cherche à déterminer les coefficients des CIOE $(a_0,a_1,b) \in \CC^3$ qui permettent d'approcher la condition d'impédance \eqref{eq:coeff_ref:mat_z:imped}.
+On cherche à déterminer les coefficients des CIOE \((a_0,a_1,b) \in \CC^3\) qui permettent d'approcher la condition d'impédance \eqref{eq:coeff_ref:mat_z:imped}.
 
 % \begin{equation}
 % \label{eq:cioe}
@@ -14,27 +14,28 @@ On cherche à déterminer les coefficients des CIOE $(a_0,a_1,b) \in \CC^3$ qui 
 % -\left(1 + b t \right)\n \pvect \n \pvect \E = \left(a_0 + a_1 t \right)\n \pvect \H
 % \end{equation}
 
-On se place en un point de la surface. Si la surface y est suffisamment régulière, on peut trouver un voisinage de ce point tel que le problème à résoudre soit celui étudié en section \ref{sec:coeffs_ref}.
+On se place en un point de la surface.
+Si la surface y est suffisamment régulière, on peut trouver un voisinage de ce point tel que le problème à résoudre soit celui étudié en section \ref{sec:coeffs_ref}.
 
 \subsection{Formulation exacte dans le cadre de l'approximation plan tangent}
 
-Soit $s$ tel que $k_{x,0} = k_0s$\footnote{Si  $s \le 1, s=\sin(\theta)$, angle d'incidence par rapport à la normale au plan tangent.}. Soit $t := \frac{s^2}{\nu^2}$. Alors
+Soit \(s\) tel que \(k_{x,0} = k_0s\)\footnote{Si  \(s \le 1, s=\sin(\theta)\), angle d'incidence par rapport à la normale au plan tangent.}. Soit \(t := \frac{s^2}{\nu^2}\). Alors
 \begin{align*}
   \text{TE: } \mathcal Z_{th}(t) &= i\eta \frac{\tan\left(kd\sqrt{1+\frac{t}{\nu^2}}\right)}{\sqrt{1+\frac{t}{\nu^2}}}\\
   \text{TM: } \mathcal Z_{th}(t) &= i\eta \frac{\tan\left(kd\sqrt{1+\frac{t}{\nu^2}}\right)}{\sqrt{1+\frac{t}{\nu^2}}}(1+\frac{t}{\nu^2})
 \end{align*}
 %%%%%% SECTION MOINDRE CARRE
 
-La méthodologie est la suivante : étant donné plusieurs $s_j$ entre $0$ et $s_{\max}$\footnote{Le choix du $s_{\max}$ est réalisé en calculant l'erreur L2 relative entre les coefficients de réflexions exactes et ceux des CIOEs}, on va minimiser la distance entre le $Z$ et le $\mathcal{Z}_{th}$.
+La méthodologie est la suivante : étant donné plusieurs \(s_j\) entre \(0\) et \(s_{\max}\)\footnote{Le choix du \(s_{\max}\) est réalisé en calculant l'erreur L2 relative entre les coefficients de réflexions exactes et ceux des CIOEs}, on va minimiser la distance entre le \(Z\) et le \(\mathcal{Z}_{th}\).
 
-On dispose de $N$ observations de $\mathcal Z_{th} : Z_j = \mathcal Z_{th}(t_j)$, on note $X = (a_0,a_1,b) \in \CC^3$.
+On dispose de \(N\) observations de \(\mathcal Z_{th} : Z_j = \mathcal Z_{th}(t_j)\), on note \(X = (a_0,a_1,b) \in \CC^3\).
 \subsection{Calcul des coefficients par résolution d'un problème d'optimisation}
 \subsubsection{Fonctionnelle à minimiser}
-Soit $f:\CC^3 \rightarrow \CC$
+Soit \(f:\CC^3 \rightarrow \CC\)
 \[
 f_t(X) = a_0 + a_1 t - b t \mathcal Z_{th}(t)
 \]
-On cherche alors à minimiser la distance de $f$ à $\mathcal Z_{th}$  : on cherche $X_{opt}\in \CC^3$ tel que
+On cherche alors à minimiser la distance de \(f\) à \(\mathcal Z_{th}\)  : on cherche \(X_{opt}\in \CC^3\) tel que
 \[
 X_{opt} = \text{argmin}_X \left( \frac{1}{2}\sum_{j=1}^{N} | f_{t_j}(X) - Z_j|^2 \right)
 \]
@@ -51,7 +52,7 @@ On peut écrire le problème à résoudre comme
 	\end{bmatrix}
 \end{align*}
 
-On résout ce genre de système non inversible en utilisant la transposée conjuguée. 
+On résout ce genre de système non inversible en utilisant la transposée conjuguée.
 \begin{equation}
    \conj{M^t}MX = \conj{M^t} Z
 \end{equation}
@@ -62,10 +63,10 @@ Ce genre de solution est équivalent à la résolution d'un système par moindre
 
 \subsubsection{Formulation sous forme quadratique}\label{sec:formQ}
 
-Soit $\left<.,.\right>$ le produit scalaire associée à la norme $||.||_2$ ($\left<a,a\right> = ||a||_2^2 = \sum_{j=1}^N|a_j|^2$).
+Soit \(\left<.,.\right>\) le produit scalaire associée à la norme \(||.||_2\) (\(\left<a,a\right> = ||a||_2^2 = \sum_{j=1}^N|a_j|^2\)).
 
 \begin{prop}
-Il existe une matrice $Q$, un vecteur $P$ et un scalaire $D$ tel que:
+Il existe une matrice \(Q\), un vecteur \(P\) et un scalaire \(D\) tel que:
 
 \[
 \frac{1}{2}\sum_{j=1}^N |f_{\xi_j}(X) -Z_j|^2 = \left<Q X,X\right> -2\left<P,X\right> +D
@@ -79,28 +80,28 @@ Il existe une matrice $Q$, un vecteur $P$ et un scalaire $D$ tel que:
 &= 2\left<Q X,X\right> -\left<P,X\right> +2D
 \end{align*}
 
-Si Q est inversible alors le minimum de cette fonctionnelle est atteint en $X_{opt} = Q^{-1}P$
+Si Q est inversible alors le minimum de cette fonctionnelle est atteint en \(X_{opt} = Q^{-1}P\)
 
 \end{proof}
 
 Si l'on cherche des inconnus réelles, on a :
 
-Soit $(x_i)_{i=1..6} \in \RR^6$, 
+Soit \((x_i)_{i=1..6} \in \RR^6\),
 \begin{align*}
-g_t(x) &= 
+g_t(x) &=
 \x_1 + \x_3 t - \left(x_5 Z_{th}(t)' - x_6 Z_{th}(t)''\right)t  \\
 &+ i\left(
 \x_2 + \x_4 t - \left(x_5 Z_{th}(t)'' + x_6 Z_{th}(t)'\right)t
 \right)
 \end{align*}
-où $z'= \Re{z}, z''=\Im{z}$.
+où \(z'= \Re{z}, z''=\Im{z}\).
 
-alors de la même manière, il existe une matrice $Q$, un vecteur $P$ et un scalaire $D$ tel que
+alors de la même manière, il existe une matrice \(Q\), un vecteur \(P\) et un scalaire \(D\) tel que
 \[
 \sum_{j=1}^N|f_{t_j}(X) -Z_j|^2  = \sum_{j=1}^N|g_{t_j}(x) -Z_j|^2 = \left<Q x,x\right> -2\left<P,x\right> + D
 \]
 
-De plus, on a $Q = \sum_{j=1}^N Q_j, P = \sum_{j=1}^N P_j ,D=\sum_{j=1}^N D_j$ où
+De plus, on a \(Q = \sum_{j=1}^N Q_j, P = \sum_{j=1}^N P_j ,D=\sum_{j=1}^N D_j\) où
 \[
 Q_j =
 \begin{bmatrix}
@@ -120,18 +121,20 @@ Z_j' \\ Z_j'' \\ t_j Z_j' \\ t_j Z_j''  \\ -t_j |Z_j|^2  \\ 0
 D_j = |Z_j|^2
 \]
 
-Et $Q_j$ est une matrice symétrique par définition du produit scalaire, positive par définition du module:
+Et \(Q_j\) est une matrice symétrique par définition du produit scalaire, positive par définition du module:
 \[
 \forall x \in \RR^6, q(x) := \left<Q_jx,x\right> = |g_t(x)|^2 \ge 0
 \]
-Mais elle n'est pas définie : il existe $x \not = 0$ tel que $q(x) = 0$ (ex, $x = (1,0,-1/t_j,0,0,0)$).
+Mais elle n'est pas définie : il existe \(x \not = 0\) tel que \(q(x) = 0\) (ex, \(x = (1,0,-1/t_j,0,0,0)\)).
 
-Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté numériquement.
+Cependant, la matrice Q semble définie pour \(N \ge 6\) ce qui a été constaté numériquement.
 
-% \TODO{Faire le ménage dans cette étude, il y a des choses non finis et/ou inutile}
+\begin{TODO}
+  Faire le ménage dans cette étude, il y a des choses non finis et/ou inutile
+\end{TODO}
 % \subsection{Etude de la forme quadratique}\label{sec:etud_Q}
 
-% En permutant les composantes du vecteur $x$, on passe à $\tilde x = (a_0',a_1',b',a_0'',a_1'',b'')^t$ et pour obtenir $x^tQ_jx = {\tilde x}^t\tilde{Q_j} \tilde{x}$ avec
+% En permutant les composantes du vecteur \(x\), on passe à \(\tilde x = (a_0',a_1',b',a_0'',a_1'',b'')^t\) et pour obtenir \(x^tQ_jx = {\tilde x}^t\tilde{Q_j} \tilde{x}\) avec
 % \[
 %   \tilde{Q_j} =
 %   \begin{bmatrix}
@@ -144,8 +147,8 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 %   \end{bmatrix}, \text{ symétrique }
 % \]
 
-% On définit les matrices $A,B$ respectivement symétriques et antisymétriques telles que $\tilde{Q_j} = \begin{bmatrix} A & B \\ B^t & A\end{bmatrix}$.
-% % Cherchons les valeurs propres de $\tilde{Q_j}$. Par soucis de simplicité, on identifie le scalaire 1 à la matrice identité.
+% On définit les matrices \(A,B\) respectivement symétriques et antisymétriques telles que \(\tilde{Q_j} = \begin{bmatrix} A & B \\ B^t & A\end{bmatrix}\).
+% % Cherchons les valeurs propres de \(\tilde{Q_j}\). Par soucis de simplicité, on identifie le scalaire 1 à la matrice identité.
 
 % % \begin{align}
 % %   \ddet(\tilde{Q_j} -\lambda) = \ddet(A-\lambda) \ddet(A-\lambda - B(A-\lambda)^{-1}B^t)\label{eq:detQj}
@@ -159,13 +162,13 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 
 
 % \subsubsection{Caractérisation de l'image et du noyau de la sous-matrice A}
-% Soit $\mathcal B = (\v{e_1},\v{e_2},\v{e_3})$ la base canonique\\
-% Soit $A_\mathcal{B} = \begin{bmatrix}
+% Soit \(\mathcal B = (\v{e_1},\v{e_2},\v{e_3})\) la base canonique\\
+% Soit \(A_\mathcal{B} = \begin{bmatrix}
 %  1 & {x_j} & -{y_j} \\
 %  {x_j} & {x_j}^2 & -{x_jy_j} \\
 %  -{y_j} & -{x_jy_j} & {y_j}^2 + {z_j}^2
-% \end{bmatrix}$\\
-% Soit ${\v{v_j}} := \frac{1}{\sqrt{1 + {x_j}^2}}\begin{bmatrix} 1&{x_j}&0\end{bmatrix}^t, {\v{u_j}} = \frac{1}{\sqrt{1+{x_j}^2}}\begin{bmatrix} -{x_j} & 1 & 0 \end{bmatrix}^t$.
+% \end{bmatrix}\)\\
+% Soit \({\v{v_j}} := \frac{1}{\sqrt{1 + {x_j}^2}}\begin{bmatrix} 1&{x_j}&0\end{bmatrix}^t, {\v{u_j}} = \frac{1}{\sqrt{1+{x_j}^2}}\begin{bmatrix} -{x_j} & 1 & 0 \end{bmatrix}^t\).
 % \begin{prop}
 %   \begin{align*}
 %     \Img(A) &= \Vect{{\v{v_j}},\v{e_3}}\\
@@ -174,41 +177,41 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 % \end{prop}
 
 % \begin{proof}
-%   On a : $A_\mathcal{B} = \begin{bmatrix} 1 & {x_j} & -{y_j} \\ {x_j} & {x_j}^2 & -{x_jy_j} \\ -{y_j} & -{x_jy_j} & {y_j}^2 + {z_j}^2\end{bmatrix}$
+%   On a : \(A_\mathcal{B} = \begin{bmatrix} 1 & {x_j} & -{y_j} \\ {x_j} & {x_j}^2 & -{x_jy_j} \\ -{y_j} & -{x_jy_j} & {y_j}^2 + {z_j}^2\end{bmatrix}\)
 
-%   On remarque que les 2 premières lignes sont linéairement dépendantes, $(-{x_j}, 1, 0)^t$ appartient au noyau donc \textbf{le rang de $A$ est alors au plus de 2.}
+%   On remarque que les 2 premières lignes sont linéairement dépendantes, \((-{x_j}, 1, 0)^t\) appartient au noyau donc \textbf{le rang de \(A\) est alors au plus de 2.}
 
-%   Soit $e_i$ un vecteur de la base canonique.
+%   Soit \(e_i\) un vecteur de la base canonique.
 
-%   On remarque que $A\v{e_1} = ( 1, {x_j} , -{y_j})^t =: \v{\tau}$. Donc $\v{\tau}$ appartient à l'image de A.
+%   On remarque que \(A\v{e_1} = ( 1, {x_j} , -{y_j})^t =: \v{\tau}\). Donc \(\v{\tau}\) appartient à l'image de A.
 
-%   De plus, $A\v{e_2} = {x_j}\v{\tau}$, puis $A\v{e_3} = -{y_j}\v{\tau}+{z_j}^2\v{e_3}$. On peut en déduire que $A(\v{e_3} + {y_j} \v{e_1}) = {z_j}^2 \v{e_3}$. 
+%   De plus, \(A\v{e_2} = {x_j}\v{\tau}\), puis \(A\v{e_3} = -{y_j}\v{\tau}+{z_j}^2\v{e_3}\). On peut en déduire que \(A(\v{e_3} + {y_j} \v{e_1}) = {z_j}^2 \v{e_3}\).
 
-%   Donc $\v{e_3}$ appartient à l'image de $A$. La famille $(\v{\tau},\v{e_3})$ est libre et génératrice, l'image est au plus de dimensions 2 donc c'est une base de l'image.
+%   Donc \(\v{e_3}\) appartient à l'image de \(A\). La famille \((\v{\tau},\v{e_3})\) est libre et génératrice, l'image est au plus de dimensions 2 donc c'est une base de l'image.
 
-%   On va prendre alors la base orthonormale associée : 
+%   On va prendre alors la base orthonormale associée :
 
 %   Soit \[
 %   {\v{v_j}} := \frac{\v{\tau}}{||\v{\tau}||} = \frac{1}{\sqrt{1 + {x_j}^2 +{y_j}^2}}\begin{bmatrix} 1\\{x_j}\\-{y_j}\end{bmatrix}\]
 %   \[{\v{v_j}}^t := \v{e_3} - (\v{e_3}\cdot {\v{v_j}}){\v{v_j}} = \frac{1}{1+{x_j}^2+{y_j}^2}\begin{bmatrix} {y_j} \\ {x_jy_j} \\ 1 + {x_j}^2\end{bmatrix}\]
 
-%   Mais cette base n'est pas pratique : en effet $A\v{v_j} = \sqrt{1+{x_j}^2+{y_j}^2} {\v{v_j}} - {y_j} {z_j}^2 \v{e_3}$. \textbf{On ne voit pas ${\v{v_j}}^t$ apparaître.}. Mais puisque que $\v{e_3}$ apparaît dans l'image, on va supprimer sa composante de ${\v{v_j}}$:
+%   Mais cette base n'est pas pratique : en effet \(A\v{v_j} = \sqrt{1+{x_j}^2+{y_j}^2} {\v{v_j}} - {y_j} {z_j}^2 \v{e_3}\). \textbf{On ne voit pas \({\v{v_j}}^t\) apparaître.}. Mais puisque que \(\v{e_3}\) apparaît dans l'image, on va supprimer sa composante de \({\v{v_j}}\):
 
-%   Soit ${\v{v_j}} := \frac{1}{\sqrt{1 + {x_j}^2}}\begin{bmatrix} 1\\{x_j}\\0\end{bmatrix}$.
+%   Soit \({\v{v_j}} := \frac{1}{\sqrt{1 + {x_j}^2}}\begin{bmatrix} 1\\{x_j}\\0\end{bmatrix}\).
 %   Alors
 %     \begin{align*}
 %     A \v{e_1} &= \sqrt{1+{x_j}^2}{\v{v_j}} - {y_j} \v{e_3}\\
 %     A \v{e_2} &= {x_j}\sqrt{1+{x_j}^2}{\v{v_j}} -{x_jy_j} \v{e_3}\\
 %     & \Rightarrow A {\v{v_j}} = (1+{x_j}^2) {\v{v_j}} - {y_j}\sqrt{1+{x_j}^2} \v{e_3}\\
 %     A \v{e_3} &= -{y_j}\sqrt{1+{x_j}^2}{\v{v_j}} +({y_j}^2+{z_j}^2) \v{e_3}\\
-%     \intertext{La famille $({\v{v_j}},\v{e_3})$ est libre et génératrice, l'image est au plus de dimensions 2 donc c'est une base de l'image. On a en définitive }
+%     \intertext{La famille \(({\v{v_j}},\v{e_3})\) est libre et génératrice, l'image est au plus de dimensions 2 donc c'est une base de l'image. On a en définitive }
 %     \Img(A) &= \Vect{{\v{v_j}},\v{e_3}}\\
 %     \Ker(A) &= \Vect {\v{u_j}}
 %   \end{align*}
 % \end{proof}
 
 % \begin{prop}
-%   Soit R la forme réduite de A dans $\mathcal{B'}= (\v{e_3},{\v{v_j}},{\v{u_j}})$
+%   Soit R la forme réduite de A dans \(\mathcal{B'}= (\v{e_3},{\v{v_j}},{\v{u_j}})\)
 
 %   \[
 %     R =
@@ -218,7 +221,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 %       0 & 0 & 0
 %     \end{bmatrix}
 %   \]
-%   Avec la matrice de passage entre les bases $\mathcal B$ et $\mathcal B'$:
+%   Avec la matrice de passage entre les bases \(\mathcal B\) et \(\mathcal B'\):
 
 %   \[
 %     P_{\mathcal B' \rightarrow \mathcal B} = \frac{1}{\sqrt{1+{x_j}^2}}
@@ -231,7 +234,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 % \end{prop}
 
 % \subsubsection{Caractérisation de l'image et du noyau de la sous-matrice B}
-% Soit $B = \begin{bmatrix} 0 & 0 & {z_j} \\ 0 & 0 & {x_jz_j} \\ -{z_j} & -{x_jz_j} & 0\end{bmatrix}$
+% Soit \(B = \begin{bmatrix} 0 & 0 & {z_j} \\ 0 & 0 & {x_jz_j} \\ -{z_j} & -{x_jz_j} & 0\end{bmatrix}\)
 % \begin{prop}
 %   \begin{align*}
 %     \Img(B) &= \Img(A) \\
@@ -240,7 +243,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 % \end{prop}
 
 % \begin{proof}
-%   On remarque que de nouveau ${\v{u_j}} \in \Ker(B)$.
+%   On remarque que de nouveau \({\v{u_j}} \in \Ker(B)\).
 
 %   En appliquant le même raisonnement
 % \begin{align*}
@@ -249,11 +252,11 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 %  B {\v{v_j}} &= -{z_j}\sqrt{1+{x_j}^2}\v{e_3}\\
 %  B \v{e_3} &= {z_j}\sqrt{1+{x_j}^2}{\v{v_j}}
 % \end{align*}
-%  donc par les mêmes arguments que précédemment, $({\v{v_j}},\v{e_3})$ appartiennent à l'image et alors B est totalement déterminée..
+%  donc par les mêmes arguments que précédemment, \(({\v{v_j}},\v{e_3})\) appartiennent à l'image et alors B est totalement déterminée..
 % \end{proof}
 
 % \begin{defn}
-%   B s'exprime dans la base $\mathcal{B'}= (\v{e_3},{\v{v_j}},{\v{u_j}})$ comme
+%   B s'exprime dans la base \(\mathcal{B'}= (\v{e_3},{\v{v_j}},{\v{u_j}})\) comme
 %   \[
 %     B_\mathcal{B'} = {z_j}\sqrt{1+{x_j}^2}
 %     \begin{bmatrix}
@@ -264,7 +267,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 %   \]
 % \end{defn}
 
-% \subsubsection{Caractérisation du noyau et de l'image de $Q_j$}
+% \subsubsection{Caractérisation du noyau et de l'image de \(Q_j\)}
 
 % \newcommand{\sqx}{\sqrt{1+{x_j}^2}}
 
@@ -294,13 +297,13 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 % \begin{proof}
 
 
-% On vérifie facilement que $U_{j,1}$ et $U_{j,2}$ appartiennent au noyau puisque $\v{u_j}$ appartient au noyau de $A$ et de $B$.
+% On vérifie facilement que \(U_{j,1}\) et \(U_{j,2}\) appartiennent au noyau puisque \(\v{u_j}\) appartient au noyau de \(A\) et de \(B\).
 
-% De même $V_{j,1} = Q_j\begin{bmatrix}\v{e_1}\\0_{\RR^3}\end{bmatrix}\not =0$ et $V_{j,2} = Q_j\begin{bmatrix}0_{\RR^3}\\\v{e_1}\end{bmatrix} \not= 0$ et $V_{j,1}\cdot V_{j,2} = 0$.
+% De même \(V_{j,1} = Q_j\begin{bmatrix}\v{e_1}\\0_{\RR^3}\end{bmatrix}\not =0\) et \(V_{j,2} = Q_j\begin{bmatrix}0_{\RR^3}\\\v{e_1}\end{bmatrix} \not= 0\) et \(V_{j,1}\cdot V_{j,2} = 0\).
 
-% Ainsi on sait que $4 \ge dim(\Ker Q_j) \ge 2$.
+% Ainsi on sait que \(4 \ge dim(\Ker Q_j) \ge 2\).
 
-% On cherche alors $(\lambda_1,\mu_1,\lambda_2, \mu_2)\in\Re$ tel que $X = \begin{bmatrix} \lambda_1 \v{v_j} + \mu_1 \v{e_3}\\ \lambda_2 \v{v_j} + \mu_2 \v{e_3}\end{bmatrix}\in \Ker Q_j$
+% On cherche alors \((\lambda_1,\mu_1,\lambda_2, \mu_2)\in\Re\) tel que \(X = \begin{bmatrix} \lambda_1 \v{v_j} + \mu_1 \v{e_3}\\ \lambda_2 \v{v_j} + \mu_2 \v{e_3}\end{bmatrix}\in \Ker Q_j\)
 
 % Il faut alors résoudre le système linéaire suivant :
 
@@ -321,7 +324,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 
 % Grâce au pivot de Gauss, on remarque que la matrice est de rang 2. Donc on peut fixer deux inconnues et en déduire les deux restantes. Si on ne prend que les deux dernières lignes du système, on a le résultat suivant:
 
-% On suppose que $z_j\not= 0$\footnote{Le cas $z_j=0$ est vu en sous-section \ref{sec:Qj_z0}.}, alors $\forall \lambda_2, \mu_2 \in \RR$,
+% On suppose que \(z_j\not= 0\)\footnote{Le cas \(z_j=0\) est vu en sous-section \ref{sec:Qj_z0}.}, alors \(\forall \lambda_2, \mu_2 \in \RR\),
 % \[
 % \left\lbrace
 % \begin{matrix}
@@ -337,32 +340,32 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 % \end{align*}
 
 
-% On peut alors décomposer $X = \lambda_2 W_{j,1} + \mu_2 W_{j,2}$. Puisque on peut choisir arbitrairement $\lambda_2, \mu_2$ de telle sorte que $X$ soit dans le noyau, alors $W_{j,1}$ et $W_{j,2}$ y appartiennent aussi.\\
+% On peut alors décomposer \(X = \lambda_2 W_{j,1} + \mu_2 W_{j,2}\). Puisque on peut choisir arbitrairement \(\lambda_2, \mu_2\) de telle sorte que \(X\) soit dans le noyau, alors \(W_{j,1}\) et \(W_{j,2}\) y appartiennent aussi.\\
 
 
-% La famille des $(U_{j,k},W_{j,k})_{k=1,2}$ est libre et génératrice. Comme le noyau est au plus de dimensions 4, elle forme une base du noyau, qui n'est pas orthonormale. On va donc utiliser le procédé d'orthonormalisation de Gram-Schmidt.
+% La famille des \((U_{j,k},W_{j,k})_{k=1,2}\) est libre et génératrice. Comme le noyau est au plus de dimensions 4, elle forme une base du noyau, qui n'est pas orthonormale. On va donc utiliser le procédé d'orthonormalisation de Gram-Schmidt.
 
 % Soient \begin{align*}
 % &U_{j,3} = \frac{W_{j,1}}{||W_{j,1}||} = \sqrt{\frac{z_j^2}{1+x_j^2 +y_j^2+z_j^2}}\begin{bmatrix} \frac{{y_j}}{{z_j}}{\v{v_j}} + \frac{ \sqx}{{z_j}}\v{e_3}\\{\v{v_j}}\end{bmatrix}\\
-% &W_{j,3} = W_{j,2} - \left( U_{j,3}\cdot W_{j,2} \right)U_{j,3} = \begin{bmatrix} -\frac{z_j}{\sqx}\v{v_j} \\ \frac{y_j}{\sqx}\v{v_j} + \v {e_3}\end{bmatrix}\\
+% &W_{j,3} = W_{j,2} - \left( U_{j,3}\cdot W_{j,2} \right)U_{j,3} = \begin{bmatrix} -\frac{z_j}{\sqx}\v{v_j} \\ \frac{y_j}{\sqx}\v{v_j} + \vect {e_3}\end{bmatrix}\\
 % &U_{j,4} = \frac{W_{j,3}}{||W_{j,3}||} = \sqrt{\frac{1}{1+x_j^2 +y_j^2+z_j^2}}\begin{bmatrix} -z_j\v{v_j} \\ y_j\v{v_j} + \sqx \v{e_3}\end{bmatrix}
 % \end{align*}
 
 
 
-% On donc déterminé $\tilde{Q_j}$ par son image et son noyau.
+% On donc déterminé \(\tilde{Q_j}\) par son image et son noyau.
 % \end{proof}
 
 % \subsubsection{Caractérisation du noyau de Q}
 
 % {
 % \color{blue}
-% Je veux montrer que Q est sdp donc de noyau $\lbrace0\rbrace$. But: arriver à trouver une base orthonormale de l'image de cardinal 6. Idée : Prendre deux vecteurs $V_{p,1}, V_{q,1}$, fixer $x_p$, voir à quelle condition on a $V_{p,1} \cdot V_{q,1} = 0$. Pour çà, il faut que j'ai une base $\RR^6$ avec les $V_j$ dedans.
+% Je veux montrer que Q est sdp donc de noyau \(\lbrace0\rbrace\). But: arriver à trouver une base orthonormale de l'image de cardinal 6. Idée : Prendre deux vecteurs \(V_{p,1}, V_{q,1}\), fixer \(x_p\), voir à quelle condition on a \(V_{p,1} \cdot V_{q,1} = 0\). Pour çà, il faut que j'ai une base \(\RR^6\) avec les \(V_j\) dedans.
 % }
 
 % %TODO
 
-% \paragraph{Cas $z_j=0$}\label{sec:Qj_z0}~{}\\
+% \paragraph{Cas \(z_j=0\)}\label{sec:Qj_z0}~{}\\
 
 % Soient
 % \begin{align*}
@@ -393,7 +396,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 % \end{prop}
 
 % \begin{proof}
-% Dans ce cas, on a 
+% Dans ce cas, on a
 % \[
 % \tilde{Q_j} = \begin{bmatrix} A & 0_{\mathcal M(3,3)} \\ 0_{\mathcal M(3,3)} & A\end{bmatrix}\]
 % \[A = \begin{bmatrix}
@@ -403,7 +406,7 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 % \end{bmatrix}
 % \]
 
-% Cette fois-ci on voit directement les 3 lignes sont linéairement dépendantes. $(-x_j, 1, 0)^t$ et $(y_j, 0, 1)^t$ appartiennent au noyau donc le rang de $A$ est alors de 1, et $\tau =  (1,x_j,-y_j)^t$ appartient à l'image. Pour construire une base du noyau, il ne reste plus qu'à utiliser Gram-Schmidt.
+% Cette fois-ci on voit directement les 3 lignes sont linéairement dépendantes. \((-x_j, 1, 0)^t\) et \((y_j, 0, 1)^t\) appartiennent au noyau donc le rang de \(A\) est alors de 1, et \(\tau =  (1,x_j,-y_j)^t\) appartient à l'image. Pour construire une base du noyau, il ne reste plus qu'à utiliser Gram-Schmidt.
 
 % \end{proof}
 
@@ -425,6 +428,6 @@ Cependant, la matrice Q semble définie pour $N \ge 6$ ce qui a été constaté 
 % \end{prop}
 
 % \begin{proof}
-%  Puisque $\tilde{Q_j}$ est diagonale par bloc, le résultat est immédiat.
+%  Puisque \(\tilde{Q_j}\) est diagonale par bloc, le résultat est immédiat.
 % \end{proof}
-% Par construction, ces 6 vecteurs forment une base de $\RR^6$.
+% Par construction, ces 6 vecteurs forment une base de \(\RR^6\).

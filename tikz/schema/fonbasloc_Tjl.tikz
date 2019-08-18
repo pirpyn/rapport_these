@@ -1,0 +1,12 @@
+%%% Triangle de gauche
+
+\coordinate (n1) at (\xa,\ya);
+\coordinate (n2) at (\xc,\yc);
+\coordinate (n3) at (\xb,\yb);
+
+\coordinate (e1) at ($(n2)-(n3)$);
+\coordinate (e2) at ($(n3)-(n1)$);
+\coordinate (e3) at ($(n1)-(n2)$);
+
+
+\draw (n1) -- (n2) -- (n3) -- cycle;

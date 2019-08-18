@@ -1,13 +1,33 @@
 %\usepackage{cmbright} % fichier + lisible sur ordi, - lisible sur papier
 \usepackage[utf8]{inputenc} %gestion des accents par le compilateurs
-\usepackage[T1]{fontenc} %gestion des accents par l'afficheurs et la césure
-\usepackage[french]{babel} % traduction des packages
+\usepackage[T1]{fontenc}
 
+%%% LES POLICES
+
+%% Fonte Latin Modern
 \usepackage{lmodern} % fontes tailles variables
     % substitution des petites capitales grasses manquantes
     \rmfamily
     \DeclareFontShape{T1}{lmr}{b}{sc}{<->ssub*cmr/bx/sc}{}
     \DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*cmr/bx/sc}{}
+
+%% Fonte Fourier + Utopia
+% \usepackage{fourier}
+%     \usepackage[scaled=0.875]{helvet} % completement empatemment
+%     \usepackage{courier} % completement chasse fixe
+
+%% Fonte MathDesign + Utopia
+% \usepackage[utopia]{mathdesign}
+
+%% Fonte KP
+% \usepackage{kpfonts}
+
+%% Fonte Computer Modern Bright
+% \usepackage{cmbright}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[french]{babel} % traduction des packages
 
 \usepackage{microtype}
 
@@ -23,28 +43,33 @@
     bottom = 2.5cm,%
     inner  = 3.5cm,%
     outer  = 2.5cm,%
-    a4paper]{geometry} % feuille a4 de taille 21.0 x 29.7 
+    a4paper]{geometry} % feuille a4 de taille 21.0 x 29.7
 
 % suite de paquets mathematiques
-\usepackage{amsthm} % gestion des théoremes
 \usepackage{amsfonts} % gestions des polices mathématques
-\usepackage{amsmath}
+\usepackage[leqno]{amsmath}
+    \everymath{\displaystyle} % Tout en grand !
+
+\usepackage{amsthm} % gestion des théoremes
+\usepackage{thmbox}
+
 \usepackage[autostyle=true]{csquotes}
 
 \usepackage[%
     language=english,%
     sorting=nyt,%
-    backend=bibtex8,%
+    backend=biber,%
     style=authoryear,%
     hyperref=true,%
     giveninits=true, % initialles pour prénoms
-    isbn=false,%
+    isbn=true,%
     url=false,%
-    doi=false,%
+    doi=true,%
     backref=true,%
-    backrefstyle=three% si cité en page 1,2,3, ecrire 1-3, 
+    backrefstyle=three% si cité en page 1,2,3, ecrire 1-3,
     ]{biblatex}
-    \renewbibmacro{in:}{} 
+
+    \renewbibmacro{in:}{}
     \DeclareFieldFormat[book,report]{title}{\mkbibquote{#1\isdot}}
     \DefineBibliographyStrings{french}{%
     bibliography = {Références},
@@ -54,7 +79,7 @@
 \usepackage[%
     linkcolor=blue!70!black,%
     colorlinks=true,%
-    citecolor=purple%
+    citecolor=purple,%
     bookmarksopen=true,%
     bookmarksnumbered=true,%
     bookmarksopenlevel=5,
@@ -68,8 +93,10 @@
 % Jolie en tete de chapitre
 \usepackage[Lenny]{fncychap}
     \makeatletter
-        \ChNameVar{\huge} % On modifie la taille du môt ``CHapitre''
+        \ChNameVar{\huge} % On modifie la taille du môt ``Chapitre''
     \makeatother
+
+\usepackage{caption} % Faire des caption en dehors de figure
 
 \usepackage[francais]{minitoc}   % Mini table des matières, en français
     \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
@@ -78,7 +105,6 @@
 
 %\usepackage{multicol} % texte sur plusieurs colonnes
 %\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
-
 \usepackage[%
     nomain,%
     sanitizesort=false,%
@@ -87,20 +113,45 @@
 
 % Permet de tracer des figures et schémas
 \usepackage{pgfplots}
-    \pgfplotsset{compat=newest}
-\usepackage{tikz} 
+    \pgfplotscreateplotcyclelist{my cycle}{%
+        solid,          every mark/.append style={solid, fill=gray}, mark=*\\%
+        solid,          every mark/.append style={solid, fill=gray}, mark=square*\\%
+        dashed,         every mark/.append style={solid, fill=gray}, mark=triangle*\\%
+        dashed,         every mark/.append style={solid, fill=gray}, mark=diamond*\\%
+        densely dotted, every mark/.append style={solid},            mark=+\\%
+        densely dotted, every mark/.append style={solid},            mark=x\\%
+        dashdotted,     every mark/.append style={solid, fill=gray}, mark=*\\%
+        dashdotted,     every mark/.append style={solid, fill=gray}, mark=square*\\%
+        dotted,         every mark/.append style={solid},            mark=triangle*\\%
+        dotted,         every mark/.append style={solid, fill=gray}, mark=diamond*\\%
+        loosely dashed, every mark/.append style={solid, fill=gray}, mark=+*\\%
+        loosely dashed, every mark/.append style={solid, fill=gray}, mark=x\\%
+    }
+    \pgfplotsset{%
+        compat=newest,
+        height=6cm,
+        cycle list name=my cycle,
+        every axis legend/.style={
+            cells={anchor=west},
+            draw=black,
+        },
+    }
+
+    \usepackage{tikz}
     \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
     \usetikzlibrary{patterns} % permet de faire des patterns
     \usetikzlibrary{math} % permet de definir des variables
+    \usetikzlibrary{arrows.meta} % permet de spécifier les tailles des pointes de fleches
     \tikzset{every picture/.style={execute at begin picture={
-        \shorthandoff{:;!?};}
+        \shorthandoff{:;!?};} % permet de prendre en compte la ponctuation française dans tikz
     }}
+
 % % permet d'ajouter des notes en marges
 % \setlength{\oddsidemargin}{25mm}
 % \setlength{\evensidemargin}{25mm}
-% \setlength{\textwidth}{170mm} 
+% \setlength{\textwidth}{170mm}
 % \reversemarginpar
-% \usepackage{todonotes} 
+% \usepackage{todonotes}
 
 \usepackage{fancyhdr}      % Entête et pieds de page. Doit être placé APRES geometry
     \pagestyle{fancy}    % Indique que le style de la page sera justement fancy
@@ -112,9 +163,9 @@
 
 \usepackage{array}   % for \newcolumntype macro
 \usepackage{multirow}
-    \newcolumntype{L}{>{$}l<{$}} % math-mode version of column type
-    \newcolumntype{C}{>{$}c<{$}}
-    \newcolumntype{R}{>{$}r<{$}}
+    \newcolumntype{L}{>{\(}l<{\)}} % math-mode version of column type
+    \newcolumntype{C}{>{\(}c<{\)}}
+    \newcolumntype{R}{>{\(}r<{\)}}
 
 \usepackage{tcolorbox} % Pour faire de jolie boite, un peu visible
 \usepackage{lettrine} % Pour faire de jolie lettre
@@ -171,8 +222,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
 %%% Pas de numéro de page sur la première page des chapitres
 \makeatletter
 \let\ps@plain=\ps@empty
@@ -181,14 +230,6 @@
 % Réglage fin des notes de bas de page
 \FrenchFootnotes % pour les notes de bas de page à la française
 \AddThinSpaceBeforeFootnotes % pour avoir une espace fine entre le mot et l'appel de note
-
-%% CHAPITRE ETOILE
-%% avec référence dans la table des matières et les bons en-têtes
-%% il sert pour l'introduction, la page de notations, etc
-\newcommand{\chapterstar}[1]{%
-  \chapter*{#1}%
-  \addcontentsline{toc}{chapter}{#1}%
-  \markboth{#1}{#1}}
 
 % Pour que les pages paires sans texte (par exemple, à la fin d'un chapitre et
 % avant un autre), ne contiennent ni en-tête ni pied de page (source :
@@ -201,4 +242,5 @@
 \let\cleardoublepage\clearemptydoublepage
 
 \setcounter{tocdepth}{1} % Sommaire n'inclus que les niveau 1 à 2 : section, sous-section
-\setlength\parindent{0pt} % pas d'alinéa à chaque paragraphe
+
+\setlength{\parindent}{0pt} % pas d'alinéa à chaque paragraphe

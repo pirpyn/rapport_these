@@ -1,14 +1,16 @@
 \section{Solution exacte de Maxwell sur une sphère: la série de Mie}\label{sec:serie_mie}
 %TODO
 
-\TODO{refaire cette partie et expliquer la somme finale sur les champs}
+\begin{TODO}
+  refaire cette partie et expliquer la somme finale sur les champs
+\end{TODO}
 
-Maintenant que nous connaissons l'ensemble des solutions de Maxwell ainsi que la manière s'approcher la condition d'impédance, nous allons expliciter les coefficients $(a_n,b_n)$  afin d'assurer le condition d'impédance de surface.
+Maintenant que nous connaissons l'ensemble des solutions de Maxwell ainsi que la manière s'approcher la condition d'impédance, nous allons expliciter les coefficients \((a_n,b_n)\)  afin d'assurer le condition d'impédance de surface.
 
-% Le but est de déterminer les coefficients qui permettent de décomposer les champs sur les harmoniques sphériques pour aboutir aux séries de Mie, et de déterminer les coefficients de Mie $(a_n,b_n)$
+% Le but est de déterminer les coefficients qui permettent de décomposer les champs sur les harmoniques sphériques pour aboutir aux séries de Mie, et de déterminer les coefficients de Mie \((a_n,b_n)\)
 
 \subsection{Rappel}
-Soit $\OO = B_{\RR^3}(0,R)$, $M_{m,n}, N_{m,n}$ les harmoniques sphériques (cf \cite{marceaux_high-order_2000} et section \ref{sec:sol_maxwell})
+Soit \(\OO = B_{\RR^3}(0,R)\), \(M_{m,n}, N_{m,n}\) les harmoniques sphériques (cf \cite{marceaux_high-order_2000} et section \ref{sec:sol_maxwell})
 
 % Dans la base sphérique :
 % \[
@@ -43,7 +45,7 @@ D'après les résultats énoncés en \ref{sec:helmholtz_scal}, on a
     -e^{im\phi}\ddr{\theta}{\PP^m_n(\cos\theta)}\\
   \end{bmatrix}
 \]
-et 
+et
 \[
   \tilde{j_n}(k_0r)N_{m,n}=
     \begin{bmatrix}
@@ -53,40 +55,40 @@ et
   \end{bmatrix}
 \]
 
-On a donc les expressions suivantes pour les champs $(\vE,\vH)$ solution de Maxwell, sans condition de rayonnement:
-$\forall m,n \in \ZZ\pvect\NN$
+On a donc les expressions suivantes pour les champs \((\vE,\vH)\) solution de Maxwell, sans condition de rayonnement:
+\(\forall m,n \in \ZZ\pvect\NN\)
 
 
 
 
-On rappelle les relations vectorielles liant $M$ et $N$
+On rappelle les relations vectorielles liant \(M\) et \(N\)
 \begin{align*}
-  &\v e_r \pvect N_{1,n} = -\frac{1}{k_0r}M_{1,n} \\
-  &\v e_r \pvect M_{1,n} = k_0r N_{1,n}^t
+  &\vect e_r \pvect N_{1,n} = -\frac{1}{k_0r}M_{1,n} \\
+  &\vect e_r \pvect M_{1,n} = k_0r N_{1,n}^t
 \end{align*}
 
 \subsection{Expression des champs solutions de Maxwell}
-Soient $(a_n,b_n)_n$ des suites complexes, $f_n = \frac{i^{n+1}(2n+1)}{2n(n+1)}$.
+Soient \((a_n,b_n)_n\) des suites complexes, \(f_n = \frac{i^{n+1}(2n+1)}{2n(n+1)}\).
 
-D’après \cite{morse_methods_1953}, les solutions $(\vE,\vH)$ (avec $\vH \equiv \vH /\eta_0 $) sont :
+D’après \cite{morse_methods_1953}, les solutions \((\vE,\vH)\) (avec \(\vH \equiv \vH /\eta_0 \)) sont :
 \begin{align*}
   \vE^i &= -\sum_{n=1}^\infty f_n \left( j_nM_{1,n} + \tilde j_n N_{1,n} \right) + n(n+1)\left(j_n M_{-1,n} - \tilde j_nN_{-1,n} \right)\\
   \vH^i &= -i\sum_{n=1}^\infty f_n \left( j_nM_{1,n} + \tilde j_nN_{1,n} \right) - n(n+1)\left(j_n M_{-1,n} - \tilde j_n N_{-1,n} \right)\\
   \vE^d &= -\sum_{n=1}^\infty f_n \left( a_n h_nM_{1,n} + b_n\tilde h_nN_{1,n} \right) + n(n+1)\left(a_nh_nM_{-1,n} - b_n\tilde h_nN_{-1,n} \right)\\
   \vH^d &= -i\sum_{n=1}^\infty f_n \left( b_nh_nM_{1,n} + a_n\tilde h_nN_{1,n} \right) - n(n+1)\left(b_nh_nM_{-1,n} - a_n\tilde h_nN_{-1,n} \right)\\
 \end{align*}
-Et les champs totaux solution de Maxwell sont : 
+Et les champs totaux solution de Maxwell sont :
 \begin{align}
   \vE = \vE^i + \vE^d\label{eq:solEmie}\\
   \vH = \vH^i + \vH^d\label{eq:solHmie}
 \end{align}
 
-On rappelle les relation d'orthogonalités énoncées dans \cite{marceaux_high-order_2000}, avec $\delta$ le symbole de Kronecker :
+On rappelle les relation d'orthogonalités énoncées dans \cite{marceaux_high-order_2000}, avec \(\delta\) le symbole de Kronecker :
 \[
   \begin{matrix}
     \ds\int_S \vdiv N_{m,n}^t \vdiv N_{p,q}^{t,*} &=& \frac{n(n+1)}{k_0^2 R^2} \gamma_{m,n} \delta_{m,n} \delta_{p,q}\\
     \ds\int_S N_{m,n}^t \cdot N_{p,q}^{t,*} &=& \frac{1}{k_0^2}\gamma_{m,n}\delta_{m,n} \delta_{p,q}\\
-    \ds\int_S \left(\v e_r \cdot \vrot M_{m,n}\right)\left( e_r \cdot \vrot  M_{p,q}^{*}\right) &=& n(n+1) \gamma_{m,n} \delta_{m,n} \delta_{p,q}\\
+    \ds\int_S \left(\vect e_r \cdot \vrot M_{m,n}\right)\left( e_r \cdot \vrot  M_{p,q}^{*}\right) &=& n(n+1) \gamma_{m,n} \delta_{m,n} \delta_{p,q}\\
     \ds\int_S M_{m,n} \cdot M_{p,q}^{*} &=& R^2 \gamma_{m,n} \delta_{m,n} \delta_{p,q}\\
     \ds\int_S M_{m,n} \cdot N_{p,q}^{t,*} &=& 0
   \end{matrix}
@@ -94,46 +96,46 @@ On rappelle les relation d'orthogonalités énoncées dans \cite{marceaux_high-o
 Et les relations différentielles suivantes:
 \begin{align*}
   \vdiv M_{m,n} &=0 \\
-  \v e_r \cdot \vrot N_{m,n} &= 0
+  \vect e_r \cdot \vrot N_{m,n} &= 0
 \end{align*}
 
 \subsection{Calcul des coefficients de la série de Mie.}
 \begin{tcolorbox}
-Sauf mention contraire, les $h_n,j_n$ sont toujours calculées sur le cercle de rayon $k_0R$. On omet donc cette dépendance dans l'écriture.
+Sauf mention contraire, les \(h_n,j_n\) sont toujours calculées sur le cercle de rayon \(k_0R\). On omet donc cette dépendance dans l'écriture.
 \end{tcolorbox}
-Le but est d'expliciter la \gls{acr-cioe} pour trouver des $a_n, b_n$ la satisfaisant.
-Soit $k_0 = \w\sqrt{\eps_0\mu_0}$
+Le but est d'expliciter la \gls{acr-cioe} pour trouver des \(a_n, b_n\) la satisfaisant.
+Soit \(k_0 = \w\sqrt{\eps_0\mu_0}\)
 \begin{equation}
   \label{eq:CIOE} \left(1+\frac{b}{k_0^2}L\right)\vE_t\ = \left(a_0 + \frac{a_1}{k_0^2}L\right)\vJ
 \end{equation}
-L est l'opérateur tel que 
+L est l'opérateur tel que
 \[
   \int_{S} L(u)\cdot v = - \int_{S} {\vdiv u}_t {\vdiv v}_t - \int_{S}\left(\vn \cdot \vrot u\right)\left( \vn \cdot \vrot v\right)
 \]
-\subsubsection{Obtention des $a_n$}
-On intègre cette relation après un produit scalaire avec $M_{1,n}^{*}$ et l'on va expliciter chaque terme:
+\subsubsection{Obtention des \(a_n\)}
+On intègre cette relation après un produit scalaire avec \(M_{1,n}^{*}\) et l'on va expliciter chaque terme:
 \begin{align*}
   &\int_S \vE_t\cdot M_{1,n}^{*} = - f_n R^2 \gamma_{1,n}[a_n h_n + j_n]\\
   &\int_S L(\vE_t)\cdot M_{1,n}^{*} =  f_n n(n+1)\gamma_{1,n}[a_n h_n + j_n]\\
   &\int_S \vJ \cdot M_{1,n}^{*} =  i f_n \frac{R}{k_0} \gamma_{1,n}[a_n \tilde h_n + \tilde j_n]\\
   &\int_S L(\vJ) \cdot M_{1,n}^{*} =  - i f_n n(n+1) \gamma_{1,n}\frac{1}{k_0 R}[a_n \tilde h_n + \tilde j_n]\\
 \end{align*}
-En combinant l'ensemble de ces termes, on obtient les $a_n$:
+En combinant l'ensemble de ces termes, on obtient les \(a_n\):
 
-Soit $ \alpha_n =-i\frac{a_0R^2k^2 - a_1 n (n+1)}{k^2R^2 - bn(n+1)}$, alors
+Soit \( \alpha_n =-i\frac{a_0R^2k^2 - a_1 n (n+1)}{k^2R^2 - bn(n+1)}\), alors
 \begin{equation}
   \label{eq:an_mie} a_n = -\frac{\tilde{j_n}\frac{1}{k_0R}\alpha_n +j_n}{\tilde{h_n}\frac{1}{k_0R}\alpha_n + h_n}
 \end{equation}
 
-\subsubsection{Obtention des $b_n$}
-On intègre cette relation après un produit scalaire avec $N_{1,n}^{t,*}$ et l'on va expliciter chaque terme:
+\subsubsection{Obtention des \(b_n\)}
+On intègre cette relation après un produit scalaire avec \(N_{1,n}^{t,*}\) et l'on va expliciter chaque terme:
 \begin{align*}
   &\int_S \vE_t\cdot N_{1,n}^{t,*} = - f_n \frac{1}{k_0^2} \gamma_{1,n}[b_n\tilde{h_n} + \tilde{j_n} ]\\
   &\int_S L(\vE_t)\cdot N_{1,n}^{t,*} =  f_n \frac{n(n+1)}{k_0^2R^2}\gamma_{1,n}[b_n\tilde{h_n} + \tilde{j_n}]\\
   &\int_S \vJ \cdot N_{1,n}^{t,*} = - i f_n \frac{R}{k_0}\gamma_{1,n}[b_n {h_n} + {j_n}]\\
   &\int_S L(\vJ) \cdot N_{1,n}^{t,*} =  i f_n \frac{n(n+1)}{k_0 R} \gamma_{1,n}[b_n {h_n} + {j_n}]\\
 \end{align*}
-En combinant l'ensemble de ces termes, on obtient les $b_n$ :
+En combinant l'ensemble de ces termes, on obtient les \(b_n\) :
 
 %FIXME : corriger équation ci dessous
 \begin{equation}
@@ -146,19 +148,11 @@ Q=\Re{\int_{\Gamma}\vJ\cdot(\conj{\vE_t})ds}
 \]
 \end{tcolorbox}
 
-En utilisant les relations d'orthogonalités et $\gamma_{1,n} = n(n+1)\gamma_{-1,n}$, on trouve
+En utilisant les relations d'orthogonalités et \(\gamma_{1,n} = n(n+1)\gamma_{-1,n}\), on trouve
 \[
   Q = \sum_ {n=0}^{\infty}2\gamma_{1,n}\frac{|f_n|^2R}{k_0}\Im{
   \left[
-    (a_n h_n + j_n)(a_n^* \tilde h_n^* + \tilde j_n^*) 
+    (a_n h_n + j_n)(a_n^* \tilde h_n^* + \tilde j_n^*)
     %- (b_n \tilde h_n + \tilde j_n)(b_n^*  h_n^* + j_n^*)
   \right]}
 \]
-
-
-\TODO{
-  Utiliser pgfplot pour les figures 1D
-  \begin{tikzpicture}
-    \input{tikz/plot/exemple_ser.tikz}
-  \end{tikzpicture}
-}
