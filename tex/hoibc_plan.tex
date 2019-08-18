@@ -1,4 +1,6 @@
-\section{Approximation de l'opérateur d'impédance pour un plan infini}
+\section{Approximation de l'opérateur d'impédance pour un plan infini par une condition d'impédance d'ordre élevée}
+
+  \subsection{Expression de la condition d'impédance d'ordre élevée}
 
     On sait que le symbole \(\hat{\mZ}(k_x,k_y)\) s'écrit
 
@@ -18,13 +20,95 @@
         \end{bmatrix}
     \end{align}
 
-    \subsection{Approximation constante}
+    Dans le cadre de cette thèse, nous nous intéressons à la condition d'impédance d'\cite{aubakirov_electromagnetic_2014} qui s'exprime en tout point de la surface extérieur de notre objet telle que
 
-    Cette approximation est très facile à calculer : on fixe \(k_x,k_y\) à $0$:
+    \begin{align}
+        \left(I + b_1 \LD{} -b_2 \LR \right)\vE_t = \left(a_0 I + a_1 \LD{} - a_2 \LR \right)(\vn \pvect \vH) & \forall x \in \Gamma
+    \end{align}
+
+    Pour approcher le symbole \(\hat{\mZ}\) que l'on a défini dans l'espace de Fourier, il convient donc d'exprimer les opérateurs \(\LD, \LR\) dans cet espace.
+
+    % Pour cela, nous utiliserons la relation de \cite[Corollary 2,p. ~154]){yosida_functional_1995}:
+
+    Par définition, on a 
+    \begin{align}
+      \LD \vE_t & = \vgrads{} \vdivs{} \vE_t
+    \end{align}
+
+    Or 
+
+    \begin{align}
+      \vE_t(x,y,z) & = \int_\RR\int_\RR \hat{\vE_t}(k_x,k_y,z)e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y}
+    \end{align}
+
+
+    donc
+
+    \begin{align}
+      \LD \vE_t 
+      & = \vgrads{} \vdivs{} \vE_t 
+      \\
+      &=\vgrads{} \int_\RR\int_\RR \hat{\vE_t}(k_x,k_y,z) \cdot \vgrads{} e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y}
+      \\
+      &=\int_\RR\int_\RR  \vhesss{}\left( e^{ik_xx + ik_yy} \right) \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
+    \end{align}
+
+    On définit \(\hat{\LD}\) l'opérateur matriciel tel que
+    \begin{align}
+      \LD \vE_t 
+      &= \int_\RR\int_\RR \hat{\LD} \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
+    \end{align}
 
     \begin{equation}
-        \hat \mZ_m \sim -
-        \left(i\eta_m\tan\left(k_{m}d_m\right)\mI - \hat \mZ_{m-1}\right)
-        \left(\eta_m\mI - i\tan\left(k_{m}d_m\right)\hat \mZ_{m-1}\right)^{-1}
-        \eta_m
+      \hat{\LD}(k_x,k_y) = -
+      \begin{bmatrix}
+        k_x^2 & k_x k_y 
+        \\
+        k_y k_y & k_y^2
+      \end{bmatrix}
     \end{equation}
+
+
+    Par définition, on a 
+    \begin{align}
+      \LR \vE_t & = \vrots{} \vrots{} \vE_t
+    \end{align}
+
+    donc
+
+    \begin{align}
+      \LR \vE_t 
+      & = \vrots{} \vrots{} \vE_t 
+      \\
+      &=\vrots{} \int_\RR\int_\RR \vgrads{}\left(e^{ik_xx + ik_yy}\right) \pvect \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
+      \\
+      &= \int_\RR\int_\RR \left(\vhesss - \vlapls\right) \left(e^{ik_xx + ik_yy}\right) \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
+      \\
+    \end{align}
+
+    On définit \(\hat{\LR}\) l'opérateur matriciel tel que
+    \begin{align}
+      \LR \vE_t 
+      &= \int_\RR\int_\RR \hat{\LR} \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
+    \end{align}
+
+    \begin{equation}
+      \hat{\LR}(k_x,k_y) = 
+      \begin{bmatrix}
+        k_y^2 & -k_x k_y 
+        \\
+        -k_y k_y & k_x^2
+      \end{bmatrix}
+    \end{equation}
+
+    On peut donc définir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance. 
+
+    \begin{align}
+        \hat{\mZ}_{IBC}(k_x,k_y) = \left(I + b_1 \hat{\LD}(k_x,k_y) - b_2 \hat{\LR}(k_x,k_y) \right)^{-1} \left(a_0 I + a_1 \hat{\LD}(k_x,k_y) - a_2 \hat{\LR}(k_x,k_y)\right)
+    \end{align}
+
+    Pour calculer les coefficients de la CIOE, il faut minimiser la distance entre le symbole \(\hat{\mZ}(k_x,k_y)\) et \(\hat{\mZ}_{IBC}(k_x,k_y)\) \footnote{La distance est la norme de Frobenius}. Évidemment, il existe une infinité de combinaisons pour un couple \((k_x,k_y)\). Nous avons choisis de nous donner un grand nombre de couples et de minimiser au sens des moindres carrés.
+
+    Pour tenir compte d'une onde plane homogène, il faut que \(k_x^2 + k_y^2\) soit inférieur à \(k_0^2\); au delà, nous reproduisons des ondes évanescentes. Nous avons constaté que prendre \(k_x^2 + k_y^2\) inférieur à \(2k_0\) est suffisant pour prendre en compte des ondes guidées dans le cas des matériaux sans pertes.
+
+  \subsection{Résultats numériques}
