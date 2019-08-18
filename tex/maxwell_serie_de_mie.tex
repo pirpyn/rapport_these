@@ -2,51 +2,51 @@
 
 Nous combinons donc les résultats des sections \ref{sec:sol_maxwell} et \ref{sec:helmholtz_scal} pour donner les solutions.
 
-On se place à l'intérieur de la sphère: nous allons utiliser les solutions de Helmholtz définies à l'aide des fonctions de Bessel $z_n(kr) = \gls{mat-jn}(kr)$.
+On se place à l'intérieur de la sphère: nous allons utiliser les solutions de Helmholtz définies à l'aide des fonctions de Bessel \(z_n(kr) = \gls{mat-jn}(kr)\).
 
 
-\TODO{Continuer à développer ces séries pour retomber sur la série de Mie}
+\begin{TODO}
+  Continuer à développer ces séries pour retomber sur la série de Mie
+\end{TODO}
 
-\subsection{Solutions du problème de Maxwell $\vE,\vH$ sur la sphère}
-On déduit de  \eqref{eq:sol_maxwell:pot_hertz} et \eqref{eq:helm:sol_helmoltz_scal_somme}, que tout champs $(\vE,\vH)$ solutions du problème de Maxwell \eqref{eq:pres_th:intro:maxwell}, où $\OO = B(0,R)$ se décomposent ainsi:
+\subsection{Solutions du problème de Maxwell sur la sphère}
+On déduit de  \eqref{eq:sol_maxwell:pot_hertz} et \eqref{eq:helm:sol_helmoltz_scal_somme}, que tout champs \((\vE,\vH)\) solutions du problème de Maxwell \eqref{eq:pres_th:intro:maxwell}, où \(\OO = B(0,R)\) se décomposent ainsi:
 
-$\exists (a_{m,n},b_{m,n}) \in (\CC)_{m,n}\times (\CC)_{m,n}$.
+\(\exists (a_{m,n},b_{m,n}) \in (\CC)_{m,n}\times (\CC)_{m,n}\).
 \begin{align*}
   \vE(\rtp) &= \sum\limits_{n=0}^\infty\sum\limits_{m=-n}^n\left( a_{m,n}   M_{m,n}(\rtp) - i \eta b_{m,n} N_{m,n}(\rtp)\right)\\
   \vH(\rtp) &= \sum\limits_{n=0}^\infty\sum\limits_{m=-n}^n\left( b_{m,n}   M_{m,n}(\rtp) + i {\eta}^{-1} a_{m,n} N_{m,n}(\rtp)\right)
 \end{align*}
 
-Soit $\gls{mat-tild}(x) := \ddr{x}{\left(xu(x)\right)}$. Les vecteurs $\gls{phy-Mmn} ,\gls{phy-Nmn}$ sont définis tels que:
+Soit \(\gls{mat-tild}(x) := \ddr{x}{\left(xu(x)\right)}\). Les vecteurs \(\gls{phy-Mmn} ,\gls{phy-Nmn}\) sont définis tels que:
 \begin{align}
- \label{eq:defMmn}
-  M_{m,n}(\rtp) &:= \vrot \v r \Psi_{m,n} \\
+  M_{m,n}(\rtp) &:= \vrot \vect r \Psi_{m,n} \\
   &= z_n(kr)
   \begin{bmatrix}
-    0 \\ \frac{im}{\sin\theta}Y_{m,n}\\ 
+    0 \\ \frac{im}{\sin\theta}Y_{m,n}\\
     - \ddr{\theta}{Y_{m,n}}
   \end{bmatrix}
 \end{align}
 \begin{align}
-\label{eq:defNmn}
   N_{m,n}(\rtp) &:= \frac{\vrot M_{m,n}}{k} \\
   &= \frac{1}{kr}\begin{bmatrix}
-    \frac{z_n(kr)}{\sin\theta}\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{Y_{m,n}}\right)\\ 
-    \tilde z_n(kr)\ddr{\theta}{Y_{m,n}}\\ 
+    \frac{z_n(kr)}{\sin\theta}\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{Y_{m,n}}\right)\\
+    \tilde z_n(kr)\ddr{\theta}{Y_{m,n}}\\
     -\tilde z_n(kr)\frac{m^2}{\sin\theta}Y_{m,n}\\
-  \end{bmatrix} 
+  \end{bmatrix}
 \end{align}
 
 
 \subsection{Solution en tant qu'onde plane.}
 
-Soit une onde plane incidente : $\vE_i = E_0 e^{ikz}\v e_x$. En coordonnée sphérique on a $\vE = E_0e^{ikr\cos\theta}\left(\sin\theta\cos\phi\v e_r + \cos\theta\cos\phi\v e_\theta - \sin\phi \v e \phi\right)$. On veut déterminer alors les coefficients $a_{m,n}$, $b_{m,n}$.
+Soit une onde plane incidente : \(\vE_i = E_0 e^{ikz}\vect e_x\). En coordonnée sphérique on a \(\vE = E_0e^{ikr\cos\theta}\left(\sin\theta\cos\phi\vect e_r + \cos\theta\cos\phi\vect e_\theta - \sin\phi \vect e \phi\right)\). On veut déterminer alors les coefficients \(a_{m,n}\), \(b_{m,n}\).
 
-On remarque que $\int_S e^{im\phi} \cos\phi \, ds = 0 = \int_S e^{im\phi} \sin\phi \,ds\; \forall m \not \in \left\lbrace -1,1 \right\rbrace$ donc $\int_S M_{m,n} \cdot \vE = 0$. De façon analogue $\int_S N_{m,n} \cdot \vE = 0.$
+On remarque que \(\int_S e^{im\phi} \cos\phi \, ds = 0 = \int_S e^{im\phi} \sin\phi \,ds\; \forall m \not \in \left\lbrace -1,1 \right\rbrace\) donc \(\int_S M_{m,n} \cdot \vE = 0\). De façon analogue \(\int_S N_{m,n} \cdot \vE = 0.\)
 
 On en déduit donc que les champs incidents se réécrivent
 
 \begin{align*}
-    \vE_i &= \sum\limits_{n=0}^\infty\left[ 
+    \vE_i &= \sum\limits_{n=0}^\infty\left[
     a_{1,n}  M_{1,n} - i \eta b_{1,n} N_{1,n}
     + a_{-1,n}  M_{-1,n} - i \eta b_{-1,n} N_{-1,n}
     \right]\\
@@ -58,60 +58,60 @@ On en déduit donc que les champs incidents se réécrivent
 
 % \iffalse
 
-% Ceci étant vrai à l'intérieur de la sphère, raccorder avec les solutions à l'extérieur permet de déterminer les coefficients $a_{m,n}$ et $b_{m,n}$ \cite[eq.~(13.3.90) p.~1882]{morse_methods_1953}.
+% Ceci étant vrai à l'intérieur de la sphère, raccorder avec les solutions à l'extérieur permet de déterminer les coefficients \(a_{m,n}\) et \(b_{m,n}\) \cite[eq.~(13.3.90) p.~1882]{morse_methods_1953}.
 
 % \subsection{Prise en compte des conditions limite}
-% Nous allons utiliser les condition limite à l'infini afin de déterminer les champs $(\E,\H)$ finaux.
+% Nous allons utiliser les condition limite à l'infini afin de déterminer les champs \((\E,\H)\) finaux.
 
 
 % \subsection{Raccord notation Bruno}
-% Dans les papiers de Bruno\cite{marceaux_high-order_2000} on a $\v \Phi_E = M_{m,n}, \rot \v \Phi_E = k_0 N_{m,n}$\\ \textbf{Remarque}: Il manque le coefficient $\gamma_n^m$ dans $\Psi$, cf \cite[p24, Th 2.4.4]{nedelec_acoustic_2001}.
+% Dans les papiers de Bruno\cite{marceaux_high-order_2000} on a \(\vect \Phi_E = M_{m,n}, \rot \vect \Phi_E = k_0 N_{m,n}\)\\ \textbf{Remarque}: Il manque le coefficient \(\gamma_n^m\) dans \(\Psi\), cf \cite[p24, Th 2.4.4]{nedelec_acoustic_2001}.
 % \subsection{De Helmholtz à Maxwell}
 
 % Par définition, la divergence des champs est nulle. En représentant ainsi les potentiels comme issus d'un rotationnel, dans \eqref{eq:maxwell_potentiel}, les propriétés suivantes sont déduites, et l'on voit bien apparaître Helmholtz.
 % \begin{equation}
 %   \label{eq:pot_phi}
-%   \left\lbrace 
-%     \begin{matrix}
-%       \ddiv \v \Phi_{X} &=& 0 \\
-%       -\lapl  \v \Phi_X - k^2 \v \Phi_X &=& 0
-%     \end{matrix}
-%   \right.
-%   \Rightarrow  \exists \v \Phi_X,
 %   \left\lbrace
 %     \begin{matrix}
-%       \v \Phi_X &=& \rot \v \Phi_X \\
-%       \rot \left( \lapl \v \Phi_X + k^2 \v \Phi_X \right) &=& 0 \\
+%       \ddiv \vect \Phi_{X} &=& 0 \\
+%       -\lapl  \vect \Phi_X - k^2 \vect \Phi_X &=& 0
+%     \end{matrix}
+%   \right.
+%   \Rightarrow  \exists \vect \Phi_X,
+%   \left\lbrace
+%     \begin{matrix}
+%       \vect \Phi_X &=& \rot \vect \Phi_X \\
+%       \rot \left( \lapl \vect \Phi_X + k^2 \vect \Phi_X \right) &=& 0 \\
 %     \end{matrix}
 %   \right.
 % \end{equation}
-% %Nous allons maintenant montrer que l'on peut identifier l'un des $\Phi_X$ à 0, et que cela correspond à choix de jauge, qui physiquement traduit le fait que l'on impose une onde radiale à l'infini, puisque de rotationnel nul.
+% %Nous allons maintenant montrer que l'on peut identifier l'un des \(\Phi_X\) à 0, et que cela correspond à choix de jauge, qui physiquement traduit le fait que l'on impose une onde radiale à l'infini, puisque de rotationnel nul.
 
 % % \begin{equation}
 % % \label{eq:maxwell_potentiel}
 % % \left\lbrace \begin{matrix}
-% % \E &=& \rot \left( \Phi_E + \frac{\v \Phi_H}{iw\eps} \right) \\ 
-% % \H &=& \v \Phi_H - \frac{\rot \rot \Phi_E}{iw\mu} \\
-% % \end{matrix}\right. 
+% % \E &=& \rot \left( \Phi_E + \frac{\vect \Phi_H}{iw\eps} \right) \\
+% % \H &=& \vect \Phi_H - \frac{\rot \rot \Phi_E}{iw\mu} \\
+% % \end{matrix}\right.
 % % \end{equation}
 
 % \subsection{Choix de jauge}
 
 % On va exhiber les deux familles de solutions, liées au choix de la jauge.
-% % Explicitons $\v \Phi_E = \rot \v \Phi_E $ :
+% % Explicitons \(\vect \Phi_E = \rot \vect \Phi_E \) :
 % % \[
 % % \left\lbrace \begin{matrix}
-% % \E &=& \rot \left( \Phi_E + \frac{\v \Phi_H}{iw\eps} \right) \\ 
-% % \H &=& \v \Phi_H + \frac{\Delta \Phi_E}{iw\mu} \\
+% % \E &=& \rot \left( \Phi_E + \frac{\vect \Phi_H}{iw\eps} \right) \\
+% % \H &=& \vect \Phi_H + \frac{\Delta \Phi_E}{iw\mu} \\
 % % \end{matrix}\right.
 % % \]
 
-% \begin{prop}[Jauge $\v \Phi_H=0$ ]
-% Si $\v \Phi_E$ est solution de $\lapl \v \Phi_E + k^2 \v \Phi_E = 0$ alors,
+% \begin{prop}[Jauge \(\vect \Phi_H=0\) ]
+% Si \(\vect \Phi_E\) est solution de \(\lapl \vect \Phi_E + k^2 \vect \Phi_E = 0\) alors,
 % \[
 %   \left\lbrace
 %     \begin{matrix}
-%       \E &=& \rot \Phi_E \\ 
+%       \E &=& \rot \Phi_E \\
 %       \H &=& -iw\eps \Phi_E \\
 %     \end{matrix}
 %   \right.
@@ -119,15 +119,15 @@ On en déduit donc que les champs incidents se réécrivent
 % sont solutions du problème de Maxwell harmonique.
 % \end{prop}
 
-% On reprend la même méthode pour $\v \Phi_E$
+% On reprend la même méthode pour \(\vect \Phi_E\)
 
-% \begin{prop}[Jauge $\v \Phi_E=0$ ]
-% Si $\v \Phi_H$ est solution de $\lapl \v \Phi_H + k^2 \v \Phi_H = 0$ alors,
+% \begin{prop}[Jauge \(\vect \Phi_E=0\) ]
+% Si \(\vect \Phi_H\) est solution de \(\lapl \vect \Phi_H + k^2 \vect \Phi_H = 0\) alors,
 % \[
 % \left\lbrace
 %   \begin{matrix}
 %     \E &=& iw\mu \Phi_H \\
-%     \H &=& \rot \Phi_H \\ 
+%     \H &=& \rot \Phi_H \\
 %   \end{matrix}
 % \right.
 % \]

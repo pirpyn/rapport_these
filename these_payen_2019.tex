@@ -17,9 +17,7 @@
 \newcommand{\dockeywordseng}{Electromagnetism (EM), Impedance, Sufficient uniqueness conditions (SUC), Constrained optimisation, Radar cross section (RCS), Finite elements method (FEM), Integral equation (EFI,MFIE)}
 \newcommand{\docauthor}{Pierre Payen}
 
-% On propage les noms et titre
-\author{\docauthor}
-\title{\doctitlefr}
+
 
 % On parametrise le PDF
 \hypersetup{
@@ -30,7 +28,7 @@
     pdfauthor={\docauthor},     % author
     pdfsubject={\dockeywordseng},   % subject of the document
     pdfcreator={\docauthor},   % creator of the document
-    pdfproducer={pdflatex (TexLive 2017)}, % producer of the document
+    pdfproducer={pdflatex (TexLive 2018)}, % producer of the document
     pdfkeywords={\dockeywordsfr, \dockeywordseng}, % list of keywords
     pdfnewwindow=true,      % links in new window
     colorlinks=false,       % false: boxed links; true: colored links
@@ -40,33 +38,40 @@
     % filecolor=magenta,      % color of file links
     % urlcolor=cyan           % color of external links
 }
+
+ \AtBeginDocument{
+    % On propage les noms et titre
+    \author{\docauthor}
+    \title{\doctitlefr}
+}
 \begin{document}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % \frontmatter
-    %     \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
-    %     \input{tex/liminaires/couverture}
-    %     \include{liminaires}
-    %     \setcounter{secnumdepth}{5} % on numérote tous les niveaux de sections
-    %     \setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
-    %     \dominitoc
-    %     \hypertarget{tableofcontent}{}%
-    %     \pdfbookmark[0]{Sommaire}{tableofcontent}%
-    %     \tableofcontents
+    \frontmatter
+        \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+        \input{tex/liminaires/couverture}
+        \include{liminaires}
+        \setcounter{secnumdepth}{5} % on numérote tous les niveaux de sections
+        \setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
+        \dominitoc
+        \hypertarget{tableofcontent}{}%
+        \pdfbookmark[0]{Sommaire}{tableofcontent}%
+        \tableofcontents
     %     \include{index}
-    %     \restoregeometry
+        \restoregeometry
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \mainmatter
-        %\include{chapitre_0}
+        \include{chapitre_0}
         \include{chapitre_1}
-        %\include{chapitre_2}
-        %\include{chapitre_3}
-        %\include{chapitre_4}
-        %\include{chapitre_5}
+        \include{chapitre_2}
+        \include{chapitre_3}
+        \include{chapitre_4}
+        \include{chapitre_5}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \backmatter
-        \printbibliography
         \appendix
         % On change la numération des annexes en alphabétique
         \renewcommand\thesection{\Alph{section}}
-    %    \include{annexes}
+        \include{annexes}
+    \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+    \printbibliography
 \end{document}

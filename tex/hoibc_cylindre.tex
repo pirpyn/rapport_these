@@ -1,0 +1,38 @@
+\section{Approximation de l'opérateur d'impédance pour un cylindre infini}
+
+  \subsection{Expression de la condition d'impédance d'ordre élevée}
+
+    On reprend les méthodes et résultats de la partie précédente.
+    Soit \(R_{ext}\) le rayon de la couche extérieure.
+    Le changement de système de coordonnées modifie l'expression des opérateurs \(\LD, \LR\).
+
+    \begin{equation}
+      \hat{\LD}(n,k_z) = -
+      \begin{bmatrix}
+        \left(\frac{n}{R_{ext}}\right)^2 & \frac{n}{R_{ext}} k_z
+        \\
+        \frac{n}{R_{ext}} k_z & k_z^2
+      \end{bmatrix}
+    \end{equation}
+
+    \begin{equation}
+      \hat{\LR}(n,k_z) =
+      \begin{bmatrix}
+        -k_z^2 & \frac{n}{R_{ext}} k_z
+        \\
+        \frac{n}{R_{ext}} k_z & -\left(\frac{n}{R_{ext}}\right)^2
+      \end{bmatrix}
+    \end{equation}
+
+    On peut donc redéfinir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance. 
+
+    \begin{align}
+        \hat{\mZ}_{IBC}(n,k_z) = \left(I + b_1 \hat{\LD}(n,k_z) - b_2 \hat{\LR}(n,k_z) \right)^{-1} \left(a_0 I + a_1 \hat{\LD}(n,k_z) - a_2 \hat{\LR}(n,k_z)\right)
+    \end{align}
+
+    Le calcul s'obtient alors de la même manière que dans le cas plan, par minimisation. 
+    De plus, là encore il faut au moins considérer \((n\slash R_{ext})^2 + k_z^2\) supérieur à \(k_0^2\) pour prendre en compte des ondes planes homogènes. Dans le cas d'une incidence normale au cylindre (\(k_z = 0 \)), cela revient à prendre \(n\) au moins jusque \(k_0 R_{ext}\).
+
+  \subsection{Résultats numériques}
+
+    On remarque que les CIOE ne donnent pas de bons résultats. En effet, le symbole de l'opérateur n'est pas un multiple de l'identité pour \(n=k_z=0\) au contraire du plan ( pour \(k_x=k_y=0\) ). Or la CIOE est multiple de l'identité pour ce couple. On subit donc cette erreur dans les résultats.

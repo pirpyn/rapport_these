@@ -15,7 +15,7 @@
         {
           "name"  : "clean",
           "linux": {
-            "shell_cmd" : "/bin/rm -rf $project_path/build",
+            "shell_cmd" : "/bin/rm -rf $project_path/build/*",
           },
           "windows":{
             "shell_cmd":"del /F /Q \"$project_path\\build\"",
@@ -48,7 +48,7 @@
   "settings":
   {
     // The number of spaces a tab is considered equal to
-    "tab_size": 4,
+    "tab_size": 2,
     // Set to false to disable detection of tabs vs. spaces on load
     "detect_indentation": true,
     // Calculates indentation automatically when pressing enter
@@ -72,6 +72,7 @@
     "dictionary": "Packages/Dictionnaries/French.dic",
 
     // For LatexTools Package
+    "TEXroot": "these_payen_2019.tex",
     "tex_file_exts": [".tex", ".tikz", ".bib"],
     "output_directory": "build",
     "preview_math_mode": "none",
