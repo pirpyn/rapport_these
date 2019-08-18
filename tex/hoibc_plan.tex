@@ -103,12 +103,70 @@
 
     On peut donc définir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance. 
 
-    \begin{align}
-        \hat{\mZ}_{IBC}(k_x,k_y) = \left(I + b_1 \hat{\LD}(k_x,k_y) - b_2 \hat{\LR}(k_x,k_y) \right)^{-1} \left(a_0 I + a_1 \hat{\LD}(k_x,k_y) - a_2 \hat{\LR}(k_x,k_y)\right)
-    \end{align}
+    \begin{multline}
+        \hat{\mZ}_{IBC}(k_x,k_y) = \left(I + b_1 \hat{\LD}(k_x,k_y) - b_2 \hat{\LR}(k_x,k_y) \right)^{-1} \\ \left(a_0 I + a_1 \hat{\LD}(k_x,k_y) - a_2 \hat{\LR}(k_x,k_y)\right)
+    \end{multline}
 
     Pour calculer les coefficients de la CIOE, il faut minimiser la distance entre le symbole \(\hat{\mZ}(k_x,k_y)\) et \(\hat{\mZ}_{IBC}(k_x,k_y)\) \footnote{La distance est la norme de Frobenius}. Évidemment, il existe une infinité de combinaisons pour un couple \((k_x,k_y)\). Nous avons choisis de nous donner un grand nombre de couples et de minimiser au sens des moindres carrés.
 
     Pour tenir compte d'une onde plane homogène, il faut que \(k_x^2 + k_y^2\) soit inférieur à \(k_0^2\); au delà, nous reproduisons des ondes évanescentes. Nous avons constaté que prendre \(k_x^2 + k_y^2\) inférieur à \(2k_0\) est suffisant pour prendre en compte des ondes guidées dans le cas des matériaux sans pertes.
 
+  \subsection{Le cas spécial de la condition de Leontovich}
+
+    La condition de Leontovich consiste à approcher le symbole par une constante, et donc d'avoir \(a_1=a_2=b_1=b_2=0\). Dans le paragraphe précèdent, cela revient à chercher la valeur moyenne du symbole. Cependant, cette condition rend compte de l'impédance à incidence normale. Dans ce cas particulier, nous ne réaliserons pas de minimisation mais on fixera cette constante à la valeur du symbole en \((0,0)\).
+
+    \begin{equation}
+      a_0 = \hat{\mZ}(0,0)
+    \end{equation}
+
   \subsection{Résultats numériques}
+
+      La figure \ref{fig:imp_fourier:plan:hoppe:hoibc} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte. La condition d'impédance d'ordre élevé est bien meilleure que la condition de Leontovich.
+
+      \begin{figure}[!hbt]
+          \centering
+          \begin{tikzpicture}[scale=1]
+              \begin{axis}[
+                      title={Polarisation TM},
+                      ylabel={\(\Im(\hat{\mZ}(k_x,0)\)},
+                      xlabel={\(k_x\slash k_0\)},
+                      width=0.4\textwidth,
+                      xmin=0,
+                      xmax=2,
+                      mark repeat=20,
+                      legend pos=outer north east
+                  ]
+                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ex.P.csv};
+                  % \addlegendentry{Exact};
+
+                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ibc0.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc0_TYPE_P_SUC_F.csv};
+                  % \addlegendentry{IBC0};
+
+                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ibc3.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc3_TYPE_P_SUC_F.csv};
+                  % \addlegendentry{IBC3};                  
+              \end{axis}
+          \end{tikzpicture}
+          \begin{tikzpicture}[scale=1]
+              \begin{axis}[
+                      title={Polarisation TE},
+                      ylabel={},
+                      xlabel={\(k_x\slash k_0\)},
+                      width=0.4\textwidth,
+                      xmin=0,
+                      xmax=2,
+                      mark repeat=20,
+                      legend pos=outer north east
+                  ]
+                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/plan/HOPPE_33.z_ex.P.csv};
+                  \addlegendentry{Exact};
+
+                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ibc0.te)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc0_TYPE_P_SUC_F.csv};
+                  \addlegendentry{IBC0};
+
+                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ibc3.te)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc3_TYPE_P_SUC_F.csv};
+                  \addlegendentry{IBC3};                  
+              \end{axis}
+          \end{tikzpicture}
+          \caption[Reproduction résultat Hoppe & Rahmat-Samii p.~33]{\(\eps = 4, \mu = 1, d=0.015\text{m}, f=1\text{GHz}\)}
+          \label{fig:imp_fourier:plan:hoppe:hoibc}
+      \end{figure}
