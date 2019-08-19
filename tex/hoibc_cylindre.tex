@@ -18,19 +18,20 @@
     \begin{equation}
       \hat{\LR}(n,k_z) =
       \begin{bmatrix}
-        -k_z^2 & \frac{n}{R_{ext}} k_z
+        k_z^2 & -\frac{n}{R_{ext}} k_z
         \\
-        \frac{n}{R_{ext}} k_z & -\left(\frac{n}{R_{ext}}\right)^2
+        -\frac{n}{R_{ext}} k_z & \left(\frac{n}{R_{ext}}\right)^2
       \end{bmatrix}
     \end{equation}
 
     On peut donc redéfinir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance. 
 
-    \begin{align}
-        \hat{\mZ}_{IBC}(n,k_z) = \left(I + b_1 \hat{\LD}(n,k_z) - b_2 \hat{\LR}(n,k_z) \right)^{-1} \left(a_0 I + a_1 \hat{\LD}(n,k_z) - a_2 \hat{\LR}(n,k_z)\right)
-    \end{align}
+    \begin{multline}
+        \hat{\mZ}_{IBC}(n,k_z) = \left(I + b_1 \hat{\LD}(n,k_z) - b_2 \hat{\LR}(n,k_z) \right)^{-1}\\
+        \left(a_0 I + a_1 \hat{\LD}(n,k_z) - a_2 \hat{\LR}(n,k_z)\right)
+    \end{multline}
 
-    Le calcul s'obtient alors de la même manière que dans le cas plan, par minimisation. 
+    Les coefficients s'obtiennent de la même manière par minimisation. 
     De plus, là encore il faut au moins considérer \((n\slash R_{ext})^2 + k_z^2\) supérieur à \(k_0^2\) pour prendre en compte des ondes planes homogènes. Dans le cas d'une incidence normale au cylindre (\(k_z = 0 \)), cela revient à prendre \(n\) au moins jusque \(k_0 R_{ext}\).
 
   \subsection{Résultats numériques}

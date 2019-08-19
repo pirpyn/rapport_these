@@ -50,7 +50,7 @@
       \\
       &=\vgrads{} \int_\RR\int_\RR \hat{\vE_t}(k_x,k_y,z) \cdot \vgrads{} e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y}
       \\
-      &=\int_\RR\int_\RR  \vhesss{}\left( e^{ik_xx + ik_yy} \right) \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
+      &=\int_\RR\int_\RR  \mhesss{}\left( e^{ik_xx + ik_yy} \right) \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
     \end{align}
 
     On définit \(\hat{\LD}\) l'opérateur matriciel tel que
@@ -136,13 +136,13 @@
                       mark repeat=20,
                       legend pos=outer north east
                   ]
-                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ex.P.csv};
+                  \addplot+ [color=black] table [col sep=semicolon, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ex.P.csv};
                   % \addlegendentry{Exact};
 
-                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ibc0.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc0_TYPE_P_SUC_F.csv};
+                  \addplot+ [color=blue] table [col sep=semicolon, x={s1}, y={Im(z_ibc0.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc0_TYPE_P_SUC_F.csv};
                   % \addlegendentry{IBC0};
 
-                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ibc3.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc3_TYPE_P_SUC_F.csv};
+                  \addplot+ [color=red] table [col sep=semicolon, x={s1}, y={Im(z_ibc3.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc3_TYPE_P_SUC_F.csv};
                   % \addlegendentry{IBC3};                  
               \end{axis}
           \end{tikzpicture}
@@ -157,13 +157,13 @@
                       mark repeat=20,
                       legend pos=outer north east
                   ]
-                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/plan/HOPPE_33.z_ex.P.csv};
+                  \addplot+ [color=black] table [col sep=semicolon, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/plan/HOPPE_33.z_ex.P.csv};
                   \addlegendentry{Exact};
 
-                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ibc0.te)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc0_TYPE_P_SUC_F.csv};
+                  \addplot+ [color=blue] table [col sep=semicolon, x={s1}, y={Im(z_ibc0.te)},color=] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc0_TYPE_P_SUC_F.csv};
                   \addlegendentry{IBC0};
 
-                  \addplot table [col sep=semicolon, x={s1}, y={Im(z_ibc3.te)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc3_TYPE_P_SUC_F.csv};
+                  \addplot+ [color=red] table [col sep=semicolon, x={s1}, y={Im(z_ibc3.te)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc3_TYPE_P_SUC_F.csv};
                   \addlegendentry{IBC3};                  
               \end{axis}
           \end{tikzpicture}
