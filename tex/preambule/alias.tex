@@ -1,5 +1,7 @@
 
-\newtheorem[style=M,bodystyle={\noindent}]{thm}{Théorème}[chapter]
+%\newtheorem[style=M,bodystyle={\noindent}]{thm}{Théorème}[chapter]
+\newtheorem{thm}{Théorème}[chapter]
+
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{defn}[thm]{Définition}
 \newtheorem{hyp}[thm]{Hypothèse}
@@ -87,8 +89,9 @@
 \newcommand{\Vect}[1]{\operatorname{Vect}\left\lbrace#1\right\rbrace}
 
 \newcommand{\Tr}{\operatorname{T_R}}
-\newcommand{\LD}{\operatorname{L_D}}
-\newcommand{\LR}{\operatorname{L_R}}
+\newcommand{\oI}{{\mathcal{I}}}
+\newcommand{\LD}{{\mathcal{L}_D}}
+\newcommand{\LR}{{\mathcal{L}_R}}
 
 \newcommand{\EFIE}{\operatorname{EFIE}}
 \newcommand{\MFIE}{\operatorname{MFIE}}
@@ -124,6 +127,9 @@
 \newcommand{\vdivs}{\vect{\nabla_s} \cdot}
 \newcommand{\vrots}{\vect{\nabla_s} \pvect}
 \newcommand{\vhesss}{\vect{\Hess_s}}
+
+\newcommand{\mhess}{\mat{\Hess}}
+\newcommand{\mhesss}{\mat{\Hess}_s}
 
 \newcommand{\tgrads}{{\vect{\operatorname{grad}}_t}}
 \newcommand{\trots}{{\vect{\operatorname{rot}}_t}}
