@@ -282,8 +282,7 @@
     \\
     + \frac{b_1}{a_1} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0+a_1\LD\right)
     \\
-    \left.
-    - \frac{b_2}{a_2} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LR \right)\left(a_0-a_2\LR\right) \vE_t\cdot \conj{\vE_t}
+    - \frac{b_2}{a_2} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0-a_2\LR\right) \vE_t\cdot \conj{\vE_t}
   \end{multline}
 
   On définit
@@ -296,7 +295,7 @@
     \\
     \vF_1 & = \left(\oI - a_2 \left( a_0 + a_1\LD\right)^{-1}\LR\right)^{-1} \vE_t
     \\
-    \vG_2 & = \left(\oI + a_1 \left( a_0 - a_2\LR\right)^{-1}\LD\right)^{-1} \vE_t
+    \vF_2 & = \left(\oI + a_1 \left( a_0 - a_2\LR\right)^{-1}\LD\right)^{-1} \vE_t
   \end{align}
 
   Alors immédiatement, on a 
@@ -335,27 +334,56 @@
     0 & =\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\LD\vG_1
   \end{align}
 
-  Si l'on suppose alors que \(\Re(a_0) \ge 0 \) et \(\Re(a_1) \le 0\), alors \(\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\) est injectif et donc on déduit que 
+  Si l'on suppose alors que \(\Re(a_0) \ge 0 \) et \(\Re(a_1) \le 0\) (resp. \(\Re(a_2)\le0\)), alors \(\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\) (resp. \(\left(\conj{a_0} \oI - \conj{a_2} \LR \right)\)) est injectif et donc on déduit que 
 
-  \begin{equation}
+  \begin{align}
     \LD\vG_1 = 0
-  \end{equation}
+    \\
+    \LR\vG_2 = 0
+  \end{align}
 
-  Or par définition \(\LR\conj{\vF_1} = \left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1\) donc
-  \begin{equation}
-    \LR\conj{\vF_1} = \conj{a_0}\vG_1
-  \end{equation}
+  Or par définition \(\LR\conj{\vF_1} = \left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1\) (resp. \(\LR\conj{\vF_2} = \left(\conj{a_0} \oI - \conj{a_2} \LR \right)\vG_2\)) donc
+  \begin{align}
+    \LR\conj{\vF_1} &= \conj{a_0}\vG_1
+    \\
+    \LD\conj{\vF_2} &= \conj{a_0}\vG_2    
+  \end{align}
+
+  On réinjecte ce résultat dans la définition de \(X\)
+
+  \begin{multline}
+    X = \int_\Gamma z \vD \cdot \left(\conj{a_0} \oI + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vD}
+    \\
+    + \frac{b_1}{a_1} ||\vF_1||^2 - \frac{b_1\conj{a_2}}{a_1\conj{a_0}} \LR\conj{\vF_1}\cdot\vF_1
+    \\
+    + \frac{b_2}{a_2} ||\vF_2||^2 + \frac{b_2\conj{a_1}}{a_2\conj{a_0}} \LD\conj{\vF_2}\cdot\vF_2
+  \end{multline}
 
   Les CSU sont alors
 
+  \begin{minipage}{0.5\textwidth}
   \begin{align}
-    \Re(\conj{a_0}z) \ge 0 \\
-    \Re(\conj{a_1}z) \le 0 \\
-    \Re(\conj{a_2}z) \le 0 \\
-    \Re(\frac{b_1}{a_1}) \ge 0 \\
-    \Re(\frac{b_2}{a_2}) \ge 0 \\
-    \Re(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}) \le 0 \\
-    \Re(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}) \le 0 \\
-    \Re(a_1) \le 0 \\
-    \Re(a_2) \le 0
+    \Re\left(\conj{a_0}z\right) \ge 0
+    \\
+    \Re\left(\conj{a_1}z\right) \le 0
+    \\
+    \Re\left(\conj{a_2}z\right) \le 0
+    \\
+    \Re\left(\frac{b_1}{a_1}\right) \ge 0
+    \\
+    \Re\left(\frac{b_2}{a_2}\right) \ge 0
   \end{align}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+  \begin{align}
+    \Re\left(a_0\right) \ge 0
+    \\
+    \Re\left(a_1\right) \le 0
+    \\
+    \Re\left(a_2\right) \le 0
+    \\
+    \Re\left(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}\right) \le 0
+    \\
+    \Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) \le 0
+  \end{align}
+  \end{minipage}
