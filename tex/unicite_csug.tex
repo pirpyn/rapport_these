@@ -10,7 +10,7 @@
     La dépendance temporelle est en \(e^{i\w t}\), et l'on identifie \(\vH \equiv \eta _0 \vH\).
   \end{tcolorbox}
 
-  Soit \((\vE,\vH)\) dans \((\Hrot(\OO))^3 \times (\Hrot(\OO))^3\).
+  Soit \((\vE,\vH)\) dans \((\Hrot(\OO)) \times (\Hrot(\OO))\).
 
   Alors \((\vE,\vH)\) sont solutions de Maxwell si
   \begin{align}
@@ -24,7 +24,7 @@
   % Où \(\Tr\) est l'opérateur de capacité \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{Y_R}\) la normale unitaire sortante à \(\Gamma(0,R)\).\\
 
   Les relations \eqref{eq:unicite:form_var:maxwell-E} et \eqref{eq:unicite:form_var:maxwell-H} permettent grâce aux formules de Green d'obtenir la forme variationnelle suivante :
-  Trouver \(\vE \in \left(\Hrot(\OO)\right)^3\), \(\forall \vect \phi \in \left(\Hrot(\OO)\right)^3\)
+  Trouver \(\vE \in \left(\Hrot(\OO)\right)\), \(\forall \vect \phi \in \left(\Hrot(\OO)\right)\)
   \[
     a(\vE,\vect\phi) = 0
   \]
@@ -36,9 +36,9 @@
    \end{align*}
 
   \begin{defn}[Coercivité]
-    Une forme sesquilinéaire \(a(u,v)\) est coercive dans \(\Hrot(\OO)\) si \(\exists \alpha > 0\) tel que
+    Une forme sesquilinéaire \(a(\vu,\vv)\) est coercive dans \(\Hrot(\OO)\) si \(\exists \alpha > 0\) tel que
     \[
-      |\Re(a(u,u))| \ge \alpha ||u||_{\Hrot(\OO)}^2 = \alpha \left( || \trot u ||_{L^2}^2 + || u ||_{L^2}^2\right) \, \forall u \in \Hrot(\OO)
+      |\Re(a(\vu,\vu))| \ge \alpha ||\vu||_{\Hrot(\OO)}^2 = \alpha \left( || \trot \vu ||_{L^2}^2 + || \vu ||_{L^2}^2\right) \, \forall \vu \in \Hrot(\OO)
     \]
    \end{defn}
 
@@ -72,6 +72,8 @@
     \end{enumerate}
   \end{hyp}
 
+\subsection{Cas des matériaux avec pertes}
+
   Si l'hypothèse \ref{hyp:unicite:form_var:hyp_coercivite} est vérifiée alors \(a\) est coercive ( \(\alpha = \min(-\Im(\mu)k_0^{-1},-\Im(\eps)k_0)\)) donc il y a unicité des solutions du problème de Maxwell avec conditions d'impédance.
 
   Comme en convention \(e^{i\omega t}\), le signe de \(\Im(\eps)\) et \(\Im(\mu)\) est négatif
@@ -83,7 +85,7 @@
     \end{equation}
   \end{defn}
 
-\subsubsection{Cas des matériaux sans pertes}
+\subsection{Cas des matériaux sans pertes}
 
   Si \(\Im(\mu) = \Im(\eps) = 0\), le résultat précédent n'est plus valable car \(\alpha = 0\).
 

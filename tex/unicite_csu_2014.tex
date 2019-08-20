@@ -1,12 +1,12 @@
 \section{CSU pour la CIOE de \cite{aubakirov_electromagnetic_2014}}
 
-  Soit la CIOE énoncé dans \cite{soudais_3d_2017} que l'on nommera CI3 :
+  Soit la CIOE énoncé dans \cite{aubakirov_electromagnetic_2014} que l'on nommera CI3 :
   \begin{equation}
     \label{eq:unicite:ci3:ci3}
-    ( 1 + b_1 L_D - b_2 L_R)\vE_t = (a_0 + a_1 L_D - a_2 L_R ) \vJ
+    ( 1 + b_1 \LD - b_2 \LR)\vE_t = (a_0 + a_1 \LD - a_2 \LR ) \vJ
   \end{equation}
 
-  On rappelle les expressions des opérateurs \gls{ope-LD} et \gls{ope-LR} pour des vecteurs tangents \(\vect U \in (C^\infty(\Gamma))^3\), \( \vect V \in (C^\infty(\Gamma))^3\) :
+  On rappelle les expressions des opérateurs \gls{ope-LD} et \gls{ope-LR} pour des vecteurs tangents \(\vect U \in (C^\infty(\Gamma^ 3)\), \( \vect V \in (C^\infty(\Gamma^3))\) :
   \begin{align*}
     \LD(\vect U) &= \tgrads \tdivs \vect U\\
     \LR(\vect V) &= \trots( \vn ( \vn \cdot \trots \vect V))\\
@@ -16,13 +16,13 @@
     sortante
     \begin{equation}
       \begin{matrix}
-        \forall \vect U \in (C^\infty(\Gamma))^3 ,& \LR(\LD(\vect U)) = \LD(\LR(\vect U)) = 0
+        \forall \vect U \in (C^\infty(\Gamma^3)) ,& \LR(\LD(\vect U)) = \LD(\LR(\vect U)) = 0
       \end{matrix}
     \end{equation}
   \end{prop}
   \begin{proof}
 
-    Soient un vecteur \textbf{tangent} \(\vect U \in (C^\infty(\Gamma))^3\).
+    Soient un vecteur \textbf{tangent} \(\vect U \in (C^\infty(\Gamma)^3)\).
 
     Montrons que \(\LR\LD = 0\). D’après \cite[p.~1029, A3.42]{bladel_electromagnetic_2007}, \(\vn \cdot \trots\tgrads f = 0\)
     \begin{align*}
@@ -38,10 +38,10 @@
   % Une relation importante qui découle des propriétés des opérateurs différentiels surfacique \secref{eq:op-LD-LR:prop:LDLR0} est :
 
   % \begin{equation}
-  % \int_\Gamma L_D(\vect U) \cdot L_R(\vect V) ds = 0 , \forall \vect U, \vect V \in (H^1(\OO))^3
+  % \int_\Gamma \LD(\vect U) \cdot \LR(\vect V) ds = 0 , \forall \vect U, \vect V \in (H^1(\OO))^3
   % \end{equation}
 
-  % Cette relation \Gamma'exprime sous forme forte par \(L_DL_R\equiv0\). Elle est là aussi symétrique entre les deux opérateurs.
+  % Cette relation \Gamma'exprime sous forme forte par \(\LD\LR\equiv0\). Elle est là aussi symétrique entre les deux opérateurs.
 
 \subsection{CSU de Stupfel}
 
@@ -50,46 +50,46 @@
   \begin{multline}
     \label{eq:unicite:ci3:csu3-1}
     \int_\Gamma \vJ\cdot\conj{\eqref{eq:unicite:ci3:ci3}}ds \Rightarrow
-    \int_\Gamma \vJ \cdot \conj{\vE_t} ds  + \conj{b_1} \int_\Gamma \vJ\cdot L_D\conj{\vE_t} ds - \conj{b_2} \int_\Gamma \vJ L_R\conj{\vE_t} ds \\
+    \int_\Gamma \vJ \cdot \conj{\vE_t} ds  + \conj{b_1} \int_\Gamma \vJ\cdot \LD\conj{\vE_t} ds - \conj{b_2} \int_\Gamma \vJ \LR\conj{\vE_t} ds \\
     = \conj{a_0} \int_\Gamma |\vJ|^2ds - \conj{a_1} \int_\Gamma |\tdivs \vJ|^2 ds - \conj{a_2} \int_\Gamma |\vn \cdot \trots \vJ|^2 ds
   \end{multline}
   \begin{multline}
     \label{eq:unicite:ci3:csu3-2}
     \int_\Gamma \eqref{eq:unicite:ci3:ci3} \cdot \conj{\vE_t} ds \Rightarrow
     \int_\Gamma |\vE_t|^2 ds  - b_1 \int_\Gamma | \tdivs \vE |^2 ds - b_2 \int_\Gamma | \vn \cdot \trots \vE_t|^2 ds \\
-    = a_0 \int_\Gamma \vJ\cdot \conj{\vE_t}ds + a_1 \int_\Gamma \conj{\vE_t} L_D \vJ ds - a_2 \int_\Gamma \conj{\vE_t} \cdot L_R \vJ ds
+    = a_0 \int_\Gamma \vJ\cdot \conj{\vE_t}ds + a_1 \int_\Gamma \conj{\vE_t} \LD \vJ ds - a_2 \int_\Gamma \conj{\vE_t} \cdot \LR \vJ ds
   \end{multline}
   \begin{multline}
     \label{eq:unicite:ci3:csu3-3}
-    \int_\Gamma \vJ \cdot L_R ( \conj{\eqref{eq:unicite:ci3:ci3}} ) ds \Rightarrow
-    \int_\Gamma \vJ \cdot L_R \conj{\vE_t} ds  - \conj{b_2} \int_\Gamma L_R \vJ \cdot L_R \conj{\vE_t} ds \\
-    =  \conj{a_0} \int_\Gamma |\vn \cdot \trots \vJ|^2ds - \conj{a_2} \int_\Gamma | L_R \vJ|^2 ds
+    \int_\Gamma \vJ \cdot \LR ( \conj{\eqref{eq:unicite:ci3:ci3}} ) ds \Rightarrow
+    \int_\Gamma \vJ \cdot \LR \conj{\vE_t} ds  - \conj{b_2} \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t} ds \\
+    =  \conj{a_0} \int_\Gamma |\vn \cdot \trots \vJ|^2ds - \conj{a_2} \int_\Gamma | \LR \vJ|^2 ds
   \end{multline}
   \begin{multline}
     \label{eq:unicite:ci3:csu3-4}
-    \int_\Gamma  L_R ( \eqref{eq:unicite:ci3:ci3} ) \cdot \conj{\vE_t} ds \Rightarrow
-    \int_\Gamma | \vn \cdot \trots \vE_t |^2 ds  - \conj{b_2} \int_\Gamma | L_R \vE_t|^2 ds \\
-    = a_0 \int_\Gamma \conj{\vE_t} L_R \vJ ds - a_2 \int_\Gamma L_R \conj{\vE_t} \cdot L_R \vJ ds
+    \int_\Gamma  \LR ( \eqref{eq:unicite:ci3:ci3} ) \cdot \conj{\vE_t} ds \Rightarrow
+    \int_\Gamma | \vn \cdot \trots \vE_t |^2 ds  - \conj{b_2} \int_\Gamma | \LR \vE_t|^2 ds \\
+    = a_0 \int_\Gamma \conj{\vE_t} \LR \vJ ds - a_2 \int_\Gamma \LR \conj{\vE_t} \cdot \LR \vJ ds
   \end{multline}
     \begin{multline}
     \label{eq:unicite:ci3:csu3-5}
-    \int_\Gamma \vJ \cdot L_D ( \conj{\eqref{eq:unicite:ci3:ci3}} ) ds \Rightarrow
-    \int_\Gamma \vJ \cdot L_D \conj{\vE_t} ds  + \conj{b_1} \int_\Gamma L_D \vJ \cdot L_D \conj{\vE_t} ds \\
-    = - \conj{a_0} \int_\Gamma |\tdivs \vJ|^2ds + \conj{a_1} \int_\Gamma | L_D \vJ|^2 ds
+    \int_\Gamma \vJ \cdot \LD ( \conj{\eqref{eq:unicite:ci3:ci3}} ) ds \Rightarrow
+    \int_\Gamma \vJ \cdot \LD \conj{\vE_t} ds  + \conj{b_1} \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t} ds \\
+    = - \conj{a_0} \int_\Gamma |\tdivs \vJ|^2ds + \conj{a_1} \int_\Gamma | \LD \vJ|^2 ds
   \end{multline}
   \begin{multline}
     \label{eq:unicite:ci3:csu3-6}
-    \int_\Gamma  L_D ( \eqref{eq:unicite:ci3:ci3} ) \cdot \conj{\vE_t} ds \Rightarrow
-    -\int_\Gamma | \tdivs \vE_t |^2 ds  + \conj{b_1} \int_\Gamma | L_D \vE_t|^2 ds \\
-    = a_0 \int_\Gamma \conj{\vE_t} L_D \vJ ds + a_1 \int_\Gamma L_D \conj{\vE_t} \cdot L_D \vJ ds
+    \int_\Gamma  \LD ( \eqref{eq:unicite:ci3:ci3} ) \cdot \conj{\vE_t} ds \Rightarrow
+    -\int_\Gamma | \tdivs \vE_t |^2 ds  + \conj{b_1} \int_\Gamma | \LD \vE_t|^2 ds \\
+    = a_0 \int_\Gamma \conj{\vE_t} \LD \vJ ds + a_1 \int_\Gamma \LD \conj{\vE_t} \cdot \LD \vJ ds
   \end{multline}
   On pose alors les définitions suivantes :
   \begin{align*}
     X&:= \int_\Gamma \vJ \cdot \conj{\vE_t} ds\\
-    Y_D&:= \int_\Gamma \vJ \cdot L_D \conj{\vE_t} ds
-    &Y_R&:= \int_\Gamma \vJ \cdot L_R \conj{\vE_t} ds\\
-    Z_D&:= \int_\Gamma L_D \vJ \cdot L_D \conj{\vE_t} ds
-    &Z_R&:= \int_\Gamma L_R \vJ \cdot L_R \conj{\vE_t} ds
+    Y_D&:= \int_\Gamma \vJ \cdot \LD \conj{\vE_t} ds
+    &Y_R&:= \int_\Gamma \vJ \cdot \LR \conj{\vE_t} ds\\
+    Z_D&:= \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t} ds
+    &Z_R&:= \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t} ds
   \end{align*}
 
   Les équations \eqref{eq:unicite:ci3:csu3-1} à \eqref{eq:unicite:ci3:csu3-4} sont équivalentes au système \(M_R X_R = F_R\) où
@@ -113,8 +113,8 @@
     \begin{bmatrix}
       \conj{a_0} \int_\Gamma |\vJ|^2ds - \conj{a_1} \int_\Gamma |\tdivs \vJ|^2 ds - \conj{a_2} \int_\Gamma |\vn \cdot \trots \vJ|^2 ds \\
       \int_\Gamma |\vE_t|^2 ds  - b_1 \int_\Gamma | \tdivs \vE |^2 ds - b_2 \int_\Gamma | \vn \cdot \trots \vE_t|^2 ds \\
-      \conj{a_0} \int_\Gamma |\vn \cdot \trots \vJ|^2ds - \conj{a_2} \int_\Gamma | L_R \vJ|^2 ds \\
-      \int_\Gamma | \vn \cdot \trots \vE_t |^2 ds  - \conj{b_2} \int_\Gamma | L_R \vE_t|^2 ds
+      \conj{a_0} \int_\Gamma |\vn \cdot \trots \vJ|^2ds - \conj{a_2} \int_\Gamma | \LR \vJ|^2 ds \\
+      \int_\Gamma | \vn \cdot \trots \vE_t |^2 ds  - \conj{b_2} \int_\Gamma | \LR \vE_t|^2 ds
     \end{bmatrix}
   \end{align*}
 
@@ -139,8 +139,8 @@
     \begin{bmatrix}
       \conj{a_0} \int_\Gamma |\vJ|^2ds - \conj{a_1} \int_\Gamma |\tdivs \vJ|^2 ds - \conj{a_2} \int_\Gamma |\vn \cdot \trots \vJ|^2 ds \\
       \int_\Gamma |\vE_t|^2 ds  - b_1 \int_\Gamma | \tdivs \vE |^2 ds - b_2 \int_\Gamma | \vn \cdot \trots \vE_t|^2 ds \\
-      -\conj{a_0} \int_\Gamma |\tdivs \vJ|^2ds + \conj{a_1} \int_\Gamma | L_R \vJ|^2 ds \\
-      -\int_\Gamma | \tdivs \vE_t |^2 ds  + \conj{b_1} \int_\Gamma | L_R \vE_t|^2 ds
+      -\conj{a_0} \int_\Gamma |\tdivs \vJ|^2ds + \conj{a_1} \int_\Gamma | \LR \vJ|^2 ds \\
+      -\int_\Gamma | \tdivs \vE_t |^2 ds  + \conj{b_1} \int_\Gamma | \LR \vE_t|^2 ds
     \end{bmatrix},\;
   \end{align*}
 
@@ -341,6 +341,10 @@
     \\
     \LR\vG_2 = 0
   \end{align}
+
+\begin{TODO}
+  En fait plus largement, il faut que \(\Re(a_0)\) et \(\Re(a_{1/2})\) soit de signes opposées. Mais il suffit d'avoir une des deux.
+\end{TODO}
 
   Or par définition \(\LR\conj{\vF_1} = \left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1\) (resp. \(\LR\conj{\vF_2} = \left(\conj{a_0} \oI - \conj{a_2} \LR \right)\vG_2\)) donc
   \begin{align}
