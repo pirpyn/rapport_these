@@ -3,10 +3,10 @@
 
   % On impose sur \(\Gamma\)  la relation \(\vE_t = Z \vJ\), où \(Z\) est un opérateur explicité ci-après.
 
-  Pour tous \(\forall u, v \in (\mathcal C^\infty(\Gamma))^3\) des fonctions vecteurs complexes tangentes à la surface \(\Gamma\), on définit \(L\) un opérateur antisymétrique négatif, i.e :
+  Pour tous \(\forall \vu, \vv \in (\mathcal C^\infty(\Gamma))\) des fonctions vecteurs complexes tangentes à la surface \(\Gamma\), on définit \(\LL\) un opérateur antisymétrique négatif, i.e :
   \begin{align*}
-    \int_\Gamma \vect u\cdot L(\conj{\vect v}) &= \int_\Gamma \conj{\vect v}\cdot L(\vect u)\\
-    \int_\Gamma \vect u\cdot L(\conj{\vect u}) &\le 0
+    \int_\Gamma \vu\cdot \LL(\conj{\vv}) &= \int_\Gamma \conj{\vv}\cdot \LL(\vu)\\
+    \int_\Gamma \vu\cdot \LL(\conj{\vu}) &\le 0
   \end{align*}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -35,11 +35,11 @@
     Soit \((a_0, a_1) \in \CC\times\CC\) tel que
 
     \[
-      \vE_t = (a_0 +a_1L)\vJ
+      \vE_t = (a_0 +a_1 \LL)\vJ
     \]
     On pose:
     \begin{align*}
-      F&:= || \vJ|| ^2 \ge 0  & G&:= -\int_\Gamma \vJ\cdot L\conj{\vJ} ds \ge 0
+      F&:= || \vJ|| ^2 \ge 0  & G&:= -\int_\Gamma \vJ\cdot \LL\conj{\vJ} ds \ge 0
     \end{align*}
 
     On a alors
@@ -59,21 +59,21 @@
 
     Soit \((a_0, a_1,b) \in \CC^3\) tel que
     \[
-      \vE_t = (1 + b L)^{-1} (a_0 + a_1 L) \vJ
+      \vE_t = (1 + b \LL)^{-1} (a_0 + a_1 \LL) \vJ
     \]
 
     \paragraph{Première méthode (\cite{stupfel_sufficient_2011})}~
 
-      On utilise l'identité \((a_1-a_0\conj{b}) = (a_1(1+\conj{b}L) - \conj{b}(a_0+a_1L))\):
+      On utilise l'identité \((a_1-a_0\conj{b}) = (a_1(1+\conj{b}\LL) - \conj{b}(a_0+a_1\LL))\):
 
       \begin{align*}
-        (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(1+\conj{b}L) \vJ\right)\cdot\conj{\vE_t} - \left(\conj{b}(a_0+a_1L)\vJ\right)\cdot\conj{\vE_t} ds\\
-        &= \int_\Gamma \left(a_1(1+\conj{b}L) \conj{\vE_t}\right)\cdot\vJ ds - \int_\Gamma \left(\conj{b}(a_0+a_1L)\vJ\right)\cdot\conj{\vE_t} ds\\
-        &= \int_\Gamma \left(a_1(\conj{a_0}+\conj{a_1}L) \conj{\vJ}\right)\cdot\vJ ds  - \int_\Gamma \left(\conj{b}(1+bL)\vE_t\right)\cdot\conj{\vE_t} ds\\
-        &= a_1\conj{a_0} ||\vJ||^2 + |a_1|^2 \int_\Gamma \vJ L \conj{\vJ} ds - \conj{b} ||\vE_t||^2 - |b|^2 \int_\Gamma \vE_t L \conj{\vE_t} ds
+        (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(1+\conj{b}\LL) \vJ\right)\cdot\conj{\vE_t} - \left(\conj{b}(a_0+a_1 \LL)\vJ\right)\cdot\conj{\vE_t} ds\\
+        &= \int_\Gamma \left(a_1(1+\conj{b}\LL) \conj{\vE_t}\right)\cdot\vJ ds - \int_\Gamma \left(\conj{b}(a_0+a_1 \LL)\vJ\right)\cdot\conj{\vE_t} ds\\
+        &= \int_\Gamma \left(a_1(\conj{a_0}+\conj{a_1}\LL) \conj{\vJ}\right)\cdot\vJ ds  - \int_\Gamma \left(\conj{b}(1+b \LL)\vE_t\right)\cdot\conj{\vE_t} ds\\
+        &= a_1\conj{a_0} ||\vJ||^2 + |a_1|^2 \int_\Gamma \vJ \LL \conj{\vJ} ds - \conj{b} ||\vE_t||^2 - |b|^2 \int_\Gamma \vE_t \LL \conj{\vE_t} ds
       \end{align*}
 
-      On note \(\Delta = a_1 -a_0\conj{b}\), \(F = -\int_\Gamma \vJ L \conj{\vJ} ds \ge 0 \), \(G = -\int_\Gamma \vE_t L \conj{\vE_t} ds \ge 0 \) .
+      On note \(\Delta = a_1 -a_0\conj{b}\), \(F = -\int_\Gamma \vJ \LL \conj{\vJ} ds \ge 0 \), \(G = -\int_\Gamma \vE_t \LL \conj{\vE_t} ds \ge 0 \) .
 
       Si on décompose les parties réelles et imaginaires de cette expression, on a
       \begin{align*}
@@ -93,17 +93,17 @@
       \subparagraph{Cas \(a_1\not=0\)}
         ~
 
-        En supposant \(a_1 \not=0\), on utilise l'identité \((a_0 + a_1 L)^{-1}(1 + b L)  = \frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1L)^{-1}\):
+        En supposant \(a_1 \not=0\), on utilise l'identité \((a_0 + a_1 \LL)^{-1}(1 + b \LL)  = \frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\):
         \[
-          X = \int_\Gamma \left(\left(\frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1L)^{-1}\right)\vE_t\right) \cdot \conj{\vE_t} ds
+          X = \int_\Gamma \left(\left(\frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\right)\vE_t\right) \cdot \conj{\vE_t} ds
         \]
 
         On pose:
         \begin{align*}
-          \vect D &:= (a_0 + a_1 L)^{-1}\vE_t & F&:= || \vect D || ^2 \ge 0  \\
-          G&:= -\int_\Gamma \vect D \cdot L\conj{\v{D}} ds \ge 0 & H &:= || \vE_t || ^2 \ge 0
+          \vect D &:= (a_0 + a_1 \LL)^{-1}\vE_t & F&:= || \vect D || ^2 \ge 0  \\
+          G&:= -\int_\Gamma \vect D \cdot \LL\conj{\v{D}} ds \ge 0 & H &:= || \vE_t || ^2 \ge 0
         \end{align*}
-        Comme \(\conj{E_t} = (\conj{a_0} + \conj{a_1}L)D\) alors \(\ds\int_\Gamma (a_0 +a_1 L) ^{-1}\vE_t\cdot \conj{\vE_t} ds = \conj{a_0} F - \conj{a_1} G\) et l'on peut alors écrire
+        Comme \(\conj{E_t} = (\conj{a_0} + \conj{a_1}\LL)D\) alors \(\ds\int_\Gamma (a_0 +a_1 \LL) ^{-1}\vE_t\cdot \conj{\vE_t} ds = \conj{a_0} F - \conj{a_1} G\) et l'on peut alors écrire
 
         \begin{equation}
           \label{eq:unicite:form_var:decomp_cgu_ci1_a1}
@@ -119,12 +119,12 @@
       \subparagraph{Cas \(a_1=0\)}
         ~
         \[
-          X = \int_\Gamma \left( \frac{1}{a_0}\left(1+bL\right)\vE_t\right) \cdot \conj{\vE_t} ds
+          X = \int_\Gamma \left( \frac{1}{a_0}\left(1+b\LL\right)\vE_t\right) \cdot \conj{\vE_t} ds
         \]
 
         On pose:
         \begin{align*}
-          F&:= \int_\Gamma | \vE_t | ^2 ds \ge 0 & G &:= -\int_\Gamma \vE_t \cdot L\conj{\vE_t} ds \ge 0
+          F&:= \int_\Gamma | \vE_t | ^2 ds \ge 0 & G &:= -\int_\Gamma \vE_t \cdot \LL\conj{\vE_t} ds \ge 0
         \end{align*}
 
         On a alors
@@ -151,12 +151,12 @@
     \end{bmatrix}
     \begin{bmatrix}
       \int_\Gamma \vJ \cdot \conj{\vE_t} \\
-      \int_\Gamma \vJ\cdot L\conj{\vE_t}
+      \int_\Gamma \vJ\cdot \LL\conj{\vE_t}
     \end{bmatrix}
     =
     \begin{bmatrix}
-      \conj{a_0}||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot L\conj{\vJ} \\
-      ||\vE_t||_2^2 + b\int_\Gamma \conj{\vE_t} \cdot L\vE_t
+      \conj{a_0}||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot \LL\conj{\vJ} \\
+      ||\vE_t||_2^2 + b\int_\Gamma \conj{\vE_t} \cdot \LL\vE_t
     \end{bmatrix}
   \]
 
@@ -164,7 +164,7 @@
   \[
   \begin{bmatrix}
     \int_\Gamma \vJ \cdot \conj{\vE_t} \\
-    \int_\Gamma \vJ\cdot L\conj{\vE_t}
+    \int_\Gamma \vJ\cdot \LL\conj{\vE_t}
   \end{bmatrix}
   =\frac{1}{\Delta}
   \begin{bmatrix}
@@ -172,14 +172,14 @@
     -a_0 & 1
   \end{bmatrix}
   \begin{bmatrix}
-    \conj{a_0}||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot L\conj{\vJ} \\
-    ||\vE_t||_2^2 + b\int_\Gamma \conj{\vE_t} \cdot L\vE_t
+    \conj{a_0}||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot \LL\conj{\vJ} \\
+    ||\vE_t||_2^2 + b\int_\Gamma \conj{\vE_t} \cdot \LL\vE_t
   \end{bmatrix}
   \]
   Donc
   \begin{align*}
     X &=  \frac{a_1\conj{a_0}}{\Delta}||\vJ^2||_2^2 - \frac{\conj{b}}{\Delta}||\vE_t||_2^2 \\
-    &~+\frac{|a_1|^2}{\Delta}\int_\Gamma\vJ\cdot L \conj{\vJ} - \frac{|b|^2}{\Delta}\int_\Gamma\conj{\vE_t}\cdot L\vE
+    &~+\frac{|a_1|^2}{\Delta}\int_\Gamma\vJ\cdot \LL \conj{\vJ} - \frac{|b|^2}{\Delta}\int_\Gamma\conj{\vE_t}\cdot \LL\vE
   \end{align*}
   Les CSU sont alors
 
@@ -197,20 +197,20 @@
     \end{bmatrix}
     \begin{bmatrix}
       \int_\Gamma \vJ \cdot \conj{\vE_t} \\
-      \int_\Gamma \vJ \cdot L\conj{\vE_t}
+      \int_\Gamma \vJ \cdot \LL\conj{\vE_t}
     \end{bmatrix}
     =
     \begin{bmatrix}
-      \conj{a_0}||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot L\conj{\vJ} \\
-      ||\vE_t||_2^2 + b\int_\Gamma \conj{\vE_t} \cdot L\vE_t
+      \conj{a_0}||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot \LL\conj{\vJ} \\
+      ||\vE_t||_2^2 + b\int_\Gamma \conj{\vE_t} \cdot \LL\vE_t
     \end{bmatrix}
   \]
 
   Le noyau de la matrice est alors \(\Vect{\begin{bmatrix}\conj{b}\\-1\end{bmatrix}}\) dont l'orthogonal est  \(\Vect{\begin{bmatrix}1\\\conj{b}\end{bmatrix}}\).
-  Pour tout \(\int_\Gamma \vJ\cdot L\conj{\vE_t} = \conj{b} \int_\Gamma \vJ \cdot \conj{\vE_t} \), on a unicité des solutions. On déduit alors que
+  Pour tout \(\int_\Gamma \vJ\cdot \LL\conj{\vE_t} = \conj{b} \int_\Gamma \vJ \cdot \conj{\vE_t} \), on a unicité des solutions. On déduit alors que
 
   \[
-    (1 + \conj{b}^2) X = \conj{a_0} ||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot L\conj{\vJ}
+    (1 + \conj{b}^2) X = \conj{a_0} ||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot \LL\conj{\vJ}
   \]
 
   Les CSU sont alors
