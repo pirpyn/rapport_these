@@ -1,0 +1,239 @@
+\section{CSU pour les CIOE de \cite{stupfel_sufficient_2011}}
+  La plupart des résultats de cette section ont déjà été montrés dans \cite{stupfel_sufficient_2011}.
+
+  % On impose sur \(\Gamma\)  la relation \(\vE_t = Z \vJ\), où \(Z\) est un opérateur explicité ci-après.
+
+  Pour tous \(\forall \vu, \vv \in (\mathcal C^\infty(\Gamma))\) des fonctions vecteurs complexes tangentes à la surface \(\Gamma\), on définit \(\LL\) un opérateur antisymétrique négatif, i.e :
+  \begin{align*}
+    \int_\Gamma \vu\cdot \LL(\conj{\vv}) &= \int_\Gamma \conj{\vv}\cdot \LL(\vu)\\
+    \int_\Gamma \vu\cdot \LL(\conj{\vu}) &\le 0
+  \end{align*}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection{Cas de la condition d'ordre 0}
+    Utilisons la condition d’impédance d'ordre 0, valable sur la surface \(\Gamma\):
+
+    Soit \(a_0 \in \CC\) tel que
+    \[
+      \vE_t = a_0 \vJ
+    \]
+
+    On a alors
+    \begin{equation*}
+    X = \conj{a_0}||\vJ||_{L_2(\Gamma)}^2
+    \end{equation*}
+
+    De \eqref{eq:unicite:form_var:cgu}, on déduit une \gls{acr-csu}:
+    \begin{equation}
+    \Re\left(a_0\right) \ge 0
+    \end{equation}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection{Cas de la condition d'ordre 01}
+    Utilisons la condition d’impédance d'ordre 01, valable sur la surface \(\Gamma\):
+
+    Soit \((a_0, a_1) \in \CC\times\CC\) tel que
+
+    \[
+      \vE_t = (a_0 +a_1 \LL)\vJ
+    \]
+    On pose:
+    \begin{align*}
+      F&:= || \vJ|| ^2 \ge 0  & G&:= -\int_\Gamma \vJ\cdot \LL\conj{\vJ} ds \ge 0
+    \end{align*}
+
+    On a alors
+    \begin{equation*}
+      X = \conj{a_0}F - \conj{a_1}G
+    \end{equation*}
+
+    De \eqref{eq:unicite:form_var:cgu}, on déduit des CSU suivantes:
+    \begin{align}
+      \Re\left(a_0\right) \ge 0\\
+      \Re\left(a_1\right) \le 0
+    \end{align}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection{Cas de la condition d'ordre 1}
+
+    Utilisons la condition d’impédance d'ordre 1, valable sur la surface \(\Gamma\):
+
+    Soit \((a_0, a_1,b) \in \CC^3\) tel que
+    \[
+      \vE_t = (1 + b \LL)^{-1} (a_0 + a_1 \LL) \vJ
+    \]
+
+    \paragraph{Première méthode (\cite{stupfel_sufficient_2011})}~
+
+      On utilise l'identité \((a_1-a_0\conj{b}) = (a_1(1+\conj{b}\LL) - \conj{b}(a_0+a_1\LL))\):
+
+      \begin{align*}
+        (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(1+\conj{b}\LL) \vJ\right)\cdot\conj{\vE_t} - \left(\conj{b}(a_0+a_1 \LL)\vJ\right)\cdot\conj{\vE_t} ds\\
+        &= \int_\Gamma \left(a_1(1+\conj{b}\LL) \conj{\vE_t}\right)\cdot\vJ ds - \int_\Gamma \left(\conj{b}(a_0+a_1 \LL)\vJ\right)\cdot\conj{\vE_t} ds\\
+        &= \int_\Gamma \left(a_1(\conj{a_0}+\conj{a_1}\LL) \conj{\vJ}\right)\cdot\vJ ds  - \int_\Gamma \left(\conj{b}(1+b \LL)\vE_t\right)\cdot\conj{\vE_t} ds\\
+        &= a_1\conj{a_0} ||\vJ||^2 + |a_1|^2 \int_\Gamma \vJ \LL \conj{\vJ} ds - \conj{b} ||\vE_t||^2 - |b|^2 \int_\Gamma \vE_t \LL \conj{\vE_t} ds
+      \end{align*}
+
+      On note \(\Delta = a_1 -a_0\conj{b}\), \(F = -\int_\Gamma \vJ \LL \conj{\vJ} ds \ge 0 \), \(G = -\int_\Gamma \vE_t \LL \conj{\vE_t} ds \ge 0 \) .
+
+      Si on décompose les parties réelles et imaginaires de cette expression, on a
+      \begin{align*}
+        \Re(\Delta)\Re(X) - \Im(\Delta)\Im(X) &= \Re(a_1\conj{a_0}) ||\vJ||^2 - \Re(\conj{b})||\vE_t||^2 -|a_1|^2 F + |b|^2 G \\
+        \Im(\Delta)\Re(X) + \Re(\Delta)\Im(X) &= \Im(a_1\conj{a_0}) ||\vJ||^2 - \Im(\conj{b})||\vE_t||^2
+      \end{align*}
+      La première relation nous empêche de conclure sur le signe de \(\Re(X)\) car il y des signes différents entre les deux derniers termes, sauf si nous imposons \(\Re( \Delta)= 0\) auquel cas, nous pouvons conclure grâce à la deuxième relation. Les CSU sont alors
+
+      \begin{align}
+        &\Re(\Delta) &= 0\\
+        &\Im(\Delta)\Im(b) &\ge 0\\
+        &\Im(\Delta)\Im(a_1\conj{a_0})&\ge 0
+      \end{align}
+
+    \paragraph{Deuxième méthode}
+      ~
+      \subparagraph{Cas \(a_1\not=0\)}
+        ~
+
+        En supposant \(a_1 \not=0\), on utilise l'identité \((a_0 + a_1 \LL)^{-1}(1 + b \LL)  = \frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\):
+        \[
+          X = \int_\Gamma \left(\left(\frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\right)\vE_t\right) \cdot \conj{\vE_t} ds
+        \]
+
+        On pose:
+        \begin{align*}
+          \vect D &:= (a_0 + a_1 \LL)^{-1}\vE_t & F&:= || \vect D || ^2 \ge 0  \\
+          G&:= -\int_\Gamma \vect D \cdot \LL\conj{\v{D}} ds \ge 0 & H &:= || \vE_t || ^2 \ge 0
+        \end{align*}
+        Comme \(\conj{E_t} = (\conj{a_0} + \conj{a_1}\LL)D\) alors \(\ds\int_\Gamma (a_0 +a_1 \LL) ^{-1}\vE_t\cdot \conj{\vE_t} ds = \conj{a_0} F - \conj{a_1} G\) et l'on peut alors écrire
+
+        \begin{equation}
+          \label{eq:unicite:form_var:decomp_cgu_ci1_a1}
+          X = \frac{b}{a_1}H   + \left(1-b\frac{a_0}{a_1}\right)\left(\conj{a_0} F - \conj{a_1} G\right)
+        \end{equation}
+        De \eqref{eq:unicite:form_var:cgu}, on déduit des CSU suivantes:
+        \begin{align}
+          \Re\left(\frac{b}{a_1}\right) \ge 0 \\
+          \Re\left(a_0\right) \ge 0 \\
+          \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_1}}{a_1}\right) \le 0
+        \end{align}
+
+      \subparagraph{Cas \(a_1=0\)}
+        ~
+        \[
+          X = \int_\Gamma \left( \frac{1}{a_0}\left(1+b\LL\right)\vE_t\right) \cdot \conj{\vE_t} ds
+        \]
+
+        On pose:
+        \begin{align*}
+          F&:= \int_\Gamma | \vE_t | ^2 ds \ge 0 & G &:= -\int_\Gamma \vE_t \cdot \LL\conj{\vE_t} ds \ge 0
+        \end{align*}
+
+        On a alors
+        \begin{equation}
+          \label{eq:unicite:form_var:decomp_cgu_ci1_a1_nul}
+          X = \frac{1}{a_0}F - \frac{b}{a_0}G
+        \end{equation}
+
+        De \eqref{eq:unicite:form_var:cgu}, on déduit des CSU suivantes:
+        \begin{align}
+          a_0 \not= 0\\
+          \Re\left(a_0\right) \ge 0\\
+          \Re\left(b\conj{a_0}\right) \le 0
+        \end{align}
+
+\subsection{Autres CSU}
+  Méthode \cite{stupfel_implementation_2015}
+
+  On cherche à résoudre le problème suivante:
+  \[
+    \begin{bmatrix}
+      1 & \conj{b} \\
+      a_0 & a_1
+    \end{bmatrix}
+    \begin{bmatrix}
+      \int_\Gamma \vJ \cdot \conj{\vE_t} \\
+      \int_\Gamma \vJ\cdot \LL\conj{\vE_t}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      \conj{a_0}||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot \LL\conj{\vJ} \\
+      ||\vE_t||_2^2 + b\int_\Gamma \conj{\vE_t} \cdot \LL\vE_t
+    \end{bmatrix}
+  \]
+
+  Si la matrice est inversible, on pose \(\Delta = a_1 - a_0\conj{b}\) et alors
+  \[
+  \begin{bmatrix}
+    \int_\Gamma \vJ \cdot \conj{\vE_t} \\
+    \int_\Gamma \vJ\cdot \LL\conj{\vE_t}
+  \end{bmatrix}
+  =\frac{1}{\Delta}
+  \begin{bmatrix}
+    a_1 & -\conj{b} \\
+    -a_0 & 1
+  \end{bmatrix}
+  \begin{bmatrix}
+    \conj{a_0}||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot \LL\conj{\vJ} \\
+    ||\vE_t||_2^2 + b\int_\Gamma \conj{\vE_t} \cdot \LL\vE_t
+  \end{bmatrix}
+  \]
+  Donc
+  \begin{align*}
+    X &=  \frac{a_1\conj{a_0}}{\Delta}||\vJ^2||_2^2 - \frac{\conj{b}}{\Delta}||\vE_t||_2^2 \\
+    &~+\frac{|a_1|^2}{\Delta}\int_\Gamma\vJ\cdot \LL \conj{\vJ} - \frac{|b|^2}{\Delta}\int_\Gamma\conj{\vE_t}\cdot \LL\vE
+  \end{align*}
+  Les CSU sont alors
+
+    \begin{align}
+    \Re\left(a_0\conj{a_1}\Delta\right) &\ge 0\\
+    \Re\left(b\Delta\right) &\le 0\\
+    \Re\left(|a_1|^2\Delta\right) &\le 0\\
+    \Re\left(|b|^2\Delta\right) &\ge 0
+  \end{align}
+  Si la matrice n'est pas inversible, alors on cherche à résoudre
+  \[
+    \begin{bmatrix}
+      1 & \conj{b} \\
+      a_0 & a_0\conj{b}
+    \end{bmatrix}
+    \begin{bmatrix}
+      \int_\Gamma \vJ \cdot \conj{\vE_t} \\
+      \int_\Gamma \vJ \cdot \LL\conj{\vE_t}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      \conj{a_0}||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot \LL\conj{\vJ} \\
+      ||\vE_t||_2^2 + b\int_\Gamma \conj{\vE_t} \cdot \LL\vE_t
+    \end{bmatrix}
+  \]
+
+  Le noyau de la matrice est alors \(\Vect{\begin{bmatrix}\conj{b}\\-1\end{bmatrix}}\) dont l'orthogonal est  \(\Vect{\begin{bmatrix}1\\\conj{b}\end{bmatrix}}\).
+  Pour tout \(\int_\Gamma \vJ\cdot \LL\conj{\vE_t} = \conj{b} \int_\Gamma \vJ \cdot \conj{\vE_t} \), on a unicité des solutions. On déduit alors que
+
+  \[
+    (1 + \conj{b}^2) X = \conj{a_0} ||\vJ||_2^2 + \conj{a_1}\int_\Gamma \vJ \cdot \LL\conj{\vJ}
+  \]
+
+  Les CSU sont alors
+
+  \begin{align}
+    \Re\left(\frac{\conj{a_0}}{1 + \conj{b}^2}\right) &\ge 0 \\
+    \Re\left(\frac{\conj{a_1}}{1 + \conj{b}^2}\right) &\le 0
+  \end{align}
+
+  % \begin{proof}
+  % Les 3 CSU originales sont
+
+  % \(\hfill
+  % \bullet \Re\left(\frac{b}{a_1}\right) \ge 0 \hfill
+  % \bullet \Re\left(\left(1-a_0\frac{b}{a_1}\right)\conj{a_0}\right) \ge 0 \hfill
+  % \bullet \Re\left(\left(1-a_0\frac{b}{a_1}\right)\conj{a_1}\right) \le 0
+  % \hfill\)
+
+  % On va séparer la deuxième CSU et faire apparaître la première CSU dont on va utiliser le résultat pour simplifier le résultat.
+  % \begin{align*}
+  % \Re\left(\left(1-a_0\frac{b}{a_1}\right)\conj{a_0}\right)& \ge 0 \\
+  % \Re\left(\conj{a_0}\right) &\ge \Re\left(|a_0|^2\frac{b}{a_1}\right)\\
+  % \Re\left(a_0\right) &\ge 0
+  % \end{align*}
+  % \end{proof}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
