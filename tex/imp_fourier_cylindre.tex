@@ -481,9 +481,9 @@
       \begin{equation}
         \begin{aligned}
           k_{3m} & \not = 0 \\
-          \det\left(\mA_{Jm}(r_{m-1})\right) & \not = 0 
+          \det\left(\mA_{Jm}(r_{m-1})\right) & \not = 0
           \\
-          \det\left(\mA_{Hm}(r_{m-1})\right) & \not = 0 
+          \det\left(\mA_{Hm}(r_{m-1})\right) & \not = 0
           \\
           \det\left(\mH_{Hm}(r_{m})\mA_{Hm}(r_{m-1})^{-1} - \mJ_{Hm}(r_{m})(\mA_{Jm}(r_{m-1}))^{-1}\right) &\not = 0
         \end{aligned}
@@ -620,8 +620,8 @@
             legend pos=outer north east
           ]
           \legend{TM,TE}
-          \addplot table [x={s}, y={imag(z.tm)},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
-          \addplot table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
+          \addplot [black] table [x={s}, y={imag(z.tm)},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
+          \addplot [black,dashed] table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
         \end{axis}
       \end{tikzpicture}
       \caption{\(\eps = 6, \mu = 1, r_0 = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}\)}
@@ -647,13 +647,13 @@
           % \addlegendentry{TM plan}
           % \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/plan/hoppe_p62.csv};
           % \addlegendentry{TE plan}
-          \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
+          \addplot [black] table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
           \addlegendentry{TM \(r_0=r_i\)}
-          \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
+          \addplot [black,dashed] table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
           \addlegendentry{TE \(r_0=r_i\)}
-          \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/cylindre/hoppe_p62_100_r.csv};
+          \addplot [black,mark=*] table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/cylindre/hoppe_p62_100_r.csv};
           \addlegendentry{TM \(r_0=100r_i\)}
-          \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/cylindre/hoppe_p62_100_r.csv};
+          \addplot [black,dashed,mark=*] table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/cylindre/hoppe_p62_100_r.csv};
           \addlegendentry{TE \(r_0=100r_i\)}
         \end{axis}
       \end{tikzpicture}
@@ -675,8 +675,8 @@
             legend pos=outer north east
           ]
           \legend{TM,TE}
-          \addplot table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
-          \addplot table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
+          \addplot [black] table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
+          \addplot [black,dashed] table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
         \end{loglogaxis}
       \end{tikzpicture}
       \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
