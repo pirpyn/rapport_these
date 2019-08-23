@@ -84,7 +84,12 @@
       \end{figure}
 
 
-    On remarque que le CIOE CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. En effet, le symbole de l'opérateur n'est pas un multiple de l'identité pour \(n=k_z=0\) au contraire du plan ( pour \(k_x=k_y=0\) ). Or la CIOE est multiple de l'identité pour ce couple. On subit donc cette erreur dans les résultats. Une CIOE plus intéressante serait alors la suivante, que l'on nomme CI6:
+    On remarque que le CIOE CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. 
+    En effet, le symbole de l'opérateur n'est pas un multiple de l'identité pour \(n=k_z=0\) au contraire du plan ( pour \(k_x=k_y=0\) ). 
+    Or la CIOE est multiple de l'identité pour ce couple. 
+    On subit donc cette erreur dans les résultats. 
+
+    Une CIOE plus intéressante, que l'on nomme CI6 et qui est inspirée de \cite[p.~60]{hoppe_impedance_1995}, serait:
 
     \begin{equation}
       \left(\oI + c_1\LD -c_2\LR\right)\vE_t = \left(\diag{a_1}{a_2} + b_1\LD - b_2 \LR \right)\vJ
@@ -140,4 +145,4 @@
           \label{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}
       \end{figure}
 
-      Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier.
+      Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier. On présente néanmoins dans la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} sa performance vis à vis de la CI3 sur le cylindre.

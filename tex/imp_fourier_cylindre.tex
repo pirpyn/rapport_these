@@ -1,5 +1,9 @@
 \section{Cas d'un objet cylindrique}
 
+  \begin{TODO}
+    Corriger erreur de signe dans le Z
+  \end{TODO}
+
   % On rappelle les formules des opérateurs \(\vdiv, \vrot\) en coordonnée cylindrique \((r,\theta,z)\).
   % \begin{align}
   %   \vrot \vect{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\vect{e_r} +
@@ -58,7 +62,10 @@
     On remarque que la méthode utilisée pour le plan aboutie à une équation différentielle à coefficients non constants de type \(r\ddr{r}{\vect{X}}(r,n,k_z) = \mat{M}(r,n,k_z)\vect{X}(r,n,k_z)\).
     On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice.
     %Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
-    On couple  les 2 équations du système de Maxwell pour aboutir à une équation sur \(\hat \vE\) seul:
+
+    Comme l'on cherche \(\hat \vE_t, \hat \vH_t\), on remarque que les 2\ieme composantes des équations de Maxwell permettent de déduire \(\hat\vE_t, \hat\vH_t\) de \( \hat E_z, \hat H_z\).
+
+    On couple les 2 équations du système de Maxwell pour aboutir à une équation sur \(\hat \vE\) seul:
 
     % \begin{align}
     %   \vrot \vrot \hat \vE &= \w^2\eps\mu \hat \vE
@@ -83,8 +90,6 @@
       \end{array}
       \right.
     \end{equation}
-
-    Comme l'on cherche \(\hat \vE_t, \hat \vH_t\), on remarque que les 2\ieme composantes des équations de Maxwell permettent de déduire \(\hat\vE_t, \hat\vH_t\) de \( \hat E_z, \hat H_z\)
 
     De la troisième  équation, on trouve pour \(r\not=0\)
     \begin{equation}
@@ -128,14 +133,14 @@
     \begin{align}
       \mJ_{E}(r,n,k_z) &=
       \begin{bmatrix}
-        -\frac{nk_z}{rk_3^2}J_n(k_3r) & -\frac{i\w\mu}{k_3}J_n'(k_3r)
+        -\frac{nk_z}{rk_3^2}J_n(k_3r) & -\frac{ik\eta}{k_3}J_n'(k_3r)
         \\
         J_n(k_3r) & 0
       \end{bmatrix}
       \\
       \mH_{E}(r,n,k_z) &=
       \begin{bmatrix}
-        -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & -\frac{i\w\mu}{k_3}H_n^{(2)}{}'(k_3r)
+        -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & -\frac{ik\eta}{k_3}H_n^{(2)}{}'(k_3r)
         \\
         H_n^{(2)}(k_3r) & 0
       \end{bmatrix}
@@ -144,14 +149,14 @@
       \begin{bmatrix}
         0 & -J_n(k_3r)
         \\
-        \frac{i\w\eps}{k_3}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
+        \frac{ik}{\eta k_3}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
       \end{bmatrix}
       \\
       \mH_{H}(r,n,k_z) &=
       \begin{bmatrix}
         0 & -H_n^{(2)}(k_3r)
         \\
-        \frac{i\w\eps}{k_3}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
+        \frac{ik}{\eta k_3}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
       \end{bmatrix}
     \end{align}
   \end{defn}
@@ -236,7 +241,9 @@
       \end{bmatrix}
     \end{equation}
 
-    À condition que \(\det(\mat{M}) = (\w^2\eps\mu-k_z^2)^2\) soit non nul, on peut déduire \(\vect{X}\):
+    On remarque que \(\mM\mM = \left(k_z^2 - \omega^2\eps\mu\right)\mI\) et donc que \(\det(\mat{M}) = \left(ik_3\right)^2\).
+
+    On suppose ce dernier non nul, on peut déduire \(\vect{X}\):
 
     \begin{equation}
       \begin{bmatrix}
@@ -245,7 +252,7 @@
         \hat{H_r}\\
         \hat{H_\theta}
       \end{bmatrix} =
-      \frac{1}{k_z^2 - \w^2\eps\mu}
+      \frac{1}{-k_3^2}
       \begin{bmatrix}
       0 & -ik_z & -i\w\mu & 0
       \\
@@ -278,13 +285,13 @@
     On dérive les fonctions de Bessel:
 
      \begin{align}
-      \hat{E_\theta} &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) - \frac{i\w\mu}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
+      \hat{E_\theta} &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) - \frac{ik\eta}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
       \\
       \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
       \\
       -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
       \\
-      \hat{H_\theta} &= \frac{i\w\eps}{k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
+      \hat{H_\theta} &= \frac{ik}{\eta k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
     \end{align}
 
     Et on obtient
@@ -368,9 +375,9 @@
 
       Or par définition des matrices,
       \begin{align}
-        \det(\mJ_E(r_0)) &= -\frac{i\w\mu}{k_3}J_n(k_3r_0)J_n'(k_3r_0)
+        \det(\mJ_E(r_0)) &= -\frac{ik\eta}{k_3}J_n(k_3r_0)J_n'(k_3r_0)
         \\
-        \det(\mH_E(r_0)) &= -\frac{i\w\mu}{k_3}H_n^{(2)}(k_3r_0)H_n^{(2)}{}'(k_3r_0)
+        \det(\mH_E(r_0)) &= -\frac{ik\eta}{k_3}H_n^{(2)}(k_3r_0)H_n^{(2)}{}'(k_3r_0)
       \end{align}
 
       D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(>-1\) sont tous réels.
