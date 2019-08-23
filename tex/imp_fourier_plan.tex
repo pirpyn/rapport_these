@@ -250,6 +250,17 @@
         Comme \(\det(\mC) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}\) alors une condition nécessaire pour trouver l'opérateur d'impédance est que \(k_3\) soit non nul ce qui aussi une hypothèse à vérifier car les valeurs propres doivent être non nulles.\footnote{\(k_3\) peut s'annuler pour des \(\eps,\mu\) réels.}.
 
     \end{proof}
+
+    On définit la matrice \(\hat{\mLR}\)\footnote{Nous verrons plus tard que ce choix est dicté par les opérateurs différentiel qui approchent le symbole.} telle que
+    \begin{equation}
+        \mC = \frac{1}{k\eta}\left(k^2\mI  - \hat{\mLR}\right)
+    \end{equation}
+
+    On définit la matrice \(\hat{\mLD}\)\footnote{Idem.} telle que
+    \begin{equation}
+        \mC^{-1} = \frac{\eta}{kk_3^2}\left(k^2\mI + \hat{\mLD}\right)
+    \end{equation}
+
     % On peut noter d'après \cite[eq.~(6)]{stupfel_2011}
 
     % \begin{equation}
@@ -347,27 +358,36 @@
             \begin{align}
                 \hat \mZ(k_x,k_y) &=  k_3 \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1} \mC^{-1}
                 \\
-                &= \frac{\eta^2}{k_3} \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1}
-                    \begin{bmatrix}
-                       \left(\w\eps-\frac{k_x^2}{\w\mu}\right)  & -\frac{k_xk_y}{\w\mu}\\
-                        -\frac{k_xk_y}{\w\mu} &  \left(\w\eps-\frac{k_y^2}{\w\mu}\right)
-                    \end{bmatrix}
+                &= \frac{\eta}{kk_3} \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1}\left(k^2\mI + \hat{\mLD}\right)
                 \\
-                &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
-                    \begin{bmatrix}
-                       k^2-k_x^2  & -k_xk_y\\
-                        -k_xk_y & k^2-k_y^2\\
-                    \end{bmatrix}
+                &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}\left(k^2\mI + \hat{\mLD}\right)
             \end{align}
 
         \end{proof}
         %On remarque que \(\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)\) et donc pour un matériau \((\eps,\mu,d)\) donné, l'opérateur d'impédance n'est pas inversible pour tous  \((k_x,k_y) \in \RR^2, n \in \NN\), \(k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2\), qui ne peut être vérifié que si \(\eps\mu\) est réel\footnote{Comme \(\eps, \mu\) sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}.
 
-        En pratique, on néglige toute les dépendance en \(y\) : \(k_y = 0\) ce qui revient à une propagation dans le plan \(xz\). Grâce à cette hypothèse, on trouve que \(\mC, \hat \mZ\) sont des matrices diagonales.
+        Dans l'article de \cite{marceaux_high-order_2000}, l'opérateur est exprimé comme
+        \begin{equation}
+            \vn \pvect \hat{\vE} = \hat{\mathfrak{Z}} \hat{\vH_t}
+        \end{equation}
 
-        De plus, on exprime souvent l'impédance selon la polarisation.
-        Dans le cas plan, le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x}\), tandis que le champ \(\vH\)-TM correspond à \({H_x} \vect{e_x}\) et le champ \(\vH\)-TE correspond à \({H_y} \vect{e_y}\).
-        Dans ce cas, le symbole \(\hat \mZ\) peut se réécrire comme
+        Pour une couche de matériau, cet article énonce que 
+        \begin{align}
+            \hat{\mathfrak{Z}} &= -i\eta\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right)
+        \end{align}
+
+        Sachant que dans le cadre des vecteurs tangents \(\vn\pvect \vx = \mA \vy_t\) est égal à \(\vx_t = -\det(\mA)\left(\mA^{-1}\right)^t\left(\vn\pvect\vy\right)\), alors en développant les calculs, on retrouve bien le résultat de l'article de \cite{marceaux_high-order_2000}.\\
+
+
+        En pratique, on néglige toute les dépendance en \(y\) ce qui revient à fixer \(k_y\) à \(0\). Grâce à cette hypothèse, on trouve que \(\mC\), et par conséquence \(\hat \mZ\), sont des matrices diagonales.
+
+        Puisque la propagation n'a alors plus lieu que dans le plan \(xOz\), on peut décomposer ce problème par polarisation.
+
+        C'est à dire que l'on suppose que le champ \(\vE\) (resp. \(\vH\)) est uniquement suivant \(\vect{e_y}\), on parle alors de polarisation Transverse Électrique (resp. Magnétique) ou abrégé TE (resp. TM).
+
+        Dans ce cas, le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x} + {E_z} \vect{e_z} \), tandis que le champ \(\vH\)-TM correspond à \({H_x} \vect{e_x} + {H_z} \vect{e_z}\) et le champ \(\vH\)-TE correspond à \({H_y} \vect{e_y}\).
+        
+        Alors le symbole \(\hat \mZ\) peut se réécrire comme
         \begin{equation}
             \hat \mZ =
             \begin{bmatrix}
@@ -400,9 +420,11 @@
                 \left(\w\eps_m-\frac{k_y^2}{\w\mu_m}\right) & \frac{k_xk_y}{\w\mu_m}\\
                 \frac{k_xk_y}{\w\mu_m} & \left(\w\eps_m-\frac{k_x^2}{\w\mu_m}\right)
             \end{bmatrix}
+            \\
+            &= \frac{1}{k_m\eta_m}\left(k_m^2 \mI - \hat{\mLR}\right)
         \end{align}
 
-        On rappelle que \(\det{\mC_m} = \frac{k_{3m}\eps_m^2}{\mu_m^2}\)
+        On rappelle que \(\det{\mC_m} = \frac{k_{3m}}{\eta_m^2}\) et \(\mC_m^{-1}= \frac{k_m\eta_m}{k_{3m}^2}\left(k_m^2 \mI + \hat{\mLD}\right)\).
 
         On définit aussi la profondeur de la couche \(m\), \(l_m = -\sum_{i=0}^{n-m} d_{n-i} \).
 
@@ -414,6 +436,7 @@
         \end{defn}
 
         \begin{thm}
+            \label{thm:imp:fourier:plan:multi_couche}
             Soit \(\hat \mZ_0(k_x,k_y) = \mat{0}_{\mathcal{M}_2(\CC)}\).
 
             Si pour tout \(0<m < n\)
@@ -611,11 +634,26 @@
 
         \end{proof}
 
+        Si l'on veut uniquement exprimer le symbole avec les opérateurs \(\hat{\mLD}, \hat{\mLR}\), on obtient à la relation suivante
+
+        \begin{multline}
+            \hat \mZ_m = \frac{\eta_m}{k_mk_{3m}}
+            \left(i\frac{k_{m}\eta_m}{k_{3m}}\tan\left(k_{3m}d_m\right)\left(k_m^2\mI+\hat{\mLD}\right) + \hat \mZ_{m-1}\right) \\
+            \left(\frac{k_{m}\eta_m}{k_{3m}}\left(k_m^2\mI+\hat{\mLD}\right) + i\tan\left(k_{3m}d_m\right)\hat \mZ_{m-1}\right)^{-1}
+            \left(k_m^2\mI+\hat{\mLD}\right)
+        \end{multline}  
+
+        Cette relation supprime deux produits de matrices et une inversion ce qui dans un code numérique peut s'avérer utile\footnote{Nous n'avons pas codé cette formule mais celle du théorème \ref{thm:imp:fourier:plan:multi_couche}}\footnote{Ce sont des matrices 2x2 donc la complexité numérique est faible et cet avantage est discutable.}.
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \subsection{Applications numériques}
+
+    \begin{TODO}
+        refaire les graphes, erreur de signe.
+    \end{TODO}
 
         La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte. On remarque que pour \(s=2\), \(k_3 = 0\) et donc \(\mC\) n'est pas inversible.
 
