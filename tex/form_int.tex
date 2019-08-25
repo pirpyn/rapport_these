@@ -60,7 +60,7 @@
 
     Soit \(\Gamma_h\) un maillage fermé de \(\Gamma\) en \(N_e\) éléments triangulaires. Soit \(N=\frac{3}{2}N_e\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
 
-    Soit \(T\) un triangle défini par un nœud \(N_1\) et deux vecteurs \(\vect{e_1}\) et \(\vect{e_2}\). On rappelle la relation entre l'aire du triangle et ces vecteurs 
+    Soit \(T\) un triangle défini par un nœud \(N_1\) et deux vecteurs \(\vect{e_1}\) et \(\vect{e_2}\). On rappelle la relation entre l'aire du triangle et ces vecteurs
     \begin{equation}
       2|T| = |\vect{e_1}\pvect\vect{e_2}|
     \end{equation}
@@ -150,7 +150,7 @@
       \end{proof}
 
       \begin{defn}
-        Pour tout \(\vect{U} \in \Hdiv(\Gamma_h)\), alors 
+        Pour tout \(\vect{U} \in \Hdiv(\Gamma_h)\), alors
         \begin{equation*}
           \vect{U} \in \Vect{\vect{\phi_1},\ldots,\vect{\phi_N}} \Leftrightarrow \exists \comp{u} = (u_1,\cdots,u_N)^t \in \RR^N, \vect{U}(\vx) = \sum_{j=1}^N u_j \phij(\vx)
         \end{equation*}
@@ -163,7 +163,7 @@
 
 
     \subsubsection[Fonctions de Nédélec p Hrot-conforme]{Fonctions de Nédelec \(\vect{p}\) \(\Hrot\)-conforme}
-    
+
       Une première famille est celle des \(\pj=-\vn\pvect\phij\), où la normale est défini dans un triangle. On les nomme fonctions de Nédélec car elles correspondent en 2D aux fonctions volumiques de Nédélec (voir \cite{nedelec_mixed_1980}).
 
       \begin{minipage}{\textwidth}
@@ -214,7 +214,7 @@
 
 
       \begin{defn}
-        Pour tout \(\vect{V} \in \Hrot(\Gamma_h)\), alors 
+        Pour tout \(\vect{V} \in \Hrot(\Gamma_h)\), alors
         \begin{equation*}
           \vect{V} \in \Vect{\vect{p_1},\ldots,\vect{p_N}} \Leftrightarrow \exists \comp{v} = (v_1,\cdots,v_N)^t \in \RR^N, \vect{V}(\vx) = \sum_{j=1}^N v_j \pj(\vx)
         \end{equation*}
@@ -224,7 +224,7 @@
 
       Ces fonctions ont été introduites par \cite[eq.~28]{bendali_boundary-element_1999}. Elles sont linéairement indépendantes. Nous modifions ces fonctions en les divisant par 2 fois l'aire du triangle. Ainsi, la matrice de passage (défini plus tard) sera plus simple.
 
-     
+
       \begin{minipage}{\textwidth}
         \begin{minipage}{0.329\textwidth}
             % Les commandes qui suivent servent pour les 4 prochains schémas
@@ -281,7 +281,7 @@
       \end{proof}
 
       \begin{defn}
-        Pour tout \(\vect{W} \in L^2(\Gamma_h)\), alors 
+        Pour tout \(\vect{W} \in L^2(\Gamma_h)\), alors
         \begin{equation*}
           \vect{W} \in \Vect{\vect{q_1},\ldots,\vect{q_N}} \Leftrightarrow \exists \comp{w} = (w_1,\cdots,w_N)^t \in \RR^N, \vect{W}(\vx) = \sum_{j=1}^N w_j \qj(\vx)
         \end{equation*}
@@ -323,11 +323,11 @@
       C'est un conséquence immédiate du produit triangulaire et que les fonctions de bases soient tangentes à la surface..
       \[
         \begin{aligned}
-          a\cdot (b \pvect c) &= c\cdot (a \pvect b) 
+          a\cdot (b \pvect c) &= c\cdot (a \pvect b)
           \\
           \pj \cdot \pii &= (\vn \pvect \phij) \cdot ( \vn \pvect \phii)
           \\
-          &= \phii \cdot ( (\vn \pvect \phij) \pvect \vn) 
+          &= \phii \cdot ( (\vn \pvect \phij) \pvect \vn)
           \\
           &= \phii \cdot \phij
         \end{aligned}
@@ -337,7 +337,7 @@
     \begin{defn}
       On désigne par \(\mM\) la matrice \(\mG{\phi}{\phi} = \mG{p}{p}\).
     \end{defn}
-    
+
     \begin{prop}
       Pour toute fonction \(\vect{W}(\vx) \in L^2(\Gamma_h)\cap\Vect{(\qj)_j}\),
 
@@ -380,7 +380,7 @@
     \begin{TODO}
       La projection selon Bruno est la suivante: on prend deux fonctions dans \(\Vect{\phij}\) et \(\Vect{\pj}\). On réalise le produit scalaire avec \(\vect{q_i}\). On suppose l'égalité \(\mG{q}{\phi}\comp{u} = \mG{q}{p}\comp{v}\). On en déduit \(\comp{u} = (\mG{q}{\phi})^{-1} \mG{q}{p} \comp{v} \). Le problème est de justifier l'égalité.
 
-      D'après Olivier, il faut faire comme suit: soit W dans \(\Vect{\qj}\). 
+      D'après Olivier, il faut faire comme suit: soit W dans \(\Vect{\qj}\).
       On définit U et V dans \(\Vect{\phij}\) et \(\Vect{\pj}\) tels que \(\comp{u}=\mG{\phi}{q}\comp{w}\) et  \(\comp{v}=\mG{p}{q}\comp{w}\).
       On suppose la deuxième inversible alors  \(\comp{u} =\mG{\phi}{q} (\mG{p}{q})^{-1} \comp{v} \). Le problème est que numériquement c'est plus compliqué car la première est multiple de l'identité.
 
@@ -426,7 +426,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  
+
 
   \subsection{Forme variationnelle des équations intégrales}
     Étant donné \((k,\vE^{inc},\vH^{inc})\) on cherche \(\vJ = \vn \pvect \vH, \vK = \vn \pvect \vE \in \Hdiv(\Gamma_h)^2\)  tel que

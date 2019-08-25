@@ -113,27 +113,19 @@
 
 % Permet de tracer des figures et schémas
 \usepackage{pgfplots}
-    \pgfplotscreateplotcyclelist{my cycle}{%
-        solid,          every mark/.append style={solid}, mark=*\\%
-        solid,          every mark/.append style={solid}, mark=square*\\%
-        dashed,         every mark/.append style={solid}, mark=triangle*\\%
-        dashed,         every mark/.append style={solid}, mark=diamond*\\%
-        densely dotted, every mark/.append style={solid},            mark=+\\%
-        densely dotted, every mark/.append style={solid},            mark=x\\%
-        dashdotted,     every mark/.append style={solid}, mark=*\\%
-        dashdotted,     every mark/.append style={solid}, mark=square*\\%
-        dotted,         every mark/.append style={solid},            mark=triangle*\\%
-        dotted,         every mark/.append style={solid}, mark=diamond*\\%
-        loosely dashed, every mark/.append style={solid}, mark=+*\\%
-        loosely dashed, every mark/.append style={solid}, mark=x\\%
-    }
+    % \pgfplotscreateplotcyclelist{my cycle}{%
+    %     thick, solid,          every mark/.append style={solid}\\%
+    % }
     \pgfplotsset{%
         compat=newest,
         height=7cm,
-        cycle list name=my cycle,
+        % cycle list name=my cycle,
         every axis legend/.style={
             cells={anchor=west},
             draw=black,
+        },
+        every axis plot/.append style={
+            line width=1pt
         },
     }
 

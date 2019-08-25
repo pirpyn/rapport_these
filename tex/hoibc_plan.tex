@@ -26,16 +26,18 @@
         \left(I + b_1 \LD{} -b_2 \LR \right)\vE_t = \left(a_0 I + a_1 \LD{} - a_2 \LR \right)(\vn \pvect \vH) & \forall x \in \Gamma
     \end{align}
 
+    Nous la nommons CI3.
+
     Pour approcher le symbole \(\hat{\mZ}\) que l'on a défini dans l'espace de Fourier, il convient donc d'exprimer les opérateurs \(\LD, \LR\) dans cet espace.
 
     % Pour cela, nous utiliserons la relation de \cite[Corollary 2,p. ~154]){yosida_functional_1995}:
 
-    Par définition, on a 
+    Par définition, on a
     \begin{align}
       \LD \vE_t & = \vgrads{} \vdivs{} \vE_t
     \end{align}
 
-    Or 
+    Or
 
     \begin{align}
       \vE_t(x,y,z) & = \int_\RR\int_\RR \hat{\vE_t}(k_x,k_y,z)e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y}
@@ -45,31 +47,31 @@
     donc
 
     \begin{align}
-      \LD \vE_t 
-      & = \vgrads{} \vdivs{} \vE_t 
+      \LD \vE_t
+      & = \vgrads{} \vdivs{} \vE_t
       \\
       &=\vgrads{} \int_\RR\int_\RR \hat{\vE_t}(k_x,k_y,z) \cdot \vgrads{} e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y}
       \\
-      &=\int_\RR\int_\RR  \mhesss{}\left( e^{ik_xx + ik_yy} \right) \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
+      &=\int_\RR \int_\RR \vhesss{}\left(\left( e^{ik_xx + ik_yy} \right) \hat{\vE_t}\right)(k_x,k_y,z)\dd{k_x}\dd{k_y}
     \end{align}
 
     On définit \(\hat{\LD}\) l'opérateur matriciel tel que
     \begin{align}
-      \LD \vE_t 
+      \LD \vE_t
       &= \int_\RR\int_\RR \hat{\LD} \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
     \end{align}
 
     \begin{equation}
       \hat{\LD}(k_x,k_y) = -
       \begin{bmatrix}
-        k_x^2 & k_x k_y 
+        k_x^2 & k_x k_y
         \\
-        k_y k_y & k_y^2
+        k_x k_y & k_y^2
       \end{bmatrix}
     \end{equation}
 
 
-    Par définition, on a 
+    Par définition, on a
     \begin{align}
       \LR \vE_t & = \vrots{} \vrots{} \vE_t
     \end{align}
@@ -77,34 +79,36 @@
     donc
 
     \begin{align}
-      \LR \vE_t 
-      & = \vrots{} \vrots{} \vE_t 
+      \LR \vE_t
+      & = \vrots{} \vrots{} \vE_t
       \\
       &=\vrots{} \int_\RR\int_\RR \vgrads{}\left(e^{ik_xx + ik_yy}\right) \pvect \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
       \\
-      &= \int_\RR\int_\RR \left(\vhesss - \vlapls\right) \left(e^{ik_xx + ik_yy}\right) \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
+      &= \int_\RR \int_\RR \left(\vhesss - \vlapls\right) \left(\left(e^{ik_xx + ik_yy}\right) \hat{\vE_t}\right)(k_x,k_y,z)\dd{k_x}\dd{k_y}
       \\
     \end{align}
 
     On définit \(\hat{\LR}\) l'opérateur matriciel tel que
     \begin{align}
-      \LR \vE_t 
+      \LR \vE_t
       &= \int_\RR\int_\RR \hat{\LR} \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
     \end{align}
 
     \begin{equation}
-      \hat{\LR}(k_x,k_y) = 
+      \hat{\LR}(k_x,k_y) =
       \begin{bmatrix}
-        k_y^2 & -k_x k_y 
+        k_y^2 & -k_x k_y
         \\
-        -k_y k_y & k_x^2
+        -k_x k_y & k_x^2
       \end{bmatrix}
     \end{equation}
 
-    On peut donc définir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance. 
+    On peut donc définir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance.
 
     \begin{multline}
-        \hat{\mZ}_{IBC}(k_x,k_y) = \left(I + b_1 \hat{\LD}(k_x,k_y) - b_2 \hat{\LR}(k_x,k_y) \right)^{-1} \\ \left(a_0 I + a_1 \hat{\LD}(k_x,k_y) - a_2 \hat{\LR}(k_x,k_y)\right)
+        \hat{\mZ}_{IBC}(k_x,k_y) = \left(I + b_1 \hat{\LD}(k_x,k_y) - b_2 \hat{\LR}(k_x,k_y) \right)^{-1}
+        \\
+        \left(a_0 I + a_1 \hat{\LD}(k_x,k_y) - a_2 \hat{\LR}(k_x,k_y)\right)
     \end{multline}
 
     Pour calculer les coefficients de la CIOE, il faut minimiser la distance entre le symbole \(\hat{\mZ}(k_x,k_y)\) et \(\hat{\mZ}_{IBC}(k_x,k_y)\) \footnote{La distance est la norme de Frobenius}. Évidemment, il existe une infinité de combinaisons pour un couple \((k_x,k_y)\). Nous avons choisis de nous donner un grand nombre de couples et de minimiser au sens des moindres carrés.
@@ -136,14 +140,14 @@
                       mark repeat=20,
                       legend pos=outer north east
                   ]
-                  \addplot+ [color=black] table [col sep=semicolon, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ex.P.csv};
+                  \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ex.P.csv};
                   % \addlegendentry{Exact};
 
-                  \addplot+ [color=blue] table [col sep=semicolon, x={s1}, y={Im(z_ibc0.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc0_TYPE_P_SUC_F.csv};
-                  % \addlegendentry{IBC0};
+                  \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.tm)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ibc.IBC_ibc0_TYPE_P_SUC_F.csv};
+                  % \addlegendentry{CI0};
 
-                  \addplot+ [color=red] table [col sep=semicolon, x={s1}, y={Im(z_ibc3.tm)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc3_TYPE_P_SUC_F.csv};
-                  % \addlegendentry{IBC3};                  
+                  \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.tm)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
+                  % \addlegendentry{CI3};
               \end{axis}
           \end{tikzpicture}
           \begin{tikzpicture}[scale=1]
@@ -157,14 +161,14 @@
                       mark repeat=20,
                       legend pos=outer north east
                   ]
-                  \addplot+ [color=black] table [col sep=semicolon, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/plan/HOPPE_33.z_ex.P.csv};
+                  \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ex.P.csv};
                   \addlegendentry{Exact};
 
-                  \addplot+ [color=blue] table [col sep=semicolon, x={s1}, y={Im(z_ibc0.te)},color=] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc0_TYPE_P_SUC_F.csv};
-                  \addlegendentry{IBC0};
+                  \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.te)},color=] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ibc.IBC_ibc0_TYPE_P_SUC_F.csv};
+                  \addlegendentry{CI0};
 
-                  \addplot+ [color=red] table [col sep=semicolon, x={s1}, y={Im(z_ibc3.te)}] {tikz/csv/impedance/plan/HOPPE_33.z_ci.IBC_ibc3_TYPE_P_SUC_F.csv};
-                  \addlegendentry{IBC3};                  
+                  \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.te)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
+                  \addlegendentry{CI3};
               \end{axis}
           \end{tikzpicture}
           \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~33]{\(\eps = 4, \mu = 1, d=0.015\text{m}, f=1\text{GHz}\)}
@@ -184,14 +188,14 @@
                       mark repeat=22,
                       legend pos=outer north east
                   ]
-                  \addplot+ [color=black] table [col sep=semicolon, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/plan/ICEAA_11.z_ex.P.csv};
+                  \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
                   % \addlegendentry{Exact};
 
-                  \addplot+ [color=blue] table [col sep=semicolon, x={s1}, y={Im(z_ibc0.tm)}] {tikz/csv/impedance/plan/ICEAA_11.z_ci.IBC_ibc0_TYPE_P_SUC_F.csv};
-                  % \addlegendentry{IBC0};
+                  \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.tm)}] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ibc.IBC_ibc0_TYPE_P_SUC_F.csv};
+                  % \addlegendentry{CI0};
 
-                  \addplot+ [color=red] table [col sep=semicolon, x={s1}, y={Im(z_ibc3.tm)}] {tikz/csv/impedance/plan/ICEAA_11.z_ci.IBC_ibc3_TYPE_P_SUC_F.csv};
-                  % \addlegendentry{IBC3};                  
+                  \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.tm)}] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
+                  % \addlegendentry{CI3};
               \end{axis}
           \end{tikzpicture}
           \begin{tikzpicture}[scale=1]
@@ -205,14 +209,14 @@
                       mark repeat=22,
                       legend pos=outer north east
                   ]
-                  \addplot+ [color=black] table [col sep=semicolon, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/plan/ICEAA_11.z_ex.P.csv};
+                  \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
                   \addlegendentry{Exact};
 
-                  \addplot+ [color=blue] table [col sep=semicolon, x={s1}, y={Im(z_ibc0.te)},color=] {tikz/csv/impedance/plan/ICEAA_11.z_ci.IBC_ibc0_TYPE_P_SUC_F.csv};
-                  \addlegendentry{IBC0};
+                  \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.te)},color=] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ibc.IBC_ibc0_TYPE_P_SUC_F.csv};
+                  \addlegendentry{CI0};
 
-                  \addplot+ [color=red] table [col sep=semicolon, x={s1}, y={Im(z_ibc3.te)}] {tikz/csv/impedance/plan/ICEAA_11.z_ci.IBC_ibc3_TYPE_P_SUC_F.csv};
-                  \addlegendentry{IBC3};                  
+                  \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.te)}] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
+                  \addlegendentry{CI3};
               \end{axis}
           \end{tikzpicture}
             \caption[CIOE sur empilement de P.~Soudais p.~11]{\(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
@@ -220,3 +224,89 @@
       \end{figure}
 
       On remarque que la CI3 capture très bien l'asymptote, grâce aux termes \(b_1\) et \(b_2\) qui annulent le dénominateur. C'est donc une bonne condition d'impédance pour des matériaux sans pertes, où une ou plusieurs asymptotes peuvent apparaître.
+
+  \subsection{Lien avec les CIOE de \cite{stupfel_implementation_2015}}
+
+    Dans cet article sont introduites les CIOE
+    \begin{itemize}
+      \item CI01
+        \begin{equation}
+          \vE_t = \left(\diag{a_{01}}{a_{02}} + a_1\LL\right)\vJ
+        \end{equation}
+      \item CI1
+        \begin{equation}
+          \left(\oI + b\LL \right)\vE_t = \left(\diag{a_{01}}{a_{02}} + a_1\LL\right)\vJ
+        \end{equation}
+    \end{itemize}
+
+    L'opérateur \(\LL\) est le laplacien tangentiel \(\lapls\) fois l'identité (\(\LL = \lapls{}\oI\)). Le multiplicateur de Fourier associé est la matrice
+    \begin{equation}
+      L = -
+      \begin{bmatrix}
+        k_x^2 + k_y^2 & 0
+        \\
+        0 & k_x^2 + k_y^2
+      \end{bmatrix}
+    \end{equation}
+
+    Nous présentons quelques résultats avec ces CIOE, mais la CIOE CI3 étant plus performante, les CIOE CI01 et CI1 ne seront pas exploitées.
+
+    \begin{figure}[!hbt]
+      \centering
+      \begin{tikzpicture}[scale=1]
+          \begin{axis}[
+                  title={Polarisation TM},
+                  ylabel={\(|\hat{\mZ}(k_x,0)|\)},
+                  xlabel={\(k_x\slash k_0\)},
+                  width=0.4\textwidth,
+                  xmin=0,
+                  xmax=1,
+                  ymin=0.15,
+                  ymax=0.25,
+                  mark repeat=22,
+                  legend pos=outer north east
+              ]
+              \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(z_ex.tm)}] {tikz/csv/impedance/M1/M1.z_ex.P.csv};
+
+              \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Abs(z_ibc0.tm)}] {tikz/csv/impedance/M1/M1.z_ibc.IBC_ibc0_TYPE_P_SUC_F.csv};
+
+              \addplot [color=green!50!black,mark=pentagon*] table [col sep=comma, x={s1}, y={Abs(z_ibc01.tm)}] {tikz/csv/impedance/M1/M1.z_ibc.IBC_ibc01_TYPE_P_SUC_F.csv};
+
+              \addplot [color=orange,mark=*] table [col sep=comma, x={s1}, y={Abs(z_ibc1.tm)}] {tikz/csv/impedance/M1/M1.z_ibc.IBC_ibc1_TYPE_P_SUC_F.csv};
+
+              \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.tm)}] {tikz/csv/impedance/M1/M1.z_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
+          \end{axis}
+      \end{tikzpicture}
+      \begin{tikzpicture}[scale=1]
+          \begin{axis}[
+                  title={Polarisation TE},
+                  ylabel={},
+                  xlabel={\(k_x\slash k_0\)},
+                  width=0.4\textwidth,
+                  xmin=0,
+                  xmax=1,
+                  ymin=0.15,
+                  ymax=0.25,
+                  mark repeat=22,
+                  legend pos=outer north east
+              ]
+              \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(z_ex.te)}] {tikz/csv/impedance/M1/M1.z_ex.P.csv};
+              \addlegendentry{Exact};
+
+              \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Abs(z_ibc0.te)},color=] {tikz/csv/impedance/M1/M1.z_ibc.IBC_ibc0_TYPE_P_SUC_F.csv};
+              \addlegendentry{CI0};
+
+              \addplot [color=green!50!black,mark=pentagon*] table [col sep=comma, x={s1}, y={Abs(z_ibc01.te)}] {tikz/csv/impedance/M1/M1.z_ibc.IBC_ibc01_TYPE_P_SUC_F.csv};
+              \addlegendentry{CI01};
+
+              \addplot [color=orange,mark=*] table [col sep=comma, x={s1}, y={Abs(z_ibc1.te)}] {tikz/csv/impedance/M1/M1.z_ibc.IBC_ibc1_TYPE_P_SUC_F.csv};
+              \addlegendentry{CI1};
+
+              \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.te)}] {tikz/csv/impedance/M1/M1.z_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
+              \addlegendentry{CI3};
+
+          \end{axis}
+      \end{tikzpicture}
+        \caption[CIOE sur empilement de B.~Stupfel p.~1661]{\(\eps = 1-i, \mu = 1, d=0.05\text{m}, f=0.2\text{GHz}\)}
+      \label{fig:imp_fourier:plan:stupfel:hoibc}
+    \end{figure}
