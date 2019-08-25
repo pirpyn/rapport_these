@@ -1,9 +1,5 @@
 \section{Cas d'un objet cylindrique}
 
-  \begin{TODO}
-    Corriger erreur de signe dans le Z
-  \end{TODO}
-
   % On rappelle les formules des opérateurs \(\vdiv, \vrot\) en coordonnée cylindrique \((r,\theta,z)\).
   % \begin{align}
   %   \vrot \vect{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\vect{e_r} +
@@ -133,14 +129,14 @@
     \begin{align}
       \mJ_{E}(r,n,k_z) &=
       \begin{bmatrix}
-        -\frac{nk_z}{rk_3^2}J_n(k_3r) & -\frac{ik\eta}{k_3}J_n'(k_3r)
+        -\frac{nk_z}{rk_3^2}J_n(k_3r) & \frac{ik\eta}{k_3}J_n'(k_3r)
         \\
         J_n(k_3r) & 0
       \end{bmatrix}
       \\
       \mH_{E}(r,n,k_z) &=
       \begin{bmatrix}
-        -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & -\frac{ik\eta}{k_3}H_n^{(2)}{}'(k_3r)
+        -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & \frac{ik\eta}{k_3}H_n^{(2)}{}'(k_3r)
         \\
         H_n^{(2)}(k_3r) & 0
       \end{bmatrix}
@@ -149,14 +145,14 @@
       \begin{bmatrix}
         0 & -J_n(k_3r)
         \\
-        \frac{ik}{\eta k_3}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
+        -\frac{ik}{\eta k_3}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
       \end{bmatrix}
       \\
       \mH_{H}(r,n,k_z) &=
       \begin{bmatrix}
         0 & -H_n^{(2)}(k_3r)
         \\
-        \frac{ik}{\eta k_3}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
+        -\frac{ik}{\eta k_3}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
       \end{bmatrix}
     \end{align}
   \end{defn}
@@ -200,13 +196,13 @@
     \begin{equation}
       \left\lbrace
       \begin{matrix}
-        -ik_z\hat{E_\theta} - i\w\mu \hat{H_r} = -\frac{in}{r}\hat{E_z}
+        -ik_z\hat{E_\theta} + i\w\mu \hat{H_r} = -\frac{in}{r}\hat{E_z}
         \\
-        ik_z\hat{E_r} - i\w\mu \hat{H_\theta} = \ddr{r}{\hat{E_z}}
+        ik_z\hat{E_r} + i\w\mu \hat{H_\theta} = \ddr{r}{\hat{E_z}}
         \\
-        -i\w\eps \hat{E_r} + ik_z \hat{H_\theta} = \frac{in}{r}\hat{H_z}
+        i\w\eps \hat{E_r} + ik_z \hat{H_\theta} = \frac{in}{r}\hat{H_z}
         \\
-        -i\w\eps \hat{E_\theta} - ik_z \hat{H_r} = -\ddr{r}{\hat{H_z}}
+        i\w\eps \hat{E_\theta} - ik_z \hat{H_r} = -\ddr{r}{\hat{H_z}}
       \end{matrix}
       \right.
     \end{equation}
@@ -215,13 +211,13 @@
     \begin{equation}
       \mat{M} =
       \begin{bmatrix}
-      0 & -ik_z & -i\w\mu & 0
+      0 & -ik_z & i\w\mu & 0
       \\
-      ik_z & 0 & 0 & -i\w\mu
+      ik_z & 0 & 0 & i\w\mu
       \\
-      -i\w\eps & 0 & 0 & ik_z
+      i\w\eps & 0 & 0 & ik_z
       \\
-      0 & -i\w\eps & -ik_z & 0
+      0 & i\w\eps & -ik_z & 0
       \end{bmatrix}
       \,
       \vect{X} =
@@ -254,13 +250,13 @@
       \end{bmatrix} =
       \frac{1}{-k_3^2}
       \begin{bmatrix}
-      0 & -ik_z & -i\w\mu & 0
+      0 & -ik_z & i\w\mu & 0
       \\
-      ik_z & 0 & 0 & -i\w\mu
+      ik_z & 0 & 0 & i\w\mu
       \\
-      -i\w\eps & 0 & 0 & ik_z
+      i\w\eps & 0 & 0 & ik_z
       \\
-      0 & -i\w\eps & -ik_z & 0
+      0 & i\w\eps & -ik_z & 0
       \end{bmatrix}
       \begin{bmatrix}
         -\frac{in}{r}\hat{E_z}\\
@@ -273,28 +269,29 @@
     On extrait alors \(\hat{E_\theta}, \hat{H_\theta}\) pour obtenir les champs tangentielles à \(\vect{e_r}\) en tout point, sachant déjà \(\hat{E_z}, \hat{H_z}\).
 
     \begin{align}
-      \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} + i\w\mu\ddr{r}{\hat{H_z}}\right)
+      \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} - i\w\mu\ddr{r}{\hat{H_z}}\right)
       \\
       \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
       \\
       -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
       \\
-      \hat{H_\theta} &= \frac{1}{k_3^2}\left(i\w\eps\ddr{r}{\hat{E_z}} - \frac{nk_z}{r}\hat{H_z}\right)
+      \hat{H_\theta} &= -\frac{1}{k_3^2}\left(i\w\eps\ddr{r}{\hat{E_z}} + \frac{nk_z}{r}\hat{H_z}\right)
     \end{align}
 
     On dérive les fonctions de Bessel:
 
      \begin{align}
-      \hat{E_\theta} &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) - \frac{ik\eta}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
+      \hat{E_\theta} &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) + \frac{ik\eta}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
       \\
       \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
       \\
       -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
       \\
-      \hat{H_\theta} &= \frac{ik}{\eta k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
+      \hat{H_\theta} &= -\frac{ik}{\eta k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
     \end{align}
 
     Et on obtient
+
 
     \begin{subequations}
       \label{eq:imp_fourier:cylindre:champs}
@@ -448,14 +445,14 @@
         \\
         \mJ_{Em}(r) &=
           \begin{bmatrix}
-            -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r) & -\frac{i\w\mu_m}{k_{3m}}J_n'(k_{3m}r)
+            -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r) & \frac{i\w\mu_m}{k_{3m}}J_n'(k_{3m}r)
             \\
             J_n(k_{3m}r) & 0
           \end{bmatrix}
         \\
         \mH_{Em}(r) &=
           \begin{bmatrix}
-            -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r) & -\frac{i\w\mu_m}{k_{3m}}H_n^{(2)}{}'(k_{3m}r)
+            -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r) & \frac{i\w\mu_m}{k_{3m}}H_n^{(2)}{}'(k_{3m}r)
             \\
             H_n^{(2)}(k_{3m}r) & 0
           \end{bmatrix}
@@ -464,14 +461,14 @@
           \begin{bmatrix}
             0 & -J_n(k_{3m}r)
             \\
-            \frac{i\w\eps_m}{k_{3m}}J_n'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r)
+            -\frac{i\w\eps_m}{k_{3m}}J_n'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r)
           \end{bmatrix}
         \\
         \mH_{Hm}(r) &=
           \begin{bmatrix}
             0 & -H_n^{(2)}(k_{3m}r)
             \\
-            \frac{i\w\eps_m}{k_{m3}}H_n^{(2)}{}'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r)
+            -\frac{i\w\eps_m}{k_{m3}}H_n^{(2)}{}'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r)
           \end{bmatrix}
         \\
         \mA_{Jm}(r) &= \mJ_{Em}(r) -  \mZ_{m-1} \mJ_{Hm}(r)
@@ -626,9 +623,10 @@
             mark repeat=20,
             legend pos=outer north east
           ]
-          \legend{TM,TE}
-          \addplot [black] table [x={s}, y={imag(z.tm)},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
-          \addplot [black,dashed] table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
+          \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
+          \addlegendentry{TM}
+          \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma]  {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
+          \addlegendentry{TE}
         \end{axis}
       \end{tikzpicture}
       \caption{\(\eps = 6, \mu = 1, r_0 = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}\)}
@@ -650,42 +648,45 @@
             mark repeat=20,
             legend pos=outer north east
           ]
-          % \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/plan/hoppe_p62.csv};
-          % \addlegendentry{TM plan}
-          % \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/plan/hoppe_p62.csv};
-          % \addlegendentry{TE plan}
-          \addplot [black] table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
-          \addlegendentry{TM \(r_0=r_i\)}
-          \addplot [black,dashed] table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/cylindre/hoppe_p62_1_r.csv};
-          \addlegendentry{TE \(r_0=r_i\)}
-          \addplot [black,mark=*] table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/cylindre/hoppe_p62_100_r.csv};
-          \addlegendentry{TM \(r_0=100r_i\)}
-          \addplot [black,dashed,mark=*] table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/cylindre/hoppe_p62_100_r.csv};
-          \addlegendentry{TE \(r_0=100r_i\)}
+
+          \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
+          \addlegendentry{TM \(r_0=0.03m\)}
+
+          \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
+          \addlegendentry{TE \(r_0=0.03m\)}
+          \addplot [black,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-01.csv};
+          \addlegendentry{TM \(r_0=0.3m\)}
+
+          \addplot [black,dashed,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-01.csv};
+          \addlegendentry{TE \(r_0=0.3m\)}
         \end{axis}
       \end{tikzpicture}
-      \caption{\(\eps = 6, \mu = 1, r_i = 0.0300m, d=0.0225\text{m}, f=1\text{GHz}\)}
+      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
       \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon}
     \end{figure}
 
-    \begin{figure}[!hbt]
-      \centering
-      \begin{tikzpicture}[scale=1]
-        \begin{loglogaxis}[
-            title={},
-            ylabel={\(||\hat{\mZ}_{plan} - \hat{\mZ}_{cyl}||_2\)},
-            xlabel={\(r_0/d\)},
-            width=0.8\textwidth,
-            xmin=0.1,
-            xmax=100,
-            % mark repeat=20,
-            legend pos=outer north east
-          ]
-          \legend{TM,TE}
-          \addplot [black] table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
-          \addplot [black,dashed] table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
-        \end{loglogaxis}
-      \end{tikzpicture}
-      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
-      \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon:error}
-    \end{figure}
+\begin{TODO}
+  Courbes erreurs plan cylindre
+\end{TODO}
+
+    % \begin{figure}[!hbt]
+    %   \centering
+    %   \begin{tikzpicture}[scale=1]
+    %     \begin{loglogaxis}[
+    %         title={},
+    %         ylabel={\(||\hat{\mZ}_{plan} - \hat{\mZ}_{cyl}||_2\)},
+    %         xlabel={\(r_0/d\)},
+    %         width=0.8\textwidth,
+    %         xmin=0.1,
+    %         xmax=100,
+    %         % mark repeat=20,
+    %         legend pos=outer north east
+    %       ]
+    %       \legend{TM,TE}
+    %       \addplot [black] table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
+    %       \addplot [black,dashed] table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
+    %     \end{loglogaxis}
+    %   \end{tikzpicture}
+    %   \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
+    %   \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon:error}
+    % \end{figure}
