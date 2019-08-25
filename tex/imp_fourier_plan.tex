@@ -71,16 +71,16 @@
             \begin{bmatrix}
             \lambda_\pm \\
                 0 \\
-                -i\frac{k_xk_y}{\w\mu} \\
-                i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) \\
+                i\frac{k_xk_y}{\w\mu} \\
+                -i\left(\w\eps - \frac{k_y^2}{\w\mu}\right)
             \end{bmatrix}
             \quad
             \vect{W_\pm} =
                 \begin{bmatrix}
                 0 \\
                 \lambda_\pm \\
-                -i\left(\w\eps - \frac{k_x^2}{\w\mu}\right) \\
-                i\frac{k_xk_y}{\w\mu} \\
+                i\left(\w\eps - \frac{k_x^2}{\w\mu}\right) \\
+                -i\frac{k_xk_y}{\w\mu}
             \end{bmatrix}
         \end{equation}
         alors
@@ -169,7 +169,7 @@
                     -\hat{H_y}(k_x,k_y,z)\\
                     \hat{H_x}(k_x,k_y,z)\\
                 \end{bmatrix}
-                &=-i
+                &=i
                 \mC
                 \left(
                     e^{ik_3 z}
@@ -227,11 +227,11 @@
             \end{bmatrix}
             &=
             \begin{bmatrix}
-                -i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) \left( c_1 e^{ik_3 z} + c_3 e^{-ik_3 z} \right) - i\frac{k_xk_y}{\w\mu} \left( c_2 e^{ik_3 z} + c_4 e^{-ik_3 z} \right)
+                i\left(\w\eps - \frac{k_y^2}{\w\mu}\right) \left( c_1 e^{ik_3 z} + c_3 e^{-ik_3 z} \right) + i\frac{k_xk_y}{\w\mu} \left( c_2 e^{ik_3 z} + c_4 e^{-ik_3 z} \right)
                 \\
-                -i\frac{k_xk_y}{\w\mu} \left( c_1 e^{ik_3 z} + c_3 e^{-ik_3 z} \right) - i\left(\w\eps - \frac{k_x^2}{\w\mu}\right)\left( c_2 e^{ik_3 z} + c_4 e^{-ik_3 z} \right)
+                i\frac{k_xk_y}{\w\mu} \left( c_1 e^{ik_3 z} + c_3 e^{-ik_3 z} \right) + i\left(\w\eps - \frac{k_x^2}{\w\mu}\right)\left( c_2 e^{ik_3 z} + c_4 e^{-ik_3 z} \right)
             \end{bmatrix} \\
-            &=-i
+            &=i
             \mC
             \left(
                 e^{ik_3 z}
@@ -250,6 +250,17 @@
         Comme \(\det(\mC) = k_3^2\frac{\eps}{\mu}=\frac{k_3^2}{\eta^2}\) alors une condition nécessaire pour trouver l'opérateur d'impédance est que \(k_3\) soit non nul ce qui aussi une hypothèse à vérifier car les valeurs propres doivent être non nulles.\footnote{\(k_3\) peut s'annuler pour des \(\eps,\mu\) réels.}.
 
     \end{proof}
+
+    On définit la matrice \(\hat{\mLR}\)\footnote{Nous verrons plus tard que ce choix est dicté par les opérateurs différentiel qui approchent le symbole.} telle que
+    \begin{equation}
+        \mC = \frac{1}{k\eta}\left(k^2\mI  - \hat{\mLR}\right)
+    \end{equation}
+
+    On définit la matrice \(\hat{\mLD}\)\footnote{Idem.} telle que
+    \begin{equation}
+        \mC^{-1} = \frac{\eta}{kk_3^2}\left(k^2\mI + \hat{\mLD}\right)
+    \end{equation}
+
     % On peut noter d'après \cite[eq.~(6)]{stupfel_2011}
 
     % \begin{equation}
@@ -285,7 +296,7 @@
             Alors
             \begin{align}
             \label{eq:imp_plan:symb_z:1c}
-            \hat \mZ(k_x,k_y) &= -i\eta\frac{\tan\left(k_3d\right)}{kk_3}
+            \hat \mZ(k_x,k_y) &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
                 \begin{bmatrix}
                    k^2-k_x^2  & -k_xk_y\\
                     -k_xk_y & k^2-k_y^2\\
@@ -335,7 +346,7 @@
                     -\hat{H_y}(k_x,k_y,0)\\
                     \hat{H_x}(k_x,k_y,0)\\
                 \end{bmatrix}
-                & = - i\left(e^{i2k_3 d} +1 \right)
+                & = i\left(e^{i2k_3 d} +1 \right)
                 \mC
                 \begin{bmatrix}
                 c_3 \\
@@ -345,29 +356,38 @@
 
             En supposant \(k_3d \not = \frac{\pi}{2} + n\pi\), on déduit donc que
             \begin{align}
-                \hat \mZ(k_x,k_y) &=  - k_3 \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1} \mC^{-1}
+                \hat \mZ(k_x,k_y) &=  k_3 \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1} \mC^{-1}
                 \\
-                &= -\frac{\eta^2}{k_3} \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1}
-                    \begin{bmatrix}
-                       \left(\w\eps-\frac{k_x^2}{\w\mu}\right)  & -\frac{k_xk_y}{\w\mu}\\
-                        -\frac{k_xk_y}{\w\mu} &  \left(\w\eps-\frac{k_y^2}{\w\mu}\right)
-                    \end{bmatrix}
+                &= \frac{\eta}{kk_3} \frac{e^{i2k_3d} -1}{e^{i2k_3d} +1}\left(k^2\mI + \hat{\mLD}\right)
                 \\
-                &= -i\eta\frac{\tan\left(k_3d\right)}{kk_3}
-                    \begin{bmatrix}
-                       k^2-k_x^2  & -k_xk_y\\
-                        -k_xk_y & k^2-k_y^2\\
-                    \end{bmatrix}
+                &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}\left(k^2\mI + \hat{\mLD}\right)
             \end{align}
 
         \end{proof}
         %On remarque que \(\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)\) et donc pour un matériau \((\eps,\mu,d)\) donné, l'opérateur d'impédance n'est pas inversible pour tous  \((k_x,k_y) \in \RR^2, n \in \NN\), \(k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2\), qui ne peut être vérifié que si \(\eps\mu\) est réel\footnote{Comme \(\eps, \mu\) sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}.
 
-        En pratique, on néglige toute les dépendance en \(y\) : \(k_y = 0\) ce qui revient à une propagation dans le plan \(xz\). Grâce à cette hypothèse, on trouve que \(\mC, \hat \mZ\) sont des matrices diagonales.
+        Dans l'article de \cite{marceaux_high-order_2000}, l'opérateur est exprimé comme
+        \begin{equation}
+            \vn \pvect \hat{\vE} = \hat{\mathfrak{Z}} \hat{\vH_t}
+        \end{equation}
 
-        De plus, on exprime souvent l'impédance selon la polarisation.
-        Dans le cas plan, le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x}\), tandis que le champ \(\vH\)-TM correspond à \({H_x} \vect{e_x}\) et le champ \(\vH\)-TE correspond à \({H_y} \vect{e_y}\).
-        Dans ce cas, le symbole \(\hat \mZ\) peut se réécrire comme
+        Pour une couche de matériau, cet article énonce que 
+        \begin{align}
+            \hat{\mathfrak{Z}} &= -i\eta\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right)
+        \end{align}
+
+        Sachant que dans le cadre des vecteurs tangents \(\vn\pvect \vx = \mA \vy_t\) est égal à \(\vx_t = -\det(\mA)\left(\mA^{-1}\right)^t\left(\vn\pvect\vy\right)\), alors en développant les calculs, on retrouve bien le résultat de l'article de \cite{marceaux_high-order_2000}.\\
+
+
+        En pratique, on néglige toute les dépendance en \(y\) ce qui revient à fixer \(k_y\) à \(0\). Grâce à cette hypothèse, on trouve que \(\mC\), et par conséquence \(\hat \mZ\), sont des matrices diagonales.
+
+        Puisque la propagation n'a alors plus lieu que dans le plan \(xOz\), on peut décomposer ce problème par polarisation.
+
+        C'est à dire que l'on suppose que le champ \(\vE\) (resp. \(\vH\)) est uniquement suivant \(\vect{e_y}\), on parle alors de polarisation Transverse Électrique (resp. Magnétique) ou abrégé TE (resp. TM).
+
+        Dans ce cas, le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x} + {E_z} \vect{e_z} \), tandis que le champ \(\vH\)-TM correspond à \({H_x} \vect{e_x} + {H_z} \vect{e_z}\) et le champ \(\vH\)-TE correspond à \({H_y} \vect{e_y}\).
+        
+        Alors le symbole \(\hat \mZ\) peut se réécrire comme
         \begin{equation}
             \hat \mZ =
             \begin{bmatrix}
@@ -400,9 +420,11 @@
                 \left(\w\eps_m-\frac{k_y^2}{\w\mu_m}\right) & \frac{k_xk_y}{\w\mu_m}\\
                 \frac{k_xk_y}{\w\mu_m} & \left(\w\eps_m-\frac{k_x^2}{\w\mu_m}\right)
             \end{bmatrix}
+            \\
+            &= \frac{1}{k_m\eta_m}\left(k_m^2 \mI - \hat{\mLR}\right)
         \end{align}
 
-        On rappelle que \(\det{\mC_m} = \frac{k_{3m}\eps_m^2}{\mu_m^2}\)
+        On rappelle que \(\det{\mC_m} = \frac{k_{3m}}{\eta_m^2}\) et \(\mC_m^{-1}= \frac{k_m\eta_m}{k_{3m}^2}\left(k_m^2 \mI + \hat{\mLD}\right)\).
 
         On définit aussi la profondeur de la couche \(m\), \(l_m = -\sum_{i=0}^{n-m} d_{n-i} \).
 
@@ -414,6 +436,7 @@
         \end{defn}
 
         \begin{thm}
+            \label{thm:imp:fourier:plan:multi_couche}
             Soit \(\hat \mZ_0(k_x,k_y) = \mat{0}_{\mathcal{M}_2(\CC)}\).
 
             Si pour tout \(0<m < n\)
@@ -425,9 +448,9 @@
             \end{align}
             Alors le symbole \(\hat \mZ_n\) est défini par la relation de récurrence :
             \begin{multline}
-                \hat \mZ_m = -k_{3m}
-                \left(ik_{3m}\tan\left(k_{3m}d_m\right)\mI - \hat \mZ_{m-1}\mC_m\right) \\
-                \left(k_{3m}\mI - i\tan\left(k_{3m}d_m\right)\hat \mZ_{m-1}\mC_m\right)^{-1}
+                \hat \mZ_m = k_{3m}
+                \left(ik_{3m}\tan\left(k_{3m}d_m\right)\mI + \hat \mZ_{m-1}\mC_m\right) \\
+                \left(k_{3m}\mI + i\tan\left(k_{3m}d_m\right)\hat \mZ_{m-1}\mC_m\right)^{-1}
                 \mC_m^{-1}
             \end{multline}
         \end{thm}
@@ -474,7 +497,7 @@
                     -\hat{H_y}(k_x,k_y,-d)\\
                     \hat{H_x}(k_x,k_y,-d)\\
                 \end{bmatrix}
-                =-i
+                =i
                 \mC
                 \left(
                     e^{-ik_3 d}
@@ -502,7 +525,7 @@
                     c_4
                 \end{bmatrix}
                 \right)
-                =-i\hat\mZ_m\mC
+                =i\hat\mZ_m\mC
                 \left(
                     e^{-ik_3 d}
                     \begin{bmatrix}
@@ -518,12 +541,12 @@
             \end{equation}
 
             \begin{equation}
-                \left(k_3\mI + \hat\mZ_m\mC\right)
+                \left(k_3\mI - \hat\mZ_m\mC\right)
                 \begin{bmatrix}
                     c_1 \\
                     c_2
                 \end{bmatrix}
-                = e^{i2k_3 d} \left(k_3\mI - \hat\mZ_m\mC\right)
+                = e^{i2k_3 d} \left(k_3\mI + \hat\mZ_m\mC\right)
                 \begin{bmatrix}
                     c_3 \\
                     c_4
@@ -544,7 +567,7 @@
                     c_1 \\
                     c_2
                 \end{bmatrix}
-                &= e^{i2 k_3 d} \mA_+^{-1}\mA_-
+                &= e^{i2 k_3 d} \mA_-^{-1}\mA_+
                 \begin{bmatrix}
                     c_3 \\
                     c_4
@@ -571,7 +594,7 @@
                     -\hat{H_y}(k_x,k_y,0)\\
                     \hat{H_x}(k_x,k_y,0)\\
                 \end{bmatrix}
-                &=-i\mC \left(\mat{F} + \mI \right)
+                &=i\mC \left(\mat{F} + \mI \right)
                 \begin{bmatrix}
                         c_3 \\
                         c_4
@@ -584,22 +607,22 @@
 
             \begin{align}
                 \hat{\mat{Z}}_{m+1}
-                &=-k_3\left(\mat{F} - \mI \right)\left(\mat{F}+ \mI \right)^{-1}\mC^{-1}
+                &=k_3\left(\mat{F} - \mI \right)\left(\mat{F}+ \mI \right)^{-1}\mC^{-1}
                 \\
-                &=-k_3\mA_+^{-1}\left(e^{i2 k_3 d}\mA_- - \mA_+ \right)\left(e^{i2 k_3 d}\mA_- + \mA_+ \right)^{-1}\mA_+\mC^{-1}
+                &-k_3\mA_-^{-1}\left(e^{i2 k_3 d}\mA_+ - \mA_- \right)\left(e^{i2 k_3 d}\mA_+ + \mA_- \right)^{-1}\mA_-\mC^{-1}
                 \\
-                &= -k_3\left( e^{i2 k_3 d} \mA_- -  \mA_+\right)
-                \left( e^{i2 k_3 d} \mA_- + \mA_+ \right)^{-1}\mC^{-1}
+                &=k_3\left( e^{i2 k_3 d} \mA_+ -  \mA_-\right)
+                \left( e^{i2 k_3 d} \mA_+ + \mA_- \right)^{-1}\mC^{-1}
                 \\
-                &= -k_3\left(\left( e^{i2 k_3 d} - 1 \right)\mI - \left( e^{i2 k_3 d} + 1 \right) \hat\mZ_m\mC \right)
-                \left( \left( e^{i2 k_3 d} + 1 \right)\mI - \left( e^{i2 k_3 d} - 1 \right)\hat\mZ_m\mC \right)^{-1}\mC^{-1}
+                &=k_3\left(k_3\left( e^{i2 k_3 d} - 1 \right)\mI + \left( e^{i2 k_3 d} + 1 \right) \hat\mZ_m\mC \right)
+                \left( k_3\left( e^{i2 k_3 d} + 1 \right)\mI + \left( e^{i2 k_3 d} - 1 \right)\hat\mZ_m\mC \right)^{-1}\mC^{-1}
             \end{align}
 
             En supposant que \(\forall n \in \NN \,, k_3d\not = \frac{\pi}{2}+n\pi\), on a
 
             \begin{equation}
-                \hat\mZ_{m+1} = -k_3\left(ik_3\tan(k_3 d)\mI - \hat\mZ_m\mC \right)
-                    \left( k_3\mI - i\tan(k_3 d)\hat\mZ_m\mC \right)^{-1}\mC^{-1}
+                \hat\mZ_{m+1} = k_3\left(ik_3\tan(k_3 d)\mI + \hat\mZ_m\mC \right)
+                    \left( k_3\mI + i\tan(k_3 d)\hat\mZ_m\mC \right)^{-1}\mC^{-1}
             \end{equation}
 
             % à condition que
@@ -610,6 +633,17 @@
             % \end{align}
 
         \end{proof}
+
+        Si l'on veut uniquement exprimer le symbole avec les opérateurs \(\hat{\mLD}, \hat{\mLR}\), on obtient à la relation suivante
+
+        \begin{multline}
+            \hat \mZ_m = \frac{\eta_m}{k_mk_{3m}}
+            \left(i\frac{k_{m}\eta_m}{k_{3m}}\tan\left(k_{3m}d_m\right)\left(k_m^2\mI+\hat{\mLD}\right) + \hat \mZ_{m-1}\right) \\
+            \left(\frac{k_{m}\eta_m}{k_{3m}}\left(k_m^2\mI+\hat{\mLD}\right) + i\tan\left(k_{3m}d_m\right)\hat \mZ_{m-1}\right)^{-1}
+            \left(k_m^2\mI+\hat{\mLD}\right)
+        \end{multline}  
+
+        Cette relation supprime deux produits de matrices et une inversion ce qui dans un code numérique peut s'avérer utile\footnote{Nous n'avons pas codé cette formule mais celle du théorème \ref{thm:imp:fourier:plan:multi_couche}}\footnote{Ce sont des matrices 2x2 donc la complexité numérique est faible et cet avantage est discutable.}.
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -632,9 +666,11 @@
                         mark repeat=20,
                         legend pos=outer north east
                     ]
-                    \legend{TM,TE}
-                    \addplot table [col sep=semicolon, x={s}, y={imag(z.tm)}] {tikz/csv/impedance/plan/hoppe_p33.csv};
-                    \addplot table [col sep=semicolon, x={s}, y={imag(z.te)}] {tikz/csv/impedance/plan/hoppe_p33.csv};
+                    \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ex.P.csv};
+                    \addlegendentry{TM};
+
+                    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ex.P.csv};
+                    \addlegendentry{TE};
                 \end{axis}
             \end{tikzpicture}
             \caption[Reproduction résultat Hoppe & Rahmat-Samii p.~33]{\(\eps = 4, \mu = 1, d=0.015\text{m}, f=1\text{GHz}\)}
@@ -650,14 +686,14 @@
                         title={},
                         width=0.4\textwidth,
                         xmin=0,
-                        xmax=2,
+                        xmax=1.4,
                         ylabel={\(\Im(\hat{\mZ}(k_x,0))\)},
                         xlabel={\(k_x\slash k_0\)},
                         mark repeat=20,
                         legend pos=outer north east
                     ]
-                    \addplot table [x={s}, y={imag(z.tm)},col sep=semicolon] {tikz/csv/impedance/plan/soudais.csv};
-                    \addplot table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance/plan/soudais.csv};
+                    \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
+                    \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
                 \end{axis}
             \end{tikzpicture}
             \begin{tikzpicture}[scale=1]
@@ -673,9 +709,10 @@
                         mark repeat=20,
                         legend pos=outer north east
                     ]
-                    \legend{TM,TE}
-                    \addplot table [x={s}, y={imag(z.tm)},col sep=semicolon] {tikz/csv/impedance/plan/soudais_zoom.csv};
-                    \addplot table [x={s}, y={imag(z.te)},col sep=semicolon] {tikz/csv/impedance/plan/soudais_zoom.csv};
+                    \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
+                    \addlegendentry{TM};
+                    \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
+                    \addlegendentry{TE};
                 \end{axis}
             \end{tikzpicture}
             \caption[Reproduction résultat P. Soudais]{\(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
@@ -688,39 +725,39 @@
         %             \addplot[%
         %                 contour prepared,%
         %                 contour prepared format=matlab%
-        %             ] table { 
-        %                 % (0.2,6) ==> contour `0.2' (x), 5 points follow (y): 
-        %                 0.3000000e+00 6.0000000e+00 
-        %                 3.0000000e+00 4.0000000e-01 
-        %                 2.0000000e+00 2.8571429e-01 
-        %                 1.0000000e+00 3.3333333e-01 
-        %                 3.3333333e-01 1.0000000e+00 
+        %             ] table {
+        %                 % (0.2,6) ==> contour `0.2' (x), 5 points follow (y):
+        %                 0.3000000e+00 6.0000000e+00
+        %                 3.0000000e+00 4.0000000e-01
+        %                 2.0000000e+00 2.8571429e-01
+        %                 1.0000000e+00 3.3333333e-01
+        %                 3.3333333e-01 1.0000000e+00
         %                 2.8571429e-01 2.0000000e+00
-        %                 3.3333333e-01 3.0000000e+00                         
-        %                 % (0.4,5) ==> contour `0.4', consists of 5 points 
-        %                 4.0000000e-01 5.0000000e+00 
-        %                 3.0000000e+00 8.0000000e-01 
-        %                 2.0000000e+00 5.7142857e-01 
-        %                 1.0000000e+00 6.6666667e-01 
-        %                 6.6666667e-01 1.0000000e+00 
-        %                 5.7142857e-01 2.0000000e+00 
-        %                 % (0.6,6) ==> contour `0.6', has 6 points 
-        %                 6.0000000e-01 6.0000000e+00 
-        %                 2.6666667e+00 2.0000000e+00 
-        %                 2.5000000e+00 1.0000000e+00 
-        %                 2.0000000e+00 8.5714286e-01 
-        %                 1.0000000e+00 1.0000000e+00 
-        %                 1.0000000e+00 1.0000000e+00 
-        %                 8.5714286e-01 2.0000000e+00 
-        %             }; 
-        %         \end{axis} 
+        %                 3.3333333e-01 3.0000000e+00
+        %                 % (0.4,5) ==> contour `0.4', consists of 5 points
+        %                 4.0000000e-01 5.0000000e+00
+        %                 3.0000000e+00 8.0000000e-01
+        %                 2.0000000e+00 5.7142857e-01
+        %                 1.0000000e+00 6.6666667e-01
+        %                 6.6666667e-01 1.0000000e+00
+        %                 5.7142857e-01 2.0000000e+00
+        %                 % (0.6,6) ==> contour `0.6', has 6 points
+        %                 6.0000000e-01 6.0000000e+00
+        %                 2.6666667e+00 2.0000000e+00
+        %                 2.5000000e+00 1.0000000e+00
+        %                 2.0000000e+00 8.5714286e-01
+        %                 1.0000000e+00 1.0000000e+00
+        %                 1.0000000e+00 1.0000000e+00
+        %                 8.5714286e-01 2.0000000e+00
+        %             };
+        %         \end{axis}
         %     \end{tikzpicture}
         % \end{figure}
 
         % \def\tmpfile{graphes.txt}
         % \immediate\write18{rm -rf "\tmpfile"}
         % \immediate\write18{touch "\tmpfile"}
-        % \immediate\write18{date >> "\tmpfile"}        
+        % \immediate\write18{date >> "\tmpfile"}
         % \immediate\write18{gnuplot --version >> "\tmpfile"}
         % \begin{figure}[!hbt]
         %     \begin{tikzpicture}
@@ -734,7 +771,7 @@
         %                     output point meta=rawz,
         %                     labels=false,
         %                 }
-        %             ] table [x index={1}, y index={2}, z index={3},col sep=comma] { 
+        %             ] table [x index={1}, y index={2}, z index={3},col sep=comma] {
         %             1,-6.2832,-6.2832,0.74038,
         %             2,-6.2832,-6.1563,0.74997,
         %             3,-6.2832,-6.0293,0.75982,
@@ -746,8 +783,8 @@
         %             9,-26.2832,-26.2832,20.74038,
         %             10,-26.2832,-26.1563,20.74997,
         %             11,-26.2832,-26.0293,20.75982,
-        %             12,-26.2832,-25.9024,20.76986,                                        
-        %             }; 
-        %         \end{axis} 
+        %             12,-26.2832,-25.9024,20.76986,
+        %             };
+        %         \end{axis}
         %     \end{tikzpicture}
         % \end{figure}

@@ -14,7 +14,7 @@
         \]
 
 
-        On définit les vecteurs harmonique sphériques\(\gls{phy-Mmn} ,\gls{phy-Nmn}\) solution dans la base des coordonnées sphériques de 
+        On définit les vecteurs harmonique sphériques\(\gls{phy-Mmn} ,\gls{phy-Nmn}\) solution dans la base des coordonnées sphériques de
         \[
             \left\lbrace
                 \begin{aligned}
@@ -28,7 +28,7 @@
             \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(kr) Y_{m,n}(\tp) \right)\\
             &= z_n(kr)
             \begin{bmatrix}
-                0 
+                0
                 \\
                 \frac{im}{\sin\theta}Y_{mn}(\tp)
                 \\
@@ -89,7 +89,7 @@
 
         \begin{align}
             \label{eq:defUmn_tgt}
-            \Umn(\tp) &:= 
+            \Umn(\tp) &:=
             \begin{bmatrix}
                 \frac{im}{\sin\theta}Y_{mn}(\tp)
                 \\
@@ -150,7 +150,7 @@
             \begin{bmatrix}
               \Umn^\perp & \Umn
             \end{bmatrix}
-            \left( 
+            \left(
               \begin{bmatrix}
                   0 & \tilde{j_n}
                   \\
@@ -161,7 +161,7 @@
                   \\
                   b_{mn}
               \end{bmatrix}
-              + 
+              +
               \begin{bmatrix}
                   0 & \tilde{h_n}
                   \\
@@ -181,7 +181,7 @@
             \begin{bmatrix}
                 \Umn^\perp & \Umn
             \end{bmatrix}
-            \left( 
+            \left(
                 \begin{bmatrix}
                     0 & (kr)^2 j_n
                     \\
@@ -192,7 +192,7 @@
                     \\
                     b_{mn}
                 \end{bmatrix}
-                + 
+                +
                 \begin{bmatrix}
                     0 & (kr)^2 h_n
                     \\
@@ -257,14 +257,14 @@
         On peut donc expliciter les vecteurs précédemment introduits
 
         \begin{equation}
-            \hat{\vE_t}(r,m,n) = 
+            \hat{\vE_t}(r,m,n) =
             \mJ_{E}(r,n)
             \begin{bmatrix}
                 a_{mn}
                 \\
                 b_{mn}
             \end{bmatrix}
-            + 
+            +
             \mH_{E}(r,n)
             \begin{bmatrix}
                 c_{mn}
@@ -282,7 +282,7 @@
                 \\
                 b_{mn}
             \end{bmatrix}
-            + 
+            +
             \mH_{H}(r,n)
             \begin{bmatrix}
                 c_{mn}
@@ -302,7 +302,7 @@
         \end{figure}
 
         \begin{defn}
-          On définit le symbole de l'opérateur d'impédance \(\hat{\mZ}(m,n)\) tel que 
+          On définit le symbole de l'opérateur d'impédance \(\hat{\mZ}(m,n)\) tel que
           \[
               \hat{\vE_t}(r_1,m,n) = \hat{\mZ}(m,n)\hat{\vJ}(r_1,m,n)
           \]
@@ -317,7 +317,7 @@
                 \\
                 b_{mn}
             \end{bmatrix}
-            = - 
+            = -
             \mH_{E}(r_0,n)
             \begin{bmatrix}
                 c_{mn}
@@ -333,7 +333,7 @@
         \end{TODO}
 
         \begin{equation}
-            \hat{\vE_t}(r,m,n) = 
+            \hat{\vE_t}(r,m,n) =
             \left(
                 \mH_{E}(r,n)
                 -
@@ -416,7 +416,7 @@
 
 
         \begin{defn}
-          Pour chaque couche \(p\), on définit le symbole de l'opérateur d'impédance \(\hat{\mZ}_p(m,n)\) tel que 
+          Pour chaque couche \(p\), on définit le symbole de l'opérateur d'impédance \(\hat{\mZ}_p(m,n)\) tel que
           \[
               \hat{\vE_t}(r_p,m,n) = \hat{\mZ}_p(m,n)\hat{\vJ}(r_p,m,n)
           \]
@@ -461,7 +461,7 @@
         On en déduit
 
         \begin{equation}
-            \hat{\vE_t}(r_{p+1},m,n) = 
+            \hat{\vE_t}(r_{p+1},m,n) =
             \left(
                 \mH_{E}(r_{p+1},n)
                 -
@@ -532,8 +532,8 @@
             legend pos=outer north east
           ]
           \legend{TM,TE}
-          \addplot table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
-          \addplot table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
+          \addplot [black] table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
+          \addplot [black,dashed] table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
         \end{loglogaxis}
       \end{tikzpicture}
       \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
