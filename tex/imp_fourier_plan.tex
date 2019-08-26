@@ -397,6 +397,75 @@
             \end{bmatrix}
         \end{equation}
 
+
+        La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte (voir en annexe la figure \ref{fig:annex:hoppe:p33}). On applique les hypothèses précédentes, donc \(k_y=0\). On remarque que pour \(k_x\slash k_0=2\), \(k_3\) est nul et donc \(\mC\) n'est pas inversible. De plus comme le matériau et sans pertes, la partie réelle de \(\hat{\mZ}\) est nulle.
+
+        \begin{figure}[!hbt]
+            \centering
+            \begin{tikzpicture}[scale=1]
+                \begin{axis}[
+                        title={},
+                        ylabel={\(\Im(\hat{Z}(k_x,0)\)},
+                        xlabel={\(k_x\slash k_0\)},
+                        width=0.8\textwidth,
+                        xmin=0,
+                        xmax=2,
+                        mark repeat=20,
+                        legend pos=outer north east
+                    ]
+                    \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ex.P.csv};
+                    \addlegendentry{TM};
+
+                    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ex.P.csv};
+                    \addlegendentry{TE};
+                \end{axis}
+            \end{tikzpicture}
+            \caption[Reproduction résultat Hoppe & Rahmat-Samii p.~33]{\(\eps = 4, \mu = 1, d=0.015\text{m}, f=1\text{GHz}\)}
+            \label{fig:imp_fourier:plan:hoppe}
+        \end{figure}
+
+        La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où \(k_3d = \frac{\pi}{2}\) pour \(k_x \simeq 0.9 k_0\).
+
+        \begin{figure}[!hbt]
+            \centering
+            \begin{tikzpicture}[scale=1]
+                \begin{axis}[
+                        title={},
+                        width=0.4\textwidth,
+                        xmin=0,
+                        xmax=1.4,
+                        ylabel={\(\Im(\hat{Z}(k_x,0))\)},
+                        xlabel={\(k_x\slash k_0\)},
+                        mark repeat=20,
+                        legend pos=outer north east
+                    ]
+                    \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
+                    \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
+                \end{axis}
+            \end{tikzpicture}
+            \begin{tikzpicture}[scale=1]
+                \begin{axis}[
+                        title={},
+                        width=0.4\textwidth,
+                        ymin=-100,
+                        ymax=100,
+                        xmin=0.8,
+                        xmax=1,
+                        ylabel={},
+                        xlabel={\(k_x\slash k_0\)},
+                        mark repeat=20,
+                        legend pos=outer north east
+                    ]
+                    \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
+                    \addlegendentry{TM};
+                    \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
+                    \addlegendentry{TE};
+                \end{axis}
+            \end{tikzpicture}
+            \caption[Reproduction résultat P. Soudais]{\(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
+            \label{fig:imp_fourier:plan:soudais}
+        \end{figure}
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -424,7 +493,7 @@
             &= \frac{1}{k_m\eta_m}\left(k_m^2 \mI - \hat{\mLR}\right)
         \end{align}
 
-        On rappelle que \(\det{\mC_m} = \frac{k_{3m}}{\eta_m^2}\) et \(\mC_m^{-1}= \frac{k_m\eta_m}{k_{3m}^2}\left(k_m^2 \mI + \hat{\mLD}\right)\).
+        On rappelle que \(\det{\mC_m} = \frac{k_{3m}^2}{\eta_m^2}\) et \(\mC_m^{-1}= \frac{k_m\eta_m}{k_{3m}^2}\left(k_m^2 \mI + \hat{\mLD}\right)\).
 
         On définit aussi la profondeur de la couche \(m\), \(l_m = -\sum_{i=0}^{n-m} d_{n-i} \).
 
@@ -645,146 +714,78 @@
 
         Cette relation supprime deux produits de matrices et une inversion ce qui dans un code numérique peut s'avérer utile\footnote{Nous n'avons pas codé cette formule mais celle du théorème \ref{thm:imp:fourier:plan:multi_couche}}\footnote{Ce sont des matrices 2x2 donc la complexité numérique est faible et cet avantage est discutable.}.
 
+
+  \subsubsection{Coefficients de réflexions}
+
+    Dans le cas de la diffraction par un plan infini, une grandeur d’intérêt est le rapport entre l'onde réfléchie et l'onde incidente.
+
+    \begin{prop}
+      On définit la matrice \(\mR\) telle que pour tout point de la surface \(z=0\)
+      \begin{equation}
+        \vect{C_2}  = \mR \vect{C_1}
+      \end{equation}
+      alors
+      \begin{equation}
+          \mR = 
+          \left(k_0^2\mI + \hat{\mLD} + k_0k_{3,0}\hat{\mZ}_m\right)^{-1}\left(k_0^\mI + \hat{\mLD} - k_0k_{3,0}\hat{\mZ}_m\right)
+      \end{equation}
+    \end{prop}
+
+    \begin{proof}
+        On sait que 
+        \begin{align}
+            \hat{\vE_t}(k_x,k_y,0_+) &= ik_{3,0}\left(\vect{C_1}-\vect{C_2}\right)
+            \\
+            \vect{e_z}\pvect \hat{\vH}(k_x,k_y,0_+) &= i\mC_{m+1}\left(\vect{C_1}+\vect{C_2}\right)
+        \end{align}
+        et que 
+        \begin{align}
+            \hat{\vE_t}(k_x,k_y,0_+) &= \hat{\mZ}_m \left(\vect{e_z}\pvect \hat{\vH}(k_x,k_y,0_+)\right)
+            \\
+            \intertext{donc}
+            ik_{3,0}\left(\vect{C_1}-\vect{C_2}\right) &= i\hat{\mZ}_m\mC_m\left(\vect{C_1}+\vect{C_2}\right)
+            \\
+            \intertext{soit en factorisant par chaque vecteur}
+            \left(k_{3,0}\mI - \hat{\mZ}_m\mC_m\right)\vect{C_1} & = \left(k_{3,0}\mI+\hat{\mZ}_m\mC_m\right)\vect{C_2}
+        \end{align}
+        et on remplace \(\mC_{m+1}^{-1}\) par son expression avec \(\hat{\mLD}\) à l'extérieur
+        \begin{equation}
+            \mC_{m+1}^{-1} = \frac{1}{k_0k_{3,0}^2} \left(k_0^2 \mI + \hat{\mLD} \right)
+        \end{equation}
+        \begin{align}
+            \mR &= \left(k_0^2\mI + \hat{\mLD} + k_0k_{3,0}\hat{\mZ}_m\right)^{-1}\left(k_0^2\mI + \hat{\mLD} - k_0k_{3,0}\hat{\mZ}_m\right)
+        \end{align}
+    \end{proof}
+
+    Par construction et avec les mêmes hypothèses que pour \(\hat\mZ\) ( \(k_y = 0\) ), cette matrice est diagonale. On trace les termes diagonaux.
+
+    Alors que le symbole a une asymptote pour \(k_x\slash k_0 \simeq 0.9\), la matrice de réflexion est parfaitement définie en ce point. De plus, on remarque que cet empilement permet d'obtenir une onde guidée pour \(k_x\slash k_0 \simeq 1.42\) car le coefficient TM diverge en ce point. C'est donc un cas très intéressant.
+
+    \begin{figure}[!hbt]
+        \centering
+        \begin{tikzpicture}[scale=1]
+            \begin{axis}[
+                    title={},
+                    width=0.8\textwidth,
+                    xmin=0,
+                    xmax=1.5,
+                    ymin=0,
+                    ymax=30,
+                    ylabel={\(|\hat{R}(k_x,0)|\)},
+                    xlabel={\(k_x\slash k_0\)},
+                    mark repeat=20,
+                    legend pos=outer north east
+                ]
+                \addplot [black] table [x={s1}, y={Abs(r_ex.tm)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.r_ex.P.csv};
+                \addlegendentry{TM};
+                \addplot [black,dashed] table [x={s1}, y={Abs(r_ex.te)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.r_ex.P.csv};
+                \addlegendentry{TE};
+            \end{axis}
+        \end{tikzpicture}
+        \caption[Reproduction résultat P. Soudais]{\(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
+        \label{fig:reflex_fourier:plan:soudais}
+    \end{figure}
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    \subsection{Applications numériques}
-
-        La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte. On remarque que pour \(s=2\), \(k_3 = 0\) et donc \(\mC\) n'est pas inversible.
-
-        \begin{figure}[!hbt]
-            \centering
-            \begin{tikzpicture}[scale=1]
-                \begin{axis}[
-                        title={},
-                        ylabel={\(\Im(\hat{\mZ}(k_x,0)\)},
-                        xlabel={\(k_x\slash k_0\)},
-                        width=0.8\textwidth,
-                        xmin=0,
-                        xmax=2,
-                        mark repeat=20,
-                        legend pos=outer north east
-                    ]
-                    \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ex.P.csv};
-                    \addlegendentry{TM};
-
-                    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ex.P.csv};
-                    \addlegendentry{TE};
-                \end{axis}
-            \end{tikzpicture}
-            \caption[Reproduction résultat Hoppe & Rahmat-Samii p.~33]{\(\eps = 4, \mu = 1, d=0.015\text{m}, f=1\text{GHz}\)}
-            \label{fig:imp_fourier:plan:hoppe}
-        \end{figure}
-
-        La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où \(k_3d = \frac{\pi}{2}\) pour \(k_x \simeq 0.9 k_0\).
-
-        \begin{figure}[!hbt]
-            \centering
-            \begin{tikzpicture}[scale=1]
-                \begin{axis}[
-                        title={},
-                        width=0.4\textwidth,
-                        xmin=0,
-                        xmax=1.4,
-                        ylabel={\(\Im(\hat{\mZ}(k_x,0))\)},
-                        xlabel={\(k_x\slash k_0\)},
-                        mark repeat=20,
-                        legend pos=outer north east
-                    ]
-                    \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
-                    \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
-                \end{axis}
-            \end{tikzpicture}
-            \begin{tikzpicture}[scale=1]
-                \begin{axis}[
-                        title={},
-                        width=0.4\textwidth,
-                        ymin=-100,
-                        ymax=100,
-                        xmin=0.8,
-                        xmax=1,
-                        ylabel={},
-                        xlabel={\(k_x\slash k_0\)},
-                        mark repeat=20,
-                        legend pos=outer north east
-                    ]
-                    \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
-                    \addlegendentry{TM};
-                    \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
-                    \addlegendentry{TE};
-                \end{axis}
-            \end{tikzpicture}
-            \caption[Reproduction résultat P. Soudais]{\(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
-            \label{fig:imp_fourier:plan:soudais}
-        \end{figure}
-
-        % \begin{figure}[!hbt]
-        %     \begin{tikzpicture}
-        %         \begin{axis}
-        %             \addplot[%
-        %                 contour prepared,%
-        %                 contour prepared format=matlab%
-        %             ] table {
-        %                 % (0.2,6) ==> contour `0.2' (x), 5 points follow (y):
-        %                 0.3000000e+00 6.0000000e+00
-        %                 3.0000000e+00 4.0000000e-01
-        %                 2.0000000e+00 2.8571429e-01
-        %                 1.0000000e+00 3.3333333e-01
-        %                 3.3333333e-01 1.0000000e+00
-        %                 2.8571429e-01 2.0000000e+00
-        %                 3.3333333e-01 3.0000000e+00
-        %                 % (0.4,5) ==> contour `0.4', consists of 5 points
-        %                 4.0000000e-01 5.0000000e+00
-        %                 3.0000000e+00 8.0000000e-01
-        %                 2.0000000e+00 5.7142857e-01
-        %                 1.0000000e+00 6.6666667e-01
-        %                 6.6666667e-01 1.0000000e+00
-        %                 5.7142857e-01 2.0000000e+00
-        %                 % (0.6,6) ==> contour `0.6', has 6 points
-        %                 6.0000000e-01 6.0000000e+00
-        %                 2.6666667e+00 2.0000000e+00
-        %                 2.5000000e+00 1.0000000e+00
-        %                 2.0000000e+00 8.5714286e-01
-        %                 1.0000000e+00 1.0000000e+00
-        %                 1.0000000e+00 1.0000000e+00
-        %                 8.5714286e-01 2.0000000e+00
-        %             };
-        %         \end{axis}
-        %     \end{tikzpicture}
-        % \end{figure}
-
-        % \def\tmpfile{graphes.txt}
-        % \immediate\write18{rm -rf "\tmpfile"}
-        % \immediate\write18{touch "\tmpfile"}
-        % \immediate\write18{date >> "\tmpfile"}
-        % \immediate\write18{gnuplot --version >> "\tmpfile"}
-        % \begin{figure}[!hbt]
-        %     \begin{tikzpicture}
-        %         \begin{axis}
-        %             \addplot3[
-        %                 mesh/rows=4,
-        %                 mesh/num points=12,
-        %                 contour gnuplot={
-        %                     number=5,
-        %                     % cdata should not be affected by z filter:
-        %                     output point meta=rawz,
-        %                     labels=false,
-        %                 }
-        %             ] table [x index={1}, y index={2}, z index={3},col sep=comma] {
-        %             1,-6.2832,-6.2832,0.74038,
-        %             2,-6.2832,-6.1563,0.74997,
-        %             3,-6.2832,-6.0293,0.75982,
-        %             4,-6.2832,-5.9024,0.76986,
-        %             5,-16.2832,-16.2832,10.74038,
-        %             6,-16.2832,-16.1563,10.74997,
-        %             7,-16.2832,-16.0293,10.75982,
-        %             8,-16.2832,-15.9024,10.76986,
-        %             9,-26.2832,-26.2832,20.74038,
-        %             10,-26.2832,-26.1563,20.74997,
-        %             11,-26.2832,-26.0293,20.75982,
-        %             12,-26.2832,-25.9024,20.76986,
-        %             };
-        %         \end{axis}
-        %     \end{tikzpicture}
-        % \end{figure}
