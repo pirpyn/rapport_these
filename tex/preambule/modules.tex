@@ -64,6 +64,7 @@
     giveninits=true, % initialles pour prénoms
     isbn=true,%
     url=false,%
+    maxcitenames=1,%
     doi=true,%
     backref=true,%
     backrefstyle=three% si cité en page 1,2,3, ecrire 1-3,
@@ -113,12 +114,17 @@
 
 % Permet de tracer des figures et schémas
 \usepackage{pgfplots}
+    \usepgfplotslibrary{external} % On génère un pdf par graphique qui sera inclus après => 1ere compil un peu plus lente, suivante tres rapide
+    \tikzexternalize[prefix=build/]{these_payen_2019} % Les pdf seront mis dans le dossier suivant
+    % Le graphique triple asymptote nécesssite 20000 pts, il faut etendre la mémoire
+    \tikzset{external/system call={pdflatex \tikzexternalcheckshellescape -extra-mem-top=10000000 -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+
     % \pgfplotscreateplotcyclelist{my cycle}{%
     %     thick, solid,          every mark/.append style={solid}\\%
     % }
     \pgfplotsset{%
         compat=newest,
-        height=7cm,
+        height=6.5cm,
         % cycle list name=my cycle,
         every axis legend/.style={
             cells={anchor=west},
@@ -162,9 +168,12 @@
 \usepackage{tcolorbox} % Pour faire de jolie boite, un peu visible
 \usepackage{lettrine} % Pour faire de jolie lettre
 
+\usepackage{makecell} % Permet de mettre des \\ dans un \makecell{}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{pdflscape} % Pour pouvoir changer l'orientation des pages
+    % avec \begin{landscape} ... 
     %%% Solution pour avoir un paysage qui pointe vers l'intérieur du livre
     \makeatletter
     \global\let\orig@begin@landscape=\landscape%

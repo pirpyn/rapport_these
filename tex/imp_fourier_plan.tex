@@ -402,25 +402,8 @@
 
         \begin{figure}[!hbt]
             \centering
-            \begin{tikzpicture}[scale=1]
-                \begin{axis}[
-                        title={},
-                        ylabel={\(\Im(\hat{Z}(k_x,0)\)},
-                        xlabel={\(k_x\slash k_0\)},
-                        width=0.8\textwidth,
-                        xmin=0,
-                        xmax=2,
-                        mark repeat=20,
-                        legend pos=outer north east
-                    ]
-                    \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ex.P.csv};
-                    \addlegendentry{TM};
-
-                    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_33/HOPPE_33.z_ex.P.csv};
-                    \addlegendentry{TE};
-                \end{axis}
-            \end{tikzpicture}
-            \caption[Reproduction résultat Hoppe & Rahmat-Samii p.~33]{\(\eps = 4, \mu = 1, d=0.015\text{m}, f=1\text{GHz}\)}
+            \input{tikz/plot/Z_HOPPE_33_plan.tikz}
+            \caption[Reproduction résultat Hoppe & Rahmat-Samii p.~33]{Partie imaginaire des coefficients diagonaux de \(\hat{\mZ}\) pour \(\eps = 4, \mu = 1, d=0.015\text{m}, f=1\text{GHz}\)}
             \label{fig:imp_fourier:plan:hoppe}
         \end{figure}
 
@@ -428,41 +411,8 @@
 
         \begin{figure}[!hbt]
             \centering
-            \begin{tikzpicture}[scale=1]
-                \begin{axis}[
-                        title={},
-                        width=0.4\textwidth,
-                        xmin=0,
-                        xmax=1.4,
-                        ylabel={\(\Im(\hat{Z}(k_x,0))\)},
-                        xlabel={\(k_x\slash k_0\)},
-                        mark repeat=20,
-                        legend pos=outer north east
-                    ]
-                    \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
-                    \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
-                \end{axis}
-            \end{tikzpicture}
-            \begin{tikzpicture}[scale=1]
-                \begin{axis}[
-                        title={},
-                        width=0.4\textwidth,
-                        ymin=-100,
-                        ymax=100,
-                        xmin=0.8,
-                        xmax=1,
-                        ylabel={},
-                        xlabel={\(k_x\slash k_0\)},
-                        mark repeat=20,
-                        legend pos=outer north east
-                    ]
-                    \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
-                    \addlegendentry{TM};
-                    \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.z_ex.P.csv};
-                    \addlegendentry{TE};
-                \end{axis}
-            \end{tikzpicture}
-            \caption[Reproduction résultat P. Soudais]{\(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
+            \input{tikz/plot/Z_ICEAA_11_plan.tikz}
+            \caption[Reproduction résultat P. Soudais p.~11]{Partie imaginaire des coefficients diagonaux de \(\hat\mZ\) pour \(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
             \label{fig:imp_fourier:plan:soudais}
         \end{figure}
 
@@ -763,26 +713,8 @@
 
     \begin{figure}[!hbt]
         \centering
-        \begin{tikzpicture}[scale=1]
-            \begin{axis}[
-                    title={},
-                    width=0.8\textwidth,
-                    xmin=0,
-                    xmax=1.5,
-                    ymin=0,
-                    ymax=30,
-                    ylabel={\(|\hat{R}(k_x,0)|\)},
-                    xlabel={\(k_x\slash k_0\)},
-                    mark repeat=20,
-                    legend pos=outer north east
-                ]
-                \addplot [black] table [x={s1}, y={Abs(r_ex.tm)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.r_ex.P.csv};
-                \addlegendentry{TM};
-                \addplot [black,dashed] table [x={s1}, y={Abs(r_ex.te)},col sep=comma] {tikz/csv/impedance/ICEAA_11/ICEAA_11.r_ex.P.csv};
-                \addlegendentry{TE};
-            \end{axis}
-        \end{tikzpicture}
-        \caption[Reproduction résultat P. Soudais]{\(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
+        \input{tikz/plot/R_ICEAA_11_plan.tikz}
+        \caption[Reproduction résultat P. Soudais p.~11]{Module des coefficients diagonaux de \(\mR\) pour \(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
         \label{fig:reflex_fourier:plan:soudais}
     \end{figure}
 

@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=1]
+  \begin{axis}[
+      title={},
+      ylabel={\(\Im(\hat{Z}(k_tr_1,0))\)},
+      xlabel={\(k_t \slash k_0\)},
+      width=0.7\textwidth,
+      xmin=0,
+      xmax=1.5,
+      mark repeat=20,
+      legend pos=outer north east
+    ]
+
+    \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
+    \addlegendentry{TM \(r_0=0.03m\)}
+
+    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
+    \addlegendentry{TE \(r_0=0.03m\)}
+    \addplot [black,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-01.csv};
+    \addlegendentry{TM \(r_0=0.3m\)}
+
+    \addplot [black,dashed,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-01.csv};
+    \addlegendentry{TE \(r_0=0.3m\)}
+  \end{axis}
+\end{tikzpicture}

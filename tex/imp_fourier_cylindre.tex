@@ -269,6 +269,8 @@
     On extrait alors \(\hat{E_\theta}, \hat{H_\theta}\) pour obtenir les champs tangentielles à \(\vect{e_r}\) en tout point, sachant déjà \(\hat{E_z}, \hat{H_z}\).
 
     \begin{align}
+      \hat{E_r} & = \frac{1}{k_3^2}\left(ik_z\ddr{r}{\hat{E_z}}+\frac{k\eta n}{r}\hat{H_z}\right)
+      \\
       \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} - i\w\mu\ddr{r}{\hat{H_z}}\right)
       \\
       \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
@@ -612,23 +614,7 @@
 
     \begin{figure}[!hbt]
       \centering
-      \begin{tikzpicture}[scale=1]
-        \begin{axis}[
-            title={},
-            ylabel={\(\Im(\hat{\mZ}(k_t r_1,0))\)},
-            xlabel={\(k_t\slash k_0\)},
-            width=0.8\textwidth,
-            xmin=0,
-            xmax=1.5,
-            mark repeat=20,
-            legend pos=outer north east
-          ]
-          \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
-          \addlegendentry{TM}
-          \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma]  {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
-          \addlegendentry{TE}
-        \end{axis}
-      \end{tikzpicture}
+      \input{tikz/plot/Z_HOPPE_62_cylindre.tikz}
       \caption{\(\eps = 6, \mu = 1, r_0 = 0.0300\text{m}, d=0.0225\text{m}, f=1\text{GHz}\)}
       \label{fig:imp_fourier:cylindre:hoppe_p62}
     \end{figure}
@@ -637,30 +623,7 @@
 
     \begin{figure}[!hbt]
       \centering
-      \begin{tikzpicture}[scale=1]
-        \begin{axis}[
-            title={},
-            ylabel={\(\Im(\hat{\mZ}(k_tr_1,0))\)},
-            xlabel={\(k_t \slash k_0\)},
-            width=0.7\textwidth,
-            xmin=0,
-            xmax=1.5,
-            mark repeat=20,
-            legend pos=outer north east
-          ]
-
-          \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
-          \addlegendentry{TM \(r_0=0.03m\)}
-
-          \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
-          \addlegendentry{TE \(r_0=0.03m\)}
-          \addplot [black,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-01.csv};
-          \addlegendentry{TM \(r_0=0.3m\)}
-
-          \addplot [black,dashed,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-01.csv};
-          \addlegendentry{TE \(r_0=0.3m\)}
-        \end{axis}
-      \end{tikzpicture}
+      \input{tikz/plot/Z_HOPPE_62_cylindre_converge.tikz}
       \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
       \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon}
     \end{figure}
@@ -683,8 +646,8 @@
     %         legend pos=outer north east
     %       ]
     %       \legend{TM,TE}
-    %       \addplot [black] table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
-    %       \addplot [black,dashed] table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/cylindre/hoppe_p62_error.csv};
+    %       \addplot [black] table [x={r0/d}, y={tm},col sep=semicolon] {csv/cylindre/hoppe_p62_error.csv};
+    %       \addplot [black,dashed] table [x={r0/d}, y={te},col sep=semicolon] {csv/cylindre/hoppe_p62_error.csv};
     %     \end{loglogaxis}
     %   \end{tikzpicture}
     %   \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
