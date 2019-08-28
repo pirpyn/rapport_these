@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={},
+            ylabel={\(\Im(\hat{Z}(k_x,0)\)},
+            xlabel={\(k_x\slash k_0\)},
+            width=0.8\textwidth,
+            xmin=0,
+            xmax=2,
+            mark repeat=20,
+            legend pos=outer north east
+        ]
+        \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_33/HOPPE_33.z_ex.P.csv};
+        \addlegendentry{TM};
+
+        \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/HOPPE_33/HOPPE_33.z_ex.P.csv};
+        \addlegendentry{TE};
+    \end{axis}
+\end{tikzpicture}

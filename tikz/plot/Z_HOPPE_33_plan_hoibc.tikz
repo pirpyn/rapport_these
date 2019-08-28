@@ -1,0 +1,42 @@
+\begin{tikzpicture}[scale=1]
+  \begin{axis}[
+          title={Polarisation TM},
+          ylabel={\(\Im(\hat{Z}(k_x,0)\)},
+          xlabel={\(k_x\slash k_0\)},
+          width=0.4\textwidth,
+          xmin=0,
+          xmax=2,
+          mark repeat=20,
+          legend pos=outer north east
+      ]
+      \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_33/HOPPE_33.z_ex.P.csv};
+      % \addlegendentry{Exact};
+
+      \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.tm)}] {csv/HOPPE_33/HOPPE_33.z_ibc.IBC_ibc0_TYPE_P_SUC_F.csv};
+      % \addlegendentry{CI0};
+
+      \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.tm)}] {csv/HOPPE_33/HOPPE_33.z_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
+      % \addlegendentry{CI3};
+  \end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[scale=1]
+  \begin{axis}[
+          title={Polarisation TE},
+          ylabel={},
+          xlabel={\(k_x\slash k_0\)},
+          width=0.4\textwidth,
+          xmin=0,
+          xmax=2,
+          mark repeat=20,
+          legend pos=outer north east
+      ]
+      \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/HOPPE_33/HOPPE_33.z_ex.P.csv};
+      \addlegendentry{Exact};
+
+      \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.te)},color=] {csv/HOPPE_33/HOPPE_33.z_ibc.IBC_ibc0_TYPE_P_SUC_F.csv};
+      \addlegendentry{CI0};
+
+      \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.te)}] {csv/HOPPE_33/HOPPE_33.z_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
+      \addlegendentry{CI3};
+  \end{axis}
+\end{tikzpicture}

@@ -532,8 +532,8 @@
             legend pos=outer north east
           ]
           \legend{TM,TE}
-          \addplot [black] table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
-          \addplot [black,dashed] table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
+          \addplot [black] table [x={r0/d}, y={tm},col sep=semicolon] {csv/sphere/hoppe_p62_error.csv};
+          \addplot [black,dashed] table [x={r0/d}, y={te},col sep=semicolon] {csv/sphere/hoppe_p62_error.csv};
         \end{loglogaxis}
       \end{tikzpicture}
       \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
