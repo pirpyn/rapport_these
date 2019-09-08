@@ -38,3 +38,10 @@ sub makeglossaries {
   popd;
   return $return;
 }
+
+# This custom dependency help to regenerate externalized pdf
+add_cus_dep('tikz', 'pdf', 0, 'maketikz');
+
+sub maketikz {
+    system("pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname '$_[0]' '\\def\\tikzexternalrealjob{$rootfile_name}\\input{$rootfile_name}'")
+}

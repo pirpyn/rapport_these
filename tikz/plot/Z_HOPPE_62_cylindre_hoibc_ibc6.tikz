@@ -1,3 +1,4 @@
+\tikzsetnextfilename{Z_HOPPE_62_cylindre_hoibc_ibc6_TM}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TM},
@@ -18,6 +19,7 @@
         \addplot [violet,mark=triangle*] table [col sep=comma, x={s1}, y={Im(z_ibc6.tm)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc6_TYPE_C_+3.000E-02_SUC_F.csv};
     \end{axis}
 \end{tikzpicture}
+\tikzsetnextfilename{Z_HOPPE_62_cylindre_hoibc_ibc6_TE}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TE},

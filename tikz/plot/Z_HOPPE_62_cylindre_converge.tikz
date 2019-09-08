@@ -1,3 +1,4 @@
+\tikzsetnextfilename{Z_HOPPE_62_cylindre_converge}
 \begin{tikzpicture}[scale=1]
   \begin{axis}[
       title={},

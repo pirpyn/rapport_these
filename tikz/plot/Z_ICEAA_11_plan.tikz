@@ -1,3 +1,4 @@
+\tikzsetnextfilename{Z_ICEAA_11_plan_large}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={},
@@ -13,6 +14,7 @@
         \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {csv/ICEAA_11/ICEAA_11.z_ex.P.csv};
     \end{axis}
 \end{tikzpicture}
+\tikzsetnextfilename{Z_ICEAA_11_plan_zoom}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={},
