@@ -8,7 +8,7 @@ $ENV{'TZ'}='Europe/France';
 $pdf_mode = "1";
 
 # Computing with pdflatex
-$pdflatex = "pdflatex -shell-escape -file-line-error -interaction=nonstopmode %O %S";
+$pdflatex = "pdflatex -shell-escape -file-line-error -interaction=nonstopmode -extra-mem-top=10000000 --synctex=1 %O %S";
 
 # Lets have builing directory
 $out_dir = "build";
@@ -37,4 +37,11 @@ sub makeglossaries {
   my $return = system "makeglossaries $base_name";
   popd;
   return $return;
+}
+
+# This custom dependency help to regenerate externalized pdf
+add_cus_dep('tikz', 'pdf', 0, 'maketikz');
+
+sub maketikz {
+    system("pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname '$_[0]' '\\def\\tikzexternalrealjob{$rootfile_name}\\input{$rootfile_name}'")
 }

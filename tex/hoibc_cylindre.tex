@@ -36,52 +36,14 @@
 
   \subsection{Résultats numériques}
 
-  La figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
+    La figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
 
- \begin{figure}[!hbt]
-          \centering
-          \begin{tikzpicture}[scale=1]
-              \begin{axis}[
-                      title={Polarisation TM},
-                      ylabel={\(\Im(\hat{\mZ}(k_t r_{1},0)\)},
-                      xlabel={\(k_t\slash k_0\)},
-                      width=0.4\textwidth,
-                      xmin=0,
-                      xmax=2.5,
-                      mark repeat=20,
-                      legend pos=outer north east
-                  ]
-                  \addplot [black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
-
-                  \addplot [blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc0_TYPE_C_+3.000E-02_SUC_F.csv};
-
-                  \addplot [red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc3_TYPE_C_+3.000E-02_SUC_F.csv};
-              \end{axis}
-          \end{tikzpicture}
-          \begin{tikzpicture}[scale=1]
-              \begin{axis}[
-                      title={Polarisation TE},
-                      ylabel={},
-                      xlabel={\(k_t\slash k_0\)},
-                      width=0.4\textwidth,
-                      xmin=0,
-                      xmax=2.5,
-                      mark repeat=20,
-                      legend pos=outer north east
-                  ]
-                  \addplot [black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
-                  \addlegendentry{Exact};
-
-                  \addplot [blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.te)},color=] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc0_TYPE_C_+3.000E-02_SUC_F.csv};
-                  \addlegendentry{CI0};
-
-                  \addplot [red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.te)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc3_TYPE_C_+3.000E-02_SUC_F.csv};
-                  \addlegendentry{CI3};
-              \end{axis}
-          \end{tikzpicture}
-          \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
-          \label{fig:imp_fourier:plan:hoppe:62:hoibc}
-      \end{figure}
+    \begin{figure}[!hbt]
+      \centering
+      \input{tikz/plot/Z_HOPPE_62_cylindre_hoibc.tikz}
+      \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
+      \label{fig:imp_fourier:plan:hoppe:62:hoibc}
+    \end{figure}
 
 
     On remarque que le CIOE CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. 
@@ -95,54 +57,11 @@
       \left(\oI + c_1\LD -c_2\LR\right)\vE_t = \left(\diag{a_1}{a_2} + b_1\LD - b_2 \LR \right)\vJ
     \end{equation}
 
-     \begin{figure}[!hbt]
-          \centering
-          \begin{tikzpicture}[scale=1]
-              \begin{axis}[
-                      title={Polarisation TM},
-                      ylabel={\(\Im(\hat{\mZ}(k_t r_{1},0)\)},
-                      xlabel={\(k_t\slash k_0\)},
-                      width=0.4\textwidth,
-                      xmin=0,
-                      xmax=2.5,
-                      mark repeat=20,
-                      legend pos=outer north east
-                  ]
-                  \addplot [black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
-
-                  \addplot [blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc0_TYPE_C_+3.000E-02_SUC_F.csv};
-
-                  \addplot [red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc3_TYPE_C_+3.000E-02_SUC_F.csv};
-
-                  \addplot [violet,mark=triangle*] table [col sep=comma, x={s1}, y={Im(z_ibc6.tm)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc6_TYPE_C_+3.000E-02_SUC_F.csv};
-              \end{axis}
-          \end{tikzpicture}
-          \begin{tikzpicture}[scale=1]
-              \begin{axis}[
-                      title={Polarisation TE},
-                      ylabel={},
-                      xlabel={\(k_t\slash k_0\)},
-                      width=0.4\textwidth,
-                      xmin=0,
-                      xmax=2.5,
-                      mark repeat=20,
-                      legend pos=outer north east
-                  ]
-                  \addplot [black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
-                  \addlegendentry{Exact};
-
-                  \addplot [blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.te)},color=] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc0_TYPE_C_+3.000E-02_SUC_F.csv};
-                  \addlegendentry{CI0};
-
-                  \addplot [red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.te)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc3_TYPE_C_+3.000E-02_SUC_F.csv};
-                  \addlegendentry{CI3};
-
-                  \addplot [violet,mark=triangle*] table [col sep=comma, x={s1}, y={Im(z_ibc6.te)}] {tikz/csv/impedance/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc6_TYPE_C_+3.000E-02_SUC_F.csv};
-                  \addlegendentry{CI6};
-              \end{axis}
-          \end{tikzpicture}
-          \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
-          \label{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}
-      \end{figure}
+    \begin{figure}[!hbt]
+      \centering
+      \input{tikz/plot/Z_HOPPE_62_cylindre_hoibc_ibc6.tikz}
+      \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
+      \label{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}
+    \end{figure}
 
       Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier. On présente néanmoins dans la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} sa performance vis à vis de la CI3 sur le cylindre.

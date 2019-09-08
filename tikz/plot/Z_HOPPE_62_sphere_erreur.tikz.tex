@@ -1,0 +1,17 @@
+\tikzsetnextfilename{Z_HOPPE_62_sphere_erreur}
+\begin{tikzpicture}[scale=1]
+\begin{loglogaxis}[
+    title={},
+    ylabel={\(||\hat{\mZ}_{plan} - \hat{\mZ}_{sphere}||_2\)},
+    xlabel={\(r_0/d\)},
+    width=0.8\textwidth,
+    xmin=0.1,
+    xmax=100,
+    % mark repeat=20,
+    legend pos=outer north east
+  ]
+  \legend{TM,TE}
+  \addplot [black] table [x={r0/d}, y={tm},col sep=semicolon] {csv/sphere/hoppe_p62_error.csv};
+  \addplot [black,dashed] table [x={r0/d}, y={te},col sep=semicolon] {csv/sphere/hoppe_p62_error.csv};
+\end{loglogaxis}
+\end{tikzpicture}
