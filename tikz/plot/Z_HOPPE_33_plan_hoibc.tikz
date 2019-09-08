@@ -1,3 +1,4 @@
+\tikzsetnextfilename{Z_HOPPE_33_plan_hoibc_TM}
 \begin{tikzpicture}[scale=1]
   \begin{axis}[
           title={Polarisation TM},
@@ -19,6 +20,7 @@
       % \addlegendentry{CI3};
   \end{axis}
 \end{tikzpicture}
+\tikzsetnextfilename{Z_HOPPE_33_plan_hoibc_TE}
 \begin{tikzpicture}[scale=1]
   \begin{axis}[
           title={Polarisation TE},

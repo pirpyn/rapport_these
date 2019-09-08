@@ -1,3 +1,4 @@
+\tikzsetnextfilename{R_cioe_2015_plan_hoibc_TM}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TM},
@@ -7,7 +8,6 @@
             xmin=0,
             xmax=1,
             ymax=1,
-            restrict y to domain=0:11,
             mark repeat=15,
             legend pos=outer north east
         ]
@@ -22,6 +22,7 @@
         \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Abs(r_ibc3.tm)}] {csv/M1/M1.r_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
     \end{axis}
 \end{tikzpicture}
+\tikzsetnextfilename{R_cioe_2015_plan_hoibc_TE}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TE},
@@ -32,7 +33,6 @@
             xmax=1,
             ymax=1,
             mark repeat=15,
-            restrict y to domain=0:11,
             legend pos=outer north east
         ]
         \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(r_ex.te)}] {csv/M1/M1.r_ex.P.csv};

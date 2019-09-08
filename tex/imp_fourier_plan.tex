@@ -3,6 +3,7 @@
 
     \begin{figure}[!h]
         \begin{center}
+            \tikzsetnextfilename{plan_1_couche}
             \begin{tikzpicture}
                 \input{tikz/schema/plan_1_couche.tikz}
             \end{tikzpicture}
@@ -425,6 +426,7 @@
 
         \begin{figure}[h!btp]
             \centering
+            \tikzsetnextfilename{plan_n_couches}            
             \begin{tikzpicture}
                 \input{tikz/schema/plan_n_couches.tikz}
             \end{tikzpicture}
@@ -669,15 +671,28 @@
 
     Dans le cas de la diffraction par un plan infini, une grandeur d’intérêt est le rapport entre l'onde réfléchie et l'onde incidente.
 
+    On définit les vecteurs de \(\vect{C_1},\vect{C_2} \in \CC^2\) tels que
+    \begin{align}
+        \hat{\vE_t}(k_x,k_y,z) &= ik_{3,0}\left(e^{ik_{3,0}z}\vect{C_1} - e^{-ik_{3,0}z}\vect{C_2}\right)
+        \\
+        \left(\vect{e_z}\pvect\hat{\vH}\right)_t(k_x,k_y,z) &= i\mC_{m+1}\left(e^{ik_{3,0}z}\vect{C_1} + e^{-ik_{3,0}z}\vect{C_2}\right)
+    \end{align}
+ 
+    L'onde incidente se propageant depuis l'infini vers le plan, vu l'orientation du schéma et la dépendance en \(i\omega t\), l'onde incidente est la partie en \(e^{ik_3z}\) du champ total extérieur et donc l'onde réfléchie la partie en \(e^{-ik_3z}\).\footnote{Car \(\omega t + k z\) reste constant quand \(t\) augmente si \(z\) diminue proportionnellement.}
+
+    \begin{TODO}
+        TE mauvais signe. Demander Olivier
+    \end{TODO}
+
     \begin{prop}
-      On définit la matrice \(\mR\) telle que pour tout point de la surface \(z=0\)
+      On définit la matrice \(\mR\) dépendant de \((k_x,k_y)\) telle que pour tout point de la surface \(z=0_+\)
       \begin{equation}
         \vect{C_2}  = \mR \vect{C_1}
       \end{equation}
       alors
       \begin{equation}
           \mR = 
-          \left(k_0^2\mI + \hat{\mLD} + k_0k_{3,0}\hat{\mZ}_m\right)^{-1}\left(k_0^\mI + \hat{\mLD} - k_0k_{3,0}\hat{\mZ}_m\right)
+          \left(k_0^2\mI + \hat{\mLD} + k_0k_{3,0}\hat{\mZ}_m\right)^{-1}\left(k_0^2\mI + \hat{\mLD} - k_0k_{3,0}\hat{\mZ}_m\right)
       \end{equation}
     \end{prop}
 
@@ -686,19 +701,19 @@
         \begin{align}
             \hat{\vE_t}(k_x,k_y,0_+) &= ik_{3,0}\left(\vect{C_1}-\vect{C_2}\right)
             \\
-            \vect{e_z}\pvect \hat{\vH}(k_x,k_y,0_+) &= i\mC_{m+1}\left(\vect{C_1}+\vect{C_2}\right)
+            \left(\vect{e_z}\pvect \hat{\vH}\right)_t(k_x,k_y,0_+) &= i\mC_{m+1}\left(\vect{C_1}+\vect{C_2}\right)
         \end{align}
-        et que 
+        et que les champs sont liés sur la surface de l'objet par la condition d'impédance
         \begin{align}
             \hat{\vE_t}(k_x,k_y,0_+) &= \hat{\mZ}_m \left(\vect{e_z}\pvect \hat{\vH}(k_x,k_y,0_+)\right)
             \\
-            \intertext{donc}
-            ik_{3,0}\left(\vect{C_1}-\vect{C_2}\right) &= i\hat{\mZ}_m\mC_m\left(\vect{C_1}+\vect{C_2}\right)
+            \intertext{donc en injectant les formules des champs}
+            ik_{3,0}\left(\vect{C_1}-\vect{C_2}\right) &= i\hat{\mZ}_m\mC_{m+1}\left(\vect{C_1}+\vect{C_2}\right)
             \\
-            \intertext{soit en factorisant par chaque vecteur}
-            \left(k_{3,0}\mI - \hat{\mZ}_m\mC_m\right)\vect{C_1} & = \left(k_{3,0}\mI+\hat{\mZ}_m\mC_m\right)\vect{C_2}
+            \intertext{puis en séparant chaque vecteur}
+            \left(k_{3,0}\mI - \hat{\mZ}_m\mC_{m+1} \right)\vect{C_1} & = \left(k_{3,0}\mI+\hat{\mZ}_m\mC_{m+1}\right)\vect{C_2}
         \end{align}
-        et on remplace \(\mC_{m+1}^{-1}\) par son expression avec \(\hat{\mLD}\) à l'extérieur
+        et on termine en remplaçant \(\mC_{m+1}^{-1}\) par son expression avec \(\hat{\mLD}\) à l'extérieur (\(\eta_r = 1\)).
         \begin{equation}
             \mC_{m+1}^{-1} = \frac{1}{k_0k_{3,0}^2} \left(k_0^2 \mI + \hat{\mLD} \right)
         \end{equation}
