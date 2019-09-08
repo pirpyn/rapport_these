@@ -50,8 +50,9 @@
         \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
         \input{tex/liminaires/couverture}
         \include{liminaires}
+        % Quand ce sera fini
+        % \input{tex/liminaires/personnel}
         \setcounter{secnumdepth}{5} % on numérote tous les niveaux de sections
-        \setcounter{tocdepth}{1}  % Pas besoin de trop détailler le sommaire ici (chapitres/sections)
         \dominitoc
         \hypertarget{tableofcontent}{}%
         \pdfbookmark[0]{Sommaire}{tableofcontent}%
@@ -71,6 +72,7 @@
         \appendix
         % On change la numération des annexes en alphabétique
         \renewcommand\thesection{\Alph{section}}
+        \setcounter{minitocdepth}{1} % Mini-toc breve (sections)
         \include{annexes}
     \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
     \printbibliography

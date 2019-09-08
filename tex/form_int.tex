@@ -58,6 +58,10 @@
 
   \subsection{Discrétisation de la surface de l'objet}
 
+    \begin{REF}
+      Mettre \cite{medgyesi-mitschang_integral_1985}
+    \end{REF}
+
     Soit \(\Gamma_h\) un maillage fermé de \(\Gamma\) en \(N_e\) éléments triangulaires. Soit \(N=\frac{3}{2}N_e\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
 
     Soit \(T\) un triangle défini par un nœud \(N_1\) et deux vecteurs \(\vect{e_1}\) et \(\vect{e_2}\). On rappelle la relation entre l'aire du triangle et ces vecteurs
@@ -83,6 +87,7 @@
     \newcommand{\yc}{3.0}
     \begin{minipage}{0.45\textwidth}
       \begin{center}
+        \tikzsetnextfilename{fonbasloc_triangle_loc}
         \begin{tikzpicture}[scale=1]
           \input{tikz/schema/fonbasloc_triangle_loc.tikz}
         \end{tikzpicture}
@@ -108,6 +113,7 @@
             % Les commandes qui suivent servent pour les 4 prochains schémas
             \setnodes{0}{0}{3}{0}{0}{3}
             \begin{center}
+              \tikzsetnextfilename{fonbasloc_phi_1}
               \begin{tikzpicture}[scale=1]
                 \input{tikz/schema/fonbasloc_phi.tikz}
               \end{tikzpicture}
@@ -119,6 +125,7 @@
         \begin{minipage}{0.329\textwidth}
             \setnodes{3}{0}{0}{3}{0}{0}
             \begin{center}
+              \tikzsetnextfilename{fonbasloc_phi_2}
               \begin{tikzpicture}[scale=1]
                 \input{tikz/schema/fonbasloc_phi.tikz}
               \end{tikzpicture}
@@ -130,6 +137,7 @@
         \begin{minipage}{0.329\textwidth}
             \setnodes{0}{3}{0}{0}{3}{0}
             \begin{center}
+              \tikzsetnextfilename{fonbasloc_phi_3}            
               \begin{tikzpicture}[scale=1]
                 \input{tikz/schema/fonbasloc_phi.tikz}
               \end{tikzpicture}
@@ -171,6 +179,7 @@
             % Les commandes qui suivent servent pour les 4 prochains schémas
             \setnodes{0}{0}{3}{0}{0}{3}
             \begin{center}
+              \tikzsetnextfilename{fonbasloc_p_1}
               \begin{tikzpicture}[scale=1]
                 \input{tikz/schema/fonbasloc_p.tikz}
               \end{tikzpicture}
@@ -182,6 +191,7 @@
         \begin{minipage}{0.329\textwidth}
             \setnodes{3}{0}{0}{3}{0}{0}
             \begin{center}
+              \tikzsetnextfilename{fonbasloc_p_2}
               \begin{tikzpicture}[scale=1]
                 \input{tikz/schema/fonbasloc_p.tikz}
               \end{tikzpicture}
@@ -193,6 +203,7 @@
         \begin{minipage}{0.329\textwidth}
             \setnodes{0}{3}{0}{0}{3}{0}
             \begin{center}
+              \tikzsetnextfilename{fonbasloc_p_3}
               \begin{tikzpicture}[scale=1]
                 \input{tikz/schema/fonbasloc_p.tikz}
               \end{tikzpicture}
@@ -230,6 +241,7 @@
             % Les commandes qui suivent servent pour les 4 prochains schémas
             \setnodes{0}{0}{3}{0}{0}{3}
             \begin{center}
+              \tikzsetnextfilename{fonbasloc_q_1}
               \begin{tikzpicture}[scale=1]
                 \input{tikz/schema/fonbasloc_q.tikz}
               \end{tikzpicture}
@@ -241,6 +253,7 @@
         \begin{minipage}{0.329\textwidth}
             \setnodes{3}{0}{0}{3}{0}{0}
             \begin{center}
+              \tikzsetnextfilename{fonbasloc_q_2}
               \begin{tikzpicture}[scale=1]
                 \input{tikz/schema/fonbasloc_q.tikz}
               \end{tikzpicture}
@@ -252,6 +265,7 @@
         \begin{minipage}{0.329\textwidth}
             \setnodes{0}{3}{0}{0}{3}{0}
             \begin{center}
+              \tikzsetnextfilename{fonbasloc_q_3}
               \begin{tikzpicture}[scale=1]
                 \input{tikz/schema/fonbasloc_q.tikz}
               \end{tikzpicture}
@@ -383,9 +397,6 @@
       D'après Olivier, il faut faire comme suit: soit W dans \(\Vect{\qj}\).
       On définit U et V dans \(\Vect{\phij}\) et \(\Vect{\pj}\) tels que \(\comp{u}=\mG{\phi}{q}\comp{w}\) et  \(\comp{v}=\mG{p}{q}\comp{w}\).
       On suppose la deuxième inversible alors  \(\comp{u} =\mG{\phi}{q} (\mG{p}{q})^{-1} \comp{v} \). Le problème est que numériquement c'est plus compliqué car la première est multiple de l'identité.
-
-
-
     \end{TODO}
 
     \begin{defn}

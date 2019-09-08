@@ -296,6 +296,7 @@
 
         \begin{figure}[!hbt]
           \centering
+            \tikzsetnextfilename{sphere_1_couche}
           \begin{tikzpicture}
             \input{tikz/schema/sphere_1_couche.tikz}
           \end{tikzpicture}
@@ -409,6 +410,7 @@
 
         \begin{figure}[!hbt]
           \centering
+            \tikzsetnextfilename{sphere_n_couche}
           \begin{tikzpicture}
             \input{tikz/schema/sphere_n_couche.tikz}
           \end{tikzpicture}
@@ -519,23 +521,8 @@
   \subsection{Applications numérique}
 
     \begin{figure}[!hbt]
-      \centering
-      \begin{tikzpicture}[scale=1]
-        \begin{loglogaxis}[
-            title={},
-            ylabel={\(||\hat{\mZ}_{plan} - \hat{\mZ}_{sphere}||_2\)},
-            xlabel={\(r_0/d\)},
-            width=0.8\textwidth,
-            xmin=0.1,
-            xmax=100,
-            % mark repeat=20,
-            legend pos=outer north east
-          ]
-          \legend{TM,TE}
-          \addplot [black] table [x={r0/d}, y={tm},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
-          \addplot [black,dashed] table [x={r0/d}, y={te},col sep=semicolon] {tikz/csv/impedance/sphere/hoppe_p62_error.csv};
-        \end{loglogaxis}
-      \end{tikzpicture}
-      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
-      \label{fig:imp_fourier:sphere:hoppe_p62:converge_rayon:error}
+        \centering
+        \input{tikz/plot/Z_HOPPE_62_sphere_erreur.tikz}
+        \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
+        \label{fig:imp_fourier:sphere:hoppe_p62:converge_rayon:error}
     \end{figure}

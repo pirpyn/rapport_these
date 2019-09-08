@@ -1,0 +1,58 @@
+\tikzsetnextfilename{Z_cioe_2015_plan_hoibc_TM}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={Polarisation TM},
+            ylabel={\(|\hat{Z}(k_x,0)|\)},
+            xlabel={\(k_x\slash k_0\)},
+            width=0.4\textwidth,
+            xmin=0,
+            xmax=1,
+            ymin=0.14,
+            ymax=0.25,
+            restrict y to domain=0:11,
+            mark repeat=10,
+            legend pos=outer north east
+        ]
+        \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(z_ex.tm)}] {csv/M1/M1.z_ex.P.csv};
+
+        \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Abs(z_ibc0.tm)}] {csv/M1/M1.z_ibc.IBC_ibc0_TYPE_P_SUC_F.csv};
+
+        \addplot [color=green!50!black,mark=pentagon*] table [col sep=comma, x={s1}, y={Abs(z_ibc01.tm)}] {csv/M1/M1.z_ibc.IBC_ibc01_TYPE_P_SUC_F.csv};
+
+        \addplot [color=orange,mark=*] table [col sep=comma, x={s1}, y={Abs(z_ibc1.tm)}] {csv/M1/M1.z_ibc.IBC_ibc1_TYPE_P_SUC_F.csv};
+
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.tm)}] {csv/M1/M1.z_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
+    \end{axis}
+\end{tikzpicture}
+\tikzsetnextfilename{Z_cioe_2015_plan_hoibc_TE}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={Polarisation TE},
+            ylabel={},
+            xlabel={\(k_x\slash k_0\)},
+            width=0.4\textwidth,
+            xmin=0,
+            xmax=1,
+            ymin=0.14,
+            ymax=0.25,
+            mark repeat=10,
+            restrict y to domain=0:11,
+            legend pos=outer north east
+        ]
+        \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(z_ex.te)}] {csv/M1/M1.z_ex.P.csv};
+        \addlegendentry{Exact};
+
+        \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Abs(z_ibc0.te)},color=] {csv/M1/M1.z_ibc.IBC_ibc0_TYPE_P_SUC_F.csv};
+        \addlegendentry{CI0};
+
+        \addplot [color=green!50!black,mark=pentagon*] table [col sep=comma, x={s1}, y={Abs(z_ibc01.te)}] {csv/M1/M1.z_ibc.IBC_ibc01_TYPE_P_SUC_F.csv};
+        \addlegendentry{CI01};
+
+        \addplot [color=orange,mark=*] table [col sep=comma, x={s1}, y={Abs(z_ibc1.te)}] {csv/M1/M1.z_ibc.IBC_ibc1_TYPE_P_SUC_F.csv};
+        \addlegendentry{CI1};
+
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.te)}] {csv/M1/M1.z_ibc.IBC_ibc3_TYPE_P_SUC_F.csv};
+        \addlegendentry{CI3};
+
+    \end{axis}
+\end{tikzpicture}

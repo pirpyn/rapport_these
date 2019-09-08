@@ -1,0 +1,18 @@
+\tikzsetnextfilename{Z_HOPPE_62_cylindre}
+\begin{tikzpicture}[scale=1]
+  \begin{axis}[
+      title={},
+      ylabel={\(\Im(\hat{Z}(k_t r_1,0))\)},
+      xlabel={\(k_t\slash k_0\)},
+      width=0.8\textwidth,
+      xmin=0,
+      xmax=1.5,
+      mark repeat=20,
+      legend pos=outer north east
+    ]
+    \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {csv/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
+    \addlegendentry{TM}
+    \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma]  {csv/HOPPE_62/HOPPE_62.z_ex.C_+3.000E-02.csv};
+    \addlegendentry{TE}
+  \end{axis}
+\end{tikzpicture}
