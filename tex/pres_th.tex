@@ -15,8 +15,8 @@ L'approche d’intérêt dans cette thèse et qui est très largement répandue 
 Alors à partir du moment où l'on connaît la trace tangentielles des champs sur le bord de notre objet, ces derniers sont connus en tout point du domaine.
 Cette méthode à plusieurs avantages: le problème devient borné, on passe de 3D volumique à 3D surfacique car seul le bord de l'objet devient caractéristique.
 Les traces tangentielles sont alors déterminées grâce à la résolution d'une \gls{acr-ei}, qui revient à l'inversion d'un système linaire dense, qui l'un des principaux inconvénient de cette méthode.
-De plus, l'unicité des solutions n'est pas garanties par cette méthode.
-Enfin, pour des matériaux fins ou dont les constantes varient beaucoup, la prise en compte de la contribution des matériaux dans l'équation intégrale est aussi un problème complexe.
+De plus, l'unicité des solutions n'est pas garantie par cette méthode.
+Enfin, pour des matériaux fins ou dont les constantes varient beaucoup, la prise en compte de la contribution des matériaux dans l'équation intégrale est aussi un problème coûteux numériquement.
 
 Là encore, une approche consiste à introduire une condition limite sur la surface extérieure de l'objet, qui rend compte des matériaux.
 On sait depuis \cite{cessenat_mathematical_1996} qu'une telle condition existe toujours mais n'est en pratique pas utilisable dans les codes numérique car c'est un opérateur pseudo-différentiel.
