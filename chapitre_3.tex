@@ -1,8 +1,12 @@
 \chapter{Conditions suffisantes d'unicité}
 \minitoc
 \newpage
-\input{tex/unicite_csug}
-\input{tex/unicite_csu_2011}
-\input{tex/unicite_csu_2014}
-\input{tex/optim_ci4}
-\input{tex/optim_mat_ss_pertes}
+\sectionstar{Introduction}
+Nous avons montrés dans les parties précédentes comment calculer les coefficients des \glspl{acr-cioe} par les moindres carrés. Dans cette partie, nous allons rappeler et étendre les travaux de \cite{stupfel_sufficient_2011} à la \hyperref[ci3]{CI3}. Nous rappellerons donc la \gls{acr-cgu} et les \glspl{acr-csu} qu'elle implique sur les coefficients des CIOE. Nous introduirons le problème de minimisation sous contraintes et la méthode numérique choisie pour le résoudre. Nous verrons que certains empilements de matériaux nécessiterons une réduction du problème pour obtenir de bon coefficients. Enfin nous résoudrons le problème de minimisation exactement dans le cadre de la \hyperref[ci4]{CI4}.
+\input{tex/chapitre_3/unicite_csug}
+\input{tex/chapitre_3/unicite_csu_2011}
+\input{tex/chapitre_3/unicite_csu_2014}
+\input{tex/chapitre_3/optim_mat_ss_pertes}
+\input{tex/chapitre_3/optim_ci4}
+\sectionstar{Conclusion}
+Nous nous sommes dotés d'une méthode numérique pour calculer les coefficients des CIOE qui permet de garantir l'unicité des solutions des équations de Maxwell. Ce calcul n'est fait que pour un empilement de matériaux et une fréquence donnée mais son coût numérique faible et la rapidité de ce dernier nous permettent de le valider pour l'intégration dans CIOE dans un code de résolution des équations de Maxwell.
