@@ -1,41 +1,63 @@
 \section{Condition suffisante d'unicité générale}
 
-  %Considérons le problème énoncé dans \cite{stupfel_sufficient_2011} (convention \(e^{i\omega t}\)).
-  Soit une \(\Gamma\) une surface régulière fermée dans \(\RR^3\).
+  On rappelle les résultats d’unicité démontrés par \cite[chapitre 2, section 11]{cessenat_mathematical_1996}.
+
+  Soit \(\OO\) un domaine fermé borné de \(\RR^3\) et \(\Gamma\) sa frontière.
   À l'extérieur de cette surface, on définit \(k_0 \in \RR_+^*\), le nombre d'onde dans le vide et \(\eta_0 \in \RR^*\) l'impédance du vide.
-  À l'intérieur, on définit les constantes relatives \(\eps,\mu \in \CC\), invariantes par translation.
+  À l'intérieur, on définit les constantes relatives \(\eps,\mu \in \CC\), invariantes par translation dans ce domaine, dont on déduit le nombre d'onde intérieur \(k = k_0 \sqrt{\mu\eps}\).
 
-  \begin{tcolorbox}
-    \centering
-    La dépendance temporelle est en \(e^{i\w t}\), et l'on identifie \(\vH \equiv \eta _0 \vH\).
-  \end{tcolorbox}
-
-  Soit \((\vE,\vH)\) dans \((\Hrot(\OO)) \times (\Hrot(\OO))\).
-
-  Alors \((\vE,\vH)\) sont solutions de Maxwell si
+  Soit \((\vE,\vH)\) dans \((\Hrot(\OO)) \times (\Hrot(\OO))\) tels que:
   \begin{align}
-    \label{eq:unicite:form_var:maxwell-E}
-    \trot \vE + ik_0 \mu \vH &= 0 && \text{dans \(\OO\)}
-    \\\label{eq:unicite:form_var:maxwell-H}
-    \trot \vH - ik_0\eps \vE &= 0 && \text{dans \(\OO\)}
-    % \\\label{eq:unicite:form_var:TR}
-    % \Tr(\vE_t) &= - \vn_{Y_R} \pvect \vH && \text{sur \(\Gamma(0,R)\)}
+  \left\lbrace
+    \begin{matrix}
+      \trot \vE + ik \mu \vH &= 0
+      \\
+      \trot \vH - ik \eps \vE &= 0
+      \\
+      \tdiv \vE &= 0
+      \\
+      \tdiv \vH &= 0
+      % \\\label{eq:unicite:form_var:TR}
+      % \Tr(\vE_t) &= - \vn_{Y_R} \pvect \vH && \text{sur \(\Gamma(0,R)\)}
+    \end{matrix}
+    \right. && \text{dans \(\OO\)}
   \end{align}
   % Où \(\Tr\) est l'opérateur de capacité \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{Y_R}\) la normale unitaire sortante à \(\Gamma(0,R)\).\\
 
-  Les relations \eqref{eq:unicite:form_var:maxwell-E} et \eqref{eq:unicite:form_var:maxwell-H} permettent grâce aux formules de Green d'obtenir la forme variationnelle suivante :
-  Trouver \(\vE \in \left(\Hrot(\OO)\right)\), \(\forall \vect \phi \in \left(\Hrot(\OO)\right)\)
-  \[
-    a(\vE,\vect\phi) = 0
-  \]
+  Soit \(\vect{\phi}\) dans \(\Hrot(\OO)\) une fonction test. Ces équations aboutissent à la forme variationnelle suivante :
+  \begin{prop}
+    Trouver \(\vE \in \left(\Hrot(\OO)\right)\), \(\forall \vect \phi \in \left(\Hrot(\OO)\right)\)
+    \[
+      a(\vE,\vect\phi) = 0
+    \]
+  \end{prop}
+
   où a est une forme sesquilinéaire telle que, soit \(\vn\) la normale unitaire sortante à \(\Gamma\).
   \begin{align*}
-    a(\vE,\vect\phi) &:=  \frac{1}{-ik_0\mu} \int_\OO \trot \vE \cdot \trot \conj{\vect{\phi}} dx + -ik_0\eps\int_\OO\vE\cdot\conj{\vect{\phi}} dx
+    a(\vE,\vect\phi) &:=  \frac{1}{ik\mu} \int_\OO \trot \vE \cdot \trot \conj{\vect{\phi}} dx + ik\eps\int_\OO\vE\cdot\conj{\vect{\phi}} dx
      %+ \int_{Y_R} \conj{ \vect \phi } \cdot \Tr(\vE_t)ds
-     - \int_\Gamma \left(\vn \pvect \frac{\trot \vE}{-ik_0\mu}\right) \cdot \conj{\vect \phi} ds \\
+      - \int_\Gamma \left(\vn \pvect \frac{\trot \vE}{ik\mu}\right) \cdot \conj{\vect \phi} ds(\vx) \\
    \end{align*}
 
-  \begin{defn}[Coercivité]
+  \begin{proof}
+    Partons de la première équation.
+    \begin{align}
+          \frac{\trot \vE}{ik\mu} + \vH &= 0
+          \\ \intertext{Appliquons lui le rotationnel.}
+          \trot \frac{\trot \vE}{ik\mu} + \trot \vH &= 0
+          \\ \intertext{On peut utiliser la seconde équation pour n'avoir plus que \(\vE\).}
+          \trot \frac{\trot \vE}{ik\mu} + ik\eps \vE &= 0
+          \\ \intertext{Réalisons le produit scalaire avec la fonction test.}
+          \int_\OO{ \trot \frac{\trot \vE}{ik\mu}\cdot \conj{\vect{\phi}}} +  \int_\OO ik\eps \vE \cdot \conj{\vect{\phi}} &= 0
+          \\ \intertext{Utilisons la formule de Green du rotationnel (voir \cite[eq.~(A1.32)]{bladel_electromagnetic_2007}).}
+          \int_\OO{ \frac{\trot \vE}{ik\mu}\cdot \trot \conj{\vect{\phi}}} - \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik\mu}\right)  \cdot \vn ds(\vx) + \int_\OO ik\eps \vE \cdot \conj{\vect{\phi}} &= 0
+          \\ \intertext{On arrange les termes.}
+          \int_\OO \frac{\trot \vE}{ik\mu}\cdot \trot \conj{\vect{\phi}} - \int_\Gamma \left(\vn \pvect \frac{\trot \vE}{ik\mu}\right) \cdot \conj{\vect \phi} ds(\vx) +  \int_\OO ik\eps \vE \cdot \conj{\vect{\phi}} &= 0
+      \end{align}
+  \end{proof}
+
+  On rappelle la définition de \cite[p.~59]{cessenat_mathematical_1996}.
+  \begin{defn}[Coercivité d'une forme sesquilinéaire]
     Une forme sesquilinéaire \(a(\vu,\vv)\) est coercive dans \(\Hrot(\OO)\) si \(\exists \alpha > 0\) tel que
     \[
       |\Re(a(\vu,\vu))| \ge \alpha ||\vu||_{\Hrot(\OO)}^2 = \alpha \left( || \trot \vu ||_{L^2}^2 + || \vu ||_{L^2}^2\right) \, \forall \vu \in \Hrot(\OO)
@@ -45,50 +67,49 @@
   %La forme bilinéaire \(a\) est coercive \Gamma'il existe une constante réel positive \(\mathcal{C}\) telle que \(|a(\vE,\vE)|^2 \ge \mathcal{C}  || \vE ||_{\Hrot}^4 = \mathcal{C}\left( || \trot \vE ||_{L^2}^2  + || \vE ||_{L^2}^2 \right)^2 \).
 
   %Supposons \(\eps, \mu\) constants et
-  Posons les définitions suivantes:
-  \begin{align*}
-    % X&:= \int_\OO | \trot \vE | ^2 dx  =|| \trot \vE ||_{L^2}^2
-    % \\B&:= \int_\OO | \vE | ^2 dx  = || \vE ||_{L^2}^2
-    %\\CC&:= \int_{Y_R} \conj{E_t}\cdot T_R \vE_t ds
-    \vJ &:=  \vn \pvect \frac{\trot \vE}{-ik_0\mu} && \text{sur \(\Gamma\)}
-    \\
-    X&:= \int_\Gamma \vJ \cdot \conj{\vE_t} ds
-  \end{align*}
+  On définit en tout point de \(\Gamma\) la trace tangentielle de \(\vH\) que l'on note \(\vJ = \vn \pvect \vH\). On définit alors la quantité suivante
+  \begin{align}
+    X &= \int_\Gamma \vJ \cdot \conj{\vect \phi} ds(\vx)
+  \end{align}
+
   La partie réelle de la forme bilinéaire \(a\) s'écrit donc
   \begin{equation}
     \label{eq:unicite:form_var:decomp_form_bilin_1}
-    |\Re(a(\vE,\vE))| = \left|\frac{\Im(\mu)}{k_0} || \trot \vE ||_{L^2}^2  + k_0 \Im(\eps) || \vE ||_{L^2}^2
+    |\Re(a(\vE,\vE))| = \left|\frac{\Im(\mu)}{k} || \trot \vE ||_{L^2}^2  + k \Im(\eps) || \vE ||_{L^2}^2
     %+ \Re(C)
     - \Re(X)\right|
   \end{equation}
+
+\subsection{Conditions suffisantes d'unicités}
 
   \begin{hyp}[Hypothèses de coercivité en convention \(i\omega t\)]\label{hyp:unicite:form_var:hyp_coercivite}
     ~{}
 
     \begin{enumerate}
       \item \(\Im(\eps)\) et \(\Im(\mu)\) sont de même signe.
-      \item \(\Im(\eps)\) et \(\Re(X)\) sont de signes opposés\footnote{En convention \(-i\omega t\), il faut que le signe soit le même, et donc \(\Re(X) \le 0\).}.
+      \item \(\Im(\eps)\) et \(\Re(X)\) sont de signes opposés\footnote{En convention \(-i\omega t\), il faut que le signe soit le même}.
       %\item \(\Re(C)\) et \(\Re(X)\) sont de même signe.
     \end{enumerate}
   \end{hyp}
 
 \subsection{Cas des matériaux avec pertes}
 
-  Si l'hypothèse \ref{hyp:unicite:form_var:hyp_coercivite} est vérifiée alors \(a\) est coercive ( \(\alpha = \min(-\Im(\mu)k_0^{-1},-\Im(\eps)k_0)\)) donc il y a unicité des solutions du problème de Maxwell avec conditions d'impédance.
+  Les matériaux avec pertes sont tels que au moins l'une des deux constantes a une partie imaginaire non-nulle.
 
-  Comme en convention \(e^{i\omega t}\), le signe de \(\Im(\eps)\) et \(\Im(\mu)\) est négatif
+  Si l'hypothèse \ref{hyp:unicite:form_var:hyp_coercivite} est vérifiée alors \(a\) est coercive ( \(\alpha = \min(-\Im(\mu)k^{-1},-\Im(\eps)k)\)) donc il y a unicité des solutions du problème de Maxwell d'après Lax-Milgram (voir \cite{cessenat_mathematical_1996}).
+
+  Comme nous sommes en convention \(e^{i\omega t}\) et que nous imposons que le signe de \(\Im(\eps)\) et \(\Im(\mu)\) soit négatif
   %, sachant que d'après \cite[p.~97]{nedelec_acoustic_2001} \(\Re(C)\ge 0\)
   alors l'unicité est assurée par la
-  \begin{defn}[\gls{acr-cgu}]~\\
+  \begin{defn}[\glsentrydesc{acr-cgu}]~\\
     \begin{equation}\label{eq:unicite:form_var:cgu}
-      \Re(X) = \Re\left(\int_\Gamma \vJ \cdot \conj{\vE_t} ds\right) \ge 0
+      \Re\left(\int_\Gamma \vJ \cdot \conj{\vE_t} ds\right) \ge 0
     \end{equation}
   \end{defn}
+  Dans la suite de la thèse, nous noterons souvent cette quantité par \gls{mat-q}. C'est par définition la partie réelle du flux sortant du vecteur de Poynting à travers la surface de l'objet. 
 
 \subsection{Cas des matériaux sans pertes}
 
-  Si \(\Im(\mu) = \Im(\eps) = 0\), le résultat précédent n'est plus valable car \(\alpha = 0\).
+  Si \(\Im(\mu) = \Im(\eps) = 0\), le résultat précédent n'est plus valable car \(\alpha = 0\). Cependant, l'unicité est assuré par l’alternative de Fredholm (voir \cite[Théorème 8]{cessenat_mathematical_1996}) dont la conclusion est aussi que \ref{eq:unicite:form_var:cgu} doit être vérifiée pour assurée l'unicité.
 
-  \begin{REF}
-      Fredholm
-  \end{REF}
+  Maintenant que nous connaissant la condition suffisante à vérifier, nous allons montrer quelles conditions sur les coefficients des CIOE permettent la vérifier.

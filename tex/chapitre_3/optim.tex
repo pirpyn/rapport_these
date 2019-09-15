@@ -1,0 +1,38 @@
+\section{Calcul des coefficient des CIOE par moindres carrés sous contraintes}
+
+\subsection{Expression des moindre carrés dans le cadre de l'approximation plan infini}
+  Pour toutes les CIOE, on cherche à approcher le symbole de l'opérateur d'impédance \(\hat\mZ_{ex}(k_x,k_y)\) par une matrice \(\hat\mZ_{ap}(k_x,k_y)\)
+
+  \begin{prop}
+    SOit \(k_x,k_y\) fixés.
+    Pour nos CIOE, il existe une matrice \(\mH_{k_x,k_y}(CI,\hat\mZ_{ex}(k_x,k_y))\) et un vecteur \(\vect{X}(CI)\) où CI représente un vecteur de \(\CC^n\) composés des coefficient de la CI telles que minimiser 
+    \[
+      ||\hat\mZ_{ap}(k_x,k_y)-\hat\mZ_{ex}(k_x,k_y)||^2
+    \] 
+    revient à minimiser 
+    \[ 
+      || \mH_{k_x,k_y}(CI,\hat\mZ_{ex}(k_x,k_y)) \vect{X}(CI) - b(\hat\mZ_{ex}(k_x,k_y)) ||^2
+    \]
+    Les dimensions de \(\mH\) sont de 4 lignes et le nombre de coefficients de la CI colonnes et donc le vecteur colonne b à 4 coefficients.
+  \end{prop}
+
+  \begin{proof}
+    Nous démontrons ce résultat pour la \hyperlink{ci3}{CI3}, les matrices des autres CIOE s'en déduisent.
+
+    Soient les matrices symétriques \(\hat\mLD, \hat\mLR\) telles que
+
+    \begin{align}
+      \hat\mLD(k_x,k_y) & = - \begin{bmatrix} k_x^2 & k_x k_y \\ k_x k_y & k_y^2 \end{bmatrix}
+      \\
+      \hat\mLR(k_x,k_y) & =  \begin{bmatrix} k_y^2 & -k_x k_y \\ -k_x k_y &  k_x^2 \end{bmatrix}
+    \end{align}
+
+    Par définition, on a
+    \begin{align}
+    ||\hat\mZ_{ap}-\hat\mZ_{ex}||^2 &= ||\left(\mI + b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)^{-1}\left(a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR}\right)-\hat\mZ_{ex} ||^2
+    \\
+    &= || a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR} ||^2 + ||\hat\mZ_{ex}||^2 - 2 \left<\left(\mI + b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)\hat\mZ_{ex},a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR} \right>
+    \\
+    &= ||\hat\mZ_{ex}||^2 + \left<a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR} -2\left(\mI + b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)\hat\mZ_{ex},a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR} \right> 
+    \end{align}
+  \end{proof}

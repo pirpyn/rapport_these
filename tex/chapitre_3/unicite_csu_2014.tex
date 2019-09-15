@@ -1,22 +1,29 @@
 \section{CSU pour la CIOE CI3 de \cite{aubakirov_electromagnetic_2014}}
 
-  Soit la CIOE énoncé dans \cite{aubakirov_electromagnetic_2014} que l'on nommera CI3 :
+  Soit la CIOE énoncé dans \cite{aubakirov_electromagnetic_2014} que l'on nomme \hyperlink[ci3]{CI3} :
   \begin{equation}
     \label{eq:unicite:ci3:ci3}
-    ( 1 + b_1 \LD - b_2 \LR)\vE_t = (a_0 + a_1 \LD - a_2 \LR ) \vJ
+    ( \oI + b_1 \LD - b_2 \LR)\vE_t = (a_0\oI + a_1 \LD - a_2 \LR ) \vJ
   \end{equation}
 
-  On rappelle les expressions des opérateurs \gls{ope-LD} et \gls{ope-LR} pour des vecteurs tangents \(\vect U \in (C^\infty(\Gamma^ 3)\), \( \vect V \in (C^\infty(\Gamma^3))\) :
-  \begin{align*}
-    \LD(\vect U) &= \tgrads \tdivs \vect U\\
-    \LR(\vect V) &= \trots( \vn ( \vn \cdot \trots \vect V))\\
-  \end{align*}
+  \begin{defn}
+    On rappelle les expressions des opérateurs \gls{ope-LD} et \gls{ope-LR} pour des vecteurs tangents \(\vect U,\vect V \in (\mathcal{C}^\infty(\CC,\Gamma))^3\): 
+    \begin{align*}
+      \LD(\vect U) &= \tgrads \tdivs \vect U\\
+      \LR(\vect V) &= \trots( \vn ( \vn \cdot \trots \vect V))\\
+    \end{align*}
+  \end{defn}
+
+  \begin{prop}
+    Par définition, \(\LD\) est antisymétrique négatif et \(\LR\) antisymétrique positif.
+  \end{prop}
+
   \begin{prop}
     Soit \(\OO\) un domaine borné de \(\RR^3\) , de surface \(\Gamma\) fermée et régulière, où \(\vect n\) y est la normale unitaire
     sortante
     \begin{equation}
       \begin{matrix}
-        \forall \vect U \in (C^\infty(\Gamma^3)) ,& \LR(\LD(\vect U)) = \LD(\LR(\vect U)) = 0
+        \forall \vect U \in (\mathcal{C}^\infty(\CC,\Gamma))^3 ,& \LR(\LD(\vect U)) = \LD(\LR(\vect U)) = 0
       \end{matrix}
     \end{equation}
   \end{prop}
@@ -43,351 +50,445 @@
 
   % Cette relation \Gamma'exprime sous forme forte par \(\LD\LR\equiv0\). Elle est là aussi symétrique entre les deux opérateurs.
 
+\subsection{CSU pour la CI4}
+
+  On commence par une CIOE plus simple en fixant \(b_1=b_2=0\).
+
+  \begin{prop}
+    Des CSU sont
+    \begin{align}
+      \Re(a_0) \ge 0
+      \\
+      \Re(a_1) \le 0
+      \\
+      \Re(a_2) \le 0
+    \end{align}
+  \end{prop}
+
+  \begin{prop}
+    On pose:
+    \begin{align*}
+      F &:= ||\vJ|| ^2 \ge 0  & G_1 &:= -\int_\Gamma \vJ\cdot \LD\conj{\vJ} ds \ge 0 & G_2 &:= \int_\Gamma \vJ\cdot \LR\conj{\vJ} ds \ge 0
+    \end{align*}
+
+    On a alors
+    \begin{equation*}
+      X = \conj{a_0}F - \conj{a_1}G - \conj{a_2}G
+    \end{equation*}
+
+    De \eqref{eq:unicite:form_var:cgu}, on déduit des CSU suivantes:
+    \begin{align}
+      \Re\left(a_0\right) \ge 0
+      \\
+      \Re\left(a_1\right) \le 0
+      \\
+      \Re\left(a_2\right) \le 0
+    \end{align}
+  \end{prop}
+
+  On remarque que ces CSU redonnent les CSU de la CI01 quand \(a_1=a_2\).
+
 \subsection{CSU de Stupfel}
 
-  On prend \eqref{eq:unicite:ci3:ci3} et on l’intègre avec des produits scalaires judicieusement choisis.
+  \begin{prop}
+    Soit \(\Delta_i = a_i-\conj{b_i}a_0\), \(i=1,2\). Des CSU sont
+    \begin{align}
+      \Re\left(a_0\conj{a_1}\Delta_1\right) \ge 0 \\
+      \Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0 \\
+      \Re\left(\conj{a_0}a_2\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_2}a_1}{\Delta_1} \right)\le 0\\
+      \Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right) \ge 0\\
+      \Re\left(a_0\conj{a_2}\Delta_2\right) \ge 0 \\
+      \Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0 \\
+      \Re\left(\conj{a_0}a_1\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_1}a_2}{\Delta_2} \right)\le 0\\
+      \Re\left(2\Re(b_1)\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}^2}{\Delta_1}\right) \ge 0\\
+      \Re\left(\Delta_1\right) = 0 \\
+      \Re\left(\Delta_2\right) = 0 \\
+      \Re\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}}{\Delta_1}\right) = 0\\
+    \end{align}
+  \end{prop}
+  
+  \begin{proof}
+    On prend l'expression de la CIOE \eqref{eq:unicite:ci3:ci3} et on l’intègre avec des produits scalaires judicieusement choisis.
 
-  \begin{multline}
-    \label{eq:unicite:ci3:csu3-1}
-    \int_\Gamma \vJ\cdot\conj{\eqref{eq:unicite:ci3:ci3}}ds \Rightarrow
-    \int_\Gamma \vJ \cdot \conj{\vE_t} ds  + \conj{b_1} \int_\Gamma \vJ\cdot \LD\conj{\vE_t} ds - \conj{b_2} \int_\Gamma \vJ \LR\conj{\vE_t} ds \\
-    = \conj{a_0} \int_\Gamma |\vJ|^2ds - \conj{a_1} \int_\Gamma |\tdivs \vJ|^2 ds - \conj{a_2} \int_\Gamma |\vn \cdot \trots \vJ|^2 ds
-  \end{multline}
-  \begin{multline}
-    \label{eq:unicite:ci3:csu3-2}
-    \int_\Gamma \eqref{eq:unicite:ci3:ci3} \cdot \conj{\vE_t} ds \Rightarrow
-    \int_\Gamma |\vE_t|^2 ds  - b_1 \int_\Gamma | \tdivs \vE |^2 ds - b_2 \int_\Gamma | \vn \cdot \trots \vE_t|^2 ds \\
-    = a_0 \int_\Gamma \vJ\cdot \conj{\vE_t}ds + a_1 \int_\Gamma \conj{\vE_t} \LD \vJ ds - a_2 \int_\Gamma \conj{\vE_t} \cdot \LR \vJ ds
-  \end{multline}
-  \begin{multline}
-    \label{eq:unicite:ci3:csu3-3}
-    \int_\Gamma \vJ \cdot \LR ( \conj{\eqref{eq:unicite:ci3:ci3}} ) ds \Rightarrow
-    \int_\Gamma \vJ \cdot \LR \conj{\vE_t} ds  - \conj{b_2} \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t} ds \\
-    =  \conj{a_0} \int_\Gamma |\vn \cdot \trots \vJ|^2ds - \conj{a_2} \int_\Gamma | \LR \vJ|^2 ds
-  \end{multline}
-  \begin{multline}
-    \label{eq:unicite:ci3:csu3-4}
-    \int_\Gamma  \LR ( \eqref{eq:unicite:ci3:ci3} ) \cdot \conj{\vE_t} ds \Rightarrow
-    \int_\Gamma | \vn \cdot \trots \vE_t |^2 ds  - \conj{b_2} \int_\Gamma | \LR \vE_t|^2 ds \\
-    = a_0 \int_\Gamma \conj{\vE_t} \LR \vJ ds - a_2 \int_\Gamma \LR \conj{\vE_t} \cdot \LR \vJ ds
-  \end{multline}
     \begin{multline}
-    \label{eq:unicite:ci3:csu3-5}
-    \int_\Gamma \vJ \cdot \LD ( \conj{\eqref{eq:unicite:ci3:ci3}} ) ds \Rightarrow
-    \int_\Gamma \vJ \cdot \LD \conj{\vE_t} ds  + \conj{b_1} \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t} ds \\
-    = - \conj{a_0} \int_\Gamma |\tdivs \vJ|^2ds + \conj{a_1} \int_\Gamma | \LD \vJ|^2 ds
-  \end{multline}
-  \begin{multline}
-    \label{eq:unicite:ci3:csu3-6}
-    \int_\Gamma  \LD ( \eqref{eq:unicite:ci3:ci3} ) \cdot \conj{\vE_t} ds \Rightarrow
-    -\int_\Gamma | \tdivs \vE_t |^2 ds  + \conj{b_1} \int_\Gamma | \LD \vE_t|^2 ds \\
-    = a_0 \int_\Gamma \conj{\vE_t} \LD \vJ ds + a_1 \int_\Gamma \LD \conj{\vE_t} \cdot \LD \vJ ds
-  \end{multline}
-  On pose alors les définitions suivantes :
-  \begin{align*}
-    X&:= \int_\Gamma \vJ \cdot \conj{\vE_t} ds\\
-    Y_D&:= \int_\Gamma \vJ \cdot \LD \conj{\vE_t} ds
-    &Y_R&:= \int_\Gamma \vJ \cdot \LR \conj{\vE_t} ds\\
-    Z_D&:= \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t} ds
-    &Z_R&:= \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t} ds
-  \end{align*}
-
-  Les équations \eqref{eq:unicite:ci3:csu3-1} à \eqref{eq:unicite:ci3:csu3-4} sont équivalentes au système \(M_R X_R = F_R\) où
-
-  \begin{align*}
-    M_R&:=
-    \begin{bmatrix}
-      1&\conj{b_1}&-\conj{b_2}&0\\
-      a_0&a_1&-a_2&0\\
-      0&0&1&-\conj{b_2}\\
-      0&0&a_0&-a_2\\
-    \end{bmatrix},\;
-    X_R =
-    \begin{bmatrix}
-      X\\
-      Y_D\\
-      Y_R\\
-      Z_R
-    \end{bmatrix}\\
-    F_R &=
-    \begin{bmatrix}
-      \conj{a_0} \int_\Gamma |\vJ|^2ds - \conj{a_1} \int_\Gamma |\tdivs \vJ|^2 ds - \conj{a_2} \int_\Gamma |\vn \cdot \trots \vJ|^2 ds \\
+      \label{eq:unicite:ci3:csu3-1}
+      \int_\Gamma \vJ\cdot\conj{\eqref{eq:unicite:ci3:ci3}}ds \Rightarrow
+      \int_\Gamma \vJ \cdot \conj{\vE_t} ds  + \conj{b_1} \int_\Gamma \vJ\cdot \LD\conj{\vE_t} ds - \conj{b_2} \int_\Gamma \vJ \LR\conj{\vE_t} ds \\
+      = \conj{a_0} \int_\Gamma |\vJ|^2ds - \conj{a_1} \int_\Gamma |\tdivs \vJ|^2 ds - \conj{a_2} \int_\Gamma |\vn \cdot \trots \vJ|^2 ds
+    \end{multline}
+    \begin{multline}
+      \label{eq:unicite:ci3:csu3-2}
+      \int_\Gamma \eqref{eq:unicite:ci3:ci3} \cdot \conj{\vE_t} ds \Rightarrow
       \int_\Gamma |\vE_t|^2 ds  - b_1 \int_\Gamma | \tdivs \vE |^2 ds - b_2 \int_\Gamma | \vn \cdot \trots \vE_t|^2 ds \\
-      \conj{a_0} \int_\Gamma |\vn \cdot \trots \vJ|^2ds - \conj{a_2} \int_\Gamma | \LR \vJ|^2 ds \\
-      \int_\Gamma | \vn \cdot \trots \vE_t |^2 ds  - \conj{b_2} \int_\Gamma | \LR \vE_t|^2 ds
-    \end{bmatrix}
-  \end{align*}
+      = a_0 \int_\Gamma \vJ\cdot \conj{\vE_t}ds + a_1 \int_\Gamma \conj{\vE_t} \LD \vJ ds - a_2 \int_\Gamma \conj{\vE_t} \cdot \LR \vJ ds
+    \end{multline}
+    \begin{multline}
+      \label{eq:unicite:ci3:csu3-3}
+      \int_\Gamma \vJ \cdot \LR ( \conj{\eqref{eq:unicite:ci3:ci3}} ) ds \Rightarrow
+      \int_\Gamma \vJ \cdot \LR \conj{\vE_t} ds  - \conj{b_2} \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t} ds \\
+      =  \conj{a_0} \int_\Gamma |\vn \cdot \trots \vJ|^2ds - \conj{a_2} \int_\Gamma | \LR \vJ|^2 ds
+    \end{multline}
+    \begin{multline}
+      \label{eq:unicite:ci3:csu3-4}
+      \int_\Gamma  \LR ( \eqref{eq:unicite:ci3:ci3} ) \cdot \conj{\vE_t} ds \Rightarrow
+      \int_\Gamma | \vn \cdot \trots \vE_t |^2 ds  - \conj{b_2} \int_\Gamma | \LR \vE_t|^2 ds \\
+      = a_0 \int_\Gamma \conj{\vE_t} \LR \vJ ds - a_2 \int_\Gamma \LR \conj{\vE_t} \cdot \LR \vJ ds
+    \end{multline}
+      \begin{multline}
+      \label{eq:unicite:ci3:csu3-5}
+      \int_\Gamma \vJ \cdot \LD ( \conj{\eqref{eq:unicite:ci3:ci3}} ) ds \Rightarrow
+      \int_\Gamma \vJ \cdot \LD \conj{\vE_t} ds  + \conj{b_1} \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t} ds \\
+      = - \conj{a_0} \int_\Gamma |\tdivs \vJ|^2ds + \conj{a_1} \int_\Gamma | \LD \vJ|^2 ds
+    \end{multline}
+    \begin{multline}
+      \label{eq:unicite:ci3:csu3-6}
+      \int_\Gamma  \LD ( \eqref{eq:unicite:ci3:ci3} ) \cdot \conj{\vE_t} ds \Rightarrow
+      -\int_\Gamma | \tdivs \vE_t |^2 ds  + \conj{b_1} \int_\Gamma | \LD \vE_t|^2 ds \\
+      = a_0 \int_\Gamma \conj{\vE_t} \LD \vJ ds + a_1 \int_\Gamma \LD \conj{\vE_t} \cdot \LD \vJ ds
+    \end{multline}
+    On pose alors les définitions suivantes :
+    \begin{align*}
+      X&:= \int_\Gamma \vJ \cdot \conj{\vE_t} ds\\
+      Y_D&:= \int_\Gamma \vJ \cdot \LD \conj{\vE_t} ds
+      &Y_R&:= \int_\Gamma \vJ \cdot \LR \conj{\vE_t} ds\\
+      Z_D&:= \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t} ds
+      &Z_R&:= \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t} ds
+    \end{align*}
 
-  Tandis que les équations \eqref{eq:unicite:ci3:csu3-1},\eqref{eq:unicite:ci3:csu3-2},\eqref{eq:unicite:ci3:csu3-5},\eqref{eq:unicite:ci3:csu3-6} sont équivalentes au système \(M_D X_D= F_D\) où
+    Les équations \eqref{eq:unicite:ci3:csu3-1} à \eqref{eq:unicite:ci3:csu3-4} sont équivalentes au système \(M_R X_R = F_R\) où
 
-  \begin{align*}
-    M_D&:=
-    \begin{bmatrix}
-      1&-\conj{b_2}&\conj{b_1}&0\\
-      a_0&-a_2&a_1&0\\
-      0&0&1&\conj{b_1}\\
-      0&0&a_0&a_1\\
-    \end{bmatrix},\;
-    X_D =
-    \begin{bmatrix}
-      X\\
-      Y_R\\
-      Y_D\\
-      Z_D
-    \end{bmatrix}\\
-    F_D &=
-    \begin{bmatrix}
-      \conj{a_0} \int_\Gamma |\vJ|^2ds - \conj{a_1} \int_\Gamma |\tdivs \vJ|^2 ds - \conj{a_2} \int_\Gamma |\vn \cdot \trots \vJ|^2 ds \\
-      \int_\Gamma |\vE_t|^2 ds  - b_1 \int_\Gamma | \tdivs \vE |^2 ds - b_2 \int_\Gamma | \vn \cdot \trots \vE_t|^2 ds \\
-      -\conj{a_0} \int_\Gamma |\tdivs \vJ|^2ds + \conj{a_1} \int_\Gamma | \LR \vJ|^2 ds \\
-      -\int_\Gamma | \tdivs \vE_t |^2 ds  + \conj{b_1} \int_\Gamma | \LR \vE_t|^2 ds
-    \end{bmatrix},\;
-  \end{align*}
+    \begin{align*}
+      M_R&:=
+      \begin{bmatrix}
+        1&\conj{b_1}&-\conj{b_2}&0\\
+        a_0&a_1&-a_2&0\\
+        0&0&1&-\conj{b_2}\\
+        0&0&a_0&-a_2\\
+      \end{bmatrix},\;
+      X_R =
+      \begin{bmatrix}
+        X\\
+        Y_D\\
+        Y_R\\
+        Z_R
+      \end{bmatrix}\\
+      F_R &=
+      \begin{bmatrix}
+        \conj{a_0} \int_\Gamma |\vJ|^2ds - \conj{a_1} \int_\Gamma |\tdivs \vJ|^2 ds - \conj{a_2} \int_\Gamma |\vn \cdot \trots \vJ|^2 ds \\
+        \int_\Gamma |\vE_t|^2 ds  - b_1 \int_\Gamma | \tdivs \vE |^2 ds - b_2 \int_\Gamma | \vn \cdot \trots \vE_t|^2 ds \\
+        \conj{a_0} \int_\Gamma |\vn \cdot \trots \vJ|^2ds - \conj{a_2} \int_\Gamma | \LR \vJ|^2 ds \\
+        \int_\Gamma | \vn \cdot \trots \vE_t |^2 ds  - \conj{b_2} \int_\Gamma | \LR \vE_t|^2 ds
+      \end{bmatrix}
+    \end{align*}
 
-  On note dans la suite \(\Delta_i = a_i-\conj{b_i}a_0\), \(i=1,2\). On suppose que ces système aient une unique solution. Alors on obtient la première condition suffisante:
+    Tandis que les équations \eqref{eq:unicite:ci3:csu3-1},\eqref{eq:unicite:ci3:csu3-2},\eqref{eq:unicite:ci3:csu3-5},\eqref{eq:unicite:ci3:csu3-6} sont équivalentes au système \(M_D X_D= F_D\) où
 
-  \begin{equation}
-    \label{eq:unicite:ci3:csu3-cn-det}
-    \Delta_1\Delta_2 \not = 0
-  \end{equation}
+    \begin{align*}
+      M_D&:=
+      \begin{bmatrix}
+        1&-\conj{b_2}&\conj{b_1}&0\\
+        a_0&-a_2&a_1&0\\
+        0&0&1&\conj{b_1}\\
+        0&0&a_0&a_1\\
+      \end{bmatrix},\;
+      X_D =
+      \begin{bmatrix}
+        X\\
+        Y_R\\
+        Y_D\\
+        Z_D
+      \end{bmatrix}\\
+      F_D &=
+      \begin{bmatrix}
+        \conj{a_0} \int_\Gamma |\vJ|^2ds - \conj{a_1} \int_\Gamma |\tdivs \vJ|^2 ds - \conj{a_2} \int_\Gamma |\vn \cdot \trots \vJ|^2 ds \\
+        \int_\Gamma |\vE_t|^2 ds  - b_1 \int_\Gamma | \tdivs \vE |^2 ds - b_2 \int_\Gamma | \vn \cdot \trots \vE_t|^2 ds \\
+        -\conj{a_0} \int_\Gamma |\tdivs \vJ|^2ds + \conj{a_1} \int_\Gamma | \LR \vJ|^2 ds \\
+        -\int_\Gamma | \tdivs \vE_t |^2 ds  + \conj{b_1} \int_\Gamma | \LR \vE_t|^2 ds
+      \end{bmatrix},\;
+    \end{align*}
 
-  \begin{minipage}{0.49\textwidth}
-    \textbf{Cas LR}:
-    \begin{align}
-      \label{eq:unicite:ci3:csu3r-j2}&\Re\left(a_0\conj{a_2}\Delta_2\right) \ge 0 \\
-      \label{eq:unicite:ci3:csu3r-e2}&\Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0 \\
-      \label{eq:unicite:ci3:csu3r-jdj}&\Re\left(\conj{a_0}a_1\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_1}a_2}{\Delta_2} \right)\le 0\\
-      \label{eq:unicite:ci3:csu3r-ede}&\Re\left(2\Re(b_1)\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}^2}{\Delta_1}\right) \ge 0\\
-      \label{eq:unicite:ci3:csu3r-jrj}&\Re\left(|a_2|^2\Delta_2\right) \le 0 \\
-      \label{eq:unicite:ci3:csu3r-ere}&\Re\left(|b_2|^2\Delta_2\right) \ge 0 \\
-      \label{eq:unicite:ci3:csu3r-rj2}&\Re\left(|a_1|^2\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right)\right)\ge 0\\
-      \label{eq:unicite:ci3:csu3r-re2}&\Re\left(|b_1|^2\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right)\right)\le 0
-    \end{align}
-    Les conditions \eqref{eq:unicite:ci3:csu3r-jrj} et \eqref{eq:unicite:ci3:csu3r-ere} impliquent :
+    On note dans la suite \(\Delta_i = a_i-\conj{b_i}a_0\), \(i=1,2\). On suppose que ces système aient une unique solution. Alors on obtient la première condition suffisante:
+
     \begin{equation}
-      \Re\left(\Delta_2\right) = 0\\\
+      \label{eq:unicite:ci3:csu3-cn-det}
+      \Delta_1\Delta_2 \not = 0
     \end{equation}
-    Les conditions \eqref{eq:unicite:ci3:csu3r-rj2} et \eqref{eq:unicite:ci3:csu3r-re2} impliquent :
-    \begin{equation}
-      \Re\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) = 0\\\
-    \end{equation}
-  \end{minipage}
-  \begin{minipage}{0.49\textwidth}
-    \textbf{Cas LD}:
-    \begin{align}
-      \label{eq:unicite:ci3:csu3d-j2}&\Re\left(a_0\conj{a_1}\Delta_1\right) \ge 0 \\
-      \label{eq:unicite:ci3:csu3d-e2}&\Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0 \\
-      \label{eq:unicite:ci3:csu3d-jrj}&\Re\left(\conj{a_0}a_2\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_2}a_1}{\Delta_1} \right)\le 0\\
-      \label{eq:unicite:ci3:csu3d-ere}&\Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right) \ge 0\\
-      \label{eq:unicite:ci3:csu3d-jdj}&\Re\left(|a_1|^2\Delta_1\right) \le 0 \\
-      \label{eq:unicite:ci3:csu3d-ede}&\Re\left(|b_1|^2\Delta_1\right) \ge 0 \\
-      \label{eq:unicite:ci3:csu3d-dj2}&\Re\left(|a_2|^2\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}}{\Delta_1}\right)\right)\ge 0\\
-      \label{eq:unicite:ci3:csu3d-de2}&\Re\left(|b_2|^2\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}}{\Delta_1}\right)\right)\le 0
-    \end{align}
-    Les conditions \eqref{eq:unicite:ci3:csu3d-jdj} et \eqref{eq:unicite:ci3:csu3d-ede} impliquent :
-    \begin{equation}
-      \Re\left(\Delta_1\right) = 0\\\
-    \end{equation}
-    Les conditions \eqref{eq:unicite:ci3:csu3d-dj2} et \eqref{eq:unicite:ci3:csu3d-de2} impliquent :
-    \begin{equation}
-      \Re\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) = 0\\\
-    \end{equation}
-  \end{minipage}
 
+    \begin{minipage}{0.49\textwidth}
+      \textbf{Cas LR}:
+      \begin{align}
+        \label{eq:unicite:ci3:csu3r-j2}&\Re\left(a_0\conj{a_2}\Delta_2\right) \ge 0 \\
+        \label{eq:unicite:ci3:csu3r-e2}&\Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0 \\
+        \label{eq:unicite:ci3:csu3r-jdj}&\Re\left(\conj{a_0}a_1\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_1}a_2}{\Delta_2} \right)\le 0\\
+        \label{eq:unicite:ci3:csu3r-ede}&\Re\left(2\Re(b_1)\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}^2}{\Delta_1}\right) \ge 0\\
+        \label{eq:unicite:ci3:csu3r-jrj}&\Re\left(|a_2|^2\Delta_2\right) \le 0 \\
+        \label{eq:unicite:ci3:csu3r-ere}&\Re\left(|b_2|^2\Delta_2\right) \ge 0 \\
+        \label{eq:unicite:ci3:csu3r-rj2}&\Re\left(|a_1|^2\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right)\right)\ge 0\\
+        \label{eq:unicite:ci3:csu3r-re2}&\Re\left(|b_1|^2\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right)\right)\le 0
+      \end{align}
+      \eqref{eq:unicite:ci3:csu3r-jrj} et \eqref{eq:unicite:ci3:csu3r-ere} impliquent :
+      \begin{equation}
+        \Re\left(\Delta_2\right) = 0\\\
+      \end{equation}
+      \eqref{eq:unicite:ci3:csu3r-rj2} et \eqref{eq:unicite:ci3:csu3r-re2} impliquent :
+      \begin{equation}
+        \Re\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) = 0\\\
+      \end{equation}
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+      \textbf{Cas LD}:
+      \begin{align}
+        \label{eq:unicite:ci3:csu3d-j2}&\Re\left(a_0\conj{a_1}\Delta_1\right) \ge 0 \\
+        \label{eq:unicite:ci3:csu3d-e2}&\Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0 \\
+        \label{eq:unicite:ci3:csu3d-jrj}&\Re\left(\conj{a_0}a_2\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_2}a_1}{\Delta_1} \right)\le 0\\
+        \label{eq:unicite:ci3:csu3d-ere}&\Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right) \ge 0\\
+        \label{eq:unicite:ci3:csu3d-jdj}&\Re\left(|a_1|^2\Delta_1\right) \le 0 \\
+        \label{eq:unicite:ci3:csu3d-ede}&\Re\left(|b_1|^2\Delta_1\right) \ge 0 \\
+        \label{eq:unicite:ci3:csu3d-dj2}&\Re\left(|a_2|^2\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}}{\Delta_1}\right)\right)\ge 0\\
+        \label{eq:unicite:ci3:csu3d-de2}&\Re\left(|b_2|^2\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}}{\Delta_1}\right)\right)\le 0
+      \end{align}
+      \eqref{eq:unicite:ci3:csu3d-jdj} et \eqref{eq:unicite:ci3:csu3d-ede} impliquent :
+      \begin{equation}
+        \Re\left(\Delta_1\right) = 0\\\
+      \end{equation}
+      \eqref{eq:unicite:ci3:csu3d-dj2} et \eqref{eq:unicite:ci3:csu3d-de2} impliquent :
+      \begin{equation}
+        \Re\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) = 0\\\
+      \end{equation}
+    \end{minipage}
+  \end{proof}
   %Pour le système \(M_D X_D = F_D\), les conditions sont identiques à une permutation des indices 1 et 2 près.
-  Ces CSU sont très contraignantes et ne permettent pas de retrouver des CSU des CIOE d'ordres inférieurs lorsque l'on annule les coefficients \(b_1, b_2\).
+  De part leur nombre, ces CSU sont très contraignantes et ne permettent pas de retrouver des CSU des CIOE d'ordres inférieurs lorsque l'on annule les coefficients \(b_1, b_2\). 
 
 
 \subsection{CSU de Payen}
-  On remarque que les inconnus \((Y_R,Z_R)\) (resp. \((Y_D,Z_R)\)) sont déterminées par les équations \eqref{eq:unicite:ci3:csu3-3} et \eqref{eq:unicite:ci3:csu3-4} (resp. \eqref{eq:unicite:ci3:csu3-5} et \eqref{eq:unicite:ci3:csu3-6})
 
-  On déduit donc que si \(\Delta_1 \not = 0\) et \(\Delta_2 \not = 0\) alors
+  \begin{prop}
+    D'autre CSU sont
+    \begin{align}
+      \Re\left(a_0\right)\ge 0 \\
+      \Re\left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \le 0 \\
+      \Re\left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \le 0 \\
+      \Re\left(b_1\Delta_1\right) = 0 \\
+      \Re\left(b_2\Delta_2\right) = 0 \\
+      \Im\left(b_1\Delta_1\right)\Im(b_1)\ge 0\\
+      \Im\left(b_2\Delta_2\right)\Im(b_2)\ge 0
+    \end{align}
+  \end{prop}
 
-  \begin{align}
-    Y_R &= \frac{1}{\Delta_2}\left(a_2\left[\conj{a_0}\int_\Gamma \vJ\cdot\LR\conj{\vJ} - \conj{a_2}||\LR J||^2\right]  -\conj{b_2}\left[\int_\Gamma \conj{\vE}\LR{\vE} - b_2 ||\LR \vE ||^2\right]\right) \\
-    Y_D &= \frac{1}{\Delta_1}\left(a_1\left[\conj{a_0}\int_\Gamma \vJ\cdot\LD\conj{\vJ} + \conj{a_1}||\LD J||^2\right]  -\conj{b_1}\left[\int_\Gamma \conj{\vE}\LD{\vE} + b_1 ||\LD \vE ||^2\right]\right)
-  \end{align}
+  \begin{proof}
+    En se basant sur la méthode précédente, on remarque que l'on peut déterminer les inconnus \((Y_R,Z_R)\) (resp. \((Y_D,Z_R)\)) uniquement en fonction des équations \eqref{eq:unicite:ci3:csu3-3} et \eqref{eq:unicite:ci3:csu3-4} (resp. \eqref{eq:unicite:ci3:csu3-5} et \eqref{eq:unicite:ci3:csu3-6}).
 
-  Il reste alors à utiliser l'équation \eqref{eq:unicite:ci3:csu3-1} pour obtenir
-  \begin{equation}
-    X = -\conj{b_1} Y_D + \conj{b_2} Y_R + \conj{a_0} || \vJ ||^2 + \conj{a_1} \int_\Gamma \vJ \LD \conj{J} - \conj{a_2} \int_\Gamma \vJ \LR \conj{J}
-  \end{equation}
+    On déduit donc que si \(\Delta_1 \not = 0\) et \(\Delta_2 \not = 0\) alors
 
-  \begin{multline}
-    X = \conj{a_0} || \vJ ||^2 - \conj{a_1} || \vdiv \vJ ||^2 - \conj{a_2} || \vn \times \vrot \vJ ||^2\\
-    + \frac{\conj{b_2}}{\Delta_2}\left(a_2\left[\conj{a_0}||\vn \times \vrot \vJ||^2 - \conj{a_2}||\LR J||^2\right]  -\conj{b_2}\left[||\vn\times\vrot\vE||^2 - b_2 ||\LR \vE ||^2\right]\right) \\
-    - \frac{\conj{b_1}}{\Delta_1}\left(a_1\left[-\conj{a_0}||\vdiv\vJ||^2 + \conj{a_1}||\LD J||^2\right]  -\conj{b_1}\left[-||\vdiv\vE||^2 + b_1 ||\LD \vE ||^2\right]\right)
-  \end{multline}
+    \begin{align}
+      Y_R &= \frac{1}{\Delta_2}\left(a_2\left[\conj{a_0}\int_\Gamma \vJ\cdot\LR\conj{\vJ} - \conj{a_2}||\LR J||^2\right]  -\conj{b_2}\left[\int_\Gamma \conj{\vE}\LR{\vE} - b_2 ||\LR \vE ||^2\right]\right) \\
+      Y_D &= \frac{1}{\Delta_1}\left(a_1\left[\conj{a_0}\int_\Gamma \vJ\cdot\LD\conj{\vJ} + \conj{a_1}||\LD J||^2\right]  -\conj{b_1}\left[\int_\Gamma \conj{\vE}\LD{\vE} + b_1 ||\LD \vE ||^2\right]\right)
+    \end{align}
 
-  Et on obtiens des CSU suivantes :
+    Il reste alors à utiliser l'équation \eqref{eq:unicite:ci3:csu3-1} pour obtenir
+    \begin{equation}
+      X = -\conj{b_1} Y_D + \conj{b_2} Y_R + \conj{a_0} || \vJ ||^2 + \conj{a_1} \int_\Gamma \vJ \cdot \LD \conj{\vJ} - \conj{a_2} \int_\Gamma \vJ \cdot \LR \conj{\vJ}
+    \end{equation}
 
-  \begin{align}
-    \Re(a_0)\ge 0 \\
-    \Re(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}) \le 0 \\
-    \Re(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}) \le 0 \\
-    \Re(b_1\Delta_1) = 0 \\
-    \Re(b_2\Delta_2) = 0 \\
-    \Im(b_1\Delta_1)\Im(b_1)\ge 0\\
-    \Im(b_2\Delta_2)\Im(b_2)\ge 0
-  \end{align}
+    \begin{multline}
+      X = \conj{a_0} || \vJ ||^2 - \conj{a_1} || \vdivs \vJ ||^2 - \conj{a_2} || \vrots \vJ ||^2\\
+      + \frac{\conj{b_2}}{\Delta_2}\left(a_2\left(\conj{a_0}||\vrots \vJ||^2 - \conj{a_2}||\LR J||^2\right)  -\conj{b_2}\left(||\vrots\vE||^2 - b_2 ||\LR \vE ||^2\right)\right) \\
+      - \frac{\conj{b_1}}{\Delta_1}\left(a_1\left(-\conj{a_0}||\vdivs\vJ||^2 + \conj{a_1}||\LD J||^2\right)  -\conj{b_1}\left(-||\vdivs\vE||^2 + b_1 ||\LD \vE ||^2\right)\right)
+    \end{multline}
+
+    Et on obtient les CSU suivantes :
+
+    \begin{align}
+      \Re\left(a_0\right)\ge 0 \\
+      \Re\left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \le 0 \\
+      \Re\left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \le 0 \\
+      \Re\left(b_1\Delta_1\right) = 0 \\
+      \Re\left(b_2\Delta_2\right) = 0 \\
+      \Im\left(b_1\Delta_1\right)\Im(b_1)\ge 0\\
+      \Im\left(b_2\Delta_2\right)\Im(b_2)\ge 0
+    \end{align}
+  \end{proof}
+
+  On a réussi à réduire le nombre de CSU et en plus, fixer \(b_1=b_2=0\) permet de retomber sur les CSU de la CI4.
 
 \subsection{CSU de Lafitte-Stupfel}
 
-  On rappelle l'expression de la CIOE
+  \begin{prop}
+    Soit \(z = \left(1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}\right) \). Des CSU qui assurent la \gls{acr-cgu} sont
+    \begin{align}
+      \Re\left(\conj{a_0}z\right) \ge 0
+      \\
+      \Re\left(\conj{a_1}z\right) \le 0
+      \\
+      \Re\left(\conj{a_2}z\right) \le 0
+      \\
+      \Re\left(\frac{b_1}{a_1}\right) \ge 0
+      \\
+      \Re\left(\frac{b_2}{a_2}\right) \ge 0
+      \\
+      \Re\left(a_0\right) \ge 0
+      \\
+      \Re\left(a_1\right) \le 0
+      \\
+      \Re\left(a_2\right) \le 0
+      \\
+      \Re\left(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}\right) \le 0
+      \\
+      \Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) \le 0
+    \end{align}
+  \end{prop}
+  \begin{proof}
+    Par définition de la CIOE, on a
 
-  \begin{equation}
-    \left(\oI + b_1 \LD - b_2 \LR \right) \vE_t = \left(a_0\oI + a_1 \LD - a_2 \LR \right) \vJ
-  \end{equation}
+    \begin{align}
+      X &= \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(\oI + b_1 \LD - b_2 \LR \right) \vE_t\cdot \conj{\vE_t}
+    \end{align}
 
-  Par définition de la CIOE, on a
+    \begin{multline}
+      X = \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
+      \\
+      + b_1 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LD
+      \\
+      \left.
+      - b_2 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
+    \end{multline}
 
-  \begin{align}
-    X &= \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(\oI + b_1 \LD - b_2 \LR \right) \vE_t\cdot \conj{\vE_t}
-  \end{align}
+    \begin{multline}
+      X = \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
+      \\
+      + b_1 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LD
+      \\
+      \left.
+      - b_2 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
+    \end{multline}
 
-  \begin{multline}
-    X = \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
-    \\
-    + b_1 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LD
-    \\
-    \left.
-    - b_2 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
-  \end{multline}
+    On note que
+    \begin{align}
+      \LD & = \frac{a_0 + a_1 \LD - a_0}{a_1}
+      \\
+      \LR & = -\frac{a_0 - a_2 \LD - a_0}{a_2}
+    \end{align}
 
-  \begin{multline}
-    X = \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
-    \\
-    + b_1 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LD
-    \\
-    \left.
-    - b_2 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
-  \end{multline}
+    On pose
+    \begin{equation}
+      z = \left(1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}\right)
+    \end{equation}
 
-  On note que
-  \begin{align}
-    \LD & = \frac{a_0 + a_1 \LD - a_0}{a_1}
-    \\
-    \LR & = -\frac{a_0 - a_2 \LD - a_0}{a_2}
-  \end{align}
+    On déduit de ce qui précède que
 
-  On pose
-  \begin{equation}
-    z = \left(1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}\right)
-  \end{equation}
+    \begin{multline}
+      X = \int_\Gamma z\left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
+      \\
+      + \frac{b_1}{a_1} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0+a_1\LD\right)
+      \\
+      - \frac{b_2}{a_2} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0-a_2\LR\right) \vE_t\cdot \conj{\vE_t}
+    \end{multline}
 
-  On déduit de ce qui précède que
+    On définit
 
-  \begin{multline}
-    X = \int_\Gamma z\left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
-    \\
-    + \frac{b_1}{a_1} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0+a_1\LD\right)
-    \\
-    - \frac{b_2}{a_2} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0-a_2\LR\right) \vE_t\cdot \conj{\vE_t}
-  \end{multline}
+    \newcommand{\vD}{\vect{D}}
+    \newcommand{\vF}{\vect{F}}
 
-  On définit
+    \begin{align}
+      \vD & = \left(a_0 \oI + a_1 \LD - a_2\LR \right)^{-1} \vE_t
+      \\
+      \vF_1 & = \left(\oI - a_2 \left( a_0 + a_1\LD\right)^{-1}\LR\right)^{-1} \vE_t
+      \\
+      \vF_2 & = \left(\oI + a_1 \left( a_0 - a_2\LR\right)^{-1}\LD\right)^{-1} \vE_t
+    \end{align}
 
-  \newcommand{\vD}{\vect{D}}
-  \newcommand{\vF}{\vect{F}}
+    Alors immédiatement, on a
 
-  \begin{align}
-    \vD & = \left(a_0 \oI + a_1 \LD - a_2\LR \right)^{-1} \vE_t
-    \\
-    \vF_1 & = \left(\oI - a_2 \left( a_0 + a_1\LD\right)^{-1}\LR\right)^{-1} \vE_t
-    \\
-    \vF_2 & = \left(\oI + a_1 \left( a_0 - a_2\LR\right)^{-1}\LD\right)^{-1} \vE_t
-  \end{align}
+    \begin{multline}
+      X = \int_\Gamma z \vD \cdot \left(\conj{a_0} \oI + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vD}
+      \\
+      + \frac{b_1}{a_1} \left(\oI - \conj{a_2} \left( \conj{a_0} + \conj{a_1}\LD\right)^{-1}\LR\right)\conj{\vF_1}\cdot\vF_1
+      \\
+      + \frac{b_2}{a_2} \left(\oI + \conj{a_1} \left( \conj{a_0} - \conj{a_2}\LR\right)^{-1}\LD\right)\conj{\vF_2}\cdot\vF_2
+    \end{multline}
 
-  Alors immédiatement, on a
+    Finalement posons
 
-  \begin{multline}
-    X = \int_\Gamma z \vD \cdot \left(\conj{a_0} \oI + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vD}
-    \\
-    + \frac{b_1}{a_1} \left(\oI - \conj{a_2} \left( \conj{a_0} + \conj{a_1}\LD\right)^{-1}\LR\right)\conj{\vF_1}\cdot\vF_1
-    \\
-    + \frac{b_2}{a_2} \left(\oI + \conj{a_1} \left( \conj{a_0} - \conj{a_2}\LR\right)^{-1}\LD\right)\conj{\vF_2}\cdot\vF_2
-  \end{multline}
+    \newcommand{\vG}{\vect{G}}
 
-  Finalement posons
+    \begin{align}
+      \vG_1 & = \left(\conj{a_0} \oI + \conj{a_1} \LD \right)^{-1}\LR \conj{\vF_1}
+      \\
+      \vG_2 & = \left(\conj{a_0} \oI - \conj{a_2} \LR \right)^{-1}\LD \conj{\vF_2}
+    \end{align}
 
-  \newcommand{\vG}{\vect{G}}
+    Puisque \(\LD\) (resp. \(\LR\)) commute avec lui-même, on a les égalités suivantes
 
-  \begin{align}
-    \vG_1 & = \left(\conj{a_0} \oI + \conj{a_1} \LD \right)^{-1}\LR \conj{\vF_1}
-    \\
-    \vG_2 & = \left(\conj{a_0} \oI - \conj{a_2} \LR \right)^{-1}\LD \conj{\vF_2}
-  \end{align}
+    \begin{align}
+      \LD\left(\conj{a_0} \oI + \conj{a_1} \LD \right)&=\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\LD
+      \\
+      \LR\left(\conj{a_0} \oI - \conj{a_2} \LR \right)&=\left(\conj{a_0} \oI - \conj{a_2} \LR \right)\LR
+    \end{align}
 
-  Puisque \(\LD\) (resp. \(\LR\)) commute avec lui-même, on a les égalités suivantes
+    Or puisque par définition \(\LD\LR=\LR\LD=0\), on a
 
-  \begin{align}
-    \LD\left(\conj{a_0} \oI + \conj{a_1} \LD \right)&=\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\LD
-    \\
-    \LR\left(\conj{a_0} \oI - \conj{a_2} \LR \right)&=\left(\conj{a_0} \oI - \conj{a_2} \LR \right)\LR
-  \end{align}
+    \begin{align}
+      \LD\LR\conj{\vF_1} &= \LD\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1
+      \\
+      0 & =\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\LD\vG_1
+    \end{align}
 
-  Or puisque par définition \(\LD\LR=\LR\LD=0\), on a
+    Si l'on suppose alors que \(\Re(a_0) \ge 0 \) et \(\Re(a_1) \le 0\) (resp. \(\Re(a_2)\le0\)), alors \(\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\) (resp. \(\left(\conj{a_0} \oI - \conj{a_2} \LR \right)\)) est injectif et donc on déduit que
 
-  \begin{align}
-    \LD\LR\conj{\vF_1} &= \LD\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1
-    \\
-    0 & =\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\LD\vG_1
-  \end{align}
+    \begin{align}
+      \LD\vG_1 = 0
+      \\
+      \LR\vG_2 = 0
+    \end{align}
 
-  Si l'on suppose alors que \(\Re(a_0) \ge 0 \) et \(\Re(a_1) \le 0\) (resp. \(\Re(a_2)\le0\)), alors \(\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\) (resp. \(\left(\conj{a_0} \oI - \conj{a_2} \LR \right)\)) est injectif et donc on déduit que
+  \begin{TODO}
+    En fait plus largement, il faut que \(\Re(a_0)\) et \(\Re(a_{1/2})\) soit de signes opposées. Mais il suffit d'avoir une des deux.
+  \end{TODO}
 
-  \begin{align}
-    \LD\vG_1 = 0
-    \\
-    \LR\vG_2 = 0
-  \end{align}
+    Or par définition \(\LR\conj{\vF_1} = \left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1\) (resp. \(\LR\conj{\vF_2} = \left(\conj{a_0} \oI - \conj{a_2} \LR \right)\vG_2\)) donc
+    \begin{align}
+      \LR\conj{\vF_1} &= \conj{a_0}\vG_1
+      \\
+      \LD\conj{\vF_2} &= \conj{a_0}\vG_2
+    \end{align}
 
-\begin{TODO}
-  En fait plus largement, il faut que \(\Re(a_0)\) et \(\Re(a_{1/2})\) soit de signes opposées. Mais il suffit d'avoir une des deux.
-\end{TODO}
+    On réinjecte ce résultat dans la définition de \(X\)
 
-  Or par définition \(\LR\conj{\vF_1} = \left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1\) (resp. \(\LR\conj{\vF_2} = \left(\conj{a_0} \oI - \conj{a_2} \LR \right)\vG_2\)) donc
-  \begin{align}
-    \LR\conj{\vF_1} &= \conj{a_0}\vG_1
-    \\
-    \LD\conj{\vF_2} &= \conj{a_0}\vG_2
-  \end{align}
+    \begin{multline}
+      X = \int_\Gamma z \vD \cdot \left(\conj{a_0} \oI + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vD}
+      \\
+      + \frac{b_1}{a_1} ||\vF_1||^2 - \frac{b_1\conj{a_2}}{a_1\conj{a_0}} \LR\conj{\vF_1}\cdot\vF_1
+      \\
+      + \frac{b_2}{a_2} ||\vF_2||^2 + \frac{b_2\conj{a_1}}{a_2\conj{a_0}} \LD\conj{\vF_2}\cdot\vF_2
+    \end{multline}
 
-  On réinjecte ce résultat dans la définition de \(X\)
+    Les CSU sont alors
 
-  \begin{multline}
-    X = \int_\Gamma z \vD \cdot \left(\conj{a_0} \oI + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vD}
-    \\
-    + \frac{b_1}{a_1} ||\vF_1||^2 - \frac{b_1\conj{a_2}}{a_1\conj{a_0}} \LR\conj{\vF_1}\cdot\vF_1
-    \\
-    + \frac{b_2}{a_2} ||\vF_2||^2 + \frac{b_2\conj{a_1}}{a_2\conj{a_0}} \LD\conj{\vF_2}\cdot\vF_2
-  \end{multline}
-
-  Les CSU sont alors
-
-  \begin{minipage}{0.5\textwidth}
-  \begin{align}
-    \Re\left(\conj{a_0}z\right) \ge 0
-    \\
-    \Re\left(\conj{a_1}z\right) \le 0
-    \\
-    \Re\left(\conj{a_2}z\right) \le 0
-    \\
-    \Re\left(\frac{b_1}{a_1}\right) \ge 0
-    \\
-    \Re\left(\frac{b_2}{a_2}\right) \ge 0
-  \end{align}
-  \end{minipage}
-  \begin{minipage}{0.49\textwidth}
-  \begin{align}
-    \Re\left(a_0\right) \ge 0
-    \\
-    \Re\left(a_1\right) \le 0
-    \\
-    \Re\left(a_2\right) \le 0
-    \\
-    \Re\left(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}\right) \le 0
-    \\
-    \Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) \le 0
-  \end{align}
-  \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+    \begin{align}
+      \Re\left(\conj{a_0}z\right) \ge 0
+      \\
+      \Re\left(\conj{a_1}z\right) \le 0
+      \\
+      \Re\left(\conj{a_2}z\right) \le 0
+      \\
+      \Re\left(\frac{b_1}{a_1}\right) \ge 0
+      \\
+      \Re\left(\frac{b_2}{a_2}\right) \ge 0
+    \end{align}
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+    \begin{align}
+      \Re\left(a_0\right) \ge 0
+      \\
+      \Re\left(a_1\right) \le 0
+      \\
+      \Re\left(a_2\right) \le 0
+      \\
+      \Re\left(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}\right) \le 0
+      \\
+      \Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) \le 0
+    \end{align}
+    \end{minipage}
+  \end{proof}
