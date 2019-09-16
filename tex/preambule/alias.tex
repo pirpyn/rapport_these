@@ -47,6 +47,7 @@
 \newcommand{\mLR}{\mat{L_R}}
 \newcommand{\mL}{\mat{L}}
 \newcommand{\mR}{\mat{R}}
+\newcommand{\mF}{\mat{F}}
 %\newcommand{\mPt}{\mat{\tilde{P}}}
 %\newcommand{\mP}{\mat{P}}
 \newcommand{\mS}{\mat{S}}
@@ -86,7 +87,7 @@
 \newcommand{\diag}[2]{\operatorname{diag}\left(#1,#2\right)}
 
 \newcommand{\sign}[1]{{\operatorname{sign}\left(#1\right)}}
-\newcommand{\argmin}[1]{{\operatorname{argmin}_{#1}}}
+\newcommand{\argmin}[1]{{\underset{#1}{\operatorname{argmin}}}}
 \newcommand{\Ker}{\operatorname{Ker}}
 \newcommand{\Img}{\operatorname{Img}}
 \newcommand{\Vect}[1]{\operatorname{Vect}\left\lbrace#1\right\rbrace}
@@ -183,11 +184,13 @@
 \newcommand{\chapterstar}[1]{%
   \chapter*{#1}%
   \addcontentsline{toc}{chapter}{#1}%
-  \markboth{#1}{#1}}
+  %\markboth{#1}{#1}
+  }
 \newcommand{\sectionstar}[1]{%
   \section*{#1}%
   \addcontentsline{toc}{section}{#1}%
-  \markboth{#1}{#1}}
+  %\markboth{#1}{#1}
+  }
 
 \newcommand{\Mmn}[1][{}]{\vect{M_{m,n}^{#1}}}
 \newcommand{\Nmn}[1][{}]{\vect{N_{m,n}^{#1}}}
