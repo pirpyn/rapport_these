@@ -12,7 +12,9 @@
   \end{defn}
 
   \begin{prop}
-    L’opérateur \(\LL\) est antisymétrique négatif: pour tous \(\vu,\vv \in (\mathcal C^\infty(\CC,\Gamma))^3\)
+    Par définition, l’opérateur \(\LL\) est antisymétrique négatif.
+
+    Pour tous \(\vu,\vv \in (\mathcal C^\infty(\CC,\Gamma))^3\)
     \begin{align}
       \int_\Gamma \vu\cdot \LL(\conj{\vv}) &= \int_\Gamma \conj{\vv}\cdot \LL(\vu)
       \\
@@ -20,11 +22,15 @@
     \end{align}
   \end{prop}
 
-  De plus, dans la suite, pour alléger les expressions, on note \(\int_\Gamma \vJ \cdot \conj{\vE_t} ds(\vx)\) par \(X\). On rappelle que la l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu} qui est \(\Re(X)\ge0\).
+  De plus, dans la suite, pour alléger les expressions, on note
+  \begin{equation}
+    X = \int_\Gamma \vJ \cdot \conj{\vE_t} ds(\vx)
+  \end{equation}
+  On rappelle que la l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu} qui est \(\Re(X)\ge0\).
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI0}
-    Utilisons la condition d’impédance de Leontovich, la \hyperlink[CI0]{CI0}:
+    Utilisons la condition d’impédance de Leontovich, la \hyperlink{ci0}{CI0}:
 
     Soit \(a_0 \in \CC\) tel que
     \[
@@ -46,7 +52,7 @@
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI01}
-    Utilisons la condition d’impédance \hyperlink[CI01]{CI01}:
+    Utilisons la condition d’impédance \hyperlink{ci01}{CI01}:
 
     Soit \((a_0, a_1) \in \CC\times\CC\) tel que
 
@@ -83,7 +89,7 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI1}
 
-    Utilisons la condition d’impédance \hyperlink[CI1]{CI1}:
+    Utilisons la condition d’impédance \hyperlink{ci1}{CI1}:
 
     Soit \((a_0, a_1,b) \in \CC^3\) tel que
     \[

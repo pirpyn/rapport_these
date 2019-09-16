@@ -1,6 +1,47 @@
+\subsection{CSU pour la CI4}
+  Soit la CIOE que l'on nomme \hyperlink{ci4}{CI4} :
+  \begin{equation}
+    \label{eq:unicite:ci4:ci4}
+    \vE_t = (a_0\oI + a_1 \LD - a_2 \LR ) \vJ
+  \end{equation}
+
+  \begin{prop}
+    Des CSU sont
+    \begin{align}
+      \Re(a_0) \ge 0
+      \\
+      \Re(a_1) \le 0
+      \\
+      \Re(a_2) \le 0
+    \end{align}
+  \end{prop}
+
+  \begin{prop}
+    On pose:
+    \begin{align*}
+      F &:= ||\vJ|| ^2 \ge 0  & G_1 &:= \int_\Gamma \vJ\cdot \LD\conj{\vJ} ds \le 0 & G_2 &:= \int_\Gamma \vJ\cdot \LR\conj{\vJ} ds \ge 0
+    \end{align*}
+
+    On a alors
+    \begin{equation*}
+      X = \conj{a_0}F + \conj{a_1}G - \conj{a_2}G
+    \end{equation*}
+
+    De \eqref{eq:unicite:form_var:cgu}, on déduit des CSU suivantes:
+    \begin{align}
+      \Re\left(a_0\right) \ge 0
+      \\
+      \Re\left(a_1\right) \le 0
+      \\
+      \Re\left(a_2\right) \le 0
+    \end{align}
+  \end{prop}
+
+  On remarque que ces CSU redonnent les CSU de la CI01 quand \(a_1=a_2\).
+
 \section{CSU pour la CIOE CI3 de \cite{aubakirov_electromagnetic_2014}}
 
-  Soit la CIOE énoncé dans \cite{aubakirov_electromagnetic_2014} que l'on nomme \hyperlink[ci3]{CI3} :
+  Soit la CIOE énoncé dans \cite{aubakirov_electromagnetic_2014} que l'on nomme \hyperlink{ci3}{CI3} :
   \begin{equation}
     \label{eq:unicite:ci3:ci3}
     ( \oI + b_1 \LD - b_2 \LR)\vE_t = (a_0\oI + a_1 \LD - a_2 \LR ) \vJ
@@ -29,14 +70,16 @@
   \end{prop}
   \begin{proof}
 
-    Soient un vecteur \textbf{tangent} \(\vect U \in (C^\infty(\Gamma)^3)\).
+    Soient un vecteur \textbf{tangent} \(\vect U \in (\mathcal{C}^\infty(\CC,\Gamma)^3)\). 
 
-    Montrons que \(\LR\LD = 0\). D’après \cite[p.~1029, A3.42]{bladel_electromagnetic_2007}, \(\vn \cdot \trots\tgrads f = 0\)
+    Montrons que \(\LR\LD = 0\).
+    D’après \cite[p.~1029, A3.42]{bladel_electromagnetic_2007}, \(\vn \cdot \trots\tgrads f = 0\)
     \begin{align*}
       \LR(\LD \vect U)  &= \trots \left(\vn \left(\vn \cdot \trots \left( \tgrads \left(\tdivs \vect U\right)\right)\right)\right) \\
       &= 0
     \end{align*}
-    Montrons que \(\LD\LR = 0\). D’après \cite[p.~1029, A3.43]{bladel_electromagnetic_2007}, \(\tdivs \trots (X\vn) = 0\).
+    Montrons que \(\LD\LR = 0\).
+    D’après \cite[p.~1029, A3.43]{bladel_electromagnetic_2007}, \(\tdivs \trots (f\vn) = 0\).
     \begin{align*}
       \LD(\LR \vect U) &= \tgrads \tdivs \trots (\vn (\vn \cdot \trots \vect U)) \\
       &= 0
@@ -49,44 +92,6 @@
   % \end{equation}
 
   % Cette relation \Gamma'exprime sous forme forte par \(\LD\LR\equiv0\). Elle est là aussi symétrique entre les deux opérateurs.
-
-\subsection{CSU pour la CI4}
-
-  On commence par une CIOE plus simple en fixant \(b_1=b_2=0\).
-
-  \begin{prop}
-    Des CSU sont
-    \begin{align}
-      \Re(a_0) \ge 0
-      \\
-      \Re(a_1) \le 0
-      \\
-      \Re(a_2) \le 0
-    \end{align}
-  \end{prop}
-
-  \begin{prop}
-    On pose:
-    \begin{align*}
-      F &:= ||\vJ|| ^2 \ge 0  & G_1 &:= -\int_\Gamma \vJ\cdot \LD\conj{\vJ} ds \ge 0 & G_2 &:= \int_\Gamma \vJ\cdot \LR\conj{\vJ} ds \ge 0
-    \end{align*}
-
-    On a alors
-    \begin{equation*}
-      X = \conj{a_0}F - \conj{a_1}G - \conj{a_2}G
-    \end{equation*}
-
-    De \eqref{eq:unicite:form_var:cgu}, on déduit des CSU suivantes:
-    \begin{align}
-      \Re\left(a_0\right) \ge 0
-      \\
-      \Re\left(a_1\right) \le 0
-      \\
-      \Re\left(a_2\right) \le 0
-    \end{align}
-  \end{prop}
-
-  On remarque que ces CSU redonnent les CSU de la CI01 quand \(a_1=a_2\).
 
 \subsection{CSU de Stupfel}
 
@@ -292,12 +297,55 @@
     \end{equation}
 
     \begin{multline}
-      X = \conj{a_0} || \vJ ||^2 - \conj{a_1} || \vdivs \vJ ||^2 - \conj{a_2} || \vrots \vJ ||^2\\
-      + \frac{\conj{b_2}}{\Delta_2}\left(a_2\left(\conj{a_0}||\vrots \vJ||^2 - \conj{a_2}||\LR J||^2\right)  -\conj{b_2}\left(||\vrots\vE||^2 - b_2 ||\LR \vE ||^2\right)\right) \\
+      X = \conj{a_0} || \vJ ||^2 - \conj{a_1} || \vdivs \vJ ||^2 - \conj{a_2} || \vrots \vJ ||^2
+      \\
+      + \frac{\conj{b_2}}{\Delta_2}\left(a_2\left(\conj{a_0}||\vrots \vJ||^2 - \conj{a_2}||\LR J||^2\right)  -\conj{b_2}\left(||\vrots\vE||^2 - b_2 ||\LR \vE ||^2\right)\right)
+      \\
       - \frac{\conj{b_1}}{\Delta_1}\left(a_1\left(-\conj{a_0}||\vdivs\vJ||^2 + \conj{a_1}||\LD J||^2\right)  -\conj{b_1}\left(-||\vdivs\vE||^2 + b_1 ||\LD \vE ||^2\right)\right)
     \end{multline}
 
-    Et on obtient les CSU suivantes :
+    On factorise les termes en \(\vJ\)
+
+    \begin{multline}
+      X = \conj{a_0} || \vJ ||^2 - \left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) || \vdivs \vJ ||^2 - \left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) || \vrots \vJ ||^2
+      \\
+      + \frac{\conj{b_2}}{\Delta_2}\left( - |a_2|^2||\LR \vJ||^2  - \conj{b_2}\left(||\vrots\vE||^2 - b_2 ||\LR \vE ||^2\right)\right) 
+      \\
+      - \frac{\conj{b_1}}{\Delta_1}\left( |a_1|^2||\LD \vJ||^2  - \conj{b_1}\left(-||\vdivs\vE||^2 + b_1 ||\LD \vE ||^2\right)\right)
+    \end{multline}
+
+    On développe tous les termes
+    \begin{multline}
+      X = \conj{a_0} || \vJ ||^2 - \left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) || \vdivs \vJ ||^2 - \left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) || \vrots \vJ ||^2
+      \\
+      - \frac{\conj{b_2}|a_2|^2}{\Delta_2}||\LR \vJ||^2  -  \frac{\conj{b_2}^2}{\Delta_2}||\vrots\vE||^2 +  \frac{|b_2|}{\Delta_2} ||\LR \vE ||^2
+      \\
+      - \frac{\conj{b_1}|a_1|^2}{\Delta_1}||\LD \vJ||^2  - \frac{\conj{b_1}^2}{\Delta_1}||\vdivs\vE||^2 + \frac{|b_1|^2}{\Delta_1} ||\LD \vE ||^2
+    \end{multline}
+
+    On impose alors à la partie réelle de chaque terme d'être positive, et on obtient les CSU suivantes :
+
+    \begin{equation}
+      \Re\left(a_0\right)\ge 0
+    \end{equation}
+    \begin{minipage}{0.5\textwidth}
+      \begin{align}
+        \Re\left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \le 0 \\
+        \Re\left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \le 0 \\
+        \Re\left(\frac{|a_1|^2\conj{b_1}}{\Delta_1}\right) \le 0 \\
+        \Re\left(\frac{|a_2|^2\conj{b_2}}{\Delta_2}\right) \le 0
+      \end{align}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+      \begin{align}
+        \Re\left(\frac{\conj{b_1}^2}{\Delta_1}\right) \le 0 \\
+        \Re\left(\frac{\conj{b_2}^2}{\Delta_2}\right) \le 0 \\
+        \Re\left(\frac{|b_1|^2\conj{b_1}}{\Delta_1}\right) \ge 0 \\
+        \Re\left(\frac{|b_2|^2\conj{b_2}}{\Delta_2}\right) \ge 0
+      \end{align}
+    \end{minipage}
+
+    On remarque alors que certaines CSU peuvent se combiner et imposent que les parties réelles de \(b_1\Delta_1,b_2\Delta_2\) soient nulles.
 
     \begin{align}
       \Re\left(a_0\right)\ge 0 \\
@@ -345,14 +393,7 @@
       X &= \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(\oI + b_1 \LD - b_2 \LR \right) \vE_t\cdot \conj{\vE_t}
     \end{align}
 
-    \begin{multline}
-      X = \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
-      \\
-      + b_1 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LD
-      \\
-      \left.
-      - b_2 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
-    \end{multline}
+    On développe simplement chaque terme
 
     \begin{multline}
       X = \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
@@ -363,7 +404,7 @@
       - b_2 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
     \end{multline}
 
-    On note que
+    L'astuce pour obtenir réside dans les égalités suivantes, valables si \(a_1\) et \(a_2\) sont non-nuls.
     \begin{align}
       \LD & = \frac{a_0 + a_1 \LD - a_0}{a_1}
       \\
@@ -426,7 +467,7 @@
       \LR\left(\conj{a_0} \oI - \conj{a_2} \LR \right)&=\left(\conj{a_0} \oI - \conj{a_2} \LR \right)\LR
     \end{align}
 
-    Or puisque par définition \(\LD\LR=\LR\LD=0\), on a
+    Or on a démontré que \(\LD\LR=\LR\LD=0\), et ainsi
 
     \begin{align}
       \LD\LR\conj{\vF_1} &= \LD\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1
@@ -442,9 +483,9 @@
       \LR\vG_2 = 0
     \end{align}
 
-  \begin{TODO}
-    En fait plus largement, il faut que \(\Re(a_0)\) et \(\Re(a_{1/2})\) soit de signes opposées. Mais il suffit d'avoir une des deux.
-  \end{TODO}
+  % \begin{TODO}
+  %   En fait plus largement, il faut que \(\Re(a_0)\) et \(\Re(a_{1/2})\) soit de signes opposées. Mais il suffit d'avoir une des deux.
+  % \end{TODO}
 
     Or par définition \(\LR\conj{\vF_1} = \left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1\) (resp. \(\LR\conj{\vF_2} = \left(\conj{a_0} \oI - \conj{a_2} \LR \right)\vG_2\)) donc
     \begin{align}

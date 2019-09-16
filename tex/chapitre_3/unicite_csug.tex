@@ -13,10 +13,6 @@
       \trot \vE + ik \mu \vH &= 0
       \\
       \trot \vH - ik \eps \vE &= 0
-      \\
-      \tdiv \vE &= 0
-      \\
-      \tdiv \vH &= 0
       % \\\label{eq:unicite:form_var:TR}
       % \Tr(\vE_t) &= - \vn_{Y_R} \pvect \vH && \text{sur \(\Gamma(0,R)\)}
     \end{matrix}
@@ -42,17 +38,17 @@
   \begin{proof}
     Partons de la première équation.
     \begin{align}
-          \frac{\trot \vE}{ik\mu} + \vH &= 0
+          0 & = \frac{\trot \vE}{ik\mu} + \vH
           \\ \intertext{Appliquons lui le rotationnel.}
-          \trot \frac{\trot \vE}{ik\mu} + \trot \vH &= 0
+          0 & = \trot \frac{\trot \vE}{ik\mu} + \trot \vH
           \\ \intertext{On peut utiliser la seconde équation pour n'avoir plus que \(\vE\).}
-          \trot \frac{\trot \vE}{ik\mu} + ik\eps \vE &= 0
+          0 & = \trot \frac{\trot \vE}{ik\mu} + ik\eps \vE
           \\ \intertext{Réalisons le produit scalaire avec la fonction test.}
-          \int_\OO{ \trot \frac{\trot \vE}{ik\mu}\cdot \conj{\vect{\phi}}} +  \int_\OO ik\eps \vE \cdot \conj{\vect{\phi}} &= 0
+          0 & = \int_\OO{ \trot \frac{\trot \vE}{ik\mu}\cdot \conj{\vect{\phi}}} +  \int_\OO ik\eps \vE \cdot \conj{\vect{\phi}}
           \\ \intertext{Utilisons la formule de Green du rotationnel (voir \cite[eq.~(A1.32)]{bladel_electromagnetic_2007}).}
-          \int_\OO{ \frac{\trot \vE}{ik\mu}\cdot \trot \conj{\vect{\phi}}} - \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik\mu}\right)  \cdot \vn ds(\vx) + \int_\OO ik\eps \vE \cdot \conj{\vect{\phi}} &= 0
+          0 & = \int_\OO{ \frac{\trot \vE}{ik\mu}\cdot \trot \conj{\vect{\phi}}} - \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik\mu}\right)  \cdot \vn ds(\vx) + \int_\OO ik\eps \vE \cdot \conj{\vect{\phi}}
           \\ \intertext{On arrange les termes.}
-          \int_\OO \frac{\trot \vE}{ik\mu}\cdot \trot \conj{\vect{\phi}} - \int_\Gamma \left(\vn \pvect \frac{\trot \vE}{ik\mu}\right) \cdot \conj{\vect \phi} ds(\vx) +  \int_\OO ik\eps \vE \cdot \conj{\vect{\phi}} &= 0
+          0 & = \int_\OO \frac{\trot \vE}{ik\mu}\cdot \trot \conj{\vect{\phi}} - \int_\Gamma \left(\vn \pvect \frac{\trot \vE}{ik\mu}\right) \cdot \conj{\vect \phi} ds(\vx) +  \int_\OO ik\eps \vE \cdot \conj{\vect{\phi}}
       \end{align}
   \end{proof}
 
