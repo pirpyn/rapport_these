@@ -1,0 +1,76 @@
+\subsection{Problème de la singularité de l'impédance dans le cadre du plan infini pour une couche de matériaux}
+On se place dans le cadre du plan infini de \cite{aubakirov_electromagnetic_2014}, où \(\eps=4,\mu=1,f=12\) Ghz, et \(d=3.5\) mm. %Ce cas non physique possède un onde guidée pour \((k_x,k_y) = (k_0s^\star,0.)\) où \(\mR(k_0s^\star,0.) = \infty\).
+
+Il existe aussi \(s_z\) tel que \(\hat\mZ_{ex}(k_0s_z,0.) = \infty\). En effet, d'après la formule pour une couche de matériau \eqref{eq:imp_plan:symb_z:1c}, 
+
+\begin{equation}
+  \hat{\mZ}_{ex}(k_x,0.) = i\frac{\eta}{k\sqrt{k^2 - k_x^2}}\tan(\sqrt{k^2 - k_x^2}d)\left(k^2\mI - \hat{\mLR}\right)
+\end{equation}
+Donc il est facile de voir que l'on a une asymptote à cause de la tangente et donc pour cet empilement
+\begin{equation}
+  s_z = \sqrt{\eps \mu - \left(\frac{\pi/2}{k_0 d}\right)^2}
+\end{equation}
+
+Dans la partie précédente nous avons introduit la fonctionnelle que l'on cherche à minimiser qui est \(F(X) = \left\lVert\tilde{\mM} X - b(\mZ_{ex})\right\rVert_{\RR^N}\).
+
+Le problème est donc que si nous balayons en incidence et que l'on passe par ce point, il existera une valeur non défini dans la matrice. Or comme le gradient de la fonctionnelle est fonction de cette matrice, le gradient n'est pas défini pour tout \(X\). Si l'on utilise une méthode basée sur le gradient de type Newton (SLSQP), ce que nous avons fait, on comprend pourquoi la méthode numérique échoue à calculer des coefficients.
+
+On décompose alors nos matrices et vecteurs en séparant les parties contentant cette asymptote.
+
+On suppose donc qu'il existe \(\mZ_\infty, \tilde{b}_\infty, X_\infty,\) tels que
+\begin{align*}
+  \tilde{\mM} &= \tilde{\mM}_\infty + \tilde{\mM}_r
+  \\
+  \tilde{b} &= \tilde{b}_\infty + \tilde{b}_r
+  \\
+  X &= X_\infty + X_r
+  \\
+  \tilde{\mM}_\infty X_\infty &= \tilde{b}_\infty
+\end{align*}
+
+Il faut vraiment voir cette décomposition comme deux partie, où l'une est nulle quasiment partout sauf pour le \(s_z\) problématique et l'autre est défini normalement sauf aux termes correspondant au \(s_z\) où elle est nulle.
+
+On rappelle l'expression de la CI3
+\begin{equation}
+  \hat{\mZ}_{ap}(k_x,0.) = \left(\mI + b_1 \hat{\mLD} - b_2 \hat{\mLR} \right)^{-1}\left(a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR} \right)
+\end{equation}
+
+Et on remarque que vu la forme de la CIOE alors
+\begin{equation}
+  X_\infty = \begin{bmatrix}
+    0\\
+    0\\
+    0\\
+    s_z^{-2}\\
+    s_z^{-2}\\
+  \end{bmatrix}
+\end{equation}
+
+Cela veut dire qu'à moins de fixer \(b_1\) et \(b_2\), on se trouvera dans le noyau de \(\tilde{\mM}_\infty\) et donc la minimisation sera fausse.
+
+On pose donc 
+\begin{equation}
+  X_r = \begin{bmatrix}
+  a_0\\
+  a_1\\
+  a_2\\
+  0\\
+  0\\
+  \end{bmatrix}
+\end{equation}
+
+On développe donc la fonctionnelle suivant cette décomposition.
+\begin{align*}
+\min\left\rVert \tilde{\mM} X - \tilde{b} \right \rVert &= \min\left\rVert \left(\tilde{\mM}_\infty + \tilde{\mM}_r\right)\left( X_\infty + X_r \right) - \tilde{b}_\infty - \tilde{b}_r \right \rVert
+\\
+\intertext{On utilise la relation \(  \tilde{\mM}_\infty X_\infty = \tilde{b}_\infty\)}
+&=  \min \left\rVert \tilde{\mM}_\infty X_r + \tilde{\mM}_r X_\infty + \tilde{\mM}_r X_r - \tilde{b}_r \right \rVert
+\\
+\intertext{Comme \(X_\infty\) est par définition fixé, il n'influe pas sur le minimum}
+&= \min \left\rVert \tilde{\mM}_\infty X_r + \tilde{\mM}_r X_r - \tilde{b}_r \right \rVert
+\\
+\intertext{Enfin par définition de \(X_r\) et \(\tilde{\mM}_\infty\), leur produit est nulle}
+&= \min \left\rVert \tilde{\mM}_r X_r - \tilde{b}_r \right \rVert
+\end{align*}
+
+On voit alors que l'on peut résoudre le problème si l'on minimise uniquement sur les 3 premiers coefficients, les deux derniers étant fixés et que l'on enlève du système les lignes où l'impédance n'est pas définie.
