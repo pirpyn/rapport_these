@@ -115,11 +115,9 @@
 % Permet de tracer des figures et schémas
 \usepackage{pgfplots}
     \usepgfplotslibrary{external} % On génère un pdf par graphique qui sera inclus après => 1ere compil un peu plus lente, suivante tres rapide
-    \tikzexternalize[%
-        prefix=build/,% Les pdf seront mis dans le dossier suivant
-    ]{these_payen_2019}
+    \tikzexternalize{these_payen_2019}
     % Le graphique triple asymptote nécesssite 20000 pts, il faut etendre la mémoire
-    \tikzset{external/system call={pdflatex \tikzexternalcheckshellescape -extra-mem-top=10000000 -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+    \tikzset{external/system call={pdflatex --output-directory build \tikzexternalcheckshellescape -extra-mem-top=10000000 -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 
     % \pgfplotscreateplotcyclelist{my cycle}{%
     %     thick, solid,          every mark/.append style={solid}\\%
