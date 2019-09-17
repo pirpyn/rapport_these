@@ -44,7 +44,31 @@
       \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
       \label{fig:imp_fourier:plan:hoppe:62:hoibc}
     \end{figure}
-
+    \begin{table}[!hbt]
+      \centering
+      % On fait deux tables de même hauteur
+      \begin{coefftable}{\hyperlink{ci0}{CI0}}
+        a_0 & \NaN + \NaN i
+        \\
+        \\
+        \\
+        \\
+        \\
+      \end{coefftable}
+      \begin{coefftable}{\hyperlink{ci3}{CI3}}
+        a_0 & \NaN + \NaN i
+        \\
+        a_1 & \NaN + \NaN i
+        \\
+        a_2 & \NaN + \NaN i
+        \\
+        b_1 & \NaN + \NaN i
+        \\
+        b_2 & \NaN + \NaN i
+      \end{coefftable}
+      \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc}}
+      \label{tab:imp_fourier:plan:hoppe:62:hoibc}
+    \end{table}
 
     On remarque que le CIOE CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. 
     En effet, le symbole de l'opérateur n'est pas un multiple de l'identité pour \(n=k_z=0\) au contraire du plan ( pour \(k_x=k_y=0\) ). 
@@ -63,5 +87,46 @@
       \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
       \label{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}
     \end{figure}
+    \begin{table}[!hbt]
+      \centering
+      % On fait deux tables de même hauteur
+      \begin{coefftable}{\hyperlink{ci0}{CI0}}
+        a_0 & \NaN + \NaN i
+        \\
+        \\
+        \\
+        \\
+        \\
+        \\
+      \end{coefftable}
+      \begin{coefftable}{\hyperlink{ci3}{CI3}}
+        a_0 & \NaN + \NaN i
+        \\
+        a_1 & \NaN + \NaN i
+        \\
+        a_2 & \NaN + \NaN i
+        \\
+        b_1 & \NaN + \NaN i
+        \\
+        b_2 & \NaN + \NaN i
+        \\
+        \\
+      \end{coefftable}
+      \begin{coefftable}{\hyperlink{ci6}{CI6}}
+        a_1 & \NaN + \NaN i
+        \\
+        a_2 & \NaN + \NaN i
+        \\
+        b_1 & \NaN + \NaN i
+        \\
+        b_2 & \NaN + \NaN i
+        \\
+        c_1 & \NaN + \NaN i
+        \\
+        c_2 & \NaN + \NaN i
+      \end{coefftable}
+      \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}}
+      \label{tab:imp_fourier:plan:hoppe:62:hoibc:ibc6}
+    \end{table}
 
-      Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier. On présente néanmoins dans la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} sa performance vis à vis de la CI3 sur le cylindre.
+    Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier. On présente néanmoins dans la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} sa performance vis à vis de la CI3 sur le cylindre.
