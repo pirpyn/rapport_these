@@ -1,6 +1,6 @@
 &MAIN
   frequency  =  12,
-  s1 = 0., 1.99, 1E-3,
+  s1 = 0., 1.99, 1E-2,
   s2 = 0., 0, 1.E-2,
   number_of_layer = 1,
   number_of_hoibc = 4,
@@ -34,6 +34,7 @@
 &OUT
   backend = "thesis"
   basename = "./thesis/SOUDAIS/SOUDAIS"
+  coeff = .true.
   z_ibc = .True.
   z_ex = .True.
   r_ibc = .True.

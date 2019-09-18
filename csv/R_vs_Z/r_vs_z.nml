@@ -34,7 +34,7 @@
 &OUT
   backend = "paraview"
   basename = "./thesis/R_vs_Z/R_vs_Z"
-  ibc_coeff = .true.
+  coeff = .true.
   z_ex = .true.
   z_ibc = .true.
   r_ex = .true.

@@ -1,0 +1,10 @@
+# IBC ibc6 type C suc F mode 2 (IBC_ibc6_SUC_F_MODE_2_TYPE_C_+3.000E-02)
+# inner radius  3.000E-02, outer_radius  5.250E-02
+# Z = (I + b1*LD/k0^2 - b2*LR/k0^2)^{-1} (diag(a1,a2) + a1*LD/k0^2 - a2*LR/k0^2)
+  a1,-1.45607130E-16, 3.67440353E-01
+  a2,-1.07380581E-16, 1.67578412E+00
+  b1,-9.99744846E-18,-2.58623989E-02
+  b2,-1.59134705E-17, 6.73040634E-02
+  c1,-3.84926756E-01, 6.98534820E-17
+  c2,-3.17706134E-02,-1.18173159E-17
+# Verifying the Sufficient Uniqueness Conditions (SUC)

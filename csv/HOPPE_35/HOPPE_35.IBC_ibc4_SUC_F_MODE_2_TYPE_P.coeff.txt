@@ -1,0 +1,10 @@
+# IBC ibc4 type P suc F mode 2 (IBC_ibc4_SUC_F_MODE_2_TYPE_P)
+# Z = a0*I + a1*LD/k0^2 - a2*LR/k0^2
+  a0,-0.00000000E+00, 1.40324506E+00
+  a1,-0.00000000E+00, 4.23266815E-01
+  a2,-0.00000000E+00, 2.31343975E-01
+# Verifying the Sufficient Uniqueness Conditions (SUC)
+#    [OK] SUC, Negative inequality constraints, IN <=  1.000E-06
+#    IN(1) =  0.000000E+00 ! -Re(a0);
+#    IN(2) = -0.000000E+00 !  Re(a1);
+#    IN(3) = -0.000000E+00 !  Re(a2);

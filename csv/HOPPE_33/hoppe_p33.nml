@@ -1,6 +1,6 @@
 &MAIN
   frequency  =  1,
-  s1 = 0., 1.99, 1.E-3,
+  s1 = 0., 1.99, 1.E-2,
   s2 = 0., 0, 1.E-2,
   number_of_layer = 1,
   number_of_hoibc = 3,
@@ -34,6 +34,7 @@
 &OUT
  basename = "./thesis/HOPPE_33/HOPPE_33"
  backend = 'thesis'
+ coeff = .true.
  z_ex = .True.
  z_ibc = .True.
  r_ex = .True.

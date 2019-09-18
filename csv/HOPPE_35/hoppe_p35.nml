@@ -1,6 +1,6 @@
 &MAIN
   frequency  =  1,
-  s1 = 0., 1.99, 1.E-3,
+  s1 = 0., 1.99, 1.E-2,
   s2 = 0., 0, 1.E-2,
   number_of_layer = 1,
   number_of_hoibc = 3,
@@ -26,6 +26,7 @@
  basename = "./thesis/HOPPE_35/HOPPE_35"
  backend = 'paraview'
  z_ex = .True.
+ coeff = .true.
  z_ibc = .True.
  r_ex = .True.
  r_ibc = .True.

@@ -7,7 +7,7 @@
             width=0.4\textwidth,
             xmin=0,
             xmax=2.5,
-            mark repeat=20,
+            mark repeat=1,
             legend pos=outer north east
         ]
         \addplot [black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-02.csv};
@@ -26,7 +26,7 @@
             width=0.4\textwidth,
             xmin=0,
             xmax=2.5,
-            mark repeat=20,
+            mark repeat=1,
             legend pos=outer north east
         ]
         \addplot [black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-02.csv};

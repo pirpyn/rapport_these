@@ -1,6 +1,6 @@
 &MAIN
   frequency  =  0.2,
-  s1 = 0., 1, 1.E-3,
+  s1 = 0., 1, 1.E-2,
   s2 = 0., 0., 1.E-2,
   number_of_layer = 1,
   number_of_hoibc = 6,
@@ -38,6 +38,7 @@
  z_ibc = .True.,
  r_ex = .True.,
  r_ibc = .True.,
+ coeff = .true.,
 /
 
 &OTHER
