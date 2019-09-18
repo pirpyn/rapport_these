@@ -1,10 +1,10 @@
 % IBC ibc3 type P suc F mode 2 (IBC_ibc3_SUC_F_MODE_2_TYPE_P)
 % Z = (I + b1*LD/k0^2 - b2*LR/k0^2)^{-1} (a0*I + a1*LD/k0^2 - a2*LR/k0^2)
-  a0 &  3.17851335E-03+2.12651175E-01 i \\
-  a1 & -1.04743649E-01+1.07916180E-01 i \\
-  a2 & -2.73138344E-05-6.11296864E-04 i \\
-  b1 & -1.49267641E-02+3.54444241E-04 i \\
-  b2 & -1.78165724E-02+3.97993753E-04 i \\
+  \verb|a0| & \verb| 3.179E-03 +2.127E-01i| \\
+  \verb|a1| & \verb|-1.047E-01 +1.079E-01i| \\
+  \verb|a2| & \verb|-2.731E-05 -6.113E-04i| \\
+  \verb|b1| & \verb|-1.493E-02 +3.544E-04i| \\
+  \verb|b2| & \verb|-1.782E-02 +3.980E-04i| \\
 % Verifying the Sufficient Uniqueness Conditions (SUC)
 %    [OK] SUC, Negative inequality constraints, IN <=  1.000E-08
 %    IN(1) =  2.491496E-10 ! -Re(a0*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2

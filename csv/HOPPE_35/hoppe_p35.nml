@@ -24,7 +24,7 @@
 
 &OUT
  basename = "./thesis/HOPPE_35/HOPPE_35"
- backend = 'paraview'
+ backend = 'thesis'
  z_ex = .True.
  coeff = .true.
  z_ibc = .True.

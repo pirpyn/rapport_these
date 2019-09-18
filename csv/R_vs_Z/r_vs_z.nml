@@ -32,7 +32,7 @@
 /
 
 &OUT
-  backend = "paraview"
+  backend = "thesis"
   basename = "./thesis/R_vs_Z/R_vs_Z"
   coeff = .true.
   z_ex = .true.
