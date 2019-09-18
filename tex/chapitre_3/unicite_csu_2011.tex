@@ -1,8 +1,8 @@
 \section{CSU pour les CIOE de \cite{stupfel_sufficient_2011}}
 
-  La plupart des résultats de cette section ont déjà été montrés dans \cite{stupfel_sufficient_2011}. Nous les rappelons néanmoins car peux de résultats existent sur l'existence de CSU pour les CIOE. 
+  Maintenant que nous connaissant une condition suffisante, nous allons montrer comment les CIOE peuvent la garantir. Ce qu'il faut retenir dans cette démarche est que par nature, le caractère suffisant permet d'obtenir pour une CIOE plusieurs jeux de CSU. Cependant, il est intéressant que si l'on ait un jeu de CSU pour une CIOE, alors on y retrouve des CSU d'ordre moins élevés.
 
-  Commençons par rappeler l'expression et les propriétés du l'opérateur de Hodge \(\mathcal{L}\)
+  Les CIOE de \cite{stupfel_sufficient_2011} font intervenir l'opérateur de Hodge \(\mathcal{L}\), commençons par rappeler son expression et quelques propriétés propriétés.
 
   \begin{defn}
     Pour tous \((\vu) \in (\mathcal C^\infty(\CC,\Gamma))^3\)
@@ -22,11 +22,11 @@
     \end{align}
   \end{prop}
 
-  De plus, dans la suite, pour alléger les expressions, on note
+  De plus, on rappelle la notation de la section précédente
   \begin{equation}
     X = \int_\Gamma \vJ \cdot \conj{\vE_t} ds(\vx)
   \end{equation}
-  On rappelle que la l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu} qui est \(\Re(X)\ge0\).
+  On rappelle que l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu} qui est \(\Re(X)\ge0\).
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI0}
@@ -46,9 +46,6 @@
     \begin{equation}
     \Re\left(a_0\right) \ge 0
     \end{equation}
-
-    Dans le cadre de l'approximation plan infini, cette CSU est toujours vérifiée pour une couche par hypothèse sur les matériaux.
-    Cependant cette propriété n'est pas garantie pour plusieurs couches ou dans le cadre des autres approximations.
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI01}
@@ -86,6 +83,9 @@
         \Re\left(a_1\right) \le 0
       \end{align}
     \end{proof}
+
+    Il n'y a pas d'autre CSU qui soient plus évidentes que celles ci et elle permettent de retrouver la CSU de la CI0 quand \(a_1=0\) donc ce sont des CSU satisfaisante pour cette CIOE.
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI1}
 
@@ -133,90 +133,15 @@
           &\Im(\Delta)\Im(a_1\conj{a_0})&\ge 0
         \end{align}
       \end{proof}
-      Nous pouvons noter que ces CSU fixent par exemple la partie réelle de \(a_1\) en fonction des autres coefficients. De plus, on remarque qu'on ne retombe pas sur les CSU de la CI01 si on annule \(b\). Ce sont donc des CSU valable mais trop contraignantes.
-    \subsubsection{CSU de Lafitte}
-      ~
-      Il est possible de relâcher un peu les contraintes, si l'on fait une distinction sur la valeur de la constante \(a_1\).
-      \paragraph{Cas \(a_1\not=0\)}
-        ~
-        \begin{prop}
-          Les CSU sont
-          \begin{align}
-            \Re\left(\frac{b}{a_1}\right) \ge 0 \\
-            \Re\left(a_0\right) \ge 0 \\
-            \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_1}}{a_1}\right) \le 0
-          \end{align}
-        \end{prop}
-        \begin{proof}
-          En supposant \(a_1 \not=0\), on utilise l'identité \((a_0 + a_1 \LL)^{-1}(1 + b \LL)  = \frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\):
-          \[
-            X = \int_\Gamma \left(\left(\frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\right)\vE_t\right) \cdot \conj{\vE_t} ds
-          \]
 
-          On pose:
-          \begin{align*}
-            \vect D &:= (a_0 + a_1 \LL)^{-1}\vE_t & F&:= || \vect D || ^2 \ge 0  \\
-            G&:= -\int_\Gamma \vect D \cdot \LL\conj{\v{D}} ds \ge 0 & H &:= || \vE_t || ^2 \ge 0
-          \end{align*}
-          Comme \(\conj{E_t} = (\conj{a_0} + \conj{a_1}\LL)D\) alors \(\ds\int_\Gamma (a_0 +a_1 \LL) ^{-1}\vE_t\cdot \conj{\vE_t} ds = \conj{a_0} F - \conj{a_1} G\) et l'on peut alors écrire
-
-          \begin{equation}
-            \label{eq:unicite:form_var:decomp_cgu_ci1_a1}
-            X = \frac{b}{a_1}H   + \left(1-b\frac{a_0}{a_1}\right)\left(\conj{a_0} F - \conj{a_1} G\right)
-          \end{equation}
-          De \eqref{eq:unicite:form_var:cgu}, on déduit des CSU suivantes:
-          \begin{align}
-            \Re\left(\frac{b}{a_1}\right) \ge 0 \\
-            \Re\left(a_0\right) \ge 0 \\
-            \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_1}}{a_1}\right) \le 0
-          \end{align}
-        \end{proof}
-
-        Ces CSU permettent de retomber sur les CSU de la CI01 quand \(b\) vaut zéro. De plus, une condition de non-nullité peut n'être vérifiée qu'à posteriori et donc ce jeu est un meilleur choix dans le cadre d'un code numérique.
-      \paragraph{Cas \(a_1=0\)}
-        ~
-        On complète les CSU précédentes
-        \begin{prop}
-          Les CSU sont
-          \begin{align}
-            a_1 = 0 \\
-            a_0 \not= 0\\
-            \Re\left(a_0\right) \ge 0\\
-            \Re\left(b\conj{a_0}\right) \le 0
-          \end{align}
-        \end{prop}
-        \begin{proof}
-          \[
-            X = \int_\Gamma \left( \frac{1}{a_0}\left(1+b\LL\right)\vE_t\right) \cdot \conj{\vE_t} ds
-          \]
-
-          On pose:
-          \begin{align*}
-            F&:= \int_\Gamma | \vE_t | ^2 ds \ge 0 & G &:= -\int_\Gamma \vE_t \cdot \LL\conj{\vE_t} ds \ge 0
-          \end{align*}
-
-          On a alors
-          \begin{equation}
-            \label{eq:unicite:form_var:decomp_cgu_ci1_a1_nul}
-            X = \frac{1}{a_0}F - \frac{b}{a_0}G
-          \end{equation}
-
-          De \eqref{eq:unicite:form_var:cgu}, on déduit des CSU suivantes:
-          \begin{align}
-            a_1 = 0 \\
-            a_0 \not= 0\\
-            \Re\left(a_0\right) \ge 0\\
-            \Re\left(b\conj{a_0}\right) \le 0
-          \end{align}
-        \end{proof}
-
-        On remarque qu'une condition de non-nullité peut n'être vérifiée qu'à posteriori. Mais on remarque ces CSU ne redonnent pas la CSU de la CI0 quand \(b\) s’annule.
+      Nous pouvons noter que ces CSU fixent par exemple la partie réelle de \(a_1\) en fonction des autres coefficients, ce qui est plus contraignant qu'une condition d'inégalité. De plus, on remarque qu'on ne retombe pas sur les CSU de la CI01 si on annule \(b\). Ce sont donc des CSU trop contraignantes.
     
     \subsubsection{CSU de \cite{stupfel_implementation_2015}}
 
-      On peut aussi trouver des CSU dans le cas où \(\Delta = 0\)
+      Les CSU présentées dans cette article contiennent une erreur. Nous présentons ici une correction qui.
 
       \begin{prop}
+        Un autre jeu de CSU est
         \begin{align}
           a_1 = a_0 \conj{b} \\
           \Re\left(\frac{\conj{a_0}}{1 + \conj{b}^2}\right) &\ge 0 \\
@@ -272,7 +197,6 @@
           \Re\left(|b|^2\Delta\right) &\ge 0
         \end{align}
 
-
         Si la matrice n'est pas inversible, alors on cherche à résoudre
         \[
           \begin{bmatrix}
@@ -307,6 +231,84 @@
 
       \end{proof}
 
-      Mais dans ce cas, on ne retombe pas non plus sur les CSU de la CI01 quand \(b\) s'annule. 
+      Mais dans ce cas, on ne retombe pas non plus sur les CSU de la CI01 quand \(b\) s'annule.
 
+    \subsubsection{CSU de 2017}
+      ~
+      Nous avons trouvé qu'il est possible de relâcher un peu les contraintes, si l'on fait une distinction sur la valeur de la constante \(a_1\).
+      \paragraph{Cas \(a_1\not=0\)}
+        ~
+        \begin{prop}
+          Les CSU sont
+          \begin{align}
+            \Re\left(\frac{b}{a_1}\right) \ge 0 \\
+            \Re\left(a_0\right) \ge 0 \\
+            \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_1}}{a_1}\right) \le 0
+          \end{align}
+        \end{prop}
+        \begin{proof}
+          En supposant \(a_1 \not=0\), on utilise l'identité \((a_0 + a_1 \LL)^{-1}(1 + b \LL)  = \frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\):
+          \[
+            X = \int_\Gamma \left(\left(\frac{b}{a_1} I_d + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\right)\vE_t\right) \cdot \conj{\vE_t} ds
+          \]
+
+          On pose:
+          \begin{align*}
+            \vect D &:= (a_0 + a_1 \LL)^{-1}\vE_t & F&:= || \vect D || ^2 \ge 0  \\
+            G&:= -\int_\Gamma \vect D \cdot \LL\conj{\v{D}} ds \ge 0 & H &:= || \vE_t || ^2 \ge 0
+          \end{align*}
+          Comme \(\conj{E_t} = (\conj{a_0} + \conj{a_1}\LL)D\) alors \(\ds\int_\Gamma (a_0 +a_1 \LL) ^{-1}\vE_t\cdot \conj{\vE_t} ds = \conj{a_0} F - \conj{a_1} G\) et l'on peut alors écrire
+
+          \begin{equation}
+            \label{eq:unicite:form_var:decomp_cgu_ci1_a1}
+            X = \frac{b}{a_1}H   + \left(1-b\frac{a_0}{a_1}\right)\left(\conj{a_0} F - \conj{a_1} G\right)
+          \end{equation}
+          De \eqref{eq:unicite:form_var:cgu}, on déduit des CSU suivantes:
+          \begin{align}
+            \Re\left(\frac{b}{a_1}\right) \ge 0 \\
+            \Re\left(a_0\right) \ge 0 \\
+            \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_1}}{a_1}\right) \le 0
+          \end{align}
+        \end{proof}
+
+        Ces CSU permettent de retomber sur les CSU de la CI01 quand \(b\) vaut zéro. De plus, une condition de non-nullité peut n'être vérifiée qu'à posteriori et donc ce jeu est un meilleur choix dans le cadre d'un code numérique.
+
+      \paragraph{Cas \(a_1=0\)}
+        ~
+        On complète les CSU précédentes
+        \begin{prop}
+          Les CSU sont
+          \begin{align}
+            a_1 = 0 \\
+            a_0 \not= 0\\
+            \Re\left(a_0\right) \ge 0\\
+            \Re\left(b\conj{a_0}\right) \le 0
+          \end{align}
+        \end{prop}
+        \begin{proof}
+          \[
+            X = \int_\Gamma \left( \frac{1}{a_0}\left(1+b\LL\right)\vE_t\right) \cdot \conj{\vE_t} ds
+          \]
+
+          On pose:
+          \begin{align*}
+            F&:= \int_\Gamma | \vE_t | ^2 ds \ge 0 & G &:= -\int_\Gamma \vE_t \cdot \LL\conj{\vE_t} ds \ge 0
+          \end{align*}
+
+          On a alors
+          \begin{equation}
+            \label{eq:unicite:form_var:decomp_cgu_ci1_a1_nul}
+            X = \frac{1}{a_0}F - \frac{b}{a_0}G
+          \end{equation}
+
+          De \eqref{eq:unicite:form_var:cgu}, on déduit des CSU suivantes:
+          \begin{align}
+            a_1 = 0 \\
+            a_0 \not= 0\\
+            \Re\left(a_0\right) \ge 0\\
+            \Re\left(b\conj{a_0}\right) \le 0
+          \end{align}
+        \end{proof}
+
+        On remarque que si \(b\) s’annule, on retombe bien sur la CSU de la CI0. Ce jeu, qui fait la distinction entre deux cas, à malgré tout cet avantage sur le premier.
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
