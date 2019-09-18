@@ -1,0 +1,41 @@
+&MAIN
+  frequency  =  1,
+  s1 = 0., 0., 1.E-2,
+  s2 = 0., 2.5, 1.E-2,
+  number_of_layer = 1,
+  number_of_hoibc = 5,
+/
+
+&HOIBC
+  name = 'ibc0', 'ibc3', 'ibc6', 'ibc6', 'ibc6',
+  suc  = F, F, F, F, F,
+  type = 'C', 'C', 'C', 'C', 'C',
+  mode = 2,2,2,2,2
+  normalised = T, T, T, T, T,
+  inner_radius = 0.03, 0.03, 0.03, 0.3, 3.0,
+/
+
+&MATERIAL
+  epsr  = (6., 0.),
+  mur   = (1., 0.),
+  thickness =  0.0225,
+  loss =  0.,
+  initial_impedance =  (0.,0.),
+/
+
+&OPTIM
+  tol = 1e-8,
+  grad_delta = 1e-8,
+  no_constraints = .True.,
+  show_iter = .True.,
+  max_iter = 1000,
+  linesearch_mode = 1,
+/
+
+&OUT
+ basename = "./thesis/HOPPE_62/HOPPE_62"
+ backend = 'paraview'
+ z_ex = .True.
+ z_ibc = .True.
+/
+

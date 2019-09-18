@@ -1,0 +1,45 @@
+&MAIN
+  frequency  =  1,
+  s1 = 0., 1.99, 1.E-3,
+  s2 = 0., 0, 1.E-2,
+  number_of_layer = 1,
+  number_of_hoibc = 3,
+/
+
+&HOIBC
+  name = 'ibc0', 'ibc3', 'ibc3'
+  type = 'P','P','P'
+  mode = 2,2,2
+  suc  = F, F, T
+  normalised = T, T, T
+/
+
+&MATERIAL
+  epsr  = (4., 0.),
+  mur   = (1., 0.),
+  thickness =  0.015,
+  loss =  0.,
+  initial_impedance =  (0.,0.),
+/
+
+&OPTIM
+  tol = 1e-8,
+  grad_delta = 1e-8,
+  no_constraints = .True.,
+  show_iter = .True.,
+  max_iter = 1000,
+  linesearch_mode = 1,
+/
+
+&OUT
+ basename = "./thesis/HOPPE_33/HOPPE_33"
+ backend = 'thesis'
+ z_ex = .True.
+ z_ibc = .True.
+ r_ex = .True.
+/
+
+&OTHER
+  hoppe_imp = .True.
+  reflex_vs_theta = .False.
+/
