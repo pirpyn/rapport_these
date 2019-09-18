@@ -1,0 +1,43 @@
+&MAIN
+  frequency  =  0.2,
+  s1 = 0., 1., 1.E-2,
+  s2 = 0., 0., 1.E-2,
+  number_of_layer = 1,
+  number_of_hoibc = 6,
+/
+
+&HOIBC
+  name = 'ibc0','ibc0', 'ibc0','ibc0','ibc0','ibc0'
+  suc  = F, F, F, F, F ,F
+  type = 'P','P', 'C','C','S','S'
+  inner_radius = 0., 0., 0.1, 0.1, 0.1, 0.1
+  mode = 1, 2, 1, 2, 1, 2
+/
+  
+&MATERIAL
+  epsr  = (2., -1.),
+  mur   = (8., 0.),
+  thickness =  0.05,
+  loss =  0.,
+  initial_impedance =  (0.,0.),
+/
+
+&OPTIM
+  tol = 1e-8,
+  grad_delta = 1e-8,
+  no_constraints = .False.,
+  show_iter = .False.,
+  max_iter = 1000,
+  linesearch_mode = 1,
+/
+
+&OUT
+  backend = "thesis"
+  basename = "./thesis/R_vs_Z/R_vs_Z"
+  coeff = .true.
+  z_ex = .true.
+  z_ibc = .true.
+  r_ex = .true.
+  r_ibc = .true.
+/
+

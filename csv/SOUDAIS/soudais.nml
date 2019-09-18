@@ -1,0 +1,46 @@
+&MAIN
+  frequency  =  12,
+  s1 = 0., 1.99, 1E-2,
+  s2 = 0., 0, 1.E-2,
+  number_of_layer = 1,
+  number_of_hoibc = 4,
+/
+
+&HOIBC
+  name = 'ibc0', 'ibc3', 'ibc3', 'ibc3_reduced'
+  suc  = F, F, T, T,
+  normalised = T, T, T, T,
+  type = 'P','P','P','P'
+  mode = 2,2,2,2
+/
+  
+&MATERIAL
+  epsr  = (4., 0.),
+  mur   = (1., 0.),
+  thickness =  0.0035,
+  loss =  0.,
+  initial_impedance =  (0.,0.),
+/
+
+&OPTIM
+  tol = 1e-8,
+  grad_delta = 1e-8,
+  no_constraints = .False.,
+  show_iter = .True.,
+  max_iter = 1000,
+  linesearch_mode = 1,
+/
+
+&OUT
+  backend = "thesis"
+  basename = "./thesis/SOUDAIS/SOUDAIS"
+  coeff = .true.
+  z_ibc = .True.
+  z_ex = .True.
+  r_ibc = .True.
+  r_ex = .True.
+/
+
+&OTHER
+  reflex_vs_theta = .False.
+/

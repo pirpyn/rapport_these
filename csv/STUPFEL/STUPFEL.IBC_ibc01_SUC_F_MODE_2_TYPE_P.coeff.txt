@@ -1,0 +1,5 @@
+% IBC ibc01 type P suc F mode 2 (IBC_ibc01_SUC_F_MODE_2_TYPE_P)
+% Z = a0*I + a1*(LD-LR)/k0^2
+  \verb|a0| & \verb| 3.243E-03 +2.126E-01i| \\
+  \verb|a1| & \verb|-5.161E-02 +5.639E-02i| \\
+% Verifying the Sufficient Uniqueness Conditions (SUC)

@@ -36,15 +36,31 @@
 
   \subsection{Résultats numériques}
 
-    La figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
+    La figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
 
-    \begin{figure}[!hbt]
-      \centering
-      \input{tikz/plot/Z_HOPPE_62_cylindre_hoibc.tikz}
-      \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
-      \label{fig:imp_fourier:plan:hoppe:62:hoibc}
-    \end{figure}
-
+    % \begin{figure}[!hbt]
+    %   \centering
+    %   \input{tikz/plot/Z_HOPPE_62_cylindre_hoibc.tikz}
+    %   \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
+    %   \label{fig:imp_fourier:plan:hoppe:62:hoibc}
+    % \end{figure}
+    % \begin{table}[!hbt]
+    %   \centering
+    %   % On fait deux tables de même hauteur
+    %   \begin{coefftable}{\hyperlink{ci0}{CI0}}
+    %     \input{csv/HOPPE_62/HOPPE_62.IBC_ibc0_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+    %     \\
+    %     \\
+    %     \\
+    %     \\
+    %     \\
+    %   \end{coefftable}
+    %   \begin{coefftable}{\hyperlink{ci3}{CI3}}
+    %     \input{csv/HOPPE_62/HOPPE_62.IBC_ibc3_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+    %   \end{coefftable}
+    %   \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc}}
+    %   \label{tab:imp_fourier:plan:hoppe:62:hoibc}
+    % \end{table}
 
     On remarque que le CIOE CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. 
     En effet, le symbole de l'opérateur n'est pas un multiple de l'identité pour \(n=k_z=0\) au contraire du plan ( pour \(k_x=k_y=0\) ). 
@@ -63,5 +79,27 @@
       \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
       \label{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}
     \end{figure}
+    \begin{table}[!hbt]
+      \centering
+      % On fait deux tables de même hauteur
+      \begin{coefftable}{\hyperlink{ci0}{CI0}}
+        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc0_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+        \\
+        \\
+        \\
+        \\
+        \\
+        \\
+      \end{coefftable}
+      \begin{coefftable}{\hyperlink{ci3}{CI3}}
+        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc3_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+        \\
+      \end{coefftable}
+      \begin{coefftable}{\hyperlink{ci6}{CI6}}
+        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc6_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+      \end{coefftable}
+      \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}}
+      \label{tab:imp_fourier:plan:hoppe:62:hoibc:ibc6}
+    \end{table}
 
-      Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier. On présente néanmoins dans la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} sa performance vis à vis de la CI3 sur le cylindre.
+    Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier. On présente néanmoins dans la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} sa performance vis à vis de la CI3 sur le cylindre.
