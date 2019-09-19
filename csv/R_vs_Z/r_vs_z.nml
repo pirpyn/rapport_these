@@ -22,15 +22,6 @@
   initial_impedance =  (0.,0.),
 /
 
-&OPTIM
-  tol = 1e-8,
-  grad_delta = 1e-8,
-  no_constraints = .False.,
-  show_iter = .False.,
-  max_iter = 1000,
-  linesearch_mode = 1,
-/
-
 &OUT
   backend = "thesis"
   basename = "./thesis/R_vs_Z/R_vs_Z"

@@ -85,9 +85,9 @@
   \end{align}
   Nous ne détaillerons pas les autres CI, elle se déduisent aisément.
 
-  On remarque que la fonctionnelle est quadratique si la matrice \(M=\conj{\mH^t}{\mH}\) est hermitienne définie positive. Or par construction elle est hermitienne et positive, donc il existe une minimum global si la matrice est définie.
+  On remarque que la fonctionnelle est quadratique si la matrice \(M=\conj{\mH^t}{\mH}\) est hermitienne définie positive. Une matrice \(A\) est hermitienne si \(\forall x, \conj{x^t}Ax \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}Ax \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}Ax \in \RR^{+,*}\).
 
-  Cependant, cette matrice n'est jamais défini si on ne considère qu'un seul couple \(k_x, k_y\).
+  On remarque que par construction, notre matrice \(M\) est hermitienne positive. Cependant, cette matrice n'est jamais défini si on ne considère qu'un seul couple \(k_x, k_y\).
 
 \subsection{Expression des moindre carrés dans le cadre de l'approximation plan infini avec un balayage en incidence}
 
@@ -174,16 +174,16 @@
 
 \subsubsection{Existence du minimum pour la CI3}
 
-  L'introduction de \(\hat\mZ_{ex}\) dans \(\tilde M\) ne permet plus d'exprimer le déterminant de cette dernière. Nous n'avons pas réussi à prouver que cette matrice était définie. Cependant nous avons vérifié numériquement qu'elle l'était.
+  L'introduction de \(\hat\mZ_{ex}\) dans \(\tilde M\) ne permet plus d'exprimer simplement le déterminant de cette dernière. Nous n'avons pas réussi à prouver que cette matrice était définie. Cependant nous avons vérifié numériquement qu'elle l'était pour tous les empilements que nous avons testés.
 
 % \subsection{Expression des moindre carrés dans le cadre de l'approximation cylindre pour une incidence}
 
 \subsection{Choix de la méthode numérique pour résoudre la minimisation sous contraintes}
 
-  Des méthodes basées sur le gradient sont adaptées car la fonctionnelle est dérivable pour tout \(X\) et les contraintes se comportent comme des polynômes dépendant uniquement des composantes de \(X\). Nous avons donc fait le choix de la méthode SLSQP pour les raisons suivantes:
+  Des méthodes basées sur le gradient sont adaptées car la fonctionnelle est dérivable pour tout \(X\) et les contraintes se comportent comme des polynômes dépendant uniquement des composantes de \(X\). Nous avons donc fait le choix de la méthode \gls{acr-sqp} pour les raisons suivantes:
  
   \begin{itemize}
-    \item Elle est éprouvée, des sources sont disponibles en Fortran à \url{https://github.com/jacobwilliams/slsqp} mais aussi dans la plupart des langages de code scientifique.
-    \item Elle est rapide, nous avons observés que cette méthode convergeait en quelques dizaine d'itérations.
+    \item Elle est éprouvée depuis \cite{kraft_software_1988} et des sources mises à jour sont disponibles en Fortran à \url{https://github.com/jacobwilliams/slsqp}, ce qui est capital pour l'intégrer dans un code industriel.
+    \item Elle est rapide, nous avons observés que cette méthode convergeait en quelques dizaines d'itérations.
     \item Elle accepte des contraintes non-linaire donc elle est adaptée à nos CSU.
   \end{itemize}

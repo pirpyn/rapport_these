@@ -3,7 +3,7 @@
   Soit \(\OO\) un domaine fermé borné de \(\RR^3\) plongé dans le vide et \(\Gamma\) sa frontière.
   À l'extérieur de cette surface, on définit \(k_0 \in \RR_+^*\), le nombre d'onde dans le vide.
 
-  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur de cette objet. Les champs associés sont solutions des équations de Maxwell harmonique \(e^{i\w t}\)\footnote{voir annexe \ref{sec:annex:maxwell_equation}} :
+  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur de cet objet. Les champs associés sont solutions des équations de Maxwell harmonique \(e^{i\w t}\)\footnote{voir annexe \ref{sec:annex:maxwell_equation}} :
 
   Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
   \begin{align}
@@ -127,22 +127,24 @@
       \begin{align}
         \Delta u + k^2 u = 0 & &\text{dans \(\OO^c\)}
         \\
-        \int_{S_R} |u(\vx)|^2 ds(\vx) = 0 
+        \lim_{R\rightarrow\infty}\int_{S_R} |u(\vx)|^2 ds(\vx) = 0
       \end{align}
     \end{subequations}
     alors \(u=0\) dans \(\OO^c\).
   \end{lemme}
 
-  En reprenant l'expression de la partie réelle de la forme bilinéaire \(a(\vE,\vE)\), on remarque que la condition \eqref{eq:unicite:form_var:cgu} implique
+  En reprenant l'expression de la partie réelle de la forme bilinéaire \(a(\vE,\vE)\), on remarque que
   \begin{align}
     \Re(a(\vE,\vE)) & = 0
     \\
     \Re(C) + \Re(X) & = 0
-    \\ \intertext{d'après \cite[eq.~5.3.89]{nedelec_acoustic_2001} \(\Re(C)\ge 0\) donc } 
+    \\ \intertext{d'après \cite[eq.~5.3.89]{nedelec_acoustic_2001}, \(\Re(C)\ge 0\), si on suppose \eqref{eq:unicite:form_var:cgu} alors } 
     \Re(C) = \Re(X) & = 0
-    \\ \intertext{Pusique \(\Re(C) = 0\) alors \(\vE_t = 0\) sur \(S_R\) or d'après le lemme de Rellich}
+    \\ \intertext{Puisque \(\Re(C) = 0\) alors d'après \cite[Théorème~5.3.5]{nedelec_acoustic_2001}, \(\vE_t = 0\) sur \(S_R\) or d'après le lemme de Rellich, on conclu que}
     \vE &= 0  &\text{ dans } \OO^c
   \end{align}
+
+  On conclu donc qu'en l'absence de sources et si on suppose \eqref{eq:unicite:form_var:cgu}, alors la seule solution est un champ nul, ce qui démontre l'unicité.
 
 %   Dans la suite de la thèse, nous noterons souvent cette quantité par \gls{mat-q}. C'est par définition la partie réelle du flux sortant du vecteur de Poynting à travers la surface de l'objet. 
 

@@ -199,6 +199,7 @@
 
 \newcommand{\NaN}{\operatorname{NaN}}
 \newcommand{\e}[1]{\mathrm{e}{#1}}
+
 \newenvironment{coefftable}[1]{%
   \begin{tabular}{lc}
   \multicolumn{2}{c}{#1}\\
@@ -206,4 +207,18 @@
   \hline
 }{
    \end{tabular}
+}
+
+% macro with argument filename
+% \newcommand{\coefftable}[1]{%
+%   \def\icoefffile{#1}\icoefftable
+% }
+\newcommand{\tablecoeff}[3][1]{%
+ \begin{minipage}[t]{#1\textwidth}
+    \centering
+    \vspace{0pt}
+    \begin{coefftable}{#2}
+      \input{#3}
+    \end{coefftable}
+  \end{minipage}
 }

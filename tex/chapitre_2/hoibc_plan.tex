@@ -134,17 +134,8 @@
       \end{figure}
       \begin{table}[!hbt]
         \centering
-        % On fait deux tables de même hauteur
-        \begin{coefftable}{\hyperlink{ci0}{CI0}}
-          \input{csv/HOPPE_33/HOPPE_33.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
-          \\
-          \\
-          \\
-          \\
-        \end{coefftable}
-        \begin{coefftable}{\hyperlink{ci3}{CI3}}
-          \input{csv/HOPPE_33/HOPPE_33.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
-        \end{coefftable}
+        \tablecoeff[0.49]{\hyperlink{ci0}{CI0}}{csv/HOPPE_33/HOPPE_33.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
+        \tablecoeff[0.49]{\hyperlink{ci3}{CI3}}{csv/HOPPE_33/HOPPE_33.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
         \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:hoppe:33:hoibc}}
         \label{tab:imp_fourier:plan:hoppe:33:hoibc}
       \end{table}
@@ -158,17 +149,8 @@
       \end{figure}
       \begin{table}[!hbt]
         \centering
-        % On fait deux tables de même hauteur
-        \begin{coefftable}{\hyperlink{ci0}{CI0}}
-          \input{csv/SOUDAIS/SOUDAIS.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
-          \\
-          \\
-          \\
-          \\
-        \end{coefftable}
-        \begin{coefftable}{\hyperlink{ci3}{CI3}}
-          \input{csv/SOUDAIS/SOUDAIS.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
-        \end{coefftable}
+        \tablecoeff[0.49]{\hyperlink{ci0}{CI0}}{csv/SOUDAIS/SOUDAIS.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
+        \tablecoeff[0.49]{\hyperlink{ci3}{CI3}}{csv/SOUDAIS/SOUDAIS.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
         \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:soudais:hoibc}}
         \label{tab:imp_fourier:plan:soudais:hoibc}
       \end{table}
@@ -196,9 +178,9 @@
       \end{figure}
       \begin{table}[!hbt]
         \centering
-        % On fait deux tables de même hauteur
         \begin{minipage}[t]{0.49\textwidth}
         \vspace{0pt}
+        \centering
         \begin{coefftable}{\hyperlink{ci0}{CI0}}
           \input{csv/triple_asymptote/triple_asymptote.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
         \end{coefftable}
@@ -207,12 +189,7 @@
           \input{csv/triple_asymptote/triple_asymptote.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
         \end{coefftable}
         \end{minipage}
-        \begin{minipage}[t]{0.5\textwidth}
-        \vspace{0pt}
-        \begin{coefftable}{\hyperlink{ci7}{CI7}}
-          \input{csv/triple_asymptote/triple_asymptote.IBC_ibc7_SUC_F_MODE_2_TYPE_P.coeff.txt}
-        \end{coefftable}
-        \end{minipage}
+        \tablecoeff[0.49]{\hyperlink{ci7}{CI7}}{csv/triple_asymptote/triple_asymptote.IBC_ibc7_SUC_F_MODE_2_TYPE_P.coeff.txt}
         \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc}}
         \label{tab:imp_fourier:plan:triple_asymptote:hoibc}
       \end{table}
@@ -225,11 +202,11 @@
     \begin{itemize}
       \item CI01
         \begin{equation}
-          \vE_t = \left(a_0\oI + a_1\LL\right)\vJ
+          \vE_t = \left(a_0\oI + a_1\frac{\LL}{k_0^2}\right)\vJ
         \end{equation}
       \item CI1
         \begin{equation}
-          \left(\oI + b\LL \right)\vE_t = \left(a_0\oI + a_1\LL\right)\vJ
+          \left(\oI + b\frac{\LL}{k_0^2} \right)\vE_t = \left(a_0\oI + a_1\frac{\LL}{k_0^2}\right)\vJ
         \end{equation}
     \end{itemize}
 
@@ -246,38 +223,24 @@
     Le multiplicateur est multiple de l'identité ce qui en fait un mauvais candidat convenu de la nature diagonale mais non multiple de l’identité du symbole. La figure \ref{fig:imp_fourier:plan:stupfel:hoibc} présente donc quelques résultats où l'on voit bien la limite de ces CIOE.
     \begin{figure}[!hbt]
       \centering
-      \input{tikz/plot/Z_cioe_2015_plan_hoibc.tikz}
+      \input{tikz/plot/Z_STUPFEL_plan_hoibc.tikz}
       \caption[CIOE sur empilement de B.~Stupfel p.~1661]{Module des coefficients diagonaux de \(\hat\mZ\) pour \(\eps = 1-i, \mu = 1, d=0.05\text{m}, f=0.2\text{GHz}\)}
       \label{fig:imp_fourier:plan:stupfel:hoibc}
     \end{figure}
     \begin{table}[!hbt]
       \centering
-      % On fait deux tables de même hauteur
-      \begin{coefftable}{\hyperlink{ci0}{CI0}}
-        \input{csv/STUPFEL/STUPFEL.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
-        \\
-        \\
-      \end{coefftable}
-      \begin{coefftable}{\hyperlink{ci01}{CI01}}
-        \input{csv/STUPFEL/STUPFEL.IBC_ibc01_SUC_F_MODE_2_TYPE_P.coeff.txt}
-      \end{coefftable}
+      \tablecoeff[0.49]{\hyperlink{ci0}{CI0}}{csv/STUPFEL/STUPFEL.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
+      \tablecoeff[0.49]{\hyperlink{ci01}{CI01}}{csv/STUPFEL/STUPFEL.IBC_ibc01_SUC_F_MODE_2_TYPE_P.coeff.txt}
 
-      \begin{coefftable}{\hyperlink{ci1}{CI1}}
-        \input{csv/STUPFEL/STUPFEL.IBC_ibc1_SUC_F_MODE_2_TYPE_P.coeff.txt}
-        \\
-        \\
-        \\
-      \end{coefftable}
-      \begin{coefftable}{\hyperlink{ci3}{CI3}}
-        \input{csv/STUPFEL/STUPFEL.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
-      \end{coefftable}
+      \tablecoeff[0.49]{\hyperlink{ci1}{CI1}}{csv/STUPFEL/STUPFEL.IBC_ibc1_SUC_F_MODE_2_TYPE_P.coeff.txt}
+      \tablecoeff[0.49]{\hyperlink{ci3}{CI3}}{csv/STUPFEL/STUPFEL.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
       \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:stupfel:hoibc}}
       \label{tab:imp_fourier:plan:stupfel:hoibc}
     \end{table}
     
     \begin{figure}[!hbt]
       \centering
-      \input{tikz/plot/R_cioe_2015_plan_hoibc.tikz}
+      \input{tikz/plot/R_STUPFEL_plan_hoibc.tikz}
       \caption[CIOE sur empilement de B.~Stupfel p.~1661]{Module des coefficients diagonaux de \(\mR\) pour \(\eps = 1-i, \mu = 1, d=0.05\text{m}, f=0.2\text{GHz}\)}
       \label{fig:reflex_fourier:plan:stupfel:hoibc}
     \end{figure}

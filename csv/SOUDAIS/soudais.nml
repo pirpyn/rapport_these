@@ -9,7 +9,6 @@
 &HOIBC
   name = 'ibc0', 'ibc3', 'ibc3', 'ibc3_reduced'
   suc  = F, F, T, T,
-  normalised = T, T, T, T,
   type = 'P','P','P','P'
   mode = 2,2,2,2
 /
@@ -23,7 +22,8 @@
 /
 
 &OPTIM
-  tol = 1e-8,
+  toldf = 1e-8,
+  toldx = 1e-8,
   grad_delta = 1e-8,
   no_constraints = .False.,
   show_iter = .True.,

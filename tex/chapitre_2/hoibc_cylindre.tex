@@ -27,8 +27,8 @@
     On peut donc redéfinir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance.
 
     \begin{multline}
-        \hat{\mZ}_{IBC}(n,k_z) = \left(I + b_1 \hat{\LD}(n,k_z) - b_2 \hat{\LR}(n,k_z) \right)^{-1}\\
-        \left(a_0 I + a_1 \hat{\LD}(n,k_z) - a_2 \hat{\LR}(n,k_z)\right)
+        \hat{\mZ}_{IBC}(n,k_z) = \left(I + b_1 \frac{\hat{\LD}(n,k_z)}{k_0^2} - b_2 \frac{\hat{\LR}(n,k_z)}{k_0^2} \right)^{-1}\\
+        \left(a_0 I + a_1 \frac{\hat{\LD}(n,k_z)}{k_0^2} - a_2 \frac{\hat{\LR}(n,k_z)}{k_0^2}\right)
     \end{multline}
 
     Les coefficients s'obtiennent de la même manière par minimisation.
@@ -63,14 +63,13 @@
     % \end{table}
 
     On remarque que le CIOE CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. 
-    En effet, le symbole de l'opérateur n'est pas un multiple de l'identité pour \(n=k_z=0\) au contraire du plan ( pour \(k_x=k_y=0\) ). 
-    Or la CIOE est multiple de l'identité pour ce couple. 
-    On subit donc cette erreur dans les résultats. 
+    En effet, le symbole de l'opérateur n'est pas une constante mais une matrice diagonale pour \(n=k_z=0\). 
+    Or par définition la CIOE est une constante pour ce couple, c'est la CI0. On subit donc cette erreur dans les résultats. 
 
-    Une CIOE plus intéressante, que l'on nomme CI6 et qui est inspirée de \cite[p.~60]{hoppe_impedance_1995}, serait:
+    Une CIOE plus intéressante, que l'on nomme CI6 et qui est inspirée de \cite[p.~60]{hoppe_impedance_1995}, serait alors:
 
     \begin{equation}
-      \left(\oI + c_1\LD -c_2\LR\right)\vE_t = \left(\diag{a_1}{a_2} + b_1\LD - b_2 \LR \right)\vJ
+      \left(\oI + c_1\frac{\LD}{k_0^2} -c_2\frac{\LR}{k_0^2}\right)\vE_t = \left(\diag{a_1}{a_2} + b_1\frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vJ
     \end{equation}
 
     \begin{figure}[!hbt]
@@ -82,22 +81,23 @@
     \begin{table}[!hbt]
       \centering
       % On fait deux tables de même hauteur
-      \begin{coefftable}{\hyperlink{ci0}{CI0}}
-        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc0_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
-        \\
-        \\
-        \\
-        \\
-        \\
-        \\
-      \end{coefftable}
-      \begin{coefftable}{\hyperlink{ci3}{CI3}}
-        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc3_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
-        \\
-      \end{coefftable}
-      \begin{coefftable}{\hyperlink{ci6}{CI6}}
-        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc6_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
-      \end{coefftable}
+      \begin{minipage}[t]{0.49\textwidth}
+        \vspace{0pt}
+        \centering
+        \begin{coefftable}{\hyperlink{ci0}{CI0}}
+          \input{csv/HOPPE_62/HOPPE_62.IBC_ibc0_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+        \end{coefftable}
+        \begin{coefftable}{\hyperlink{ci3}{CI3}}
+          \input{csv/HOPPE_62/HOPPE_62.IBC_ibc3_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+        \end{coefftable}
+      \end{minipage}
+      \begin{minipage}[t]{0.49\textwidth}
+        \vspace{0pt}
+        \centering
+        \begin{coefftable}{\hyperlink{ci6}{CI6}}
+          \input{csv/HOPPE_62/HOPPE_62.IBC_ibc6_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+        \end{coefftable}
+      \end{minipage}
       \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}}
       \label{tab:imp_fourier:plan:hoppe:62:hoibc:ibc6}
     \end{table}
