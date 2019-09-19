@@ -1,13 +1,18 @@
-\chapter{Approximations de l'opérateur d'impédance}
-\label{sec:chap2}
+\chapter{Calcul des coefficients pour un plan infini}
+\label{sec:plan}
 \minitoc
 \newpage
 \sectionstar{Introduction}
-Nous avons vu les expressions du symbole de l'opérateur d'impédance pour diverses géométries. Nous allons maintenant présenter plusieurs approximations de cet opérateur, leur symbole ainsi que les limites de ces approximations dans certains cas particuliers.
-\input{tex/chapitre_2/hoibc_plan}
-\input{tex/chapitre_2/hoibc_cylindre}
-%\input{tex/coeffs_cioe}
-\sectionstar{Conclusion}
-Dans le cas du plan infini, la CI3 est une très bonne approximation de l'opérateur exact tant qu'il n'y a pas d'asymptotes. Dans ce cas, selon le nombre de point qui produisent une asymptote dans le balayage, il est nécessaire de monter en ordre à 2 fois le nombre d'asymptote rencontrées. Ces cas étant très rare, car ne sont possible que si le matériau est sans pertes et un rapport \(kd\) petit.
 
-Dans le cas du cylindre, la CI3 échoue immédiatement à cause de son coefficient multiple de l'identité. En remplaçant ce dernier avec un terme constant et diagonal, nous obtenons la CI6, très performante. 
+\input{tex/plan/exact}
+\input{tex/plan/hoibc}
+\input{tex/plan/minimisation}
+\input{tex/plan/minimisation_ci4}
+\input{tex/plan/minimisation_sans_pertes}
+
+\sectionstar{Conclusion}
+Nous avons montré comment calculer les coefficients dans le cas d'un objet plan infini plan en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées. 
+
+Pour cela, nous avons réalisé une analyse spectrale des équations de Maxwell et montré que la condition d'impédance s'exprime comme un multiplicateur de Fourier matriciel, tout comme la matrice de réflexion. Grâce à cette analyse spectrale, nous avons exprimé les CIOE comme des multiplicateurs de Fourier matriciel dont on a déduit la matrice de réflexion associée. Nous avons alors exprimé le problème de minimisation sous contraintes et montré que celui ci a besoin d'être réduit dans le cas d'une couche de matériau sans pertes.
+
+Nous avons alors conclu que la \hyperlink{ci3}{CI3} était la plus performante et que le jeu de CSU retenu dans la partie précédente permettait d'obtenir de bons coefficients de réflexions.
