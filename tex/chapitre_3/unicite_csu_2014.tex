@@ -39,7 +39,7 @@
 
   On remarque que ces CSU redonnent les CSU de la CI01 quand \(a_1=a_2\). Ce jeu semble être le plus naturel, sans être trop contraignant.
 
-\section{CSU pour la CIOE CI3 de \cite{aubakirov_electromagnetic_2014}}
+\section{CSU pour la CI3}
 
   Soit la CIOE énoncé dans \cite{aubakirov_electromagnetic_2014} que l'on nomme \hyperlink{ci3}{CI3} :
   \begin{equation}
@@ -93,7 +93,7 @@
 
   % Cette relation \Gamma'exprime sous forme forte par \(\LD\LR\equiv0\). Elle est là aussi symétrique entre les deux opérateurs.
 
-\subsection{CSU de 2017}
+\subsection{CSU par extension des CSU 2015 de la CI1}
 
   Ces CSU sont basées sur la méthode des CSU 2015 pour la CI1. On s'attend donc à avoir des CSU de même types.
 
@@ -269,7 +269,7 @@
   Étant basées sur les CSU pour le CI1 de 2017, ces CSU sont très contraignantes et ne permettent pas de retrouver des CSU des CIOE d'ordres inférieurs lorsque l'on annule les coefficients \(b_1, b_2\). 
 
 
-\subsection{CSU de 2017}
+\subsection{CSU par extension des CSU 2015 de la CI1 incluant les CSU de la CI4}
 
   \begin{prop}
     D'autre CSU sont
@@ -361,12 +361,14 @@
     \end{align}
   \end{proof}
 
-  On a réussi à réduire le nombre de CSU et en plus, fixer \(b_1=b_2=0\) permet de retomber sur les CSU de la CI4, mais certains coefficients sont définis à partir des autres.
+  On a réussi à réduire le nombre de CSU et en plus, fixer \(b_1=b_2=0\) permet de retomber sur les CSU de la CI4, mais certains coefficients sont définis à partir des autres, ce qui reste trop contraignant à nos yeux.
 
-\subsection{CSU de 2018}
+\subsection{CSU 2018 de Lafitte-Stupfel}
+
+  Nous avons réussi à trouver des CSU qui soit uniquement constitués de contraintes inégalités et en plus qui permettent de retrouver les CSU de la CI4.
 
   \begin{prop}
-    Soit \(z = \left(1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}\right) \). Des CSU sont
+    Soit \(z = \left(1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}\right) \). Ces CSU sont
     \begin{align}
       \Re\left(\conj{a_0}z\right) \ge 0
       \\
@@ -389,6 +391,7 @@
       \Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) \le 0
     \end{align}
   \end{prop}
+
   \begin{proof}
     Par définition de la CIOE, on a
 
@@ -407,7 +410,7 @@
       - b_2 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
     \end{multline}
 
-    L'astuce pour obtenir réside dans les égalités suivantes, valables si \(a_1\) et \(a_2\) sont non-nuls.
+    L'astuce pour obtenir ces CSU réside dans les égalités suivantes, valables si \(a_1\) et \(a_2\) sont non-nuls.
     \begin{align}
       \LD & = \frac{a_0 + a_1 \LD - a_0}{a_1}
       \\

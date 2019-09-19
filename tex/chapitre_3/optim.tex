@@ -183,7 +183,7 @@
   Des méthodes basées sur le gradient sont adaptées car la fonctionnelle est dérivable pour tout \(X\) et les contraintes se comportent comme des polynômes dépendant uniquement des composantes de \(X\). Nous avons donc fait le choix de la méthode \gls{acr-sqp} pour les raisons suivantes:
  
   \begin{itemize}
-    \item Elle est éprouvée depuis \cite{kraft_software_1988} et des sources mises à jour sont disponibles en Fortran à \url{https://github.com/jacobwilliams/slsqp}, ce qui est capital pour l'intégrer dans un code industriel.
-    \item Elle est rapide, nous avons observés que cette méthode convergeait en quelques dizaines d'itérations.
+    \item Elle est éprouvée depuis \cite{kraft_software_1988} et des sources Fortran à jour sont disponibles à \url{https://github.com/jacobwilliams/slsqp}, ce qui est capital pour l'intégrer dans un code industriel.
+    \item Elle est rapide, nous avons observés que cette méthode convergeait en quelques dizaines d'itérations au pire.
     \item Elle accepte des contraintes non-linaire donc elle est adaptée à nos CSU.
   \end{itemize}
