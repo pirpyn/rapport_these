@@ -32,14 +32,14 @@
     \begin{equation}
       k_3 = \sqrt{\w^2\eps\mu - k_z^2}
     \end{equation}
-    et \(J_n\) et \(H_n^{(2)}\) des solutions de l'équation de Bessel d'ordre \(n\).
+    et \(J_n(z)\) et \(H_n^{(2)}(z)\) des solutions de l'équation de Bessel d'ordre \(n\).
 
-    Alors \(\exists (c_1,c_2,c_3,c_4) \in \CC^4\) tels que
+    Alors \(\exists (c_i(n,k_z))_{1<=i<=4} \in \CC(\NN\times\RR)^4\) tels que
     \begin{subequations}
       \begin{align}
-        \hat{E_z}(r,n,k_z) &= c_1 J_n\left(k_3r\right) + c_2 H_n^{(2)}\left(k_3r\right)
+        \hat{E_z}(r,n,k_z) &= c_1(n,k_z) J_n\left(k_3r\right) + c_2(n,k_z) H_n^{(2)}\left(k_3r\right)
         \\
-        \hat{H_z}(r,n,k_z) &= c_3 J_n\left(k_3r\right) + c_4 H_n^{(2)}\left(k_3r\right)
+        \hat{H_z}(r,n,k_z) &= c_3(n,k_z) J_n\left(k_3r\right) + c_4(n,k_z) H_n^{(2)}\left(k_3r\right)
       \end{align}
     \end{subequations}
   \end{prop}

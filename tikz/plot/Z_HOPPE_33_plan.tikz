@@ -2,7 +2,7 @@
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={},
-            ylabel={\(\Im(\hat{Z}(k_x,0)\)},
+            ylabel={\(\Im(\hat{\mathfrak{Z}}(k_x,0)\) (\(\Omega\))},
             xlabel={\(k_x\slash k_0\)},
             width=0.8\textwidth,
             xmin=0,
