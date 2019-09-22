@@ -29,9 +29,9 @@
       \LD \vE_t
       & = \vgrads{} \vdivs{} \vE_t
       \\
-      &=\vgrads{} \frac{1}{2\pi}\int_\RR\int_\RR \hat{\vE_t}(k_x,k_y,z) \cdot \vgrads{} e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y}
+      &=\frac{1}{2\pi}\vgrads{} \int_\RR\int_\RR \hat{\vE_t}(k_x,k_y,z) \cdot \vgrads{} e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y}
       \\
-      &=\int_\RR \frac{1}{2\pi}\int_\RR \vhesss{}\left(\left( e^{ik_xx + ik_yy} \right) \hat{\vE_t}\right)(k_x,k_y,z)\dd{k_x}\dd{k_y}
+      &=\frac{1}{2\pi}\int_\RR \int_\RR \vhesss{}\left(\left( e^{ik_xx + ik_yy} \right) \hat{\vE_t}\right)(k_x,k_y,z)\dd{k_x}\dd{k_y}
     \end{align}
 
     On définit \(\hat{\mLD}\) l'opérateur matriciel tel que

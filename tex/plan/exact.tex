@@ -10,17 +10,20 @@
                 \input{tikz/schema/plan_1_couche.tikz}
             \end{tikzpicture}
         \end{center}
-    \end{figure}s
+    \end{figure}
 
-    Comme il est infini dans les directions \(\vect{e_x} ,\vect{e_y}\) et que le matériau est homogène isotrope, on utilise la transformée partielle en \(x, y\) seulement.
+    % Comme il est infini dans les directions \(\vect{e_x} ,\vect{e_y}\) et que le matériau est homogène isotrope, 
+    Nous utilisons une transformée partielle en \(x, y\).
 
     \begin{equation}
         \vE(x,y,z) = \frac{1}{2\pi}\iint_{\RR^2} e^{i(k_x x + k_y y)}\hat{\vE} (k_x,k_y,z) \dd{k_x}\dd{k_y}
     \end{equation}
 
+    Grâce à cela, nous simplifions le problème en étudiant \( \hat{\vE}\) grâce aux multiplicateurs de Fourier associés aux variables \(x,y\). 
+
     \begin{prop}
         Dans le matériau, on définit \(k_3\) le nombre complexe tel que \(k_3^2 = k^2 - k_x^2 - k_y^2\).
-        Alors existe \((c_i(k_x,k_y))_{1<=i<=4}, \in \CC(\RR^2)^4\) tels que
+        Alors existe \((c_i(k_x,k_y))_{1\le i \le4}, \in \CC(\RR^2)^4\) tels que
         \begin{subequations}
             \begin{align}
                 \hat{\vE}_y(k_x,k_y,z) & = e^{ik_3z}c_1(k_x,k_y) + e^{-ik_3z}c_2(k_x,k_y)
@@ -413,7 +416,7 @@
 
         On applique les hypothèses précédentes, donc \(k_y=0\). On remarque que pour \(k_x\slash k_0=2\), \(k_3\) est nul et l'impédance n'est pas calculée en ce point. 
 
-        Comme le matériau est sans pertes, la partie réelle de \(\hat{\mZ}\) est nulle. 
+        Comme le matériau n'a pas de perte, la partie réelle de \(\hat{\mathfrak{\mZ}}\) est nulle et n'est donc pas tracée.
 
         \begin{figure}[!hbt]
             \centering
