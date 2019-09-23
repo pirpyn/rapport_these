@@ -1,14 +1,16 @@
-\chapter{Conditions suffisantes d'unicité}
-\label{sec:chap3}
+\chapter{Calcul des coefficients pour un cylindre infini}
+\label{sec:cylindre}
 \minitoc
 \newpage
 \sectionstar{Introduction}
-Nous avons montrés dans les parties précédentes comment calculer les coefficients des \glspl{acr-cioe} par les moindres carrés. Dans cette partie, nous allons rappeler et étendre les travaux de \cite{stupfel_sufficient_2011} à la \hyperlink{ci3}{CI3}. Nous rappellerons donc la \gls{acr-cgu} et les \glspl{acr-csu} qu'elle implique sur les coefficients des CIOE. Nous introduirons le problème de minimisation sous contraintes et la méthode numérique choisie pour le résoudre. Nous verrons que certains empilements de matériaux nécessiterons une réduction du problème pour obtenir de bon coefficients.
-\input{tex/chapitre_3/unicite_csug}
-\input{tex/chapitre_3/unicite_csu_2011}
-\input{tex/chapitre_3/unicite_csu_2014}
-\input{tex/chapitre_3/optim}
-\input{tex/chapitre_3/optim_mat_ss_pertes}
-%\input{tex/chapitre_3/optim_ci4}
+L'introduction de courbure dans les CIOE est d'un atout majeur, car les objets réels sont rarement localement plat, mais plutôt de type sphère-cone. Nous allons présentons dans cette partie l'introduction d'une courbure dans une seule direction.
+
+\input{tex/cylindre/exact}
+\input{tex/cylindre/hoibc}
+\input{tex/cylindre/minimisation_impedance}
+\input{tex/cylindre/minimisation_fourier}
+
 \sectionstar{Conclusion}
-Nous nous sommes dotés d'une méthode numérique pour calculer les coefficients des CIOE qui permet de garantir l'unicité des solutions des équations de Maxwell. Ce calcul n'est fait que pour un empilement de matériaux et une fréquence donnée mais son coût numérique faible et la rapidité de ce dernier nous permettent de le valider pour l'intégration dans CIOE dans un code de résolution des équations de Maxwell.
+Nous avons montré comment calculer les coefficients dans le cas d'un objet cylindre infini en minimisant au sens des moindres carrés la différence entre les coefficients de Fourier exact et approchés. 
+
+Cette géométrie a pu montrer la limite de la CI3 pour approcher l'impédance exacte, mais qu'elle approchait bien les coefficients de la série de Fourier.

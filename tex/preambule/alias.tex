@@ -1,6 +1,7 @@
 
 %\newtheorem[style=M,bodystyle={\noindent}]{thm}{Théorème}[chapter]
 \newtheorem{thm}{Théorème}[chapter]
+\newtheorem{lemme}[thm]{Lemme}
 
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{defn}[thm]{Définition}
@@ -8,7 +9,7 @@
 
 %redefinition
 \renewcommand{\frac}[2]{\dfrac{#1}{#2}} % Toujours de grandes fractions
-\renewcommand{\tilde}[1]{\widetilde{#1}} % Toujours un grand tilde
+\renewcommand{\tilde}[1]{\overset{\thicksim}{#1}} % Toujours un grand tilde
 \newcommand{\tagit}{\addtocounter{equation}{1}\tag{\theequation}}
 \newcommand{\ds}{\displaystyle}
 
@@ -40,6 +41,8 @@
 \newcommand{\mPP}{\mat{P}}
 \newcommand{\mC}{\mat{C}}
 \newcommand{\mM}{\mat{M}}
+\newcommand{\mJ}{\mat{J}}
+\newcommand{\mH}{\mat{H}}
 \newcommand{\mN}{\mat{N}}
 \newcommand{\mMt}{\mat{\tilde{M}}}
 \newcommand{\mNt}{\mat{\tilde{N}}}
@@ -195,3 +198,29 @@
 \newcommand{\Mmn}[1][{}]{\vect{M_{m,n}^{#1}}}
 \newcommand{\Nmn}[1][{}]{\vect{N_{m,n}^{#1}}}
 \newcommand{\Umn}[1][{}]{\vect{U_{m,n}^{#1}}}
+
+\newcommand{\NaN}{\operatorname{NaN}}
+\newcommand{\e}[1]{\mathrm{e}{#1}}
+
+\newenvironment{coefftable}[1]{%
+  \begin{tabular}{lc}
+  \multicolumn{2}{c}{#1}\\
+  \hline
+  \hline
+}{
+   \end{tabular}
+}
+
+% macro with argument filename
+% \newcommand{\coefftable}[1]{%
+%   \def\icoefffile{#1}\icoefftable
+% }
+\newcommand{\tablecoeff}[3][1]{%
+ \begin{minipage}[t]{#1\textwidth}
+    \centering
+    \vspace{0pt}
+    \begin{coefftable}{#2}
+      \input{#3}
+    \end{coefftable}
+  \end{minipage}
+}

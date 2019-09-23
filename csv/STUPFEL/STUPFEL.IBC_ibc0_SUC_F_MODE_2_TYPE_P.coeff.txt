@@ -1,0 +1,6 @@
+% IBC ibc0 type P suc F mode 2 (IBC_ibc0_SUC_F_MODE_2_TYPE_P)
+% Z = a0*I
+  \verb|a0| & \verb| 3.178E-03 +2.127E-01i| \\
+% Verifying the Sufficient Uniqueness Conditions (SUC)
+%    [OK] SUC, Negative inequality constraints, IN <=  1.000E-08
+%    IN(1) = -3.178465E-03 ! -Re(a0)

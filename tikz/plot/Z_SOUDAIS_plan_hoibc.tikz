@@ -1,0 +1,50 @@
+\tikzsetnextfilename{Z_SOUDAIS_plan_hoibc_TM}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={Polarisation TM},
+            ylabel={\(\Im(\hat{Z}(k_x,0)\)},
+            xlabel={\(k_x\slash k_0\)},
+            width=0.4\textwidth,
+            xmin=0,
+            xmax=1.8,
+            ymin=-1E+1,
+            ymax=1E+1,
+            restrict y to domain=-30:30,
+            mark repeat=40,
+            legend pos=outer north east
+        ]
+        \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/SOUDAIS/SOUDAIS.z_ex.MODE_2_TYPE_P.csv};
+        % \addlegendentry{Exact};
+
+        \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.tm)}] {csv/SOUDAIS/SOUDAIS.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
+        % \addlegendentry{CI0};
+
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.tm)}] {csv/SOUDAIS/SOUDAIS.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
+        % \addlegendentry{CI3};
+    \end{axis}
+\end{tikzpicture}
+\tikzsetnextfilename{Z_SOUDAIS_plan_hoibc_TE}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={Polarisation TE},
+            ylabel={},
+            xlabel={\(k_x\slash k_0\)},
+            width=0.4\textwidth,
+            xmin=0,
+            xmax=1.8,
+            ymin=-1E+1,
+            ymax=1E+1,
+            restrict y to domain=-30:30,
+            mark repeat=40,
+            legend pos=outer north east
+        ]
+        \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/SOUDAIS/SOUDAIS.z_ex.MODE_2_TYPE_P.csv};
+        \addlegendentry{Exact};
+
+        \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.te)},color=] {csv/SOUDAIS/SOUDAIS.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
+        \addlegendentry{CI0};
+
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.te)}] {csv/SOUDAIS/SOUDAIS.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
+        \addlegendentry{CI3};
+    \end{axis}
+\end{tikzpicture}

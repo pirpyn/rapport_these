@@ -6,25 +6,36 @@ Nous rappelons l'expression des opérateurs \(\LD,\LR,\LL\) sur des champs vecto
   \LD &= \vgrads{}\vdivs{} &
   \LR &= \vrots{} \vrots{} &
   \LL &= \vlapls{}
-  \end{align*}
+\end{align*}
+De plus, \(\oI\) est l'identité.
+
+Dans les codes numériques, tous les opérateurs différentiels sont normalisés par le carré du nombre d'onde dans le vide.
 
 \begin{center}
-\begin{tabular}{l|Cl}
+\begin{tabular}{lCl}
 Nom & \text{Expression sur les champs tangentiels} & Référence
 \\
 \hline
 \hline
 \hypertarget{ci0}{CI0} & \vE_t = a_0 \vJ  & \cite{leontovich_investigations_1948}
 \\
-\hypertarget{ci01}{CI01} & \vE_t = \left(a_0\oI + a_1 \LL \right)\vJ & \cite{stupfel_implementation_2015}
+\hline
+\hline
+\hypertarget{ci01}{CI01} & \vE_t = \left(a_0\oI + a_1 \frac{\LL}{k_0^2} \right)\vJ & \multirow{2}{*}{\cite{stupfel_implementation_2015}}
 \\
-\hypertarget{ci1}{CI1}& \left(\oI + b \LL \right)\vE_t = \left(a_0\oI + a_1 \LL \right)\vJ & \cite{stupfel_implementation_2015}
+\hypertarget{ci1}{CI1}& \left(\oI + b \frac{\LL}{k_0^2} \right)\vE_t = \left(a_0\oI + a_1 \frac{\LL}{k_0^2} \right)\vJ &
 \\
-\hypertarget{ci4}{CI4}& \vE_t = \left(a_0\oI + a_1 \LD - a_2 \LR \right)\vJ & \cite{hoppe_impedance_1995}
+\hline
+\hline
+\hypertarget{ci4}{CI4}& \vE_t = \left(a_0\oI + a_1 \frac{\LD}{k_0^2} - a_2 \frac{\LR}{k_0^2} \right)\vJ & \multirow{3}{*}{\cite{hoppe_impedance_1995}}
 \\
-\hypertarget{ci3}{CI3}& \left(\oI + b_1 \LD - b_2 \LR \right)\vE_t = \left(a_0\oI + a_1 \LD - a_2 \LR \right)\vJ & \cite{hoppe_impedance_1995}
+\hypertarget{ci3}{CI3}& \left(\oI + b_1 \frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vE_t = \left(a_0\oI + a_1 \frac{\LD}{k_0^2} - a_2 \frac{\LR}{k_0^2} \right)\vJ &
 \\
-\hypertarget{ci6}{CI6}& \left(\oI + c_1 \LD - c_2 \LR \right)\vE_t = \left(\diag{a_1}{a_2} + b_1 \LD - b_2 \LR \right)\vJ & \cite{hoppe_impedance_1995}
+\hypertarget{ci6}{CI6}& \left(\oI + c_1 \frac{\LD}{k_0^2} - c_2 \frac{\LR}{k_0^2} \right)\vE_t = \left(\diag{a_1}{a_2} + b_1 \frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vJ &
+\\
+\hline
+\hline
+\hypertarget{ci7}{CI7}& \left(\oI + \sum_{i=1}^3 d_i \frac{\LD^i}{k_0^2} + e_i \frac{(-\LR)^i}{k_0^2} \right)\vE_t = \left(a_0\oI + \sum_{i=1}^3 b_i \frac{\LD^i}{k_0^2} + c_i \frac{(-\LR)^i}{k_0^2} \right)\vJ &
 \end{tabular}
 \end{center}
 % \end{landscape}
