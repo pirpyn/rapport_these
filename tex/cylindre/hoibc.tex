@@ -1,105 +1,77 @@
 \section{Approximation de l'opérateur d'impédance pour un cylindre infini}
 
-  \subsection{Expression de la condition d'impédance d'ordre élevée}
+  \subsection[Expression des opérateurs LD,LR en Fourier]{Expression des opérateurs \(\LD,\LR\) en Fourier}
 
-    On reprend les méthodes et résultats de la partie précédente.
-    Soit \(R_{ext}\) le rayon de la couche extérieure.
-    Le changement de système de coordonnées modifie l'expression des opérateurs \(\LD, \LR\).
+    Par définition de \(\LD\), on a
+    \begin{align}
+      \LD \vE_t & = \vgrads{} \vdivs{} \vE_t
+    \end{align}
 
+    Or d’après la définition de la transformée de Fourier
+
+    \begin{align}
+      \vE_t(r,\theta,z) & = \frac{1}{2\pi}\sum_{i=-\infty}^\infty \int_\RR \hat{\vE_t}(r,n,k_z)e^{in\theta + ik_zz}\dd{k_z}
+    \end{align}
+
+    On applique l'opérateur à ce vecteur
+
+    \begin{align}
+      \LD \vE_t
+      & = \vgrads{} \vdivs{} \vE_t
+      \\
+      &=\frac{1}{2\pi}\vgrads{} \sum_{i=-\infty}^\infty\int_\RR \hat{\vE_t}(r,n,k_z) \cdot \vgrads{} e^{in\theta + ik_zz}\dd{k_z}
+      \\
+      &=\frac{1}{2\pi}\sum_{i=-\infty}^\infty \int_\RR \vhesss{}\left(\left( e^{in\theta + ik_zz} \right) \hat{\vE_t}\right)(r,n,k_z)\dd{k_z}
+    \end{align}
+
+    On utilise les expression en coordonnées cylindrique des opérateurs différentielles ( voir annexe \ref{sec:annexe:div_grad_rot} ):
+
+    On définit \(\hat{\mLD}\) l'opérateur matriciel tel que
+    \begin{align}
+      \LD \vE_t
+      &= \frac{1}{2\pi}\sum_{i=-\infty}^\infty\int_\RR \hat{\mLD} \hat{\vE_t}(r,n,k_z)\dd{k_z}
+    \end{align}
+
+    Son expression est de ce qui précède
     \begin{equation}
+      \label{eq:cylindre:fourier:LD}
       \hat{\LD}(n,k_z) = -
       \begin{bmatrix}
-        \left(\frac{n}{R_{ext}}\right)^2 & \frac{n}{R_{ext}} k_z
+        \left({n}\slash{r_{ext}}\right)^2 & k_z{n}\slash{r_{ext}}
         \\
-        \frac{n}{R_{ext}} k_z & k_z^2
+        k_z{n}\slash{r_{ext}} & k_z^2
       \end{bmatrix}
     \end{equation}
+
+    On reprend exactement la même méthode pour l'opérateur \(\LR\):
+    \begin{align}
+      \LR \vE_t & = \vrots{} \vrots{} \vE_t
+      \\
+      &=\frac{1}{2\pi}\vrots{}\sum_{i=-\infty}^\infty\int_\RR \vgrads{}\left(e^{in\theta + ik_zz}\right) \pvect \hat{\vE_t}(r,n,k_z)\dd{k_z}
+      \\
+      &= \frac{1}{2\pi}\sum_{i=-\infty}^\infty \int_\RR \left(\vhesss - \vlapls\right) \left(\left(e^{in\theta + ik_zz}\right) \hat{\vE_t}\right)(r,n,k_z)\dd{k_z}
+    \end{align}
+
+    On définit \(\hat{\LR}\) l'opérateur matriciel tel que
+    \begin{align}
+      \LR \vE_t
+      &= \frac{1}{2\pi}\sum_{i=-\infty}^\infty\int_\RR \hat{\LR} \hat{\vE_t}(r,n,k_z)\dd{k_z}
+    \end{align}
 
     \begin{equation}
       \hat{\LR}(n,k_z) =
       \begin{bmatrix}
-        k_z^2 & -\frac{n}{R_{ext}} k_z
+        k_z^2 & -k_z{n}\slash{r_{ext}}
         \\
-        -\frac{n}{R_{ext}} k_z & \left(\frac{n}{R_{ext}}\right)^2
+        -k_z{n}\slash{r_{ext}} & \left({n}\slash{r_{ext}} \right)^2
       \end{bmatrix}
     \end{equation}
 
-    On peut donc redéfinir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance.
+  \subsection{Expression de la matrice d'impédance approchée par la CI3}
+
+    Tout comme dans le cas du plan infini, on peut donc définir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance.
 
     \begin{multline}
         \hat{\mZ}_{IBC}(n,k_z) = \left(I + b_1 \frac{\hat{\LD}(n,k_z)}{k_0^2} - b_2 \frac{\hat{\LR}(n,k_z)}{k_0^2} \right)^{-1}\\
         \left(a_0 I + a_1 \frac{\hat{\LD}(n,k_z)}{k_0^2} - a_2 \frac{\hat{\LR}(n,k_z)}{k_0^2}\right)
     \end{multline}
-
-    Les coefficients s'obtiennent de la même manière par minimisation.
-    De plus, là encore il faut au moins considérer \((n\slash R_{ext})^2 + k_z^2\) supérieur à \(k_0^2\) pour prendre en compte des ondes planes homogènes. Dans le cas d'une incidence normale au cylindre (\(k_z = 0 \)), cela revient à prendre \(n\) au moins jusque \(k_0 R_{ext}\).
-
-  \subsection{Résultats numériques}
-
-    La figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
-
-    % \begin{figure}[!hbt]
-    %   \centering
-    %   \input{tikz/plot/Z_HOPPE_62_cylindre_hoibc.tikz}
-    %   \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
-    %   \label{fig:imp_fourier:plan:hoppe:62:hoibc}
-    % \end{figure}
-    % \begin{table}[!hbt]
-    %   \centering
-    %   % On fait deux tables de même hauteur
-    %   \begin{coefftable}{\hyperlink{ci0}{CI0}}
-    %     \input{csv/HOPPE_62/HOPPE_62.IBC_ibc0_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
-    %     \\
-    %     \\
-    %     \\
-    %     \\
-    %     \\
-    %   \end{coefftable}
-    %   \begin{coefftable}{\hyperlink{ci3}{CI3}}
-    %     \input{csv/HOPPE_62/HOPPE_62.IBC_ibc3_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
-    %   \end{coefftable}
-    %   \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc}}
-    %   \label{tab:imp_fourier:plan:hoppe:62:hoibc}
-    % \end{table}
-
-    On remarque que le CIOE CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. 
-    En effet, le symbole de l'opérateur n'est pas une constante mais une matrice diagonale pour \(n=k_z=0\). 
-    Or par définition la CIOE est une constante pour ce couple, c'est la CI0. On subit donc cette erreur dans les résultats. 
-
-    Une CIOE plus intéressante, que l'on nomme CI6 et qui est inspirée de \cite[p.~60]{hoppe_impedance_1995}, serait alors:
-
-    \begin{equation}
-      \left(\oI + c_1\frac{\LD}{k_0^2} -c_2\frac{\LR}{k_0^2}\right)\vE_t = \left(\diag{a_1}{a_2} + b_1\frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vJ
-    \end{equation}
-
-    \begin{figure}[!hbt]
-      \centering
-      \input{tikz/plot/Z_HOPPE_62_cylindre_hoibc_ibc6.tikz}
-      \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
-      \label{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}
-    \end{figure}
-    \begin{table}[!hbt]
-      \centering
-      % On fait deux tables de même hauteur
-      \begin{minipage}[t]{0.49\textwidth}
-        \vspace{0pt}
-        \centering
-        \begin{coefftable}{\hyperlink{ci0}{CI0}}
-          \input{csv/HOPPE_62/HOPPE_62.IBC_ibc0_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
-        \end{coefftable}
-        \begin{coefftable}{\hyperlink{ci3}{CI3}}
-          \input{csv/HOPPE_62/HOPPE_62.IBC_ibc3_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
-        \end{coefftable}
-      \end{minipage}
-      \begin{minipage}[t]{0.49\textwidth}
-        \vspace{0pt}
-        \centering
-        \begin{coefftable}{\hyperlink{ci6}{CI6}}
-          \input{csv/HOPPE_62/HOPPE_62.IBC_ibc6_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
-        \end{coefftable}
-      \end{minipage}
-      \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}}
-      \label{tab:imp_fourier:plan:hoppe:62:hoibc:ibc6}
-    \end{table}
-
-    Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier. On présente néanmoins dans la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} sa performance vis à vis de la CI3 sur le cylindre.

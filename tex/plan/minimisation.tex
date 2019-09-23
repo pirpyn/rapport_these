@@ -1,4 +1,4 @@
-\section{Calcul des coefficient des CIOE par moindres carrés sous contraintes}
+\section{Calcul des coefficient des CIOE par moindres carrés}
 
 % Pour calculer les coefficients, nous minimisons par moindres carrés
 % \begin{itemize}
@@ -28,7 +28,7 @@
   \end{prop}
 
   \begin{proof}
-    Nous démontrons ce résultat pour la \hyperlink{ci3}{CI3}, les matrices des autres CIOE s'en déduisent.
+    Nous démontrons ce résultat pour la \hyperlink{ci3}{CI3} où les termes \(k_0^2\) sont omis, les matrices des autres CIOE s'en déduisent.
 
     Soient les matrices symétriques \(\hat\mLD, \hat\mLR\) telles que
 
@@ -85,9 +85,9 @@
   \end{align}
   Nous ne détaillerons pas les autres CI, elle se déduisent aisément.
 
-  On remarque que la fonctionnelle est quadratique si la matrice \(M=\conj{\mH^t}{\mH}\) est hermitienne définie positive. Une matrice \(A\) est hermitienne si \(\forall x, \conj{x^t}Ax \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}Ax \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}Ax \in \RR^{+,*}\).
+  On remarque que la fonctionnelle est quadratique si la matrice \(M=\conj{\mH^t}{\mH}\) est hermitienne définie positive. Une matrice \(A\) est hermitienne si \(\forall x, \conj{x^t}Ax \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}Ax \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}Ax \in \RR^{+*}\).
 
-  On remarque que par construction, notre matrice \(M\) est hermitienne positive. Cependant, cette matrice n'est jamais défini si on ne considère qu'un seul couple \(k_x, k_y\).
+  On remarque que par construction, notre matrice \(M\) est hermitienne positive. Cependant, cette matrice n'est pas définie si on ne considère qu'un seul couple \(k_x, k_y\).
 
 \subsection{Expression des moindre carrés dans le cadre de l'approximation plan infini avec un balayage en incidence}
 
@@ -146,7 +146,7 @@
   \end{prop}
 
   \begin{proof}
-    Soit \(t\) le vecteur de \(\RR^{N_{i}}\) tel que \(t_i = k_{xi}^2 + k_{yi}^2\). On a l'expression suivante de \(\tilde{\mM}\)
+    Soit \(t\) le vecteur de \(\left(\RR^+\right){N_{i}}\) tel que \(t_i = k_{xi}^2 + k_{yi}^2\). On a l'expression suivante de \(\tilde{\mM}\)
 
     \begin{equation}
       \tilde{\mM} = \begin{bmatrix}
@@ -178,12 +178,125 @@
 
 % \subsection{Expression des moindre carrés dans le cadre de l'approximation cylindre pour une incidence}
 
-\subsection{Choix de la méthode numérique pour résoudre la minimisation sous contraintes}
+  \subsection{Résultats numériques sans contraintes}
 
-  Des méthodes basées sur le gradient sont adaptées car la fonctionnelle est dérivable pour tout \(X\) et les contraintes se comportent comme des polynômes dépendant uniquement des composantes de \(X\). Nous avons donc fait le choix de la méthode \gls{acr-sqp} pour les raisons suivantes:
- 
-  \begin{itemize}
-    \item Elle est éprouvée depuis \cite{kraft_software_1988} et des sources Fortran à jour sont disponibles à \url{https://github.com/jacobwilliams/slsqp}, ce qui est capital pour l'intégrer dans un code industriel.
-    \item Elle est rapide, nous avons observés que cette méthode convergeait en quelques dizaines d'itérations au pire.
-    \item Elle accepte des contraintes non-linaire donc elle est adaptée à nos CSU.
-  \end{itemize}
+      Sans contraintes, on résout le système linéaire \(\tilde \mH X - \tilde b\). Numériquement, nous avons utilisé la routine de résolution au sens des moindres carrés \href{http://www.netlib.org/lapack/explore-html/d6/d10/group__complex16_g_esolve_ga1d8089ba1e1538eb3d1ab0ebe97596c7.html}{ZGELS}.
+
+      La figure \ref{fig:imp_fourier:plan:hoppe:33:hoibc} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte où il n'y a pas de \(k_x\) réel tel que \(kd=\frac{\pi}{2} + n \pi\) donc pas d'asymptote pour le symbole. La condition d'impédance d'ordre élevé est bien meilleure que la condition de Leontovich.
+      \begin{figure}[!hbt]
+          \centering
+          \input{tikz/plot/Z_HOPPE_33_plan_hoibc.tikz}
+          \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~33]{\(\eps = 4, \mu = 1, d=0.015\text{m}, f=1\text{GHz}\)}
+          \label{fig:imp_fourier:plan:hoppe:33:hoibc}
+      \end{figure}
+      \begin{table}[!hbt]
+        \centering
+        \tablecoeff[0.49]{\hyperlink{ci0}{CI0}}{csv/HOPPE_33/HOPPE_33.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
+        \tablecoeff[0.49]{\hyperlink{ci3}{CI3}}{csv/HOPPE_33/HOPPE_33.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
+        \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:hoppe:33:hoibc}}
+        \label{tab:imp_fourier:plan:hoppe:33:hoibc}
+      \end{table}
+
+      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériau sans perte où il y a une asymptote pour le symbole. La condition d'impédance d'ordre élevé capture cet asymptote grâce à son dénominateur et est donc bien meilleure que la condition de Leontovich.
+      \begin{figure}[!hbt]
+          \centering
+          \input{tikz/plot/Z_SOUDAIS_plan_hoibc.tikz}
+          \caption[CIOE sur empilement de P.~Soudais p.~11]{Partie imaginaire des coefficients diagonaux de \(\hat\mZ\) pour \(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
+          \label{fig:imp_fourier:plan:soudais:hoibc}
+      \end{figure}
+      \begin{table}[!hbt]
+        \centering
+        \tablecoeff[0.49]{\hyperlink{ci0}{CI0}}{csv/SOUDAIS/SOUDAIS.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
+        \tablecoeff[0.49]{\hyperlink{ci3}{CI3}}{csv/SOUDAIS/SOUDAIS.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
+        \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:soudais:hoibc}}
+        \label{tab:imp_fourier:plan:soudais:hoibc}
+      \end{table}
+
+      On voit sur la figure \ref{fig:reflex_fourier:plan:soudais:hoibc} que cela va de même pour la matrice de réflexion. On déjà vu sur le symbole exact l'onde guidée qui fait diverger ce coefficient de réflexion TM, et on remarque que la CI3 la reproduit assez fidèlement.
+      \begin{figure}[!hbt]
+          \centering
+          \input{tikz/plot/R_SOUDAIS_plan_hoibc.tikz}
+          \caption[CIOE sur empilement de P.~Soudais p.~11]{Module des coefficients diagonaux de \(\mR\) pour \(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
+          \label{fig:reflex_fourier:plan:soudais:hoibc}
+      \end{figure}
+
+      La figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc} montre la limite de la CI3 pour capturer 3 asymptotes. Pour cela, il faudrait utiliser une CI d'ordre au moins 6.
+
+      L'expression de cette CIOE que l'on nomme \hyperlink{ci7}{CI7} est
+      \begin{equation}
+        \left(\oI + \sum_{i=1}^3 \left(d_{i} \left(\frac{\LD}{k_0^2}\right)^i + e_{i} \left(-\frac{\LR}{k_0^2}\right)^i \right)\right)\vE_t = \left(a_0 \oI + \sum_{i=1}^3 \left(b_{i} \left(\frac{\LD}{k_0^2}\right)^i + c_{i} \left(-\frac{\LR}{k_0^2}^i\right) \right)\right)\vJ
+      \end{equation}
+
+      \begin{figure}[!hbt]
+          \centering
+          \input{tikz/plot/Z_triple_asymptote_plan_hoibc.tikz}
+          \caption[CIOE sur empilement avec triple asymptote]{Partie imaginaire des coefficients diagonaux de \(\mZ\) pour \(\eps = 4, \mu = 1, d=0.2\text{m}, f=1\text{GHz}\)}
+          \label{fig:imp_fourier:plan:triple_asymptote:hoibc}
+      \end{figure}
+      \begin{table}[!hbt]
+        \centering
+        \begin{minipage}[t]{0.49\textwidth}
+        \vspace{0pt}
+        \centering
+        \begin{coefftable}{\hyperlink{ci0}{CI0}}
+          \input{csv/triple_asymptote/triple_asymptote.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
+        \end{coefftable}
+
+        \begin{coefftable}{\hyperlink{ci3}{CI3}}
+          \input{csv/triple_asymptote/triple_asymptote.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
+        \end{coefftable}
+        \end{minipage}
+        \tablecoeff[0.49]{\hyperlink{ci7}{CI7}}{csv/triple_asymptote/triple_asymptote.IBC_ibc7_SUC_F_MODE_2_TYPE_P.coeff.txt}
+        \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc}}
+        \label{tab:imp_fourier:plan:triple_asymptote:hoibc}
+      \end{table}
+      Il faut donc une CIOE d'ordre 2 fois le nombre d'asymptote que l'on rencontre sur notre balayage.
+
+  \subsection{Lien avec les CIOE de \cite{stupfel_implementation_2015}}
+
+    Dans cet article sont introduites les CIOE
+    \begin{itemize}
+      \item CI01
+        \begin{equation}
+          \vE_t = \left(a_0\oI + a_1\frac{\LL}{k_0^2}\right)\vJ
+        \end{equation}
+      \item CI1
+        \begin{equation}
+          \left(\oI + b\frac{\LL}{k_0^2} \right)\vE_t = \left(a_0\oI + a_1\frac{\LL}{k_0^2}\right)\vJ
+        \end{equation}
+    \end{itemize}
+
+    L'opérateur \(\LL\) est le laplacien tangentiel \(\lapls\) appliqué à chaque composante. Le multiplicateur de Fourier associé est la matrice
+    \begin{equation}
+      \hat{\mL}  = -
+      \begin{bmatrix}
+        k_x^2 + k_y^2 & 0
+        \\
+        0 & k_x^2 + k_y^2
+      \end{bmatrix}
+    \end{equation}
+
+    Le multiplicateur est multiple de l'identité ce qui en fait un mauvais candidat convenu de la nature diagonale mais non multiple de l’identité de la matrice \(\hat{\mZ}\). La figure \ref{fig:imp_fourier:plan:stupfel:hoibc} présente donc quelques résultats où l'on voit bien la limite de ces CIOE.
+    \begin{figure}[!hbt]
+      \centering
+      \input{tikz/plot/Z_STUPFEL_plan_hoibc.tikz}
+      \caption[CIOE sur empilement de B.~Stupfel p.~1661]{Module des coefficients diagonaux de \(\hat\mZ\) pour \(\eps = 1-i, \mu = 1, d=0.05\text{m}, f=0.2\text{GHz}\)}
+      \label{fig:imp_fourier:plan:stupfel:hoibc}
+    \end{figure}
+    \begin{table}[!hbt]
+      \centering
+      \tablecoeff[0.49]{\hyperlink{ci0}{CI0}}{csv/STUPFEL/STUPFEL.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
+      \tablecoeff[0.49]{\hyperlink{ci01}{CI01}}{csv/STUPFEL/STUPFEL.IBC_ibc01_SUC_F_MODE_2_TYPE_P.coeff.txt}
+
+      \tablecoeff[0.49]{\hyperlink{ci1}{CI1}}{csv/STUPFEL/STUPFEL.IBC_ibc1_SUC_F_MODE_2_TYPE_P.coeff.txt}
+      \tablecoeff[0.49]{\hyperlink{ci3}{CI3}}{csv/STUPFEL/STUPFEL.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
+      \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:stupfel:hoibc}}
+      \label{tab:imp_fourier:plan:stupfel:hoibc}
+    \end{table}
+    
+    \begin{figure}[!hbt]
+      \centering
+      \input{tikz/plot/R_STUPFEL_plan_hoibc.tikz}
+      \caption[CIOE sur empilement de B.~Stupfel p.~1661]{Module des coefficients diagonaux de \(\mR\) pour \(\eps = 1-i, \mu = 1, d=0.05\text{m}, f=0.2\text{GHz}\)}
+      \label{fig:reflex_fourier:plan:stupfel:hoibc}
+    \end{figure}

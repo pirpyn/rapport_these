@@ -1,4 +1,4 @@
-\subsection{Problème de la singularité de l'impédance dans le cadre du plan infini pour une couche de matériaux}
+\subsection{Problème de la singularité de l'impédance dans le cadre du plan infini pour une couche de matériau sans perte}
 
 Dans la partie précédente nous avons introduit la fonctionnelle que l'on cherche à minimiser qui est \(F(X) = \left\lVert\tilde{\mH} X - b(\mZ_{ex})\right\rVert_{\RR^N}\).
 
@@ -118,7 +118,7 @@ On rappelle l'expression de la CI3
 
 On voit donc que pour faire apparaître une asymptote, il faut que la matrice de gauche ne soit pas inversible en \(s_z\).
 
-La matrice \(\tilde{\mH}_\infty\) est donc nulle partout sauf en 8 termes, placés sur les deux dernières colonnes et les 4 lignes correspondantes à \((k_x,k_t)=(k_0 s_z,0)\).
+La matrice \(\tilde{\mH}_\infty\) est donc nulle partout sauf en 8 termes, placés sur les deux dernières colonnes et les 4 lignes correspondantes à \((k_x,k_y)=(k_0 s_z,0)\).
 
 Connaissant les expressions des matrices \(\hat\mLD,\hat\mLR\) introduites dans la partie précédente alors on déduit que
 \begin{align}
@@ -138,3 +138,19 @@ Connaissant les expressions des matrices \(\hat\mLD,\hat\mLR\) introduites dans 
   0\\
   \end{bmatrix}
 \end{align}
+
+\subsection{Choix de la méthode numérique pour résoudre la minimisation sous contraintes}
+
+  Des méthodes basées sur le gradient sont adaptées car la fonctionnelle est dérivable pour tout \(X\) et les contraintes se comportent comme des polynômes dépendant uniquement des composantes de \(X\). Nous avons donc fait le choix de la méthode \gls{acr-sqp} pour les raisons suivantes:
+ 
+  \begin{itemize}
+    \item Elle est éprouvée depuis \cite{kraft_software_1988} et des sources Fortran à jour sont disponibles à \url{https://github.com/jacobwilliams/slsqp}, ce qui est capital pour l'intégrer dans un code industriel.
+    \item Elle est rapide, nous avons observés que cette méthode convergeait en quelques dizaines d'itérations au pire.
+    \item Elle accepte des contraintes non-linaire donc elle est adaptée à nos CSU.
+  \end{itemize}
+
+\subsection{Résultats numérique avec contraintes}
+
+  \begin{TODO}
+    Quelques résultats avec contraintes
+  \end{TODO}
