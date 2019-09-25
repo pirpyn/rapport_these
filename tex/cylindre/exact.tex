@@ -107,7 +107,8 @@
       r^2 \ddr[2]{r}{\hat{E_z}} + r\ddr{r}{\hat{E_z}} + \left(r^2\left(\w^2\eps\mu - k_z^2\right) - n^2\right)\hat{E_z} = 0
     \end{equation}
 
-    C'est une équation de Bessel (cf \cite[eq (6.80)]{bowman_introduction_1958}), dont des solutions générales sont: 
+    Si \(k_3^2 = k^2 - k_z^2\) est non-nul, c'est une équation de Bessel (cf \cite[eq (6.80)]{bowman_introduction_1958}),%\footnote{Sinon c'est une équation de Euler-Cauchy et les solutions sont de types \(c_1(n) \cosh(n\ln(r)) + c_2(n) i\sinh(n\ln(r))\)}
+    dont des solutions générales sont: 
 
     Soient \((c_1(n,k_z),c_2(n,k_z)) \in \CC(\NN\times\RR)^2\):
     \begin{equation}
@@ -241,7 +242,9 @@
       \end{bmatrix}
     \end{equation}
 
-    On remarque que \(\mM\mM = \left(k_z^2 - \omega^2\eps\mu\right)\mI\) et donc que \(\det(\mat{M}) = \left(ik_3\right)^2\).
+    On remarque que \(\mM\mM = \left(k_z^2 - \omega^2\eps\mu\right)\mI\) et donc que \(\det(\mat{M}) = ik_3\).
+
+    % \subsection{Cas \(k_3\not=0\)}
 
     On suppose ce dernier non nul, on peut déduire \(\vect{X}\):
 
@@ -298,7 +301,6 @@
 
     Et on obtient
 
-
     \begin{subequations}
       \label{eq:imp_fourier:cylindre:champs}
       \begin{align}
@@ -330,6 +332,36 @@
         \end{bmatrix}
       \end{align}
     \end{subequations}
+
+  % \subsection{Cas \(k_3 = 0\)}
+
+  %   Si \(k_3 = 0\) alors le système n'est plus inversible. En effet si on repart du système en remplaçant \(k_z\), on remarque une redondance dans les termes de gauche des équations
+  %   \begin{equation}
+  %       \left\lbrace
+  %       \begin{matrix}
+  %           -ik\hat{E_\theta} + ik\eta \hat{H_r} = -\frac{in}{r}\hat{E_z}
+  %           \\
+  %           ik\eta^{-1} \hat{E_\theta} - ik \hat{H_r} = -\ddr{r}{\hat{H_z}}            
+  %           \\
+  %           ik\hat{E_r} + ik\eta \hat{H_\theta} = \ddr{r}{\hat{E_z}}
+  %           \\
+  %           ik\eta^{-1} \hat{E_r} + ik \hat{H_\theta} = \frac{in}{r}\hat{H_z}
+  %       \end{matrix}
+  %       \right.
+  %   \end{equation}
+
+  %   Or dans le cas \(k_3=0\), on a \(\hat{E_z}(r,n) = c_1(n) \cosh(n\ln(r)) + c_2(n) i\sinh(n\ln(r))\) et \(\hat{H_z}(r,n) = c_3(n) \cosh(n\ln(r)) + c_4(n) i\sinh(n\ln(r))\).
+
+  %   Il est donc nécessaire pour que les équations soient compatibles que \(c_4(n)=-\eta^{-1} c_1(n)\) et \( c_3(n) = \eta^{-1}c_2(n)\) donc \(\hat{H_z}\) est linéairement dépendant de \(\hat{E_z}\). On obtient alors le système réduit
+  %       \begin{equation}
+  %       \left\lbrace
+  %       \begin{matrix}
+  %           -ik\hat{E_\theta} + ik\eta \hat{H_r} = -\frac{in}{r}\hat{E_z}
+  %           \\
+  %           ik\hat{E_r} + ik\eta \hat{H_\theta} = \ddr{r}{\hat{E_z}}
+  %       \end{matrix}
+  %       \right.
+  %   \end{equation}
 
   \end{proof}
 
@@ -636,7 +668,7 @@
     \end{defn}
 
     \begin{prop}
-      Si pour tout \(m\) strictement inférieur au nombre de couche, on suppose que en \((r_m,n,k_z)\)
+      Si pour tout \(m\) strictement inférieur à \(p\) le nombre de couche, on suppose que en \((r_m,n,k_z)\)
       \begin{align*}
           \det(\mJ_{Em-1} + \mH_{Em-1}\hat\mR_{m-1}) \not = 0
           \\
@@ -654,6 +686,7 @@
         \\
         \left((\mJ_{Em-1} + \mH_{Em-1}\hat\mR_{m-1})^{-1}\mJ_{Em} - (\mJ_{Hm-1} + \mH_{Hm-1}\hat\mR_{m-1})^{-1}\mJ_{Hm}\right)
       \end{multline*}
+      et les matrices sont évaluée en \((r_m,n,k_z)\)
     \end{prop}
     \begin{proof}
       On remarque que l'on peut réutiliser les résultats du plan infini sur les matrices de réflexions, notamment le lemme \ref{lem:plan:discontinuite_reflexion} sur la discontinuité de la matrice au passage d'une interface. Allégeons les notations: omettons les \((n,k_z)\) et indiquons par \(\pm\) lorsque l'on se trouve en \(r_m^\pm\).
@@ -670,7 +703,8 @@
 
     La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte (voir Figure \ref{fig:annex:hoppe:p62}). Sur ce graphe, Hoppe éclaire le cylindre radialement (\(k_z=0\)) définit \(k_t\) le nombre d'onde azimutal tel que \(k_t = n \slash r_{ext}\) et étudie les variations de l'impédance du cylindre en variant \(k_t\) et en comparant cette impédance à celle du plan pour le même empilement, où \(k_y= 0\) et \(k_x\) varie dans la même plage que \(k_t\).
 
-    Elle montre la convergence de la matrice d'impédance d'un cylindre vers celle du plan en fonction du rayon du cylindre pour un même empilement. On voit bien que plus le rayon augmente, plus il faut prendre de termes dans la série de Fourier puisque \(n = \lfloor k_t r_{ext} \rfloor\)
+    Elle montre la convergence de la matrice d'impédance d'un cylindre vers celle du plan en fonction du rayon du cylindre pour un même empilement. 
+    % On voit bien que plus le rayon augmente, plus il faut prendre de termes dans la série de Fourier puisque \(n = \lfloor k_t r_{ext} \rfloor\)
     \begin{figure}[!hbt]
       \centering
       \input{tikz/plot/Z_HOPPE_62_cylindre_converge.tikz}
