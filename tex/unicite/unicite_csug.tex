@@ -16,7 +16,7 @@
     \right. && \text{dans \(\OO^c\)}
   \end{align}
 
-  Ce problème étant non bornée, on définit \(B_R\) le boule de rayon \(R\) suffisamment grand et qui englobe \(\OO\). On cherche alors les solutions dans l'espace entre \(\Gamma\) et \(S_R\), la sphère de rayon \(R\) où est définit la condition de rayonnement \eqref{eq:unicite:form_var:TR}.
+  Ce problème étant non bornée, on définit \(B_R\) le boule de rayon \(R\) suffisamment grand et qui englobe \(\OO\). On cherche alors les solutions dans \(\OO'=\OO^c\cap B_R\) l'espace entre \(\Gamma\) et \(S_R\), la sphère de rayon \(R\) où est définit la condition de rayonnement \eqref{eq:unicite:form_var:TR}.
   \begin{equation}
     \label{eq:unicite:form_var:TR}
     \begin{aligned}
@@ -25,9 +25,9 @@
   \end{equation}
   \(\Tr\) est l'opérateur de capacité définit par \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{S_R}\) la normale unitaire sortante à \(S(0,R)\).
 
-  Soit \(\vect{\phi}\) dans \(\Hrot(\OO^c)\) une fonction test. Ces équations aboutissent à la forme variationnelle suivante :
+  Soit \(\vect{\phi}\) dans \(\Hrot(\OO')\) une fonction test. Ces équations aboutissent à la forme variationnelle suivante :
   \begin{prop}
-    Trouver \(\vE \in \left(\Hrot(\OO^c)\right)\), \(\forall \vect \phi \in \left(\Hrot(\OO^c)\right)\)
+    Trouver \(\vE \in \left(\Hrot(\OO')\right)\), \(\forall \vect \phi \in \left(\Hrot(\OO')\right)\)
     \[
       a(\vE,\vect\phi) = 0
     \]
@@ -36,7 +36,7 @@
   où a est une forme sesquilinéaire telle que, soit \(\vn\) la normale unitaire sortante à \(\Gamma\).
   \begin{equation*}
     \begin{aligned}
-    a(\vE,\vect\phi) &:=  \frac{1}{ik_0} \int_\OO \trot \vE \cdot \trot \conj{\vect{\phi}} dx + ik_0\int_\OO\vE\cdot\conj{\vect{\phi}} dx
+    a(\vE,\vect\phi) &:=  \frac{1}{ik_0} \int_{\OO'} \trot \vE \cdot \trot \conj{\vect{\phi}} dx + ik_0\int_{\OO'}\vE\cdot\conj{\vect{\phi}} dx
       \\ 
       & \quad + \int_{S_R} \conj{ \vect \phi } \cdot \Tr(\vE_t)ds - \int_\Gamma \left(\vn \pvect \frac{\trot \vE}{ik_0}\right) \cdot \conj{\vect \phi} ds(\vx)
     \end{aligned}
@@ -51,19 +51,19 @@
           \\ \intertext{On peut utiliser la seconde équation pour n'avoir plus que \(\vE\).}
           0 & = \trot \frac{\trot \vE}{ik_0} + ik_0 \vE
           \\ \intertext{Réalisons le produit scalaire avec la fonction test.}
-          0 & = \int_\OO{ \trot \frac{\trot \vE}{ik_0}\cdot \conj{\vect{\phi}}} +  \int_\OO ik_0 \vE \cdot \conj{\vect{\phi}}
+          0 & = \int_{\OO'}{ \trot \frac{\trot \vE}{ik_0}\cdot \conj{\vect{\phi}}} +  \int_{\OO'} ik_0 \vE \cdot \conj{\vect{\phi}}
           \\ \intertext{Utilisons la formule de Green du rotationnel (voir \cite[eq.~(A1.32)]{bladel_electromagnetic_2007}). On rappelle que \(\vn_\Gamma\) est la normale entrante à travers \(\Gamma\) et \(\vn_{S_R}\) la normale sortante à travers \(S_R\) }
-          0 & = \int_\OO{ \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}} - \int_{S_R} \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_{S_R} ds(\vx) 
+          0 & = \int_{\OO'}{ \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}} - \int_{S_R} \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_{S_R} ds(\vx) 
           \\ \notag
-          & \qquad \qquad + \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_\Gamma ds(\vx) + \int_\OO ik_0 \vE \cdot \conj{\vect{\phi}}
+          & \qquad \qquad + \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_\Gamma ds(\vx) +\int_{\OO'} ik_0 \vE \cdot \conj{\vect{\phi}}
           \\ \intertext{On utilise la condition de rayonnement}
-          0 & = \int_\OO{ \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}} - \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} ds(\vx) 
+          0 & = \int_{\OO'}{ \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}} - \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} ds(\vx) 
           \\ \notag
-          & \qquad \qquad + \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_\Gamma ds(\vx) + \int_\OO ik_0 \vE \cdot \conj{\vect{\phi}}
+          & \qquad \qquad + \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_\Gamma ds(\vx) + \int_{\OO'} ik_0 \vE \cdot \conj{\vect{\phi}}
           \\ \intertext{On permute les termes de l'intégrale sur \(\Gamma\).}
-          0 & = \int_\OO \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}} + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} ds(\vx) 
+          0 & =\int_{\OO'} \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}} + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} ds(\vx) 
           \\ \notag
-          & \qquad \qquad - \int_\Gamma \left(\vn_\Gamma \pvect \frac{\trot \vE}{ik_0}\right) \cdot \conj{\vect \phi} ds(\vx) +  \int_\OO ik_0 \vE \cdot \conj{\vect{\phi}}
+          & \qquad \qquad - \int_\Gamma \left(\vn_\Gamma \pvect \frac{\trot \vE}{ik_0}\right) \cdot \conj{\vect \phi} ds(\vx) +  \int_{\OO'} ik_0 \vE \cdot \conj{\vect{\phi}}
       \end{align}
   \end{proof}
 
