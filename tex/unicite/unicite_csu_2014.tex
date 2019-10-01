@@ -2,7 +2,7 @@
   Soit la CIOE que l'on nomme \hyperlink{ci4}{CI4} :
   \begin{equation}
     \label{eq:unicite:ci4:ci4}
-    \vE_t = (a_0\oI + a_1 \LD - a_2 \LR ) \vJ
+    \vE_t = (a_0 + a_1 \LD - a_2 \LR ) \vJ
   \end{equation}
 
   \begin{prop}
@@ -44,7 +44,7 @@
   Soit la CIOE énoncé dans \cite{aubakirov_electromagnetic_2014} que l'on nomme \hyperlink{ci3}{CI3} :
   \begin{equation}
     \label{eq:unicite:ci3:ci3}
-    ( \oI + b_1 \LD - b_2 \LR)\vE_t = (a_0\oI + a_1 \LD - a_2 \LR ) \vJ
+    ( 1 + b_1 \LD - b_2 \LR)\vE_t = (a_0 + a_1 \LD - a_2 \LR ) \vJ
   \end{equation}
 
   \begin{defn}
@@ -396,18 +396,18 @@
     Par définition de la CIOE, on a
 
     \begin{align}
-      X &= \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(\oI + b_1 \LD - b_2 \LR \right) \vE_t\cdot \conj{\vE_t}
+      X &= \int_\Gamma \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\left( + b_1 \LD - b_2 \LR \right) \vE_t\cdot \conj{\vE_t}
     \end{align}
 
     On développe simplement chaque terme
 
     \begin{multline}
-      X = \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
+      X = \int_\Gamma \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}
       \\
-      + b_1 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LD
+      + b_1 \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\LD
       \\
       \left.
-      - b_2 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
+      - b_2 \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
     \end{multline}
 
     L'astuce pour obtenir ces CSU réside dans les égalités suivantes, valables si \(a_1\) et \(a_2\) sont non-nuls.
@@ -425,11 +425,11 @@
     On déduit de ce qui précède que
 
     \begin{multline}
-      X = \int_\Gamma z\left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
+      X = \int_\Gamma z\left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}
       \\
-      + \frac{b_1}{a_1} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0+a_1\LD\right)
+      + \frac{b_1}{a_1} \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0+a_1\LD\right)
       \\
-      - \frac{b_2}{a_2} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0-a_2\LR\right) \vE_t\cdot \conj{\vE_t}
+      - \frac{b_2}{a_2} \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0-a_2\LR\right) \vE_t\cdot \conj{\vE_t}
     \end{multline}
 
     On définit
@@ -438,21 +438,21 @@
     \newcommand{\vF}{\vect{F}}
 
     \begin{align}
-      \vD & = \left(a_0 \oI + a_1 \LD - a_2\LR \right)^{-1} \vE_t
+      \vD & = \left(a_0  + a_1 \LD - a_2\LR \right)^{-1} \vE_t
       \\
-      \vF_1 & = \left(\oI - a_2 \left( a_0 + a_1\LD\right)^{-1}\LR\right)^{-1} \vE_t
+      \vF_1 & = \left( - a_2 \left( a_0 + a_1\LD\right)^{-1}\LR\right)^{-1} \vE_t
       \\
-      \vF_2 & = \left(\oI + a_1 \left( a_0 - a_2\LR\right)^{-1}\LD\right)^{-1} \vE_t
+      \vF_2 & = \left( + a_1 \left( a_0 - a_2\LR\right)^{-1}\LD\right)^{-1} \vE_t
     \end{align}
 
     Alors immédiatement, on a
 
     \begin{multline}
-      X = \int_\Gamma z \vD \cdot \left(\conj{a_0} \oI + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vD}
+      X = \int_\Gamma z \vD \cdot \left(\conj{a_0}  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vD}
       \\
-      + \frac{b_1}{a_1} \left(\oI - \conj{a_2} \left( \conj{a_0} + \conj{a_1}\LD\right)^{-1}\LR\right)\conj{\vF_1}\cdot\vF_1
+      + \frac{b_1}{a_1} \left( - \conj{a_2} \left( \conj{a_0} + \conj{a_1}\LD\right)^{-1}\LR\right)\conj{\vF_1}\cdot\vF_1
       \\
-      + \frac{b_2}{a_2} \left(\oI + \conj{a_1} \left( \conj{a_0} - \conj{a_2}\LR\right)^{-1}\LD\right)\conj{\vF_2}\cdot\vF_2
+      + \frac{b_2}{a_2} \left( + \conj{a_1} \left( \conj{a_0} - \conj{a_2}\LR\right)^{-1}\LD\right)\conj{\vF_2}\cdot\vF_2
     \end{multline}
 
     Finalement posons
@@ -460,28 +460,28 @@
     \newcommand{\vG}{\vect{G}}
 
     \begin{align}
-      \vG_1 & = \left(\conj{a_0} \oI + \conj{a_1} \LD \right)^{-1}\LR \conj{\vF_1}
+      \vG_1 & = \left(\conj{a_0}  + \conj{a_1} \LD \right)^{-1}\LR \conj{\vF_1}
       \\
-      \vG_2 & = \left(\conj{a_0} \oI - \conj{a_2} \LR \right)^{-1}\LD \conj{\vF_2}
+      \vG_2 & = \left(\conj{a_0}  - \conj{a_2} \LR \right)^{-1}\LD \conj{\vF_2}
     \end{align}
 
     Puisque \(\LD\) (resp. \(\LR\)) commute avec lui-même, on a les égalités suivantes
 
     \begin{align}
-      \LD\left(\conj{a_0} \oI + \conj{a_1} \LD \right)&=\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\LD
+      \LD\left(\conj{a_0}  + \conj{a_1} \LD \right)&=\left(\conj{a_0}  + \conj{a_1} \LD \right)\LD
       \\
-      \LR\left(\conj{a_0} \oI - \conj{a_2} \LR \right)&=\left(\conj{a_0} \oI - \conj{a_2} \LR \right)\LR
+      \LR\left(\conj{a_0}  - \conj{a_2} \LR \right)&=\left(\conj{a_0}  - \conj{a_2} \LR \right)\LR
     \end{align}
 
     Or on a démontré que \(\LD\LR=\LR\LD=0\), et ainsi
 
     \begin{align}
-      \LD\LR\conj{\vF_1} &= \LD\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1
+      \LD\LR\conj{\vF_1} &= \LD\left(\conj{a_0}  + \conj{a_1} \LD \right)\vG_1
       \\
-      0 & =\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\LD\vG_1
+      0 & =\left(\conj{a_0}  + \conj{a_1} \LD \right)\LD\vG_1
     \end{align}
 
-    Si l'on suppose alors que \(\Re(a_0) \ge 0 \) et \(\Re(a_1) \le 0\) (resp. \(\Re(a_2)\le0\)), alors \(\left(\conj{a_0} \oI + \conj{a_1} \LD \right)\) (resp. \(\left(\conj{a_0} \oI - \conj{a_2} \LR \right)\)) est injectif et donc on déduit que
+    Si l'on suppose alors que \(\Re(a_0) \ge 0 \) et \(\Re(a_1) \le 0\) (resp. \(\Re(a_2)\le0\)), alors \(\left(\conj{a_0}  + \conj{a_1} \LD \right)\) (resp. \(\left(\conj{a_0}  - \conj{a_2} \LR \right)\)) est injectif et donc on déduit que
 
     \begin{align}
       \LD\vG_1 = 0
@@ -493,7 +493,7 @@
   %   En fait plus largement, il faut que \(\Re(a_0)\) et \(\Re(a_{1/2})\) soit de signes opposées. Mais il suffit d'avoir une des deux.
   % \end{TODO}
 
-    Or par définition \(\LR\conj{\vF_1} = \left(\conj{a_0} \oI + \conj{a_1} \LD \right)\vG_1\) (resp. \(\LR\conj{\vF_2} = \left(\conj{a_0} \oI - \conj{a_2} \LR \right)\vG_2\)) donc
+    Or par définition \(\LR\conj{\vF_1} = \left(\conj{a_0}  + \conj{a_1} \LD \right)\vG_1\) (resp. \(\LR\conj{\vF_2} = \left(\conj{a_0}  - \conj{a_2} \LR \right)\vG_2\)) donc
     \begin{align}
       \LR\conj{\vF_1} &= \conj{a_0}\vG_1
       \\
@@ -503,7 +503,7 @@
     On réinjecte ce résultat dans la définition de \(X\)
 
     \begin{multline}
-      X = \int_\Gamma z \vD \cdot \left(\conj{a_0} \oI + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vD}
+      X = \int_\Gamma z \vD \cdot \left(\conj{a_0}  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vD}
       \\
       + \frac{b_1}{a_1} ||\vF_1||^2 - \frac{b_1\conj{a_2}}{a_1\conj{a_0}} \LR\conj{\vF_1}\cdot\vF_1
       \\

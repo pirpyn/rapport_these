@@ -8,27 +8,24 @@
 % \end{itemize}
 % Toutes ces quantités ont été définies aux chapitres \ref{sec:chap1} et \ref{sec:chap2}
 
-\subsection{Expression des moindre carrés dans le cadre de l'approximation plan infini pour une incidence}
-  Pour toutes les CIOE, on cherche à approcher le symbole de l'opérateur d'impédance \(\hat\mZ_{ex}(k_x,k_y)\) par une matrice \(\hat\mZ_{ap}(k_x,k_y)\). Le couple \((k_x,k_y)\) est fixé.
+\subsection{Expression des moindre carrés dans le cadre de l'approximation plan infini}
+  Pour toutes les CIOE, on cherche à approcher la matrice \(\hat\mZ_{ex}(k_x,k_y)\) par \(\hat\mZ_{CI}(k_x,k_y)\). 
 
   \begin{prop}
-    Soit \(k_x,k_y\) fixés.
-    Pour nos CIOE, il existe une matrice \(\mH_{k_x,k_y}(CI,\hat\mZ_{ex}(k_x,k_y))\) et un vecteur \(X(CI)\) où CI représente un vecteur de \(\CC^n\) composés des \(N_{CI}\) coefficients de la CI telles que minimiser selon la norme euclidienne
-    \[
-      ||\hat\mZ_{ap}(k_x,k_y)-\hat\mZ_{ex}(k_x,k_y)||^2_{eucl}
-    \] 
-    revient à minimiser selon une norme équivalente mais dépendante de la CI
+    Soit \(N_i\) le nombre de couples \((k_x,k_y)\).
+    Il existe une matrice \(\mH(CI,\hat\mZ_{ex})\) et un vecteur \(X(CI)\) de \(\CC^{N_{CI}}\) composés des coefficients de la CIOE choisie, tels que minimiser selon la norme euclidienne
+    \begin{align*}
+      \left\lVert \hat\mZ_{ap}(k_x,k_y)-\hat\mZ_{ex}(k_x,k_y)\right\rVert^2_{eucl} & & \text{pour tous \((k_x,k_y)\)}
+    \end{align*}
+    revient à minimiser selon une norme équivalente mais dépendante de la CI, la fonctionnelle
     \[ 
-      || \mH_{k_x,k_y}(CI,\hat\mZ_{ex}(k_x,k_y)) \vect{X}(CI) - b(\hat\mZ_{ex}(k_x,k_y)) ||^2_{CI}
+      F(CI) = \left\lVert  \mH(CI,\hat\mZ_{ex}) X(CI) - b(\hat\mZ_{ex}) \right\rVert^2_{CI}
     \]
-    Les dimensions de \(\mH\) sont de \( (4,N_{CI}) \) de la CI colonnes et le vecteur colonne b à 4 coefficients et a l'expression suivante
-    \begin{align}
-      b(\hat{\mZ}) = \begin{bmatrix} \hat{\mZ}_{11} \\ \hat{\mZ}_{12}\\ \hat{\mZ}_{21} \\ \hat{\mZ}_{22} \end{bmatrix}
-    \end{align}
+    La matrice \(\mH\) a \(4N_{i}\) lignes, \(N_{CI}\) colonnes et le vecteur colonne b a \(4N_{i}\) coefficients
   \end{prop}
 
   \begin{proof}
-    Nous démontrons ce résultat pour la \hyperlink{ci3}{CI3} où les termes \(k_0^2\) sont omis, les matrices des autres CIOE s'en déduisent.
+    Nous démontrons ce résultat pour la \hyperlink{ci3}{CI3} où les termes \(k_0^2\) sont omis, la matrice \(\mH\) et le vecteur \(X\) des autres CIOE de déduisent facilement.
 
     Soient les matrices symétriques \(\hat\mLD, \hat\mLR\) telles que
 
@@ -38,149 +35,153 @@
       \hat\mLR(k_x,k_y) & =  \begin{bmatrix} k_y^2 & -k_x k_y \\ -k_x k_y &  k_x^2 \end{bmatrix}
     \end{align}
 
-    Par définition, on a
+    Soit \((k_{x},k_{y})\) un couple parmi ceux que l'on se donne. Pour ce couple, par définition, on a
     \begin{align}
-    ||\hat\mZ_{ap}-\hat\mZ_{ex}||^2_{eucl} &= ||\left(\mI + b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)^{-1}\left(a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR}\right)-\hat\mZ_{ex} ||^2_{eucl}
+    \left\lVert \hat\mZ_{ap}-\hat\mZ_{ex}\right\rVert^2_{eucl} &= \left\lVert \left(\mI + b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)^{-1}\left(a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR}\right)-\hat\mZ_{ex} \right\rVert^2_{eucl}
     \\
     \intertext{Posons pour alléger les formules \(\hat{\mZ}_N = a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR}\) et \(\hat{\mZ}_D = \mI + b_1 \hat{\mLD} - b_2 \hat{\mLR}\)}
-    ||\hat\mZ_{ap}-\hat\mZ_{ex}||^2_{eucl} &= ||\hat{\mZ}_D^{-1}\hat\mZ_N-\hat\mZ_{ex} ||^2_{eucl}
+    \left\lVert \hat\mZ_{ap}-\hat\mZ_{ex}\right\rVert^2_{eucl} &= \left\lVert \hat{\mZ}_D^{-1}\hat\mZ_N-\hat\mZ_{ex} \right\rVert^2_{eucl}
     \\
-    &= ||\hat{\mZ}_D^{-1}\left(\hat{\mZ}_N-\hat{\mZ}_D\hat\mZ_{ex}\right) ||^2_{eucl}
+    &= \left\lVert \hat{\mZ}_D^{-1}\left(\hat{\mZ}_N-\hat{\mZ}_D\hat\mZ_{ex}\right) \right\rVert^2_{eucl}
     \\
     \intertext{On sépare alors \(\hat{\mZ}_D\) en deux parties}
-    ||\hat\mZ_{ap}-\hat\mZ_{ex}||^2_{eucl} &= ||\hat{\mZ}_D^{-1}\left(\hat{\mZ}_N - \left(b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)\hat\mZ_{ex} - \hat\mZ_{ex}\right)||^2_{eucl}
+    \left\lVert \hat\mZ_{ap}-\hat\mZ_{ex}\right\rVert^2_{eucl} &= \left\lVert \hat{\mZ}_D^{-1}\left(\hat{\mZ}_N - \left(b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)\hat\mZ_{ex} - \hat\mZ_{ex}\right)\right\rVert^2_{eucl}
     \intertext{On voit alors apparaitre une nouvelle norme}
-    ||\hat\mZ_{ap}-\hat\mZ_{ex}||^2_{eucl} &= ||\hat{\mZ}_N - \left(b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)\hat\mZ_{ex} - \hat\mZ_{ex}||^2_{\hat{\mZ}_D^{-1}}
-    \intertext{Posons \(X = \begin{bmatrix} a_0 & a_1 & a_2 & b_1 & b_2 \end{bmatrix}^\perp\), alors il existe \(\mH_{k_x,k_y}(CI3,\hat\mZ_{ex})\) telle que}
-    ||\hat\mZ_{ap}-\hat\mZ_{ex}||^2_{eucl} &= ||\mH_{k_x,k_y}(CI3,\hat\mZ_{ex})X - b(\hat\mZ_{ex})||^2_{\hat{\mZ}_D^{-1}}
+    \left\lVert \hat\mZ_{ap}-\hat\mZ_{ex}\right\rVert^2_{eucl} &= \left\lVert \hat{\mZ}_N - \left(b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)\hat\mZ_{ex} - \hat\mZ_{ex}\right\rVert^2_{\hat{\mZ}_D^{-1}}
   \end{align}
 
-  Ces matrices et vecteurs sont définis pour cette CIOE ainsi
-    \begin{align}
-        \mH_{k_x,k_y}(CI3,\hat\mZ) = \begin{bmatrix}
-        1 & \hat{\mLD}_{11} & -\hat{\mLR}_{11} & -\left(\hat{\mLD}\hat\mZ\right)_{11} & \left(\hat{\mLR}\hat\mZ\right)_{11}
-        \\
-        0 & \hat{\mLD}_{12} & -\hat{\mLR}_{12} & -\left(\hat{\mLD}\hat\mZ\right)_{12} & \left(\hat{\mLR}\hat\mZ\right)_{12}
-        \\
-        0 & \hat{\mLD}_{21} & -\hat{\mLR}_{21} & -\left(\hat{\mLD}\hat\mZ\right)_{21} & \left(\hat{\mLR}\hat\mZ\right)_{21}
-        \\
-        1 & \hat{\mLD}_{22} & -\hat{\mLR}_{22} & -\left(\hat{\mLD}\hat\mZ\right)_{22} & \left(\hat{\mLR}\hat\mZ\right)_{22}
-        \end{bmatrix}
-        && X = \begin{bmatrix} a_0 \\ a_1 \\ a_2 \\ b_1 \\ b_2 \end{bmatrix}
-    \end{align}
-  \end{proof}
-
-  Par exemple pour la CI4, ces matrices deviennent
+  On réorganise alors les matrices \(\hat{\mZ}_N,\hat{\mLD},\hat{\mLR}\) comme des vecteurs colonnes, on obtient alors une partie du système final
   \begin{align}
-      \mH_{k_x,k_y}(CI4,\hat\mZ) = \begin{bmatrix}
-      1 & \hat{\mLD}_{11} & -\hat{\mLR}_{11}
+      \mH_{k_{x},k_{y}}(CI3,\hat\mZ) = \begin{bmatrix}
+      1 & \hat{\mLD}_{11} & -\hat{\mLR}_{11} & -\left(\hat{\mLD}\hat\mZ\right)_{11} & \left(\hat{\mLR}\hat\mZ\right)_{11}
       \\
-      0 & \hat{\mLD}_{12} & -\hat{\mLR}_{12}
+      0 & \hat{\mLD}_{12} & -\hat{\mLR}_{12} & -\left(\hat{\mLD}\hat\mZ\right)_{12} & \left(\hat{\mLR}\hat\mZ\right)_{12}
       \\
-      0 & \hat{\mLD}_{21} & -\hat{\mLR}_{21}
+      0 & \hat{\mLD}_{21} & -\hat{\mLR}_{21} & -\left(\hat{\mLD}\hat\mZ\right)_{21} & \left(\hat{\mLR}\hat\mZ\right)_{21}
       \\
-      1 & \hat{\mLD}_{22} & -\hat{\mLR}_{22}
+      1 & \hat{\mLD}_{22} & -\hat{\mLR}_{22} & -\left(\hat{\mLD}\hat\mZ\right)_{22} & \left(\hat{\mLR}\hat\mZ\right)_{22}
       \end{bmatrix}
-      && X = \begin{bmatrix} a_0 \\ a_1 \\ a_2 \end{bmatrix}
   \end{align}
-  Nous ne détaillerons pas les autres CI, elle se déduisent aisément.
+  \begin{align}
+      b_{k_{x},k_{y}}(\hat\mZ_{ex}) = \begin{bmatrix}
+      \hat\mZ_{11}
+      \\
+      \hat\mZ_{12}
+      \\
+      \hat\mZ_{21}
+      \\
+      \hat\mZ_{22}
+      \end{bmatrix} && X = \begin{bmatrix} a_0 \\ a_1 \\ a_2 \\ b_1 \\ b_2 \end{bmatrix}
+  \end{align}
 
-  On remarque que la fonctionnelle est quadratique si la matrice \(M=\conj{\mH^t}{\mH}\) est hermitienne définie positive. Une matrice \(A\) est hermitienne si \(\forall x, \conj{x^t}Ax \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}Ax \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}Ax \in \RR^{+*}\).
-
-  On remarque que par construction, notre matrice \(M\) est hermitienne positive. Cependant, cette matrice n'est pas définie si on ne considère qu'un seul couple \(k_x, k_y\).
-
-\subsection{Expression des moindre carrés dans le cadre de l'approximation plan infini avec un balayage en incidence}
-
-  Pour résoudre ce problème, on se dote de suffisamment d'observations, puis pour chacune de ces observations on applique la méthode de la partie précédente. Enfin on agrège tous ces moindres carrés en une seule expression pour aboutir au problème global
-
-  Soient \(((k_x,k_y)_i)_{i=1,N_{i}}\) une famille de couple avec \(N_{i} > N_{CI}\).
-
-  \begin{defn}
-    On définit la matrice \(\tilde{\mH}(CI)\) de taille \((4N_{i},N_{CI})\) et le vecteur \(\tilde{b}\) de taille \(4N_{i}\) tels que
+  Le système final est obtenu en prenant en compte tous les couples, soit
 
   \begin{align}
-    \tilde{\mH}(CI) = \begin{bmatrix}
-      \mH_{k_{x1},k_{y1}} (CI,\hat\mZ(k_{x1},k_{y1}))
-      \\
-      \vdots
-      \\
-      \mH_{k_{xi},k_{yi}} (CI,\hat\mZ(k_{xi},k_{yi}))
-      \\
-      \vdots
-      \\
-      \mH_{k_{xN},k_{yN}} (CI,\hat\mZ(k_{xN},k_{yN}))
+      \mH(CI3,\hat\mZ) = 
+      \begin{bmatrix}
+        \mH_{k_{x1},k_{y1}}(CI3,\hat\mZ)
+        \\
+        \vdots
+        \\
+        \mH_{k_{xn},k_{yn}}(CI3,\hat\mZ)
       \end{bmatrix}
-    &&
-    \tilde{b} = \begin{bmatrix}
-     b(\hat\mZ(k_{x1},k_{y1}))
-     \\ 
-     \vdots 
-     \\ 
-     b(\hat\mZ(k_{xi},k_{yi}))
-     \\
-     \vdots
-     \\ 
-     b(\hat\mZ(k_{xN},k_{yN})
-     \end{bmatrix}
+      &&  b(\hat\mZ) = 
+      \begin{bmatrix}
+        b_{k_{x1},k_{y1}}(\hat\mZ)
+        \\
+        \vdots
+        \\
+        b_{k_{xn},k_{yn}}(\hat\mZ)
+      \end{bmatrix}
   \end{align}
-  \end{defn}
 
-  Le problème des moindres carrés avec \gls{acr-csu} s'énonce:
-
-  \begin{prop}[Moindres carrés avec CSU dans le cas plan infini]
-  ~
-
-  Trouver \(X_{CI}^*\) tel que
-
-  \[
-    X_{CI}^* = \argmin{X \in SUC(CI)} \left\lVert \tilde{\mH}(CI)X_{CI} - \tilde{b}\right\rVert^2_{\RR^{Ni}}
-  \]
-  \end{prop}
-
-  On remarque que la fonctionnelle est quadratique si la matrice \(\tilde{\mM}=\conj{\tilde{\mH}^t}\tilde{\mH}\) est hermitienne définie positive. Or par construction elle est hermitienne et positive, donc il existe une minimum global si la matrice est définie (ou inversible). 
-
-  \subsubsection{Existence du minimum pour la CI4}
-
-  \begin{prop}
-    La matrice \(\tilde{\mM}\) associé à la CI4 est inversible, donc définie, s'il existe au moins 2 couples \((k_{xi},k_{yi})\) différents.
-  \end{prop}
-
-  \begin{proof}
-    Soit \(t\) le vecteur de \(\left(\RR^+\right){N_{i}}\) tel que \(t_i = k_{xi}^2 + k_{yi}^2\). On a l'expression suivante de \(\tilde{\mM}\)
-
-    \begin{equation}
-      \tilde{\mM} = \begin{bmatrix}
-      2 N_{i} & -\sum_{i=1}^{N_{i}} t_i & -\sum_{i=1}^{N_{i}} t_i
-      \\
-      -\sum_{i=1}^{N_{i}} t_i & \sum_{i=1}^{N_{i}} t_i^2 & 0
-      \\
-      -\sum_{i=1}^{N_{i}} t_i & 0 & \sum_{i=1}^{N_{i}} t_i^2
-      \end{bmatrix}
-    \end{equation}
-
-    Pour prouver son inversibilité, on exprime son déterminant 
-
-    \begin{align}
-      \det( \tilde{\mM}) &= 2N_{i}\left(\sum_{i=1}^{N_{i}} t_i^2\right)^2 - 2 \left( \sum_{i=1}^{N_{i}} t_i\right)^2 \left(\sum_{i=1}^{N_{i}}t_i^2\right) 
-      \\
-      &= 2\left(\sum_{i=1}^{N_{i}} t_i^2\right)\left(N_{i}\sum_{i=1}^{N_{i}} t_i^2 - \left( \sum_{i=1}^{N_{i}} t_i\right)^2 \right)
-      \\
-      \intertext{Soit \(\left<\cdot,\cdot\right>\) le produit scalaire associé à \(\RR^{N_{i}}\), alors}
-      \det( \tilde{\mM}) &= 2\left<t,t\right>\left( \left<1,1\right>\left<t,t\right>- \left<t,1\right>^2\right)
-    \end{align}
-
-    Donc d'après Cauchy–Schwarz (voir \cite[\href{https://dlmf.nist.gov/1.7\#E1}{eq.~1.7.1}]{dlmf_nist_2019}), le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est à dire n'importe quel vecteur ayant au moins deux composantes différentes.
+  % \begin{align}
+  %     \mH(CI3,\hat\mZ) = \begin{bmatrix}
+  %     1 & \hat{\mLD}_{11}(k_{x1},k_{y1}) & -\hat{\mLR}_{11}(k_{x1},k_{y1}) & -\left(\hat{\mLD}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{11} & \left(\hat{\mLR}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{11}
+  %     \\
+  %     0 & \hat{\mLD}_{12}(k_{x1},k_{y1}) & -\hat{\mLR}_{12}(k_{x1},k_{y1}) & -\left(\hat{\mLD}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{12} & \left(\hat{\mLR}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{12}
+  %     \\
+  %     0 & \hat{\mLD}_{21}(k_{x1},k_{y1}) & -\hat{\mLR}_{21}(k_{x1},k_{y1}) & -\left(\hat{\mLD}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{21} & \left(\hat{\mLR}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{21}
+  %     \\
+  %     1 & \hat{\mLD}_{22}(k_{x1},k_{y1}) & -\hat{\mLR}_{22}(k_{x1},k_{y1}) & -\left(\hat{\mLD}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{22} & \left(\hat{\mLR}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{22}
+  %     \\
+  %     \vdots & \vdots & \vdots & \vdots & \vdots
+  %     \\
+  %     1 & \hat{\mLD}_{11}(k_{xn},k_{yn}) & -\hat{\mLR}_{11}(k_{xn},k_{yn}) & -\left(\hat{\mLD}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{11} & \left(\hat{\mLR}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{11}
+  %     \\
+  %     0 & \hat{\mLD}_{12}(k_{xn},k_{yn}) & -\hat{\mLR}_{12}(k_{xn},k_{yn}) & -\left(\hat{\mLD}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{12} & \left(\hat{\mLR}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{12}
+  %     \\
+  %     0 & \hat{\mLD}_{21}(k_{xn},k_{yn}) & -\hat{\mLR}_{21}(k_{xn},k_{yn}) & -\left(\hat{\mLD}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{21} & \left(\hat{\mLR}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{21}
+  %     \\
+  %     1 & \hat{\mLD}_{22}(k_{xn},k_{yn}) & -\hat{\mLR}_{22}(k_{xn},k_{yn}) & -\left(\hat{\mLD}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{22} & \left(\hat{\mLR}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{22}
+  %     \end{bmatrix}
+  % \end{align}
   \end{proof}
 
-\subsubsection{Existence du minimum pour la CI3}
+  \subsection{Existence et unicité du minimum}
 
-  L'introduction de \(\hat\mZ_{ex}\) dans \(\tilde M\) ne permet plus d'exprimer simplement le déterminant de cette dernière. Nous n'avons pas réussi à prouver que cette matrice était définie. Cependant nous avons vérifié numériquement qu'elle l'était pour tous les empilements que nous avons testés.
+    \begin{prop}
+      Il existe un unique minimum si la matrice \(\conj{\mH^t}{\mH}\) est inversible
+    \end{prop}
 
-% \subsection{Expression des moindre carrés dans le cadre de l'approximation cylindre pour une incidence}
+    \begin{proof}
+      On remarque que la fonctionnelle \(F\) est quadratique si la matrice \(\mM=\conj{\mH^t}{\mH}\) est hermitienne définie positive. Une matrice \(A\) est hermitienne si \(\forall x, \conj{x^t}Ax \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}Ax \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}Ax \in \RR^{+*}\).
+
+      On remarque que par construction, notre matrice \(\mM\) est hermitienne positive. Il reste à montrer qu'elle est définie.
+    \end{proof}
+
+    \begin{prop}
+      S'il existe une unique minimum \(X_{CI}^*\), celui ci vaut
+      \[
+        X_{CI}^* = \left(\conj{\mH_{CI}^t}{\mH_{CI}}\right)^{-1}\conj{\mH_{CI}^t}b
+      \]
+    \end{prop}
+
+    \begin{proof}
+      C'est une application directe de \(\tgrad{} F(CI) = 0 \), avec la propriété précédente.
+    \end{proof}
+
+    \subsubsection{Existence du minimum pour la CI4}
+
+      \begin{prop}
+        La matrice \({\mM}\) associé à la CI4 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{xi},k_{yi})\) différents.
+      \end{prop}
+
+      \begin{proof}
+        Soit \(t\) le vecteur de \(\left(\RR^+\right)^{N_{i}}\) tel que \(t_i = k_{xi}^2 + k_{yi}^2\). On a l'expression suivante de \({\mM}\)
+
+        \begin{equation}
+          {\mM} = \begin{bmatrix}
+          2 N_{i} & -\sum_{i=1}^{N_{i}} t_i & -\sum_{i=1}^{N_{i}} t_i
+          \\
+          -\sum_{i=1}^{N_{i}} t_i & \sum_{i=1}^{N_{i}} t_i^2 & 0
+          \\
+          -\sum_{i=1}^{N_{i}} t_i & 0 & \sum_{i=1}^{N_{i}} t_i^2
+          \end{bmatrix}
+        \end{equation}
+
+        Pour prouver son inversibilité, on exprime son déterminant 
+
+        \begin{align}
+          \det( {\mM}) &= 2N_{i}\left(\sum_{i=1}^{N_{i}} t_i^2\right)^2 - 2 \left( \sum_{i=1}^{N_{i}} t_i\right)^2 \left(\sum_{i=1}^{N_{i}}t_i^2\right) 
+          \\
+          &= 2\left(\sum_{i=1}^{N_{i}} t_i^2\right)\left(N_{i}\sum_{i=1}^{N_{i}} t_i^2 - \left( \sum_{i=1}^{N_{i}} t_i\right)^2 \right)
+          \\
+          \intertext{Soit \(\left<\cdot,\cdot\right>\) le produit scalaire associé à \(\RR^{N_{i}}\), alors}
+          \det( {\mM}) &= 2\left<t,t\right>\left( \left<1,1\right>\left<t,t\right>- \left<t,1\right>^2\right)
+        \end{align}
+
+        Donc d'après Cauchy–Schwarz (voir \cite[\href{https://dlmf.nist.gov/1.7\#E1}{eq.~1.7.1}]{dlmf_nist_2019}), le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est à dire n'importe quel vecteur ayant au moins deux composantes différentes.
+      \end{proof}
+
+      \subsubsection{Existence du minimum pour la CI3}
+
+        L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière. Nous n'avons pas réussi à prouver que cette matrice était définie. Cependant nous avons vérifié numériquement qu'elle l'était pour tous les empilements que nous avons testés.
 
   \subsection{Résultats numériques sans contraintes}
 
-      Sans contraintes, on résout le système linéaire \(\tilde \mH X - \tilde b\). Numériquement, nous avons utilisé la routine de résolution au sens des moindres carrés \href{http://www.netlib.org/lapack/explore-html/d6/d10/group__complex16_g_esolve_ga1d8089ba1e1538eb3d1ab0ebe97596c7.html}{ZGELS}.
+      Sans contraintes, on résout le système linéaire \(\mH X = b\). 
+      %Numériquement, nous avons utilisé la routine de résolution au sens des moindres carrés \href{http://www.netlib.org/lapack/explore-html/d6/d10/group__complex16_g_esolve_ga1d8089ba1e1538eb3d1ab0ebe97596c7.html}{ZGELS}.
 
 
       Dans \cite{stupfel_implementation_2015} sont introduites les CIOE
@@ -205,7 +206,7 @@
         \end{bmatrix}
       \end{equation}
 
-      Le multiplicateur est multiple de l'identité ce qui en fait un mauvais candidat convenu de la nature diagonale mais non multiple de l’identité de la matrice \(\hat{\mZ}\). La figure \ref{fig:imp_fourier:plan:stupfel:hoibc} présente donc quelques résultats où l'on voit bien la limite de ces CIOE par rapport à la CI3.
+      La matrice \(\mL\) est multiple de l'identité donc la matrice \(\hat\mZ_{CI}\) associée à ces CIOE est n'approchera pas bien la matrice \(\hat{\mZ}_{ex}\). La figure \ref{fig:imp_fourier:plan:stupfel:hoibc} présente donc quelques résultats où l'on voit bien la limite de ces CIOE par rapport à la CI3.
       \begin{figure}[!hbt]
         \centering
         \input{tikz/plot/Z_STUPFEL_plan_hoibc.tikz}
@@ -300,3 +301,19 @@
       \end{table}
       Il faut donc une CIOE d'ordre 2 fois le nombre d'asymptote que l'on rencontre sur notre balayage.
 
+\subsection{Énoncé de la minimisation au sens des moindres carrés avec contraintes}
+  Le problème des moindres carrés avec \gls{acr-csu} s'énonce:
+
+  \begin{prop}[Moindres carrés avec CSU dans le cas plan infini]
+  ~
+
+  Soit \(SUC(CI)\) les conditions suffisante d'unicité associées à la CIOE \(CI\). 
+
+  Alors les coefficients de la CIOE sont solution de 
+
+  Trouver \(X_{CI}^*\) tel que
+
+  \[
+    X_{CI}^* = \argmin{X \in SUC(CI)} \left\lVert {\mH}(CI)X_{CI} - {b}\right\rVert^2_{\RR^{Ni}}
+  \]
+  \end{prop}

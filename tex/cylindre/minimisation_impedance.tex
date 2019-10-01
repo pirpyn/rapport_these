@@ -1,6 +1,75 @@
 \section{Calcul des coefficients des CIOE par moindres carrés sur l'impédance}
 
-  \subsection{Expression des moindre carrés dans le cadre de l'approximation cylindre infini pour une incidence}
+  \subsection{Expression des moindre carrés pour une incidence}
+
+    \subsubsection{Expression des moindre carrés pour un terme de la série de Fourier}
+      D'abord, minimisons pour un couple \(n,k_z\). Nous montrerons ensuite comment exprimer la minimisation pour prendre en compte tous les termes de la série de Fourier.
+      \begin{prop}
+        Soit \(n,k_z\) fixés.
+        Pour nos CIOE, il existe une matrice \(\mH_{n,k_z}(CI,\hat\mZ_{ex}(n,k_z))\) et un vecteur \(X(CI)\) de \(\CC^{N_{CI}}\) composés des coefficients de la CI, tels que minimiser selon la norme euclidienne
+        \[
+          ||\hat\mZ_{CI}(n,k_z)-\hat\mZ_{ex}(n,k_z)||^2_{eucl}
+        \] 
+        revient à minimiser selon une norme équivalente dépendante de la CI
+        \[ 
+          || \mH_{n,k_z}(CI,\hat\mZ_{ex}(n,k_z)) \vect{X}(CI) - b(\hat\mZ_{ex}(n,k_z)) ||^2_{CI}
+        \]
+        La matrice \(\mH\) est de dimensions 4 lignes \(N_{CI}\) colonnes et le vecteur colonne b à 4 coefficients et a l'expression suivante
+        \begin{align}
+          b(\hat{\mZ}) = \begin{bmatrix} \hat{\mZ}_{ex11} \\ \hat{\mZ}_{ex12}\\ \hat{\mZ}_{ex21} \\ \hat{\mZ}_{ex22} \end{bmatrix}
+        \end{align}
+      \end{prop}
+
+      \begin{proof}
+        La méthode est exactement la même que pour le plan, nous renvoyons donc à cette démonstration.
+      \end{proof}
+
+      Par exemple pour la CI3: soient \(\hat\mLD, \hat\mLR\) telles que
+      \begin{align}
+        \hat\mLD(n,k_z) & = - \begin{bmatrix} (n\slash r_{ext})^2 & k_z n \slash r_{ext} \\ k_z n\slash r_{ext} & k_z^2 \end{bmatrix}
+        \\
+        \hat\mLR(n,k_z) & =  \begin{bmatrix} k_z^2 & -k_z n \slash r_{ext} \\ -k_z n\slash r_{ext} &  (n\slash r_{ext})^2 \end{bmatrix}
+      \end{align}
+
+      \begin{align}
+          \mH_{n,k_z}(CI3,\hat\mZ) = \begin{bmatrix}
+          1 & \hat{\mLD}_{11} & -\hat{\mLR}_{11} & -\left(\hat{\mLD}\hat{\mZ}_{ex}\right)_{11} & \left(\hat{\mLR}\hat{\mZ}_{ex}\right)_{11}
+          \\
+          0 & \hat{\mLD}_{12} & -\hat{\mLR}_{12} & -\left(\hat{\mLD}\hat{\mZ}_{ex}\right)_{12} & \left(\hat{\mLR}\hat{\mZ}_{ex}\right)_{12}
+          \\
+          0 & \hat{\mLD}_{21} & -\hat{\mLR}_{21} & -\left(\hat{\mLD}\hat{\mZ}_{ex}\right)_{21} & \left(\hat{\mLR}\hat{\mZ}_{ex}\right)_{21}
+          \\
+          1 & \hat{\mLD}_{22} & -\hat{\mLR}_{22} & -\left(\hat{\mLD}\hat{\mZ}_{ex}\right)_{22} & \left(\hat{\mLR}\hat{\mZ}_{ex}\right)_{22}
+          \end{bmatrix}
+          && X = \begin{bmatrix} a_0 \\ a_1 \\ a_2 \\ b_1 \\ b_2 \end{bmatrix}
+      \end{align}
+
+    \subsubsection{Expression des moindre carrés pour tous les termes de la série de Fourier}
+
+      On tronque la série de Fourier à \(n\) termes.
+
+      \begin{prop}
+        Soit \(k_z\) fixés.
+        Pour nos CIOE, il existe une matrice \(\mH_{k_z}(CI,\hat\mZ_{ex})\) et un vecteur \(X(CI)\) de \(\CC^{N_{CI}}\) composés des coefficients de la CI, tels que 
+
+        Trouver les coefficients de la CIOE est équivalent à minimiser selon une norme dépendante de la CIOE et du nombre de termes de la série de Fourier tronquée
+        \[ 
+          || \check{\mH}_{k_z}(CI,\hat\mZ_{ex}) \vect{X}(CI) - \check{b}(\hat\mZ_{ex}(k_z)) ||^2_{(n,CI)}
+        \]
+        La matrice \(\check{\mH}\) a \(4n\) lignes ,\(N_{CI}\) colonnes et le vecteur colonne \(\check{b}\) a \(4n\) coefficients
+
+
+        \begin{align}
+          {\check{\mH}_{k_z}(CI,\hat\mZ)}_{i:i+4,:} = \mH_{i,k_z}(CI,\hat\mZ(i,k_z))  & & \check{b}(\hat{\mZ}(k_z))_{i:i+4} = \begin{bmatrix} \hat{\mZ}_{11}(i,k_z) \\ \hat{\mZ}_{12}(i,k_z)\\ \hat{\mZ}_{21}(i,k_z) \\ \hat{\mZ}_{22}(i,k_z) \end{bmatrix}
+        \end{align}
+      \end{prop}
+
+      \begin{proof}
+        En utilisant les moindres carrés pour un couple \((i,k_z)\), on aboutit à \(n\) systèmes de type
+        \( || \mH_{i,k_z}(CI,\hat\mZ_{ex}(i,k_z)) \vect{X}(CI) - b(\hat\mZ_{ex}(i,k_z)) ||^2_{CI} \).
+
+        On construit alors les matrices
+      \end{proof}
 
   \subsection{Expression des moindre carrés dans le cadre de l'approximation cylindre infini avec un balayage en incidence}
 
