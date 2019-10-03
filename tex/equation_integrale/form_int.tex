@@ -391,20 +391,71 @@
 
   \subsection{Matrice de changement de base}
 
-    \begin{TODO}
-      La projection selon Bruno est la suivante: on prend deux fonctions dans \(\Vect{\phij}\) et \(\Vect{\pj}\). On réalise le produit scalaire avec \(\vect{q_i}\). On suppose l'égalité \(\mG{q}{\phi}\comp{u} = \mG{q}{p}\comp{v}\). On en déduit \(\comp{u} = (\mG{q}{\phi})^{-1} \mG{q}{p} \comp{v} \). Le problème est de justifier l'égalité.
+    Soit \(\vect{U}(\vx) = \sum_{i=1}^N u_j \phij(\vx) \in \Hdiv(\Gamma_h)\).
+    Soit \(\vect{V}(\vx) = \sum_{i=1}^N v_j \pj(\vx) \in \Hrot(\Gamma_h)\)  
 
-      D'après Olivier, il faut faire comme suit: soit W dans \(\Vect{\qj}\).
-      On définit U et V dans \(\Vect{\phij}\) et \(\Vect{\pj}\) tels que \(\comp{u}=\mG{\phi}{q}\comp{w}\) et  \(\comp{v}=\mG{p}{q}\comp{w}\).
-      On suppose la deuxième inversible alors  \(\comp{u} =\mG{\phi}{q} (\mG{p}{q})^{-1} \comp{v} \). Le problème est que numériquement c'est plus compliqué car la première est multiple de l'identité.
-    \end{TODO}
+    On veut déterminer une relation pour exprimer les \(v_j\) en fonction des \(u_j\).
 
-    \begin{defn}
-      On définit alors le changement de la base qui permet de passer de \(\comp{u}\) à \(\comp{v}\)
-      \begin{equation*}
-        \mP{\phi}{p}{q} = \left(\mG{q}{\phi}\right)^{-1}\mG{q}{p}
-      \end{equation*}
-    \end{defn}
+
+    \begin{prop}
+      On définit alors le passage de \(\comp{u}\) à \(\comp{v}\)
+      \begin{align*}
+        \comp{v} &= \mP{\phi}{p}{q} \comp{u}
+        \\
+        \mP{\phi}{p}{q} &= (\mG{q}{p})^{-1}\mG{q}{\phi} = 3 \mG{q}{\phi}
+      \end{align*}
+    \end{prop}
+
+    \begin{proof}
+    ~
+    %\subsubsection[Méthode de Stupfel 2015]{Méthode de \cite{stupfel_implementation_2015}}
+
+    \begin{enumerate}
+      \item Méthode de \cite{stupfel_implementation_2015}
+
+        On projette ces deux éléments dans \(\Vect{\qj}\).
+        On a alors
+        \begin{align*}
+          \vect{W}_u = \sum_{i=1}^n w_{uj} \qj(\vx) && w_{uj} = \sum_{i=1}^N u_j \int_{\Gamma_h}\qi(\vx) \cdot \phij(\vx)
+          \\
+          \vect{W}_v = \sum_{i=1}^n w_{vj} \qj(\vx) && w_{vj} = \sum_{i=1}^N v_j \int_{\Gamma_h}\qi(\vx) \cdot \pj(\vx)
+        \end{align*}
+
+        On a donc
+        \begin{align*}
+          \comp{w_u} = \mG{q}{\phi}\comp{u} 
+          && 
+          \comp{w_v} =\mG{q}{p}\comp{v}
+        \end{align*}
+        On suppose qu'ils sont égaux: \(\mG{q}{\phi}\comp{u} = \mG{q}{p}\comp{v}\)
+
+        On en déduit \(\comp{v} = (\mG{q}{p})^{-1}\mG{q}{\phi}  \comp{u} \).
+
+        D’après \cite{stupfel_implementation_2015} \((\mG{q}{p})^{-1}\mG{q}{\phi} = 3 \mG{q}{\phi}\).
+
+      \item{Deuxième méthode fausse}
+      %\subsubsection{Deuxième méthode, fausse}
+
+        Soit \(\vect{W}(\vx) = \sum_{i=1}^N w_j \qj(\vx) \in L^2(\Gamma_h)\).
+
+        On définit \(\vect{U}= \sum_{i=1}^N u_j \phij(\vx)\) et \(\vect{V} = \sum_{i=1}^N v_j \pj(\vx)\) où
+        \begin{align*}
+          u_i = \int_{\Gamma_h} \vect{W}(\vx)\cdot\phii(\vx)
+          \\
+          v_i = \int_{\Gamma_h} \vect{W}(\vx)\cdot\pii(\vx)
+        \end{align*}
+
+        On a donc
+        \begin{align*}
+          \comp{u}=\mG{\phi}{q}\comp{w}
+          \comp{v}=\mG{p}{q}\comp{w}
+        \end{align*}
+
+        On suppose la deuxième inversible alors  \(\comp{v} =\mG{p}{q} (\mG{\phi}{q})^{-1} \comp{u} \).
+
+        D’après \cite{stupfel_implementation_2015} \(\mG{\phi}{q}\)  n'est pas inversible.
+      \end{enumerate}
+      \end{proof}
 
     % \begin{prop}
     %   \begin{equation*}
