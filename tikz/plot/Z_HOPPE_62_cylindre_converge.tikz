@@ -1,25 +1,46 @@
-\tikzsetnextfilename{Z_HOPPE_62_cylindre_converge}
+\tikzsetnextfilename{Z_HOPPE_62_cylindre_converge_TM}
 \begin{tikzpicture}[scale=1]
   \begin{axis}[
-      title={},
+      title={Polarisation TM},
       ylabel={\(\Im(\hat{Z}(k_tr_1,0))\)},
       xlabel={\(k_t \slash k_0\)},
-      width=0.7\textwidth,
+      width=0.37\textwidth,
       xmin=0,
       xmax=1.5,
-      mark repeat=1,
       legend pos=outer north east
     ]
 
-    \addplot [black] table [col sep=comma, x={s2}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-02.csv};
-    \addlegendentry{TM \(r_0=0.03m\)}
+    \addplot [black,dotted,mark=diamond] table [col sep=comma, x={s2}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-02.csv};
 
-    \addplot [black,dashed] table [col sep=comma, x={s2}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-02.csv};
-    \addlegendentry{TE \(r_0=0.03m\)}
-    \addplot [black,mark=*] table [col sep=comma, x={s2}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-01.csv};
-    \addlegendentry{TM \(r_0=0.3m\)}
+    \addplot [black,dotted,mark=*] table [col sep=comma, x={s2}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-01.csv};
 
-    \addplot [black,dashed,mark=*] table [col sep=comma, x={s2}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-01.csv};
-    \addlegendentry{TE \(r_0=0.3m\)}
+    \addplot [black,dashed] table [col sep=comma, x={s2}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E+00.csv};
+
+    \addplot [black] table [col sep=comma, x={s2}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_P.csv};
+  \end{axis}
+\end{tikzpicture}
+\tikzsetnextfilename{Z_HOPPE_62_cylindre_converge_TE}
+\begin{tikzpicture}[scale=1]
+  \begin{axis}[
+      title={Polarisation TE},
+      ylabel={},
+      xlabel={\(k_t \slash k_0\)},
+      width=0.37\textwidth,
+      xmin=0,
+      xmax=1.5,
+      legend pos=outer north east
+    ]
+
+    \addplot [black,dotted,mark=diamond] table [col sep=comma, x={s2}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-02.csv};
+    \addlegendentry{\(r_0=0.03m\)}
+
+    \addplot [black,dotted,mark=*] table [col sep=comma, x={s2}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-01.csv};
+    \addlegendentry{\(r_0=0.3m\)}
+
+    \addplot [black,dashed] table [col sep=comma, x={s2}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E+00.csv};
+    \addlegendentry{\(r_0=3m\)}
+
+    \addplot [black] table [col sep=comma, x={s2}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_P.csv};
+    \addlegendentry{plan}
   \end{axis}
 \end{tikzpicture}

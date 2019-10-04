@@ -1,0 +1,77 @@
+\section{Approximation de la matrice d'impédance pour un cylindre infini par une CIOE}
+
+  \subsection[Expression des opérateurs LD,LR en Fourier]{Expression des opérateurs \(\LD,\LR\) en Fourier}
+
+    Par définition de \(\LD\), on a
+    \begin{align}
+      \LD \vE_t & = \vgrads{} \vdivs{} \vE_t
+    \end{align}
+
+    Or d’après la définition de la transformée de Fourier
+
+    \begin{align}
+      \vE_t(r,\theta,z) & = \frac{1}{2\pi}\sum_{n=-\infty}^\infty \int_\RR \hat{\vE_t}(r,n,k_z)e^{in\theta + ik_zz}\dd{k_z}
+    \end{align}
+
+    On applique l'opérateur à ce vecteur
+
+    \begin{align}
+      \LD \vE_t
+      & = \vgrads{} \vdivs{} \vE_t
+      \\
+      &=\frac{1}{2\pi}\vgrads{} \sum_{n=-\infty}^\infty\int_\RR \hat{\vE_t}(r,n,k_z) \cdot \vgrads{} e^{in\theta + ik_zz}\dd{k_z}
+      \\
+      &=\frac{1}{2\pi}\sum_{n=-\infty}^\infty \int_\RR \vhesss{}\left(\left( e^{in\theta + ik_zz} \right) \hat{\vE_t}\right)(r,n,k_z)\dd{k_z}
+    \end{align}
+
+    On utilise les expression en coordonnées cylindrique des opérateurs différentielles ( voir annexe \ref{sec:annexe:div_grad_rot} ):
+
+    On définit \(\hat{\mLD}\) l'opérateur matriciel tel que
+    \begin{align}
+      \LD \vE_t (r_{ext},\theta,z)
+      &= \frac{1}{2\pi}\sum_{n=-\infty}^\infty\int_\RR \hat{\mLD} \hat{\vE_t}(r_{ext},n,k_z)\dd{k_z}
+    \end{align}
+
+    Son expression est de ce qui précède
+    \begin{equation}
+      \label{eq:cylindre:fourier:LD}
+      \hat{\mLD}(n,k_z) = -
+      \begin{bmatrix}
+        \left({n}\slash{r_{ext}}\right)^2 & k_z{n}\slash{r_{ext}}
+        \\
+        k_z{n}\slash{r_{ext}} & k_z^2
+      \end{bmatrix}
+    \end{equation}
+
+    On reprend exactement la même méthode pour l'opérateur \(\LR\):
+    \begin{align}
+      \LR \vE_t & = \vrots{} \vrots{} \vE_t
+      \\
+      &=\frac{1}{2\pi}\vrots{}\sum_{n=-\infty}^\infty\int_\RR \vgrads{}\left(e^{in\theta + ik_zz}\right) \pvect \hat{\vE_t}(r,n,k_z)\dd{k_z}
+      \\
+      &= \frac{1}{2\pi}\sum_{n=-\infty}^\infty \int_\RR \left(\vhesss - \vlapls\right) \left(\left(e^{in\theta + ik_zz}\right) \hat{\vE_t}\right)(r,n,k_z)\dd{k_z}
+    \end{align}
+
+    On définit \(\hat{\mLR}\) l'opérateur matriciel tel que
+    \begin{align}
+      \LR \vE_t(r_{ext},\theta,z)
+      &= \frac{1}{2\pi}\sum_{n=-\infty}^\infty\int_\RR \hat{\mLR} \hat{\vE_t}(r_{ext},n,k_z)\dd{k_z}
+    \end{align}
+
+    \begin{equation}
+      \hat{\mLR}(n,k_z) =
+      \begin{bmatrix}
+        k_z^2 & -k_z{n}\slash{r_{ext}}
+        \\
+        -k_z{n}\slash{r_{ext}} & \left({n}\slash{r_{ext}} \right)^2
+      \end{bmatrix}
+    \end{equation}
+
+  \subsection{Expression de la matrice d'impédance approchée par la CI3}
+
+    Tout comme dans le cas du plan infini, on peut donc définir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance.
+
+    \begin{multline}
+        \hat{\mZ}_{CI3}(n,k_z) = \left(I + b_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - b_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2} \right)^{-1}\\
+        \left(a_0 I + a_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - a_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2}\right)
+    \end{multline}

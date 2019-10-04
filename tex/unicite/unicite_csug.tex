@@ -1,9 +1,13 @@
 \section{Condition suffisante d'unicité générale}
 
-  Soit \(\OO\) un domaine fermé borné de \(\RR^3\) plongé dans le vide et \(\Gamma\) sa frontière.
-  À l'extérieur de cette surface, on définit \(k_0 \in \RR_+^*\), le nombre d'onde dans le vide.
+  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné régulier. Les champs associés sont solutions des équations de Maxwell\footnote{voir annexe \ref{sec:annex:maxwell_equation}} harmonique \(e^{i\w t}\) :
 
-  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur de cette objet. Les champs associés sont solutions des équations de Maxwell harmonique \(e^{i\w t}\)\footnote{voir annexe \ref{sec:annex:maxwell_equation}} :
+  Soit \(\OO\) l'objet et \(\Gamma=\partial\OO\) sa frontière , on décompose donc tout l'espace entre l'intérieur et l'extérieur 
+  \[
+    \RR^3 = \OO\cap\OO^c
+  \]
+  On définit en tout point de \(\Gamma\), supposée régulière, \(\vn\) la normale unitaire sortante à \(\OO\).
+ Dans \(\OO^c\) on définit \(k_0=\w / c \in \RR_+^*\), le nombre d'onde dans le vide où \gls{phy-c} est la célérité d'une onde dans le vide.
 
   Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
   \begin{align}
@@ -14,29 +18,30 @@
       \trot \vH - i k_0 \vE &= 0
     \end{matrix}
     \right. && \text{dans \(\OO^c\)}
+    \label{eq:unicite:maxwell_ext}
   \end{align}
 
-  Ce problème étant non bornée, on définit \(B_R\) le boule de rayon \(R\) suffisamment grand et qui englobe \(\OO\). On cherche alors les solutions dans l'espace entre \(\Gamma\) et \(S_R\), la sphère de rayon \(R\) où est définit la condition de rayonnement \eqref{eq:unicite:form_var:TR}.
+  Afin de pouvoir étudier plus facilement ce problème, on se ramène à un ouvert borné de la manière suivante. On définit \(B_R\) le boule de rayon \(R\) suffisamment grand et qui englobe \(\OO\). On cherche alors les solutions dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\) , où \(S_R\) est la sphère de rayon \(R\) où est définie la condition de rayonnement \eqref{eq:unicite:TR}.
   \begin{equation}
-    \label{eq:unicite:form_var:TR}
+    \label{eq:unicite:TR}
     \begin{aligned}
     \Tr(\vE_t) = - \vn_{S_R} \pvect \vH && \text{sur \(S(0,R)\)}
     \end{aligned}
   \end{equation}
-  \(\Tr\) est l'opérateur de capacité définit par \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{S_R}\) la normale unitaire sortante à \(S(0,R)\).
+  \(\Tr\) est l'opérateur de capacité défini par \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{S_R}\) la normale unitaire sortante à \(S(0,R)\).
 
-  Soit \(\vect{\phi}\) dans \(\Hrot(\OO^c)\) une fonction test. Ces équations aboutissent à la forme variationnelle suivante :
+  Ces équations aboutissent à la forme variationnelle suivante :
   \begin{prop}
-    Trouver \(\vE \in \left(\Hrot(\OO^c)\right)\), \(\forall \vect \phi \in \left(\Hrot(\OO^c)\right)\)
+    Trouver \(\vE \in \left(\Hrot(\OO^c_R)\right)\), \(\forall \vect \phi \in \left(\Hrot(\OO^c_R)\right)\)
     \[
       a(\vE,\vect\phi) = 0
     \]
   \end{prop}
 
-  où a est une forme sesquilinéaire telle que, soit \(\vn\) la normale unitaire sortante à \(\Gamma\).
+  où a est une forme sesquilinéaire telle que
   \begin{equation*}
     \begin{aligned}
-    a(\vE,\vect\phi) &:=  \frac{1}{ik_0} \int_\OO \trot \vE \cdot \trot \conj{\vect{\phi}} dx + ik_0\int_\OO\vE\cdot\conj{\vect{\phi}} dx
+    a(\vE,\vect\phi) &:=  \frac{1}{ik_0} \int_{\OO^c_R} \trot \vE \cdot \trot \conj{\vect{\phi}} dx + ik_0\int_{\OO^c_R}\vE\cdot\conj{\vect{\phi}} dx
       \\ 
       & \quad + \int_{S_R} \conj{ \vect \phi } \cdot \Tr(\vE_t)ds - \int_\Gamma \left(\vn \pvect \frac{\trot \vE}{ik_0}\right) \cdot \conj{\vect \phi} ds(\vx)
     \end{aligned}
@@ -51,19 +56,19 @@
           \\ \intertext{On peut utiliser la seconde équation pour n'avoir plus que \(\vE\).}
           0 & = \trot \frac{\trot \vE}{ik_0} + ik_0 \vE
           \\ \intertext{Réalisons le produit scalaire avec la fonction test.}
-          0 & = \int_\OO{ \trot \frac{\trot \vE}{ik_0}\cdot \conj{\vect{\phi}}} +  \int_\OO ik_0 \vE \cdot \conj{\vect{\phi}}
+          0 & = \int_{\OO^c_R}{ \trot \frac{\trot \vE}{ik_0}\cdot \conj{\vect{\phi}}} +  \int_{\OO^c_R} ik_0 \vE \cdot \conj{\vect{\phi}}
           \\ \intertext{Utilisons la formule de Green du rotationnel (voir \cite[eq.~(A1.32)]{bladel_electromagnetic_2007}). On rappelle que \(\vn_\Gamma\) est la normale entrante à travers \(\Gamma\) et \(\vn_{S_R}\) la normale sortante à travers \(S_R\) }
-          0 & = \int_\OO{ \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}} - \int_{S_R} \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_{S_R} ds(\vx) 
+          0 & = \int_{\OO^c_R}{ \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}} - \int_{S_R} \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_{S_R} ds(\vx) 
           \\ \notag
-          & \qquad \qquad + \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_\Gamma ds(\vx) + \int_\OO ik_0 \vE \cdot \conj{\vect{\phi}}
+          & \qquad \qquad + \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_\Gamma ds(\vx) +\int_{\OO^c_R} ik_0 \vE \cdot \conj{\vect{\phi}}
           \\ \intertext{On utilise la condition de rayonnement}
-          0 & = \int_\OO{ \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}} - \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} ds(\vx) 
+          0 & = \int_{\OO^c_R}{ \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}} - \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} ds(\vx) 
           \\ \notag
-          & \qquad \qquad + \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_\Gamma ds(\vx) + \int_\OO ik_0 \vE \cdot \conj{\vect{\phi}}
+          & \qquad \qquad + \int_\Gamma \left( \conj{\vect \phi} \pvect \frac{\trot \vE}{ik_0}\right)  \cdot \vn_\Gamma ds(\vx) + \int_{\OO^c_R} ik_0 \vE \cdot \conj{\vect{\phi}}
           \\ \intertext{On permute les termes de l'intégrale sur \(\Gamma\).}
-          0 & = \int_\OO \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}} + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} ds(\vx) 
+          0 & =\int_{\OO^c_R} \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}} + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} ds(\vx) 
           \\ \notag
-          & \qquad \qquad - \int_\Gamma \left(\vn_\Gamma \pvect \frac{\trot \vE}{ik_0}\right) \cdot \conj{\vect \phi} ds(\vx) +  \int_\OO ik_0 \vE \cdot \conj{\vect{\phi}}
+          & \qquad \qquad - \int_\Gamma \left(\vn_\Gamma \pvect \frac{\trot \vE}{ik_0}\right) \cdot \conj{\vect \phi} ds(\vx) +  \int_{\OO^c_R} ik_0 \vE \cdot \conj{\vect{\phi}}
       \end{align}
   \end{proof}
 
@@ -81,7 +86,7 @@
   \begin{align}
     X &= \int_\Gamma \vJ \cdot \conj{\vect \phi} ds(\vx)
     \\
-    C &= \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vE} ds(\vx)
+    C &= \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect \phi} ds(\vx)
   \end{align}
 
   % Sachant que \(k_0\) est réel, la partie réelle de la forme bilinéaire \(a\) s'écrit donc
@@ -114,35 +119,37 @@
 %   Comme nous sommes en convention \(e^{i\omega t}\) et que nous imposons que le signe de \(\Im(\eps)\) et \(\Im(\mu)\) soit négatif
   \begin{prop}[\glsentrydesc{acr-cgu}]~\\
     Si la condition suivante est vérifiée
-    \begin{equation}\label{eq:unicite:form_var:cgu}
+    \begin{equation}
+      \label{eq:unicite:form_var:cgu}
       \Re\left(\int_\Gamma \vJ \cdot \conj{\vE_t} ds\right) \ge 0
     \end{equation}
-    alors l'unicité des solutions du problème de Maxwell extérieur est assurée.
+    alors l'unicité des solutions du problème de Maxwell extérieur \eqref{eq:unicite:maxwell_ext} avec la condition de rayonnement \eqref{eq:unicite:TR} est assurée.
   \end{prop}
 
-  Pour démontrer cela, il faut faire appel au Lemme de Rellich, énoncé dans \cite[p.~74]{cessenat_mathematical_1996}:
+  Pour démontrer cela, on utilise le Lemme de Rellich, énoncé dans \cite[p.~74]{cessenat_mathematical_1996}:
   \begin{lemme}[Rellich]
-    Soit \(\OO^c\) un domaine connexe, complément d'un domaine bornée, et soit \(u\) satisfaisant
+    Soit \(\OO^c\) un domaine connexe, complément d'un domaine borné, et soit \(u\) satisfaisant
     \begin{subequations}
       \begin{align}
         \Delta u + k^2 u = 0 & &\text{dans \(\OO^c\)}
         \\
-        \int_{S_R} |u(\vx)|^2 ds(\vx) = 0 
+        \lim_{R\rightarrow\infty}\int_{S_R} |u(\vx)|^2 ds(\vx) = 0
       \end{align}
     \end{subequations}
     alors \(u=0\) dans \(\OO^c\).
   \end{lemme}
 
-  En reprenant l'expression de la partie réelle de la forme bilinéaire \(a(\vE,\vE)\), on remarque que la condition \eqref{eq:unicite:form_var:cgu} implique
+  En reprenant l'expression de la partie réelle de la forme bilinéaire \(a(\vE,\vE)\), on remarque que
   \begin{align}
     \Re(a(\vE,\vE)) & = 0
-    \\
     \Re(C) + \Re(X) & = 0
-    \\ \intertext{d'après \cite[eq.~5.3.89]{nedelec_acoustic_2001} \(\Re(C)\ge 0\) donc } 
+    \intertext{d'après \cite[eq.~5.3.89]{nedelec_acoustic_2001}, \(\Re(C)\ge 0\), si on suppose \eqref{eq:unicite:form_var:cgu} alors } 
     \Re(C) = \Re(X) & = 0
-    \\ \intertext{Pusique \(\Re(C) = 0\) alors \(\vE_t = 0\) sur \(S_R\) or d'après le lemme de Rellich}
-    \vE &= 0  &\text{ dans } \OO^c
   \end{align}
+
+  Puisque \(\Re(C) = 0\) alors d'après \cite[Théorème~5.3.5]{nedelec_acoustic_2001}, \(\vE_t = 0\) sur \(S_R\) or d'après le lemme de Rellich, on conclu que \(\vE = 0\) dans \(\OO^c_R\).
+
+  On conclut donc qu'en l'absence de sources et si on suppose \eqref{eq:unicite:form_var:cgu}, alors la seule solution est un champ nul, ce qui démontre l'unicité (car le problème est linéaire).
 
 %   Dans la suite de la thèse, nous noterons souvent cette quantité par \gls{mat-q}. C'est par définition la partie réelle du flux sortant du vecteur de Poynting à travers la surface de l'objet. 
 

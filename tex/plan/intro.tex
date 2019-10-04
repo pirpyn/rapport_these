@@ -1,0 +1,64 @@
+\section{Analyse de Fourier de l'impédance}
+
+Des résultat sur l'analyse spectrale de l'opérateur d'impédance ont déjà été présenté par \cite{hoppe_impedance_1995} pour des conducteurs plans et cylindriques recouvert d'une couche de matériau.
+Nous les rappellerons ainsi la méthode pour les obtenir puis nous montrerons que étendre ces résultats à plusieurs couches est immédiat. 
+% De plus, nous feront intervenir les matrices associées aux opérateurs \(\LD,\LR\) dans ces résultats.
+
+% \TODO{
+%     Généraliser ce qui suit à des matériaux non borné à l'aide de fonctions rapidement décroissantes
+% }
+
+Soit \(\OO\) un domaine fermé, bornée, de frontière régulière. Soit \(\vect{e_1},\vect{e_2},\vect{e_n}\) un repère local adapté à la surface de \(\OO\).
+
+Supposons qu'il existe des champs  qui vérifient les équations de Maxwell:
+\begin{equation}
+    \left\lbrace
+    \begin{matrix}
+    \vrot \vE(\vect{x},t) &=& -\mu(\vx) \ddr{t}{\vH}(\vx,t) \\
+    \vrot \vH(\vect{x},t) &=& \eps(\vx) \ddr{t}{\vE}(\vx,t)
+    \end{matrix}
+    \right.
+\end{equation}
+
+On suppose aussi que \(\eps\) et \(\mu\) sont constant par couche: \(\eps(x_1,x_2,x_n)=\eps(x_1',x_2',x_n)\).
+
+On suppose enfin que ces champs \(\vE(\vect{x},t),\vH(\vect{x},t)\) ont des transformées de Fourier partielles suivant les coordonnées tangentielles et le temps \(\hat{\vE}(k_1,k_2,x_n,\w), \hat{\vH}(k_1,k_2,x_n,\w)\) (\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995}) telle que
+
+\begin{equation}
+    \hat{\vE} (k_1,k_2,x_n,\w) = \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{-i(k_1x_1+k_2x_2+\w t)}\vE(x_1,x_2,x_n,t) \dd{x_1}\dd{x_2}\dd{t}
+\end{equation}
+\begin{equation}
+    \vE(x_1,x_2,x_n,t) = \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{i(k_1x_1+k_2x_2+\w t)}\hat{\vE} (k_1,k_2,x_n,\w) \dd{k_1}\dd{k_2} \dd{\w}
+\end{equation}
+
+\begin{defn}
+    L'impédance est la matrice \(\hat\mZ(k_1,k_2,\w)\) telle que
+    \begin{equation*}
+        \hat{\vE}_t(k_1,k_2,0,\w) =  \hat{\mZ}(k_1,k_2,\w) \left(\vn \pvect \hat{\vH}(k_1,k_2,0,\w) \right)
+    \end{equation*}
+\end{defn}
+
+La méthode pour trouver une expression cette dernière est la suivante.
+\begin{itemize}
+    \item Faire une transformée de Fourier partielle des champs, dépendante de la géométrie.
+    \item Réécrire le système d'équation de Maxwell simplifié.
+    \item Obtenir des EDO simple à résoudre sur les composantes des champs.
+    \item En déduire l'expression générale des transformées partielles de Fourier.
+    \item Utiliser les conditions limites pour obtenir les solutions particulières.
+    \item En déduire la matrice d'impédance en Fourier.
+\end{itemize}
+
+Dans cette thèse, on utilise les équations harmonique de Maxwell ainsi on réalise au moins une transformée partielle en temps. La variable de Fourier associée est \(\w\), et donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\w\).
+
+On va donc utiliser le système d'équations de Maxwell harmonique:
+\begin{equation}
+    \left\lbrace
+    \begin{matrix}
+    \vrot \hat \vE(\vx,\w)  &=& -i \omega \mu \hat \vH(\vx,\w)  \\
+    \vrot \hat \vH(\vx,\w)  &=& i \omega \eps \hat \vE(\vx,\w)
+    \end{matrix}
+    \right.
+    \label{eq:imp_fourier:intro:maxwell_harmonique}
+\end{equation}
+
+A partir de maintenant, la dépendance en \(\w\) sera implicite: \(\hat \vE(\vx) \equiv \hat \vE (\vx, \w)\).

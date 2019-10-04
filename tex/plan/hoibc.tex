@@ -1,0 +1,110 @@
+\section{Approximation de la matrice d'impédance pour un plan infini par une CIOE}
+
+    Dans le cadre de cette thèse, nous nous intéressons à la condition d'impédance d'\cite{aubakirov_electromagnetic_2014} et à ces dérivées qui s'exprime en tout point de la surface extérieur de notre objet telle que
+
+    \begin{align}
+        \left(I + b_1 \frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vE_t = \left(a_0 I + a_1 \frac{\LD}{k_0^2} - a_2 \frac{\LR}{k_0^2} \right)(\vn \pvect \vH) & \forall x \in \Gamma
+    \end{align}
+
+    Nous la nommons \hyperlink{ci3}{CI3}.
+
+    Pour approcher la matrice \(\hat{\mZ}\) que l'on a défini précédemment, il convient donc d'exprimer les opérateurs \(\LD, \LR\) en tant que multiplicateur de Fourier.
+
+  \subsection[Expression des opérateurs LD LR en Fourier]{Expression des opérateurs \(\LD,\LR\) en Fourier}
+
+    Par définition de \(\LD\), on a
+    \begin{align}
+      \LD \vE_t & = \vgrads{} \vdivs{} \vE_t
+    \end{align}
+
+    Or d’après la définition de la transformée de Fourier
+
+    \begin{align}
+      \vE_t(x,y,z) & = \frac{1}{2\pi}\int_\RR\int_\RR \hat{\vE_t}(k_x,k_y,z)e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y}
+    \end{align}
+
+    donc si on applique l'opérateur à ce vecteur
+
+    \begin{align}
+      \LD \vE_t
+      & = \vgrads{} \vdivs{} \vE_t
+      \\
+      &=\frac{1}{2\pi}\vgrads{} \int_\RR\int_\RR \hat{\vE_t}(k_x,k_y,z) \cdot \vgrads{} e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y}
+      \\
+      &=\frac{1}{2\pi}\int_\RR \int_\RR \vhesss{}\left(\left( e^{ik_xx + ik_yy} \right) \hat{\vE_t}\right)(k_x,k_y,z)\dd{k_x}\dd{k_y}
+    \end{align}
+
+    On définit \(\hat{\mLD}\) l'opérateur matriciel tel que
+    \begin{align}
+      \LD \vE_t(x,y,z)
+      &= \frac{1}{2\pi}\int_\RR\int_\RR \hat{\mLD} \hat{\vE_t}(k_x,k_y,0)\dd{k_x}\dd{k_y}
+    \end{align}
+
+    Son expression est de ce qui précède
+    \begin{equation}
+      \label{eq:plan:fourier:LD}
+      \hat{\LD}(k_x,k_y) = -
+      \begin{bmatrix}
+        k_x^2 & k_x k_y
+        \\
+        k_x k_y & k_y^2
+      \end{bmatrix}
+    \end{equation}
+    Voilà pourquoi lors de l'expression de la matrice \(\hat\mZ\), nous avions nommée cette matrice ainsi.
+
+    On reprend exactement la même méthode pour l'opérateur \(\LR\):
+    \begin{align}
+      \LR \vE_t & = \vrots{} \vrots{} \vE_t
+      \\
+      &=\frac{1}{2\pi}\vrots{} \int_\RR\int_\RR \vgrads{}\left(e^{ik_xx + ik_yy}\right) \pvect \hat{\vE_t}(k_x,k_y,z)\dd{k_x}\dd{k_y}
+      \\
+      &= \frac{1}{2\pi}\int_\RR \int_\RR \left(\vhesss - \vlapls\right) \left(\left(e^{ik_xx + ik_yy}\right) \hat{\vE_t}\right)(k_x,k_y,z)\dd{k_x}\dd{k_y}
+    \end{align}
+
+    On définit \(\hat{\LR}\) l'opérateur matriciel tel que
+    \begin{align}
+      \LR \vE_t(x,y,z)
+      &= \frac{1}{2\pi}\int_\RR\int_\RR \hat{\LR} \hat{\vE_t}(k_x,k_y,0)\dd{k_x}\dd{k_y}
+    \end{align}
+
+    \begin{equation}
+      \hat{\LR}(k_x,k_y) =
+      \begin{bmatrix}
+        k_y^2 & -k_x k_y
+        \\
+        -k_x k_y & k_x^2
+      \end{bmatrix}
+    \end{equation}
+
+  \subsection{Expression de la matrice d'impédance approchée par la CI3}
+
+    On peut donc définir \(\hat{\mZ}_{CI3}\) l’opérateur matriciel associé à la condition d'impédance.
+
+    \begin{multline}
+        \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \frac{\hat{\mLD}}{k_0^2}(k_x,k_y) - b_2 \frac{\hat{\mLR}}{k_0^2}(k_x,k_y) \right)^{-1}
+        \\
+        \left(a_0 \mI + a_1 \frac{\hat{\mLD}}{k_0^2}(k_x,k_y) - a_2 \frac{\hat{\mLR}}{k_0^2}(k_x,k_y)\right)
+    \end{multline}
+
+    Les CIOE dérivées de la CI3 s'obtiennent tout aussi facilement.
+
+    \begin{equation}
+        \hat{\mZ}_{CI4}(k_x,k_y) = a_0 \mI + a_1 \frac{\hat{\mLD}}{k_0^2}(k_x,k_y) - a_2 \frac{\hat{\mLR}}{k_0^2}(k_x,k_y)
+    \end{equation}
+    \begin{equation}
+        \hat{\mZ}_{CI1}(k_x,k_y) =  \left(\mI + b \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)^{-1}\left(a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)
+    \end{equation}
+    \begin{equation}
+        \hat{\mZ}_{CI01}(k_x,k_y) =  a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y)
+    \end{equation}
+    Pour calculer les coefficients de la CIOE, il faut minimiser la distance entre le symbole \(\hat{\mZ}(k_x,k_y)\) et \(\hat{\mZ}_{CI3}(k_x,k_y)\) \footnote{La distance est la norme de Frobenius}. Évidemment, il existe une infinité de combinaisons pour un couple \((k_x,k_y)\) données. Nous avons choisis de nous donner un grand nombre de couples et de minimiser au sens des moindres carrés.
+
+  \subsection{Le cas spécial de la condition de Leontovich}
+
+    La condition de Leontovich consiste à approcher le symbole par une constante, et donc d'avoir \(a_1=a_2=b_1=b_2=0\). Dans le paragraphe précèdent, cela revient à chercher la valeur moyenne du symbole. Cependant, cette condition rend compte exactement de l'impédance à incidence normale. Dans ce cas particulier, nous ne réaliserons pas de minimisation mais on fixera cette constante à la valeur du symbole en \((0,0)\).
+
+    \begin{align}
+      \hat{\mZ}_{CI0} & = a_0\mI 
+      \\
+      &= \hat{\mZ}(0,0)
+    \end{align}

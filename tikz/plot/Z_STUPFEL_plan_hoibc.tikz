@@ -1,4 +1,4 @@
-\tikzsetnextfilename{Z_cioe_2015_plan_hoibc_TM}
+\tikzsetnextfilename{Z_STUPFEL_plan_hoibc_TM}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TM},
@@ -24,7 +24,7 @@
         \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.tm)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
     \end{axis}
 \end{tikzpicture}
-\tikzsetnextfilename{Z_cioe_2015_plan_hoibc_TE}
+\tikzsetnextfilename{Z_STUPFEL_plan_hoibc_TE}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TE},

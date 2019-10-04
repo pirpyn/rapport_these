@@ -9,7 +9,7 @@
 
 %redefinition
 \renewcommand{\frac}[2]{\dfrac{#1}{#2}} % Toujours de grandes fractions
-\renewcommand{\tilde}[1]{\widetilde{#1}} % Toujours un grand tilde
+\renewcommand{\tilde}[1]{\overset{\thicksim}{#1}} % Toujours un grand tilde
 \newcommand{\tagit}{\addtocounter{equation}{1}\tag{\theequation}}
 \newcommand{\ds}{\displaystyle}
 
@@ -31,7 +31,7 @@
 % \newcommand{\conj}[1]{{{#1}^*}}
 \newcommand{\conj}[1]{{\overline{#1}}}
 
-\newcommand{\norm}[1]{\left\vert\left\vert#1\right\vert\right\vert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
 
 % Quelques matrices qui reviennent
 \newcommand{\mI}{\mat{I}}
@@ -41,6 +41,8 @@
 \newcommand{\mPP}{\mat{P}}
 \newcommand{\mC}{\mat{C}}
 \newcommand{\mM}{\mat{M}}
+\newcommand{\mJ}{\mat{J}}
+\newcommand{\mH}{\mat{H}}
 \newcommand{\mN}{\mat{N}}
 \newcommand{\mMt}{\mat{\tilde{M}}}
 \newcommand{\mNt}{\mat{\tilde{N}}}
@@ -176,6 +178,7 @@
 \newcommand{\phiq}{\vect{\phi_q}}
 \newcommand{\pj}{\vect{p_j}}
 \newcommand{\qj}{\vect{q_j}}
+\newcommand{\qi}{\vect{q_i}}
 \newcommand{\nuj}{\vect{\nu_j}}
 \newcommand{\uj}{\vect{u_j}}
 \newcommand{\phij}{\vect{\phi_j}}
@@ -199,6 +202,7 @@
 
 \newcommand{\NaN}{\operatorname{NaN}}
 \newcommand{\e}[1]{\mathrm{e}{#1}}
+
 \newenvironment{coefftable}[1]{%
   \begin{tabular}{lc}
   \multicolumn{2}{c}{#1}\\
@@ -206,4 +210,18 @@
   \hline
 }{
    \end{tabular}
+}
+
+% macro with argument filename
+% \newcommand{\coefftable}[1]{%
+%   \def\icoefffile{#1}\icoefftable
+% }
+\newcommand{\tablecoeff}[3][1]{%
+ \begin{minipage}[t]{#1\textwidth}
+    \centering
+    \vspace{0pt}
+    \begin{coefftable}{#2}
+      \input{#3}
+    \end{coefftable}
+  \end{minipage}
 }

@@ -47,7 +47,8 @@
 
 % suite de paquets mathematiques
 \usepackage{amsfonts} % gestions des polices mathématques
-\usepackage[leqno]{amsmath}
+\usepackage{amssymb} % plus de symbole
+\usepackage[leqno]{amsmath} % legno : numéro des équations à gauche
     \everymath{\displaystyle} % Tout en grand !
 
 \usepackage{amsthm} % gestion des théoremes
@@ -64,9 +65,9 @@
     giveninits=true, % initialles pour prénoms
     isbn=true,%
     url=false,%
-    maxcitenames=1,%
+    maxcitenames=1,% Dans le texte, un seul auteur puis et al
     doi=true,%
-    backref=true,%
+    backref=true,% affiche les pages où l'auteur est cité
     backrefstyle=three% si cité en page 1,2,3, ecrire 1-3,
     ]{biblatex}
 
@@ -81,9 +82,9 @@
     linkcolor=blue!70!black,%
     colorlinks=true,%
     citecolor=purple,%
-    bookmarksopen=true,%
-    bookmarksnumbered=true,%
-    bookmarksopenlevel=5,
+    bookmarksopen=true,% à l'ouverture du document, affiche les signets
+    bookmarksnumbered=true,% Numérotes les signets
+    bookmarksopenlevel=5, % Affiche dans les signets jusqu'au niveau 5 ( sub sub section )
     ]{hyperref} % gestion des liens hypertexts et reférences
 
 \usepackage[section]{placeins} % Place un FloatBarrier à chaque nouvelle section, les figures s'y arreterons
@@ -100,7 +101,7 @@
 \usepackage{caption} % Faire des caption en dehors de figure
 
 \usepackage[francais]{minitoc}   % Mini table des matières, en français
-    \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections/sous-sections)
+    \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections & sous-sections)
 
 
 
@@ -131,6 +132,7 @@
             draw=black,
         },
         every axis plot/.append style={
+            mark options=solid,
             line width=1pt
         },
     }
@@ -159,16 +161,17 @@
     \fancyhead[RO]{{\nouppercase{\rightmark}}} % tête de page droite impaire, le titre de la section
     \fancyhead[LE]{{\nouppercase{\leftmark}}} %tête de âge gauche paire, le titre du chapitre
 
-\usepackage{array}   % for \newcolumntype macro
 \usepackage{multirow}
+\usepackage{array}   % for \newcolumntype macro
     \newcolumntype{L}{>{\(}l<{\)}} % math-mode version of column type
     \newcolumntype{C}{>{\(}c<{\)}}
     \newcolumntype{R}{>{\(}r<{\)}}
 
 \usepackage{tcolorbox} % Pour faire de jolie boite, un peu visible
-\usepackage{lettrine} % Pour faire de jolie lettre
+\usepackage{lettrine} % Pour faire de jolie lettrine 
+    % voir http://ctan.tetaneutral.net/macros/latex/contrib/lettrine/doc/demo.pdf
 
-\usepackage{makecell} % Permet de mettre des \\ dans un \makecell{}
+\usepackage{makecell} % Permet de mettre des \\ dans tableau grâce à un \makecell{un \\ text} et
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
