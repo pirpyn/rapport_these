@@ -1,6 +1,6 @@
 \section{Cas d'un objet sphérique}
 
-    Les champs solutions de Maxwell dans le cas d'un repère sphérique sont décomposables en harmoniques sphériques. Nous rappelons d'abord l’expression de ces dernières puis nous donnerons l'expression du symbole de l'opérateur de d'impédance de la même manière que \cite{cheng_spectral_1993}.
+    Les champs solutions de Maxwell dans le cas d'un repère sphérique sont décomposables en harmoniques sphériques. Nous rappelons d'abord l’expression de ces dernières puis nous donnerons l'expression de la matrice d'impédance de la même manière que \cite{cheng_spectral_1993}.
 
     \subsection{Les harmoniques sphériques}
 
@@ -292,7 +292,7 @@
             \right)
         \end{equation}
 
-    \subsection{Symbole de l'opérateur d'impédance pour une couche}
+    \subsection{Matrice d'impédance pour une couche}
 
         \begin{figure}[!hbt]
           \centering
@@ -303,7 +303,7 @@
         \end{figure}
 
         \begin{defn}
-          On définit le symbole de l'opérateur d'impédance \(\hat{\mZ}(m,n)\) tel que
+          On définit la matrice d'impédance \(\hat{\mZ}(m,n)\) tel que
           \[
               \hat{\vE_t}(r_1,m,n) = \hat{\mZ}(m,n)\hat{\vJ}(r_1,m,n)
           \]
@@ -366,7 +366,7 @@
             \end{bmatrix}
         \end{equation}
 
-        De la même manière que pour le plan et le cylindre, on en déduit le symbole de l'opérateur d'impédance
+        De la même manière que pour le plan et le cylindre, on en déduit la matrice d'impédance
 
         \begin{multline}
             \hat{\mZ}(m,n) = -i\eta
@@ -387,7 +387,7 @@
             \right)^{-1}
         \end{multline}
 
-        Par définition des matrices \(\mJ_E,\mH_E,\mJ_H,\mH_H\), elle sont anti-diagonale. Donc leur inverse l'est aussi. Donc le produit de l'une avec l'inverse d'une autre est une matrice diagonale. Donc le symbole de l'opérateur d'impédance est une matrice diagonale.
+        Par définition des matrices \(\mJ_E,\mH_E,\mJ_H,\mH_H\), elle sont anti-diagonale. Donc leur inverse l'est aussi. Donc le produit de l'une avec l'inverse d'une autre est une matrice diagonale. Donc la matrice d'impédance est une matrice diagonale.
 
         \begin{equation}
             \hat{\mZ}(m,n) = -i\eta
@@ -402,12 +402,8 @@
             \end{bmatrix}
         \end{equation}
 
-    \subsection{Symbole de l'opérateur d'impédance pour plusieurs couche}
-
-        \begin{TODO}
-            Les matrices J,H dépendent de k donc de nu qui depend de la couche. Corriger.
-        \end{TODO}
-
+    \subsection{Matrice d'impédance pour plusieurs couches}
+    
         \begin{figure}[!hbt]
           \centering
             \tikzsetnextfilename{sphere_n_couche}
@@ -418,13 +414,13 @@
 
 
         \begin{defn}
-          Pour chaque couche \(p\), on définit le symbole de l'opérateur d'impédance \(\hat{\mZ}_p(m,n)\) tel que
+          Pour chaque couche \(p\), on définit la matrice d'impédance \(\hat{\mZ}_p(m,n)\) tel que
           \[
               \hat{\vE_t}(r_p,m,n) = \hat{\mZ}_p(m,n)\hat{\vJ}(r_p,m,n)
           \]
         \end{defn}
 
-        On résonne par récurrence: on suppose connu le symbole de l'opérateur d'impédance de la couche \(p\) et on cherche le suivant
+        On résonne par récurrence: on suppose connu la matrice d'impédance de la couche \(p\) \(\hat{\mZ}_p\) et on cherche \(\hat{\mZ}_{p+1}\).
 
         En \(r=r_{p}=r_0+\sum_{i=1}^p d_p\), on a la relation \( \hat{\vE_t}(r_p,m,n) = \hat{\mZ}_p(m,n)\hat{\vJ}(r_p,m,n)\) où \(\hat{\mZ}_p(m,n)\) est un matrice diagonale
 
@@ -495,7 +491,7 @@
             \end{bmatrix}
         \end{equation}
 
-        On en déduit aisément le symbole de la couche \(p+1\)
+        On en déduit la matrice de la couche \(p+1\)
 
         \begin{multline}
             \hat{\mZ}_{p+1}(m,n) = -i\eta_p
@@ -516,7 +512,7 @@
             \right)^{-1}
         \end{multline}
 
-        Pour les mêmes raisons que dans le cas d'une couche, ce symbole est diagonal. Cependant son expression n'est plus aussi simple (voir annexe \ref{sec:annex:imp_sphere} ).
+        Pour les mêmes raisons que dans le cas d'une couche, cette matrice est diagonale. Cependant son expression n'est plus aussi simple (voir annexe \ref{sec:annex:imp_sphere} ).
 
   \subsection{Applications numérique}
 

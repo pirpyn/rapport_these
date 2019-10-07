@@ -49,6 +49,7 @@
     \frontmatter
         \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
         \input{tex/liminaires/couverture}
+        \restoregeometry
         \include{liminaires}
         % Quand ce sera fini
         % \input{tex/liminaires/personnel}
@@ -58,8 +59,7 @@
         \hypertarget{tableofcontent}{}%
         \pdfbookmark[0]{Sommaire}{tableofcontent}%
         \tableofcontents
-    %     \include{index}
-        \restoregeometry
+        \include{index}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \mainmatter
         \include{chapitre_0} % intro
@@ -75,6 +75,6 @@
         \renewcommand\thesection{\Alph{section}}
         \setcounter{minitocdepth}{1} % Mini-toc breve (sections)
         \include{annexes}
-    \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+    % \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
     \printbibliography
 \end{document}

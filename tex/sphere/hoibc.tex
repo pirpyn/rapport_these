@@ -56,16 +56,21 @@
         \ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Pmn(\cos(\theta))}\right) - \frac{m^2}{\sin\theta}\Pmn(\cos(\theta))
       \right)
     \end{align*}
-    Or d’après \cite[\href{https://dlmf.nist.gov/14.10}{sec.~14.10}]{dlmf_nist_2019} les fonctions de Legendre sont récurrentes
+    Or les fonctions de Legendre sont solutions de l'équation différentielle de Legendre
     \begin{align}
-      \sin(\theta)\ddr{\theta}{\Pmn(\cos(\theta))} &= (n+m)\PP_{n-1}^m(\cos(\theta)) - n\cos(\theta)\Pmn(\cos(\theta))
+      \frac{1}{\sin(\theta)}\ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Pmn(\cos(\theta))}\right) + \left(n(n+1)-\frac{m^2}{\sin(\theta)^2}\right)\Pmn(\cos(\theta) = 0
     \end{align}
 
     Donc 
     \begin{align*}
-      \LD\Umn^\perp(\rtp) = -\frac{n(n+1)}{r^2}\Umn^\perp(\rtp)
+       \vdivs{}\Umn^\perp(\rtp) = -\frac{n(n+1)}{r}\Pmn(\cos(\theta))e^{im\phi}
     \end{align*}
-
+    Enfin d’après la définition du gradient surfacique en coordonnées sphériques
+    \begin{align*}
+       \vgrads{}\vdivs{}\Umn^\perp(\rtp) &= -\frac{n(n+1)}{r}\left(\frac{1}{r}\ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}\vect{e_\theta}+\frac{1}{r\sin(\theta)}\ddr{\phi}{e^{im\phi}}\Pmn(\cos(\theta))\vect{e_\phi}\right)
+       \\
+       &=-\frac{n(n+1)}{r^2}\Umn^\perp(\rtp)
+    \end{align*}
     On utilise les résultats de \cite{marceaux_high-order_2000}
 
     \begin{align*}

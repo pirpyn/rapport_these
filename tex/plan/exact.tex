@@ -371,6 +371,14 @@
                 -k_x k _y &  k_x^2
                 \end{bmatrix}
             \end{align}
+
+            On remarque alors que 
+            \begin{align}
+                \mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &=  e^{ik_3d}\frac{1}{kk_3\eta}(k^2\mI  -\hat\mLR)
+                \\
+                \mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= -e^{-ik_3d}\frac{1}{kk_3\eta}(k^2\mI  -\hat\mLR)
+            \end{align}
+
             Ces matrices sont inversibles si \(k_3\) est non nul, ce que nous avons déjà supposé.
 
             Un simple calcul matriciel permet de trouver que \( (k^2\mI - \hat{\mLR})^{-1} = \frac{1}{k^2k_3^2}\left(k^2 \mI + \hat{\mLD}\right) \).
@@ -401,7 +409,7 @@
 
         Dans ce cas, pour revenir sur la polarisation, introduite dans la section précédente, le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x} + {E_z} \vect{e_z} \), tandis que le champ \(\vH\)-TE correspond à \({H_x} \vect{e_x} + {H_z} \vect{e_z}\) et le champ \(\vH\)-TM correspond à \({H_y} \vect{e_y}\).
         
-        Alors le symbole \(\hat \mZ\) peut se réécrire comme
+        Alors la matrice \(\hat \mZ\) peut se réécrire comme
         \begin{equation}
             \hat \mZ =
             \begin{bmatrix}
@@ -552,7 +560,7 @@
                 \\
                 \det\left(\mM_{Bm}(k_x,k_y,z_{m-1}^+)\right) &\not = 0
             \end{align}
-            Alors le symbole \(\hat \mZ_n\) est défini par la relation de récurrence :
+            Alors la matrice \(\hat \mZ_n\) est défini par la relation de récurrence :
             \begin{multline*}
                 \hat \mZ_m = \\
                 \left(\mA_{Em}(z_{m}^-)\left(\mM_{Am}(k_x,k_y,z_{m-1}^+)\right)^{-1} - \mB_{Em}(z_{m}^-) \left(\mM_{Bm}(k_x,k_y,z_{m-1}^+)\right)^{-1}\right)
