@@ -48,23 +48,31 @@
 
   \begin{proof}
 
-    On peut simplifier les opérateurs différentiels:
+    Les opérateurs différentiels simplifient les équations de Maxwell
 
     \begin{align}
-      \vrot \hat \vE(r,n,k_z) &= i\left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right)\vect{e_r} +
+      \vrot \hat \vE(r,n,k_z) &=-i\w\mu \hat \vH(r,n,k_z)
+      \\
+      \vrot \hat \vH(r,n,k_z) &= i\w\eps \hat \vE(r,n,k_z)
+    \end{align}
+    \begin{align}
+      i\left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right)\vect{e_r} +
       \left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\vect{e_\theta} +
       \frac{1}{r}\left(\ddr{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\vect{e_z}
-      \\
       &=-i\w\mu \hat \vH(r,n,k_z)
+      \\
+      i\left(\frac{n}{r}\hat{H_z} - k_z\hat{H_\theta}\right)\vect{e_r} +
+      \left(ik_z\hat{H_r} - \ddr{r}{\hat{H_z}}\right)\vect{e_\theta} +
+      \frac{1}{r}\left(\ddr{r}{(r\hat{H_\theta})}-in\hat{H_r}\right)\vect{e_z}
+      &=i\w\eps \hat \vE(r,n,k_z)
     \end{align}
-
     % On remarque que la méthode utilisée pour le plan aboutie à une équation différentielle à coefficients non constants de type \(r\ddr{r}{\vect{X}}(r,n,k_z) = \mat{M}(r,n,k_z)\vect{X}(r,n,k_z)\).
     % On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice.
     %Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
 
     Comme l'on cherche \(\hat \vE_t, \hat \vH_t\), on remarque que les 2\ieme composantes des équations de Maxwell permettent de déduire \(\hat\vE_t, \hat\vH_t\) de \( \hat E_z, \hat H_z\). Il faut donc trouver une EDP dont ces deux quantités sont solution.
 
-    On couple les 2 équations du système de Maxwell pour aboutir à une équation sur \(\hat \vE\) seul:
+    On couple les 2 équations du système de Maxwell:
 
     % \begin{align}
     %   \vrot \vrot \hat \vE &= \w^2\eps\mu \hat \vE
@@ -83,8 +91,10 @@
     \begin{equation}
       \left\lbrace
       \begin{array}{ccc}
-        -\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)\hat{E_r}  +i\frac{n}{r^2}\ddr{r}{(r\hat{E_\theta})}  +k_z\ddr{r}{\hat{E_z}} & = & 0\\
-        in\ddr{r}{}\left(\frac{\hat{E_r}}{r}\right) -\left(\w^2\eps\mu - k_z^2\right)\hat{E_\theta} + \ddr{r}{}\left(\frac{1}{r}\ddr{r}{(r\hat{E_\theta})}\right)  - n\frac{k_z}{r}\hat{E_z} & = & 0\\
+        -\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)\hat{E_r}  +i\frac{n}{r^2}\ddr{r}{(r\hat{E_\theta})}  +i k_z\ddr{r}{\hat{E_z}} & = & 0
+        \\
+        in\ddr{r}{}\left(\frac{\hat{E_r}}{r}\right) -\left(\w^2\eps\mu - k_z^2\right)\hat{E_\theta} - \ddr{r}{}\left(\frac{1}{r}\ddr{r}{(r\hat{E_\theta})}\right)  - n\frac{k_z}{r}\hat{E_z} & = & 0
+        \\
         i\frac{k_z}{r}\ddr{r}{(r\hat{E_r})}  - n\frac{k_z}{r}\hat{E_\theta}  -\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)\hat{E_z} - \frac{1}{r}\ddr{r}{}\left(r\ddr{r}{\hat{E_z}}\right) & = & 0
       \end{array}
       \right.
@@ -122,7 +132,7 @@
 
     On trouve exactement le même résultat pour \(\hat{H_z}\): 
 
-    Soient \((c_3(n,k_z,c_4(n,k_z)) \in \CC(\NN\times\RR)^2\)
+    Soient \((c_3(n,k_z),c_4(n,k_z)) \in \CC(\NN\times\RR)^2\)
     \begin{equation}
       \hat{H_z}(r,n,k_z) = c_3(n,k_z) J_n\left(k_3r\right) + c_4(n,k_z) H_n^{(2)}\left(k_3r\right)
     \end{equation}

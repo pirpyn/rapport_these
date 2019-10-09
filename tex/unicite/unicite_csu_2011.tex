@@ -1,4 +1,4 @@
-\section[CSU pour les CIOE de Stupfel et Poget 2011]{CSU pour les CIOE de \cite{stupfel_sufficient_2011}}
+\section[Des CSU pour les CIOE de Stupfel et Poget 2011]{Des conditions suffisante pour les CIOE de \cite{stupfel_sufficient_2011}}
 
   Nous définissons les \glspl{acr-cioe} comme une condition limite liant les traces tangentielles \(\vE_t, \vJ\) des champs sur \(\Gamma\). Une démonstration pour obtenir ces CIOE est en dehors du cadre de cette thèse, nous ne ferons donc qu'utiliser des CIOE existantes. 
 
@@ -49,7 +49,9 @@
     \begin{equation}
       \Re\left(a_0\right) \ge 0
     \end{equation}
-    pour que \(\Re(X)\ge0\)
+    pour que \(\Re(X)\ge0\).
+
+    Nous referons à cette condition comme ``la'' CSU-0. La CSU-0 est donc un sous-espace de \(\CC\), le demi-espace des complexes à partie réelle positive.
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI01}
@@ -66,13 +68,14 @@
       X & = \conj{a_0} \norm{\vJ} ^2 + \conj{a_1}\int_\Gamma \vJ\cdot \LL\conj{\vJ}
     \end{align*}
 
-    Il suffit alors d'imposer les conditions suivantes pour que \(\Re(X)\ge 0\) pour toutes solutions \(\vE_t,\vJ\)
+    Il suffit alors d'imposer les conditions suivantes pour que \(\Re(X)\ge 0\) pour toutes solutions \(\vE_t,\vJ\).
     \begin{align}
       \Re\left(a_0\right) \ge 0\\
       \Re\left(a_1\right) \le 0
     \end{align}
 
-    Il n'y a priori pas d'autres CSU pour cette CIOE.
+    Nous referons à ces conditions comme ``les'' CSU-01. Les CSU-01 sont donc un sous-espace de \(\CC^2\).
+
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI1}
@@ -84,7 +87,7 @@
       (1 + b \LL) \vE_t = (a_0 + a_1 \LL) \vJ
     \end{align*}
 
-    Pour cette CIOE, nous montrons plusieurs jeux de CSU possibles.
+    Pour cette CIOE, nous démontrons qu'il existe plusieurs jeux de CSU possibles.
 
     \subsubsection{CSU de \cite{stupfel_sufficient_2011}}
 
@@ -129,7 +132,9 @@
         \end{align}
       \end{proof}
 
-      Nous pouvons noter que ces CSU fixent la partie réelle de \(a_1\) en fonction des autres coefficients, ce qui est plus contraignant qu'une condition d'inégalité. De plus, on remarque qu'on ne retombe pas sur les CSU de la CI01 si \(b=0\). Ce sont donc des CSU trop contraignantes.
+      Nous pouvons noter que ces CSU fixent la partie réelle de \(a_1\) en fonction des autres coefficients, ce qui est plus contraignant qu'une condition d'inégalité.
+  
+      Nous referons à ces conditions comme ``les'' CSU-1-1. Les CSU-1-1 sont un sous-espace de \(\CC^3\). On remarque que la projection de ce sous-espace sur \(\CC^2 \times \lbrace0\rbrace\) (quand \(b=0\) donc quand la CI1 devient la CI01) n'est pas égale aux CSU-01, mais est un sous-espace plus petit. Ce sont donc des CSU trop contraignantes.
     
     \subsubsection{CSU de \cite{stupfel_implementation_2015}}
 
