@@ -1,17 +1,27 @@
-\section[Des CSU pour les CIOE de Aubakirov 2014]{Des conditions suffisante pour les CIOE de \cite{aubakirov_electromagnetic_2014}}
+\section[Des CSU pour la CIOE de Aubakirov 2014]{Des conditions suffisante pour la CIOE de \cite{aubakirov_electromagnetic_2014}}
+
+  Dans la thèse de Abil \cite{aubakirov_electromagnetic_2014}, l'opérateur de Hodge \gls{ope-L} est séparé en deux.
 
   \begin{defn}
-    Les opérateurs \gls{ope-LD} et \gls{ope-LR} sont introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\) 
+    Les opérateurs \gls{ope-LD} et \gls{ope-LR} sont définis tels que %sont introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\) 
 
-    Pour tous \(\vect U,\vect V \in (\mathcal{C}^\infty(\Gamma,\CC))^3\): 
+    Pour tous \(\vect U,\vect V \in (\mathcal{C}^\infty(\Gamma))\): 
     \begin{align*}
-      \LD(\vect U) &= \tgrads (\tdivs \vect U)\\
-      \LR(\vect V) &= \trots( \trots \vect V)
+      \LD(\vect U) &= \tgrads (\tdivs \vect U)
+      \\
+      \LR(\vect V) &= \tvrots( \tvrots \vect V)
     \end{align*}
   \end{defn}
 
   \begin{prop}
     \(\LD\) est hermitien symétrique négatif et \(\LR\) est hermitien symétrique positif.
+
+    Pour tous \(\vect U \in (\mathcal{C}^\infty(\Gamma))\): 
+    \begin{align*}
+      \int_\Gamma \LD(\vect U)\cdot \conj{\vect U} &= -\int_\Gamma |\tdivs \vect U|^2
+      \\
+      \int_\Gamma \LR(\vect U)\cdot \conj{\vect U} &= \int_\Gamma |\vn \cdot \tvrots \vect U|^2
+    \end{align*}
   \end{prop}
 
   \begin{prop}
@@ -19,15 +29,15 @@
     sortante
     \begin{equation}
       \begin{matrix}
-        \forall \vect U \in (\mathcal{C}^\infty(\Gamma,\CC))^3 ,& \LR(\LD(\vect U)) = \LD(\LR(\vect U)) = 0
+        \forall \vect U \in (\mathcal{C}^\infty(\Gamma,\CC)) ,& \LR(\LD(\vect U)) = \LD(\LR(\vect U)) = 0
       \end{matrix}
     \end{equation}
   \end{prop}
 
   \begin{proof}
-    Soit (\(x_1,x_2\)) système de coordonnées locales à \(\Gamma\)
+    Soit (\(x_1,x_2\)) un système de coordonnées locales à \(\Gamma\)
 
-    Soit un vecteur tangent défini en tout point de la surface exprimé sur la base locale \(\vect{u_1},\vect{u_2},\vect{n}\)
+    Soit un vecteur tangent défini en tout point de la surface, et exprimé dans la base locale \(\vect{u_1},\vect{u_2},\vect{n}\)
     \[
       \vect{U} = 
       \begin{bmatrix}
@@ -41,16 +51,16 @@
 
     D'après \cite[p.~1028, A3.22]{bladel_electromagnetic_2007}, le rotationnel surfacique d'un vecteur tangent est une vecteur normal à la surface
     \[
-      \trots{\vect{U}} = \vn \left(\vn\cdot\trots{\vect{U}}\right)
+      \tvrots{\vect{U}} =\vn \left(\vn\cdot\trot{\vect{U}}\right)
     \]
 
     Montrons que \(\LR\LD = 0\).
 
-    D’après \cite[p.~1029, A3.42]{bladel_electromagnetic_2007}, soit \(f(x_1,x_2)\) une fonction régulière définie sur \(\Gamma\) alors \(\vn \cdot \trots(\tgrads f(x_1,x_2)) = 0\).
+    D’après \cite[p.~1029, A3.42]{bladel_electromagnetic_2007}, soit \(f(x_1,x_2)\) une fonction régulière définie sur \(\Gamma\) alors \(\vn \cdot \tvrots(\tgrads f(x_1,x_2)) = 0\).
 
     On exprime les opérateurs
     \begin{align*}
-      \LR(\LD \vect U)  &= \trots \left(\vn \left(\vn \cdot \trots \left( \tgrads \left(\tdivs \vect U\right)\right)\right)\right) \\
+      \LR(\LD \vect U)  &= \tvrots \left(\vn \left(\vn \cdot \tvrots \left( \tgrads \left(\tdivs \vect U\right)\right)\right)\right) \\
       &= 0
     \end{align*}
 
@@ -58,7 +68,7 @@
 
     D’après \cite[p.~1029, A3.43]{bladel_electromagnetic_2007}, \(\tdivs \trots (f\vn) = 0\).
     \begin{align*}
-      \LD(\LR \vect U) &= \tgrads \tdivs \trots (\vn (\vn \cdot \trots \vect U)) \\
+      \LD(\LR \vect U) &= \tgrads \tdivs \tvrots (\vn (\vn \cdot \tvrots \vect U)) \\
       &= 0
     \end{align*}
   \end{proof}
@@ -81,7 +91,7 @@
     \end{align}
   \end{prop}
 
-  \begin{prop}
+  \begin{proof}
     On pose
     \begin{align*}
       F_D &:= \int_\Gamma \vJ\cdot \LD\conj{\vJ}  \le 0 & F_R &:= \int_\Gamma \vJ\cdot \LR\conj{\vJ}  \ge 0
@@ -100,9 +110,9 @@
       \\
       \Re\left(a_2\right) \le 0
     \end{align*}
-  \end{prop}
+  \end{proof}
 
-  On remarque que si \(a_1=a_2\), ces CSU sont identiques aux CSU de la CI01.
+  On remarque que si \(a_1=a_2\), ces CSU sont identiques aux CSU-01.
 
 \subsection{CSU pour la CI3}
 
@@ -324,7 +334,7 @@
     \end{minipage}
   \end{proof}
 
-  Pour conclure, on remarque que l'on obtient à 3 groupes de CSU
+  Pour conclure, on remarque que l'on obtient 3 groupes de CSU
   \begin{itemize}
     \item Avec le 1\ier système
     \item Avec le 2\ieme système
@@ -436,27 +446,29 @@
 
   \begin{prop}
     Soit \(z = \left(1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}\right) \). Ces CSU sont
-    \begin{align}
-      \Re\left(\conj{a_0}z\right) \ge 0
-      \\
-      \Re\left(\conj{a_1}z\right) \le 0
-      \\
-      \Re\left(\conj{a_2}z\right) \le 0
-      \\
-      \Re\left(\frac{b_1}{a_1}\right) \ge 0
-      \\
-      \Re\left(\frac{b_2}{a_2}\right) \ge 0
-      \\
-      \Re\left(a_0\right) \ge 0
-      \\
-      \Re\left(a_1\right) \le 0
-      \\
-      \Re\left(a_2\right) \le 0
-      \\
-      \Re\left(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}\right) \le 0
-      \\
-      \Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) \le 0
-    \end{align}
+    % \begin{subequations}
+      \begin{align}
+        \Re\left(\conj{a_0}z\right) \ge 0
+        \\
+        \Re\left(\conj{a_1}z\right) \le 0
+        \\
+        \Re\left(\conj{a_2}z\right) \le 0
+        \\
+        \Re\left(\frac{b_1}{a_1}\right) \ge 0
+        \\
+        \Re\left(\frac{b_2}{a_2}\right) \ge 0
+        \\
+        \Re\left(a_0\right) \ge 0
+        \\
+        \Re\left(a_1\right) \le 0
+        \\
+        \Re\left(a_2\right) \le 0
+        \\
+        \Re\left(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}\right) \le 0
+        \\
+        \Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) \le 0
+      \end{align}
+    % \end{subequations}
   \end{prop}
 
   \begin{proof}

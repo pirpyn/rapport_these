@@ -68,7 +68,7 @@
     \subsection{Expressions des champs tangentiels dans chaque couche}
 
         \begin{defn}
-            On définit les matrices \(\mA_{E}(k_x,k_y,z),\mB_{E}(k_x,k_y,z),\mA_{H}(k_x,k_y,z),\mB_{H}(k_x,k_y,z)\)
+            On définit les matrices \(\mA_{E}(k_x,k_y,z)\),\(\mB_{E}(k_x,k_y,z)\),\(\mA_{H}(k_x,k_y,z)\),\(\mB_{H}(k_x,k_y,z)\)
             \begin{align}
               \mA_{E}(k_x,k_y,z) &= e^{ik_3z}
               \begin{bmatrix}
@@ -101,7 +101,7 @@
         \end{defn}
 
         \begin{prop}
-            Dans chaque couche, il existe \((c_i(k_x,k_y))_{1<=i<=4}, \in \CC(\RR^2)^4\) tels que
+            Dans chaque couche, il existe \((c_i(k_x,k_y))_{1\le i \le4}, \in \CC(\RR^2)^4\) tels que
             \begin{align}
                 \hat{\vE}_t(k_x,k_y,z) &= \mA_E(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} + \mB_E(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}
                 \\
@@ -220,7 +220,7 @@
 
         Supposons par exemple que \(k_3 = \sqrt{k_0^2 - k_x^2 - k_y^2}\) soit réel, donc positif. Si l'on veut que par exemple \(\w t + k_3 z\) soit constant quand \(t\) augmente, il faut que \(z\) diminue, autrement dit, quand le temps avance, l'onde se rapproche du plan. C'est la partie onde incidente et de fait l'autre partie est l'onde réfléchie.
 
-        Supposons maintenant que\(k_3 = i\sqrt{k_0^2 - k_x^2 - k_y^2}\)  soit imaginaire. Alors si l'on veut des champs réfléchis finis à l'infini, il faut que \(\Im(k_3) = \Im(\sqrt{k_0 - k_x^2 - k_y^2})\) soit négatif, ainsi on a une évolution en \(e^{\Im(k_3)z}\), qui tend bien vers \(0\).
+        Supposons maintenant que \(k_3 = i\sqrt{k_0^2 - k_x^2 - k_y^2}\)  soit imaginaire. Alors si l'on veut des champs réfléchis finis à l'infini, il faut que \(\Im(k_3) = \Im(\sqrt{k_0 - k_x^2 - k_y^2})\) soit négatif, ainsi on a une évolution en \(e^{\Im(k_3)z}\), qui tend bien vers \(0\).
 
     \subsection{Expression de la matrice d'impédance pour une couche de matériau}
 
