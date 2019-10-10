@@ -51,7 +51,7 @@
     \end{equation}
     pour que \(\Re(X)\ge0\).
 
-    Nous referons à cette condition comme ``la'' CSU-0. La CSU-0 est donc un sous-espace de \(\CC\), le demi-espace des complexes à partie réelle positive.
+    Nous referons à cette condition comme la CSU-0. La CSU-0 est donc un sous-espace de \(\CC\), le demi-espace des complexes à partie réelle positive.
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI01}
@@ -74,7 +74,7 @@
       \Re\left(a_1\right) \le 0
     \end{align}
 
-    Nous referons à ces conditions comme ``les'' CSU-01. Les CSU-01 sont donc un sous-espace de \(\CC^2\).
+    Nous referons à ces conditions comme les CSU-01. Les CSU-01 sont donc un sous-espace de \(\CC^2\).
 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -134,7 +134,7 @@
 
       Nous pouvons noter que ces CSU fixent la partie réelle de \(a_1\) en fonction des autres coefficients, ce qui est plus contraignant qu'une condition d'inégalité.
   
-      Nous referons à ces conditions comme ``les'' CSU-1-1. Les CSU-1-1 sont un sous-espace de \(\CC^3\). On remarque que la projection de ce sous-espace sur \(\CC^2 \times \lbrace0\rbrace\) (quand \(b=0\) donc quand la CI1 devient la CI01) n'est pas égale aux CSU-01, mais est un sous-espace plus petit. Ce sont donc des CSU trop contraignantes.
+      Nous referons à ces conditions comme les CSU-1-1. Les CSU-1-1 sont un sous-espace de \(\CC^3\). On remarque que l'intersection de ce sous-espace avec \(\CC^2 \times \lbrace0\rbrace\) (quand \(b=0\) donc quand la CI1 devient la CI01) est inclus dans l'espace des \(\text{CSU-01}\times\lbrace0\rbrace\) mais pas égal à cause de la condition d'égalité. Ce sont donc des CSU trop contraignantes.
     
     \subsubsection{CSU de \cite{stupfel_implementation_2015}}
 
@@ -245,8 +245,7 @@
 
       \end{proof}
 
-      Mais dans ce cas, on ne retombe pas non plus sur les CSU de la CI01 quand \(b=0\).
-
+      Nous referons à ces conditions comme les CSU-1-2. Les CSU-1-2 sont un sous-espace de \(\CC^3\). Comme pour les CSU-1-1, on remarque que l'intersection de ce sous-espace avec \(\CC^2 \times \lbrace0\rbrace\) (quand \(b=0\) donc quand la CI1 est la CI01) est inclus dans l'espace des \(\text{CSU-01}\times\lbrace0\rbrace\) mais pas égal à cause de la condition d'égalité. Ce sont encore des CSU trop contraignantes.
     % \paragraph*{Correction des CSU de l'article}
 
     %   Les CSU présentées à l'équation (43) de cet article contiennent une erreur.
@@ -258,101 +257,135 @@
         
     %   \end{align*}
 
-    \subsubsection{Nouvelles CSU pour la CI1 qui préservent les CSU de la CI01}
-      Dans la partie précédente, nous avons trouvé un certain nombre de CSU pour la CI1 que nous avons toutes jugées insatisfaisantes, car les CSU de la CI01 que nous avions trouvés n'y était pas incluse. Autrement dit, poser \(b=0\) ne redonne pas les CSU de la CI01.
+    \subsubsection{Des CSU pour la CI1 qui préservent les CSU de la CI01}
+      Dans la partie précédente, nous avons trouvé un certain nombre de CSU pour la CI1 que nous avons toutes jugées insatisfaisantes, car les CSU de la CI01 que nous avions trouvés n'y était pas incluse.% Autrement dit, poser \(b=0\) ne redonne pas les CSU de la CI01.
 
       Nous montrons qu'il est possible d'obtenir pour la CI1 des CSU qui ont cette propriété.
 
-      \paragraph{Cas \(a_1\not=0\)}
-        ~
-        \begin{prop}
-          Des CSU pour la CI1 sont
+      \begin{prop} Des CSU sont
           \begin{align}
-            \Re\left(\frac{b}{a_1}\right) \ge 0 \\
-            \Re\left(a_0\right) \ge 0 \\
-            \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_1}}{a_1}\right) \le 0
-          \end{align}
-        \end{prop}
-        \begin{proof}
-          En supposant \(a_1 \not=0\), on développe 
-          \begin{align*}
-            (a_0 + a_1 \LL)^{-1}(1 + b \LL) &= (a_0 + a_1 \LL)^{-1} + b (a_0 + a_1 \LL)^{-1}\LL
+            \Re\left(b\conj{a_1}\right) \ge 0
             \\
-            &=(a_0 + a_1 \LL)^{-1} + \frac{b}{a_1} (a_0 + a_1 \LL)^{-1}(a_0 + a_1\LL -a_0)
+            \Re\left(a_0\right) \ge 0
             \\
-            &=\frac{b}{a_1} + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}
-          \end{align*}
-
-          et ainsi
-          \[
-            X = \int_\Gamma \left(\left(\frac{b}{a_1}  + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\right)\vE_t\right) \cdot \conj{\vE_t} 
-          \]
-
-          On pose
-          \begin{align*}
-            \vect{D} &= (a_0 + a_1 \LL)^{-1}\vE_t
+            \Re\left(\left(a_1-a_0 b\right){\conj{a_1}^2}\right) \le 0
             \\
-            S &= -\int_\Gamma \vect{D} \cdot \LL\conj{\vect{D}} \ge 0
-          \end{align*}
-          Comme \(\conj{\vE_t} = (\conj{a_0} + \conj{a_1}\LL)\vect{D}\) alors 
-          \begin{align*}
-            \int_\Gamma (a_0 +a_1 \LL) ^{-1}\vE_t\cdot \conj{\vE_t} 
-            &= \int_\Gamma \vect{D}\cdot (\conj{a_0} + \conj{a_1}\LL)\vect{D} 
-            \\
-            &= \conj{a_0} \norm{\vect{D}}^2 - \conj{a_1} S
-          \end{align*}
-          et l'on peut alors écrire
-
-          \begin{equation}
-            \label{eq:unicite:form_var:decomp_cgu_ci1_a1}
-            X = \frac{b}{a_1}\norm{\vE_t}^2  + \left(1-b\frac{a_0}{a_1}\right)\left(\conj{a_0} \norm{\vect{D}}^2 - \conj{a_1} S\right)
-          \end{equation}
-          Il suffit alors d'imposer la positivité de la partie réelle de chaque terme pour impliquer \(\Re(X)\ge0\)
-          \begin{align}
-            a_1 \not = 0\\
-            \Re\left(\frac{b}{a_1}\right) \ge 0 \\
-            \Re\left(a_0\right) \ge 0 \\
-            \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_1}}{a_1}\right) \le 0
-          \end{align}
-        \end{proof}
-
-        Quand \(b=0\), on vérifie les CSU dans la CI01.% La condition \(a_1\not=0\) n'est pas contraignante car c'est une propriété presque toujours vrai et donc ce jeu est un meilleur choix dans le cadre d'un code numérique.
-
-      \paragraph{Cas \(a_1=0\)}
-        ~
-        
-        On complète les CSU précédentes
-        \begin{prop}
-          Des CSU sont
-          \begin{align}
-            a_1 = 0 \\
-            a_0 \not= 0\\
-            \Re\left(a_0\right) \ge 0\\
             \Re\left(b\conj{a_0}\right) \le 0
           \end{align}
-        \end{prop}
-        \begin{proof}
-          De la définition de la CIOE, on déduit que
-          \[
-            X = \int_\Gamma \left( \frac{1}{a_0}\left(1+b\LL\right)\vE_t\right) \cdot \conj{\vE_t} 
-          \]
+      \end{prop}
 
-          On a alors
-          \begin{equation}
-            \label{eq:unicite:form_var:decomp_cgu_ci1_a1_nul}
-            X = \frac{1}{a_0}\norm{\vE_t}^2  - \frac{b}{a_0}G
-          \end{equation}
 
-          Il suffit alors d'imposer la positivité de la partie réelle de chaque terme pour impliquer \(\Re(X)\ge0\)
-          \begin{align}
-            a_1 = 0 \\
-            a_0 \not= 0\\
-            \Re\left(a_0\right) \ge 0\\
-            \Re\left(b\conj{a_0}\right) \le 0
-          \end{align}
-        \end{proof}
+        \paragraph{Cas \(a_1\not=0\)}
+          ~
+          \begin{prop}
+            Des CSU pour la CI1 sont
+            \begin{align}
+              \Re\left({b}\conj{a_1}\right) \ge 0
+              \\
+              \Re\left(a_0\right) \ge 0
+              \\
+              \Re\left(\left(a_1-a_0 b\right){\conj{a_1}^2}\right) \le 0
+            \end{align}
+          \end{prop}
+          \begin{proof}
+            En supposant \(a_1 \not=0\), on développe 
+            \begin{align*}
+              (a_0 + a_1 \LL)^{-1}(1 + b \LL) &= (a_0 + a_1 \LL)^{-1} + b (a_0 + a_1 \LL)^{-1}\LL
+              \\
+              &=(a_0 + a_1 \LL)^{-1} + \frac{b}{a_1} (a_0 + a_1 \LL)^{-1}(a_0 + a_1\LL -a_0)
+              \\
+              &=\frac{b}{a_1} + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}
+            \end{align*}
 
-        On remarque que si \(b=0\) s’annule, comme on a supposé \(a_1=0\), on retombe bien sur la CSU de la CI0.
+            et ainsi
+            \begin{align*}
+              X &= \int_\Gamma (a_0 + a_1 \LL)^{-1}(1 + b \LL)\vE_t \cdot \conj{\vE_t} 
+              \\
+              &= \int_\Gamma \left(\frac{b}{a_1}  + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\right)\vE_t \cdot \conj{\vE_t} 
+            \end{align*}
 
+            On pose
+            \begin{align*}
+              \vect{D} &= (a_0 + a_1 \LL)^{-1}\vE_t
+              \\
+              S &= -\int_\Gamma \vect{D} \cdot \LL\conj{\vect{D}} \ge 0
+            \end{align*}
+            Comme \(\conj{\vE_t} = (\conj{a_0} + \conj{a_1}\LL)\conj{\vect{D}}\) alors 
+            \begin{align*}
+              \int_\Gamma (a_0 +a_1 \LL) ^{-1}\vE_t\cdot \conj{\vE_t} 
+              &= \int_\Gamma \vect{D}\cdot (\conj{a_0} + \conj{a_1}\LL)\conj{\vect{D}}
+              \\
+              &= \conj{a_0} \norm{\vect{D}}^2 - \conj{a_1} S
+            \end{align*}
+            et l'on peut alors écrire
+
+            \begin{equation}
+              \label{eq:unicite:form_var:decomp_cgu_ci1_a1}
+              X = \frac{b}{a_1}\norm{\vE_t}^2  + \left(1-b\frac{a_0}{a_1}\right)\left(\conj{a_0} \norm{\vect{D}}^2 - \conj{a_1} S\right)
+            \end{equation}
+            Il suffit alors d'imposer la positivité de la partie réelle de chaque terme pour impliquer \(\Re(X)\ge0\).
+            \begin{align}
+              \Re\left(\frac{b}{a_1}\right) \ge 0
+              \\
+              \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_0}}{a_1}\right) \ge 0
+              \\
+              \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_1}}{a_1}\right) \le 0
+            \end{align}
+            ce qui est équivalent à 
+            \begin{align}
+              \Re\left(b\conj{a_1}\right) \ge 0
+              \\
+              \Re\left(a_0\right) \ge 0
+              \\
+              \Re\left(\left(a_1-a_0 b\right){\conj{a_1}^2}\right) \le 0
+            \end{align}
+          \end{proof}
+          Quand \(b = 0\) et \(a_0,a_1\) sont quelconques, on obtient les conditions suffisante \(\Re(a_0)\ge 0 \) et \(\Re(a_1)\le 0 \) qui sont bien les conditions CSU-01.
+
+          Quand \(a_1 \rightarrow 0\) et \(a_0,b\) quelconques, la seule condition qui reste est \(\Re(a_0)\ge 0\) qui est bien la condition CSU-0, mais aucune condition sur \(b\). Il faut donc déterminer les CSU de la CIOE CI1 modifié avec \(a_1 = 0\).
+          %Quand \(b=0\), on vérifie les CSU dans la CI01.% La condition \(a_1\not=0\) n'est pas contraignante car c'est une propriété presque toujours vrai et donc ce jeu est un meilleur choix dans le cadre d'un code numérique.
+
+        \paragraph{Cas \(a_1=0\)}
+          ~
+          
+          On a donc la CIOE CI1-01
+          \begin{align*}
+            \left(1 + b \LL \right) \vE_t = a_0 \vJ
+          \end{align*}
+
+          \begin{prop}
+            Des CSU sont
+            \begin{align}
+              a_0 \not= 0\\
+              \Re\left(a_0\right) \ge 0\\
+              \Re\left(b\conj{a_0}\right) \le 0
+            \end{align}
+          \end{prop}
+          \begin{proof}
+            De la définition de la CIOE, on déduit que
+            \[
+              X = \int_\Gamma \left( \frac{1}{a_0}\left(1+b\LL\right)\vE_t\right) \cdot \conj{\vE_t} 
+            \]
+
+            On a alors
+            \begin{equation}
+              \label{eq:unicite:form_var:decomp_cgu_ci1_a1_nul}
+              X = \frac{1}{a_0}\norm{\vE_t}^2  - \frac{b}{a_0}G
+            \end{equation}
+
+            Il suffit alors d'imposer la positivité de la partie réelle de chaque terme pour impliquer \(\Re(X)\ge0\)
+            \begin{align}
+              a_0 \not= 0
+              \\
+              \Re\left(a_0\right) \ge 0
+              \\
+              \Re\left(b\conj{a_0}\right) \le 0
+            \end{align}
+          \end{proof}
+
+          On remarque que si \(b=0\), alors la seule condition à vérifier est \(\Re(a_0) \ge 0\) qui est la CSU-0.
+
+
+      On nommera ces CSU les CSU-1.
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
