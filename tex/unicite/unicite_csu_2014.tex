@@ -1,11 +1,9 @@
-\section[Des CSU pour la CIOE de Aubakirov 2014]{Des conditions suffisante pour la CIOE de \cite{aubakirov_electromagnetic_2014}}
-
-  Dans la thèse de Abil \cite{aubakirov_electromagnetic_2014}, l'opérateur de Hodge \gls{ope-L} est séparé en deux.
+\section[Des CSU pour la CIOE de Aubakirov 2014]{Des conditions suffisantes pour la CIOE de \cite{aubakirov_electromagnetic_2014}}
 
   \begin{defn}
-    Les opérateurs \gls{ope-LD} et \gls{ope-LR} sont définis tels que %sont introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\) 
+    On définit les opérateurs \gls{ope-LD} et \gls{ope-LR} tels que %sont introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\) 
 
-    Pour tous \(\vect U,\vect V \in (\mathcal{C}^\infty(\Gamma))\): 
+    Pour tous \(\vect U,\vect V \in (\mathcal{C}^\infty(\Gamma))^2\): 
     \begin{align*}
       \LD(\vect U) &= \tgrads (\tdivs \vect U)
       \\
@@ -16,11 +14,11 @@
   \begin{prop}
     \(\LD\) est hermitien symétrique négatif et \(\LR\) est hermitien symétrique positif.
 
-    Pour tous \(\vect U \in (\mathcal{C}^\infty(\Gamma))\): 
+    Pour tous \(\vect U \in (\mathcal{C}^\infty(\Gamma))^2\): 
     \begin{align*}
-      \int_\Gamma \LD(\vect U)\cdot \conj{\vect U} &= -\int_\Gamma |\tdivs \vect U|^2
+      \int_\Gamma \LD(\vect U)\cdot \conj{\vect U} &= -\norm{\tdivs \vect U}^2
       \\
-      \int_\Gamma \LR(\vect U)\cdot \conj{\vect U} &= \int_\Gamma |\vn \cdot \tvrots \vect U|^2
+      \int_\Gamma \LR(\vect U)\cdot \conj{\vect U} &=\norm{\vn \cdot \tvrots \vect U}^2
     \end{align*}
   \end{prop}
 
@@ -80,39 +78,53 @@
     \vE_t = (a_0 + a_1 \LD - a_2 \LR ) \vJ
   \end{equation}
 
-  \begin{prop}
-    Des CSU sont
-    \begin{align}
+  \begin{defn}
+    \label{def:csu:ci4}
+
+    On définit le sous-espace fermé de \(\CC^3\)
+    \begin{equation*}
+      \CSU{CI4} = \left\lbrace 
+      \begin{matrix}
+      (a_0,a_1,a_2) \in \CC^3
+      \\
       \Re(a_0) \ge 0
       \\
       \Re(a_1) \le 0
       \\
       \Re(a_2) \le 0
-    \end{align}
+      \end{matrix}
+      \right\rbrace
+    \end{equation*}
+  \end{defn}
+
+ \begin{prop}[Une CSU pour la CI4]
+    \label{prop:csu:ci4}
+    Il suffit que
+    \begin{equation*}
+      (a_0,a_1,a_2) \in \CSU{CI4}
+    \end{equation*}
+    pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
   \end{prop}
 
   \begin{proof}
-    On pose
+    Par définition de \(X\) \eqref{eq:unicite:x}, on a
     \begin{align*}
-      F_D &:= \int_\Gamma \vJ\cdot \LD\conj{\vJ}  \le 0 & F_R &:= \int_\Gamma \vJ\cdot \LR\conj{\vJ}  \ge 0
-    \end{align*}
-
-    On a alors
-    \begin{equation*}
-      X = \conj{a_0}\norm{\vJ}^2 + \conj{a_1}F_D - \conj{a_2}F_R
-    \end{equation*}
-
-    On impose la positivité de la partie réelle de chaque terme impliquant \(\Re(X)\ge0\)
-    \begin{align*}
-      \Re\left(a_0\right) \ge 0
-      \\
-      \Re\left(a_1\right) \le 0
-      \\
-      \Re\left(a_2\right) \le 0
+      X &= \conj{a_0}\norm{\vJ}^2 + \conj{a_1}\norm{\vdivs{\vJ}}^2 - \conj{a_2}\norm{\vn \cdot \vrots{\vJ}}^2
+      \intertext{donc}
+      \Re(X) &= \Re(\conj{a_0})\norm{\vJ}^2 + \Re(\conj{a_1})\norm{\vdivs{\vJ}}^2 - \Re(\conj{a_2})\norm{\vn \cdot \vrots{\vJ}}^2
     \end{align*}
   \end{proof}
 
-  On remarque que si \(a_1=a_2\), ces CSU sont identiques aux CSU-01.
+  Soit \(S = \left\lbrace (a_0,a_1,a_2) \in \CC^3 ; a_1 = a_2 \right\rbrace \). On remarque que
+  \begin{align}
+    \CSU{CI4}\cap S &= (\CSU{CI01}\times\CC)\cap S 
+  \end{align}
+  Pour des fonctions infiniment régulières, la CIOE CI4 avec \(a_1=a_2\) est équivalente à la CI01 et on a équivalence des CSU correspondantes.
+
+
+
+
+
 
 \subsection{CSU pour la CI3}
 
@@ -122,63 +134,111 @@
     ( 1 + b_1 \LD - b_2 \LR)\vE_t = (a_0 + a_1 \LD - a_2 \LR ) \vJ
   \end{equation}
 
-\subsubsection{1\iere méthode}
+  Par abus de notation, on omet les variables de la fonction \(\Delta\) \eqref{eq:unicite:delta} 
+  \begin{align}
+     \Delta(a_0,a_1,b_1) &\equiv \Delta_1
+     \\
+     \Delta(a_0,a_2,b_2) &\equiv \Delta_2
+  \end{align}
 
-  \begin{prop}
-    Soit \(\Delta_i = a_i-\conj{b_i}a_0\), \(i=1,2\). Des CSU sont
-    \begin{align}
-      \Re\left(a_0\conj{a_1}\Delta_1\right) \ge 0 \\
-      \Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0 \\
-      \Re\left(\conj{a_0}a_2\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_2}a_1}{\Delta_1} \right)\le 0\\
-      \Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right) \ge 0\\
-      \Re\left(a_0\conj{a_2}\Delta_2\right) \ge 0 \\
-      \Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0 \\
-      \Re\left(\conj{a_0}a_1\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_1}a_2}{\Delta_2} \right)\le 0\\
-      \Re\left(2\Re(b_1)\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}^2}{\Delta_1}\right) \ge 0\\
-      \Re\left(\Delta_1\right) = 0 \\
-      \Re\left(\Delta_2\right) = 0 \\
+  \begin{defn}
+    \label{def:csu:ci3-1}
+
+    On définit le sous-espace ouvert de \(\CC^5\)
+    \begin{equation*}
+      \CSU[1]{CI3} = \left\lbrace 
+      \begin{matrix}
+      (a_0,a_1,a_2,b_1,b_2) \in \CC^5
+      \\
+      \Delta_1 \not = 0
+      \\
+      \Delta_2 \not = 0
+      \\
+      \Re\left(a_0\conj{a_1}\Delta_1\right) \ge 0
+      \\
+      \Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0
+      \\
+      \Re\left(\conj{a_0}a_2\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_2}a_1}{\Delta_1} \right)\le 0
+      \\
+      \Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right) \ge 0
+      \\
+      \Re\left(a_0\conj{a_2}\Delta_2\right) \ge 0
+      \\
+      \Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0
+      \\
+      \Re\left(\conj{a_0}a_1\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_1}a_2}{\Delta_2} \right)\le 0
+      \\
+      \Re\left(2\Re(b_1)\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}^2}{\Delta_1}\right) \ge 0
+      \\
+      \Re\left(\Delta_1\right) = 0
+      \\
+      \Re\left(\Delta_2\right) = 0
+      \\
       \Re\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}}{\Delta_1}\right) = 0
-    \end{align}
-  \end{prop}
+      \end{matrix}
+      \right\rbrace
+    \end{equation*}
+  \end{defn}
   
-  \begin{proof}
-    On prend l'expression de la CIOE \eqref{eq:unicite:ci3:ci3} et on intègre chaque membre avec des produits scalaires judicieusement choisis.
+ \begin{prop}[Une première CSU pour la CI3]
+    \label{prop:csu:ci3-1}
+    Il suffit que
+    \begin{equation*}
+      (a_0,a_1,a_2,b_1,b_2) \in \CSU[1]{CI3}
+    \end{equation*}
+    pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
+  \end{prop}
 
+  \begin{proof}
+    Soit \(\LL_3\) l'opérateur tel que
+    \begin{equation}
+      \label{eq:unicite:ci3:L3}
+      \begin{matrix}
+      \LL_3:& (\mathcal{C}^\infty(\Gamma)^2)^2 & \rightarrow & (\mathcal{C}^\infty(\Gamma)^2)^2
+      \\
+      &(\vE_t,\vJ) & \mapsto & ( 1 + b_1 \LD - b_2 \LR) \vE_t - (a_0 + a_1 \LD - a_2 \LR ) \vJ
+      \end{matrix}
+    \end{equation}
+
+    On calcule \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot \vJ = 0\)
     \begin{multline}
       \label{eq:unicite:ci3:csu3-1}
       \int_\Gamma \vJ \cdot \conj{\vE_t}   + \conj{b_1} \int_\Gamma \vJ\cdot \LD\conj{\vE_t}  - \conj{b_2} \int_\Gamma \vJ \LR\conj{\vE_t}  \\
       = \conj{a_0} \norm{\vJ}^2ds - \conj{a_1} \norm{\tdivs \vJ}^2  - \conj{a_2} \norm{\trots \vJ}^2 
     \end{multline}
+    On calcule \(\int_\Gamma {\LL_3(\vE_t,\vJ)}\cdot \conj{\vE_t} = 0\)
     \begin{multline}
       \label{eq:unicite:ci3:csu3-2}
       \norm{\vE_t}^2   - b_1 \norm{ \tdivs \vE }^2  - b_2 \norm{\trots \vE_t}^2  \\
       = a_0 \int_\Gamma \vJ\cdot \conj{\vE_t} + a_1 \int_\Gamma \conj{\vE_t} \LD \vJ  - a_2 \int_\Gamma \conj{\vE_t} \cdot \LR \vJ 
     \end{multline}
+    On calcule \(\int_\Gamma \LR\conj{\LL_3(\vE_t,\vJ)}\cdot\vJ = 0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-3}
       \int_\Gamma \vJ \cdot \LR \conj{\vE_t}   - \conj{b_2} \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t}
       =  \conj{a_0} \norm{\vn \cdot \trots \vJ}^2ds - \conj{a_2} \norm{ \LR \vJ}^2 
     \end{equation}
+    On calcule \(\int_\Gamma \LR{\LL_3(\vE_t,\vJ)}\cdot\conj{\vE_t}=0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-4}
       \norm{ \vn \cdot \trots \vE_t }^2   - \conj{b_2} \norm{ \LR \vE_t}^2 
       = a_0 \int_\Gamma \conj{\vE_t} \LR \vJ  - a_2 \int_\Gamma \LR \conj{\vE_t} \cdot \LR \vJ 
     \end{equation}
-      \begin{equation}
+    On calcule \(\int_\Gamma \LD\conj{\LL_3(\vE_t,\vJ)}\cdot\vJ=0\)
+    \begin{equation}
       \label{eq:unicite:ci3:csu3-5}
       \int_\Gamma \vJ \cdot \LD \conj{\vE_t}   + \conj{b_1} \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t}
       = - \conj{a_0} \norm{\tdivs \vJ}^2ds + \conj{a_1} \norm{ \LD \vJ}^2 
     \end{equation}
+    On calcule \(\int_\Gamma \LD{\LL_3(\vE_t,\vJ)}\cdot\conj{\vE_t}=0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-6}
       -\norm{ \tdivs \vE_t }^2   + \conj{b_1} \norm{ \LD \vE_t}^2
       = a_0 \int_\Gamma \conj{\vE_t} \LD \vJ  + a_1 \int_\Gamma \LD \conj{\vE_t} \cdot \LD \vJ 
     \end{equation}
 
-    On pose alors les définitions suivantes :
+    On note
     \begin{align*}
-      X &= \int_\Gamma \vJ \cdot \conj{\vE_t} 
-      \\
       Y_D &= \int_\Gamma \vJ \cdot \LD \conj{\vE_t}  &
       Y_R &= \int_\Gamma \vJ \cdot \LR \conj{\vE_t} 
       \\
@@ -186,10 +246,11 @@
       Z_R &= \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t} 
     \end{align*}
 
-    Les équations \eqref{eq:unicite:ci3:csu3-1} à \eqref{eq:unicite:ci3:csu3-4} sont équivalentes au système \(\mM_R X_R = F_R\) où
+    Les égalités \eqref{eq:unicite:ci3:csu3-1} à \eqref{eq:unicite:ci3:csu3-4} sont équivalentes au système
 
     \begin{align*}
-      \mM_R & =
+      \mM_R X_R &= F_R
+      \\
       \begin{bmatrix}
         1 & \conj{b_1} & -\conj{b_2} & 0
         \\
@@ -200,17 +261,13 @@
         0 & 0 & a_0 & -a_2
         \\
       \end{bmatrix}
-      &&
-      X_R =
       \begin{bmatrix}
         X\\
         Y_D\\
         Y_R\\
         Z_R
       \end{bmatrix}
-    \end{align*}
-    \begin{align*}
-      F_R &=
+      &=
       \begin{bmatrix}
         \conj{a_0} \norm{\vJ}^2 - \conj{a_1} \norm{\tdivs \vJ}^2 - \conj{a_2} \norm{\trots \vJ}^2
         \\
@@ -221,11 +278,11 @@
         \norm{\trots \vE_t}^2 - \conj{b_2} \norm{\LR \vE_t}^2
       \end{bmatrix}
     \end{align*}
-
-    Tandis que les équations \eqref{eq:unicite:ci3:csu3-1},\eqref{eq:unicite:ci3:csu3-2},\eqref{eq:unicite:ci3:csu3-5},\eqref{eq:unicite:ci3:csu3-6} sont équivalentes au système \(\mM_D X_D= F_D\) où
+    tandis que les égalités \eqref{eq:unicite:ci3:csu3-1},\eqref{eq:unicite:ci3:csu3-2},\eqref{eq:unicite:ci3:csu3-5},\eqref{eq:unicite:ci3:csu3-6} sont équivalentes au système
 
     \begin{align*}
-      \mM_D & =
+      \mM_D  X_D & =  F_D
+      \\
       \begin{bmatrix}
         1 & -\conj{b_2} & \conj{b_1} & 0
         \\
@@ -235,8 +292,6 @@
         \\
         0 & 0 & a_0 & a_1
       \end{bmatrix}
-       & &
-      X_D =
       \begin{bmatrix}
         X
         \\
@@ -246,9 +301,7 @@
         \\
         Z_D
       \end{bmatrix}
-    \end{align*}
-    \begin{align*}
-      F_D & =
+      & =
       \begin{bmatrix}
         \conj{a_0} \norm{\vJ}^2ds - \conj{a_1} \norm{\tdivs \vJ}^2 - \conj{a_2} \norm{\trots \vJ}^2  \\
         \norm{\vE_t}^2   - b_1 \norm{\tdivs \vE }^2  - b_2 \norm{\trots \vE_t}^2  \\
@@ -257,7 +310,7 @@
       \end{bmatrix}
     \end{align*}
 
-    On note dans la suite \(\Delta_i = a_i-\conj{b_i}a_0\), \(i=1,2\). On suppose que ces systèmes soient inversible donc
+    Dans le cas où ces matrices sont inversibles
     \begin{equation*}
       \label{eq:unicite:ci3:csu3-cn-det}
       \Delta_1\Delta_2 \not = 0
@@ -288,10 +341,10 @@
       \end{bmatrix}
     \end{align*}
     
-    Pour chaque système on déduit \(X\), on développe les expressions et enfin on impose la positivité de la partie réelle de chaque terme pour impliquer que \(\Re(X)\ge 0\).
+    On déduit \(X_D\) et \(X_R\) en fonction de toutes les normes présentent dans \(F_D\) et \(F_R\), on développe les expressions et on considère la partie réelle de chaque coefficient. Pour conclure, il suffit qu'elles soient toutes positives.
 
     \begin{minipage}{0.49\textwidth}
-      \textbf{Résolution du 1\ier système}:
+      {Système \(\mM_RX_R=F_R\)}:
       \begin{align}
         \label{eq:unicite:ci3:csu3r-j2}&\Re\left(a_0\conj{a_2}\Delta_2\right) \ge 0 \\
         \label{eq:unicite:ci3:csu3r-e2}&\Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0 \\
@@ -304,7 +357,7 @@
       \end{align}
       \eqref{eq:unicite:ci3:csu3r-jrj} et \eqref{eq:unicite:ci3:csu3r-ere} impliquent :
       \begin{equation}
-        \Re\left(\Delta_2\right) = 0\\\
+        \Re\left(\Delta_2\right) = 0
       \end{equation}
       \eqref{eq:unicite:ci3:csu3r-rj2} et \eqref{eq:unicite:ci3:csu3r-re2} impliquent :
       \begin{equation}
@@ -312,7 +365,7 @@
       \end{equation}
     \end{minipage}
     \begin{minipage}{0.49\textwidth}
-      \textbf{Résolution du 2\ieme système}:
+      {Système \(\mM_DX_D=F_D\)}:
       \begin{align}
         \label{eq:unicite:ci3:csu3d-j2}&\Re\left(a_0\conj{a_1}\Delta_1\right) \ge 0 \\
         \label{eq:unicite:ci3:csu3d-e2}&\Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0 \\
@@ -325,44 +378,72 @@
       \end{align}
       \eqref{eq:unicite:ci3:csu3d-jdj} et \eqref{eq:unicite:ci3:csu3d-ede} impliquent :
       \begin{equation}
-        \Re\left(\Delta_1\right) = 0\\\
+        \Re\left(\Delta_1\right) = 0
       \end{equation}
       \eqref{eq:unicite:ci3:csu3d-dj2} et \eqref{eq:unicite:ci3:csu3d-de2} impliquent :
       \begin{equation}
-        \Re\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) = 0\\\
+        \Re\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) = 0
       \end{equation}
     \end{minipage}
+
+    Pour conclure, on remarque que l'on obtient 3 CSU
+    \begin{itemize}
+      \item Les conditions du 1\ier système
+      \item Les conditions du 2\ieme système
+      \item L'union de ce ces deux ensemble
+    \end{itemize}
+
+    Subjectivement, nous choisissons la dernière car il n'y a \textit{a priori} pas de raisons de privilégier un opérateur et non l'autre.
   \end{proof}
 
-  Pour conclure, on remarque que l'on obtient 3 groupes de CSU
-  \begin{itemize}
-    \item Avec le 1\ier système
-    \item Avec le 2\ieme système
-    \item En combinant ces deux groupes
-  \end{itemize}
+  Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 \right\rbrace \). On remarque que
+  \begin{align}
+    \CSU[1]{CI3}\cap S & \subsetneq (\CSU{CI4}\times\CC^2)\cap S 
+  \end{align}
 
-  Subjectivement, nous choisissons le dernier car il n'y a \textit{a priori} pas de raisons d'appliquer un opérateur et non l'autre.
+  \begin{defn}
+    \label{def:csu:ci3-2}
 
-  On remarque plusieurs conditions d'égalités, ce qui va contraindre certains coefficients. Enfin on remarque que si \(b_1=b_2=0\), alors on n'obtient pas les CSU de la CI4.
-
-\subsubsection{2\ieme méthode}
-
-  \begin{prop}
-      Si les conditions suivantes sont vérifiées
-      \begin{align}
-      \Re\left(a_0\right)\ge 0 \\
-      \Re\left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \le 0 \\
-      \Re\left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \le 0 \\
-      \Re\left(b_1\Delta_1\right) = 0 \\
-      \Re\left(b_2\Delta_2\right) = 0 \\
-      \Im\left(b_1\Delta_1\right)\Im(b_1)\ge 0\\
+    On définit le sous-espace ouvert de \(\CC^5\)
+    \begin{equation*}
+      \CSU[2]{CI3} = \left\lbrace 
+      \begin{matrix}
+      (a_0,a_1,a_2,b_1,b_2) \in \CC^5
+      \\
+      \Delta_1 \not = 0
+      \\
+      \Delta_1 \not = 0
+      \\
+      \Re\left(a_0\right)\ge 0
+      \\
+      \Re\left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \le 0
+      \\
+      \Re\left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \le 0
+      \\
+      \Re\left(b_1\Delta_1\right) = 0
+      \\
+      \Re\left(b_2\Delta_2\right) = 0
+      \\
+      \Im\left(b_1\Delta_1\right)\Im(b_1)\ge 0
+      \\
       \Im\left(b_2\Delta_2\right)\Im(b_2)\ge 0
-    \end{align}
-    alors \(\Re(X)\ge0\)
+      \end{matrix}
+      \right\rbrace
+    \end{equation*}
+  \end{defn}
+
+  
+ \begin{prop}[Une deuxième CSU pour la CI3]
+    \label{prop:csu:ci3-2}
+    Il suffit que
+    \begin{equation*}
+      (a_0,a_1,a_2,b_1,b_2) \in \CSU[2]{CI3}
+    \end{equation*}
+    pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
   \end{prop}
 
   \begin{proof}
-    En se basant sur la méthode précédente, on remarque que l'on peut déterminer les inconnus \((Y_R,Z_R)\) (resp. \((Y_D,Z_R)\)) uniquement en utilisant les équations \eqref{eq:unicite:ci3:csu3-3} et \eqref{eq:unicite:ci3:csu3-4} (resp. \eqref{eq:unicite:ci3:csu3-5} et \eqref{eq:unicite:ci3:csu3-6}).
+    En se basant sur la méthode précédente, on remarque que l'on peut déterminer les inconnues \((Y_R,Z_R)\) (resp. \((Y_D,Z_R)\)) uniquement en utilisant les équations \eqref{eq:unicite:ci3:csu3-3} et \eqref{eq:unicite:ci3:csu3-4} (resp. \eqref{eq:unicite:ci3:csu3-5} et \eqref{eq:unicite:ci3:csu3-6}).
 
     On déduit donc que si \(\Delta_1 \not = 0\) et \(\Delta_2 \not = 0\) alors
 
@@ -384,8 +465,7 @@
       - \frac{\conj{b_1}}{\Delta_1}\left(a_1\left(-\conj{a_0}\norm{\vdivs\vJ}^2 + \conj{a_1}\norm{\LD J}^2\right)  -\conj{b_1}\left(-\norm{\vdivs\vE}^2 + b_1 \norm{\LD \vE }^2\right)\right)
     \end{multline}
 
-    On factorise les termes en \(\vJ\)
-
+    On regroupe les termes en \(\norm{\vJ}^2\), \(\norm{\vdivs\vJ}^2\),  \(\norm{\vrots\vJ}^2\)
     \begin{multline}
       X = \conj{a_0} \norm{\vJ }^2 - \left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \norm{\vdivs \vJ}^2 - \left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \norm{\vrots \vJ }^2
       \\
@@ -403,51 +483,61 @@
       - \frac{\conj{b_1}|a_1|^2}{\Delta_1}\norm{\LD \vJ}^2  - \frac{\conj{b_1}^2}{\Delta_1}\norm{\vdivs\vE}^2 + \frac{|b_1|^2}{\Delta_1} \norm{\LD \vE }^2
     \end{multline}
 
-    On impose alors à la partie réelle de chaque terme d'être positive, et on obtient les CSU suivantes :
-
-    \begin{equation}
+    On impose alors à la partie réelle de chaque terme d'être positive, et on obtient
+    \begin{equation*}
       \Re\left(a_0\right)\ge 0
-    \end{equation}
+    \end{equation*}
     \begin{minipage}{0.5\textwidth}
-      \begin{align}
+      \begin{align*}
         \Re\left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \le 0 \\
         \Re\left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \le 0 \\
         \Re\left(\frac{|a_1|^2\conj{b_1}}{\Delta_1}\right) \le 0 \\
         \Re\left(\frac{|a_2|^2\conj{b_2}}{\Delta_2}\right) \le 0
-      \end{align}
+      \end{align*}
     \end{minipage}
     \begin{minipage}{0.5\textwidth}
-      \begin{align}
+      \begin{align*}
         \Re\left(\frac{\conj{b_1}^2}{\Delta_1}\right) \le 0 \\
         \Re\left(\frac{\conj{b_2}^2}{\Delta_2}\right) \le 0 \\
         \Re\left(\frac{|b_1|^2\conj{b_1}}{\Delta_1}\right) \ge 0 \\
         \Re\left(\frac{|b_2|^2\conj{b_2}}{\Delta_2}\right) \ge 0
-      \end{align}
+      \end{align*}
     \end{minipage}
 
-    On remarque alors que certaines CSU peuvent se combiner et imposent que les parties réelles de \(b_1\Delta_1,b_2\Delta_2\) soient nulles.
-
-    \begin{align}
-      \Re\left(a_0\right)\ge 0 \\
-      \Re\left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \le 0 \\
-      \Re\left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \le 0 \\
-      \Re\left(b_1\Delta_1\right) = 0 \\
-      \Re\left(b_2\Delta_2\right) = 0 \\
-      \Im\left(b_1\Delta_1\right)\Im(b_1)\ge 0\\
-      \Im\left(b_2\Delta_2\right)\Im(b_2)\ge 0
-    \end{align}
+    On remarque alors que certaines CSU peuvent se combiner et imposent que les parties réelles de \(b_1\Delta_1\) et \(b_2\Delta_2\) soient nulles.
   \end{proof}
 
-  On a réussi à réduire le nombre de CSU et en plus, fixer \(b_1=b_2=0\) permet de retomber sur les CSU de la CI4, mais certains coefficients sont définis à partir des autres, ce qui reste trop contraignant à nos yeux.
+  Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 \right\rbrace \). On remarque que
+  \begin{align}
+    \CSU[2]{CI3}\cap S & \subsetneq (\CSU{CI4}\times\CC^2)\cap S 
+  \end{align}
 
-\subsubsection{3\ieme méthode: CSU de Lafitte-Stupfel}
+    On définit 
+    \begin{equation}
+      \label{eq:unicite:z}
+      \begin{matrix}
+        z: & \CC\times\CC^*\times\CC^*\times \CC \times \CC &\rightarrow& \CC
+        \\
+        & (a_0,a_1,a_2,b_1,b_2) & \mapsto & 1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}
+      \end{matrix}
+    \end{equation}
+    Par abus de notation, on omet les variables \( (a_0,a_1,a_2,b_1,b_2)\)
+    \begin{equation}
+       z(a_0,a_1,a_2,b_1,b_2) \equiv z
+    \end{equation}
+  \begin{defn}
+    \label{def:csu:ci3-3}
 
-  Nous avons réussi à trouver des CSU uniquement constituées de contraintes inégalités et en plus qui permettent de retrouver les CSU de la CI4.
-
-  \begin{prop}
-    Soit \(z = \left(1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}\right) \). Ces CSU sont
-    % \begin{subequations}
-      \begin{align}
+    On définit le sous-espace ouvert de \(\CC^5\)
+    \begin{equation*}
+      \CSU[3]{CI3} = \left\lbrace 
+      \begin{matrix}
+        (a_0,a_1,a_2,b_1,b_2) \in \CC^5
+        \\
+        a_1 \not = 0
+        \\
+        a_2 \not = 0
+        \\
         \Re\left(\conj{a_0}z\right) \ge 0
         \\
         \Re\left(\conj{a_1}z\right) \le 0
@@ -467,8 +557,19 @@
         \Re\left(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}\right) \le 0
         \\
         \Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) \le 0
-      \end{align}
-    % \end{subequations}
+      \end{matrix}
+      \right\rbrace
+    \end{equation*}
+  \end{defn}
+
+  
+  \begin{prop}[Une troisième CSU pour la CI3]
+    \label{prop:csu:ci3-3}
+    Il suffit que
+    \begin{equation*}
+      (a_0,a_1,a_2,b_1,b_2) \in \CSU[3]{CI3}
+    \end{equation*}
+    pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
   \end{prop}
 
   \begin{proof}
@@ -622,33 +723,9 @@
     \end{multline*}
 
     Et il suffit d'imposer la positivité de la partie réelle de chaque terme pour avoir \(\Re(X)\ge 0\)
-
-    \begin{minipage}{0.5\textwidth}
-    \begin{align}
-      \Re\left(\conj{a_0}z\right) \ge 0
-      \\
-      \Re\left(\conj{a_1}z\right) \le 0
-      \\
-      \Re\left(\conj{a_2}z\right) \le 0
-      \\
-      \Re\left(\frac{b_1}{a_1}\right) \ge 0
-      \\
-      \Re\left(\frac{b_2}{a_2}\right) \ge 0
-    \end{align}
-    \end{minipage}
-    \begin{minipage}{0.49\textwidth}
-    \begin{align}
-      \Re\left(a_0\right) \ge 0
-      \\
-      \Re\left(a_1\right) \le 0
-      \\
-      \Re\left(a_2\right) \le 0
-      \\
-      \Re\left(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}\right) \le 0
-      \\
-      \Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) \le 0
-    \end{align}
-    \end{minipage}
   \end{proof}
 
-  On obtient donc un nombre de CSU élevé mais il n'y a aucune condition d'égalité, de plus, on retrouve bien les CSU de la CI4. Ce seront les CSU de référence pour cette CIOE.
+  Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 \right\rbrace \). On remarque que
+  \begin{align}
+    \CSU[3]{CI3}\cap S & = (\CSU{CI4}\times\CC^2)\cap S 
+  \end{align}

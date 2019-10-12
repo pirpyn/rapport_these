@@ -24,7 +24,7 @@
     \begin{align}
       \int_\Gamma \vu\cdot \LL(\conj{\vv}) &= \int_\Gamma \conj{\vv}\cdot \LL(\vu)
       \\
-      \int_\Gamma \vu\cdot \LL(\conj{\vu}) &\le 0
+      \int_\Gamma \vu\cdot \LL(\conj{\vu}) &= -\norm{\vgrads{\vu}} \le 0
       \label{eq:hodge:negatif}
     \end{align}
   \end{prop}
@@ -41,13 +41,14 @@
 
     \begin{defn}
       \label{def:csu:ci0}
-      On définit le sous-espace de \(\CC\)
+      On définit le sous-espace fermé de \(\CC\)
       \begin{equation*}
         \CSU{CI0} = \lbrace a_0 \in \CC; \Re(a_0) \ge 0 \rbrace
       \end{equation*}
     \end{defn}
 
     \begin{prop}[Une CSU pour la CI0]
+      \label{prop:csu:ci0}
       Il suffit que
       \begin{equation*}
         a_0 \in \CSU{CI0}
@@ -62,12 +63,12 @@
     Considérons la condition d’impédance \hyperlink{ci01}{CI01}:
     \begin{align}
       \label{eq:unicite:ci01}
-      \vE_t = (a_0 + a_1 \LL)\vJ && \forall (a_0, a_1) \in \CC^2
+      \vE_t = (a_0\oI + a_1 \LL)\vJ && \forall (a_0, a_1) \in \CC^2
     \end{align}
 
     \begin{defn}
       \label{def:csu:ci01}
-      On définit le sous-espace de \(\CC^2\)
+      On définit le sous-espace fermé de \(\CC^2\)
       \begin{equation*}
         \CSU{CI01} = \left\lbrace (a_0,a_1) \in \CC^2; \begin{matrix}
         \Re\left(a_0\right) \ge 0
@@ -79,6 +80,7 @@
     \end{defn}
 
     \begin{prop}[Une CSU pour la CI01]
+      \label{prop:csu:ci01}
       Il suffit que
       \begin{equation*}
         (a_0,a_1) \in \CSU{CI01}
@@ -88,11 +90,11 @@
     \begin{proof}
       On a
       \begin{align*}
-        X & = \conj{a_0} \norm{\vJ} ^2 + \conj{a_1}\int_\Gamma \vJ\cdot \LL\conj{\vJ}
+        X & = \conj{a_0} \norm{\vJ} ^2 - \conj{a_1} \norm{\vgrads{\vJ}}^2
         \intertext{donc}
-        \Re(X) & = \Re{(a_0)} \norm{\vJ} ^2 + \Re{(a_1)}\int_\Gamma \vJ\cdot \LL\conj{\vJ}
+        \Re(X) & = \Re{(a_0)} \norm{\vJ} ^2 - \Re{(a_1)}\norm{\vgrads{\vJ}}^2
       \end{align*}
-      Si on suppose \((a_0,a_1) \in \CSU{CI01}\), alors d'après \eqref{eq:hodge:negatif}, tous les termes sont positifs.
+      Si on suppose \((a_0,a_1) \in \CSU{CI01}\), tous les termes sont positifs.
     \end{proof}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,22 +103,33 @@
     Considérons la condition d’impédance \hyperlink{ci1}{CI1}:
     \begin{align}
     \label{eq:unicite:ci1}
-      (1 + b \LL) \vE_t = (a_0 + a_1 \LL) \vJ && \forall (a_0, a_1,b) \in \CC^3
+      (\oI + b \LL) \vE_t = (a_0\oI + a_1 \LL) \vJ && \forall (a_0, a_1,b) \in \CC^3
     \end{align}
 
     Pour cette CIOE, nous démontrons qu'il existe plusieurs CSU.
 
-    \subsubsection{CSU de \cite{stupfel_sufficient_2011}}
+    %\subsubsection{CSU de \cite{stupfel_sufficient_2011}}
 
-    On définit \(\Delta: \CC^3 \rightarrow \CC; \Delta(a_0,a_1,b) = a_1 - a_0\conj{b}\) et par abus de notation, on omet les variables \((a_0,a_1,b)\)
+    On définit 
+    \begin{equation}
+      \label{eq:unicite:delta}
+      \begin{matrix}
+        \Delta: & \CC^3 &\rightarrow& \CC
+        \\
+        & (a_0,a_1,b) & \mapsto & a_1 - a_0\conj{b}
+      \end{matrix}
+    \end{equation}
+    Par abus de notation, on omet les variables \((a_0,a_1,b)\)
     \begin{equation}
        \Delta(a_0,a_1,b) \equiv \Delta
     \end{equation}
 
+    On rappelle la CSU montrée dans \cite{stupfel_sufficient_2011}.
+
     \begin{defn}
       \label{def:csu:ci1-1}
 
-      On définit le sous-espace de \(\CC^3\)
+      On définit le sous-espace ouvert de \(\CC^3\)
       \begin{equation*}
         \CSU[1]{CI1} = \left\lbrace 
         \begin{matrix}
@@ -124,7 +137,7 @@
         \\
         \Re(\Delta) = 0
         \\
-        \Im(\Delta) = 0
+        \Im(\Delta) \not = 0
         \\
         \Im(\Delta)\Im(b) \ge 0
         \\
@@ -135,6 +148,7 @@
     \end{defn}
 
     \begin{prop}[Une première CSU pour la CI1]
+      \label{prop:csu:ci1-1}
       Il suffit que
       \begin{equation*}
         (a_0,a_1,b) \in \CSU[1]{CI1}
@@ -142,64 +156,104 @@
       pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
     \end{prop}
 
-      \begin{proof}
-        On utilise l'identité \((a_1-a_0\conj{b}) = (a_1(1+\conj{b}\LL) - \conj{b}(a_0+a_1\LL))\):
-        \begin{align*}
-          (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(1+\conj{b}\LL) \vJ\right)\cdot\conj{\vE_t} - \left(\conj{b}(a_0+a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
-          \intertext{Comme l'opérateur \(\LL\) est symétrique}
-          (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(1+\conj{b}\LL) \conj{\vE_t}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(a_0+a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
-          \intertext{Par définition de la CI1}
-          (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(\conj{a_0}+\conj{a_1}\LL) \conj{\vJ}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(1+b \LL)\vE_t\right)\cdot\conj{\vE_t} \\
-          (a_1-a_0\conj{b})X &= a_1\conj{a_0} \norm{ \vJ }^2 + |a_1|^2 \int_\Gamma \vJ \LL \conj{\vJ} - \conj{b} \norm{ \vE_t }^2 - |b|^2 \int_\Gamma \vE_t \LL \conj{\vE_t} 
-        \end{align*}
+    \begin{proof}
+      On utilise l'identité \((a_1-a_0\conj{b})\oI = (a_1(\oI +\conj{b}\LL) - \conj{b}(a_0\oI + a_1\LL))\):
+      \begin{align*}
+        (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \vJ\right)\cdot\conj{\vE_t} - \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
+        \intertext{Comme l'opérateur \(\LL\) est symétrique}
+        (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \conj{\vE_t}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
+        \intertext{Par définition de la CI1}
+        (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(\conj{a_0}+\conj{a_1}\LL) \conj{\vJ}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(\oI +b \LL)\vE_t\right)\cdot\conj{\vE_t} \\
+        (a_1-a_0\conj{b})X &= a_1\conj{a_0} \norm{ \vJ }^2 - |a_1|^2 \norm{\vgrads{\vJ}}^2 - \conj{b} \norm{ \vE_t }^2 + |b|^2\norm{\vgrads{\vE_t}}^2
+      \end{align*}
 
-        On pose 
-        \begin{align*}
-          F &= -\int_\Gamma \vJ \LL \conj{\vJ} \ge 0
+      % On pose 
+      % \begin{align*}
+      %   F &= -\int_\Gamma \vJ \LL \conj{\vJ} \ge 0
+      %   \\
+      %   G &= -\int_\Gamma \vE_t \LL \conj{\vE_t} \ge 0
+      % \end{align*}
+
+      Explicitons la partie imaginaire de \( (a_1-a_0\conj{b})X\),
+      \begin{align*}
+        % \Re(\Delta)\Re(X) - \Im(\Delta)\Im(X) &= \Re(a_1\conj{a_0}) \norm{\vJ}^2 - \Re(\conj{b})\norm{\vE_t}^2 -|a_1|^2 F + |b|^2 G \\
+        \Im(\Delta)\Re(X) + \Re(\Delta)\Im(X) &= \Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\conj{b})\norm{\vE_t}^2
+        \intertext{En supposant \(\Re(\Delta)= 0\) et \(\Im(\Delta) \not = 0\) nous pouvons conclure car}
+        \Im(\Delta)^2\Re(X) &= \Im(\Delta)\Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\Delta)\Im(\conj{b})\norm{\vE_t}^2
+      \end{align*}
+      Dans le cas où \(\Im(\Delta)\not=0\), il suffit d'imposer que tous ces termes soient positifs pour que \(\Re(X)\) le soit.
+    \end{proof}
+
+    On remarque que
+    \begin{align}
+      \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &\subsetneq (\CSU{CI01}\times\lbrace0\rbrace)
+      \intertext{C'est insatisfaisant, car pour des fonctions infiniment régulières, la CIOE CI1 avec \(b=0\) est équivalente à la CI01.
+      Plus précisément, soit \(S = \lbrace (a_0,a_1) \in \CC^2; \Re(a_1)=0 \rbrace\), on a}
+      \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &= ((\CSU{CI01}\cap S) \times\lbrace0\rbrace) 
+    \end{align}
+
+    \begin{lemme}
+      Soit \(z\in \CC\) et \(a\) alors la forme bilinéaire
+      \begin{equation*}
+        a(\vect{u},\vect{v}) = \int_\Gamma(\oI + z\LL)\vect{u}\cdot\conj{\vect{v}}
+      \end{equation*}
+      Si \(z\in \CC\backslash \RR_+^*\) alors \(a\) est coercive.
+    \end{lemme}
+    \begin{proof}
+      \begin{align*}
+        |a(\vect{u},\vect{u})|^2 &= \left(\norm{\vu}^2-\Re(z)\norm{\vgrads{\vu}}^2\right)^2 + \left(\Im(z)\norm{\vgrads{\vu}}^2\right)^2
+        \\
+        &= \begin{bmatrix}
+          \norm{\vu}^2
+          &
+          \norm{\vgrads{\vu}}^2
+        \end{bmatrix}
+        \begin{bmatrix}
+          1 & - \Re(z)
           \\
-          G &= -\int_\Gamma \vE_t \LL \conj{\vE_t} \ge 0
-        \end{align*}
+          -\Re(z) & |z|^2
+        \end{bmatrix}
+        \begin{bmatrix}
+          \norm{\vu}^2
+          \\
+          \norm{\vgrads{\vu}}^2
+        \end{bmatrix}
+        \\
+      \end{align*}
+      Or la matrice n'est inversible que si \(\Im(z)\not=0\). Dans ce cas, on a la coercivité.
 
-        Explicitons la partie imaginaire de \( (a_1-a_0\conj{b})X\),
-        \begin{align*}
-          % \Re(\Delta)\Re(X) - \Im(\Delta)\Im(X) &= \Re(a_1\conj{a_0}) \norm{\vJ}^2 - \Re(\conj{b})\norm{\vE_t}^2 -|a_1|^2 F + |b|^2 G \\
-          \Im(\Delta)\Re(X) + \Re(\Delta)\Im(X) &= \Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\conj{b})\norm{\vE_t}^2
-          \intertext{En supposant \(\Re(\Delta)= 0\) et \(\Im(\Delta) \not = 0\) nous pouvons conclure car}
-          \Im(\Delta)^2\Re(X) &= \Im(\Delta)\Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\Delta)\Im(\conj{b})\norm{\vE_t}^2
-        \end{align*}
-        Dans le cas où \(\Im(\Delta)\not=0\), il suffit d'imposer que tous ces termes soient positifs pour que \(\Re(X)\) le soit.
-      \end{proof}
-
-      On remarque que
-      \begin{align}
-        \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &\subsetneq (\CSU{CI01}\times\lbrace0\rbrace)
-        \intertext{C'est insatisfaisant, car pour des fonctions infiniment régulières, la CIOE CI1 avec \(b=0\) est équivalente à la CI01.
-        Plus précisément, soit \(S = \lbrace (a_0,a_1) \in \CC^2; \Re(a_1)=0 \rbrace\), on a}
-        \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &= ((\CSU{CI01}\cap S) \times\lbrace0\rbrace) 
-      \end{align}
-
-    \subsubsection{CSU de \cite{stupfel_implementation_2015}}
+      Si \(\Im(z)=0\) alors
+      \begin{align*}
+        a(\vect{u},\vect{u}) &= \norm{\vu}^2-\Re(z)\norm{\vgrads{\vu}}^2
+        \\
+        &\ge \min(1,-\Re(z))\left(\norm{\vu}^2+\norm{\vgrads{\vu}}^2\right)
+      \end{align*}
+      Il suffit que \(-\Re(z) \ge 0 \) pour avoir la coercivité
+    \end{proof}
 
     \begin{defn}
       \label{def:csu:ci1-2}
 
-      On définit le sous-espace de \(\CC^3\)
+      On définit le sous-espace fermé de \(\CC^3\)
       \begin{equation*}
         \CSU[2]{CI1} = \left\lbrace 
         \begin{matrix}
         (a_0,a_1,b) \in \CC^3
         \\
-        \Delta = 0
+        \Re(b) \le 0
         \\
-        \Im(\Delta)\Im(b) \ge 0
+        \Re\left(a_0\right) \ge 0
         \\
-        \Im(\Delta )\Im(a_1\conj{a_0})\ge 0
+        \Re\left(b\conj{a_0}+\conj{a_1}\right) \le 0
+        \\
+        \Re\left(b\conj{a_1}\right) \ge 0
         \end{matrix}
         \right\rbrace
       \end{equation*}
     \end{defn}
 
     \begin{prop}[Une deuxième CSU pour la CI1]
+      \label{prop:csu:ci1-2}
       Il suffit que
       \begin{equation*}
         (a_0,a_1,b) \in \CSU[2]{CI1}
@@ -207,256 +261,32 @@
       pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
     \end{prop}
 
-      \begin{proof}
-        Intégrons la CI1 \eqref{eq:unicite:ci1} contre \(\conj{\vE_t}\)
-        \begin{align*}
-          \norm{\vE_t}_2^2 - bG &= a_0 X + a_1 \int_\Gamma \vJ\cdot \LL\conj{\vE_t}
-          \intertext{où \(G\ge 0\).
-          Intégrons la CI1 conjuguée contre \({\vJ}\)
-          }
-          X + \conj{b}\int_\Gamma \vJ\cdot \LL\conj{\vE_t}  &= \conj{a_0}\norm{\vJ}_2^2 - \conj{a_1}F
-        \end{align*}
-        où \(F \ge 0\).
+    \begin{proof}
+      On suppose \(\Re(b)\le 0\) donc l'opérateur \(\oI + b\LL\) est bijectif. On peut définir \(\vect{D}\) tel que
+      \begin{align*}
+        \vJ &= (\oI + b \LL)\vect{D}
+      \end{align*}
+      Donc 
+      \begin{align*}
+        (\oI + b \LL)\vE_t &= (a_0\oI + a_1\LL)\vJ
+        \\
+        (\oI + b \LL)\vE_t &= (a_0\oI + a_1\LL)(\oI + b \LL)\vect{D}
+        \\
+        0 &= (\oI + b \LL)(\vE_t -  (a_0\oI + a_1\LL)\vect{D})
+        \intertext{L'opérateur est injectif donc}
+        \vE_t &= (a_0\oI + a_1\LL)\vect{D}
+        \\
+        \int_\Gamma \vJ \cdot \conj{\vE_t} &= \int_\Gamma \vJ \cdot (\conj{a_0}\oI + \conj{a_1}\LL)\conj{\vect{D}}
+        \\
+        X &= \int_\Gamma (\oI + b \LL)\vect{D} \cdot (\conj{a_0}\oI + \conj{a_1}\LL)\conj{\vect{D}}
+        \\
+        X &= \conj{a_0}\norm{\vect{D}}^2 - (b\conj{a_0}+\conj{a_1})\norm{\vgrads{\vect{D}}}^2 + b\conj{a_1} \norm{\LL\vect{D}}^2
+      \end{align*}
+    \end{proof}
 
-        On cherche à résoudre le problème suivant:
-        \[
-          \begin{bmatrix}
-            1 & \conj{b} \\
-            a_0 & a_1
-          \end{bmatrix}
-          \begin{bmatrix}
-            X \\
-            \int_\Gamma \vJ\cdot \LL\conj{\vE_t}
-          \end{bmatrix}
-          =
-          \begin{bmatrix}
-            \conj{a_0}\norm{\vJ}_2^2 - \conj{a_1}F \\
-            \norm{\vE_t}_2^2 - bG
-          \end{bmatrix}
-        \]
+    On remarque que
+    \begin{align}
+      \CSU[2]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &= (\CSU{CI01}\times\lbrace0\rbrace)
+    \end{align}
 
-        Si la matrice ci-dessus est inversible, on note son déterminant \(\Delta\) introduit dans la partie précédente et alors
-        \[
-        \begin{bmatrix}
-          X
-          \\
-          \int_\Gamma \vJ\cdot \LL\conj{\vE_t}
-        \end{bmatrix}
-        =\frac{1}{\Delta}
-        \begin{bmatrix}
-          a_1 & -\conj{b} \\
-          -a_0 & 1
-        \end{bmatrix}
-        \begin{bmatrix}
-          \conj{a_0}\norm{ \vJ }_2^2 - \conj{a_1}F \\
-          \norm{ \vE_t }_2^2 - bG
-        \end{bmatrix}
-        \]
-        On ne s’intéresse qu'à la première composante de vecteurs
-        \begin{align*}
-          X &=  
-          \frac{a_1\conj{a_0}}{\Delta}\norm{\vJ^2}_2^2 
-          - \frac{\conj{b}}{\Delta}\norm{\vE_t}_2^2 
-          - \frac{|a_1|^2}{\Delta}F
-          + \frac{|b|^2}{\Delta}G
-        \intertext{ et donc }
-          \Re(X) &= 
-          \Re\left(\frac{a_1\conj{a_0}}{\Delta}\right)\norm{\vJ^2}_2^2 
-          - \Re\left({\frac{\conj{b}}{\Delta}}\right)\norm{\vE_t}_2^2 
-          - \Re\left(\frac{|a_1|^2}{\Delta}\right)F
-          + \Re\left(\frac{|b|^2}{\Delta}\right)G
-        \end{align*}
-
-        On impose alors la positivité de tous les termes, ce qui implique que \(\Re(X)\ge0\).
-
-        On obtient
-        \begin{align}
-          \Re\left(a_0\conj{a_1}\Delta\right) &\ge 0
-          \\
-          \Re\left(b\Delta\right) &\le 0
-          \\
-          \Re\left(|a_1|^2\Delta\right) &\le 0
-          \\
-          \Re\left(|b|^2\Delta\right) &\ge 0
-        \end{align}
-
-        Ce qui est équivalent à \((a_0,a_1,b) \in \CSU[1]{CI1}\).
-
-        Si la matrice n'est pas inversible, alors on cherche à résoudre
-        \[
-          \begin{bmatrix}
-            1 & \conj{b} \\
-            a_0 & a_0\conj{b}
-          \end{bmatrix}
-          \begin{bmatrix}
-            \int_\Gamma \vJ \cdot \conj{\vE_t} \\
-            \int_\Gamma \vJ \cdot \LL\conj{\vE_t}
-          \end{bmatrix}
-          =
-          \begin{bmatrix}
-            \conj{a_0}\norm{\vJ}_2^2 - \conj{a_0}bF
-            \\
-            \norm{\vE_t}_2^2 - bG
-          \end{bmatrix}
-        \]
-
-        Le noyau de la matrice est alors \(\Vect{\begin{bmatrix}\conj{b}\\-1\end{bmatrix}}\) dont l'orthogonal est  \(\Vect{\begin{bmatrix}1\\\conj{b}\end{bmatrix}}\).
-        Pour tout \(\int_\Gamma \vJ\cdot \LL\conj{\vE_t} = \conj{b} \int_\Gamma \vJ \cdot \conj{\vE_t} \), on a unicité des solutions. On déduit alors que
-
-        \[
-          (1 + \conj{b}^2) X = \conj{a_0} \norm{\vJ}_2^2 - \conj{a_0}bF
-        \]
-
-        Il suffit d'imposer la positivité de tous les termes pour conclure
-
-        \begin{align}
-          \Delta = 0 \\
-          \Re\left(\frac{\conj{a_0}}{1 + \conj{b}^2}\right) &\ge 0 \\
-          \Re\left(\frac{\conj{a_0}b}{1 + \conj{b}^2}\right) &\le 0
-        \end{align}
-
-      \end{proof}
-
-      Nous referons à ces conditions comme les CSU-1-2. Les CSU-1-2 sont un sous-espace de \(\CC^3\). Comme pour les CSU-1-1, on remarque que l'intersection de ce sous-espace avec \(\CC^2 \times \lbrace0\rbrace\) (quand \(b=0\)) est inclus dans l'espace des \(\text{CSU-01}\times\lbrace0\rbrace\) mais pas égal à cause de la condition d'égalité. Ce sont encore des CSU trop contraignantes.
-    % \paragraph*{Correction des CSU de l'article}
-
-    %   Les CSU présentées à l'équation (43) de cet article contiennent une erreur.
-
-    %   En effet, dans cet article, on change le terme isotrope (\(a_0\)) pour un terme orthotrope (\(a_0^1,a_0^2\)).
-
-    %   L'article énonce alors que des CSU sont
-    %   \begin{align*}
-        
-    %   \end{align*}
-
-    \subsubsection{De meilleurs CSU pour la CI1}
-      Dans la partie précédente, nous avons trouvé un certain nombre de CSU pour la CI1 que nous avons toutes jugées insatisfaisantes, car les CSU de la CI01 que nous avions trouvés n'y était pas incluse.% Autrement dit, poser \(b=0\) ne redonne pas les CSU de la CI01.
-
-      Nous montrons qu'il est possible d'obtenir pour la CI1 des CSU qui ont cette propriété.
-
-      \begin{prop} Des CSU sont
-          \begin{align}
-            \Re\left(b\conj{a_1}\right) \ge 0
-            \\
-            \Re\left(a_0\right) \ge 0
-            \\
-            \Re\left(\left(a_1-a_0 b\right){\conj{a_1}^2}\right) \le 0
-            \\
-            \Re\left(b\conj{a_0}\right) \le 0
-          \end{align}
-      \end{prop}
-
-
-        \paragraph{Cas \(a_1\not=0\)}
-          ~
-          \begin{prop}
-            Des CSU pour la CI1 sont
-            \begin{align}
-              \Re\left({b}\conj{a_1}\right) \ge 0
-              \\
-              \Re\left(a_0\right) \ge 0
-              \\
-              \Re\left(\left(a_1-a_0 b\right){\conj{a_1}^2}\right) \le 0
-            \end{align}
-          \end{prop}
-          \begin{proof}
-            En supposant \(a_1 \not=0\), on développe 
-            \begin{align*}
-              (a_0 + a_1 \LL)^{-1}(1 + b \LL) &= (a_0 + a_1 \LL)^{-1} + b (a_0 + a_1 \LL)^{-1}\LL
-              \\
-              &=(a_0 + a_1 \LL)^{-1} + \frac{b}{a_1} (a_0 + a_1 \LL)^{-1}(a_0 + a_1\LL -a_0)
-              \\
-              &=\frac{b}{a_1} + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}
-            \end{align*}
-
-            et ainsi
-            \begin{align*}
-              X &= \int_\Gamma (a_0 + a_1 \LL)^{-1}(1 + b \LL)\vE_t \cdot \conj{\vE_t} 
-              \\
-              &= \int_\Gamma \left(\frac{b}{a_1}  + \left(1-b\frac{a_0}{a_1}\right)(a_0+a_1 \LL)^{-1}\right)\vE_t \cdot \conj{\vE_t} 
-            \end{align*}
-
-            On pose
-            \begin{align*}
-              \vect{D} &= (a_0 + a_1 \LL)^{-1}\vE_t
-              \\
-              S &= -\int_\Gamma \vect{D} \cdot \LL\conj{\vect{D}} \ge 0
-            \end{align*}
-            Comme \(\conj{\vE_t} = (\conj{a_0} + \conj{a_1}\LL)\conj{\vect{D}}\) alors 
-            \begin{align*}
-              \int_\Gamma (a_0 +a_1 \LL) ^{-1}\vE_t\cdot \conj{\vE_t} 
-              &= \int_\Gamma \vect{D}\cdot (\conj{a_0} + \conj{a_1}\LL)\conj{\vect{D}}
-              \\
-              &= \conj{a_0} \norm{\vect{D}}^2 - \conj{a_1} S
-            \end{align*}
-            et l'on peut alors écrire
-
-            \begin{equation}
-              \label{eq:unicite:form_var:decomp_cgu_ci1_a1}
-              X = \frac{b}{a_1}\norm{\vE_t}^2  + \left(1-b\frac{a_0}{a_1}\right)\left(\conj{a_0} \norm{\vect{D}}^2 - \conj{a_1} S\right)
-            \end{equation}
-            Il suffit alors d'imposer la positivité de la partie réelle de chaque terme pour impliquer \(\Re(X)\ge0\).
-            \begin{align}
-              \Re\left(\frac{b}{a_1}\right) \ge 0
-              \\
-              \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_0}}{a_1}\right) \ge 0
-              \\
-              \Re\left(\left(a_1-a_0 b\right)\frac{\conj{a_1}}{a_1}\right) \le 0
-            \end{align}
-            ce qui est équivalent à 
-            \begin{align}
-              \Re\left(b\conj{a_1}\right) \ge 0
-              \\
-              \Re\left(a_0\right) \ge 0
-              \\
-              \Re\left(\left(a_1-a_0 b\right){\conj{a_1}^2}\right) \le 0
-            \end{align}
-          \end{proof}
-          Quand \(b = 0\) et \(a_0,a_1\) sont quelconques, on obtient les conditions suffisante \(\Re(a_0)\ge 0 \) et \(\Re(a_1)\le 0 \) qui sont bien les conditions CSU-01.
-
-          Quand \(a_1 \rightarrow 0\) et \(a_0,b\) quelconques, la seule condition qui reste est \(\Re(a_0)\ge 0\) qui est bien la condition CSU-0, mais aucune condition sur \(b\). Il faut donc déterminer les CSU de la CIOE CI1 modifié avec \(a_1 = 0\).
-          %Quand \(b=0\), on vérifie les CSU dans la CI01.% La condition \(a_1\not=0\) n'est pas contraignante car c'est une propriété presque toujours vrai et donc ce jeu est un meilleur choix dans le cadre d'un code numérique.
-
-        \paragraph{Cas \(a_1=0\)}
-          ~
-          
-          On a donc la CIOE CI1-01
-          \begin{align*}
-            \left(1 + b \LL \right) \vE_t = a_0 \vJ
-          \end{align*}
-
-          \begin{prop}
-            Des CSU sont
-            \begin{align}
-              a_0 \not= 0\\
-              \Re\left(a_0\right) \ge 0\\
-              \Re\left(b\conj{a_0}\right) \le 0
-            \end{align}
-          \end{prop}
-          \begin{proof}
-            De la définition de la CIOE, on déduit que
-            \[
-              X = \int_\Gamma \left( \frac{1}{a_0}\left(1+b\LL\right)\vE_t\right) \cdot \conj{\vE_t} 
-            \]
-
-            On a alors
-            \begin{equation}
-              \label{eq:unicite:form_var:decomp_cgu_ci1_a1_nul}
-              X = \frac{1}{a_0}\norm{\vE_t}^2  - \frac{b}{a_0}G
-            \end{equation}
-
-            Il suffit alors d'imposer la positivité de la partie réelle de chaque terme pour impliquer \(\Re(X)\ge0\)
-            \begin{align}
-              a_0 \not= 0
-              \\
-              \Re\left(a_0\right) \ge 0
-              \\
-              \Re\left(b\conj{a_0}\right) \le 0
-            \end{align}
-          \end{proof}
-
-          On remarque que si \(b=0\), alors la seule condition à vérifier est \(\Re(a_0) \ge 0\) qui est la CSU-0.
-
-          On nommera ces CSU les CSU-1.
-
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Pour des fonctions infiniment régulières, la CIOE CI1 avec \(b=0\) est équivalente à la CI01 et la \CSU[2]{CI1} est donc meilleure que la  \CSU[1]{CI1}.
