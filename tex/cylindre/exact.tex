@@ -2,14 +2,14 @@
 
   % On rappelle les formules des opérateurs \(\vdiv, \vrot\) en coordonnée cylindrique \((r,\theta,z)\).
   % \begin{align}
-  %   \vrot \vect{V} &= \left(\frac{1}{r}\ddr{\theta}{V_z} - \ddr{z}{V_\theta}\right)\vect{e_r} +
-  %   \left(\ddr{z}{V_r} - \ddr{r}{V_z}\right)\vect{e_\theta} +
-  %   \frac{1}{r}\left(\ddr{r}{(rV_\theta)}-\ddr{\theta}{V_r}\right)\vect{e_z}
+  %   \vrot \vect{V} &= \left(\frac{1}{r}\ddp{\theta}{V_z} - \ddp{z}{V_\theta}\right)\vect{e_r} +
+  %   \left(\ddp{z}{V_r} - \ddp{r}{V_z}\right)\vect{e_\theta} +
+  %   \frac{1}{r}\left(\ddp{r}{(rV_\theta)}-\ddp{\theta}{V_r}\right)\vect{e_z}
   %   \\
-  %   \vdiv \vect{V} &= \frac{1}{r}\ddr{r}{(rV_r)}+\frac{1}{r}\ddr{\theta}{V_\theta}+\ddr{z}{V_z}
+  %   \vdiv \vect{V} &= \frac{1}{r}\ddp{r}{(rV_r)}+\frac{1}{r}\ddp{\theta}{V_\theta}+\ddp{z}{V_z}
   %   \\
-  %   \vgrad f &= \ddr{r}{f}\vect{e_r}
-  %   +\frac{1}{r}\ddr{\theta}{f}\vect{e_\theta} + \ddr{z}{f}\vect{e_z}
+  %   \vgrad f &= \ddp{r}{f}\vect{e_r}
+  %   +\frac{1}{r}\ddp{\theta}{f}\vect{e_\theta} + \ddp{z}{f}\vect{e_z}
   % \end{align}
 
   \begin{figure}[!hbt]
@@ -20,23 +20,26 @@
     \end{tikzpicture}
   \end{figure}
 
-  On exprime les équations de Maxwell dans le matériau dans la base cylindrique et sans pertes de généralité, on peut réaliser une transformée de Fourier en \(z\) par invariance en translation et en \(\theta\) par invariance en rotation.
-  Cependant, le multiplicateur de Fourier associé à la coordonnée \(\theta\) doit être un entier pour assurer la périodicité. On le note \(n\). On n'a plus une transformée de Fourier mais une série de Fourier en \(\theta\) et une transformée de Fourier en \(z\).
+  On exprime les équations de Maxwell dans le matériau dans en coordonnées cylindrique et sans perte de généralité, on effectue une transformée de Fourier en \(z\) par invariance en translation. La solution étant périodique en \(\theta\) et étant supposé \(L^2(\OO)\), est développable en série de Fourier en \(\theta\). En utilisant l'inversion de Fourier, il existe \(\hat\vE\) telle que
 
   \begin{equation}
     \vE(r,\theta,z) = \frac{1}{2\pi}\sum_{n=-\infty}^{\infty}\int_{\RR} e^{i(n \theta + k_z z )}\hat{\vE} (r,n,k_z) \dd{k_z}
   \end{equation}
 
-  Nous reprenons la méthode du plan infini en n'étudiant que \(\hat{\vE} (r,n,k_z)\) pour simplifier les équations différentielles.
+  La fonction \(\hat{\vE} (r,n,k_z)\) est solution d'une \gls{acr-edo} en \(r\) que nous allons résoudre pour chaque paramètre \(n\), \(k_z\).
 
   \begin{prop}
-    Soit
+    Soit la fonction constante par morceaux en \(r\) telle que
     \begin{equation}
-      k_3 = \sqrt{\w^2\eps\mu - k_z^2}
+      \fonction{k_3}{\RR_+^*}{\CC}
+      {r}{\sqrt{\w^2\eps(r)\mu(r) - k_z^2}}
     \end{equation}
-    et \(J_n(z)\) et \(H_n^{(2)}(z)\) des solutions de l'équation de Bessel d'ordre \(n\).
+    Par abus de notation, on omettra les dépendances en \(r\) pour \(k_3\).
+    Soit \(J_n\) la fonction de Bessel d'ordre \(n\) et \(H_n^{(2)}\) la fonction de Hankel d'ordre \(n\) de 2\ieme espèce.
 
-    Alors \(\exists (c_i(n,k_z))_{1\le i\le 4} \in \CC(\NN\times\RR)^4\) tels que
+    On suppose qu'il n'existe pas de paramètres \(n,k_z\) tels que \(k_3(r) = 0\) pour tout r.
+
+    Alors il existe pour \((n,k_z)\) donné, des constantes \((c_i(n,k_z))_{1\le i\le 4} \in \CC(\NN\times\RR)^4\) telles que
     \begin{subequations}
       \begin{align}
         \hat{E_z}(r,n,k_z) &= c_1(n,k_z) J_n\left(k_3r\right) + c_2(n,k_z) H_n^{(2)}\left(k_3r\right)
@@ -50,29 +53,32 @@
 
     Les opérateurs différentiels simplifient les équations de Maxwell
 
-    \begin{align}
+    \begin{equation*}
+    \left\lbrace \begin{aligned}
       \vrot \hat \vE(r,n,k_z) &=-i\w\mu \hat \vH(r,n,k_z)
       \\
       \vrot \hat \vH(r,n,k_z) &= i\w\eps \hat \vE(r,n,k_z)
-    \end{align}
-    \begin{align}
+    \end{aligned}\right.
+    \end{equation*}
+    \begin{equation*}
+    \left\lbrace \begin{aligned}
       i\left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right)\vect{e_r} +
-      \left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\vect{e_\theta} +
-      \frac{1}{r}\left(\ddr{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\vect{e_z}
-      &=-i\w\mu \hat \vH(r,n,k_z)
+      \left(ik_z\hat{E_r} - \ddp{r}{\hat{E_z}}\right)\vect{e_\theta} +
+      \frac{1}{r}\left(\ddp{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\vect{e_z}
+      &=-i\w\mu \hat \vH
       \\
       i\left(\frac{n}{r}\hat{H_z} - k_z\hat{H_\theta}\right)\vect{e_r} +
-      \left(ik_z\hat{H_r} - \ddr{r}{\hat{H_z}}\right)\vect{e_\theta} +
-      \frac{1}{r}\left(\ddr{r}{(r\hat{H_\theta})}-in\hat{H_r}\right)\vect{e_z}
-      &=i\w\eps \hat \vE(r,n,k_z)
-    \end{align}
-    % On remarque que la méthode utilisée pour le plan aboutie à une équation différentielle à coefficients non constants de type \(r\ddr{r}{\vect{X}}(r,n,k_z) = \mat{M}(r,n,k_z)\vect{X}(r,n,k_z)\).
+      \left(ik_z\hat{H_r} - \ddp{r}{\hat{H_z}}\right)\vect{e_\theta} +
+      \frac{1}{r}\left(\ddp{r}{(r\hat{H_\theta})}-in\hat{H_r}\right)\vect{e_z}
+      &=i\w\eps \hat \vE
+    \end{aligned}\right.
+    \end{equation*}    % On remarque que la méthode utilisée pour le plan aboutie à une équation différentielle à coefficients non constants de type \(r\ddp{r}{\vect{X}}(r,n,k_z) = \mat{M}(r,n,k_z)\vect{X}(r,n,k_z)\).
     % On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice.
     %Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
 
-    Comme l'on cherche \(\hat \vE_t, \hat \vH_t\), on remarque que les 2\ieme composantes des équations de Maxwell permettent de déduire \(\hat\vE_t, \hat\vH_t\) de \( \hat E_z, \hat H_z\). Il faut donc trouver une EDP dont ces deux quantités sont solution.
+    On remarque que les 2\ieme composantes de ces deux égalités permettent de déduire \(\hat\vE_r,\hat\vE_\theta, \hat\vH_r,\hat\vH_\theta\) de \(\hat E_z,\hat H_z\).
 
-    On couple les 2 équations du système de Maxwell:
+    On couple les 2 équations du système de Maxwell pour obtenir une EDO sur ces fonctions.
 
     % \begin{align}
     %   \vrot \vrot \hat \vE &= \w^2\eps\mu \hat \vE
@@ -82,98 +88,108 @@
 
     % \begin{multline}
     %   \vrot \vrot \hat \vE = \dots\\
-    %   i\left(\frac{n}{r^2}\left(\ddr{r}{(r\hat{E_\theta})} - in\hat{E_r}\right) - k_z\left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\right)  \vect{e_r} \dots\\
-    %   + \left(-k_z\left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right) -\ddr{r}{}\left(\frac{1}{r}\left(\ddr{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\right)\right)  \vect{e_\theta} \dots\\
-    %   + \frac{1}{r}\left(\ddr{r}{} \left(r\left(ik_z\hat{E_r} - \ddr{r}{\hat{E_z}}\right)\right) + n \left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right)\right) \vect{e_z}
+    %   i\left(\frac{n}{r^2}\left(\ddp{r}{(r\hat{E_\theta})} - in\hat{E_r}\right) - k_z\left(ik_z\hat{E_r} - \ddp{r}{\hat{E_z}}\right)\right)  \vect{e_r} \dots\\
+    %   + \left(-k_z\left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right) -\ddp{r}{}\left(\frac{1}{r}\left(\ddp{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\right)\right)  \vect{e_\theta} \dots\\
+    %   + \frac{1}{r}\left(\ddp{r}{} \left(r\left(ik_z\hat{E_r} - \ddp{r}{\hat{E_z}}\right)\right) + n \left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right)\right) \vect{e_z}
     % \end{multline}
 
     % On aboutit au système suivant
-    \begin{equation}
+    \begin{equation*}
       \left\lbrace
       \begin{array}{ccc}
-        -\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)\hat{E_r}  +i\frac{n}{r^2}\ddr{r}{(r\hat{E_\theta})}  +i k_z\ddr{r}{\hat{E_z}} & = & 0
+        -\left(\w^2\eps\mu -\frac{n^2}{r^2}  - k_z^2\right)\hat{E_r}  +i\frac{n}{r^2}\ddp{r}{(r\hat{E_\theta})}  +i k_z\ddp{r}{\hat{E_z}} & = & 0
         \\
-        in\ddr{r}{}\left(\frac{\hat{E_r}}{r}\right) -\left(\w^2\eps\mu - k_z^2\right)\hat{E_\theta} - \ddr{r}{}\left(\frac{1}{r}\ddr{r}{(r\hat{E_\theta})}\right)  - n\frac{k_z}{r}\hat{E_z} & = & 0
+        in\ddp{r}{}\left(\frac{\hat{E_r}}{r}\right) -\left(\w^2\eps\mu - k_z^2\right)\hat{E_\theta} - \ddp{r}{}\left(\frac{1}{r}\ddp{r}{(r\hat{E_\theta})}\right)  - n\frac{k_z}{r}\hat{E_z} & = & 0
         \\
-        i\frac{k_z}{r}\ddr{r}{(r\hat{E_r})}  - n\frac{k_z}{r}\hat{E_\theta}  -\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)\hat{E_z} - \frac{1}{r}\ddr{r}{}\left(r\ddr{r}{\hat{E_z}}\right) & = & 0
+        i\frac{k_z}{r}\ddp{r}{(r\hat{E_r})}  - n\frac{k_z}{r}\hat{E_\theta}  -\left(\w^2\eps\mu - \frac{n^2}{r^2} \right)\hat{E_z} - \frac{1}{r}\ddp{r}{}\left(r\ddp{r}{\hat{E_z}}\right) & = & 0
       \end{array}
       \right.
-    \end{equation}
+    \end{equation*}
 
-    De la troisième  équation, on trouve pour \(r\not=0\)
-    \begin{equation}
-    r^2 \ddr[2]{r}{\hat{E_z}} + r\ddr{r}{\hat{E_z}} + \left(r^2\w^2\eps\mu - n^2\right)\hat{E_z} =ik_zr\ddr{r}{(r\hat{E_r})} -  nk_zr\hat{E_\theta}
-    \end{equation}
+    De la troisième égalité, on trouve pour \(r\not=0\)
+    \begin{equation*}
+    r^2 \ddp[2]{r}{\hat{E_z}} + r\ddp{r}{\hat{E_z}} + \left(r^2\w^2\eps\mu - n^2\right)\hat{E_z} =ik_zr\ddp{r}{(r\hat{E_r})} -  nk_zr\hat{E_\theta}
+    \end{equation*}
 
-    Or comme par définition des équations de Maxwell, \(\vdiv \hat \vE = 0\), on a
-    \begin{align}
-      \vdiv\hat \vE &= \frac{1}{r}\ddr{r}{(r\hat{E_r})} + \frac{in}{r}\hat{E_\theta} + ik_z\hat{E_z}
+    Par conséquence des équations de Maxwell sans source, \(\vdiv \hat \vE = 0\) et on a
+    \begin{align*}
+      \vdiv\hat \vE &= \frac{1}{r}\ddp{r}{(r\hat{E_r})} + \frac{in}{r}\hat{E_\theta} + ik_z\hat{E_z} = 0
       \\
-      k_z^2r^2 \hat{E_z} &= ik_zr\ddr{r}{(r\hat{E_r})} - nk_zr\hat{E_\theta}
-    \end{align}
+      k_z^2r^2 \hat{E_z} &= ik_zr\ddp{r}{(r\hat{E_r})} - nk_zr\hat{E_\theta}
+    \end{align*}
+    Si l'on injecte cette égalité dans la 3\ieme composante du système de Maxwell couplé ci-dessus, on obtient sur \(\vE_z\) (et donc aussi sur \(\vH_z\))
+    \begin{equation*}
+      r^2 \ddp[2]{r}{\hat{E_z}} + r\ddp{r}{\hat{E_z}} + \left(r^2\left(\w^2\eps\mu - k_z^2\right) - n^2\right)\hat{E_z} = 0
+    \end{equation*}
 
-    On obtient donc sur la composante \(\hat{E_z}\):
-    \begin{equation}
-      r^2 \ddr[2]{r}{\hat{E_z}} + r\ddr{r}{\hat{E_z}} + \left(r^2\left(\w^2\eps\mu - k_z^2\right) - n^2\right)\hat{E_z} = 0
-    \end{equation}
+    On obtient l'équation différentielle en \(r\) vérifiée par \(\hat{E_z}\) et aussi \(\hat{H_z}\):
+    \begin{equation*}
+      x^2 f''(x) + xf'(x) + \left(x^2a^2 - n^2\right)f(x) = 0
+    \end{equation*}
 
-    Si \(k_3^2 = k^2 - k_z^2\) est non-nul, c'est une équation de Bessel (cf \cite[eq (6.80)]{bowman_introduction_1958}),%\footnote{Sinon c'est une équation de Euler-Cauchy et les solutions sont de types \(c_1(n) \cosh(n\ln(r)) + c_2(n) i\sinh(n\ln(r))\)}
-    dont des solutions générales sont: 
+    Si \(a = k_3\) est non-nul, c'est une équation de Bessel (voir \cite[eq (6.80)]{bowman_introduction_1958}) sinon une équation d'Euler et nous renvoyons à l'annexe \ref{sec:annexe:cylindre:k3_nul}.
 
-    Soient \((c_1(n,k_z),c_2(n,k_z)) \in \CC(\NN\times\RR)^2\):
-    \begin{equation}
-      \hat{E_z}(r,n,k_z) = c_1(n,k_z) J_n\left(k_3r\right) + c_2(n,k_z) H_n^{(2)}\left(k_3r\right)
-    \end{equation}
-    où \(J_n\) est la fonction de Bessel du premier type, \(H_n^{(2)}\) la fonction de Hankel de deuxième type.
-    On sait que l'on peut prendre n'importe quel couple de fonctions de Bessel (cf \eqref{eq:annex:bessel:equiv_bessel}), on choisit ce dernier car les \(J_n\) sont régulières et les \(H_n\) évoluent en \(r^{-1 \slash 2}\) à l'infini, donc ce choix est adapté à une décomposition en une onde incidente partout définie et une onde réfléchie décroissante à l'infini.
+    Si \(k_3\) est non-nul, il existe donc \((c_1(n,k_z),c_2(n,k_z)) \in \CC(\NN\times\RR)^2\):
+    \begin{equation*}
+          \hat{E_z}(r,n,k_z) = c_1(n,k_z) J_n\left(k_3r\right) + c_2(n,k_z) H_n^{(2)}\left(k_3r\right)
+    \end{equation*}
+    où \(J_n\) est la fonction de Bessel d'ordre \(n\), \(H_n^{(2)}\) la fonction de Hankel de deuxième espèce d'ordre \(n\). Il existe d'autres notations pour désigner ces fonctions,  voir \cite[p.~358]{abramowitz_handbook_1964}.
+    On sait que l'on peut prendre n'importe quel couple de fonctions de Bessel (voir annexe \eqref{eq:annex:bessel:equiv_bessel}), on choisit ce dernier car les \(J_n\) sont définies pour tout \(r\) et les \(H_n^{2}\) décroissent plus vite que \(r^{1 \slash 2}\) quand \(r\) tend vers l'infini, donc ce choix est adapté à une décomposition en une onde incidente partout définie et une onde réfléchie décroissante à l'infini.
 
-    De plus, d'après \cite[p.~358]{abramowitz_handbook_1964}, on sait qu'une fonction de Bessel d'ordre \(n\) est linéairement dépendante de celle d'ordre \(-n\).
+    De plus, d'après \cite[p.~358]{abramowitz_handbook_1964}, une fonction solution de l'équation de Bessel d'ordre \(n\) est linéairement dépendante de la même fonction d'ordre \(-n\).
+    \begin{align*}
+       \forall n \in \NN, \exists c(n) \in \CC(\NN), \forall r \in \RR^+,& J_n(r) = c(n)J_{-n}(r)
+       \\
+       \forall n \in \NN, \exists c'(n) \in \CC(\NN), \forall r \in \RR_+^*,& H_n^{(2)}(r) = c'(n)H_{-n}^{(2)}(r)
+    \end{align*}
+    Donc  \(\hat{E_z}(r,n,k_z)\) est linéairement dépendant de  \(\hat{E_z}(r,-n,k_z)\).
     On peut donc se restreindre à \(n\) entier naturel.
 
-    On trouve exactement le même résultat pour \(\hat{H_z}\): 
+    On trouve exactement les même résultats pour \(\hat{H_z}\): 
 
-    Soient \((c_3(n,k_z),c_4(n,k_z)) \in \CC(\NN\times\RR)^2\)
-    \begin{equation}
+    Il existe \((c_3(n,k_z),c_4(n,k_z)) \in \CC(\NN_+\times\RR)^2\)
+    \begin{equation*}
       \hat{H_z}(r,n,k_z) = c_3(n,k_z) J_n\left(k_3r\right) + c_4(n,k_z) H_n^{(2)}\left(k_3r\right)
-    \end{equation}
+    \end{equation*}
+
   \end{proof}
 
-
   \begin{defn}
-    On définit les matrices \(\mJ_{E}(r,n,k_z),\mH_{E}(r,n,k_z),\mJ_{H}(r,n,k_z),\mH_{H}(r,n,k_z)\)
-    \begin{align}
+    \label{def:cylindre:JE-JH-HE-HH}
+    On définit les matrices \(\mJ_{E}(r,n,k_z),\mH_{E}(r,n,k_z),\mJ_{H}(r,n,k_z),\mH_{H}(r,n,k_z)\) constantes par morceaux en \(r\)
+    \begin{align*}
       \mJ_{E}(r,n,k_z) &=
       \begin{bmatrix}
-        -\frac{nk_z}{rk_3^2}J_n(k_3r) & \frac{ik\eta}{k_3}J_n'(k_3r)
+        -\frac{nk_z}{rk_3(r)^2}J_n(k_3(r)r) & \frac{i\w\eps(r)}{k_3(r)}J_n'(k_3(r)r)
         \\
-        J_n(k_3r) & 0
+        J_n(k_3(r)r) & 0
       \end{bmatrix}
       \\
       \mH_{E}(r,n,k_z) &=
       \begin{bmatrix}
-        -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r) & \frac{ik\eta}{k_3}H_n^{(2)}{}'(k_3r)
+        -\frac{nk_z}{rk_3(r)^2}H_n^{(2)}(k_3(r)r) & \frac{i\w\mu(r)}{k_3(r)}H_n^{(2)}{}'(k_3(r)r)
         \\
-        H_n^{(2)}(k_3r) & 0
+        H_n^{(2)}(k_3(r)r) & 0
       \end{bmatrix}
       \\
       \mJ_{H}(r,n,k_z) &=
       \begin{bmatrix}
-        0 & -J_n(k_3r)
+        0 & -J_n(k_3(r)r)
         \\
-        -\frac{ik}{\eta k_3}J_n'(k_3r) & -\frac{nk_z}{rk_3^2}J_n(k_3r)
+        -\frac{i\w\eps(r)}{k_3(r)}J_n'(k_3(r)r) & -\frac{nk_z}{rk_3(r)^2}J_n(k_3(r)r)
       \end{bmatrix}
       \\
       \mH_{H}(r,n,k_z) &=
       \begin{bmatrix}
-        0 & -H_n^{(2)}(k_3r)
+        0 & -H_n^{(2)}(k_3(r)r)
         \\
-        -\frac{ik}{\eta k_3}H_n^{(2)}{}'(k_3r) & -\frac{nk_z}{rk_3^2}H_n^{(2)}(k_3r)
+        -\frac{i\w\eps(r)}{k_3(r)}H_n^{(2)}{}'(k_3(r)r) & -\frac{nk_z}{rk_3(r)^2}H_n^{(2)}(k_3(r)r)
       \end{bmatrix}
-    \end{align}
+    \end{align*}
   \end{defn}
 
   \begin{prop}
-    Alors dans une couche, les champs tangentiels s'écrivent
+    Il existe des constantes \((c_i(n,k_z))_{1\le i\le 4}\) telles que les composantes en \(\vect{e_\theta},\vect{e_z}\) des champs, dites composantes tangentielles par abus de langage sont
     \begin{subequations}
       \begin{align}
         \hat \vE_t(r,n,k_z) &= \mJ_{E}(r,n,k_z)
@@ -187,7 +203,8 @@
           c_2(n,k_z) \\
           c_4(n,k_z)
         \end{bmatrix}
-        \label{eq:imp_fourier:cylindre:Et}\\
+        \label{eq:imp_fourier:cylindre:Et}
+        \\
         \vect{e_r}\times\hat \vH_t(r,n,k_z) &=
         \mJ_{H}(r,n,k_z)
         \begin{bmatrix}
@@ -207,23 +224,23 @@
 
 
   \begin{proof}
-    À partir des équations de Maxwell restantes, on peut déterminer \(\hat{E_r},\hat{E_\theta},\hat{H_r},\hat{H_\theta}\).
-    \begin{equation}
+    À partir des composantes en \(\vect{e_\theta}\) des équations de Maxwell, on peut déterminer \(\hat{E_r},\hat{E_\theta},\hat{H_r},\hat{H_\theta}\).
+    \begin{equation*}
       \left\lbrace
       \begin{matrix}
         -ik_z\hat{E_\theta} + i\w\mu \hat{H_r} = -\frac{in}{r}\hat{E_z}
         \\
-        ik_z\hat{E_r} + i\w\mu \hat{H_\theta} = \ddr{r}{\hat{E_z}}
+        ik_z\hat{E_r} + i\w\mu \hat{H_\theta} = \ddp{r}{\hat{E_z}}
         \\
         i\w\eps \hat{E_r} + ik_z \hat{H_\theta} = \frac{in}{r}\hat{H_z}
         \\
-        i\w\eps \hat{E_\theta} - ik_z \hat{H_r} = -\ddr{r}{\hat{H_z}}
+        i\w\eps \hat{E_\theta} - ik_z \hat{H_r} = -\ddp{r}{\hat{H_z}}
       \end{matrix}
       \right.
-    \end{equation}
+    \end{equation*}
 
-    Cela revient à résoudre \(\vect{Y} = \mat{M}\vect{X}\) où la matrice \(\mat{M}\) et les vecteurs \(\vect{X}, \vect{Y}\) sont définis tels que
-    \begin{equation}
+    Ce système est équivalent à \(\vect{Y} = \mat{M}\vect{X}\) où la matrice \(\mat{M}\) et les champs de vecteurs \(\vect{X}, \vect{Y}\) sont définis tels que
+    \begin{equation*}
       \mat{M} =
       \begin{bmatrix}
       0 & -ik_z & i\w\mu & 0
@@ -246,11 +263,11 @@
       \vect{Y} =
       \begin{bmatrix}
         -\frac{in}{r}\hat{E_z}\\
-        \ddr{r}{\hat{E_z}}\\
+        \ddp{r}{\hat{E_z}}\\
         \frac{in}{r}\hat{H_z}\\
-        -\ddr{r}{\hat{H_z}}
+        -\ddp{r}{\hat{H_z}}
       \end{bmatrix}
-    \end{equation}
+    \end{equation*}
 
     On remarque que \(\mM\mM = \left(k_z^2 - \omega^2\eps\mu\right)\mI\) et donc que \(\det(\mat{M}) = ik_3\).
 
@@ -258,7 +275,7 @@
 
     On suppose ce dernier non nul, on peut déduire \(\vect{X}\):
 
-    \begin{equation}
+    \begin{equation*}
       \begin{bmatrix}
         \hat{E_r}\\
         \hat{E_\theta}\\
@@ -277,101 +294,37 @@
       \end{bmatrix}
       \begin{bmatrix}
         -\frac{in}{r}\hat{E_z}\\
-        \ddr{r}{\hat{E_z}}\\
+        \ddp{r}{\hat{E_z}}\\
         \frac{in}{r}\hat{H_z}\\
-        -\ddr{r}{\hat{H_z}}
+        -\ddp{r}{\hat{H_z}}
       \end{bmatrix}
-    \end{equation}
+    \end{equation*}
 
-    On extrait alors \(\hat{E_\theta}, \hat{H_\theta}\) pour obtenir les champs tangentielles à \(\vect{e_r}\) en tout point, sachant déjà \(\hat{E_z}, \hat{H_z}\).
+    On extrait alors \(\hat{E_\theta}, \hat{H_\theta}\) pour obtenir les champs orthogonaux à \(\vect{e_r}\) en tout point, sachant déjà \(\hat{E_z}, \hat{H_z}\).
 
-    \begin{align}
-      \hat{E_r} & = \frac{1}{k_3^2}\left(ik_z\ddr{r}{\hat{E_z}}+\frac{k\eta n}{r}\hat{H_z}\right)
-      \\
-      \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} - i\w\mu\ddr{r}{\hat{H_z}}\right)
-      \\
-      \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
-      \\
-      -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
-      \\
-      \hat{H_\theta} &= -\frac{1}{k_3^2}\left(i\w\eps\ddr{r}{\hat{E_z}} + \frac{nk_z}{r}\hat{H_z}\right)
-    \end{align}
-
-    On dérive les fonctions de Bessel:
-
-     \begin{align}
-      \hat{E_\theta} &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) + \frac{ik\eta}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
+    \begin{align*}
+      % \hat{E_r} & = \frac{1}{k_3^2}\left(ik_z\ddp{r}{\hat{E_z}}+\frac{k\eta n}{r}\hat{H_z}\right)
+      % \\
+      \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} - i\w\mu\ddp{r}{\hat{H_z}}\right)
       \\
       \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
       \\
       -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
       \\
-      \hat{H_\theta} &= -\frac{ik}{\eta k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
-    \end{align}
+      \hat{H_\theta} &= -\frac{1}{k_3^2}\left(i\w\eps\ddp{r}{\hat{E_z}} + \frac{nk_z}{r}\hat{H_z}\right)
+    \end{align*}
 
-    Et on obtient
+    ce qui donne
 
-    \begin{subequations}
-      \label{eq:imp_fourier:cylindre:champs}
-      \begin{align}
-        \label{eq:imp_fourier:cylindre:champs:E}
-        \hat \vE_t(r,n,k_z) &= \mJ_{E}(r,n,k_z)
-        \begin{bmatrix}
-          c_1(n,k_z) \\
-          c_3(n,k_z)
-        \end{bmatrix}
-        +
-        \mH_{E}(r,n,k_z)
-        \begin{bmatrix}
-          c_2(n,k_z) \\
-          c_4(n,k_z)
-        \end{bmatrix}
-        \\
-        \label{eq:imp_fourier:cylindre:champs:H}
-        \vect{e_r}\times\hat \vH_t(r,n,k_z) &=
-        \mJ_{H}(r,n,k_z)
-        \begin{bmatrix}
-          c_1(n,k_z) \\
-          c_3(n,k_z)
-        \end{bmatrix}
-        +
-        \mH_{H}(r,n,k_z)
-        \begin{bmatrix}
-          c_2(n,k_z) \\
-          c_4(n,k_z)
-        \end{bmatrix}
-      \end{align}
-    \end{subequations}
-
-  % \subsection{Cas \(k_3 = 0\)}
-
-  %   Si \(k_3 = 0\) alors le système n'est plus inversible. En effet si on repart du système en remplaçant \(k_z\), on remarque une redondance dans les termes de gauche des équations
-  %   \begin{equation}
-  %       \left\lbrace
-  %       \begin{matrix}
-  %           -ik\hat{E_\theta} + ik\eta \hat{H_r} = -\frac{in}{r}\hat{E_z}
-  %           \\
-  %           ik\eta^{-1} \hat{E_\theta} - ik \hat{H_r} = -\ddr{r}{\hat{H_z}}            
-  %           \\
-  %           ik\hat{E_r} + ik\eta \hat{H_\theta} = \ddr{r}{\hat{E_z}}
-  %           \\
-  %           ik\eta^{-1} \hat{E_r} + ik \hat{H_\theta} = \frac{in}{r}\hat{H_z}
-  %       \end{matrix}
-  %       \right.
-  %   \end{equation}
-
-  %   Or dans le cas \(k_3=0\), on a \(\hat{E_z}(r,n) = c_1(n) \cosh(n\ln(r)) + c_2(n) i\sinh(n\ln(r))\) et \(\hat{H_z}(r,n) = c_3(n) \cosh(n\ln(r)) + c_4(n) i\sinh(n\ln(r))\).
-
-  %   Il est donc nécessaire pour que les équations soient compatibles que \(c_4(n)=-\eta^{-1} c_1(n)\) et \( c_3(n) = \eta^{-1}c_2(n)\) donc \(\hat{H_z}\) est linéairement dépendant de \(\hat{E_z}\). On obtient alors le système réduit
-  %       \begin{equation}
-  %       \left\lbrace
-  %       \begin{matrix}
-  %           -ik\hat{E_\theta} + ik\eta \hat{H_r} = -\frac{in}{r}\hat{E_z}
-  %           \\
-  %           ik\hat{E_r} + ik\eta \hat{H_\theta} = \ddr{r}{\hat{E_z}}
-  %       \end{matrix}
-  %       \right.
-  %   \end{equation}
+     \begin{align*}
+      \hat{E_\theta} &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) + \frac{i\w\mu}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
+      \\
+      \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
+      \\
+      -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
+      \\
+      \hat{H_\theta} &= -\frac{i\w\eps}{k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
+    \end{align*}
 
   \end{proof}
 
@@ -382,29 +335,38 @@
 
   \subsection{Expression de la matrice d'impédance pour une couche}
 
+    \begin{lemme}
+      \label{lem:cylindre:imp:inv_matrices_JE-HE}
+      Si \(\mu(r)\eps(r)\not \in \RR\) fixé, alors les matrices \(\mJ_E(r,n,k_z)\), \(\mH_E(r,n,k_z)\) sont inversibles pour ce couple \((n,k_z)\).
+    \end{lemme}
+    \begin{proof}
+      Par définition des matrices,
+      \begin{align}
+        \det(\mJ_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
+        \\
+        \det(\mH_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+      \end{align}
+
+      D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels.
+      Donc si \(k_3 = \in\CC\backslash\RR\), comme l'ordre est entier naturel donc \(n\ge 0\), ces matrices sont inversibles.
+    \end{proof}
     Soit \(r_1 = r_0 + d\)
-    \begin{defn}
-      On définit la matrice d'impédance \(\hat \mZ(n,k_z)\) la matrice telle que
-      \begin{equation}
+
+    \begin{prop}
+      Si on suppose que \(k_3(r_0) \not \in \RR\) et que la matrice \(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) est inversible pour tout \(r_0 \le r \le r_1\), alors on a 
+      \begin{equation*}
         \hat \vE_t(r_1,n,k_z) = \hat \mZ(n,k_z) \left(\vect{e_r}\pvect \hat \vH_t(r_1,n,k_z)\right)
-      \end{equation}
-    \end{defn}
-
-    \begin{thm}
-      Si on suppose que les fonctions de Bessel et leurs dérivées ne s’annulent pas en \(k_3r_0\) et que
-      la matrice \(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) est inversible pour tout \(n,k_z\),
-
-      Alors \(\hat \mZ(n,k_z)\) est
-      \begin{multline}
+      \end{equation*}
+      où
+      \begin{multline*}
         \hat \mZ(n,k_z) =
         \left(\mH_{E}(r_1,n,k_z)\mH_{E}(r_0,n,k_z)^{-1} - \mJ_{E}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\right)\\
         \left(\mH_{H}(r_1,n,k_z)\mH_{E}(r_0,n,k_z)^{-1} - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\right)^{-1}
-      \end{multline}
-    \end{thm}
+      \end{multline*}
+    \end{prop}
 
     \begin{proof}
-
-      On injecte la relation \(\vE_t(r_0,\theta,z) = 0\) équivalente à \(\hat \vE(r_0,n,k_z) = 0\) dans \eqref{eq:imp_fourier:cylindre:Et}.
+      On applique la condition limite du conducteur parfait \(\hat \vE(r_0,n,k_z) = 0\) dans \eqref{eq:imp_fourier:cylindre:Et}.
       \begin{equation}
         \mJ_{E}(r_0,n,k_z)
         \begin{bmatrix}
@@ -418,17 +380,8 @@
         \end{bmatrix}
       \end{equation}
 
-      Or par définition des matrices,
-      \begin{align}
-        \det(\mJ_E(r_0,n,k_z)) &= -\frac{ik\eta}{k_3}J_n(k_3r_0)J_n'(k_3r_0)
-        \\
-        \det(\mH_E(r_0,n,k_z)) &= -\frac{ik\eta}{k_3}H_n^{(2)}(k_3r_0)H_n^{(2)}{}'(k_3r_0)
-      \end{align}
-
-      D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(>-1\) sont tous réels.
-      Donc à condition d'avoir \(k_3\) complexe, comme l'ordre est entier et que l'on se restreint au entiers naturels, ces matrices sont inversibles\footnote{Là encore, il faut étudier le cas des matériaux sans pertes où \(k_3\) est réel pour \(k_z < w\sqrt{\mu\eps}\)}.
-
-      À condition de l'inversibilité de ces deux matrices, on peut donc exprimer les composantes tangentielles
+      On a supposé \(k_3(r_0)\not \in \RR \) donc on applique le lemme \ref{lem:cylindre:imp:inv_matrices_JE-HE} pour pouvoir inverser ces matrices.
+      On peut donc exprimer les composantes tangentielles
       \begin{align}
         \hat \vE_t(r_1,n,k_z) &=
         \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)
@@ -445,7 +398,7 @@
         \end{bmatrix}
       \end{align}
 
-      Et à condition que \(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) soit inversible, la matrice d'impédance est:
+      On suppose \(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) inversible, la matrice d'impédance est:
       % \begin{TODO}
       %   Inversibilité de \(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\)
       % \end{TODO}
@@ -456,7 +409,7 @@
         \left(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\right)^{-1}
       \end{multline}
 
-      On symétrise la relation pour la rendre plus agréable à l’œil.
+      Comme les deux matrices \(\mJ_E\), \(\mH_E\) sont inversibles, c'est équivalent à
 
       \begin{multline}
         \hat \mZ =
@@ -465,16 +418,10 @@
         \left(\mH_{H}(r_1,n,k_z)\mH_{E}(r_0,n,k_z)^{-1} - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\right)^{-1}
       \end{multline}
 
-      Contrairement au plan, on ne peut pas simplifier le résultat de façon évidente.
-
     \end{proof}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-  \subsection{Expression de la matrice d'impédance pour plusieurs couches}
+  \subsection{Expression de la patrice d'impédance pour plusieurs couches}
 
     \begin{figure}[!hbt]
       \centering
@@ -484,76 +431,76 @@
       \end{tikzpicture}
     \end{figure}
 
-    Soit \(r_m\) le rayon de la couche \(m\), \(r_m = r_0 +\sum_{i=1}^{m} d_{i}\).
+    Soit \(r_p\) le rayon de la couche \(p\), \(r_p = r_0 +\sup_{i=1}^{p} d_{i}\).
 
     \begin{defn}
-      On définit pour chaque interface, la matrice \(\hat \mZ_m\) telle que
+      On définit pour chaque interface, la matrice \(\hat \mZ_p\) telle que
       \begin{equation}
-        \hat \vE_t(r_m,n,k_z) = \hat \mZ_m(n,k_z) \left(\vect{e_r} \pvect \hat \vH_t(r_m,n,k_z)\right)
+        \hat \vE_t(r_p,n,k_z) = \hat \mZ_p(n,k_z) \left(\vect{e_r} \pvect \hat \vH_t(r_p,n,k_z)\right)
       \end{equation}
     \end{defn}
 
-    Pour chaque couche caractérisée par \((\eps_m,\mu_m,d_m)\), définissons
+    Pour chaque couche caractérisée par \((\eps_p,\mu_p,d_p)\), définissons
     \begin{subequations}
       \begin{align}
-        k_{3m} &= \sqrt{w^2\eps_m\mu_m - k_z^2}
+        k_{3p} &= \sqrt{w^2\eps_p\mu_p - k_z^2}
         \\
-        \mJ_{Em}(r,n,k_z) &=
+        \mJ_{Ep}(r,n,k_z) &=
           \begin{bmatrix}
-            -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r) & \frac{i\w\mu_m}{k_{3m}}J_n'(k_{3m}r)
+            -\frac{nk_z}{rk_{3p}^2}J_n(k_{3p}r) & \frac{i\w\mu_p}{k_{3p}}J_n'(k_{3p}r)
             \\
-            J_n(k_{3m}r) & 0
+            J_n(k_{3p}r) & 0
           \end{bmatrix}
         \\
-        \mH_{Em}(r,n,k_z) &=
+        \mH_{Ep}(r,n,k_z) &=
           \begin{bmatrix}
-            -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r) & \frac{i\w\mu_m}{k_{3m}}H_n^{(2)}{}'(k_{3m}r)
+            -\frac{nk_z}{rk_{3p}^2}H_n^{(2)}(k_{3p}r) & \frac{i\w\mu_p}{k_{3p}}H_n^{(2)}{}'(k_{3p}r)
             \\
-            H_n^{(2)}(k_{3m}r) & 0
+            H_n^{(2)}(k_{3p}r) & 0
           \end{bmatrix}
         \\
-        \mJ_{Hm}(r,n,k_z) &=
+        \mJ_{Hp}(r,n,k_z) &=
           \begin{bmatrix}
-            0 & -J_n(k_{3m}r)
+            0 & -J_n(k_{3p}r)
             \\
-            -\frac{i\w\eps_m}{k_{3m}}J_n'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}J_n(k_{3m}r)
+            -\frac{i\w\eps_p}{k_{3p}}J_n'(k_{3p}r) & -\frac{nk_z}{rk_{3p}^2}J_n(k_{3p}r)
           \end{bmatrix}
         \\
-        \mH_{Hm}(r,n,k_z) &=
+        \mH_{Hp}(r,n,k_z) &=
           \begin{bmatrix}
-            0 & -H_n^{(2)}(k_{3m}r)
+            0 & -H_n^{(2)}(k_{3p}r)
             \\
-            -\frac{i\w\eps_m}{k_{m3}}H_n^{(2)}{}'(k_{3m}r) & -\frac{nk_z}{rk_{3m}^2}H_n^{(2)}(k_{3m}r)
+            -\frac{i\w\eps_p}{k_{p3}}H_n^{(2)}{}'(k_{3p}r) & -\frac{nk_z}{rk_{3p}^2}H_n^{(2)}(k_{3p}r)
           \end{bmatrix}
         \\
-        \mM_{Jm}(r,n,k_z) &= \mJ_{Em}(r,n,k_z) -  \mZ_{m-1} \mJ_{Hm}(r,n,k_z)
+        \mM_{Jp}(r,n,k_z) &= \mJ_{Ep}(r,n,k_z) -  \mZ_{p-1} \mJ_{Hp}(r,n,k_z)
         \\
-        \mM_{Hm}(r,n,k_z) &= \mH_{Em}(r,n,k_z) -  \mZ_{m-1} \mH_{Hm}(r,n,k_z)
+        \mM_{Hp}(r,n,k_z) &= \mH_{Ep}(r,n,k_z) -  \mZ_{p-1} \mH_{Hp}(r,n,k_z)
       \end{align}
     \end{subequations}
 
     \begin{thm}
       Soit \(\hat \mZ_0(n,k_z) = \mat{0}_{\mathcal{M}_2(\CC)}\).
 
-      Si pour tout \(0 < m < p\)
+      Si pour tout \(0 < p < N_c\)
 
       \begin{equation}
         \begin{aligned}
-          k_{3m} & \not = 0 \\
-          \det\left(\mM_{Jm}(r_{m-1},n,k_z)\right) & \not = 0
+          k_{3p} & \not = 0 \\
+          \det\left(\mM_{Jp}(r_{p-1},n,k_z)\right) & \not = 0
           \\
-          \det\left(\mM_{Hm}(r_{m-1},n,k_z)\right) & \not = 0
+          \det\left(\mM_{Hp}(r_{p-1},n,k_z)\right) & \not = 0
           \\
-          \det\left(\mH_{Hm}(r_{m},n,k_z)\mM_{Hm}(r_{m-1},n,k_z)^{-1} - \mJ_{Hm}(r_{m},n,k_z)(\mM_{Jm}(r_{m-1},n,k_z))^{-1}\right) &\not = 0
+          \det\left(\mH_{Hp}(r_{p},n,k_z)\mM_{Hp}(r_{p-1},n,k_z)^{-1} - \mJ_{Hp}(r_{p},n,k_z)(\mM_{Jp}(r_{p-1},n,k_z))^{-1}\right) &\not = 0
         \end{aligned}
       \end{equation}
 
       Alors la matrice d'impédance \(\hat{\mZ}_p\) est défini par la relation de récurrence :
       \begin{multline}
-        \hat{\mZ_m}(n,k_z) \\
-          = \left(\mH_{Em}(r_m,n,k_z)\mM_{Hm}(r_{m-1},n,k_z)^{-1} - \mJ_{Em}(r_m,n,k_z)\mM_{Jm}(r_{m-1},n,k_z)^{-1}\right) 
+        \hat{\mZ_p}(n,k_z) \\
+          = \left(\mH_{Ep}(r_m,n,k_z)\mM_{Hp}(r_{p-1},n,k_z)^{-1} - \mJ_{Ep}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\right) 
           \\
-          \left(\mH_{Hm}(r_m,n,k_z)\mM_{Hm}(r_{m-1},n,k_z)^{-1} - \mJ_{Hm}(r_m,n,k_z)\mM_{Jm}(r_{m-1},n,k_z)^{-1}\right)^{-1}
+          \left(\mH_{Hp}(r_p,n,k_z)\mM_{Hp}(r_{p-1},n,k_z)^{-1} - \mJ_{Hp}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\right)^{-1}
       \end{multline}
     \end{thm}
 
@@ -562,44 +509,44 @@
 
       On résonne par récursivité:
 
-      On se situe dans la couche \(m\) et l'on sait que les champs vérifient
+      On se situe dans la couche \(p\) et l'on sait que les champs vérifient
       \begin{equation}
         \begin{bmatrix}
-          \hat{E_\theta}(r_{m-1},n,k_z)\\
-          \hat{E_z}(r_{m-1},n,k_z)\\
+          \hat{E_\theta}(r_{p-1},n,k_z)\\
+          \hat{E_z}(r_{p-1},n,k_z)\\
         \end{bmatrix}
         =
-        \hat \mZ_{m-1}(n,k_z)
+        \hat \mZ_{p-1}(n,k_z)
         \begin{bmatrix}
-          -\hat{H_z}(r_{m-1},n,k_z)\\
-          \hat{H_\theta}(r_{m-1},n,k_z)\\
+          -\hat{H_z}(r_{p-1},n,k_z)\\
+          \hat{H_\theta}(r_{p-1},n,k_z)\\
         \end{bmatrix}
       \end{equation}
 
-      En injectant ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en \(r = r_{m-1}\)
+      En injectant ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en \(r = r_{p-1}\)
       \begin{multline}
-        \mJ_{Em}(r_{m-1},n,k_z)
+        \mJ_{Ep}(r_{p-1},n,k_z)
         \begin{bmatrix}
           c_1(n,k_z) \\
           c_3(n,k_z)
         \end{bmatrix}
         +
-        \mH_{Em}(r_{m-1},n,k_z)
+        \mH_{Ep}(r_{p-1},n,k_z)
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
         \end{bmatrix}
         =
         \\
-        \hat \mZ_{m-1}
+        \hat \mZ_{p-1}
         \left(
-          \mJ_{Hm}(r_{m-1},n,k_z)
+          \mJ_{Hp}(r_{p-1},n,k_z)
           \begin{bmatrix}
             c_1(n,k_z) \\
             c_3(n,k_z)
           \end{bmatrix}
           +
-          \mH_{Hm}(r_{m-1},n,k_z)
+          \mH_{Hp}(r_{p-1},n,k_z)
           \begin{bmatrix}
             c_2(n,k_z) \\
             c_4(n,k_z)
@@ -608,13 +555,13 @@
       \end{multline}
 
       \begin{equation}
-        \mM_{Jm}(r_{m-1},n,k_z)
+        \mM_{Jp}(r_{p-1},n,k_z)
         \begin{bmatrix}
           c_1(n,k_z) \\
           c_3(n,k_z)
         \end{bmatrix}
         =
-        -\mM_{Hm}(r_{m-1},n,k_z)
+        -\mM_{Hp}(r_{p-1},n,k_z)
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
@@ -622,21 +569,21 @@
       \end{equation}
 
       % \begin{TODO}
-      On suppose que les matrices \(\mM_{Jm}(r_m,n,k_z), \mM_{Hm}(r_m,n,k_z)\) sont inversibles pour tout \((n,k_z)\).
+      On suppose que les matrices \(\mM_{Jp}(r_p,n,k_z), \mM_{Hp}(r_p,n,k_z)\) sont inversibles pour tout \((n,k_z)\).
       % \end{TODO}
 
-      On injecte ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en \(r = r_{m}\)
+      On injecte ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en \(r = r_{p}\)
       \begin{multline}
-        \hat{\vE}_t(r_m,n,k_z) = \\
-        \left(\mH_{Em}(r_{m},n,k_z) - \mJ_{Em}(r_{m},n,k_z)\mM_{Jm}(r_{m-1},n,k_z)^{-1}\mM_{Hm}(r_{m-1},n,k_z)\right)
+        \hat{\vE}_t(r_p,n,k_z) = \\
+        \left(\mH_{Ep}(r_{p},n,k_z) - \mJ_{Ep}(r_{p},n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\mM_{Hp}(r_{p-1},n,k_z)\right)
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
         \end{bmatrix}
       \end{multline}        
       \begin{multline}
-        \vect{e_r}\times\hat{\vH}_t(r_m,n,k_z) = \\
-        \left(\mH_{Hm}(r_{m},n,k_z) - \mJ_{Hm}(r_{m},n,k_z)\mM_{Jm}(r_{m-1},n,k_z)^{-1}\mM_{Hm}(r_{m-1},n,k_z) \right)
+        \vect{e_r}\times\hat{\vH}_t(r_p,n,k_z) = \\
+        \left(\mH_{Hp}(r_{p},n,k_z) - \mJ_{Hp}(r_{p},n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\mM_{Hp}(r_{p-1},n,k_z) \right)
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
@@ -650,19 +597,23 @@
       On peut alors conclure sur la relation de récurrence
 
       \begin{multline}
-        \hat{\mZ}_{m}(r_m,n,k_z) =\\
-          \left(\mH_{Em}(r_m,n,k_z) - \mJ_{Em}(r_m,n,k_z)\mM_{Jm}(r_{m-1},n,k_z)^{-1}\mM_{Hm}(r_{m-1},n,k_z)\right) \\
-          \left(\mH_{Hm}(r_m,n,k_z) - \mJ_{Hm}(r_m,n,k_z)\mM_{Jm}(r_{m-1},n,k_z)^{-1}\mM_{Hm}(r_{m-1},n,k_z)\right)^{-1}
+        \hat{\mZ}_{p}(r_p,n,k_z) =\\
+          \left(\mH_{Ep}(r_p,n,k_z) - \mJ_{Ep}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\mM_{Hp}(r_{p-1},n,k_z)\right) \\
+          \left(\mH_{Hp}(r_p,n,k_z) - \mJ_{Hp}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\mM_{Hp}(r_{p-1},n,k_z)\right)^{-1}
       \end{multline}
 
       Comme on a supposé l'inversibilité des deux matrices \(\mM_J, \mM_H\) alors on peut réordonner les termes
       \begin{multline}
-        \hat{\mZ}_{m}(r_m,n,k_z) =\\
-          \left(\mH_{Em}(r_m,n,k_z)\mM_{Hm}(r_{m-1},n,k_z)^{-1} - \mJ_{Em}(r_m,n,k_z)\mM_{Jm}(r_{m-1},n,k_z)^{-1}\right) \\
-          \left(\mH_{Hm}(r_m,n,k_z)\mM_{Hm}(r_{m-1},n,k_z)^{-1} - \mJ_{Hm}(r_m,n,k_z)\mM_{Jm}(r_{m-1},n,k_z)^{-1}\right)^{-1}
+        \hat{\mZ}_{p}(r_p,n,k_z) =\\
+          \left(\mH_{Ep}(r_p,n,k_z)\mM_{Hp}(r_{p-1},n,k_z)^{-1} - \mJ_{Em}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\right) \\
+          \left(\mH_{Hp}(r_p,n,k_z)\mM_{Hp}(r_{p-1},n,k_z)^{-1} - \mJ_{Hp}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\right)^{-1}
       \end{multline}
 
     \end{proof}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \subsection{Expression des coefficients de la série de Fourier}
 

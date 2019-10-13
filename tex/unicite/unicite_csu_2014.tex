@@ -396,8 +396,10 @@
     Subjectivement, nous choisissons la dernière car il n'y a \textit{a priori} pas de raisons de privilégier un opérateur et non l'autre.
   \end{proof}
 
-  Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 \right\rbrace \). On remarque que
+  Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 = 0 \right\rbrace \). On remarque que
   \begin{align}
+    \CSU[1]{CI3} & \subset \CSU{CI4}\times\CC^2
+    \\
     \CSU[1]{CI3}\cap S & \subsetneq (\CSU{CI4}\times\CC^2)\cap S 
   \end{align}
 
@@ -412,7 +414,7 @@
       \\
       \Delta_1 \not = 0
       \\
-      \Delta_1 \not = 0
+      \Delta_2 \not = 0
       \\
       \Re\left(a_0\right)\ge 0
       \\
@@ -507,19 +509,18 @@
     On remarque alors que certaines CSU peuvent se combiner et imposent que les parties réelles de \(b_1\Delta_1\) et \(b_2\Delta_2\) soient nulles.
   \end{proof}
 
-  Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 \right\rbrace \). On remarque que
+  Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 = 0 \right\rbrace \). On remarque que
   \begin{align}
+    \CSU[2]{CI3} & \subset \CSU{CI4}\times\CC^2
+    \\
     \CSU[2]{CI3}\cap S & \subsetneq (\CSU{CI4}\times\CC^2)\cap S 
   \end{align}
 
     On définit 
     \begin{equation}
-      \label{eq:unicite:z}
-      \begin{matrix}
-        z: & \CC\times\CC^*\times\CC^*\times \CC \times \CC &\rightarrow& \CC
-        \\
-        & (a_0,a_1,a_2,b_1,b_2) & \mapsto & 1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}
-      \end{matrix}
+      \label{eq:fonction:z-ci3}
+      \fonction{z}{\CC\times\CC^*\times\CC^*\times \CC \times \CC}{\CC}%
+        {(a_0,a_1,a_2,b_1,b_2)}{1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}}
     \end{equation}
     Par abus de notation, on omet les variables \( (a_0,a_1,a_2,b_1,b_2)\)
     \begin{equation}
@@ -597,10 +598,6 @@
       \LR & = -\frac{a_0 - a_2 \LR - a_0}{a_2}
     \end{align*}
 
-    On pose
-    \begin{equation}
-      z = \left(1 - \frac{b_1a_0}{a_1} - \frac{b_2a_0}{a_2}\right)
-    \end{equation}
 
     On déduit de ce qui précède que
 
@@ -725,7 +722,9 @@
     Et il suffit d'imposer la positivité de la partie réelle de chaque terme pour avoir \(\Re(X)\ge 0\)
   \end{proof}
 
-  Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 \right\rbrace \). On remarque que
+  Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 = 0 \right\rbrace \). On remarque que
   \begin{align}
+    \CSU[3]{CI3} & \subset \CSU{CI4}\times\CC^2
+    \\ 
     \CSU[3]{CI3}\cap S & = (\CSU{CI4}\times\CC^2)\cap S 
   \end{align}

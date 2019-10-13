@@ -4,7 +4,7 @@
 
 %%% LES POLICES
 
-%% Fonte Latin Modern
+% Fonte Latin Modern
 \usepackage{lmodern} % fontes tailles variables
     % substitution des petites capitales grasses manquantes
     \rmfamily
@@ -19,10 +19,10 @@
 %% Fonte MathDesign + Utopia
 % \usepackage[utopia]{mathdesign}
 
-%% Fonte KP
+% % Fonte KP
 % \usepackage{kpfonts}
 
-%% Fonte Computer Modern Bright
+% % Fonte Computer Modern Bright
 % \usepackage{cmbright}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,9 +50,19 @@
 \usepackage{amssymb} % plus de symbole
 \usepackage[leqno]{amsmath} % legno : numéro des équations à gauche
     \everymath{\displaystyle} % Tout en grand !
+    \numberwithin{equation}{section} % (x.y.z) x: chapitre, y: section, z: numéro equation
 
 \usepackage{amsthm} % gestion des théoremes
+    %\newtheorem{env_name}{Titre environement}[chapter/section/subsection/...]
+    %\newtheorem{env_name}[reference_env_name]{Titre environement}
+    \newtheorem{thm}{Théorème}[chapter] % Environnment thm numéroté sur chaptre : x.z
+    \newtheorem{lemme}[thm]{Lemme}
+    \newtheorem{prop}[thm]{Proposition}
+    \newtheorem{defn}[thm]{Définition}
+    \newtheorem{hyp}[thm]{Hypothèse}
 %\usepackage{thmbox}
+%\newtheorem[style=M,bodystyle={\noindent}]{thm}{Théorème}[chapter]
+
 
 \usepackage[autostyle=true]{csquotes}
 

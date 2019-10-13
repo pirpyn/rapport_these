@@ -1,0 +1,53 @@
+\section[Solution dans le cylindre quand k3 = 0]{Solution dans le cylindre quand \(k_3 = 0\)}
+  \label{sec:annexe:cylindre:k3_nul}
+  Si \(k_3 = 0\), donc \(k_z^2 = w^2\eps\mu\) alors il existe donc des constantes \((c_1(n),c_2(n)) \in \CC(\NN)^2\) telles que.
+  \begin{equation*}
+    \hat{E_z}(r,n,k_z) = c_1(n) r^n + c_2(n)r^{-n}
+  \end{equation*}
+  Dans ce cas \(\hat{E_z}(r,n,k_z)\) est linéairement dépendant de  \(\hat{E_z}(r,-n,k_z)\) et l'on peut se restreindre à \(n\) entier naturel.
+
+  Toute la méthode est aussi valable pour \(\hat H_z\), il existe des constantes \((c_3(n),c_4(n)) \in \CC(\NN)^2\) telles que
+  \begin{equation*}
+    \hat{H_z}(r,n,k_z) = c_3(n) r^n + c_4(n)r^{-n}
+  \end{equation*}
+
+  À partir des composantes en \(\vect{e_\theta}\) des équations de Maxwell, on peut déterminer \(\hat{E_r},\hat{E_\theta},\hat{H_r},\hat{H_\theta}\).
+  \begin{equation*}
+    \left\lbrace
+    \begin{matrix}
+      -ik_z\hat{E_\theta} + i\w\mu \hat{H_r} = -\frac{in}{r}\hat{E_z}
+      \\
+      i\w\eps \hat{E_\theta} - ik_z \hat{H_r} = -\ddp{r}{\hat{H_z}}
+      \\
+      ik_z\hat{E_r} + i\w\mu \hat{H_\theta} = \ddp{r}{\hat{E_z}}
+      \\
+      i\w\eps \hat{E_r} + ik_z \hat{H_\theta} = \frac{in}{r}\hat{H_z}
+    \end{matrix}
+    \right.
+  \end{equation*}
+
+  Ce système n'est pas inversible. On remarque une redondance dans les termes de gauche des équations
+  \begin{equation}
+      \left\lbrace
+      \begin{matrix}
+          -ik\hat{E_\theta} + ik\eta \hat{H_r} = -\frac{in}{r}\hat{E_z}
+          \\
+          ik\eta^{-1} \hat{E_\theta} - ik \hat{H_r} = -\ddp{r}{\hat{H_z}}            
+          \\
+          ik\hat{E_r} + ik\eta \hat{H_\theta} = \ddp{r}{\hat{E_z}}
+          \\
+          ik\eta^{-1} \hat{E_r} + ik \hat{H_\theta} = \frac{in}{r}\hat{H_z}
+      \end{matrix}
+      \right.
+  \end{equation}
+
+  Il est donc nécessaire pour que les équations soient compatibles que \(c_4(n)=-\eta^{-1} c_1(n)\) et \( c_3(n) = \eta^{-1}c_2(n)\) donc \(\hat{H_z}\) est linéairement dépendant de \(\hat{E_z}\). On obtient alors le système réduit
+      \begin{equation}
+      \left\lbrace
+      \begin{matrix}
+          -ik\hat{E_\theta} + ik\eta \hat{H_r} = -\frac{in}{r}\hat{E_z}
+          \\
+          ik\hat{E_r} + ik\eta \hat{H_\theta} = \ddp{r}{\hat{E_z}}
+      \end{matrix}
+      \right.
+  \end{equation}

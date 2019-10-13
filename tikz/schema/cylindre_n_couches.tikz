@@ -96,7 +96,7 @@
 
 \fill [lightgray] (a) arc (\a:\b:\re) -- (b) arc (\b:\a:\ri) -- cycle;
 \draw (a) arc (\a:\b:\re);
-\draw (c) node {$\eps_p,\mu_p,d_p$};
+\draw (c) node {$\eps_{Nc},\mu_{Nc},d_{Nc}$};
 
 % Le vide
 \tikzmath{

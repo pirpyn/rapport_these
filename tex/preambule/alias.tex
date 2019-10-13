@@ -1,12 +1,3 @@
-
-%\newtheorem[style=M,bodystyle={\noindent}]{thm}{Théorème}[chapter]
-\newtheorem{thm}{Théorème}[chapter]
-\newtheorem{lemme}[thm]{Lemme}
-
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{defn}[thm]{Définition}
-\newtheorem{hyp}[thm]{Hypothèse}
-
 %redefinition
 \renewcommand{\frac}[2]{\dfrac{#1}{#2}} % Toujours de grandes fractions
 \renewcommand{\tilde}[1]{\overset{\thicksim}{#1}} % Toujours un grand tilde
@@ -75,14 +66,14 @@
 \newcommand{\NN}{\mathbb N}
 \newcommand{\ZZ}{\mathbb Z}
 \newcommand{\eps}{\epsilon}
-\newcommand{\dd}[1]{\operatorname{d#1}}
+\newcommand{\dd}{\operatorname{d}}
 \newcommand{\OO}{\Omega}
 
-\newcommand{\ddp}[3][{}]{\dfrac{\dd{}^{#1} #3}{{\dd{}#2}^{#1}}}
+\newcommand{\ddp}[3][{}]{\dfrac{\text{d}^{#1}#3}{{\text{d}#2}^{#1}}}
 \newcommand{\ddr}[3][{}]{\dfrac{\partial^{#1} #3}{{\partial #2}^{#1}}}
 
 %Operator
-\newcommand{\Sobolev}[1][{}]{\operatorname{H_#1}}
+\newcommand{\Sobolev}[1][{}]{\operatorname{H_{#1}}}
 \newcommand{\Hgrad}{\Sobolev[grad]}
 \newcommand{\Hrot}{\Sobolev[rot]}
 \newcommand{\Hdiv}{\Sobolev[div]}
@@ -207,6 +198,14 @@
 
 \newcommand{\NaN}{\operatorname{NaN}}
 \newcommand{\e}[1]{\mathrm{e}{#1}}
+
+\newcommand{\fonction}[5]{
+  \begin{aligned}
+  &#1: & #2 &\rightarrow #3
+  \\
+  & & #4 & \mapsto #5
+  \end{aligned}
+}
 
 \newenvironment{coefftable}[1]{%
   \begin{tabular}{lc}

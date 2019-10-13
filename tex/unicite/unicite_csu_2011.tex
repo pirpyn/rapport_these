@@ -9,11 +9,9 @@
   \begin{defn}
     % Pour tout \(\vu \in (\mathcal{C}^\infty(\Gamma))^2\)
     \begin{equation}
-      \begin{aligned}
-        \LL:(\mathcal{C}^\infty(\Gamma))^2 & \rightarrow & (\mathcal{C}^\infty(\Gamma))^2
-        \\
-        \vu & \mapsto & \LL(\vu) & = \tgrads{\tdivs \vu} - \tvrots{\tvrots \vu}
-      \end{aligned}
+      \label{eq:operator:L}
+        \fonction{\LL}{(\mathcal{C}^\infty(\Gamma))^2}{(\mathcal{C}^\infty(\Gamma))^2}%
+          {\vu}{\tgrads{\tdivs \vu} - \tvrots{\tvrots \vu}}
     \end{equation}
   \end{defn}
 
@@ -186,6 +184,8 @@
 
     On remarque que
     \begin{align}
+      \CSU[1]{CI1} &\subset \CSU{CI01}\times\CC
+      \\
       \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &\subsetneq (\CSU{CI01}\times\lbrace0\rbrace)
       \intertext{C'est insatisfaisant, car pour des fonctions infiniment régulières, la CIOE CI1 avec \(b=0\) est équivalente à la CI01.
       Plus précisément, soit \(S = \lbrace (a_0,a_1) \in \CC^2; \Re(a_1)=0 \rbrace\), on a}
@@ -220,7 +220,7 @@
         \end{bmatrix}
         \\
       \end{align*}
-      Or la matrice n'est inversible que si \(\Im(z)\not=0\). Dans ce cas, on a la coercivité.
+      Or la matrice n'est inversible que si \(\Im(z)^2\not=0\). Dans ce cas, on a la coercivité.
 
       Si \(\Im(z)=0\) alors
       \begin{align*}
@@ -262,7 +262,7 @@
     \end{prop}
 
     \begin{proof}
-      On suppose \(\Re(b)\le 0\) donc l'opérateur \(\oI + b\LL\) est bijectif. On peut définir \(\vect{D}\) tel que
+      On suppose \(\Re(b)\le 0\) donc l'opérateur \(\oI + b\LL\) est bijectif. Il existe \(\vect{D}\) tel que
       \begin{align*}
         \vJ &= (\oI + b \LL)\vect{D}
       \end{align*}
@@ -286,6 +286,8 @@
 
     On remarque que
     \begin{align}
+      \CSU[2]{CI1} & \subset \CSU{CI01}\times\lbrace0\rbrace
+      \\
       \CSU[2]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &= (\CSU{CI01}\times\lbrace0\rbrace)
     \end{align}
 
