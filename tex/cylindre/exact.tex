@@ -188,6 +188,8 @@
     \end{align*}
   \end{defn}
 
+  On remarque que les constantes \(\eps,\mu\) sont constantes par morceaux. Sur une interface d'équation \(r=r_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mJ_E(r_p+ \delta^2,n,k_z) - \mJ_E(r_p - \delta^2,n,k_z) \not = 0\) .
+
   \begin{prop}
     Il existe des constantes \((c_i(n,k_z))_{1\le i\le 4}\) telles que les composantes en \(\vect{e_\theta},\vect{e_z}\) des champs, dites composantes tangentielles par abus de langage sont
     \begin{subequations}
@@ -348,74 +350,71 @@
       \end{align}
 
       D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels.
-      Donc si \(k_3 = \in\CC\backslash\RR\), comme l'ordre est entier naturel donc \(n\ge 0\), ces matrices sont inversibles.
+      Donc si \(k_3 \in\CC\backslash\RR\), comme l'ordre est entier naturel donc \(n\ge 0\), ces matrices sont inversibles.
     \end{proof}
     Soit \(r_1 = r_0 + d\)
 
     \begin{prop}
-      Si on suppose que \(k_3(r_0) \not \in \RR\) et que la matrice \(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) est inversible pour tout \(r_0 \le r \le r_1\), alors on a 
+      Si on suppose que \(k_3(r_0^+) \not \in \RR\) et que la matrice \(\mH_{H}(r_1^-,n,k_z) - \mJ_{H}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\mH_{E}(r_0^+,n,k_z)\) est inversible pour tout \(r_0 \le r \le r_1\), alors on a 
       \begin{equation*}
-        \hat \vE_t(r_1,n,k_z) = \hat \mZ(n,k_z) \left(\vect{e_r}\pvect \hat \vH_t(r_1,n,k_z)\right)
+        \hat \vE_t(r_1^-,n,k_z) = \hat \mZ(n,k_z) \left(\vect{e_r}\pvect \hat \vH_t(r_1^-,n,k_z)\right)
       \end{equation*}
       où
       \begin{multline*}
         \hat \mZ(n,k_z) =
-        \left(\mH_{E}(r_1,n,k_z)\mH_{E}(r_0,n,k_z)^{-1} - \mJ_{E}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\right)\\
-        \left(\mH_{H}(r_1,n,k_z)\mH_{E}(r_0,n,k_z)^{-1} - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\right)^{-1}
+        \left(\mH_{E}(r_1^-,n,k_z)\mH_{E}(r_0^+,n,k_z)^{-1} - \mJ_{E}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\right)\\
+        \left(\mH_{H}(r_1^-,n,k_z)\mH_{E}(r_0^+,n,k_z)^{-1} - \mJ_{H}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\right)^{-1}
       \end{multline*}
     \end{prop}
 
     \begin{proof}
-      On applique la condition limite du conducteur parfait \(\hat \vE(r_0,n,k_z) = 0\) dans \eqref{eq:imp_fourier:cylindre:Et}.
+      On applique la condition limite du conducteur parfait \(\hat \vE(r_0^+,n,k_z) = 0\) dans \eqref{eq:imp_fourier:cylindre:Et}.
       \begin{equation}
-        \mJ_{E}(r_0,n,k_z)
+        \mJ_{E}(r_0^+,n,k_z)
         \begin{bmatrix}
           c_1(n,k_z) \\
           c_3(n,k_z)
         \end{bmatrix}
-        =-\mH_{E}(r_0,n,k_z)
+        =-\mH_{E}(r_0^+,n,k_z)
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
         \end{bmatrix}
       \end{equation}
 
-      On a supposé \(k_3(r_0)\not \in \RR \) donc on applique le lemme \ref{lem:cylindre:imp:inv_matrices_JE-HE} pour pouvoir inverser ces matrices.
-      On peut donc exprimer les composantes tangentielles
+      On a supposé \(k_3(r_0^+)\not \in \RR \) donc on applique le lemme \ref{lem:cylindre:imp:inv_matrices_JE-HE} pour pouvoir inverser ces matrices.
+      On peut donc exprimer les composantes tangentielles, on omet les dépendances en \((n,k_z)\).
       \begin{align}
-        \hat \vE_t(r_1,n,k_z) &=
-        \left(\mH_{E}(r_1) - \mJ_{E}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0)\right)
+        \hat \vE_t(r_1^-,n,k_z) &=
+        \left(\mH_{E}(r_1^-) - \mJ_{E}(r_1^-)\mJ_{E}(r_0^+)^{-1}\mH_{E}(r_0^+)\right)
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
         \end{bmatrix}
         \\
-        \vect{e_r}\pvect \hat \vH_t(r_1,n,k_z) &=
-        \left(\mH_{H}(r_1) - \mJ_{H}(r_1)\mJ_{E}(r_0)^{-1}\mH_{E}(r_0) \right)
+        \vect{e_r}\pvect \hat \vH_t(r_1^-,n,k_z) &=
+        \left(\mH_{H}(r_1^-) - \mJ_{H}(r_1^-)\mJ_{E}(r_0^+)^{-1}\mH_{E}(r_0^+) \right)
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
         \end{bmatrix}
       \end{align}
-
-      On suppose \(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) inversible, la matrice d'impédance est:
+      On suppose \(\mH_{H}(r_1^-,n,k_z) - \mJ_{H}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\mH_{E}(r_0^+,n,k_z)\) inversible, la matrice d'impédance est:
       % \begin{TODO}
       %   Inversibilité de \(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\)
       % \end{TODO}
       \begin{multline}
         \hat \mZ =
-        \left(\mH_{E}(r_1,n,k_z) - \mJ_{E}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\right)
+        \left(\mH_{E}(r_1^-,n,k_z) - \mJ_{E}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\mH_{E}(r_0^+,n,k_z)\right)
         \\
-        \left(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\right)^{-1}
+        \left(\mH_{H}(r_1^-,n,k_z) - \mJ_{H}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\mH_{E}(r_0^+,n,k_z)\right)^{-1}
       \end{multline}
-
-      Comme les deux matrices \(\mJ_E\), \(\mH_E\) sont inversibles, c'est équivalent à
-
+      Comme les deux matrices \(\mJ_E(r_0^+,n,k_z)\), \(\mH_E(r_0^+,n,k_z)\) sont inversibles, c'est équivalent à
       \begin{multline}
         \hat \mZ =
-        \left(\mH_{E}(r_1,n,k_z)\mH_{E}(r_0,n,k_z)^{-1} - \mJ_{E}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\right)
+        \left(\mH_{E}(r_1^-,n,k_z)\mH_{E}(r_0^+,n,k_z)^{-1} - \mJ_{E}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\right)
         \\
-        \left(\mH_{H}(r_1,n,k_z)\mH_{E}(r_0,n,k_z)^{-1} - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\right)^{-1}
+        \left(\mH_{H}(r_1^-,n,k_z)\mH_{E}(r_0^+,n,k_z)^{-1} - \mJ_{H}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\right)^{-1}
       \end{multline}
 
     \end{proof}
@@ -431,71 +430,26 @@
       \end{tikzpicture}
     \end{figure}
 
-    Soit \(r_p\) le rayon de la couche \(p\), \(r_p = r_0 +\sup_{i=1}^{p} d_{i}\).
+    Soit \(r_p\) le rayon de la couche \(p\), \(r_p = r_0 +\sum_{i=1}^{p} d_{i}\).
 
-    \begin{defn}
-      On définit pour chaque interface, la matrice \(\hat \mZ_p\) telle que
-      \begin{equation}
-        \hat \vE_t(r_p,n,k_z) = \hat \mZ_p(n,k_z) \left(\vect{e_r} \pvect \hat \vH_t(r_p,n,k_z)\right)
-      \end{equation}
-    \end{defn}
-
-    Pour chaque couche caractérisée par \((\eps_p,\mu_p,d_p)\), définissons
+    On définit les fonctions de \(\RR_+^*\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
     \begin{subequations}
       \begin{align}
-        k_{3p} &= \sqrt{w^2\eps_p\mu_p - k_z^2}
+        \mM_{J}(r,n,k_z,\mZ) &= \mJ_{E}(r,n,k_z) -  \mZ(n,k_z) \mJ_{H}(r,n,k_z)
         \\
-        \mJ_{Ep}(r,n,k_z) &=
-          \begin{bmatrix}
-            -\frac{nk_z}{rk_{3p}^2}J_n(k_{3p}r) & \frac{i\w\mu_p}{k_{3p}}J_n'(k_{3p}r)
-            \\
-            J_n(k_{3p}r) & 0
-          \end{bmatrix}
-        \\
-        \mH_{Ep}(r,n,k_z) &=
-          \begin{bmatrix}
-            -\frac{nk_z}{rk_{3p}^2}H_n^{(2)}(k_{3p}r) & \frac{i\w\mu_p}{k_{3p}}H_n^{(2)}{}'(k_{3p}r)
-            \\
-            H_n^{(2)}(k_{3p}r) & 0
-          \end{bmatrix}
-        \\
-        \mJ_{Hp}(r,n,k_z) &=
-          \begin{bmatrix}
-            0 & -J_n(k_{3p}r)
-            \\
-            -\frac{i\w\eps_p}{k_{3p}}J_n'(k_{3p}r) & -\frac{nk_z}{rk_{3p}^2}J_n(k_{3p}r)
-          \end{bmatrix}
-        \\
-        \mH_{Hp}(r,n,k_z) &=
-          \begin{bmatrix}
-            0 & -H_n^{(2)}(k_{3p}r)
-            \\
-            -\frac{i\w\eps_p}{k_{p3}}H_n^{(2)}{}'(k_{3p}r) & -\frac{nk_z}{rk_{3p}^2}H_n^{(2)}(k_{3p}r)
-          \end{bmatrix}
-        \\
-        \mM_{Jp}(r,n,k_z) &= \mJ_{Ep}(r,n,k_z) -  \mZ_{p-1} \mJ_{Hp}(r,n,k_z)
-        \\
-        \mM_{Hp}(r,n,k_z) &= \mH_{Ep}(r,n,k_z) -  \mZ_{p-1} \mH_{Hp}(r,n,k_z)
+        \mM_{H}(r,n,k_z,\mZ) &= \mH_{E}(r,n,k_z) -  \mZ(n,k_z) \mH_{H}(r,n,k_z)
       \end{align}
     \end{subequations}
 
     \begin{thm}
-      Soit \(\hat \mZ_0(n,k_z) = \mat{0}_{\mathcal{M}_2(\CC)}\).
+      % Il existe un matrice de propagation \(\hat\mP\) dans la couche permettant de déduire une relation entre les composantes de \(\hat\vE_t\) et \(\vn \pvect \hat\vH\) à une interface en fonction de la matrice d'impédance \(\hat\mZ\).
 
-      Si pour tout \(0 < p < N_c\)
+      On note \(\hat\mZ_{p}(n,k_z)\) telle que \(\hat\vE_t(r_p^+,n,k_z) = \hat\mZ_{p}(\vn \pvect \hat\vH(r_p^+,n,k_z))\).
 
-      \begin{equation}
-        \begin{aligned}
-          k_{3p} & \not = 0 \\
-          \det\left(\mM_{Jp}(r_{p-1},n,k_z)\right) & \not = 0
-          \\
-          \det\left(\mM_{Hp}(r_{p-1},n,k_z)\right) & \not = 0
-          \\
-          \det\left(\mH_{Hp}(r_{p},n,k_z)\mM_{Hp}(r_{p-1},n,k_z)^{-1} - \mJ_{Hp}(r_{p},n,k_z)(\mM_{Jp}(r_{p-1},n,k_z))^{-1}\right) &\not = 0
-        \end{aligned}
-      \end{equation}
 
-      Alors la matrice d'impédance \(\hat{\mZ}_p\) est défini par la relation de récurrence :
+      FAUX !!!
+
+      Alors
       \begin{multline}
         \hat{\mZ_p}(n,k_z) \\
           = \left(\mH_{Ep}(r_m,n,k_z)\mM_{Hp}(r_{p-1},n,k_z)^{-1} - \mJ_{Ep}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\right) 
@@ -504,11 +458,8 @@
       \end{multline}
     \end{thm}
 
+
     \begin{proof}
-      À l'initialisation, on retrouve le résultat pour une couche.
-
-      On résonne par récursivité:
-
       On se situe dans la couche \(p\) et l'on sait que les champs vérifient
       \begin{equation}
         \begin{bmatrix}
