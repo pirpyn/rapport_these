@@ -1,28 +1,28 @@
-\subsection*{Contexte industriel}
-La diffraction des ondes est un problème commun à de nombreux secteurs d'activités: défense, aéronautique, médical, pétrolier.
-Selon le secteur, la nature des ondes et des matériaux diffèrent mais les problématique sont les mêmes.
-On étudient souvent la propagation d'une onde autour d'obstacles dans un milieu d’intérêt.
-Cette onde est émise et réceptionnée à un endroit qui selon le problème est loin ou proche de l'objet.
-Le problème réel est alors souvent non borné, car les ondes continuent à se propager souvent en dehors du domaine.
+% \subsection*{Contexte industriel}
+% La diffraction des ondes est un problème commun à de nombreux secteurs d'activités: défense, aéronautique, médical, pétrolier.
+% Selon le secteur, la nature des ondes et des matériaux diffèrent mais les problématique sont les mêmes.
+% On étudie souvent la propagation d'une onde autour d'obstacles dans un milieu d’intérêt.
+% Cette onde est émise et réceptionnée à un endroit qui selon le problème est loin ou proche de l'objet.
+% Le problème réel est alors souvent non borné, car les ondes continuent à se propager souvent en dehors du domaine.
 
-Cela introduit une première contrainte: comment modéliser fidèlement cette propagation alors que les outils informatique, ne peuvent, par nature, que modéliser des domaines bornés ?
-Rien que pour cette question, plusieurs solutions existent.
-L'on peut par exemple, restreindre le domaine, puis ajouter à l'extérieur de celui-ci un domaine virtuel dans lequel les ondes seront absorbées sans se réfléchir: c'est la méthode des \gls{acr-pml}, notamment introduite par \cite{berenger_perfectly_1994}.
-Une autre approche consiste à introduire sur la surface extérieur du domaine une condition limite discrétisable qui reproduit le même phénomène: ce sont les \glspl{acr-cla} sur lesquelles ont travaillés récemment \cite{barucq_etude_1993} et \cite{duprat_conditions_2011}.
-Cependant, ces méthodes nécessitent toujours de modéliser entièrement le domaine d’intérêt et pour des objets dont la géométrie ou les matériaux sont complexes, alors le nombre d'inconnus issus de la discrétisation du problème peut rendre ces méthodes en pratique insolvable.
+% Cela introduit une première contrainte: comment modéliser fidèlement cette propagation alors que les outils informatique, ne peuvent, par nature, que modéliser des domaines bornés ?
+% Rien que pour cette question, plusieurs solutions existent.
+% L'on peut par exemple, restreindre le domaine, puis ajouter à l'extérieur de celui-ci un domaine virtuel dans lequel les ondes seront absorbées sans se réfléchir: c'est la méthode des \gls{acr-pml}, notamment introduite par \cite{berenger_perfectly_1994}.
+% Une autre approche consiste à introduire sur la surface extérieur du domaine une condition limite discrétisable qui reproduit le même phénomène: ce sont les \glspl{acr-cla} sur lesquelles ont travaillés récemment \cite{barucq_etude_1993} et \cite{duprat_conditions_2011}.
+% Cependant, ces méthodes nécessitent toujours de modéliser entièrement le domaine d’intérêt et pour des objets dont la géométrie ou les matériaux sont complexes, alors le nombre d'inconnus issus de la discrétisation du problème peut rendre ces méthodes en pratique insolvable.
 
-L'approche d’intérêt dans cette thèse et qui est très largement répandue consiste à utiliser une représentation intégrale des champs qui fait intervenir la solution fondamentale de l'équation des ondes.
-Alors à partir du moment où l'on connaît la trace tangentielles des champs sur le bord de notre objet, ces derniers sont connus en tout point du domaine.
-Cette méthode à plusieurs avantages: le problème devient borné, on passe de 3D volumique à 3D surfacique car seul le bord de l'objet devient caractéristique.
-Les traces tangentielles sont alors déterminées grâce à la résolution d'une \gls{acr-ei}, qui revient à l'inversion d'un système linaire dense, qui l'un des principaux inconvénient de cette méthode.
-De plus, l'unicité des solutions n'est pas garantie par cette méthode.
-Enfin, pour des matériaux fins ou dont les constantes varient beaucoup, la prise en compte de la contribution des matériaux dans l'équation intégrale est aussi un problème coûteux numériquement.
+% L'approche d’intérêt dans cette thèse et qui est très largement répandue consiste à utiliser une représentation intégrale des champs qui fait intervenir la solution fondamentale de l'équation des ondes.
+% Alors à partir du moment où l'on connaît la trace tangentielles des champs sur le bord de notre objet, ces derniers sont connus en tout point du domaine.
+% Cette méthode à plusieurs avantages: le problème devient borné, on passe de 3D volumique à 3D surfacique car seul le bord de l'objet devient caractéristique.
+% Les traces tangentielles sont alors déterminées grâce à la résolution d'une \gls{acr-ei}, qui revient à l'inversion d'un système linaire dense, qui l'un des principaux inconvénient de cette méthode.
+% De plus, l'unicité des solutions n'est pas garantie par cette méthode.
+% Enfin, pour des matériaux fins ou dont les constantes varient beaucoup, la prise en compte de la contribution des matériaux dans l'équation intégrale est aussi un problème coûteux numériquement.
 
-Là encore, une approche consiste à introduire une condition limite sur la surface extérieure de l'objet, qui rend compte des matériaux.
-On sait depuis \cite{cessenat_mathematical_1996} qu'une telle condition existe toujours mais n'est en pratique pas utilisable dans les codes numérique car c'est un opérateur pseudo-différentiel.
-Il faut alors approcher ce dernier et cette approximation est appelée \gls{acr-ci}.
+% Là encore, une approche consiste à introduire une condition limite sur la surface extérieure de l'objet, qui rend compte des matériaux.
+% On sait depuis \cite{cessenat_mathematical_1996} qu'une telle condition existe toujours mais n'est en pratique pas utilisable dans les codes numérique car c'est un opérateur pseudo-différentiel.
+% Il faut alors approcher ce dernier et cette approximation est appelée \gls{acr-ci}.
 
-Cette thèse étudie alors l'une de ces approximations et ajoute à cette dernière des résultats nouveaux pour assurer l'unicité des solutions.
+% Cette thèse étudie alors l'une de ces approximations et ajoute à cette dernière des résultats nouveaux pour assurer l'unicité des solutions.
 
 % \subsection*{Historique des conditions d'impédances}
 
@@ -36,57 +36,87 @@ Cette thèse étudie alors l'une de ces approximations et ajoute à cette derni�
 % Avec l'augmentation en puissance, de nouvelles conditions purent être utilisée %(\cite{ruck_radar_1970}) couplée à de nouvelles méthodes de résolutions (\cite{mautz_h-field_1977}), et ce jusqu'à nos jours (\cite{senior_approximate_1995,hoppe_impedance_1995,bendali_boundary-element_1999,nedelec_acoustic_2001,yuferev_surface_2009}).
 % pour rendre compte de matériaux plus généraux et éclairé d'une manière quelconque.
 
-\subsection*{Intérêt mathématique des conditions d'impédances}
-Nous traitons le problème des équations Maxwell sous forme harmonique, en convention \(e^{i\w t}\) pour la dépendance temporelle.
+\section*{Plan de la thèse}
+
+\subsection*{Chapitre 1}
+Dans ce chapitre on présente une condition suffisante qui garantie l'unicité des solutions des équations de Maxwell à l'extérieur de l'objet.
+Cette condition s'exprime sur sa surface. Nous présentons alors des conditions suffisantes sur les coefficients pour impliquer la précédente condition, donc garantir l'unicité des solutions.
+Nous en présentons plusieurs par CIOE pour marquer le caractère suffisant de ces conditions, puis nous définirons lesquelles sont conservées et utilisées dans la suite de la thèse.
+
+\subsection*{Chapitre 2}
+Nous supposons que l'objet est un plan infini. Ce cas d'étude classique permet de calculer exactement dans le domaine spectral la condition d’impédance.
+Cet opérateur est alors un multiplicateur de Fourier matriciel dépendant de la pulsation \(\w\), de l'empilement des matériaux et des modes de Fourier \(k_x, k_y\) associés aux coordonnées cartésiennes tangentielle du plan infini \(x,y\).
+L'opérateur approché est aussi un multiplicateur de Fourier matriciel dépendant de \(\w, k_x, k_y\) et de coefficients complexes.
+Le calcul de ces coefficients se fait par optimisation sous contraintes où l'on minimise l'erreur entre ces deux matrices pour plusieurs couples \(k_x,k_y\) en utilisant les CSU du premier chapitre comme contraintes.
+
+\subsection*{Chapitre 3}
+Ce chapitre introduit l'effet d'une courbure dans une direction et est fortement lié au précédent dans sa méthodologie.
+Sur cette géométrie périodique, l'opérateur d'impédance exact s'exprime dans le domaine spectral comme un multiplicateur de Fourier en fonction de \(\w\), de l'empilement et de la courbure du cylindre, ainsi que des coefficients de Fourier \(n\) et du mode de Fourier \(k_z\) associés aux coordonnées cylindrique tangentielle du cylindre infini \(\theta,z\).
+Une différence notable est que la décomposition d'une onde plane incidente fait intervenir a priori un nombre infini de coefficients de Fourier, mais on les tronque pour ne garder que les termes qui contribuent significativement.
+L'opérateur approché est aussi un multiplicateur de Fourier matriciel dépendant de \(\w, n, k_z\) et de coefficients complexes.
+Le calcul de ces coefficients se fait par optimisation sous contraintes où l'on minimise l'erreur pour chaque coefficient de Fourier \(n\) entre ces deux matrices pour plusieurs \(k_z\) en utilisant les CSU du premier chapitre comme contraintes.
+
+\subsection*{Chapitre 4}
+Ce chapitre introduit l'effet d'une courbure dans deux directions et est fortement lié aux deux précédents dans sa méthodologie.
+Sur cette géométrie périodique et fini, l'opérateur d'impédance exact s'exprime dans le domaine spectral comme un multiplicateur de Fourier en fonction de \(\w\), de l'empilement et de la courbure de la sphère, ainsi que des coefficients de Fourier \(n\), un des indices de la décomposition en série de Mie, associé à la coordonnée sphérique tangentielle de la sphère \(\theta\).
+Elle ne dépend pas du coefficient de Fourier \(m\) associé à la coordonnée sphérique \(\phi\).
+Là encore, une onde plane incidente fait intervenir a priori un nombre infini de coefficients de Fourier \(n\), que l'on tronque pour ne garder que les termes qui contribuent significativement.
+L'opérateur approché est aussi un multiplicateur de Fourier matriciel dépendant de \(\w, n\) et de coefficients complexes.
+Le calcul de ces coefficients se fait par optimisation sous contraintes où l'on minimise l'erreur pour chaque coefficient de Fourier \(n\) entre ces deux matrices en utilisant les CSU du premier chapitre comme contraintes.
+
+\subsection*{Chapitre 5}
+Ce chapitre reprend des résultats issus de la littérature sur l'intégration de CIOE dans la résolution des équations de Maxwell par équations intégrale.
+Dans ces méthodes, les inconnues sont les traces tangentielles des champs sur la surface de l'objet, et les champs s'en déduisent à l'extérieur grâce à une représentation intégrale.
+La résolution de ces équations intégrales étant basées sur des élément finis de frontière, nous montrons que les espaces fonctionnels usuels sont insuffisants à cause des opérateurs différentiels contenus dans les CIOE.
+Nous introduirons alors une méthode pour poser le problème dans d'autres espaces plus adaptés. Ce nouveau problème est résolu par la méthode des éléments finis de frontières. Les traces des champs obtenus permettent de calculer la \gls{acr-ser} de l'objet, quantité d'intérêt pour mesurer sa furtivité.
+
+%\subsection*{Intérêt mathématique des conditions d'impédances}
+% Nous traitons le problème des équations de Maxwell harmoniques, en convention \(e^{i\w t}\) pour la dépendance temporelle.
+
+% Soit un objet \(\OO\) de type conducteur parfait, recouvert d'une couche matériau diélectrique d'épaisseur \(d\), caractérisé par sa permittivité diélectrique \(\gls{phy-eps}\) et sa perméabilité magnétique \(\gls{phy-mu}\) qui peuvent dépendre du point courant et être complexe, l'ensemble se situant dans le vide tel que la célérité d'une onde électromagnétique soit \gls{phy-c}, et les constantes de permittivité et de perméabilité dans ce domaine soient \(\gls{phy-eps}_0\), \(\gls{phy-mu}_0\) avec \(\eps_0\mu_0 = c^{2}\).
+
+% On désigne par \gls{phy-w} la pulsation de l'onde.
+% En l'absence de charges électriques et magnétiques, les champs éponymes \(( \vE, \vH )\) sont solutions du système d'équations de Maxwell harmonique :
+
+% Le problème de Maxwell dans l'espace s'énonce: \\
+
+% Soit \((\vE,\vH)\) dans \((\Hrot(\OO\cup\OO^c))^3 \times (\Hrot(\OO\cup\OO^c))^3\)
+% \begin{equation}
+% \label{eq:pres_th:intro:maxwell}
+% \left\lbrace \begin{matrix}
+% \vrot \vE(\vx) + i\w\mu'(\vx) \vH(\vx) &=& 0 \\
+% \vrot \vH(\vx) - i\w\eps'(\vx) \vE(\vx) &=& 0 \\
+% \end{matrix} \right.
+% \quad \text{dans \(\OO\cup\OO^c\)}
+% \end{equation}
+% A l'extérieur de \(\OO\), les paramètres sont \(\eps_0,\mu_0\) et à l'intérieur \(\eps,\mu\).
+
+% Nous complétons ces équations par des conditions aux limites à la surface \(\Gamma\) de \(\OO\), supposée régulière et dont on note la normale sortante \(\vn\):
+% \begin{itemize}
+%   \item Les composantes tangentielles des champs sont continues le long d'une surface de discontinuité de \(\eps\) et \(\mu\) (cf. \cite[(2.10) p.~8]{senior_approximate_1995}).
+
+%   \begin{align}
+%   \label{eq:pres_th:intro:transmissions}[\vn \pvect \vE]_S = 0  \quad [\vn \pvect \vH]_S = 0
+%   \end{align}
+% \end{itemize}
+% De fait, dans le cas limite d'un \gls{acr-cep}, les champs \(\vE\) et \(\vH\) sont nuls à l'intérieur du conducteur et donc à l'extérieur.
+
+% Enfin comme nous considérons un milieu extérieur non-borné, nous nous dotons de la condition de radiation à l'infini de Silver-Müller afin de définir des solutions en ondes sortantes.
 
 
-Soit un objet \(\OO\) de type conducteur parfait de surface \(\Gamma\), recouvert d'une couche matériau diélectrique d'épaisseur \(d\), caractérisé par sa permittivité diélectrique \(\gls{phy-eps}\) et sa perméabilité magnétique \(\gls{phy-mu}\) qui peuvent dépendre du point courant et être complexe dans le cas de pertes, l'ensemble se situant dans le vide, telle que la célérité d'une onde électromagnétique soit \gls{phy-c}, et les constantes de permittivité et de perméabilité \(\gls{phy-eps}_0\), \(\gls{phy-mu}_0\) avec \(\eps_0\mu_0 = c^{2}\).
+% \begin{equation}
+% \label{eq:pres_th:intro:silver-muller}
+% \lim_{r\rightarrow\infty} r \left|\left|\sqrt{\eps'}\vE - \sqrt{\mu'}\vH\pvect\frac{\vect{r}}{r}\right|\right| = 0
+% \end{equation}
 
+% \subsection*{Les conditions d'impédance comme approximation d'un opérateur de Calderón}
 
-On désigne par \gls{phy-w} la pulsation de l'onde.
-En l'absence de charges électriques et magnétiques, les champs éponymes \(( \vE, \vH )\) sont solutions du système d'équations de Maxwell harmonique :
-
-Le problème de Maxwell dans l'espace s'énonce: \\
-
-Soit \((\vE,\vH)\) dans \((\Hrot(\OO\cup\OO^c))^3 \times (\Hrot(\OO\cup\OO^c))^3\)
-\begin{equation}
-\label{eq:pres_th:intro:maxwell}
-\left\lbrace \begin{matrix}
-\vrot \vE(\vx) + i\w\mu'(\vx) \vH(\vx) &=& 0 \\
-\vrot \vH(\vx) - i\w\eps'(\vx) \vE(\vx) &=& 0 \\
-\end{matrix} \right.
-\quad \text{dans \(\OO\cup\OO^c\)}
-\end{equation}
-A l'extérieur de \(\OO\), les paramètres sont \(\eps'(\vx),\mu'(\vx)\) sont \(\eps_0,\mu_0\) et à l'intérieur elles sont \(\eps(\vx),\mu(\vx)\).
-
-
-Nous complétons ces équations par des conditions aux limites à la surface \(S\) de \(\OO\), supposée régulière et dont on note la normale sortante \(\vn\):
-\begin{itemize}
-  \item Les composantes tangentielles des champs sont continues le long d'une surface de discontinuité de \(\eps\) et \(\mu\) (cf. \cite[(2.10) p.~8]{senior_approximate_1995}).
-
-  \begin{align}
-  \label{eq:pres_th:intro:transmissions}[\vn \pvect \vE]_S = 0  \quad [\vn \pvect \vH]_S = 0
-  \end{align}
-\end{itemize}
-De fait, dans le cas limite d'un \gls{acr-cep}, les champs \(\vE\) et \(\vH\) sont nuls à l'intérieur du conducteur et donc à l'extérieur.
-
-
-Enfin comme nous considérons un milieu extérieur non-borné, nous nous dotons de la condition de radiation à l'infini de Silver-Müller afin de définir des solutions en ondes sortantes.
-
-
-\begin{equation}
-\label{eq:pres_th:intro:silver-muller}
-\lim_{r\rightarrow\infty} r \left|\left|\sqrt{\eps'}\vE - \sqrt{\mu'}\vH\pvect\frac{\vect{r}}{r}\right|\right| = 0
-\end{equation}
-
-\subsection*{Les conditions d'impédance comme approximation d'un opérateur de Calderón}
-
-Tel que l'a démontré \cite[p.~109]{cessenat_mathematical_1996}, le problème \eqref{eq:pres_th:intro:maxwell}  posé à l'intérieur et à l'extérieur de l'objet, doté de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} est équivalent au problème \eqref{eq:pres_th:intro:maxwell} à l'extérieur de l'objet doté de de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} et d'une condition limite type opérateur de Calderón sur la surface extérieur de l'objet :
-\begin{equation}
-\label{eq:pres_th:ci:ci-calderon}
-\vn \pvect \vn \pvect \vE (\vx , \w ) = \Op{\mathcal Z} {\vn \pvect \vH }(\vx, \w )
-\end{equation}
-Une \gls{acr-ci} est une approximation de l'opérateur \(\Op{\mathcal Z} {\cdot}\).
+% Tel que l'a démontré \cite[p.~109]{cessenat_mathematical_1996}, le problème \eqref{eq:pres_th:intro:maxwell}  posé à l'intérieur et à l'extérieur de l'objet, doté de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} est équivalent au problème \eqref{eq:pres_th:intro:maxwell} à l'extérieur de l'objet doté de de la condition de rayonnement \eqref{eq:pres_th:intro:silver-muller} et d'une condition limite type opérateur de Calderón sur la surface extérieur de l'objet :
+% \begin{equation}
+% \label{eq:pres_th:ci:ci-calderon}
+% \vn \pvect \vn \pvect \vE (\vx , \w ) = \Op{\mathcal Z} {\vn \pvect \vH }(\vx, \w )
+% \end{equation}
+% Une \gls{acr-ci} est une approximation de l'opérateur \(\Op{\mathcal Z} {\cdot}\).
 
 % \subsection*{Plan de la thèse}
 % D'abord nous résoudrons le problème de Maxwell dans le cas d'un plan infini recouvert d'une couche mince de matériau diélectrique.
