@@ -1,0 +1,36 @@
+\section*{Contexte industriel}
+La diffraction des ondes est un problème commun à de nombreux secteurs d'activités: défense, aéronautique, médical, pétrolier.
+Selon le secteur, la nature des ondes et des matériaux diffèrent mais les problématique sont les mêmes.
+On étudie souvent la propagation d'une onde autour d'obstacles dans un milieu d’intérêt.
+Cette onde est émise et réceptionnée à un endroit qui selon le problème est loin ou proche de l'objet.
+Le problème réel est alors souvent non borné, car les ondes continuent à se propager souvent en dehors du domaine.
+
+Dans le cadre de ses activités dans le domaine de la furtivité radar, le CEA/CESTA développe des codes de calcul simulant avec précision le comportement électromagnétique d’un objet tridimensionnel situé dans le vide, typiquement un conducteur recouvert de matériaux inhomogènes.
+En régime harmonique, il est éclairé par une onde incidente plane émise par un radar se trouvant très loin de l’objet.
+Compte tenu de la faible amplitude de l’onde, les phénomènes physiques mis en jeu sont linéaires.
+Le calcul du champ diffracté par cet objet nécessite la résolution numérique des équations de Maxwell dans le domaine fréquentiel.
+Des méthodes de résolution dites exactes : formulations variationnelles volumiques ou surfaciques, sont aujourd’hui bien maîtrisées.
+
+Pour les premières, le domaine de calcul incluant l’objet est borné extérieurement par une surface fermée, sur laquelle est implémentée une condition de rayonnement exacte (équation ou représentation intégrale).
+Le volume intérieur est maillé avec des tétraèdres à l’intérieur desquels les champs électromagnétiques sont représentés par des fonctions de base appropriées (discrétisation par éléments finis volumiques).
+Pour une fréquence donnée, la résolution des équations de Maxwell est alors ramenée à celle d’un système linéaire matriciel où la solution représente les valeurs discrétisées des champs et le second membre le champ incident.
+La dimension du système linéaire est de l’ordre de plusieurs centaines de millions pour les objets 3D intéressant le CEA/DAM.
+La complexité numérique (temps de calcul et taille mémoire) requise pour la résolution précise du système, même si elle est réduite par l'emploi d'une méthode de décomposition de domaines et une parallélisation massive, reste élevée.
+
+Il en est de même pour les méthodes surfaciques faisant intervenir des équations intégrales définies sur les surfaces de l'objet et sur les interfaces entre les matériaux qui les composent. Après discrétisation pour une méthode d’éléments finis de frontière, ce problème se ramène aussi à un système linéaire où l'inconnu représente alors les valeurs discrétisées des composantes tangentielles des champs sur ces surfaces).
+Des études paramétriques (propagation d’incertitudes, variations de la géométrie ou des caractéristiques de l'empilement de matériaux,...) nécessitent de très nombreux calculs.
+Mais elles requièrent une précision moindre, et des approximations peuvent s'avérer intéressantes.
+La plus connue consiste à remplacer l'empilement par une \gls{acr-ci} écrite sur sa la surface extérieure de l'objet: cette CI, implémentée dans une \gls{acr-ei}, permet de s’affranchir de la résolution des équations de Maxwell dans les matériaux.
+
+La CI la plus simple (Leontovich) relie par une impédance scalaire les composantes tangentielles du champ électrique à celles du champ magnétique.
+Elle est strictement locale et ne constitue une bonne approximation que pour des matériaux dont les indices sont suffisamment élevés.
+Des CI plus performantes, dites \glspl{acr-cioe}, plus ou moins locales, sont proposées dans \cite{hoppe_impedance_1995,stupfel_implementation_2015}.
+La grande majorité des CIOE ne tient pas compte des courbures et ne sont donc valables que dans l'approximation du plan tangent.
+Mentionnons qu'aucune de ces CI ne modélise correctement une singularité de surface (normale non définie, courbures ou/et leurs dérivées discontinues) ou une discontinuité de matériaux.
+
+Pour approcher l’opérateur impédance exact, non local, on introduit généralement des dérivées tangentielles multipliées par des coefficients dont les valeurs peuvent être déterminées dans le domaine spectral. Dans ce domaine, les opérateurs différentiels sont remplacés par des opérateurs matriciels d'ordre deux ou supérieur selon la géométrie.
+Il faut également assurer l’unicité des solutions du problème de Maxwell correspondant.
+Les CIOE présentées dans \cite{stupfel_sufficient_2011,stupfel_implementation_2015} présentent ces deux caractéristiques: les coefficients, optimisés dans le domaine spectral, garantissent des solutions uniques.
+Implémentées dans des équations intégrales, leur efficacité a été évaluée sur des objets 3D.
+Des CIOE similaires mais plus performantes ont été proposées dans \cite{marceaux_high-order_2000,aubakirov_electromagnetic_2014,soudais_3d_2017}.
+Il restait à définir les \glspl{acr-csu} associées.
