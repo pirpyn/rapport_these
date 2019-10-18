@@ -76,5 +76,7 @@
     "tex_file_exts": [".tex", ".tikz", ".bib"],
     "output_directory": "build",
     "preview_math_mode": "none",
+    "tex_directive_auto_trigger": false,
+    "env_auto_trigger": true,
   },
 }

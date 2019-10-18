@@ -343,6 +343,28 @@
 
   \end{proof}
 
+  \begin{lemme}
+    \label{lem:cylindre:imp:inv_matrices_JE-HE}
+    Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mJ_E(r,n,k_z)\), \(\mH_E(r,n,k_z)\), \(\mJ_H(r,n,k_z)\), \(\mH_H(r,n,k_z)\) sont inversibles pour tout couple \((n,k_z)\).
+    % Sinon, pour \(n\) donné, il existe un nombre fini de \(k_z\) tels que ces matrices ne soient pas inversibles. 
+  \end{lemme}
+
+  \begin{proof}
+    Par définition des matrices,
+    \begin{align}
+      \det(\mJ_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
+      \\
+      \det(\mJ_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
+      \\
+      \det(\mH_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+      \\
+      \det(\mH_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+    \end{align}
+
+    D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels.
+    Donc si \(k_3 \in\CC\backslash\RR\), comme l'ordre est entier naturel donc \(n\ge 0\), ces matrices sont inversibles.
+  \end{proof}
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -350,31 +372,10 @@
 
   \subsection{Expression de la matrice d'impédance pour une couche}
 
-    \begin{lemme}
-      \label{lem:cylindre:imp:inv_matrices_JE-HE}
-      Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mJ_E(r,n,k_z)\), \(\mH_E(r,n,k_z)\), \(\mJ_H(r,n,k_z)\), \(\mH_H(r,n,k_z)\) sont inversibles pour tout couple \((n,k_z)\).
-    \end{lemme}
-
-    \begin{proof}
-      Par définition des matrices,
-      \begin{align}
-        \det(\mJ_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
-        \\
-        \det(\mJ_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
-        \\
-        \det(\mH_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
-        \\
-        \det(\mH_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
-      \end{align}
-
-      D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels.
-      Donc si \(k_3 \in\CC\backslash\RR\), comme l'ordre est entier naturel donc \(n\ge 0\), ces matrices sont inversibles.
-    \end{proof}
-
-    Soit \(r_1 = r_0 + d\)
+    Soit \(r_1 = r_0 + d\). On se place dans le matériau donc \(r_0 \le r r_1\).
 
     \begin{prop}
-      Si on suppose que \(k_3(r_0^+) \not \in \RR\) et que la matrice \(\mH_{H}(r_1^-,n,k_z) - \mJ_{H}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\mH_{E}(r_0^+,n,k_z)\) est inversible pour tout \(r_0 \le r \le r_1\), alors on a 
+      Si on suppose que \(k_3(r_0^+) \not \in \RR\) et que la matrice \(\mH_{H}(r_1^-,n,k_z) - \mJ_{H}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\mH_{E}(r_0^+,n,k_z)\) est inversible pour tout \(n,k_z\), alors on a 
       \begin{equation*}
         \hat \vE_t(r_1^-,n,k_z) = \hat \mZ(n,k_z) \left(\vect{e_r}\pvect \hat \vH_t(r_1^-,n,k_z)\right)
       \end{equation*}
@@ -432,9 +433,7 @@
       Il n'existe pas à notre connaissance de propriétés connues des fonctions de Bessel pour déduire de ces égalités des conditions sur \(\omega^2\eps\mu,k_z,r_1,r_0\).
 
       On suppose donc simplement \(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) inversible, la matrice \(\hat\mZ(n,k_z)\) telle que \(\hat\vE_t(r_1,n,k_z) = \hat\mZ(n,k_z) (\vect{e_r}\pvect\vH(r_1,n,k_z))\) est alors
-      % \begin{TODO}
-      %   Inversibilité de \(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\)
-      % \end{TODO}
+
       \begin{multline*}
         \hat \mZ =
         \left(\mH_{E}(r_1,n,k_z) - \mJ_{E}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\right)
@@ -459,156 +458,138 @@
     Soit \(r_p\) le rayon de l'interface \(p\), \(r_p = r_0 +\sum_{i=1}^{p} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(r_{p-1} \le r \le r_p \).
 
     \begin{defn}
-      On définit les fonctions de \(\RR_+^*\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
+      On définit les fonctions de \([r_{p-1}, r_p]\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{align*}
-        \mM_{J}(r,n,k_z,\mZ) &= \mJ_{E}(r,n,k_z) -  \mZ \mJ_{H}(r,n,k_z)
+        \mM_{\mJ}(r,n,k_z,\mA) &= \mJ_{E}(r,n,k_z) -  \mA \mJ_{H}(r,n,k_z)
         \\
-        \mM_{H}(r,n,k_z,\mZ) &= \mH_{E}(r,n,k_z) -  \mZ \mH_{H}(r,n,k_z)
+        \mM_{\mH}(r,n,k_z,\mA) &= \mH_{E}(r,n,k_z) -  \mA \mH_{H}(r,n,k_z)
       \end{align*}
     \end{defn}
-    \begin{prop}
-      Soit \(\eps(r)\mu(r) \in \CC\backslash\RR\) 
-
-      Si \(\mZ \in \Vect{\mJ_E(r,n,k_z)\mJ_H(r,n,k_z)^{-1}}^\perp \cap \Vect{\mH_E(r,n,k_z)\mH_H(r,n,k_z)^{-1}}^\perp \)
-
-      alors les matrices \(\mM_{J}(r,n,k_z,\mZ)\), \(\mM_{H}(r,n,k_z,\mZ)\) sont inversibles.
-    \end{prop}
-    \begin{proof}
-      Supposons que ces matrices ne soient pas inversibles. Il existe donc un vecteur non nul \( \vect{u}\) tel que
-      \begin{align*}
-        \mM_{J}(r,n,k_z,\mZ)\vect{u} & = 0
-        \\
-        \mJ_{E}(r,n,k_z)\vect{u} -  \mZ \mJ_{H}(r,n,k_z)\vect{u} &= 0
-        \intertext{Comme \(\eps(r)\mu(r) \in \CC\backslash\RR\), les matrices \(\mJ_{E}(r,n,k_z)\) et \(\mJ_{H}(r,n,k_z)\) sont inversibles donc}
-         \mJ_{E}(r,n,k_z)^{-1}\mZ \mJ_{H}(r,n,k_z)\vect{u} &= \vect{u}
-        \intertext{donc}
-        \mJ_{E}(r,n,k_z)^{-1}\mZ \mJ_{H}(r,n,k_z) &= \mI
-        \\
-        \mJ_{E}(r,n,k_z)\mJ_{H}(r,n,k_z)^{-1} &= \mZ 
-      \end{align*}
-      Par contraposée, si \(\mZ\) n'est pas dans ce sous-espace vectoriel alors le noyau de \(\mM_{J}(r,n,k_z,\mZ)\) n'a pas d’élément non-nul, donc cette matrice est inversible. Par le même raisonnement, on déduit que \(\mM_{H}(r,n,k_z,\mZ)\) est inversible.
-      On conclut donc que si \(\mZ\) appartient à l'intersection de ces deux hyperplans, si elle existe, alors on a inversibilité des deux matrices.
-    \end{proof}
-
 
     \begin{defn}
-      On définit \(\mT_p\) la fonction de \(\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
+      On définit la fonction de \([r_{p-1}, r_p]\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
+      \begin{align*}
+        \mR(r,n,k_z,\mA) &= -\mM_{\mJ}(r,n,k_z,\mA)^{-1}\mM_{\mH}(r,n,k_z,\mA)
+      \end{align*}
+    \end{defn}
+    A priori \(\mR(r,n,k_z,\mA)\) n'est pas défini pour toute \(\mA\).
+    \begin{defn}[Fonction de transfert]{}~
+
+      On définit \(\mT_p\) la fonction de \((\RR_+^*)^2\times\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{multline*}
-        \mT_p(n,k_z,\mZ) = \\
-          \left(\mH_{E}(r_p,n,k_z)\mM_{H}(r_{p-1},n,k_z,\mZ)^{-1} - \mJ_{E}(r_p,n,k_z)\mM_{J}(r_{p-1},n,k_z,\mZ)^{-1}\right) 
+        \mT_p(r,r',n,k_z,\mZ) = \\
+          \left(\mH_{E}(r,n,k_z)\mM_{\mH}(r',n,k_z,\mZ)^{-1} - \mJ_{E}(r,n,k_z)\mM_{\mJ}(r',n,k_z,\mZ)^{-1}\right) 
           \\
-          \left(\mH_{H}(r_p,n,k_z)\mM_{H}(r_{p-1},n,k_z,\mZ)^{-1} - \mJ_{H}(r_p,n,k_z)\mM_{J}(r_{p-1},n,k_z,\mZ)^{-1}\right)^{-1}
+          \left(\mH_{H}(r,n,k_z)\mM_{\mH}(r',n,k_z,\mZ)^{-1} - \mJ_{H}(r,n,k_z)\mM_{\mJ}(r',n,k_z,\mZ)^{-1}\right)^{-1}
       \end{multline*}
-      On nommera cette fonction ``fonction de transfert''.
     \end{defn}
 
-    \begin{thm}
-      Soit \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p-1}^-,n,k_z) = \hat\mZ_{p-1}(n,k_z)(\vn \pvect \hat\vH(r_{p-1}^-,n,k_z)\).
+    \begin{prop}[Théorème de transfert]~
 
-      Alors \(\hat\vE_t(r_p^+,n,k_z) = \mT(n,k_z,\hat\mZ_{p-1}(n,k_z))(\vn \pvect \hat\vH(r_p^+,n,k_z))\).
-    \end{thm}
+      Soit \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p}^-,n,k_z) = \hat\mZ_{p}(n,k_z)(\vn \pvect \hat\vH(r_{p}^-,n,k_z)\).
+
+      Si \(\)\(\mM_{\mJ}(r,n,k_z,\hat\mZ_{p}(n,k_z))\), \(\mM_{\mH}(r,n,k_z,\hat\mZ_{p}(n,k_z))\) et \(\mH_{H}(r,n,k_z)\mM_{\mH}(r',n,k_z,\mZ)^{-1} - \mJ_{H}(r,n,k_z)\mM_{\mJ}(r',n,k_z,\mZ)^{-1}\) sont inversibles,
+
+      alors \(\hat\vE_t(r_{p-1}^+,n,k_z) = \mT(r_p^-,r_{p-1}^+,n,k_z,\hat\mZ_{p}(n,k_z))(\vn \pvect \hat\vH(r_{p-1}^+,n,k_z))\).
+
+      %Autrement dit une condition d'impédance sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
+    \end{prop}
 
 
     \begin{proof}
-      On se situe dans la couche \(p\) et l'on sait que les champs vérifient
-      \begin{equation}
-        \begin{bmatrix}
-          \hat{E_\theta}(r_{p-1},n,k_z)\\
-          \hat{E_z}(r_{p-1},n,k_z)\\
-        \end{bmatrix}
-        =
-        \hat \mZ_{p-1}(n,k_z)
-        \begin{bmatrix}
-          -\hat{H_z}(r_{p-1},n,k_z)\\
-          \hat{H_\theta}(r_{p-1},n,k_z)\\
-        \end{bmatrix}
-      \end{equation}
-
-      En injectant ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en \(r = r_{p-1}\)
-      \begin{multline}
-        \mJ_{Ep}(r_{p-1},n,k_z)
+      On se situe dans la couche \(p\) (\(r_{p-1}\le r\le r_p\)) et l'on sait qu'il existe dans cette couche des constantes \(c_i(n,k_z)\) telles que les champs vérifient
+      \begin{multline*}
+        \mJ_{E}(r_{p},n,k_z)
         \begin{bmatrix}
           c_1(n,k_z) \\
           c_3(n,k_z)
         \end{bmatrix}
         +
-        \mH_{Ep}(r_{p-1},n,k_z)
+        \mH_{E}(r_{p},n,k_z)
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
         \end{bmatrix}
         =
         \\
-        \hat \mZ_{p-1}
+        \hat \mZ_{p}(n,k_z)
         \left(
-          \mJ_{Hp}(r_{p-1},n,k_z)
+          \mJ_{H}(r_{p},n,k_z)
           \begin{bmatrix}
             c_1(n,k_z) \\
             c_3(n,k_z)
           \end{bmatrix}
           +
-          \mH_{Hp}(r_{p-1},n,k_z)
+          \mH_{H}(r_{p},n,k_z)
           \begin{bmatrix}
             c_2(n,k_z) \\
             c_4(n,k_z)
           \end{bmatrix}
         \right)
-      \end{multline}
+      \end{multline*}
 
-      \begin{equation}
-        \mM_{Jp}(r_{p-1},n,k_z)
+      Ce qui revient à 
+      \begin{equation*}
+        \mM_{\mJ}(r_{p},n,k_z,\hat\mZ_p(n,k_z))
         \begin{bmatrix}
           c_1(n,k_z) \\
           c_3(n,k_z)
         \end{bmatrix}
         =
-        -\mM_{Hp}(r_{p-1},n,k_z)
+        -\mM_{\mH}(r_{p},n,k_z,\hat\mZ_p(n,k_z))
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
         \end{bmatrix}
-      \end{equation}
+      \end{equation*}
 
-      % \begin{TODO}
-      On suppose que les matrices \(\mM_{Jp}(r_p,n,k_z), \mM_{Hp}(r_p,n,k_z)\) sont inversibles pour tout \((n,k_z)\).
-      % \end{TODO}
-
-      On injecte ce qui précède dans \eqref{eq:imp_fourier:cylindre:champs} en \(r = r_{p}\)
-      \begin{multline}
-        \hat{\vE}_t(r_p,n,k_z) = \\
-        \left(\mH_{Ep}(r_{p},n,k_z) - \mJ_{Ep}(r_{p},n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\mM_{Hp}(r_{p-1},n,k_z)\right)
+      On suppose que les matrices \(\mM_{\mJ}(r_p,n,k_z), \mM_{\mH}(r_p,n,k_z)\) sont inversibles pour tout \((n,k_z)\) donc
+      \begin{equation*}
+        \begin{bmatrix}
+          c_1(n,k_z) \\
+          c_3(n,k_z)
+        \end{bmatrix}
+        =
+        \mR(r_{p},n,k_z,\hat\mZ_p(n,k_z))
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
         \end{bmatrix}
-      \end{multline}        
-      \begin{multline}
-        \vect{e_r}\times\hat{\vH}_t(r_p,n,k_z) = \\
-        \left(\mH_{Hp}(r_{p},n,k_z) - \mJ_{Hp}(r_{p},n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\mM_{Hp}(r_{p-1},n,k_z) \right)
+      \end{equation*}
+
+      On injecte ce qui précède en \(r = r_{p-1}\)
+      \begin{multline*}
+        \hat{\vE}_t(r_{p-1},n,k_z) = 
+        \\
+        \left(\mH_{E}(r_{p-1},n,k_z) + \mJ_{E}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right)
         \begin{bmatrix}
           c_2(n,k_z) \\
           c_4(n,k_z)
         \end{bmatrix}
-      \end{multline}
+      \end{multline*}        
+      \begin{multline*}
+        \vect{e_r}\times\hat{\vH}_t(r_{p-1},n,k_z) =
+        \\
+        \left(\mH_{H}(r_{p-1},n,k_z) + \mJ_{H}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right)
+        \begin{bmatrix}
+          c_2(n,k_z) \\
+          c_4(n,k_z)
+        \end{bmatrix}
+      \end{multline*}
 
-      % \begin{TODO}
       On suppose alors que cette dernière est inversible pour tout \((n,k_z)\).
-      % \end{TODO}
 
-      On peut alors conclure sur la relation de récurrence
+      On obtient
+      \begin{multline*}
+        \hat{\vE}_t(r_{p-1},n,k_z) =
+        \\
+        \left(\mH_{E}(r_{p-1},n,k_z) + \mJ_{E}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right) \\
+        \left(\mH_{H}(r_{p-1},n,k_z) + \mJ_{H}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right)^{-1}
+        \\
+        \vect{e_r}\times\hat{\vH}_t(r_{p-1},n,k_z)
+      \end{multline*}
 
-      \begin{multline}
-        \hat{\mZ}_{p}(r_p,n,k_z) =\\
-          \left(\mH_{Ep}(r_p,n,k_z) - \mJ_{Ep}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\mM_{Hp}(r_{p-1},n,k_z)\right) \\
-          \left(\mH_{Hp}(r_p,n,k_z) - \mJ_{Hp}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\mM_{Hp}(r_{p-1},n,k_z)\right)^{-1}
-      \end{multline}
-
-      Comme on a supposé l'inversibilité des deux matrices \(\mM_J, \mM_H\) alors on peut réordonner les termes
-      \begin{multline}
-        \hat{\mZ}_{p}(r_p,n,k_z) =\\
-          \left(\mH_{Ep}(r_p,n,k_z)\mM_{Hp}(r_{p-1},n,k_z)^{-1} - \mJ_{Em}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\right) \\
-          \left(\mH_{Hp}(r_p,n,k_z)\mM_{Hp}(r_{p-1},n,k_z)^{-1} - \mJ_{Hp}(r_p,n,k_z)\mM_{Jp}(r_{p-1},n,k_z)^{-1}\right)^{-1}
-      \end{multline}
+      Comme on a supposé l'inversibilité des deux matrices \(\mM_J\), \(\mM_H\) alors on peut factoriser à droite le numérateur et le dénominateur et on a la propriété.
 
     \end{proof}
 
