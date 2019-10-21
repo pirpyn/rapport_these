@@ -1,71 +1,119 @@
 \section{Approximation de la matrice d'impédance pour un cylindre infini par une CIOE}
 
   \subsection[Expression des opérateurs LD,LR en Fourier]{Expression des opérateurs \(\LD,\LR\) en Fourier}
+    Soit \(C(0,r_C)\) un cylindre de centre 0, de rayon \(r_C\) et d'axe \(\vect{e_z}\) et \((r,\theta,z)\) les coordonnées cylindre d'un point de l'espace.
 
-    Par définition de \(\LD\), on a
-    \begin{align}
-      \LD \vE_t & = \vgrads{} \vdivs{} \vE_t
-    \end{align}
+    Soit \(V = \left(\mathcal{C}^\infty(C(0,r_C))\right)^2 \cap L^2(C(0,r_C)))\).
 
-    Or d’après la définition de la transformée de Fourier
-
-    \begin{align}
-      \vE_t(r,\theta,z) & = \frac{1}{2\pi}\sum_{n=-\infty}^\infty \int_\RR \hat{\vE_t}(r,n,k_z)e^{in\theta + ik_zz}\dd{k_z}
-    \end{align}
-
-    On applique l'opérateur à ce vecteur
-
-    \begin{align}
-      \LD \vE_t
-      & = \vgrads{} \vdivs{} \vE_t
-      \\
-      &=\frac{1}{2\pi}\vgrads{} \sum_{n=-\infty}^\infty\int_\RR \hat{\vE_t}(r,n,k_z) \cdot \vgrads{} e^{in\theta + ik_zz}\dd{k_z}
-      \\
-      &=\frac{1}{2\pi}\sum_{n=-\infty}^\infty \int_\RR \vhesss{}\left(\left( e^{in\theta + ik_zz} \right) \hat{\vE_t}\right)(r,n,k_z)\dd{k_z}
-    \end{align}
-
-    On utilise les expression en coordonnées cylindrique des opérateurs différentielles ( voir annexe \ref{sec:annexe:div_grad_rot} ):
-
-    On définit \(\hat{\mLD}\) l'opérateur matriciel tel que
-    \begin{align}
-      \LD \vE_t (r_{ext},\theta,z)
-      &= \frac{1}{2\pi}\sum_{n=-\infty}^\infty\int_\RR \hat{\mLD} \hat{\vE_t}(r_{ext},n,k_z)\dd{k_z}
-    \end{align}
-
-    Son expression est de ce qui précède
-    \begin{equation}
+    \begin{defn}
       \label{eq:cylindre:fourier:LD}
-      \hat{\mLD}(n,k_z) = -
-      \begin{bmatrix}
-        \left({n}\slash{r_{ext}}\right)^2 & k_z{n}\slash{r_{ext}}
-        \\
-        k_z{n}\slash{r_{ext}} & k_z^2
-      \end{bmatrix}
-    \end{equation}
+      On définit \(\LD\) l'endomorphisme de \(V\) tel que
+      \begin{align*}
+        \LD \vect{U}(r,\theta,z) & = \vgrads{} \vdivs{} \vect{U}(r,\theta,z)
+      \end{align*}
 
-    On reprend exactement la même méthode pour l'opérateur \(\LR\):
-    \begin{align}
-      \LR \vE_t & = \vrots{} \vrots{} \vE_t
-      \\
-      &=\frac{1}{2\pi}\vrots{}\sum_{n=-\infty}^\infty\int_\RR \vgrads{}\left(e^{in\theta + ik_zz}\right) \pvect \hat{\vE_t}(r,n,k_z)\dd{k_z}
-      \\
-      &= \frac{1}{2\pi}\sum_{n=-\infty}^\infty \int_\RR \left(\vhesss - \vlapls\right) \left(\left(e^{in\theta + ik_zz}\right) \hat{\vE_t}\right)(r,n,k_z)\dd{k_z}
-    \end{align}
+      On définit \(\hat{\mLD}\) la fonction de \(\NN\times\RR \rightarrow \mathcal{M}_2(\RR)\) telle que
+      \begin{equation*}
+        \hat{\mLD}(n,k_z) = -
+        \begin{bmatrix}
+          \left({n}\slash{r_C}\right)^2 & k_z{n}\slash{r_C}
+          \\
+          k_z{n}\slash{r_C} & k_z^2
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
 
-    On définit \(\hat{\mLR}\) l'opérateur matriciel tel que
-    \begin{align}
-      \LR \vE_t(r_{ext},\theta,z)
-      &= \frac{1}{2\pi}\sum_{n=-\infty}^\infty\int_\RR \hat{\mLR} \hat{\vE_t}(r_{ext},n,k_z)\dd{k_z}
-    \end{align}
+    \begin{prop}
+      Soit \(\vect{U} \in V\)
+      Alors
+      \begin{equation*}
+        \widehat{\LD \vect{U}} (r_C,n,k_z) = \hat{\mLD}(n,k_z) \hat{\vect{U}}(r_C,n,k_z)
+      \end{equation*}
+    \end{prop}
 
-    \begin{equation}
-      \hat{\mLR}(n,k_z) =
-      \begin{bmatrix}
-        k_z^2 & -k_z{n}\slash{r_{ext}}
-        \\
-        -k_z{n}\slash{r_{ext}} & \left({n}\slash{r_{ext}} \right)^2
-      \end{bmatrix}
-    \end{equation}
+    \begin{proof}
+      Par définition de \(\LD\), on a
+      \begin{align*}
+        \LD \vect{U} & = \vgrads{} \vdivs{} \vect{U}
+      \end{align*}
+      On utilise les expression en coordonnées cylindrique des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
+      \begin{align*}
+        \vdivs{\vect{U}}(r,\theta,z) = \frac{1}{r}\ddr{\theta}{U_\theta}(r,\theta,z) + \ddr{z}{U_z}(r,\theta,z)
+      \end{align*}
+      \begin{align*}
+        \vgrads{f}(r,\theta,z) = \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_\theta} + \ddr{z}{f}(r,\theta,z)\vect{e_z}
+      \end{align*}
+      Or d’après la définition de la transformée de Fourier
+      \begin{align*}
+        \vect{U}(r,\theta,z) & = \frac{1}{2\pi}\sum_{n=-\infty}^\infty \int_\RR \hat{\vect{U}}(r,n,k_z)e^{in\theta + ik_zz}\dd{k_z}
+      \end{align*}
+      les opérateurs en Fourier sont
+      \begin{align*}
+        \widehat{\vdivs{\vect{U}}}(r,n,k_z) = \frac{in}{r}{\hat{U}_\theta}(r,n,k_z) + ik_z{\hat{U}_z}(r,n,k_z)
+      \end{align*}
+      \begin{align*}
+        \widehat{\vgrads{f}}(r,n,k_z) = \frac{in}{r}\hat{f}(r,n,k_z)\vect{e_\theta} + ik_z\hat{f}(r,n,k_z)\vect{e_z}
+      \end{align*}
+      donc
+      \begin{align*}
+        \widehat{\vgrads \vdivs{\vect{U}}}(r,n,k_z) =  \left(-\frac{n^2}{r^2}\vect{e_\theta} - \frac{nk_z}{r}\vect{e_z}\right){\hat{U}_\theta}(r,n,k_z) + \left(-\frac{nk_z}{r}\vect{e_\theta} - {k_z^2}\vect{e_z}\right){\hat{U}_z}(r,n,k_z)
+      \end{align*}
+
+    \end{proof}
+
+
+    \begin{defn}
+      \label{eq:cylindre:fourier:LR}
+
+      On définit \(\LR\) l'endomorphisme de \(V\) tel que
+      \begin{align*}
+        \LR \vect{U}(r,\theta,z) & = \vrots{} (\rots{} \vect{U})(r,\theta,z)
+      \end{align*}
+
+      On définit \(\hat{\mLR}\) la fonction de \(\NN\times\RR \rightarrow \mathcal{M}_2(\RR)\) telle que
+      \begin{equation*}
+        \hat{\mLR}(n,k_z) = 
+        \begin{bmatrix}
+          -k_z^2 & k_z{n}\slash{r_C}
+          \\
+          k_z{n}\slash{r_C} & -\left({n}\slash{r_C}\right)^2
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
+
+    \begin{prop}
+      Soit \(\vect{U} \in V\)
+      Alors
+      \begin{equation*}
+        \widehat{\LR \vect{U}} (r_C,n,k_z) = \hat{\mLR}(n,k_z) \hat{\vect{U}}(r_C,n,k_z)
+      \end{equation*}
+    \end{prop}
+
+    \begin{proof}
+      Par définition de \(\LR\), on a
+      \begin{align*}
+        \LR \vect{U} & = \vrots{} (\rots{} \vect{U})
+      \end{align*}
+      On utilise les expression en coordonnées cylindrique des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
+      \begin{align*}
+        \rots{\vect{U}}(r,\theta,z) = \frac{1}{r}\ddr{\theta}{U_z}(r,\theta,z) - \ddr{z}{U_\theta}(r,\theta,z)
+      \end{align*}
+      \begin{align*}
+        \vrots{f}(r,\theta,z) = \ddr{z}{f}(r,\theta,z)\vect{e_\theta} - \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_z}
+      \end{align*}
+      donc comme pour l'opérateur \(\LD\)
+      \begin{align*}
+        \widehat{\rots{\vect{U}}}(r,n,k_z) = \frac{in}{r}{\hat{U}_z}(r,n,k_z) - ik_z{\hat{U}_\theta}(r,n,k_z)
+      \end{align*}
+      \begin{align*}
+        \widehat{\vrots{f}}(r,n,k_z) =  ik_z\hat{f}(r,n,k_z)\vect{e_\theta} - \frac{in}{r}\hat{f}(r,n,k_z)\vect{e_z}
+      \end{align*}
+      donc
+      \begin{align*}
+        \widehat{\vrots (\rots{\vect{U}})}(r,n,k_z) =  \left({k_z^2}\vect{e_\theta} - \frac{nk_z}{r}\vect{e_z}\right){\hat{U}_\theta}(r,n,k_z) + \left(-\frac{nk_z}{r}\vect{e_\theta} + \frac{n^2}{r^2}\vect{e_z}\right){\hat{U}_z}(r,n,k_z)
+      \end{align*}
+
+    \end{proof}
 
   \subsection{Expression de la matrice d'impédance approchée par la CI3}
 

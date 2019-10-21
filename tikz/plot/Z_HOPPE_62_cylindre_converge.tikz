@@ -2,8 +2,8 @@
 \begin{tikzpicture}[scale=1]
   \begin{axis}[
       title={Polarisation TM},
-      ylabel={\(\Im(\hat{Z}(k_tr_1,0))\)},
-      xlabel={\(k_t \slash k_0\)},
+      ylabel={\(\Im(\hat{Z}(n,0));\Im(\hat{Z}(k_x,0))\)},
+      xlabel={\(k_t \slash k_0 ; k_x \slash k_0\)},
       width=0.37\textwidth,
       xmin=0,
       xmax=1.5,
@@ -24,7 +24,7 @@
   \begin{axis}[
       title={Polarisation TE},
       ylabel={},
-      xlabel={\(k_t \slash k_0\)},
+      xlabel={\(k_t \slash k_0 ; k_x \slash k_0\)},
       width=0.37\textwidth,
       xmin=0,
       xmax=1.5,

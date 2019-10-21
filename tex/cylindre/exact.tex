@@ -455,7 +455,7 @@
       \end{tikzpicture}
     \end{figure}
 
-    Soit \(r_p\) le rayon de l'interface \(p\), \(r_p = r_0 +\sum_{i=1}^{p} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(r_{p-1} \le r \le r_p \).
+    Soient \(r_p\) le rayon de l'interface \(p\), \(r_p = r_0 +\sum_{i=1}^{p} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(r_{p-1} \le r \le r_p \).
 
     \begin{defn}
       On définit les fonctions de \([r_{p-1}, r_p]\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
@@ -467,32 +467,43 @@
     \end{defn}
 
     \begin{defn}
+      \label{def:cylindre;reflexion:impedance}
       On définit la fonction de \([r_{p-1}, r_p]\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{align*}
-        \mR(r,n,k_z,\mA) &= -\mM_{\mJ}(r,n,k_z,\mA)^{-1}\mM_{\mH}(r,n,k_z,\mA)
+        \mR(r,n,k_z,\mA) &= -\mM_{\mH}(r,n,k_z,\mA)^{-1}\mM_{\mJ}(r,n,k_z,\mA)
       \end{align*}
     \end{defn}
-    A priori \(\mR(r,n,k_z,\mA)\) n'est pas défini pour toute \(\mA\).
-    \begin{defn}[Fonction de transfert]{}~
+    A priori, pour \(r,n,k_z\) donné, \(\mR(r,n,k_z,\mA)\) n'est pas défini pour toute matrice \(\mA\).
 
-      On définit \(\mT_p\) la fonction de \((\RR_+^*)^2\times\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
+    \begin{defn}%[Fonction de transfert]{}~
+      \label{def:cylindre:transfert:impedance}
+
+      On définit \(\mT_p\) la fonction de \([r_{p-1}, r_p]^2\times\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{multline*}
-        \mT_p(r,r',n,k_z,\mZ) = \\
-          \left(\mH_{E}(r,n,k_z)\mM_{\mH}(r',n,k_z,\mZ)^{-1} - \mJ_{E}(r,n,k_z)\mM_{\mJ}(r',n,k_z,\mZ)^{-1}\right) 
+        \mT_p(r,r',n,k_z,\mA) = \\
+          \left(\mJ_{E}(r,n,k_z)\mM_{\mJ}(r',n,k_z,\mA)^{-1} - \mH_{E}(r,n,k_z)\mM_{\mH}(r',n,k_z,\mA)^{-1}\right) 
           \\
-          \left(\mH_{H}(r,n,k_z)\mM_{\mH}(r',n,k_z,\mZ)^{-1} - \mJ_{H}(r,n,k_z)\mM_{\mJ}(r',n,k_z,\mZ)^{-1}\right)^{-1}
+          \left(\mJ_{H}(r,n,k_z)\mM_{\mJ}(r',n,k_z,\mA)^{-1} - \mH_{H}(r,n,k_z)\mM_{\mH}(r',n,k_z,\mA)^{-1}\right)^{-1}
       \end{multline*}
     \end{defn}
+    A priori, pour \(r,r',n,k_z\) donné, \(\mT_p(r,r',n,k_z,\mA)\) n'est pas défini pour toute matrice \(\mA\).
 
-    \begin{prop}[Théorème de transfert]~
+    \begin{prop}%[Théorème de transfert]~
+      \label{prop:cylindre:transfert:impedance}
 
-      Soit \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p}^-,n,k_z) = \hat\mZ_{p}(n,k_z)(\vn \pvect \hat\vH(r_{p}^-,n,k_z)\).
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p}^-,n,k_z) = \hat\mZ_{p}(n,k_z)(\vn \pvect \hat\vH(r_{p}^-,n,k_z)\).
 
-      Si \(\)\(\mM_{\mJ}(r,n,k_z,\hat\mZ_{p}(n,k_z))\), \(\mM_{\mH}(r,n,k_z,\hat\mZ_{p}(n,k_z))\) et \(\mH_{H}(r,n,k_z)\mM_{\mH}(r',n,k_z,\mZ)^{-1} - \mJ_{H}(r,n,k_z)\mM_{\mJ}(r',n,k_z,\mZ)^{-1}\) sont inversibles,
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mM_{\mJ}(r_p^-,n,k_z,\hat\mZ_{p}(n,k_z)) && \mM_{\mH}(r_p^-,n,k_z,\hat\mZ_{p}(n,k_z))
+      \end{align*}
+      \begin{align*}
+        \mJ_{H}(r_{p-1}^+,n,k_z)\mM_{\mJ}(r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))^{-1} - \mH_{H}(r_{p-1}^+,n,k_z)\mM_{\mH}(r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))^{-1}
+      \end{align*}
 
-      alors \(\hat\vE_t(r_{p-1}^+,n,k_z) = \mT(r_p^-,r_{p-1}^+,n,k_z,\hat\mZ_{p}(n,k_z))(\vn \pvect \hat\vH(r_{p-1}^+,n,k_z))\).
+      alors \(\hat\vE_t(r_{p-1}^+,n,k_z) = \mT_p(r_{p-1}^+,r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))(\vn \pvect \hat\vH(r_{p-1}^+,n,k_z))\).
 
-      %Autrement dit une condition d'impédance sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
+      Une condition d'impédance sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
     \end{prop}
 
 
@@ -543,17 +554,17 @@
         \end{bmatrix}
       \end{equation*}
 
-      On suppose que les matrices \(\mM_{\mJ}(r_p,n,k_z), \mM_{\mH}(r_p,n,k_z)\) sont inversibles pour tout \((n,k_z)\) donc
+      On suppose que les matrices \(\mM_{\mJ}(r_p,n,k_z,\hat\mZ_p(n,k_z)), \mM_{\mH}(r_p,n,k_z,\hat\mZ_p(n,k_z))\) sont inversibles pour tout \((n,k_z)\) donc
       \begin{equation*}
         \begin{bmatrix}
-          c_1(n,k_z) \\
-          c_3(n,k_z)
+          c_2(n,k_z) \\
+          c_4(n,k_z)
         \end{bmatrix}
         =
         \mR(r_{p},n,k_z,\hat\mZ_p(n,k_z))
         \begin{bmatrix}
-          c_2(n,k_z) \\
-          c_4(n,k_z)
+          c_1(n,k_z) \\
+          c_3(n,k_z)
         \end{bmatrix}
       \end{equation*}
 
@@ -561,19 +572,19 @@
       \begin{multline*}
         \hat{\vE}_t(r_{p-1},n,k_z) = 
         \\
-        \left(\mH_{E}(r_{p-1},n,k_z) + \mJ_{E}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right)
+        \left(\mH_{E}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z)) + \mJ_{E}(r_{p-1},n,k_z)\right)
         \begin{bmatrix}
-          c_2(n,k_z) \\
-          c_4(n,k_z)
+          c_1(n,k_z) \\
+          c_3(n,k_z)
         \end{bmatrix}
       \end{multline*}        
       \begin{multline*}
         \vect{e_r}\times\hat{\vH}_t(r_{p-1},n,k_z) =
         \\
-        \left(\mH_{H}(r_{p-1},n,k_z) + \mJ_{H}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right)
+        \left(\mH_{H}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z)) + \mJ_{H}(r_{p-1},n,k_z))\right)
         \begin{bmatrix}
-          c_2(n,k_z) \\
-          c_4(n,k_z)
+          c_1(n,k_z) \\
+          c_3(n,k_z)
         \end{bmatrix}
       \end{multline*}
 
@@ -583,15 +594,69 @@
       \begin{multline*}
         \hat{\vE}_t(r_{p-1},n,k_z) =
         \\
-        \left(\mH_{E}(r_{p-1},n,k_z) + \mJ_{E}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right) \\
-        \left(\mH_{H}(r_{p-1},n,k_z) + \mJ_{H}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right)^{-1}
+        \left(\mJ_{E}(r_{p-1},n,k_z) + \mH_{E}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right) \\
+        \left(\mJ_{H}(r_{p-1},n,k_z) + \mH_{H}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right)^{-1}
         \\
         \vect{e_r}\times\hat{\vH}_t(r_{p-1},n,k_z)
       \end{multline*}
 
       Comme on a supposé l'inversibilité des deux matrices \(\mM_J\), \(\mM_H\) alors on peut factoriser à droite le numérateur et le dénominateur et on a la propriété.
-
     \end{proof}
+
+    \begin{prop}%[Théorème de relèvement]~
+      \label{prop:cylindre:relevement:impedance}
+
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p-1}^+,n,k_z) = \hat\mZ_{p-1}(n,k_z)(\vn \pvect \hat\vH(r_{p-1}^+,n,k_z)\).
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mM_{\mJ}(r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z)), && \mM_{\mH}(r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z)),
+      \end{align*}
+      \begin{align*}
+        \mH_{H}(r_{p}^-,n,k_z)\mM_{\mH}(r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z))^{-1} - \mJ_{H}(r_{p}^-,n,k_z)\mM_{\mJ}(r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z))^{-1},
+      \end{align*}
+
+      alors \(\hat\vE_t(r_{p}^-,n,k_z) = \mT_p(r_p^-,r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z))(\vn \pvect \hat\vH(r_{p}^-,n,k_z))\).
+
+      Une condition d'impédance sur le bord inférieur d'une couche détermine la condition limite sur le bord supérieur.
+    \end{prop}
+
+    \begin{proof}
+      Même méthodologie que pour la proposition \ref{prop:cylindre:transfert}.
+    \end{proof}
+
+    \begin{prop}%[Corollaire aux théorèmes de transfert et de relèvement.]{}~
+      \label{prop:cylindre:synthese:impedance}{}~
+
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que 
+      \begin{align*}
+      \vE_t(r_{p-1}^+,n,k_z) &= \hat\mZ_{p-1}(n,k_z)(\vn \pvect \hat\vH(r_{p-1}^+,n,k_z))
+      \\
+      \vE_t(r_{p}^-,n,k_z) &= \hat\mZ_{p}(n,k_z)(\vn \pvect \hat\vH(r_{p}^-,n,k_z))
+      \end{align*}
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mM_{\mJ}(r_p^-,n,k_z,\hat\mZ_{p}(n,k_z)), && \mM_{\mJ}(r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z)),
+        \\
+        \mM_{\mH}(r_p^-,n,k_z,\hat\mZ_{p}(n,k_z)), && \mM_{\mH}(r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z)),
+      \end{align*}
+      \begin{align*}
+        \mJ_{H}(r_{p}^-,n,k_z)\mM_{\mJ}(r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z))^{-1} - \mH_{H}(r_{p}^-,n,k_z)\mM_{\mH}(r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z))^{-1},
+        \\
+        \mJ_{H}(r_{p-1}^+,n,k_z)\mM_{\mJ}(r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))^{-1} - \mH_{H}(r_{p-1}^+,n,k_z)\mM_{\mH}(r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))^{-1},
+      \end{align*}
+
+      Alors 
+      \begin{align*}
+        \hat\mZ_{p-1}(n,k_z) &= \mT_p(r_{p-1}^+,r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))
+        \\
+        \hat\mZ_{p}(n,k_z) &= \mT_p(r_{p}^-,r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z))
+      \end{align*}
+
+    \end{prop}
+
+    On peut donc déterminer itérativement les matrices d'impédance. Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(r=r_0^+\) implique \(\hat\mZ_{0}(n,k_z) = 0\).
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -599,63 +664,178 @@
 
   \subsection{Expression des coefficients de la série de Fourier}
 
-    Tout comme pour le plan, on remarque que nous avons segmenté \(\hat{\vE}_t\) entre une onde incidente et une onde diffractée. En effet, dans les expressions précédente, on voit une partie ne comportant que des fonctions de Bessel et leurs dérivées et une autre ne comportant que des fonctions de Hankel et leurs dérivées.
-
-    Dans le vide, la décomposition d'une onde incidente, partout définie, fixe les coefficients complexes \(c_1(n,k_z)\) et \(c_3(n,k_z)\). On s'intéresse alors aux coefficients \(c_2(n,k_z)\) et \(c_4(n,k_z)\).
+    On se place à l'interface \(p\) donc \(r_{p-1} \le r \le r_{p+1} \).
 
     \begin{defn}
-      On définit la matrice de réflexion \(\hat{\mR}(n,k_z)\) la matrice telle que pour tout \(r\ge r_{ext}\)
-      \begin{equation*}
-        \hat{\vE}_t(r,n,k_z) = \left(\mJ_E(r,n,k_z) + \mH_E(r,n,k_z)\hat{\mR}(n,k_z) \right)\vect{C_1}(n,k_z)
-      \end{equation*}
+      On définit les fonctions de \(\RR\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
+      \begin{align*}
+        \mN_{E}(r,n,k_z,\mA) &= \mJ_{E}(r,n,k_z) + \mH_{E}(r,n,k_z)\mA
+        \\
+        \mN_{H}(r,n,k_z,\mA) &= \mJ_{H}(r,n,k_z) + \mH_{H}(r,n,k_z)\mA
+      \end{align*}
     \end{defn}
 
-    \begin{prop}
-      Si pour tout \(m\) strictement inférieur à \(p\) le nombre de couche, on suppose que en \((r_m,n,k_z)\)
-      \begin{align*}
-          \det(\mJ_{Em-1} + \mH_{Em-1}\hat\mR_{m-1}) \not = 0
-          \\
-          \det(\mJ_{Hm-1} + \mH_{Hm-1}\hat\mR_{m-1}) \not = 0
-          \\
-          \det((\mJ_{Em-1} + \mH_{Em-1}\hat\mR_{m-1})^{-1}\mH_{Em} - (\mJ_{Hm-1} + \mH_{Hm-1}\hat\mR_{m-1})^{-1}\mH_{Hm}) \not = 0
-      \end{align*}
-      Alors la matrice \(\hat{\mR}(n,k_z)=\hat{\mR}_p(n,k_z)\) est obtenue par récurrence:
-      \begin{equation*}
-        \hat{\mR}_1(n,k_z) = - \mH_{E1}(r_0,n,k_z)^{-1}\mJ_{E1}(r_0,n,k_z)
-      \end{equation*}
-      \begin{multline*}
-        \hat{\mR}_m(n,k_z) \\
-        = - \left((\mJ_{Em-1} + \mH_{Em-1}\hat\mR_{m-1})^{-1}\mH_{Em} - (\mJ_{Hm-1} + \mH_{Hm-1}\hat\mR_{m-1})^{-1}\mH_{Hm}\right)^{-1}
-        \\
-        \left((\mJ_{Em-1} + \mH_{Em-1}\hat\mR_{m-1})^{-1}\mJ_{Em} - (\mJ_{Hm-1} + \mH_{Hm-1}\hat\mR_{m-1})^{-1}\mJ_{Hm}\right)
-      \end{multline*}
-      et les matrices sont évaluée en \((r_m,n,k_z)\)
-    \end{prop}
-    \begin{proof}
-      On remarque que l'on peut réutiliser les résultats du plan infini sur les matrices de réflexions, notamment le lemme \ref{lem:plan:discontinuite_reflexion} sur la discontinuité de la matrice au passage d'une interface. Allégeons les notations: omettons les \((n,k_z)\) et indiquons par \(\pm\) lorsque l'on se trouve en \(r_m^\pm\).
-      \begin{multline}
-        \hat\mR^+ = - \left((\mJ_E^- + \mH_E^-\hat\mR^-)^{-1}\mH_E^+ - (\mJ_H^- + \mH_H^-\hat\mR^-)^{-1}\mH_H^+\right)^{-1}
-        \\
-        \left((\mJ_E^- + \mH_E^-\hat\mR^-)^{-1}\mJ_E^+ - (\mJ_H^- + \mH_H^-\hat\mR^-)^{-1}\mJ_H^+\right)
-      \end{multline}
+    \begin{defn}%[Fonction de transfert]{}~
+      \label{def:cylindre:transfert:reflexion}{}~
 
-      Il suffit alors de remarquer que pour la 1\iere couche, la plus profonde, la condition de conducteur parfait permet d'obtenir \(\hat\mR^- = - \mH(r_0,n,k_z)^{-1}\mJ(r_0,n,k_z)\), et alors on peut obtenir itérativement la matrice pour chaque couche.
+      On définit \(\mathfrak{T}_p\) la fonction de \([r_{p-1}, r_p]\times[r_p, r_{p+1}]\times\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
+      \begin{multline*}
+        \mathfrak{T}_p(r,r',n,k_z,\mA) = \\
+          -\left(\mN_{E}(r',n,k_z,\mA)^{-1}\mH_{E}(r,n,k_z) - \mN_{H}(r',n,k_z,\mA)^{-1}\mH_{H}(r,n,k_z)\right)^{-1}
+          \\
+          \left(\mN_{E}(r',n,k_z,\mA)^{-1}\mJ_{E}(r,n,k_z) - \mN_{H}(r',n,k_z,\mA)^{-1}\mJ_{H}(r,n,k_z)\right)
+      \end{multline*}
+    \end{defn}
+    A priori, pour \(r,r',n,k_z\) donné, \(\mathfrak{T}_p(r,r',n,k_z,\mA)\) n'est pas défini pour toute matrice \(\mA\).
+
+    \begin{prop}%[Théorème de transfert]~
+      \label{prop:cylindre:transfert:reflexion}{}~
+
+      On suppose qu'il existe \(\hat\mR_{p+1}(n,k_z)\) telle que 
+      \begin{align*}
+        \vE_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z)
+        \\
+        \vect{e_r}\pvect\vH(r_{p}^+,n,k_z) &= \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z)
+      \end{align*}
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z)), && \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z)),
+      \end{align*}
+      \begin{align*}
+        \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))^{-1}\mH_{E}(r_p^-,n,k_z) - \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))^{-1}\mH_{H}(r_p^-,n,k_z),
+      \end{align*}
+      alors
+      \begin{align*}
+        \vE_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\mathfrak{T}_p(r_p^-,r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z)))\vect{C}_{p}(n,k_z)
+        \\
+        \vE_t(r_{p}^-,n,k_z) &= \mN_{H}(r_p^-,n,k_z,\mathfrak{T}_p(r_p^-,r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z)))\vect{C}_{p}(n,k_z)
+      \end{align*}
+    \end{prop}
+
+    \begin{proof}
+      De part et d'autre de \(r=r_p\), on a 
+      \begin{align*}
+        \vE_t(r_p^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z)
+        \\
+        \vE_t(r_p^-,n,k_z) &= \mJ_E(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_E(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z)
+      \end{align*}
+      \begin{align*}
+        \vect{e_r}\pvect\vH(r_p^+,n,k_z) &= \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z)
+        \\
+        \vect{e_r}\pvect\vH(r_p^-,n,k_z) &= \mJ_H(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_H(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z)
+      \end{align*}
+      Il y a continuité des champs au travers de l'interface donc
+      \begin{align*}
+        \mJ_E(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_E(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z)
+        \\
+        \mJ_H(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_H(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z) &= \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z)
+      \end{align*}
+      donc si on suppose les matrices \(\mN_E, \mN_H\) inversibles
+      \begin{multline*}
+        \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))^{-1}\left(\mJ_E(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_E(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z)\right) =
+        \\
+        \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))^{-1}\left(\mJ_H(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_H(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z)\right)
+      \end{multline*}
+
+      On factorise les termes
+      \begin{multline*}
+        \left(\mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))^{-1}\mJ_E(r_p^-,n,k_z) - \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))^{-1}\mJ_H(r_p^-,n,k_z)\right)\vect{C}_{1}^-(n,k_z) =
+        \\
+        -\left(\mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))^{-1}\mH_E(r_p^-,n,k_z) + \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))^{-1}\mH_H(r_p^-,n,k_z)\right)\vect{C}_{2}^-(n,k_z)
+      \end{multline*}
+
+      On suppose l'inversion de cette dernière et alors
+      \begin{equation*}
+        \vect{C}_{2}^-(n,k_z) = \mathfrak{T}_p(r_p^-,r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z)) \vect{C}_{1}^-(n,k_z)
+      \end{equation*}
     \end{proof}
+
+    \begin{prop}%[Théorème de relévement]~
+      \label{prop:cylindre:relevement:reflexion}{}~
+
+      On suppose qu'il existe \(\hat\mR_{p}(n,k_z)\) telle que 
+      \begin{align*}
+        \vE_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z)
+        \\
+        \vect{e_r}\pvect\vH(r_{p}^-,n,k_z) &= \mN_{H}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z)
+      \end{align*}
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mN_{E}(r_p^-,n,k_z,\mR_{p}(n,k_z)), && \mN_{H}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z)),
+      \end{align*}
+      \begin{align*}
+        \mN_{E}(r_p^-,n,k_z,\mR_{p}(n,k_z))^{-1}\mH_{E}(r_p^+,n,k_z) - \mN_{H}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))^{-1}\mH_{H}(r_p^+,n,k_z),
+      \end{align*}
+      alors
+      \begin{align*}
+        \vE_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z)
+        \\
+        \vE_t(r_{p}^+,n,k_z) &= \mN_{H}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\\hatmR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z)
+      \end{align*}
+    \end{prop}
+
+    \begin{proof}
+      Même méthodologie que pour la proposition \ref{prop:cylindre:transfert:reflexion}.
+    \end{proof}
+
+    \begin{prop}%[Théorème de relévement]~
+      \label{prop:cylindre:synthese:reflexion}{}~
+
+      On suppose qu'il existe \(\hat\mR_{p}(n,k_z)\) et \(\hat\mR_{p+1}(n,k_z)\) telles que 
+      \begin{align*}
+      &\left\lbrace\begin{aligned}
+        \vE_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z)
+        \\
+        \vect{e_r}\pvect\vH(r_{p}^-,n,k_z) &= \mN_{H}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z)
+        \end{aligned}
+      \right.
+      \\
+      &\left\lbrace\begin{aligned}
+        \vE_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z)
+        \\
+        \vect{e_r}\pvect\vH(r_{p}^+,n,k_z) &= \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z)
+        \end{aligned}
+      \right.      
+      \end{align*}
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mN_{E}(r_p^-,n,k_z,\mR_{p}(n,k_z)), && \mN_{H}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z)),
+        \\
+        \mN_{E}(r_p^+,n,k_z,\mR_{p+1}(n,k_z)), && \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z)),
+      \end{align*}
+      \begin{align*}
+        \mN_{E}(r_p^-,n,k_z,\mR_{p}(n,k_z))^{-1}\mH_{E}(r_p^+,n,k_z) - \mN_{H}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))^{-1}\mH_{H}(r_p^+,n,k_z),
+        \\
+        \mN_{E}(r_p^+,n,k_z,\mR_{p+1}(n,k_z))^{-1}\mH_{E}(r_p^-,n,k_z) - \mN_{H}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))^{-1}\mH_{H}(r_p^-,n,k_z),
+      \end{align*}
+      alors
+      \begin{align*}
+        \hat\mR_{p+1}(n,k_z) &= \mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z))
+        \\
+        \hat\mR_{p}(n,k_z) &= \mathfrak{T}_p(r_p^-,r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))
+      \end{align*}
+    \end{prop}
+
+    On peut donc déterminer itérativement les matrices de réflexions. Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(r=r_0^+\) implique \(\mR_{1}(n,k_z) = -\mH_E(r_0^+,n,k_z)^{-1}\mJ_E(r_0^+,n,k_z)\).
 
   \subsection{Applications numérique}
 
-    La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte (voir Figure \ref{fig:annex:hoppe:p62}). Sur ce graphe, Hoppe éclaire le cylindre radialement (\(k_z=0\)) et définit \(k_t\) le nombre d'onde azimutal \(k_t\) tel que \(k_t = n \slash r_{ext}\) et étudie les variations de l'impédance du cylindre en variant \(k_t\) et en comparant cette impédance à celle du plan pour le même empilement, où \(k_y = 0\) et \(k_x\) varie dans la même plage que \(k_t\).
+    La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte (voir Figure \ref{fig:annex:hoppe:p62}). 
 
-    Elle montre la convergence de la matrice d'impédance d'un cylindre vers celle du plan en fonction du rayon du cylindre pour un même empilement. 
-    % On voit bien que plus le rayon augmente, plus il faut prendre de termes dans la série de Fourier puisque \(n = \lfloor k_t r_{ext} \rfloor\)
+    Deux graphes sont superposés sur cette figure. D'abord, 3 courbes représentant les valeurs des parties imaginaires des termes diagonaux de la matrice \(\hat\mZ_{cylindre}\) en fonction de \((n,k_z)\) où \(k_z=0\) et \(n\) varie de \(0\) à \(\lfloor k_t r_1 \rfloor\) pour 3 rayons intérieur différent. Puis une courbe représentant les valeurs des parties imaginaires des termes diagonaux de la matrice \(\hat\mZ_{plan}\) en fonction de \((k_x,k_y)\) où \(k_y=0\)).
     \begin{figure}[!hbt]
       \centering
       \input{tikz/plot/Z_HOPPE_62_cylindre_converge.tikz}
       \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
       \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon}
     \end{figure}
+    Pour une couche de matériau sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
 
-    La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:coeff_fourier} affiche le module des coefficients de la série de Fourier, c'est à dire les coefficients de la matrice \(\hat\mR\), définie plus haut. Comme on peut le voir, dès que \(n\) dépasse \(k_0r_{ext}\), le module des coefficients décroit très rapidement. Ce dépassement arrive pour \(n\) supérieur respectivement à 2, 7, 64 pour \(r_0\) égal à 0.03, 0.3, 3 m.
+
+    La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:coeff_fourier} affiche le module des coefficients de la série de Fourier, c'est à dire les coefficients diagonaux de la matrice \(\hat\mR\) définie plus haut. Comme on peut le voir, dès que \(n\) dépasse \(k_0r_{1}\), le module des coefficients décroit très rapidement. Ce dépassement arrive pour \(n\) supérieur à 2 (resp. 7, 64) pour \(r_0\) égal à 0.03m (resp. 0.3m, 3m).
 
     \begin{figure}[!hbt]
       \centering
