@@ -1,122 +1,175 @@
-\section{Calcul des coefficients des CIOE par moindres carrés sur l'impédance}
+\section{Calcul des coefficients de la CI3 par moindres carrés sur l'impédance}
 
-  \subsection{Expression des moindre carrés pour une incidence}
+  \subsection{Expression de la fonctionnelle}
 
-    \subsubsection{Expression des moindre carrés pour un terme de la série de Fourier}
-      D'abord, minimisons pour un couple \(n,k_z\). Nous montrerons ensuite comment exprimer la minimisation pour prendre en compte tous les termes de la série de Fourier.
-      \begin{prop}
-        Soit \(n,k_z\) fixés.
-        Pour nos CIOE, il existe une matrice \(\mH_{n,k_z}(CI,\hat\mZ_{ex}(n,k_z))\) et un vecteur \(X(CI)\) de \(\CC^{N_{CI}}\) composés des coefficients de la CI, tels que minimiser selon la norme euclidienne
-        \[
-          ||\hat\mZ_{CI}(n,k_z)-\hat\mZ_{ex}(n,k_z)||^2_{eucl}
-        \] 
-        revient à minimiser selon une norme équivalente dépendante de la CI
-        \[ 
-          || \mH_{n,k_z}(CI,\hat\mZ_{ex}(n,k_z)) \vect{X}(CI) - b(\hat\mZ_{ex}(n,k_z)) ||^2_{CI}
-        \]
-        La matrice \(\mH\) est de dimensions 4 lignes \(N_{CI}\) colonnes et le vecteur colonne b à 4 coefficients et a l'expression suivante
-        \begin{align}
-          b(\hat{\mZ}) = \begin{bmatrix} \hat{\mZ}_{ex11} \\ \hat{\mZ}_{ex12}\\ \hat{\mZ}_{ex21} \\ \hat{\mZ}_{ex22} \end{bmatrix}
-        \end{align}
-      \end{prop}
-
-      \begin{proof}
-        La méthode est exactement la même que pour le plan, nous renvoyons donc à cette démonstration.
-      \end{proof}
-
-      Par exemple pour la CI3: soient \(\hat\mLD, \hat\mLR\) telles que
-      \begin{align}
-        \hat\mLD(n,k_z) & = - \begin{bmatrix} (n\slash r_{ext})^2 & k_z n \slash r_{ext} \\ k_z n\slash r_{ext} & k_z^2 \end{bmatrix}
+    \begin{defn}
+      On définit \(\mH_{CI3}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
+      \begin{equation*}
+        \mH_{CI3}(n,k_z,\mA) = \begin{bmatrix}
+        1 & \hat{\mLD}(n,k_z)_{11} & -\hat{\mLR}(n,k_z)_{11} & -\left(\hat{\mLD}(n,k_z){\mA}\right)_{11} & \left(\hat{\mLR}(n,k_z){\mA}\right)_{11}
         \\
-        \hat\mLR(n,k_z) & =  \begin{bmatrix} k_z^2 & -k_z n \slash r_{ext} \\ -k_z n\slash r_{ext} &  (n\slash r_{ext})^2 \end{bmatrix}
-      \end{align}
+        0 & \hat{\mLD}(n,k_z)_{12} & -\hat{\mLR}(n,k_z)_{12} & -\left(\hat{\mLD}(n,k_z){\mA}\right)_{12} & \left(\hat{\mLR}(n,k_z){\mA}\right)_{12}
+        \\
+        0 & \hat{\mLD}(n,k_z)_{21} & -\hat{\mLR}(n,k_z)_{21} & -\left(\hat{\mLD}(n,k_z){\mA}\right)_{21} & \left(\hat{\mLR}(n,k_z){\mA}\right)_{21}
+        \\
+        1 & \hat{\mLD}(n,k_z)_{22} & -\hat{\mLR}(n,k_z)_{22} & -\left(\hat{\mLD}(n,k_z){\mA}\right)_{22} & \left(\hat{\mLR}(n,k_z){\mA}\right)_{22}
+        \end{bmatrix}
+      \end{equation*}
+      On définit \(b\) la fonction de \(\mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
+      \begin{equation*}
+        b(\mA) = \begin{bmatrix}
+        {\mA}_{11}
+        \\
+        {\mA}_{12}
+        \\
+        {\mA}_{21}
+        \\
+        {\mA}_{22}
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
 
-      \begin{align}
-          \mH_{n,k_z}(CI3,\hat\mZ) = \begin{bmatrix}
-          1 & \hat{\mLD}_{11} & -\hat{\mLR}_{11} & -\left(\hat{\mLD}\hat{\mZ}_{ex}\right)_{11} & \left(\hat{\mLR}\hat{\mZ}_{ex}\right)_{11}
+    \begin{prop}
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((n,k_z)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre, alors
+      \begin{equation*}
+        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,k_z,X) - \hat\mZ_{ex}(n,k_z)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,k_z,\hat\mZ_{ex}(n,k_z))X - b(\hat\mZ_{ex}(n,k_z))}
+      \end{equation*}
+    \end{prop}
+
+    \begin{proof}
+      C'est la même méthodologie que pour le plan.
+      On rappelle que dans la section précédente, on a introduit
+      \begin{multline*}
+        \hat{\mZ}_{CI3}(n,k_z) = \left(\mI + b_1 \hat{\mLD}(n,k_z) - b_2 \hat{\mLR}(n,k_z) \right)^{-1}\\\left(a_0 \mI + a_1 {\hat{\mLD}(n,k_z)} - a_2 {\hat{\mLR}(n,k_z)}\right)
+      \end{multline*}
+      On pose \(\hat\mZ_D(n,k_z) = \mI + b_1 \hat{\mLD}(n,k_z) - b_2 \hat{\mLR}(n,k_z)\) et \(\hat\mZ_N(n,k_z) = a_0 \mI + a_1 {\hat{\mLD}(n,k_z)} - a_2 {\hat{\mLR}(n,k_z)}\) donc
+
+      \begin{align*}
+      &{}~ \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,k_z,X) - \hat\mZ_{ex}(n,k_z)}
+      \\
+      & = \argmin{X\in\CC^5} \norm{\hat\mZ_D(n,k_z)^{-1}\hat\mZ_N(n,k_z) - \hat\mZ_{ex}(n,k_z) }
+      \\
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_D(n,k_z)^{-1}\left(\hat\mZ_N(n,k_z) - \hat\mZ_D(n,k_z)\hat\mZ_{ex}(n,k_z)\right) }
+      \\
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n,k_z) - \hat\mZ_D(n,k_z)\hat\mZ_{ex}(n,k_z)}
+      \\
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n,k_z) - \left(b_1 \hat{\mLD}(n,k_z) - b_2 \hat{\mLR}(n,k_z)\right)\hat\mZ_{ex}(n,k_z) - \hat\mZ_{ex}(n,k_z) }
+      \\
+      &= \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,k_z,\hat\mZ_{ex}(n,k_z))X - b(\hat\mZ_{ex}(n,k_z))}
+      \end{align*}
+    \end{proof}
+
+    On tronque la série de Fourier à \(N_{n}\) termes et on se dote de \(N_{k_z}\) \(k_z\). Il existe donc \(N_{n}N_{k_z}\) couples tels que \((n_i,k_{zj}) = (n,k_z)_{(j-1)N_{n}+i}\).
+    \begin{defn}
+      On définit \(\check\mH_{CI3}\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times5}(\CC)\) telle que
+      \begin{equation*}
+        \check\mH_{CI3} = 
+        \begin{bmatrix}
+          \mH_{CI3}(n_1,k_{z1},\hat\mZ_{ex}(n_1,k_{z1}))
           \\
-          0 & \hat{\mLD}_{12} & -\hat{\mLR}_{12} & -\left(\hat{\mLD}\hat{\mZ}_{ex}\right)_{12} & \left(\hat{\mLR}\hat{\mZ}_{ex}\right)_{12}
+          \vdots
           \\
-          0 & \hat{\mLD}_{21} & -\hat{\mLR}_{21} & -\left(\hat{\mLD}\hat{\mZ}_{ex}\right)_{21} & \left(\hat{\mLR}\hat{\mZ}_{ex}\right)_{21}
+          \mH_{CI3}(n_i,k_{zj},\hat\mZ_{ex}(n_i,k_{zj}))
           \\
-          1 & \hat{\mLD}_{22} & -\hat{\mLR}_{22} & -\left(\hat{\mLD}\hat{\mZ}_{ex}\right)_{22} & \left(\hat{\mLR}\hat{\mZ}_{ex}\right)_{22}
-          \end{bmatrix}
-          && X = \begin{bmatrix} a_0 \\ a_1 \\ a_2 \\ b_1 \\ b_2 \end{bmatrix}
-      \end{align}
+          \vdots
+          \\
+          \mH_{CI3}(n_{N_n},k_{zN_{k_z}},\hat\mZ_{ex}(n_{N_n},k_{zN_{k_z}}))
+        \end{bmatrix}
+      \end{equation*}
+      On définit \(\check{b}\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times1}(\CC)\) telle que
+      \begin{equation*}
+        \check{b} = 
+        \begin{bmatrix}
+          b(\hat\mZ_{ex}(n_1,k_{z1}))
+          \\
+          \vdots
+          \\
+          b(\hat\mZ_{ex}(n_i,k_{zj}))
+          \\
+          \vdots
+          \\
+          b(\hat\mZ_{ex}(n_{N_n},k_{zN_{k_z}}))
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
 
-    \subsubsection{Expression des moindre carrés pour tous les termes de la série de Fourier}
+    On peut alors calculer les coefficients
 
-      On tronque la série de Fourier à \(n\) termes.
+    \begin{thm}[Minimisation sans contraintes pour la CI3]
 
-      \begin{prop}
-        Soit \(k_z\) fixés.
-        Pour nos CIOE, il existe une matrice \(\mH_{k_z}(CI,\hat\mZ_{ex})\) et un vecteur \(X(CI)\) de \(\CC^{N_{CI}}\) composés des coefficients de la CI, tels que 
+      Les coefficients de la CIOE sont solutions du problème
 
-        Trouver les coefficients de la CIOE est équivalent à minimiser selon une norme dépendante de la CIOE et du nombre de termes de la série de Fourier tronquée
-        \[ 
-          || \check{\mH}_{k_z}(CI,\hat\mZ_{ex}) \vect{X}(CI) - \check{b}(\hat\mZ_{ex}(k_z)) ||^2_{(n,CI)}
-        \]
-        La matrice \(\check{\mH}\) a \(4n\) lignes ,\(N_{CI}\) colonnes et le vecteur colonne \(\check{b}\) a \(4n\) coefficients
+      Trouver \(X^* \in \CC^5\) tel que
+      \begin{equation*}
+        X^* = \argmin{X\in \CC^5} \norm{\check\mH_{CI3}X - \check{b}}
+      \end{equation*}
+    \end{thm}
 
+    \begin{prop}
+      Si \(\conj{\check\mH_{CI3}^t}\check\mH_{CI3}\) est inversible alors
+      \begin{equation*}
+        X^* = (\conj{\check\mH_{CI3}^t}\check\mH_{CI3})^{-1}\conj{\check\mH_{CI3}^t}\check{b}
+      \end{equation*}
+    \end{prop}
+    \begin{proof}
+      Soit \(\left<\cdot,\cdot\right>\) le produit scalaire associé à la norme \(\norm{\cdot}\). Soit \(J\) la fonctionnelle telle que
+      \begin{align*}
+      J(X) &= \norm{\check\mH_{CI3}X - \check{b}} 
+      \\
+      &= \left<\check\mH_{CI3}X - \check{b},\check\mH_{CI3}X - \check{b}\right>
+      \intertext{le produit scalaire est symétrique donc \(\left<a,b\right> = \left<b,a\right>\)}
+      &=\left<\check\mH_{CI3}X,\check\mH_{CI3}X\right> - 2\left<\check\mH_{CI3}X,\check{b}\right> + \left<\check{b},\check{b}\right>
+      \\
+      &=\left<X,\conj{\check\mH_{CI3}^t}\check\mH_{CI3}X\right> - 2\left<X,\conj{\check\mH_{CI3}^t}\check{b}\right> + \left<\check{b},\check{b}\right>
+      \end{align*}
+      Si la matrice \(\conj{\check\mH_{CI3}^t}\check\mH_{CI3}\) est inversible, comme elle est par définition hermitienne et positive alors la fonctionnelle est quadratique. Donc il existe une unique minimum où le gradient de cette fonctionnelle s'annule. Or
+      \begin{align*}
+        \nabla J(X^*) &= 2\conj{\check\mH_{CI3}^t}\check\mH_{CI3}X^* - 2\conj{\check\mH_{CI3}^t}\check{b}
+        \\ 
+        &= 0
+      \end{align*}
+    \end{proof}
 
-        \begin{align}
-          {\check{\mH}_{k_z}(CI,\hat\mZ)}_{i:i+4,:} = \mH_{i,k_z}(CI,\hat\mZ(i,k_z))  & & \check{b}(\hat{\mZ}(k_z))_{i:i+4} = \begin{bmatrix} \hat{\mZ}_{11}(i,k_z) \\ \hat{\mZ}_{12}(i,k_z)\\ \hat{\mZ}_{21}(i,k_z) \\ \hat{\mZ}_{22}(i,k_z) \end{bmatrix}
-        \end{align}
-      \end{prop}
+    Nous n'avons pas réussi à démontrer que cette matrice était définie pour tout empilement et tout incidence.
 
-      \begin{proof}
-        En utilisant les moindres carrés pour un couple \((i,k_z)\), on aboutit à \(n\) systèmes de type
-        \( || \mH_{i,k_z}(CI,\hat\mZ_{ex}(i,k_z)) \vect{X}(CI) - b(\hat\mZ_{ex}(i,k_z)) ||^2_{CI} \).
+    \begin{thm}[Minimisation avec contraintes pour la CI3]
 
-        On construit alors les matrices
-      \end{proof}
+      Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
+      Alors les coefficients de la CIOE respectant les CSU sont solutions du problème
 
-  \subsection{Expression des moindre carrés dans le cadre de l'approximation cylindre infini avec un balayage en incidence}
+      Trouver \(X^* \in \CC^5\) tel que
+      \begin{equation*}
+        X^* = \argmin{X\in \CSU[3]{CI3}} \norm{\check\mH_{CI3}X - \check{b}}
+      \end{equation*}
+    \end{thm}
+
 
   \subsection{Résultats numériques sur l'approximation de la matrice d'impédance}
 
-    La figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte.
+    Dans cette partie, toutes les CIOE faisant intervenir des opérateurs différentielles normalisent ces derniers par \(k_0^2\). Ainsi la CI3 s'exprime
+    \begin{equation*}
+      \left(\oI + c_1\frac{\LD}{k_0^2} -c_2\frac{\LR}{k_0^2}\right)\vE_t = \left(a_0\oI + b_1\frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vJ
+    \end{equation*}
 
-    % \begin{figure}[!hbt]
-    %   \centering
-    %   \input{tikz/plot/Z_HOPPE_62_cylindre_hoibc.tikz}
-    %   \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
-    %   \label{fig:imp_fourier:plan:hoppe:62:hoibc}
-    % \end{figure}
-    % \begin{table}[!hbt]
-    %   \centering
-    %   % On fait deux tables de même hauteur
-    %   \begin{coefftable}{\hyperlink{ci0}{CI0}}
-    %     \input{csv/HOPPE_62/HOPPE_62.IBC_ibc0_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
-    %     \\
-    %     \\
-    %     \\
-    %     \\
-    %     \\
-    %   \end{coefftable}
-    %   \begin{coefftable}{\hyperlink{ci3}{CI3}}
-    %     \input{csv/HOPPE_62/HOPPE_62.IBC_ibc3_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
-    %   \end{coefftable}
-    %   \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc}}
-    %   \label{tab:imp_fourier:plan:hoppe:62:hoibc}
-    % \end{table}
-
-    On remarque que la CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. 
-    En effet, la matrice d'impédance exacte n'est pas une constante mais une matrice diagonale pour \(n=k_z=0\). 
-    Or par définition la CIOE est une constante pour ce couple, c'est la CI0. On subit donc cette erreur dans les résultats. 
-
-    Une CIOE plus intéressante, que l'on nomme CI6 et qui est inspirée de \cite[p.~60]{hoppe_impedance_1995}, serait alors:
-
-    \begin{equation}
-      \left(\oI + c_1\frac{\LD}{k_0^2} -c_2\frac{\LR}{k_0^2}\right)\vE_t = \left(\diag{a_1}{a_2} + b_1\frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vJ
-    \end{equation}
+    La figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte. On prend un incidence normale au cylindre, donc les matrices d'impédance exactes et approchées sont diagonales. On fait varier \(n\) de 0 à \(\lceil k_0 (r_0+d) \rceil\). On trace sur cette figure les parties imaginaires des termes diagonaux pour chaque \(n\) de cette matrice, les parties réelles étant nulles.
 
     \begin{figure}[!hbt]
       \centering
       \input{tikz/plot/Z_HOPPE_62_cylindre_hoibc_ibc6.tikz}
-      \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}, r_0=0.03\text{m}\)}
+      \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{Partie imaginaire des termes diagonaux des matrices d'impédance pour l'empilement \(\eps = 6\), \(\mu = 1\), \(d=0.0225\text{m}\), \(f=1\text{GHz}\), \(r_0=0.03\text{m}\) en fonction de \(k_t = n / (r_0+d)\).}
       \label{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6}
     \end{figure}
+    
+    On remarque que la CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. 
+    En effet, pour \(n=k_z=0\) la matrice d'impédance exacte n'est pas une constante mais une matrice diagonale. 
+    Or par définition la CIOE est une constante pour ce couple, c'est la CI0. On subit donc cette erreur dans les résultats. 
+
+    Une CIOE plus intéressante, que l'on nomme CI6 et qui est inspirée de \cite[p.~60]{hoppe_impedance_1995}, serait alors:
+
+    \begin{equation*}
+      \left(\oI + c_1\frac{\LD}{k_0^2} -c_2\frac{\LR}{k_0^2}\right)\vE_t = \left(\diag{a_1}{a_2} + b_1\frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vJ
+    \end{equation*}
+
     \begin{table}[!hbt]
       \centering
       % On fait deux tables de même hauteur
@@ -141,6 +194,6 @@
       \label{tab:imp_fourier:plan:hoppe:62:hoibc:ibc6}
     \end{table}
 
-    Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier. On présente néanmoins dans la figure \ref{fig:imp_fourier:plan:hoppe:62:hoibc:ibc6} sa performance vis à vis de la CI3 sur le cylindre.
+    Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier.
 
 

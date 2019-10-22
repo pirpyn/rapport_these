@@ -1,9 +1,9 @@
 \section{Approximation de la matrice d'impédance pour un cylindre infini par une CIOE}
 
   \subsection[Expression des opérateurs LD,LR en Fourier]{Expression des opérateurs \(\LD,\LR\) en Fourier}
-    Soit \(C(0,r_C)\) un cylindre de centre 0, de rayon \(r_C\) et d'axe \(\vect{e_z}\) et \((r,\theta,z)\) les coordonnées cylindre d'un point de l'espace.
+    Soit \(C(0,r_c)\) un cylindre de centre 0, de rayon \(r_c\) et d'axe \(\vect{e_z}\) et \((r,\theta,z)\) les coordonnées cylindre d'un point de l'espace.
 
-    Soit \(V = \left(\mathcal{C}^\infty(C(0,r_C))\right)^2 \cap L^2(C(0,r_C)))\) l'espace des fonctions infiniment dérivables et de carré intégrable.
+    Soit \(V = \left(\mathcal{C}^\infty(C(0,r_c))\right)^2 \cap L^2(C(0,r_c)))\) l'espace des fonctions infiniment dérivables et de carré intégrable.
 
     \begin{defn}
       \label{eq:cylindre:fourier:LD}
@@ -16,9 +16,9 @@
       \begin{equation*}
         \hat{\mLD}(n,k_z) = -
         \begin{bmatrix}
-          \left({n}\slash{r_C}\right)^2 & k_z{n}\slash{r_C}
+          \left({n}\slash{r_c}\right)^2 & k_z{n}\slash{r_c}
           \\
-          k_z{n}\slash{r_C} & k_z^2
+          k_z{n}\slash{r_c} & k_z^2
         \end{bmatrix}
       \end{equation*}
     \end{defn}
@@ -27,7 +27,7 @@
       Soit \(\vect{U} \in V\)
       Alors
       \begin{equation*}
-        \widehat{\LD \vect{U}} (r_C,n,k_z) = \hat{\mLD}(n,k_z) \hat{\vect{U}}(r_C,n,k_z)
+        \widehat{\LD \vect{U}} (r_c,n,k_z) = \hat{\mLD}(n,k_z) \hat{\vect{U}}(r_c,n,k_z)
       \end{equation*}
     \end{prop}
 
@@ -38,10 +38,9 @@
       \end{align*}
       On utilise les expression en coordonnées cylindrique des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
       \begin{align*}
-        \vdivs{\vect{U}}(r,\theta,z) = \frac{1}{r}\ddr{\theta}{U_\theta}(r,\theta,z) + \ddr{z}{U_z}(r,\theta,z)
-      \end{align*}
-      \begin{align*}
-        \vgrads{f}(r,\theta,z) = \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_\theta} + \ddr{z}{f}(r,\theta,z)\vect{e_z}
+        \vdivs{\vect{U}}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{U_\theta}(r,\theta,z) + \ddr{z}{U_z}(r,\theta,z)
+        \\
+        \vgrads{f}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_\theta} + \ddr{z}{f}(r,\theta,z)\vect{e_z}
       \end{align*}
       Or d’après la définition de la transformée de Fourier
       \begin{align*}
@@ -49,14 +48,13 @@
       \end{align*}
       les opérateurs en Fourier sont
       \begin{align*}
-        \widehat{\vdivs{\vect{U}}}(r,n,k_z) = \frac{in}{r}{\hat{U}_\theta}(r,n,k_z) + ik_z{\hat{U}_z}(r,n,k_z)
-      \end{align*}
-      \begin{align*}
-        \widehat{\vgrads{f}}(r,n,k_z) = \frac{in}{r}\hat{f}(r,n,k_z)\vect{e_\theta} + ik_z\hat{f}(r,n,k_z)\vect{e_z}
+        \widehat{\vdivs{\vect{U}}}(r,n,k_z) &= \frac{in}{r}{\hat{U}_\theta}(r,n,k_z) + ik_z{\hat{U}_z}(r,n,k_z)
+        \\
+        \widehat{\vgrads{f}}(r,n,k_z) &= \frac{in}{r}\hat{f}(r,n,k_z)\vect{e_\theta} + ik_z\hat{f}(r,n,k_z)\vect{e_z}
       \end{align*}
       donc
       \begin{align*}
-        \widehat{\vgrads \vdivs{\vect{U}}}(r,n,k_z) =  \left(-\frac{n^2}{r^2}\vect{e_\theta} - \frac{nk_z}{r}\vect{e_z}\right){\hat{U}_\theta}(r,n,k_z) + \left(-\frac{nk_z}{r}\vect{e_\theta} - {k_z^2}\vect{e_z}\right){\hat{U}_z}(r,n,k_z)
+        \widehat{\LD{\vect{U}}}(r,n,k_z) =  \left(-\frac{n^2}{r^2}\vect{e_\theta} - \frac{nk_z}{r}\vect{e_z}\right){\hat{U}_\theta}(r,n,k_z) + \left(-\frac{nk_z}{r}\vect{e_\theta} - {k_z^2}\vect{e_z}\right){\hat{U}_z}(r,n,k_z)
       \end{align*}
 
     \end{proof}
@@ -74,18 +72,18 @@
       \begin{equation*}
         \hat{\mLR}(n,k_z) = 
         \begin{bmatrix}
-          -k_z^2 & k_z{n}\slash{r_C}
+          -k_z^2 & k_z{n}\slash{r_c}
           \\
-          k_z{n}\slash{r_C} & -\left({n}\slash{r_C}\right)^2
+          k_z{n}\slash{r_c} & -\left({n}\slash{r_c}\right)^2
         \end{bmatrix}
       \end{equation*}
     \end{defn}
 
     \begin{prop}
-      Soit \(\vect{U} \in V\)
+      Soit \(\vect{U} \in V\).
       Alors
       \begin{equation*}
-        \widehat{\LR \vect{U}} (r_C,n,k_z) = \hat{\mLR}(n,k_z) \hat{\vect{U}}(r_C,n,k_z)
+        \widehat{\LR \vect{U}} (r_c,n,k_z) = \hat{\mLR}(n,k_z) \hat{\vect{U}}(r_c,n,k_z)
       \end{equation*}
     \end{prop}
 
@@ -96,30 +94,28 @@
       \end{align*}
       On utilise les expression en coordonnées cylindrique des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
       \begin{align*}
-        \rots{\vect{U}}(r,\theta,z) = \frac{1}{r}\ddr{\theta}{U_z}(r,\theta,z) - \ddr{z}{U_\theta}(r,\theta,z)
-      \end{align*}
-      \begin{align*}
-        \vrots{f}(r,\theta,z) = \ddr{z}{f}(r,\theta,z)\vect{e_\theta} - \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_z}
+        \rots{\vect{U}}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{U_z}(r,\theta,z) - \ddr{z}{U_\theta}(r,\theta,z)
+        \\
+        \vrots{f}(r,\theta,z) &= \ddr{z}{f}(r,\theta,z)\vect{e_\theta} - \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_z}
       \end{align*}
       donc comme pour l'opérateur \(\LD\)
       \begin{align*}
-        \widehat{\rots{\vect{U}}}(r,n,k_z) = \frac{in}{r}{\hat{U}_z}(r,n,k_z) - ik_z{\hat{U}_\theta}(r,n,k_z)
-      \end{align*}
-      \begin{align*}
-        \widehat{\vrots{f}}(r,n,k_z) =  ik_z\hat{f}(r,n,k_z)\vect{e_\theta} - \frac{in}{r}\hat{f}(r,n,k_z)\vect{e_z}
+        \widehat{\rots{\vect{U}}}(r,n,k_z) &= \frac{in}{r}{\hat{U}_z}(r,n,k_z) - ik_z{\hat{U}_\theta}(r,n,k_z)
+        \\
+        \widehat{\vrots{f}}(r,n,k_z) &=  ik_z\hat{f}(r,n,k_z)\vect{e_\theta} - \frac{in}{r}\hat{f}(r,n,k_z)\vect{e_z}
       \end{align*}
       donc
       \begin{align*}
-        \widehat{\vrots (\rots{\vect{U}})}(r,n,k_z) =  \left({k_z^2}\vect{e_\theta} - \frac{nk_z}{r}\vect{e_z}\right){\hat{U}_\theta}(r,n,k_z) + \left(-\frac{nk_z}{r}\vect{e_\theta} + \frac{n^2}{r^2}\vect{e_z}\right){\hat{U}_z}(r,n,k_z)
+        \widehat{\LR{\vect{U}}}(r,n,k_z) =  \left({k_z^2}\vect{e_\theta} - \frac{nk_z}{r}\vect{e_z}\right){\hat{U}_\theta}(r,n,k_z) + \left(-\frac{nk_z}{r}\vect{e_\theta} + \frac{n^2}{r^2}\vect{e_z}\right){\hat{U}_z}(r,n,k_z)
       \end{align*}
 
     \end{proof}
 
-  \subsection{Expression de la matrice d'impédance approchée par la CI3}
+  \subsection{Expression de la matrice d'impédance approchée par une CI}
 
     Tout comme dans le cas du plan infini, on peut donc définir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance d'ordre élevée. Par exemple,
 
     \begin{multline}
-        \hat{\mZ}_{CI3}(n,k_z) = \left(\mI + b_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - b_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2} \right)^{-1}\\
-        \left(a_0 \mI + a_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - a_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2}\right)
+      \label{eq:cylindre:hoibc:ci3}
+      \hat{\mZ}_{CI3}(n,k_z) = \left(\mI + b_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - b_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2} \right)^{-1}\\\left(a_0 \mI + a_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - a_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2}\right)
     \end{multline}

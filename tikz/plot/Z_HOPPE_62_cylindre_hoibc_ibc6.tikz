@@ -2,7 +2,7 @@
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TM},
-            ylabel={\(\Im(\hat{Z}(k_t r_{1},0)\)},
+            ylabel={\(\Im(\hat{Z}(n,0)\)},
             xlabel={\(k_t\slash k_0\)},
             width=0.4\textwidth,
             xmin=0,
