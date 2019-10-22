@@ -61,9 +61,9 @@
 
     On tronque la série de Fourier à \(N_{n}\) termes et on se dote de \(N_{k_z}\) \(k_z\). Il existe donc \(N_{n}N_{k_z}\) couples tels que \((n_i,k_{zj}) = (n,k_z)_{(j-1)N_{n}+i}\).
     \begin{defn}
-      On définit \(\check\mH_{CI3}\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times5}(\CC)\) telle que
+      On définit \(\mA_{CI3}\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times5}(\CC)\) telle que
       \begin{equation*}
-        \check\mH_{CI3} = 
+        \mA_{CI3} = 
         \begin{bmatrix}
           \mH_{CI3}(n_1,k_{z1},\hat\mZ_{ex}(n_1,k_{z1}))
           \\
@@ -76,9 +76,9 @@
           \mH_{CI3}(n_{N_n},k_{zN_{k_z}},\hat\mZ_{ex}(n_{N_n},k_{zN_{k_z}}))
         \end{bmatrix}
       \end{equation*}
-      On définit \(\check{b}\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times1}(\CC)\) telle que
+      On définit \(g\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times1}(\CC)\) telle que
       \begin{equation*}
-        \check{b} = 
+        g = 
         \begin{bmatrix}
           b(\hat\mZ_{ex}(n_1,k_{z1}))
           \\
@@ -101,30 +101,32 @@
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CC^5} \norm{\check\mH_{CI3}X - \check{b}}
+        X^* = \argmin{X\in \CC^5} \norm{\mA_{CI3}X - g}
       \end{equation*}
     \end{thm}
 
     \begin{prop}
-      Si \(\conj{\check\mH_{CI3}^t}\check\mH_{CI3}\) est inversible alors
+      \label{prop:cylindre:minimisation:minimum_sans_contraintes}
+      Si \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible alors
       \begin{equation*}
-        X^* = (\conj{\check\mH_{CI3}^t}\check\mH_{CI3})^{-1}\conj{\check\mH_{CI3}^t}\check{b}
+        X^* = (\conj{\mA_{CI3}^t}\mA_{CI3})^{-1}\conj{\mA_{CI3}^t}g
       \end{equation*}
     \end{prop}
+
     \begin{proof}
       Soit \(\left<\cdot,\cdot\right>\) le produit scalaire associé à la norme \(\norm{\cdot}\). Soit \(J\) la fonctionnelle telle que
       \begin{align*}
-      J(X) &= \norm{\check\mH_{CI3}X - \check{b}} 
+      J(X) &= \norm{\mA_{CI3}X - g} 
       \\
-      &= \left<\check\mH_{CI3}X - \check{b},\check\mH_{CI3}X - \check{b}\right>
+      &= \left<\mA_{CI3}X - g,\mA_{CI3}X - g\right>
       \intertext{le produit scalaire est symétrique donc \(\left<a,b\right> = \left<b,a\right>\)}
-      &=\left<\check\mH_{CI3}X,\check\mH_{CI3}X\right> - 2\left<\check\mH_{CI3}X,\check{b}\right> + \left<\check{b},\check{b}\right>
+      &=\left<\mA_{CI3}X,\mA_{CI3}X\right> - 2\left<\mA_{CI3}X,g\right> + \left<g,g\right>
       \\
-      &=\left<X,\conj{\check\mH_{CI3}^t}\check\mH_{CI3}X\right> - 2\left<X,\conj{\check\mH_{CI3}^t}\check{b}\right> + \left<\check{b},\check{b}\right>
+      &=\left<X,\conj{\mA_{CI3}^t}\mA_{CI3}X\right> - 2\left<X,\conj{\mA_{CI3}^t}g\right> + \left<g,g\right>
       \end{align*}
-      Si la matrice \(\conj{\check\mH_{CI3}^t}\check\mH_{CI3}\) est inversible, comme elle est par définition hermitienne et positive alors la fonctionnelle est quadratique. Donc il existe une unique minimum où le gradient de cette fonctionnelle s'annule. Or
+      Si la matrice \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, comme elle est par définition hermitienne et positive alors la fonctionnelle est quadratique. Donc il existe une unique minimum où le gradient de cette fonctionnelle s'annule. Or
       \begin{align*}
-        \nabla J(X^*) &= 2\conj{\check\mH_{CI3}^t}\check\mH_{CI3}X^* - 2\conj{\check\mH_{CI3}^t}\check{b}
+        \nabla J(X^*) &= 2\conj{\mA_{CI3}^t}\mA_{CI3}X^* - 2\conj{\mA_{CI3}^t}g
         \\ 
         &= 0
       \end{align*}
@@ -139,7 +141,7 @@
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CSU[3]{CI3}} \norm{\check\mH_{CI3}X - \check{b}}
+        X^* = \argmin{X\in \CSU[3]{CI3}} \norm{\mA_{CI3}X - g}
       \end{equation*}
     \end{thm}
 

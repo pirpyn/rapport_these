@@ -3,84 +3,85 @@
   On remarque alors que sans contraintes, la CI3 n'est pas adaptée au cylindre, même en incidence radiale. Cependant, on peut aussi résoudre l'erreur entre les coefficients de Fourier. Pour cela, on adapte au cylindre le lemme permettant de déduire d'une impédance la matrice de réflexion qui contient les coefficients de la série de Fourier.
 
   \begin{defn}[Matrice de réflexion associée à une impédance]\label{def:cylindre:reflexion_from_impedance}{}~
+
     Soit \(\mM_\mJ\) et \(\mM_\mH\) les fonctions introduite à la définition \ref{def:cylindre:matrices_MJ-MH}.
 
-    On définit la fonction \(\hat\mR\) de \(\NN\times\RR\times\mathcal{M}_2(\CC) \rightarrow \mathcal{M}_2(\CC)\) telle que
-    \begin{multline*}
-      \hat\mR(n,k_z,\mA) = - \mM_\mH(r_c^+,n,k_z,\mA)^{-1}\mM_\mJ(r_c^+,n,k_z,\mA)
-    \end{multline*}
+    On définit la fonction \(\hat\mR\) de \(\NN\times\RR\times\tilde{\mA}thcal{M}_2(\CC) \rightarrow \tilde{\mA}thcal{M}_2(\CC)\) telle que
+    \begin{equation*}
+      \hat\mR(n,k_z,\tilde{\mA}) = - \mM_\mH(r_c^+,n,k_z,\tilde{\mA})^{-1}\mM_\mJ(r_c^+,n,k_z,\tilde{\mA})
+    \end{equation*}
   \end{defn}
-    \begin{prop}
-      Soit \(r_c^+\) l'interface cylindre-vide.
+  % \begin{prop}
+  %   Soit \(r_c^+\) l'interface cylindre-vide.
 
-      Soit \(\hat{\mZ}(n,k_z)\) la matrice d'impédance à cette interface.
-      \begin{align*}
-        \hat{\vE}_t(r_c^+,n,k_z) &= \hat{\mZ}(n,k_z) \left(\vect{e_r} \pvect \hat{\vH}_t(r_c^+,n,k_z)\right)
-      \end{align*}
-      alors il existe \(\vect{C}(n,k_z) \in \CC^2\) tel que 
-      \begin{align*}
-        \hat{\vE}_t(r_c^+,n,k_z) &= \left(\mJ_E(r_c^+,n,k_z) + \mH_E(r_c^+,n,k_z)\hat\mR(n,k_z,\hat\mZ(n,k_z)\right)\vect{C}(n,k_z)
-        \\
-        \vect{e_r} \pvect \hat{\vH}_t(r_c^+,n,k_z) &= \left(\mJ_H(r_c^+,n,k_z) + \mH_H(r_c^+,n,k_z)\hat\mR(n,k_z,\hat\mZ(n,k_z)\right)\vect{C}(n,k_z)
-      \end{align*}
-    \end{prop}
-    \begin{proof}
-      Immédiat depuis la définition des champs \eqref{eq:imp_fourier:cylindre:Et},\eqref{eq:imp_fourier:cylindre:Ht}.
-    \end{proof}
+  %   Soit \(\hat{\mZ}(n,k_z)\) la matrice d'impédance à cette interface.
+  %   \begin{align*}
+  %     \hat{\vE}_t(r_c^+,n,k_z) &= \hat{\mZ}(n,k_z) \left(\vect{e_r} \pvect \hat{\vH}_t(r_c^+,n,k_z)\right)
+  %   \end{align*}
+  %   alors il existe \(\vect{C}(n,k_z) \in \CC^2\) tel que 
+  %   \begin{align*}
+  %     \hat{\vE}_t(r_c^+,n,k_z) &= \left(\mJ_E(r_c^+,n,k_z) + \mH_E(r_c^+,n,k_z)\hat\mR(n,k_z,\hat\mZ(n,k_z)\right)\vect{C}(n,k_z)
+  %     \\
+  %     \vect{e_r} \pvect \hat{\vH}_t(r_c^+,n,k_z) &= \left(\mJ_H(r_c^+,n,k_z) + \mH_H(r_c^+,n,k_z)\hat\mR(n,k_z,\hat\mZ(n,k_z)\right)\vect{C}(n,k_z)
+  %   \end{align*}
+  % \end{prop}
+  % \begin{proof}
+  %   Immédiat depuis la définition des champs \eqref{eq:imp_fourier:cylindre:Et},\eqref{eq:imp_fourier:cylindre:Ht}.
+  % \end{proof}
 
-    \begin{defn}%[]
-      \label{def:cylindre:minimisation:matrices_MR}
-      On définit les fonctions \(\hat\mR_{ex}, \hat\mR_{CI3}\) de \(\NN\times\RR\times \rightarrow \mathcal{M}_2(\CC)\) telles que
-      \begin{align*}
-        \hat\mR_{ex}(n,k_z) &= \hat\mR(n,k_z, \hat\mZ_{ex}(n,k_z))
-        \\
-        \hat\mR_{CI3}(n,k_z) &= \hat\mR(n,k_z, \hat\mZ_{CI3}(n,k_z))
-      \end{align*}
-      où \(\hat\mZ_{ex},\hat\mZ_{CI3}\) sont des fonctions définies à la proposition \ref{prop:cylindre:synthese:impedance} et à l'équation \eqref{eq:cylindre:hoibc:ci3}.
-    \end{defn}
+  \begin{defn}%[]
+    \label{def:cylindre:minimisation:matrices_MR}
+    On définit les fonctions \(\hat\mR_{ex}, \hat\mR_{CI3}\) de \(\NN\times\RR\times \rightarrow \tilde{\mA}thcal{M}_2(\CC)\) telles que
+    \begin{align*}
+      \hat\mR_{ex}(n,k_z) &= \hat\mR(n,k_z, \hat\mZ_{ex}(n,k_z))
+      \\
+      \hat\mR_{CI3}(n,k_z) &= \hat\mR(n,k_z, \hat\mZ_{CI3}(n,k_z))
+    \end{align*}
+    où \(\hat\mZ_{ex},\hat\mZ_{CI3}\) sont des fonctions définies à la proposition \ref{prop:cylindre:synthese:impedance} et à l'équation \eqref{eq:cylindre:hoibc:ci3}.
+  \end{defn}
 
   \subsection{Expression de la fonctionnelle}
 
     On utilise les fonctions \(\mN_E, \mN_H\) introduite à la définition \ref{def:cylindre:matrices_NE-NH}.
 
     \begin{defn}
-      On définit \(\tilde{\mH}_{CI3}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
+      On définit \(\tilde{\mH}_{CI3}\) la fonction de \(\NN \times \RR \times \tilde{\mA}thcal{M}_2(\CC) \rightarrow \tilde{\mA}thcal{M}_{4\times5}(\CC)\) telle que
       \begin{equation*}
-        \mH_{CI3}(n,k_z,\mA) = 
+        \mH_{CI3}(n,k_z,\tilde{\mA}) = 
         \begin{bmatrix}
-          A_0(n,k_z,\mA)_{11} & A_1(n,k_z,\mA)_{11} & A_2(n,k_z,\mA)_{11} & B_1(n,k_z,\mA)_{11} & B_2(n,k_z,\mA)_{11}
+          A_0(n,k_z,\tilde{\mA})_{11} & A_1(n,k_z,\tilde{\mA})_{11} & A_2(n,k_z,\tilde{\mA})_{11} & B_1(n,k_z,\tilde{\mA})_{11} & B_2(n,k_z,\tilde{\mA})_{11}
           \\
-          A_0(n,k_z,\mA)_{12} & A_1(n,k_z,\mA)_{12} & A_2(n,k_z,\mA)_{12} & B_1(n,k_z,\mA)_{12} & B_2(n,k_z,\mA)_{12}
+          A_0(n,k_z,\tilde{\mA})_{12} & A_1(n,k_z,\tilde{\mA})_{12} & A_2(n,k_z,\tilde{\mA})_{12} & B_1(n,k_z,\tilde{\mA})_{12} & B_2(n,k_z,\tilde{\mA})_{12}
           \\
-          A_0(n,k_z,\mA)_{21} & A_1(n,k_z,\mA)_{21} & A_2(n,k_z,\mA)_{21} & B_1(n,k_z,\mA)_{21} & B_2(n,k_z,\mA)_{21}
+          A_0(n,k_z,\tilde{\mA})_{21} & A_1(n,k_z,\tilde{\mA})_{21} & A_2(n,k_z,\tilde{\mA})_{21} & B_1(n,k_z,\tilde{\mA})_{21} & B_2(n,k_z,\tilde{\mA})_{21}
           \\
-          A_0(n,k_z,\mA)_{22} & A_1(n,k_z,\mA)_{22} & A_2(n,k_z,\mA)_{22} & B_1(n,k_z,\mA)_{22} & B_2(n,k_z,\mA)_{22}
+          A_0(n,k_z,\tilde{\mA})_{22} & A_1(n,k_z,\tilde{\mA})_{22} & A_2(n,k_z,\tilde{\mA})_{22} & B_1(n,k_z,\tilde{\mA})_{22} & B_2(n,k_z,\tilde{\mA})_{22}
         \end{bmatrix}
         \end{equation*}
         où
         \begin{align*}
-          A_0(n,k_z,\mA) &= \mN_E(r_c^+,n,k_z,\mA)
+          A_0(n,k_z,\tilde{\mA}) &= \mN_E(r_c^+,n,k_z,\tilde{\mA})
           \\
-          A_1(n,k_z,\mA) &= \hat{\mLD}(n,k_z)\mN_E(r_c^+,n,k_z,\mA)
+          A_1(n,k_z,\tilde{\mA}) &= \hat{\mLD}(n,k_z)\mN_E(r_c^+,n,k_z,\tilde{\mA})
           \\
-          A_2(n,k_z,\mA) &= -\hat{\mLR}(n,k_z)\mN_E(r_c^+,n,k_z,\mA)
+          A_2(n,k_z,\tilde{\mA}) &= -\hat{\mLR}(n,k_z)\mN_E(r_c^+,n,k_z,\tilde{\mA})
           \\
-          B_1(n,k_z,\mA) &= \hat{\mLD}(n,k_z)\mN_H(r_c^+,n,k_z,\mA)
+          B_1(n,k_z,\tilde{\mA}) &= \hat{\mLD}(n,k_z)\mN_H(r_c^+,n,k_z,\tilde{\mA})
           \\
-          B_2(n,k_z,\mA) &= -\hat{\mLR}(n,k_z)\mN_H(r_c^+,n,k_z,\mA)            
+          B_2(n,k_z,\tilde{\mA}) &= -\hat{\mLR}(n,k_z)\mN_H(r_c^+,n,k_z,\tilde{\mA})            
         \end{align*}
 
-        On définit \(\tilde{b}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
+        On définit \(\tilde{b}\) la fonction de \(\NN \times \RR \times \tilde{\mA}thcal{M}_2(\CC) \rightarrow \tilde{\mA}thcal{M}_{4\times1}(\CC)\) telle que
         \begin{equation*}
-          \tilde{b}(n,k_z,\mA) = 
+          \tilde{b}(n,k_z,\tilde{\mA}) = -
           \begin{bmatrix}
-            \mN_H(r_c^+,n,k_z,\mA)_{11}
+            \mN_H(r_c^+,n,k_z,\tilde{\mA})_{11}
             \\
-            \mN_H(r_c^+,n,k_z,\mA)_{12}
+            \mN_H(r_c^+,n,k_z,\tilde{\mA})_{12}
             \\
-            \mN_H(r_c^+,n,k_z,\mA)_{21}
+            \mN_H(r_c^+,n,k_z,\tilde{\mA})_{21}
             \\
-            \mN_H(r_c^+,n,k_z,\mA)_{22}
+            \mN_H(r_c^+,n,k_z,\tilde{\mA})_{22}
           \end{bmatrix}
         \end{equation*}
       \end{defn}
@@ -88,33 +89,115 @@
     \begin{prop}
       Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((n,k_z)\) fixé et \(\hat\mR_{ex}\) la matrice définie en \ref{def:cylindre:minimisation:matrices_MR}, alors
       \begin{multline*}
-        \argmin{X\in\CC^5} \norm{\hat\mR_{CI3}(n,k_z,X) - \hat\mR_{ex}(n,k_z)} = 
+        \argmin{X\in\CC^5} \norm{\hat\mR_{CI3}(n,k_z,X) - \hat\mR_{ex}(n,k_z)} =
         \\
         \argmin{X\in\CC^5} \norm{\tilde{\mH}_{CI3}(n,k_z,\hat\mR_{ex}(n,k_z))X - \tilde{b}(n,k_z,\hat\mR_{ex}(n,k_z))}
       \end{multline*}
     \end{prop}
 
-\begin{proof}
-      C'est la même méthodologie que pour l`impédance.
+    \begin{proof}
+      C'est la même méthodologie que pour l'impédance.
       On rappelle de la section précédente
       \begin{multline*}
-        \hat{\mZ}_{CI3}(n,k_z) = \left(\mI + b_1 \hat{\mLD}(n,k_z) - b_2 \hat{\mLR}(n,k_z) \right)^{-1}\\\left(a_0 \mI + a_1 {\hat{\mLD}(n,k_z)} - a_2 {\hat{\mLR}(n,k_z)}\right)
+        \hat{\mZ}_{CI3}(n,k_z) = \left(\mI + b_1 \hat{\mLD}(n,k_z) - b_2 \hat{\mLR}(n,k_z) \right)^{-1}
+        \\
+        \left(a_0 \mI + a_1 {\hat{\mLD}(n,k_z)} - a_2 {\hat{\mLR}(n,k_z)}\right)
       \end{multline*}
       On pose \(\hat\mZ_D(n,k_z) = \mI + b_1 \hat{\mLD}(n,k_z) - b_2 \hat{\mLR}(n,k_z)\) et \(\hat\mZ_N(n,k_z) = a_0 \mI + a_1 {\hat{\mLD}(n,k_z)} - a_2 {\hat{\mLR}(n,k_z)}\) donc
 
       \begin{align*}
-      &{}~ \argmin{X\in\CC^5} \norm{\hat\mR_{CI3}(n,k_z,X) - \hat\mR_{ex}(n,k_z)}
-      \intertext{D'après la définition \ref{def:cylindre:matrices_MJ-MH} des fonctions \(\mM_\mJ, \mM_\mH\),}
-      & = \argmin{X\in\CC^5} \norm{ - \left(\mM_\mH(n,k_z,\hat\mZ_{CI3}\right)^{-1}\left(\mM_\mJ(n,k_z,\hat\mZ_{CI3}\right) - \hat\mR_{ex}(n,k_z) }
-      \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_D(n,k_z)^{-1}\left(\hat\mZ_N(n,k_z) - \hat\mZ_D(n,k_z)\hat\mZ_{ex}(n,k_z)\right) }
-      \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n,k_z) - \hat\mZ_D(n,k_z)\hat\mZ_{ex}(n,k_z)}
-      \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n,k_z) - \left(b_1 \hat{\mLD}(n,k_z) - b_2 \hat{\mLR}(n,k_z)\right)\hat\mZ_{ex}(n,k_z) - \hat\mZ_{ex}(n,k_z) }
-      \\
-      &= \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,k_z,\hat\mZ_{ex}(n,k_z))X - b(\hat\mZ_{ex}(n,k_z))}
+        &{\hspace{1em}}~ \argmin{X\in\CC^5} \norm{\hat\mR_{CI3}(n,k_z,X) - \hat\mR_{ex}(n,k_z)}
+        \\
+        & = \argmin{X\in\CC^5} \norm{ - \mM_\mH(r_c^+,n,k_z,\hat\mZ_{CI3})^{-1}\mM_\mJ(r_c^+,n,k_z,\hat\mZ_{CI3})- \hat\mR_{ex}(n,k_z) }
+        \\
+        & = \argmin{X\in\CC^5} \norm{ - \mM_\mH(r_c^+,n,k_z,\hat\mZ_{CI3})^{-1}\left(\mM_\mJ(r_c^+,n,k_z,\hat\mZ_{CI3}) +  \mM_\mH(r_c^+,n,k_z,\hat\mZ_{CI3})\hat\mR_{ex}(n,k_z)\right) }      
+        \\ 
+        & = \argmin{X\in\CC^5} \norm{\mM_\mJ(r_c^+,n,k_z,\hat\mZ_{CI3}) +\mM_\mH(r_c^+,n,k_z,\hat\mZ_{CI3})\hat\mR_{ex}(n,k_z)}
+        \intertext{D'après la définition \ref{def:cylindre:matrices_MJ-MH} des fonctions \(\mM_\mJ, \mM_\mH\),}
+        & = \argmin{X\in\CC^5} \left\lVert \left(\mJ_E(r_c^+,n,k_z)-\hat\mZ_{CI3}(n,k_z)\mJ_H(r_c^+,n,k_z)\right) \right.
+        \\
+        & \qquad \qquad \quad + \left.\left(\mH_E(r_c^+,n,k_z)-\hat\mZ_{CI3}(n,k_z)\mH_H(r_c^+,n,k_z)\right)\hat\mR_{ex}(n,k_z) \right\lVert
+        \intertext{D'après la définition de \(\hat\mZ_{CI3}\),}        
+        & = \argmin{X\in\CC^5} \left\lVert \hat\mZ_D(n,k_z)^{-1}\left(\hat\mZ_D(n,k_z)\mJ_E(r_c^+,n,k_z)-\hat\mZ_N(n,k_z)\mJ_H(r_c^+,n,k_z)\right) \right.
+        \\
+        & \qquad \qquad \quad + \left.\hat\mZ_D(n,k_z)^{-1}\left(\hat\mZ_D(n,k_z)\mH_E(r_c^+,n,k_z)-\hat\mZ_N(n,k_z)\mH_H(r_c^+,n,k_z)\right)\hat\mR_{ex}(n,k_z) \right\lVert
+        \\
+        & = \argmin{X\in\CC^5} \left\lVert \left(\hat\mZ_D(n,k_z)\mJ_E(r_c^+,n,k_z)-\hat\mZ_N(n,k_z)\mJ_H(r_c^+,n,k_z)\right) \right.
+        \\
+        & \qquad \qquad \quad + \left.\left(\hat\mZ_D(n,k_z)\mH_E(r_c^+,n,k_z)-\hat\mZ_N(n,k_z)\mH_H(r_c^+,n,k_z)\right)\hat\mR_{ex}(n,k_z) \right\lVert
+        \intertext{D'après la définition \ref{def:cylindre:matrices_NE-NH} des fonctions \(\mN_E, \mN_H\),}        
+        & = \argmin{X\in\CC^5} \norm{\hat\mZ_N(n,k_z)\mN_E(r_c^+,n,k_z,\hat\mR_{ex}(n,k_z)) + \hat\mZ_D(n,k_z)\mN_H(r_c^+,n,k_z,\hat\mR_{ex}(n,k_z))}
       \end{align*}
+      et on conclut d'après la définition des fonctions \(\hat\mZ_D, \hat\mZ_N\).
     \end{proof}
+
+    On tronque la série de Fourier à \(N_{n}\) termes et on se dote de \(N_{k_z}\) \(k_z\). Il existe donc \(N_{n}N_{k_z}\) couples tels que \((n_i,k_{zj}) = (n,k_z)_{(j-1)N_{n}+i}\).
+    \begin{defn}
+      On définit \(\tilde{\mA}_{CI3}\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times5}(\CC)\) telle que
+      \begin{equation*}
+        \tilde{\mA}_{CI3} = 
+        \begin{bmatrix}
+          \tilde\mH_{CI3}(n_1,k_{z1},\hat\mR_{ex}(n_1,k_{z1}))
+          \\
+          \vdots
+          \\
+          \tilde\mH_{CI3}(n_i,k_{zj},\hat\mR_{ex}(n_i,k_{zj}))
+          \\
+          \vdots
+          \\
+          \tilde\mH_{CI3}(n_{N_n},k_{zN_{k_z}},\hat\mR_{ex}(n_{N_n},k_{zN_{k_z}}))
+        \end{bmatrix}
+      \end{equation*}
+      On définit \(\tilde{g}\) le vecteur colonne \(\CC^{4N_{n}N_{k_z}}\) telle que
+      \begin{equation*}
+        \tilde{g} = 
+        \begin{bmatrix}
+          \tilde{b}(n_1,k_{z1},\hat\mR_{ex}(n_1,k_{z1}))
+          \\
+          \vdots
+          \\
+          \tilde{b}(n_i,k_{zj},\hat\mR_{ex}(n_i,k_{zj}))
+          \\
+          \vdots
+          \\
+          \tilde{b}(n_{N_n},k_{zN_{k_z}},\hat\mR_{ex}(n_{N_n},k_{zN_{k_z}}))
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
+
+    On peut alors calculer les coefficients
+
+    \begin{thm}[Minimisation sans contraintes pour la CI3]
+
+      Les coefficients de la CIOE sont solutions du problème
+
+      Trouver \(X^* \in \CC^5\) tel que
+      \begin{equation*}
+        X^* = \argmin{X\in \CC^5} \norm{\tilde{\mA}_{CI3}X - \tilde{g}}
+      \end{equation*}
+    \end{thm}
+
+    \begin{prop}
+      Si \(\conj{\tilde{\mA}_{CI3}^t}\tilde{\mA}_{CI3}\) est inversible alors
+      \begin{equation*}
+        X^* = (\conj{\tilde{\mA}_{CI3}^t}\tilde{\mA}_{CI3})^{-1}\conj{\tilde{\mA}_{CI3}^t}\tilde{g}
+      \end{equation*}
+    \end{prop}
+    \begin{proof}
+      Même méthode que pour la proposition \ref{prop:cylindre:minimisation:minimum_sans_contraintes} sur l'impédance.
+    \end{proof}
+
+    Nous n'avons pas réussi à démontrer que cette matrice était définie pour tout empilement et tout incidence.
+
+    \begin{thm}[Minimisation avec contraintes pour la CI3]
+
+      Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
+      Alors les coefficients de la CIOE respectant les CSU sont solutions du problème
+
+      Trouver \(X^* \in \CC^5\) tel que
+      \begin{equation*}
+        X^* = \argmin{X\in \CSU[3]{CI3}} \norm{\tilde{\mA}_{CI3}X - \tilde{g}}
+      \end{equation*}
+    \end{thm}
 
     \subsection{Résultats numériques sur l'approximation des coefficients de la série de Fourier}
