@@ -201,3 +201,34 @@
     \end{thm}
 
     \subsection{Résultats numériques sur l'approximation des coefficients de la série de Fourier}
+
+    \begin{figure}[!hbt]
+      \centering
+      \input{tikz/plot/HOPPE_62/Z_HOPPE_62_cylindre_hoibc_mode_1.tikz}
+      \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{Partie imaginaire des termes diagonaux des matrices d'impédance pour l'empilement \(\eps = 6\), \(\mu = 1\), \(d=0.0225\text{m}\), \(f=1\text{GHz}\), \(r_0=0.03\text{m}\) en fonction de \(k_t = n / (r_0+d)\).}
+      \label{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}
+    \end{figure}
+
+    \begin{table}[!hbt]
+      \centering
+      % On fait deux tables de même hauteur
+      \begin{minipage}[t]{0.49\textwidth}
+        \vspace{0pt}
+        \centering
+        \begin{coefftable}{\hyperlink{ci0}{CI0}}
+          \input{csv/HOPPE_62/HOPPE_62.IBC_ibc0_SUC_F_MODE_1_TYPE_C_+3.000E-02.coeff.txt}
+        \end{coefftable}
+        \begin{coefftable}{\hyperlink{ci3}{CI3}}
+          \input{csv/HOPPE_62/HOPPE_62.IBC_ibc3_SUC_F_MODE_1_TYPE_C_+3.000E-02.coeff.txt}
+        \end{coefftable}
+      \end{minipage}
+      \begin{minipage}[t]{0.49\textwidth}
+        \vspace{0pt}
+        \centering
+        \begin{coefftable}{\hyperlink{ci6}{CI6}}
+          \input{csv/HOPPE_62/HOPPE_62.IBC_ibc6_SUC_F_MODE_1_TYPE_C_+3.000E-02.coeff.txt}
+        \end{coefftable}
+      \end{minipage}
+      \caption{Coefficients associés à la figure \ref{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}}
+      \label{tab:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}
+    \end{table}
