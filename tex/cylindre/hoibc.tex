@@ -1,9 +1,9 @@
 \section{Approximation de la matrice d'impédance pour un cylindre infini par une CIOE}
 
-  \subsection[Expression des opérateurs LD,LR en Fourier]{Expression des opérateurs \(\LD,\LR\) en Fourier}
+  \subsection[Expression des opérateurs LD, LR en Fourier]{Expression des opérateurs \(\LD\), \(\LR\) en Fourier}
     Soit \(C(0,r_c)\) un cylindre de centre 0, de rayon \(r_c\) et d'axe \(\vect{e_z}\) et \((r,\theta,z)\) les coordonnées cylindre d'un point de l'espace.
 
-    Soit \(V = \left(\mathcal{C}^\infty(C(0,r_c))\right)^2 \cap L^2(C(0,r_c)))\) l'espace des fonctions infiniment dérivables et de carré intégrable.
+    Soit \(V = \left(\mathcal{C}^\infty(C(0,r_c))\right)^2 \cap L^2(C(0,r_c)))\) l'espace des fonctions infiniment dérivables définies sur le cylindre et de carré intégrable.
 
     \begin{defn}
       \label{eq:cylindre:fourier:LD}
@@ -42,7 +42,7 @@
         \\
         \vgrads{f}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_\theta} + \ddr{z}{f}(r,\theta,z)\vect{e_z}
       \end{align*}
-      Or d’après la définition de la transformée de Fourier
+      Or d’après la définition de la \(\theta\)-série \(z\)-transformée de Fourier
       \begin{align*}
         \vect{U}(r,\theta,z) & = \frac{1}{2\pi}\sum_{n=-\infty}^\infty \int_\RR \hat{\vect{U}}(r,n,k_z)e^{in\theta + ik_zz}\dd{k_z}
       \end{align*}
