@@ -1,4 +1,4 @@
-\tikzsetnextfilename{Z_SOUDAIS_plan_hoibc_TM}
+\tikzsetnextfilename{Z_SOUDAIS_plan_hoibc.TM}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TM},
@@ -23,7 +23,7 @@
         % \addlegendentry{CI3};
     \end{axis}
 \end{tikzpicture}
-\tikzsetnextfilename{Z_SOUDAIS_plan_hoibc_TE}
+\tikzsetnextfilename{Z_SOUDAIS_plan_hoibc.TE}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TE},

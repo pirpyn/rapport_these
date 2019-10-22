@@ -1,4 +1,4 @@
-\tikzsetnextfilename{Z_HOPPE_62_cylindre_converge_TM}
+\tikzsetnextfilename{Z_HOPPE_62_cylindre_converge.TM}
 \begin{tikzpicture}[scale=1]
   \begin{axis}[
       title={Polarisation TM},
@@ -19,7 +19,7 @@
     \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_P.csv};
   \end{axis}
 \end{tikzpicture}
-\tikzsetnextfilename{Z_HOPPE_62_cylindre_converge_TE}
+\tikzsetnextfilename{Z_HOPPE_62_cylindre_converge.TE}
 \begin{tikzpicture}[scale=1]
   \begin{axis}[
       title={Polarisation TE},

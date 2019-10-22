@@ -41,14 +41,9 @@ sub makeglossaries {
 
 # This custom dependency help to regenerate externalized pdf
 add_cus_dep('tikz', 'pdf', 0, 'maketikz');
+add_cus_dep('tikz', 'TE.pdf', 0, 'maketikz');
+add_cus_dep('tikz', 'TM.pdf', 0, 'maketikz');
 
 sub maketikz {
     system("pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname '$_[0]' '\\def\\tikzexternalrealjob{$rootfile_name}\\input{$rootfile_name}'")
-}
-
-# This custom dependency help to regenerate externalized pdf
-add_cus_dep('csv', 'pdf', 0, 'updatetikz');
-
-sub updatetikz {
-    system("bash -c 'bash tikz/update_tikz.sh {$rootfile_name}'")
 }

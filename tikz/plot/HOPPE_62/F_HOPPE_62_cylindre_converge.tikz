@@ -1,5 +1,4 @@
-% update mar. sept. 24 10:36:01 MET 2019
-\tikzsetnextfilename{F_HOPPE_62_cylindre_converge_TM}
+\tikzsetnextfilename{F_HOPPE_62_cylindre_converge.TM}
 \begin{tikzpicture}[scale=1]
   \begin{loglogaxis}[
       title={Polarisation TM},
@@ -19,7 +18,7 @@
 
   \end{loglogaxis}
 \end{tikzpicture}
-\tikzsetnextfilename{F_HOPPE_62_cylindre_converge_TE}
+\tikzsetnextfilename{F_HOPPE_62_cylindre_converge.TE}
 \begin{tikzpicture}[scale=1]
   \begin{loglogaxis}[
       title={Polarisation TE},

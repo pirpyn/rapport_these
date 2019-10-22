@@ -39,8 +39,28 @@
     {
       "file_exclude_patterns":
       [
-        "*.pdf",
-        "*.sublime-workspace"
+        "*.sublime-workspace",
+        "*.mtc",
+        "*.aux",
+        "*.acr*",
+        "*.ope*",
+        "*.phy*",
+        "*.mat*",
+        "*.ist",
+        "*.md5",
+        "*.mtc*",
+        "*.maf",
+        "*.run.xml",
+        "*.dep",
+        "*.dpth",
+        "*.bbl",
+        "*.blg",
+        "*.fls",
+        "*.out",
+        "*.toc",
+        "*.glg",
+        "*.fdb_latexmk",
+        "*.synctex.gz"
       ],
       "path": ".",
     }

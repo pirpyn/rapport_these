@@ -93,15 +93,20 @@
       \end{equation*}
     \end{defn}
 
-    On peut alors calculer les coefficients
-
+    On peut alors calculer les coefficients de la CI3
+    \begin{defn}
+      On définit la fonctionnelle \(J_Z\)
+      \begin{equation*}
+        J_Z(X) = \norm{{\mA}_{CI3}X - {g}}
+      \end{equation*}
+    \end{defn}
     \begin{thm}[Minimisation sans contraintes pour la CI3]
 
       Les coefficients de la CIOE sont solutions du problème
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CC^5} \norm{\mA_{CI3}X - g}
+        X^* = \argmin{X\in \CC^5}  J_Z(X)
       \end{equation*}
     \end{thm}
 
@@ -141,7 +146,7 @@
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CSU[3]{CI3}} \norm{\mA_{CI3}X - g}
+        X^* = \argmin{X\in \CSU[3]{CI3}}  J_Z(X)
       \end{equation*}
     \end{thm}
 

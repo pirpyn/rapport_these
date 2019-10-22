@@ -1,4 +1,4 @@
-\tikzsetnextfilename{Z_HOPPE_62_cylindre_hoibc_mode_1_TM}
+\tikzsetnextfilename{Z_HOPPE_62_cylindre_hoibc_mode_2.TM}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TM},
@@ -6,7 +6,7 @@
             xlabel={\(k_t\slash k_0\)},
             width=0.4\textwidth,
             xmin=0,
-            xmax=2.5,
+            xmax=1.5,
             mark repeat=1,
             legend pos=outer north east
         ]
@@ -19,7 +19,7 @@
         \addplot [violet,mark=triangle*] table [col sep=comma, x={s1}, y={Im(z_ibc6.tm)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc6_SUC_F_MODE_2_TYPE_C_+3.000E-02.csv};
     \end{axis}
 \end{tikzpicture}
-\tikzsetnextfilename{Z_HOPPE_62_cylindre_hoibc_mode_1_TE}
+\tikzsetnextfilename{Z_HOPPE_62_cylindre_hoibc_mode_2.TE}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TE},
@@ -27,7 +27,7 @@
             xlabel={\(k_t\slash k_0\)},
             width=0.4\textwidth,
             xmin=0,
-            xmax=2.5,
+            xmax=1.5,
             mark repeat=1,
             legend pos=outer north east
         ]

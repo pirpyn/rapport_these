@@ -47,7 +47,7 @@
     \begin{defn}
       On définit \(\tilde{\mH}_{CI3}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
       \begin{equation*}
-        \mH_{CI3}(n,k_z,\tilde{\mA}) = 
+        \tilde\mH_{CI3}(n,k_z,\tilde{\mA}) = 
         \begin{bmatrix}
           A_0(n,k_z,\tilde{\mA})_{11} & A_1(n,k_z,\tilde{\mA})_{11} & A_2(n,k_z,\tilde{\mA})_{11} & B_1(n,k_z,\tilde{\mA})_{11} & B_2(n,k_z,\tilde{\mA})_{11}
           \\
@@ -165,7 +165,14 @@
       \end{equation*}
     \end{defn}
 
-    On peut alors calculer les coefficients
+    On peut alors calculer les coefficients de la CI3
+
+    \begin{defn}
+      On définit la fonctionnelle \(J_R\)
+      \begin{equation*}
+        J_R(X) = \norm{\tilde{\mA}_{CI3}X - \tilde{g}}
+      \end{equation*}
+    \end{defn}
 
     \begin{thm}[Minimisation sans contraintes pour la CI3]
 
@@ -173,7 +180,7 @@
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CC^5} \norm{\tilde{\mA}_{CI3}X - \tilde{g}}
+        X^* = \argmin{X\in \CC^5} J_R(X)
       \end{equation*}
     \end{thm}
 
@@ -196,7 +203,7 @@
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CSU[3]{CI3}} \norm{\tilde{\mA}_{CI3}X - \tilde{g}}
+        X^* = \argmin{X\in \CSU[3]{CI3}} J_R(X)
       \end{equation*}
     \end{thm}
 
@@ -231,4 +238,36 @@
       \end{minipage}
       \caption{Coefficients associés à la figure \ref{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}}
       \label{tab:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}
+    \end{table}
+
+    \begin{table}[!hbt]
+      \label{tab:cylindre:hoppe:62:erreurs_Z}
+      \centering
+      \begin{tabular}{l|ccc|ccc}
+        CIOE & \multicolumn{3}{c}{Méthode \(J_R\)} & \multicolumn{3}{c}{Méthode \(J_Z\)}\\
+        \hline
+        \hline
+            & {TM} & {TE} & {complète} & {TM} & {TE} & {complète}\\
+        \hline
+        CI6 & \verb|1.62E-01| & \verb|3.38E-04| & \verb|8.23E-02| & \verb|1.17E-02| & \verb|5.60E-04| & \verb|6.23E-03|\\
+        CI3 & \verb|4.30E-01| & \verb|3.99E-01| & \verb|4.15E-01| & \verb|6.82E-02| & \verb|1.71E-01| & \verb|1.19E-01|\\
+        CI0 & \verb|5.15E+00| & \verb|1.16E+00| & \verb|3.18E+00| & \verb|5.15E+00| & \verb|1.16E+00| & \verb|3.18E+00|
+      \end{tabular}
+      \caption{Erreur relative sur les matrices d'impédance \(\hat\mZ\).}
+    \end{table}
+
+    \begin{table}[!hbt]
+      \label{tab:cylindre:hoppe:62:erreurs_R}
+      \centering
+      \begin{tabular}{l|ccc|ccc}
+        CIOE & \multicolumn{3}{c}{Méthode \(J_R\)} & \multicolumn{3}{c}{Méthode \(J_Z\)}\\
+        \hline
+        \hline
+            & {TM} & {TE} & {somme} & {TM} & {TE} & {somme}\\
+        \hline 
+        CI6 & \verb|1.50E-04| & \verb|2.56E-03| & \verb|2.71E-03| & \verb|1.03E-02| & \verb|2.69E-01| & \verb|2.79E-01|\\
+        CI3 & \verb|3.31E-01| & \verb|2.33E-01| & \verb|5.64E-01| & \verb|3.00E-01| & \verb|7.14E-01| & \verb|1.01E+00|\\
+        CI0 & \verb|1.56E-01| & \verb|1.73E+00| & \verb|1.88E+00| & \verb|1.56E-01| & \verb|1.73E+00| & \verb|1.88E+00|  
+      \end{tabular}
+      \caption{Erreur relative sur les matrices de réflexion \(\hat\mR\).}
     \end{table}
