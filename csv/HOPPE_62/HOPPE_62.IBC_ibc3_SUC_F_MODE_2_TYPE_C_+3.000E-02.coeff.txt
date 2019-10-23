@@ -1,20 +1,19 @@
 % IBC ibc3 type C suc F mode 2 (IBC_ibc3_SUC_F_MODE_2_TYPE_C_+3.000E-02)
 % inner radius  3.000E-02, outer_radius  5.250E-02
 % Z = (I + b1*LD/k0^2 - b2*LR/k0^2)^{-1} (a0*I + a1*LD/k0^2 - a2*LR/k0^2)
-  \verb|a0| & \verb|-2.278E-18 +1.167E+00i| \\
-  \verb|a1| & \verb|-2.188E-13 +1.796E+02i| \\
-  \verb|a2| & \verb|-5.276E-14 +1.035E+02i| \\
-  \verb|b1| & \verb| 1.792E+02 +2.511E-13i| \\
-  \verb|b2| & \verb|-6.250E+02 +1.176E-13i| \\
+  \verb|a0| & \verb|-8.055E-17 +8.807E-01i| \\
+  \verb|a1| & \verb|-3.908E-15 -7.447E-01i| \\
+  \verb|a2| & \verb|-3.036E-15 +4.437E+01i| \\
+  \verb|b1| & \verb|-4.091E+01 +2.200E-14i| \\
+  \verb|b2| & \verb|-2.581E+01 -2.208E-15i| \\
 % Verifying the Sufficient Uniqueness Conditions (SUC)
 %    [OK] SUC, Negative inequality constraints, IN <=  1.000E-08
-%    IN(2) = -8.382154E-04 !  Re(a1*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
-%    IN(3) = -3.085721E-04 !  Re(a2*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
-%    IN(4) = -5.901395E-12 ! -Re(b1.a1*)
-%    IN(5) = -4.514281E-11 ! -Re(b2.a2*)
-%    IN(6) = -1.261383E-09 !  Re(b1.(a2.a1)*.a0)
-%    IN(8) = -2.187794E-13 !  Re(a1)
-%    IN(9) = -5.275963E-14 !  Re(a2)
-%  [FAIL] SUC, Positive inequality constraints, IN >  1.000E-08
-%    IN(1) =  2.070263E-06 ! -Re(a0*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
-%    IN(7) =  2.594289E-08 !  Re(b2.(a2.a1)*.a0)
+%    IN(1) =  2.191383E-10 ! -Re(a0*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
+%    IN(2) =  3.887107E-10 !  Re(a1*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
+%    IN(3) = -1.109243E-08 !  Re(a2*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
+%    IN(4) = -1.434563E-13 ! -Re(b1.a1*)
+%    IN(5) =  1.962005E-14 ! -Re(b2.a2*)
+%    IN(6) =  5.633256E-12 !  Re(b1.(a2.a1)*.a0)
+%    IN(7) =  4.022319E-12 !  Re(b2.(a2.a1)*.a0)
+%    IN(8) = -3.907527E-15 !  Re(a1)
+%    IN(9) = -3.035794E-15 !  Re(a2)

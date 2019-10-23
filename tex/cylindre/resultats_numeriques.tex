@@ -1,0 +1,143 @@
+\section{Résultats numériques}
+
+  Dans cette partie, toutes les CIOE faisant intervenir des opérateurs différentielles normalisent ces derniers par \(k_0^2\). Ainsi la CI3 s'exprime
+    
+  \begin{equation*}
+    \left(\oI + c_1\frac{\LD}{k_0^2} -c_2\frac{\LR}{k_0^2}\right)\vE_t = \left(a_0\oI + b_1\frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vJ
+  \end{equation*}
+
+
+
+  La figure \ref{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_2} trace les valeurs des termes diagonaux de la matrice \(\hat\mZ\) quand les coefficients sont calculés en minimisant \(J_Z\).
+  La figure \ref{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_1} trace les valeurs des termes diagonaux de la matrice \(\hat\mZ\) quand les coefficients sont calculés en minimisant \(J_R\).
+
+  On prend un incidence normale au cylindre, donc les matrices d'impédance exactes et approchées sont diagonales. On fait varier \(n\) de 0 à \(\lceil k_0 (r_0+d) \rceil\). On trace sur cette figure les parties imaginaires des termes diagonaux pour chaque \(n\) de cette matrice, les parties réelles étant nulles. Les coefficients sont calculés sans contraintes.
+
+  \begin{figure}[!hbt]
+    \centering
+    \input{tikz/plot/HOPPE_62/Z_HOPPE_62_cylindre_hoibc_mode_2.tikz}
+    \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{Partie imaginaire des termes diagonaux des matrices d'impédance pour l'empilement \(\eps = 6\), \(\mu = 1\), \(d=0.0225\text{m}\), \(f=1\text{GHz}\), \(r_0=0.03\text{m}\) en fonction de \(k_t = n / (r_0+d)\).}
+    \label{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_2}
+  \end{figure}
+
+  \begin{figure}[!hbt]
+    \centering
+    \input{tikz/plot/HOPPE_62/Z_HOPPE_62_cylindre_hoibc_mode_1.tikz}
+    \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{Partie imaginaire des termes diagonaux des matrices d'impédance pour l'empilement \(\eps = 6\), \(\mu = 1\), \(d=0.0225\text{m}\), \(f=1\text{GHz}\), \(r_0=0.03\text{m}\) en fonction de \(k_t = n / (r_0+d)\).}
+    \label{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}
+  \end{figure}
+
+  On remarque que la CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. 
+  En effet, pour \(n=k_z=0\) la matrice d'impédance exacte n'est pas une constante mais une matrice diagonale. 
+  Or par définition la CIOE est une constante pour ce couple, c'est la CI0. On subit donc cette erreur dans les résultats. 
+
+  Une CIOE plus intéressante, que l'on nomme CI6 et qui est inspirée de \cite[p.~60]{hoppe_impedance_1995}, serait alors:
+
+  \begin{equation*}
+    \left(\oI + c_1\frac{\LD}{k_0^2} -c_2\frac{\LR}{k_0^2}\right)\vE_t = \left(\diag{a_1}{a_2} + b_1\frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vJ
+  \end{equation*}
+
+  Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier.
+
+  \begin{table}[!hbt]
+    \centering
+    % On fait deux tables de même hauteur
+    \begin{minipage}[t]{0.49\textwidth}
+      \vspace{0pt}
+      \centering
+      \begin{coefftable}{\hyperlink{ci0}{CI0}}
+        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc0_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+      \end{coefftable}
+      \begin{coefftable}{\hyperlink{ci3}{CI3}}
+        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc3_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+      \end{coefftable}
+    \end{minipage}
+    \begin{minipage}[t]{0.49\textwidth}
+      \vspace{0pt}
+      \centering
+      \begin{coefftable}{\hyperlink{ci6}{CI6}}
+        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc6_SUC_F_MODE_2_TYPE_C_+3.000E-02.coeff.txt}
+      \end{coefftable}
+    \end{minipage}
+    \caption{Coefficients associés à la figure \ref{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_2}}
+    \label{tab:imp_fourier:cylindre:hoppe:62:hoibc:mode_2}
+  \end{table}
+
+
+  \begin{table}[!hbt]
+    \centering
+    % On fait deux tables de même hauteur
+    \begin{minipage}[t]{0.49\textwidth}
+      \vspace{0pt}
+      \centering
+      \begin{coefftable}{\hyperlink{ci0}{CI0}}
+        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc0_SUC_F_MODE_1_TYPE_C_+3.000E-02.coeff.txt}
+      \end{coefftable}
+      \begin{coefftable}{\hyperlink{ci3}{CI3}}
+        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc3_SUC_F_MODE_1_TYPE_C_+3.000E-02.coeff.txt}
+      \end{coefftable}
+    \end{minipage}
+    \begin{minipage}[t]{0.49\textwidth}
+      \vspace{0pt}
+      \centering
+      \begin{coefftable}{\hyperlink{ci6}{CI6}}
+        \input{csv/HOPPE_62/HOPPE_62.IBC_ibc6_SUC_F_MODE_1_TYPE_C_+3.000E-02.coeff.txt}
+      \end{coefftable}
+    \end{minipage}
+    \caption{Coefficients associés à la figure \ref{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}}
+    \label{tab:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}
+  \end{table}
+
+  Les tableaux \ref{tab:cylindre:hoppe:62:erreurs_Z} contient les valeurs des erreurs relatives au carré \(\hat\mZ\). 
+
+  Plus précisément, l'expression de ces erreurs est 
+  \begin{align*}
+    \text{TM} &= \ds\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}-\hat\mZ_{ap}(n_i,k_{zj})_{11}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}|^2}
+    \\
+    \text{TE} &= \ds\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{22}-\hat\mZ_{ap}(n_i,k_{zj})_{22}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{22}|^2}
+    \\
+    \text{complète}  &= \ds\frac{\sum\limits_{p=1}^2\sum\limits_{q=1}^2\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{pq}-\hat\mZ_{ap}(n_i,k_{zj})_{pq}|^2}{\sum\limits_{p=1}^2\sum\limits_{q=1}^2\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{pq}|^2}
+  \end{align*}
+
+  \begin{table}[!hbt]
+    \label{tab:cylindre:hoppe:62:erreurs_Z}
+    \centering
+    \begin{tabular}{l|ccc|ccc}
+      CIOE & \multicolumn{3}{c}{Minimisation \(J_R\)} & \multicolumn{3}{c}{Minimisation \(J_Z\)}\\
+      \hline
+      \hline
+          & {TM} & {TE} & {complète} & {TM} & {TE} & {complète}\\
+      \hline
+      CI6 & \verb|1.62E-01| & \verb|3.38E-04| & \verb|8.23E-02| & \verb|1.17E-02| & \verb|5.60E-04| & \verb|6.23E-03|\\
+      CI3 & \verb|4.30E-01| & \verb|3.99E-01| & \verb|4.15E-01| & \verb|6.82E-02| & \verb|1.71E-01| & \verb|1.19E-01|\\
+      CI0 & \verb|5.15E+00| & \verb|1.16E+00| & \verb|3.18E+00| & \verb|5.15E+00| & \verb|1.16E+00| & \verb|3.18E+00|
+    \end{tabular}
+    \caption{Erreur relative sur les matrices d'impédance \(\hat\mZ\).}
+  \end{table}
+
+  Les tableaux \ref{tab:cylindre:hoppe:62:erreurs_R} contient les valeurs des erreurs relatives au carré sur \(\hat\mR\). 
+
+  Plus précisément, l'expression de ces erreurs est 
+  \begin{align*}
+    \text{TM} &= \sqrt{\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{11}-\hat\mR_{ap}(n_i,k_{zj})_{11}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{11}|^2}}
+    \\
+    \text{TE} &= \sqrt{\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR{ex}(n_i,k_{zj})_{22}-\hat\mR_{ap}(n_i,k_{zj})_{22}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{22}|^2}}
+    \\
+    \text{somme}  &= \text{TE} + \text{TM}
+  \end{align*}
+
+  \begin{table}[!hbt]
+    \label{tab:cylindre:hoppe:62:erreurs_R}
+    \centering
+    \begin{tabular}{l|ccc|ccc}
+      CIOE & \multicolumn{3}{c}{Minimisation \(J_R\)} & \multicolumn{3}{c}{Minimisation \(J_Z\)}\\
+      \hline
+      \hline
+          & {TM} & {TE} & {somme} & {TM} & {TE} & {somme}\\
+      \hline 
+      CI6 & \verb|1.50E-04| & \verb|2.56E-03| & \verb|2.71E-03| & \verb|1.03E-02| & \verb|2.69E-01| & \verb|2.79E-01|\\
+      CI3 & \verb|3.31E-01| & \verb|2.33E-01| & \verb|5.64E-01| & \verb|3.00E-01| & \verb|7.14E-01| & \verb|1.01E+00|\\
+      CI0 & \verb|1.56E-01| & \verb|1.73E+00| & \verb|1.88E+00| & \verb|1.56E-01| & \verb|1.73E+00| & \verb|1.88E+00|  
+    \end{tabular}
+    \caption{Erreur relative sur les matrices de réflexion \(\hat\mR\).}
+  \end{table}

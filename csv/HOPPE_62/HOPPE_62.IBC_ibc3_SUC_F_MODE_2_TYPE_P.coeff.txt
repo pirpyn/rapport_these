@@ -1,0 +1,18 @@
+% IBC ibc3 type P suc F mode 2 (IBC_ibc3_SUC_F_MODE_2_TYPE_P)
+% Z = (I + b1*LD/k0^2 - b2*LR/k0^2)^{-1} (a0*I + a1*LD/k0^2 - a2*LR/k0^2)
+  \verb|a0| & \verb| 1.540E-18 +9.248E-01i| \\
+  \verb|a1| & \verb|-1.212E-17 +1.494E-01i| \\
+  \verb|a2| & \verb|-1.083E-17 -1.639E-02i| \\
+  \verb|b1| & \verb|-1.813E-01 +2.478E-17i| \\
+  \verb|b2| & \verb|-1.948E-01 +1.646E-17i| \\
+% Verifying the Sufficient Uniqueness Conditions (SUC)
+%    [OK] SUC, Negative inequality constraints, IN <=  1.000E-08
+%    IN(1) =  3.644935E-20 ! -Re(a0*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
+%    IN(2) = -5.229744E-21 !  Re(a1*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
+%    IN(3) =  1.220094E-21 !  Re(a2*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
+%    IN(4) = -5.898627E-18 ! -Re(b1.a1*)
+%    IN(5) = -1.839924E-18 ! -Re(b2.a2*)
+%    IN(6) =  1.811761E-19 !  Re(b1.(a2.a1)*.a0)
+%    IN(7) =  2.176316E-19 !  Re(b2.(a2.a1)*.a0)
+%    IN(8) = -1.211957E-17 !  Re(a1)
+%    IN(9) = -1.083258E-17 !  Re(a2)
