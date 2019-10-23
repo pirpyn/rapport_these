@@ -89,18 +89,18 @@
   \end{table}
 
   Les tableaux \ref{tab:cylindre:hoppe:62:erreurs_Z} contient les valeurs des erreurs relatives au carré \(\hat\mZ\). 
-
   Plus précisément, l'expression de ces erreurs est 
   \begin{align*}
-    \text{TM} &= \ds\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}-\hat\mZ_{ap}(n_i,k_{zj})_{11}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}|^2}
-    \\
-    \text{TE} &= \ds\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{22}-\hat\mZ_{ap}(n_i,k_{zj})_{22}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{22}|^2}
-    \\
-    \text{complète}  &= \ds\frac{\sum\limits_{p=1}^2\sum\limits_{q=1}^2\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{pq}-\hat\mZ_{ap}(n_i,k_{zj})_{pq}|^2}{\sum\limits_{p=1}^2\sum\limits_{q=1}^2\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{pq}|^2}
+    \text{TM} &= \frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}-\hat\mZ_{ap}(n_i,k_{zj})_{11}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}|^2}
+  \end{align*}
+  \begin{align*}
+    \text{TE} &= \frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{22}-\hat\mZ_{ap}(n_i,k_{zj})_{22}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{22}|^2}
+  \end{align*}
+  \begin{align*}
+    \text{complète}  &= \frac{\sum\limits_{p=1}^2\sum\limits_{q=1}^2\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{pq}-\hat\mZ_{ap}(n_i,k_{zj})_{pq}|^2}{\sum\limits_{p=1}^2\sum\limits_{q=1}^2\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{pq}|^2}
   \end{align*}
 
   \begin{table}[!hbt]
-    \label{tab:cylindre:hoppe:62:erreurs_Z}
     \centering
     \begin{tabular}{l|ccc|ccc}
       CIOE & \multicolumn{3}{c}{Minimisation \(J_R\)} & \multicolumn{3}{c}{Minimisation \(J_Z\)}\\
@@ -113,6 +113,7 @@
       CI0 & \verb|5.15E+00| & \verb|1.16E+00| & \verb|3.18E+00| & \verb|5.15E+00| & \verb|1.16E+00| & \verb|3.18E+00|
     \end{tabular}
     \caption{Erreur relative sur les matrices d'impédance \(\hat\mZ\).}
+    \label{tab:cylindre:hoppe:62:erreurs_Z}
   \end{table}
 
   Les tableaux \ref{tab:cylindre:hoppe:62:erreurs_R} contient les valeurs des erreurs relatives au carré sur \(\hat\mR\). 
@@ -120,14 +121,15 @@
   Plus précisément, l'expression de ces erreurs est 
   \begin{align*}
     \text{TM} &= \sqrt{\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{11}-\hat\mR_{ap}(n_i,k_{zj})_{11}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{11}|^2}}
-    \\
-    \text{TE} &= \sqrt{\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR{ex}(n_i,k_{zj})_{22}-\hat\mR_{ap}(n_i,k_{zj})_{22}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{22}|^2}}
-    \\
+  \end{align*}
+  \begin{align*}
+    \text{TE} &= \sqrt{\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{22}-\hat\mR_{ap}(n_i,k_{zj})_{22}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{22}|^2}}
+  \end{align*}
+  \begin{align*}
     \text{somme}  &= \text{TE} + \text{TM}
   \end{align*}
 
   \begin{table}[!hbt]
-    \label{tab:cylindre:hoppe:62:erreurs_R}
     \centering
     \begin{tabular}{l|ccc|ccc}
       CIOE & \multicolumn{3}{c}{Minimisation \(J_R\)} & \multicolumn{3}{c}{Minimisation \(J_Z\)}\\
@@ -140,4 +142,5 @@
       CI0 & \verb|1.56E-01| & \verb|1.73E+00| & \verb|1.88E+00| & \verb|1.56E-01| & \verb|1.73E+00| & \verb|1.88E+00|  
     \end{tabular}
     \caption{Erreur relative sur les matrices de réflexion \(\hat\mR\).}
+    \label{tab:cylindre:hoppe:62:erreurs_R}
   \end{table}
