@@ -21,96 +21,112 @@
 
     Grâce à cela, nous simplifions le problème en étudiant \( \hat{\vE}\) grâce aux multiplicateurs de Fourier associés aux variables \(x,y\). 
 
+    \begin{defn}
+        Soient \((k_x,k_y) \in \RR^2\) fixé.
+        Soit \(k_3\) la fonction constante par morceaux en \(z\) telle que
+        \begin{equation*}
+          \fonction{k_3}{[-d,\infty[}{\CC}
+          {z}{\sqrt{\w^2\eps(z)\mu(z) - k_x^2 - k_y^2}}
+        \end{equation*}
+        Par abus de notation, on omettra les dépendances en \(z\) pour \(k_3\).
+    \end{defn}
+
     \begin{prop}
-        Dans le matériau, on définit \(k_3\) le nombre complexe tel que \(k_3^2 = k^2 - k_x^2 - k_y^2\).
+        On se place dans le matériau et on suppose que \(\forall z \in [-d,0], k_3(z) \not = 0\).
         Alors existe \((c_i(k_x,k_y))_{1\le i \le4}, \in \CC(\RR^2)^4\) tels que
         \begin{subequations}
             \begin{align}
-                \hat{\vE}_y(k_x,k_y,z) & = e^{ik_3z}c_1(k_x,k_y) + e^{-ik_3z}c_2(k_x,k_y)
+                \hat{E}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_1(k_x,k_y) + e^{-ik_3(z)z}c_2(k_x,k_y)
                 \\
-                \hat{\vH}_y(k_x,k_y,z) & = e^{ik_3z}c_3(k_x,k_y) + e^{-ik_3z}c_4(k_x,k_y)
+                \hat{H}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y)
             \end{align}
         \end{subequations}
     \end{prop}
 
     \begin{proof}
-        On commence par coupler les équations de Maxwell pour obtenir des équations sur chaque champ seul
-        \begin{align}
-            \vlapl{\vE} + k^2 \vE & = 0
-            \\
-            \vlapl{\vH} + k^2 \vH & = 0
-        \end{align}
+      On commence par coupler les équations de Maxwell pour obtenir des équations sur chaque champ seul
+      \begin{align*}
+          \vlapl{\vE} + \w^2\eps(z)\mu(z) \vE & = 0
+          \\
+          \vlapl{\vH} + \w^2\eps(z)\mu(z) \vH & = 0
+      \end{align*}
+      On pose \(k(z)^2=\w^2\eps(z)\mu(z)\)
 
-        Donc chaque composante de chaque champ est solution d'une équation de Helmholtz. On s’intéresse alors à la composante en \(y\) seulement:
-        \begin{align}
-            \lapl{\vE_y} + k^2 \vE_y & = 0
-            \\
-            \lapl{\vH_y} + k^2 \vH_y & = 0
-        \end{align}
+      Donc chaque composante de chaque champ est solution d'une équation de Helmholtz. On s’intéresse alors à la composante en \(y\) seulement:
+      \begin{align*}
+          \lapl{E_y} + k(z)^2 E_y & = 0
+          \\
+          \lapl{H_y} + k(z)^2 H_y & = 0
+      \end{align*}
 
-        Si l'on applique ces équations différentielles aux transformées de Fourier, on obtient
-        \begin{align}
-            \ddr[2]{z}{\hat{\vE}_y}(k_x,k_y,z) + \left( k^2 - k_x^2 - k_y^2\right) \hat{\vE}_y(k_x,k_y,z) & = 0
-            \\
-            \ddr[2]{z}{\hat{\vH}_y}(k_x,k_y,z) + \left( k^2 - k_x^2 - k_y^2\right) \hat{\vH}_y(k_x,k_y,z) & = 0
-        \end{align}
+      Si l'on applique ces équations différentielles aux transformées de Fourier, on obtient
+      \begin{align*}
+          \ddr[2]{z}{\hat{E}_y}(k_x,k_y,z) + \left( k(z)^2 - k_x^2 - k_y^2\right) \hat{E}_y(k_x,k_y,z) & = 0
+          \\
+          \ddr[2]{z}{\hat{H}_y}(k_x,k_y,z) + \left( k(z)^2 - k_x^2 - k_y^2\right) \hat{H}_y(k_x,k_y,z) & = 0
+      \end{align*}
 
-        Une solution générale s'écrit alors
-        \begin{align}
-            \hat{\vE}_y(k_x,k_y,z) & = e^{ik_3z}c_1(k_x,k_y) + e^{-ik_3z}c_2(k_x,k_y)
-            \\
-            \hat{\vH}_y(k_x,k_y,z) & = e^{ik_3z}c_3(k_x,k_y) + e^{-ik_3z}c_4(k_x,k_y)
-        \end{align}
+      On suppose alors que \(k_3^2\) ne s'annule pas dans la couche. S'il s'annule, les solutions sont linéaire en \(z\) et nous référons à l'annexe \ref{sec:annexe:plan:k3_nul}.
+
+      Une solution générale s'écrit alors
+      \begin{align*}
+          \hat{E}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_1(k_x,k_y) + e^{-ik_3(z)z}c_2(k_x,k_y)
+          \\
+          \hat{H}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y)
+      \end{align*}
     \end{proof}
 
-    Ce choix est motivé par l'invariance par rotation du plan infini. Or il est d'usage de la représenter comme sur le schéma, avec un propagation de l'onde dans le plan \(xOz\). Souvent, on parle alors de polarisation pour simplifier les calculs. En effet, une polarisation \gls{acr-te} consiste à dire que \(\vE\) n'a qu'une composante dans le plan transverse au plan de propagation, donc suivant \(\vect{e_y}\). De même une polarisation \gls{acr-tm} consiste à dire que \(\vH\) n'a qu'une composante suivant \(\vect{e_y}\). C'est ce qui motive ce choix absolument abstrait d'utiliser les deuxièmes composantes.
+    % Ce choix est motivé par l'invariance par rotation du plan infini. Or il est d'usage de la représenter comme sur le schéma, avec un propagation de l'onde dans le plan \(xOz\). Souvent, on parle alors de polarisation pour simplifier les calculs. En effet, une polarisation \gls{acr-te} consiste à dire que \(\vE\) n'a qu'une composante dans le plan transverse au plan de propagation, donc suivant \(\vect{e_y}\). De même une polarisation \gls{acr-tm} consiste à dire que \(\vH\) n'a qu'une composante suivant \(\vect{e_y}\). C'est ce qui motive ce choix absolument abstrait d'utiliser les deuxièmes composantes.
 
     \subsection{Expressions des champs tangentiels dans chaque couche}
 
-        \begin{defn}
-            On définit les matrices \(\mA_{E}(k_x,k_y,z)\),\(\mB_{E}(k_x,k_y,z)\),\(\mA_{H}(k_x,k_y,z)\),\(\mB_{H}(k_x,k_y,z)\)
-            \begin{align}
-              \mA_{E}(k_x,k_y,z) &= e^{ik_3z}
-              \begin{bmatrix}
-                -\frac{k_xk_y}{k^2 - k_y^2} & -\frac{k\eta k_3}{k^2 - k_y^2}
-                \\
-                1 & 0
-              \end{bmatrix}
-              \\
-              \mB_{E}(k_x,k_y,z) &= e^{-ik_3z}
-              \begin{bmatrix}
-                -\frac{k_xk_y}{k^2 - k_y^2} & \frac{k\eta k_3}{k^2 - k_y^2}
-                \\
-                1 & 0
-              \end{bmatrix}
-              \\
-              \mA_{H}(k_x,k_y,z) &= e^{ik_3z}
-              \begin{bmatrix}
-                0 & -1
-                \\
-                \frac{k}{\eta}\frac{k_3}{k^2 - k_y^2} & -\frac{k_xk_y}{k^2 - k_y^2}
-              \end{bmatrix}
-              \\
-              \mB_{H}(k_x,k_y,z) &= e^{-ik_3z}
-              \begin{bmatrix}
-                0 & -1
-                \\
-                -\frac{k}{\eta}\frac{k_3}{k^2 - k_y^2} & -\frac{k_xk_y}{k^2 - k_y^2}
-              \end{bmatrix}
-            \end{align}
-        \end{defn}
+      \begin{defn}
+        On définit les matrices \(\mA_{E}(k_x,k_y,z)\), \(\mB_{E}(k_x,k_y,z)\), \(\mA_{H}(k_x,k_y,z)\), \(\mB_{H}(k_x,k_y,z)\) constantes par morceaux en \(z\)
+        \begin{align*}
+          \mA_{E}(k_x,k_y,z) &= e^{ik_3(z)z}
+          \begin{bmatrix}
+            -\frac{k_xk_y}{k(z)^2 - k_y^2} & -\frac{\w\mu(z)k_3(z)}{k(z)^2 - k_y^2}
+            \\
+            1 & 0
+          \end{bmatrix}
+          \\
+          \mB_{E}(k_x,k_y,z) &= e^{-ik_3(z)z}
+          \begin{bmatrix}
+            -\frac{k_xk_y}{k(z)^2 - k_y^2} & \frac{\w\mu(z) k_3(z)}{k(z)^2 - k_y^2}
+            \\
+            1 & 0
+          \end{bmatrix}
+          \\
+          \mA_{H}(k_x,k_y,z) &= e^{ik_3(z)z}
+          \begin{bmatrix}
+            0 & -1
+            \\
+            \frac{\w\eps(z)k_3(z)}{k(z)^2 - k_y^2} & -\frac{k_xk_y}{k(z)^2 - k_y^2}
+          \end{bmatrix}
+          \\
+          \mB_{H}(k_x,k_y,z) &= e^{-ik_3(z)z}
+          \begin{bmatrix}
+            0 & -1
+            \\
+            -\frac{\w\eps(z)k_3(z)}{k(z)^2 - k_y^2} & -\frac{k_xk_y}{k(z)^2 - k_y^2}
+          \end{bmatrix}
+        \end{align*}
+      \end{defn}
+
+        On remarque que \(\eps,\mu\) sont constantes par morceaux.
+        Sur une interface d'équation \(z=z_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mA_E(k_x,k_y,z_p+ \delta) - \mA_E(k_x,k_y,z_p - \delta) \not = 0\).
 
         \begin{prop}
-            Dans chaque couche, il existe \((c_i(k_x,k_y))_{1\le i \le4}, \in \CC(\RR^2)^4\) tels que
-            \begin{align}
-                \hat{\vE}_t(k_x,k_y,z) &= \mA_E(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} + \mB_E(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}
+            Il existe \((c_i(k_x,k_y,z))_{1\le i \le4}\) constants par morceaux en \(z\) tels que les composantes en \(\vect{e_x},\vect{e_y}\) des champs, dites composantes tangentielles par abus de langage sont
+            \begin{align*}
+                \hat{\vE}_t(k_x,k_y,z) &= \mA_E(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y,z) \\ c_3(k_x,k_y,z)\end{bmatrix} + \mB_E(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y,z) \\ c_4(k_x,k_y,z)\end{bmatrix}
                 \\
-                (\vn \pvect \hat{\vH})_t(k_x,k_y,z) &= \mA_H(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} + \mB_H(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}
-            \end{align}
+                (\vn \pvect \hat{\vH})_t(k_x,k_y,z) &= \mA_H(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y,z) \\ c_3(k_x,k_y,z)\end{bmatrix} + \mB_H(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y,z) \\ c_4(k_x,k_y,z)\end{bmatrix}
+            \end{align*}
         \end{prop}
 
         \begin{proof}
-            On reprend les équations de Maxwell, appliquées sur les transformées de Fourier. À partir de la première et de la dernière composante de chaque équation de Maxwell, on peut déterminer \(\hat{E_x},\hat{E_z},\hat{H_x},\hat{H_z}\).
+            On reprend les équations de Maxwell, appliquées sur les transformées de Fourier. À partir des composantes \(\vect{e_x},\vect{e_y}\) des équation de Maxwell, on peut déterminer \(\hat{E_x},\hat{E_z},\hat{H_x},\hat{H_z}\).
             \begin{align*}
                 \left\lbrace
                 \begin{matrix}
@@ -129,7 +145,7 @@
             \end{align*}
 
             Cela revient à résoudre \(Y = \mat{M}X\) où la matrice \(\mat{M}\) et les vecteurs \(X, Y\) sont définis tels que
-            \begin{equation}
+            \begin{align*}
               \mat{M} =
               \begin{bmatrix}
               0 & -ik_y & -i\w\mu & 0
@@ -140,7 +156,7 @@
               \\
               0 & i\w\eps & ik_y & 0
               \end{bmatrix}
-              \,
+              &&
               X =
               \begin{bmatrix}
                 \hat{E_x}\\
@@ -148,19 +164,19 @@
                 \hat{H_x}\\
                 \hat{H_z}
               \end{bmatrix}
-              \,
+              &&
               Y =
               \begin{bmatrix}
                 -\ddr{z}{\hat{E_y}}\\
-                ik_x\hat{E_z}\\
+                ik_x\hat{E_y}\\
                 -\ddr{z}{\hat{H_y}}\\
                 ik_x\hat{H_y}
               \end{bmatrix}
-            \end{equation}
+            \end{align*}
 
             Cette matrice est inversible si \(\det(\mM) = (k^2 - k_y^2)^2 \) est non nul.
             On suppose ce dernier non nul, on peut en déduire \(X\)
-            \begin{equation}
+            \begin{equation*}
               \begin{bmatrix}
                 \hat{E_x}\\
                 \hat{E_z}\\
@@ -183,44 +199,59 @@
                 -\ddr{z}{\hat{H_y}}\\
                 ik_x\hat{H_y}
               \end{bmatrix}
-            \end{equation}
+            \end{equation*}
 
             On extrait alors uniquement les composantes suivant \(x,y\) de \(\hat{\vE}\) et \(\vect{e_z} \pvect \hat{\vH}\)
-            \begin{align}
+            \begin{align*}
+              \left\lbrace
+              \begin{aligned}
                 \hat{E_x} &= \frac{1}{k^2 - k_y^2}\left(ik_yik_x\hat{E_y} + i\w\mu\ddr{z}{\hat{H_y}}\right)
                 \\
                 \hat{E_y} &= e^{ik_3z}c_1 + e^{-ik_3z}c_2
-                \\
+              \end{aligned}
+              \right.
+              &&
+              \left\lbrace
+              \begin{aligned}
                 -\hat{H_y} &= -e^{ik_3z}c_3 - e^{-ik_3z}c_4
                 \\
                 \hat{H_x} &= \frac{1}{k^2 - k_y^2}\left(-i\w\eps\ddr{z}{\hat{E_y}} + ik_yik_x\hat{H_y}\right)
-            \end{align}
+              \end{aligned}
+              \right.
+            \end{align*}
             Soit si l'on factorise par les exponentielles
-            \begin{align}
+            \begin{align*}
+              &\left\lbrace
+              \begin{aligned}
                 \hat{E_x} &= \frac{1}{k^2 - k_y^2}\left(-\left(k_yk_x c_1 + \w\mu k_3 c_3 \right)e^{ik_3z} - \left(k_yk_xc_2 - \w\mu k_3 c_4\right)e^{-ik_3z}\right)
                 \\
                 \hat{E_y} &= e^{ik_3z}c_1 + e^{-ik_3z}c_2
-                \\
+              \end{aligned}
+              \right.
+              \\
+              &\left\lbrace
+              \begin{aligned}
                 -\hat{H_y} &= -e^{ik_3z}c_3 - e^{-ik_3z}c_4
                 \\
                 \hat{H_x} &= \frac{1}{k^2 - k_y^2}\left(\left(\w\eps k_3c_1 - k_y k_x c_3\right)e^{ik_3z} + \left(-\w\eps k_3c_2 - k_y k_x c_4\right)e^{-ik_3z}\right)
-            \end{align}
+              \end{aligned}
+              \right.
+            \end{align*}
 
             On obtient alors
-            \begin{align}
+            \begin{align*}
                 \hat{\vE}_t(k_x,k_y,z) &= \mA_E(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} + \mB_E(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}
                 \\
                 (\vn \pvect \hat{\vH})_t(k_x,k_y,z) &= \mA_H(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} + \mB_H(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}
-            \end{align}
-
+            \end{align*}
         \end{proof}
 
-        Ce résultat est encore valable dans le vide mais les \(c_i\) y sont différents et il faut replacer \(k\) par \(k_0\) et \(\eta\) par \(1\).
-        Cette décomposition est intéressante car elle contient des termes de propagation vers le plan, ce sont les matrices \(\mA_E, \mA_H\) et des termes de propagation vers l'infini, ce sont les matrices \(\mB_E, \mB_H\). En effet, le terme \(e^{i\w t}\) omis dans les expression est multiplié par \(e^{\pm i k_3 z}\). 
+        % Ce résultat est encore valable dans le vide mais les \(c_i\) y sont différents et il faut replacer \(k\) par \(k_0\) et \(\eta\) par \(1\).
+        % Cette décomposition est intéressante car elle contient des termes de propagation vers le plan, ce sont les matrices \(\mA_E, \mA_H\) et des termes de propagation vers l'infini, ce sont les matrices \(\mB_E, \mB_H\). En effet, le terme \(e^{i\w t}\) omis dans les expression est multiplié par \(e^{\pm i k_3 z}\). 
 
-        Supposons par exemple que \(k_3 = \sqrt{k_0^2 - k_x^2 - k_y^2}\) soit réel, donc positif. Si l'on veut que par exemple \(\w t + k_3 z\) soit constant quand \(t\) augmente, il faut que \(z\) diminue, autrement dit, quand le temps avance, l'onde se rapproche du plan. C'est la partie onde incidente et de fait l'autre partie est l'onde réfléchie.
+        % Supposons par exemple que \(k_3 = \sqrt{k_0^2 - k_x^2 - k_y^2}\) soit réel, donc positif. Si l'on veut que par exemple \(\w t + k_3 z\) soit constant quand \(t\) augmente, il faut que \(z\) diminue, autrement dit, quand le temps avance, l'onde se rapproche du plan. C'est la partie onde incidente et de fait l'autre partie est l'onde réfléchie.
 
-        Supposons maintenant que \(k_3 = i\sqrt{k_0^2 - k_x^2 - k_y^2}\)  soit imaginaire. Alors si l'on veut des champs réfléchis finis à l'infini, il faut que \(\Im(k_3) = \Im(\sqrt{k_0 - k_x^2 - k_y^2})\) soit négatif, ainsi on a une évolution en \(e^{\Im(k_3)z}\), qui tend bien vers \(0\).
+        % Supposons maintenant que \(k_3 = i\sqrt{k_0^2 - k_x^2 - k_y^2}\)  soit imaginaire. Alors si l'on veut des champs réfléchis finis à l'infini, il faut que \(\Im(k_3) = \Im(\sqrt{k_0^2 - k_x^2 - k_y^2})\) soit négatif, ainsi on a une évolution en \(e^{\Im(k_3)z}\), qui tend bien vers \(0\).
 
     \subsection{Expression de la matrice d'impédance pour une couche de matériau}
 
@@ -229,115 +260,84 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         \begin{defn}
-            \label{def:plan:impedance}
-            On définit \(\hat \mZ(k_x,k_y)\) l'impédance, le multiplicateur de Fourier matriciel tel que
-            \begin{equation*}
-                \hat \vE_t(k_x,k_y,0) = \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0)\right)
-            \end{equation*}
+          \label{def:plan:impedance:1c}
+          On définit \(\hat \mZ(k_x,k_y)\) la fonction de \(\RR \times \RR\) telle que
+          \begin{align*}
+            \hat \mZ(k_x,k_y) &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
+            \begin{bmatrix}
+               k^2-k_x^2  & -k_xk_y\\
+                -k_xk_y & k^2-k_y^2\\
+            \end{bmatrix}
+          \end{align*}
         \end{defn}
 
-        On commence par montrer un lemme très utile pour trouver l'expression de \(\hat \mZ(k_x,k_y)\)
-        \begin{lemme}[Continuité des impédances]
-            \label{lem:plan:continuite_impedance}
-            Soit \(z_m\) une interface entre deux matériaux. On considère les impédances de part et d'autre de l'interface
+        \begin{prop}
+            \label{prop:imp_plan:symb_z:1c}
+            On suppose que
             \begin{align*}
-                \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right)
-                \\
-                \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right)
+                k_3     & \not = 0 \\
+                k_3d    & \not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN
             \end{align*}
-            alors il y a continuité de l'impédance au travers de l'interface
-            \begin{equation*}
-            \hat \mZ^+(k_x,k_y) = \hat \mZ^-(k_x,k_y)
-            \end{equation*}
-        \end{lemme}
-        \begin{proof}
-            La démonstration est extrêmement rapide grâce à la continuité tangentielle des champs.
-            \begin{align}
-                \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\vE}_t(k_x,k_y,z_m^-)
-                \\
-                \hat{\vH}_t(k_x,k_y,z_m^+) &= \hat{\vH}_t(k_x,k_y,z_m^-)
-            \end{align}
-
-            Donc on la même propriété sur \(\vn \pvect \hat{\vH}\)
-            \begin{align}                
-                \vn \pvect \hat{\vH}_t(k_x,k_y,z_m^+) &= \vn \pvect \hat{\vH}_t(k_x,k_y,z_m^-)
-                \\
-                \intertext{On repart de l'expression de l'impédance}
-                \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right)
-                \\
-                \intertext{On utilise la continuité des champs}
-                \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right)
-                \\
-                \intertext{Ce qui par définition de l'impédance vaut}
-                \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right)
-            \end{align}
-        \end{proof}
-
-        \begin{thm}
-            Supposons que
-            \begin{subequations}
-                \label{eq:imp_fourier:plan:hyp_1_c}
-                \begin{align}
-                    k_3     & \not = 0 \\
-                    k_3d    & \not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN
-                \end{align}
-            \end{subequations}
 
             Alors
-            \begin{align}
-            \label{eq:imp_plan:symb_z:1c}
-            \hat \mZ(k_x,k_y) &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
-                \begin{bmatrix}
-                   k^2-k_x^2  & -k_xk_y\\
-                    -k_xk_y & k^2-k_y^2\\
-                \end{bmatrix}
-            \end{align}
-        \end{thm}
+            \begin{align*}
+            \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \vH_t(k_x,k_y,0^-)\right)
+            \end{align*}
+        \end{prop}
 
         \begin{proof}
             Grâce au lemme \eqref{lem:plan:continuite_impedance}, on sait donc que l'on peut uniquement se placer dans la couche. Nous n'avons donc pas besoin de distinguer les vecteurs indépendant de \(z\) dans l'expression des champs tangentiels. Nous posons donc
-            \begin{align}
-                \vect{C_1}(k_x,k_y) = \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} & & \vect{C_2}(k_x,k_y) = \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}
-            \end{align}
+            \begin{align*}
+                \vect{C_1}(k_x,k_y) = \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} 
+                && 
+                \vect{C_2}(k_x,k_y) = \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}
+            \end{align*}
 
             Nous utilisons la condition limite du conducteur parfait
-            \begin{align}
+            \begin{align*}
                 \hat{\vE}_t(k_x,k_y,-d^+) &= 0
                 \\
                 &=  \mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y) + \mB_E(k_x,k_y,-d^+)\vect{C_2}(k_x,k_y)
-            \end{align}
+            \end{align*}
 
             Si on suppose que ces matrices sont inversibles, donc que \(k_3\) est non-nul alors on a
-            \begin{align}
+            \begin{align*}
                 \vect{C_2}(k_x,k_y) &= -\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y)
-            \end{align}
+            \end{align*}
 
             On part de l'expression de l'impédance, exprimée à l'intérieur
-            \begin{align}
+            \begin{align*}
                 \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0^-)\right)
-            \end{align}
+            \end{align*}
             Or on injecte le résultat précèdent
-            \begin{multline}
-                \hat \vE_t(k_x,k_y,0^-) = \\
+            \begin{multline*}
+                \hat \vE_t(k_x,k_y,0^-) =
+                \\
                 \left(\mA_E(k_x,k_y,0^-)-\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)\vect{C_1}(k_x,k_y)
-            \end{multline}
-            \begin{multline}
-                \vn \pvect \hat \vH_t(k_x,k_y,0^-) = \\
-                 \left(\mA_H(k_x,k_y,0^-)-\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)\vect{C_1}(k_x,k_y)
-            \end{multline}
+            \end{multline*}
+            \begin{multline*}
+                \vn \pvect \hat \vH_t(k_x,k_y,0^-) =
+                \\
+                \left(\mA_H(k_x,k_y,0^-)-\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)\vect{C_1}(k_x,k_y)
+            \end{multline*}
             On en déduit l'impédance
-            \begin{multline}
-                \hat \mZ(k_x,k_y) = \\ \left(\mA_E(k_x,k_y,0^-)-\mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)\\
+            \begin{multline*}
+                \hat \mZ(k_x,k_y) =
+                \\
+                \left(\mA_E(k_x,k_y,0^-)-\mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)
+                \\
                 \left(\mA_H(k_x,k_y,0^-)-\mB_H(k_x,k_y,0^-)\left(\mB_H(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)^{-1}
-            \end{multline}
+            \end{multline*}
             Comme on a supposé les matrices inversibles
-            \begin{multline}
-                \hat \mZ(k_x,k_y) = \\ \left(\mA_E(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1}-\mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\right) \\
+            \begin{multline*}
+                \hat \mZ(k_x,k_y) =
+                \\ \left(\mA_E(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1}-\mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\right) 
+                \\
                 \left(\mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1}-\mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\right)^{-1}
-            \end{multline}
+            \end{multline*}
 
             On va alors exprimer chacun des termes grâce aux expressions des matrices
-            \begin{align}
+            \begin{align*}
                 \mA_E(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &= e^{ik_3d}\mI
                 \\
                 \mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= e^{-ik_3d}\mI
@@ -355,10 +355,10 @@
                     \\
                     k_x k _y & k^2 - k_x^2
                 \end{bmatrix} 
-            \end{align}
+            \end{align*}
 
             Définissons alors les matrices \(\hat\mLD,\hat\mLR\) telle que
-            \begin{align}
+            \begin{align*}
                 \hat{\mLD} = -\begin{bmatrix}
                 k_x^2 & k_x k_y
                 \\
@@ -370,38 +370,38 @@
                 \\
                 -k_x k _y &  k_x^2
                 \end{bmatrix}
-            \end{align}
+            \end{align*}
 
             On remarque alors que 
-            \begin{align}
+            \begin{align*}
                 \mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &=  e^{ik_3d}\frac{1}{kk_3\eta}(k^2\mI  -\hat\mLR)
                 \\
                 \mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= -e^{-ik_3d}\frac{1}{kk_3\eta}(k^2\mI  -\hat\mLR)
-            \end{align}
+            \end{align*}
 
             Ces matrices sont inversibles si \(k_3\) est non nul, ce que nous avons déjà supposé.
 
             Un simple calcul matriciel permet de trouver que \( (k^2\mI - \hat{\mLR})^{-1} = \frac{1}{k^2k_3^2}\left(k^2 \mI + \hat{\mLD}\right) \).
 
             En supposant \(k_3d \not = \frac{\pi}{2} + n\pi\), on déduit donc que
-            \begin{align}
+            \begin{align*}
                 \hat \mZ(k_x,k_y) &= \frac{\eta}{kk_3} \frac{e^{ik_3d} - e^{-ik_3d}}{e^{ik_3d} + e^{-ik_3d}}\left(k^2\mI + \hat{\mLD}\right)
                 \\
                 &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}\left(k^2\mI + \hat{\mLD}\right)
-            \end{align}
+            \end{align*}
 
         \end{proof}
         %On remarque que \(\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)\) et donc pour un matériau \((\eps,\mu,d)\) donné, l'opérateur d'impédance n'est pas inversible pour tous  \((k_x,k_y) \in \RR^2, n \in \NN\), \(k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2\), qui ne peut être vérifié que si \(\eps\mu\) est réel\footnote{Comme \(\eps, \mu\) sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}.
 
         Dans l'article de \cite{marceaux_high-order_2000}, l'opérateur est exprimé comme
-        \begin{equation}
+        \begin{equation*}
             \vn \pvect \hat{\vE} = \hat{\mathfrak{Z}} \hat{\vH_t}
-        \end{equation}
+        \end{equation*}
 
         Pour une couche de matériau, cet article énonce que 
-        \begin{align}
+        \begin{align*}
             \hat{\mathfrak{Z}} &= -i\eta\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right)
-        \end{align}
+        \end{align*}
 
         Sachant que dans le cadre des vecteurs tangents \(\vn\pvect \vx = \mA \vy_t\) est équivalent à \(\vx_t = -\det(\mA)\left(\mA^{-1}\right)^t\left(\vn\pvect\vy\right)\), alors en développant les calculs, on retrouve bien le résultat de l'article de \cite{marceaux_high-order_2000}.\\
 
@@ -410,14 +410,14 @@
         Dans ce cas, pour revenir sur la polarisation, introduite dans la section précédente, le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x} + {E_z} \vect{e_z} \), tandis que le champ \(\vH\)-TE correspond à \({H_x} \vect{e_x} + {H_z} \vect{e_z}\) et le champ \(\vH\)-TM correspond à \({H_y} \vect{e_y}\).
         
         Alors la matrice \(\hat \mZ\) peut se réécrire comme
-        \begin{equation}
+        \begin{equation*}
             \hat \mZ =
             \begin{bmatrix}
                 \hat Z_{TM} & 0
                 \\
                 0 & \hat Z_{TE}
             \end{bmatrix}
-        \end{equation}
+        \end{equation*}
 
 
         La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte. Dans cet ouvrage, la matrice n’est pas exactement la même ( voir annexe \ref{sec:annexe:hoppe} ) et on pose \(\hat{\mathfrak{Z}} = \eta_0\hat{\mZ}\begin{bmatrix}0&1\\-1&0\end{bmatrix}\).
@@ -547,6 +547,43 @@
                 \mM_{Bm}(k_x,k_y,z_{m-1}^+) &= \mB_{Em}(k_x,k_y,z_{m-1}^+)-\hat{\mZ}_{m-1}\mB_{Hm}(k_x,k_y,z_{m-1}^+)
             \end{align*}
         \end{defn}
+
+        On commence par montrer un lemme très utile pour trouver l'expression de \(\hat \mZ(k_x,k_y)\)
+        \begin{lemme}[Continuité des impédances]
+            \label{lem:plan:continuite_impedance}
+            Soit \(z_m\) une interface entre deux matériaux. On considère les impédances de part et d'autre de l'interface
+            \begin{align*}
+                \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right)
+                \\
+                \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right)
+            \end{align*}
+            alors il y a continuité de l'impédance au travers de l'interface
+            \begin{equation*}
+            \hat \mZ^+(k_x,k_y) = \hat \mZ^-(k_x,k_y)
+            \end{equation*}
+        \end{lemme}
+        \begin{proof}
+            La démonstration est extrêmement rapide grâce à la continuité tangentielle des champs.
+            \begin{align*}
+                \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\vE}_t(k_x,k_y,z_m^-)
+                \\
+                \hat{\vH}_t(k_x,k_y,z_m^+) &= \hat{\vH}_t(k_x,k_y,z_m^-)
+            \end{align*}
+
+            Donc on la même propriété sur \(\vn \pvect \hat{\vH}\)
+            \begin{align*}                
+                \vn \pvect \hat{\vH}_t(k_x,k_y,z_m^+) &= \vn \pvect \hat{\vH}_t(k_x,k_y,z_m^-)
+                \\
+                \intertext{On repart de l'expression de l'impédance}
+                \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right)
+                \\
+                \intertext{On utilise la continuité des champs}
+                \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right)
+                \\
+                \intertext{Ce qui par définition de l'impédance vaut}
+                \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right)
+            \end{align*}
+        \end{proof}
 
         \begin{thm}
             \label{thm:imp:fourier:plan:multi_couche}

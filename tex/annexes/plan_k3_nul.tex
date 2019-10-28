@@ -1,0 +1,124 @@
+\section[Solution dans le plan quand k3 = 0]{Solution dans le plan quand \(k_3 = 0\)}
+  \label{sec:annexe:plan:k3_nul}
+
+  Dans chaque couche de l'empilement plan.
+
+  Si \(k_3 = 0\), \(k_x^2 + k_y^2 = w^2\eps\mu\) et il existe donc des constantes \((c_1(k_x,k_y),c_2(k_x,k_y))) \in \CC(\RR^2)^2\) telles que
+  \begin{equation*}
+    \hat{E_y}(k_x,k_y,z) = c_1(k_x,k_y) z + c_2(k_x,k_y)
+  \end{equation*}
+
+  Toute la méthode est aussi valable pour \(\hat H_y\), il existe des constantes \((c_3(k_x,k_y),c_4(k_x,k_y))) \in \CC(\RR^2)^2\) telles que
+  \begin{equation*}
+    \hat{H_y}(k_x,k_y,z) = c_3(k_x,k_y) z + c_4(k_x,k_y)
+  \end{equation*}
+
+  À partir des composantes \(\vect{e_x},\vect{e_y}\) des équation de Maxwell, on peut déterminer \(\hat{E_x},\hat{E_z},\hat{H_x},\hat{H_z}\).
+  Cela revient à résoudre \(Y = \mM X\) où la matrice \(\mM\) et les vecteurs \(X, Y\) sont définis tels que
+  \begin{align*}
+    \mM =
+    \begin{bmatrix}
+    0 & -ik_y & -i\w\mu & 0
+    \\
+    ik_y & 0 & 0 & -i\w\mu
+    \\
+    i\w\eps & 0 & 0 & -ik_y
+    \\
+    0 & i\w\eps & ik_y & 0
+    \end{bmatrix}
+    &&
+    X =
+    \begin{bmatrix}
+      \hat{E_x}\\
+      \hat{E_z}\\
+      \hat{H_x}\\
+      \hat{H_z}
+    \end{bmatrix}
+    &&
+    Y =
+    \begin{bmatrix}
+      -\ddr{z}{\hat{E_y}}\\
+      ik_x\hat{E_y}\\
+      -\ddr{z}{\hat{H_y}}\\
+      ik_x\hat{H_y}
+    \end{bmatrix}
+  \end{align*}
+
+  Cette matrice est inversible si \(\det(\mM) = (k^2 - k_y^2)^2 \) est non nul. On suppose donc \(k_x^2\not=0\).
+
+  Alors on extrait alors uniquement les composantes suivant \(x,y\) de \(\hat{\vE}\) et \(\vect{e_z} \pvect \hat{\vH}\)
+  \begin{align*}
+  &\left\lbrace
+    \begin{aligned}
+      \hat{E_x} &= \frac{1}{k_x^2}\left(ik_yik_x\hat{E_y} + i\w\mu\ddr{z}{\hat{H_y}}\right)
+      \\
+      \hat{E_y} &= c_1(k_x,k_y)z + c_2(k_x,k_y)
+    \end{aligned}
+  \right.    
+  &&
+  \left\lbrace
+    \begin{aligned}
+      -\hat{H_y} &= -c_3(k_x,k_y)z - c_4(k_x,k_y)
+      \\
+      \hat{H_x} &= \frac{1}{k_x^2}\left(-i\w\eps\ddr{z}{\hat{E_y}} + ik_yik_x\hat{H_y}\right)
+    \end{aligned}
+    \right.
+  \end{align*}
+  Soit
+  \begin{align*}
+  &\left\lbrace
+    \begin{aligned}
+      \hat{E_x} &= \frac{1}{k_x^2}\left(ik_yik_x\hat{E_y} + i\w\mu c_3(k_x,k_y)\right)
+      \\
+      \hat{E_y} &= c_1(k_x,k_y)z + c_2(k_x,k_y)
+    \end{aligned}
+  \right.    
+  \\&
+  \left\lbrace
+    \begin{aligned}
+      -\hat{H_y} &= -c_3(k_x,k_y)z - c_4(k_x,k_y)
+      \\
+      \hat{H_x} &= \frac{1}{k_x^2}\left(-i\w\eps c_1(k_x,k_y) + ik_yik_x\hat{H_y}\right)
+    \end{aligned}
+    \right.
+  \end{align*}
+
+  On définit les matrices \(\mA_{E}(k_x,k_y,z)\), \(\mB_{E}(k_x,k_y,z)\), \(\mA_{H}(k_x,k_y,z)\), \(\mB_{H}(k_x,k_y,z)\) constantes par morceaux en \(z\)
+  \begin{align*}
+    \mA_{E}(k_x,k_y,z) &= z
+    \begin{bmatrix}
+      -\frac{k_y}{k_x} & -i\frac{\w\mu(z)}{k_x^2}
+      \\
+      1 & 0
+    \end{bmatrix}
+    \\
+    \mB_{E}(k_x,k_y,z) &= 
+    \begin{bmatrix}
+      -\frac{k_y}{k_x} & 0
+      \\
+      1 & 0
+    \end{bmatrix}
+    \\
+    \mA_{H}(k_x,k_y,z) &= z
+    \begin{bmatrix}
+      0 & -1
+      \\
+      \frac{-i\w\eps(z)}{k_x^2} & -\frac{k_y}{k_x}
+    \end{bmatrix}
+    \\
+    \mB_{H}(k_x,k_y,z) &= 
+    \begin{bmatrix}
+      0 & -1
+      \\
+      0 & -\frac{k_y}{k_x}
+    \end{bmatrix}
+  \end{align*}
+
+  Les composantes en \(\vect{e_x},\vect{e_y}\) des champs, dites composantes tangentielles par abus de langage sont
+  \begin{align*}
+      \hat{\vE}_t(k_x,k_y,z) &= \mA_E(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y,z) \\ c_3(k_x,k_y,z)\end{bmatrix} + \mB_E(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y,z) \\ c_4(k_x,k_y,z)\end{bmatrix}
+      \\
+      (\vn \pvect \hat{\vH})_t(k_x,k_y,z) &= \mA_H(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y,z) \\ c_3(k_x,k_y,z)\end{bmatrix} + \mB_H(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y,z) \\ c_4(k_x,k_y,z)\end{bmatrix}
+  \end{align*}
+
+  Mais ces matrices ne sont pas inversibles et donc on ne pourra pas trouver la matrice \(\hat\mZ\).

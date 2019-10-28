@@ -172,8 +172,15 @@
     \fancyfoot{} % bas de page, rien
     \fancyfoot[RO,LE]{\thepage} % tête de page, droite paire, gauche impaire, rien
     \fancyhead{}
-    \fancyhead[RO]{{\nouppercase{\rightmark}}} % tête de page droite impaire, le titre de la section
-    \fancyhead[LE]{{\nouppercase{\leftmark}}} %tête de âge gauche paire, le titre du chapitre
+    \fancyhead[RO]{\nouppercase{\rightmark}} % tête de page droite impaire, le titre de la section
+    \fancyhead[LE]{\nouppercase{\leftmark}} %tête de page gauche paire, le titre du chapitre
+
+    \fancypagestyle{annexe}{
+    \fancyfoot{} % bas de page, rien
+    \fancyfoot[RO,LE]{\thepage} % tête de page, droite paire, gauche impaire, rien
+    \fancyhead[RO]{\nouppercase{\rightmark}} % tête de page droite impaire, le titre de l'annexe
+    \fancyhead[LE]{Annexe} %tête de page gauche paire, rien
+    }
 
 \usepackage{multirow}
 \usepackage{array}   % for \newcolumntype macro

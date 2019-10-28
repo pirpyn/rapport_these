@@ -20,7 +20,7 @@ Supposons qu'il existe des champs  qui vérifient les équations de Maxwell:
     \right.
 \end{equation}
 
-On suppose aussi que \(\eps\) et \(\mu\) sont constant par couche: \(\eps(x_1,x_2,x_n)=\eps(x_1',x_2',x_n)\).
+On suppose aussi que \(\eps\) et \(\mu\) sont constant par couche: \(\eps(x_1,x_2,x_n)=\eps(x_n)\).
 
 On suppose enfin que ces champs \(\vE(\vect{x},t),\vH(\vect{x},t)\) ont des transformées de Fourier partielles suivant les coordonnées tangentielles et le temps \(\hat{\vE}(k_1,k_2,x_n,\w), \hat{\vH}(k_1,k_2,x_n,\w)\) (\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995}) telle que
 
@@ -54,11 +54,24 @@ On va donc utiliser le système d'équations de Maxwell harmonique:
 \begin{equation}
     \left\lbrace
     \begin{matrix}
-    \vrot \hat \vE(\vx,\w)  &=& -i \omega \mu \hat \vH(\vx,\w)  \\
-    \vrot \hat \vH(\vx,\w)  &=& i \omega \eps \hat \vE(\vx,\w)
+    \vrot \hat \vE(k_1,k_2,x_n,\w)  &=& -i \omega \mu(x_n) \hat \vH(k_1,k_2,x_n,\w)  \\
+    \vrot \hat \vH(k_1,k_2,x_n,\w)  &=& i \omega \eps(x_n) \hat \vE(k_1,k_2,x_n,\w)
     \end{matrix}
     \right.
     \label{eq:imp_fourier:intro:maxwell_harmonique}
 \end{equation}
 
 A partir de maintenant, la dépendance en \(\w\) sera implicite: \(\hat \vE(\vx) \equiv \hat \vE (\vx, \w)\).
+
+Enfin, on remarque que les équations de Maxwell peuvent se réécrire
+\begin{equation}
+    \left\lbrace
+    \begin{matrix}
+    \vrot \hat \vE(k_1,k_2,x_n,\w)  &=& -i k(x_n) \eta_r(x_n) \hat{\mathcal{\vH}}(k_1,k_2,x_n,\w)  \\
+    \vrot \hat{\mathcal{\vH}}(k_1,k_2,x_n,\w)  &=& i k(x_n) \eta_r^{-1}(x_n) \hat \vE(k_1,k_2,x_n,\w)
+    \end{matrix}
+    \right.
+    \label{eq:imp_fourier:intro:maxwell_harmonique:form_cea}
+\end{equation}
+où \(\mathcal{\vH} = \eta_0\vH\), \(\epsilon(x_n)=\eps_r(x_n)\eps_0\), \(\mu(x_n)=\mu_r(x_n)\mu_0\), \(\eta_r(x_n)=\sqrt{\mu_r(x_n)/\eps_r(x_n)}\), \(k=k_0\sqrt{\mu_r(x_n)\eps_r(x_n)}\), \(k_0 = \w\sqrt{\mu_0\eps_0}\) tel qu'en tout point extérieur de \(\OO\), \(\eps_r(x_n) = \mu_r(x_n)= 1\).
+
