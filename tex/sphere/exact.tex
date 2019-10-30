@@ -36,15 +36,24 @@
             \end{bmatrix}
         \end{align}
 
+        \begin{defn}
+            On définit l’opérateur \gls{mat-tild} agissant sur les fonctions dérivables tel que 
+
+            Soit \(f \in C^1(\CC)\), on pose
+            \begin{align*}
+            &\tilde{f}(z)=f(z) + zf'(z)&& \forall z \in \CC
+            \end{align*}
+        \end{defn}
+
         \begin{align}
         \label{eq:defNnn}
           \Nmn[z_n](\rtp) &:= \frac{\vrot \Mmn[z_n]}{k}(\rtp) \\
           &= \frac{1}{kr}\begin{bmatrix}
             z_n(kr)n(n+1)Y_{mn}(\tp)
             \\
-            \ddr{r}{z_n}(kr)\ddr{\theta}{Y_{mn}}(\tp)
+            \tilde{z_n}(kr)\ddr{\theta}{Y_{mn}}(\tp)
             \\
-            \ddr{r}{z_n}(kr)\frac{im}{\sin\theta}Y_{mn}(\tp)
+            \tilde{z_n}(kr)\frac{im}{\sin\theta}Y_{mn}(\tp)
           \end{bmatrix}
         \end{align}
 
@@ -77,10 +86,10 @@
             + c_{mn} \Mmn[h_n](\rtp) + d_{mn} \Nmn[h_n](\rtp)
         \end{multline}
 
-        D'après les équations de Maxwell, \(\vH = i\frac{\vrot \vE}{k\eta}\)
+        D'après les équations de Maxwell, \(\vH = i\frac{\vrot \vE}{\w\mu}\)
 
         \begin{multline}
-            \vH(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Nmn[j_n](\rtp) + b_{mn} \Mmn[j_n](\rtp)
+            \vH(\rtp) = \frac{ik}{\w\mu}\sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Nmn[j_n](\rtp) + b_{mn} \Mmn[j_n](\rtp)
             \\
             + c_{mn} \Nmn[h_n](\rtp) + d_{mn} \Mmn[h_n](\rtp)
         \end{multline}
@@ -112,7 +121,7 @@
         \begin{align}
           \Mmn[z_n]_t(\rtp) &= z_n(kr)\Umn(\tp)
           \\
-          \Nmn[z_n]_t(\rtp) &= \frac{1}{kr}\ddr{r}{z_n}(kr)\Umn^\perp(\tp)
+          \Nmn[z_n]_t(\rtp) &= \frac{1}{kr}\tilde{z_n}(kr)\Umn^\perp(\tp)
         \end{align}
 
         On a alors les propriétés supplémentaires
@@ -121,40 +130,38 @@
             \begin{align}
               \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= krz_n(kr)\Umn^\perp(\tp)
               \\
-              \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{kr}\ddr{r}{z_n}(kr)\Umn(\tp)
+              \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{kr}\tilde{z_n}(kr)\Umn(\tp)
             \end{align}
         \end{prop}
         Sachant donc que les composantes tangentielles du champs \(\vE\) s'écrivent
 
         \begin{multline}
-            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} j_n(kr)\Umn(\tp) + b_{mn} \frac{1}{kr}\ddr{r}{j_n}(kr)\Umn^\perp(\tp)
+            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} j_n(kr)\Umn(\tp) + b_{mn} \frac{1}{kr}\tilde{j_n}(kr)\Umn^\perp(\tp)
             \\
-            + c_{mn} h_n(kr)\Umn(\tp) + d_{mn} \frac{1}{kr}\ddr{r}{j_n}(kr)\Umn^\perp(\tp)
+            + c_{mn} h_n(kr)\Umn(\tp) + d_{mn} \frac{1}{kr}\tilde{j_n}(kr)\Umn^\perp(\tp)
         \end{multline}
 
 
         Donc \(\vJ = \vect{e_r} \pvect \vH\) s'écrit
 
         \begin{multline}
-            \vJ(\rtp) = \frac{i}{\eta}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{1}{kr}\ddr{r}{j_n}\Umn(\tp) + b_{mn} k r j_n \Umn^\perp(\tp)
+            \vJ(\rtp) = \frac{ik}{\w\mu}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{1}{kr}\tilde{j_n}(kr)\Umn(\tp) + b_{mn} k r j_n(kr) \Umn^\perp(\tp)
             \\
-            -  \frac{1}{kr}\ddr{r}{h_n} c_{mn} \Umn(\tp) + k r h_n d_{mn} \Umn^\perp(\tp)
+            -  \frac{1}{kr}\tilde{h_n}(kr) c_{mn} \Umn(\tp) + k r h_n(kr) d_{mn} \Umn^\perp(\tp)
         \end{multline}
 
-        Dans la suite, pour simplifier les écritures, on utilisera la notation tilde \gls{mat-tild}, telle que \( \tilde{z_n}(k_r) = \ddr{r}{z_n}(kr) \). On omettra aussi les dépendances en \(kr\) lorsqu'il n'y a pas d’ambiguïtés.
+        Alors on a 
 
-        On réécrit alors matriciellement les expressions de \(\vE_t,\vJ\).
-
-        \begin{equation}
-            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+        \begin{multline}
+            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ}\\
             \begin{bmatrix}
-              \Umn^\perp & \Umn
+              \Umn & \Umn^\perp
             \end{bmatrix}
             \left(
               \begin{bmatrix}
-                  0 & \tilde{j_n}
-                  \\
-                  j_n & 0
+                j_n(kr) & 0
+                \\              
+                0 & \tilde{j_n}(kr)
               \end{bmatrix}
               \begin{bmatrix}
                   a_{mn}
@@ -163,9 +170,9 @@
               \end{bmatrix}
               +
               \begin{bmatrix}
-                  0 & \tilde{h_n}
-                  \\
-                  h_n & 0
+                h_n(kr) & 0
+                \\
+                0 & \tilde{h_n}(kr)
               \end{bmatrix}
               \begin{bmatrix}
                   c_{mn}
@@ -173,19 +180,19 @@
                   d_{mn}
               \end{bmatrix}
             \right)
-        \end{equation}
+        \end{multline}
 
 
-        \begin{equation}
-            \vJ(\rtp) = \frac{i}{\eta kr}\sum_{n\in\ZZ}\sum_{m\in\ZZ}
+        \begin{multline}
+            \vJ(\rtp) = \frac{i}{\w\mu r}\sum_{n\in\ZZ}\sum_{m\in\ZZ}\\
             \begin{bmatrix}
-                \Umn^\perp & \Umn
+                \Umn & \Umn^\perp
             \end{bmatrix}
             \left(
                 \begin{bmatrix}
-                    0 & (kr)^2 j_n
+                    -\tilde{j_n}(kr) & 0
                     \\
-                    -\tilde{j_n} & 0
+                    0 & (kr)^2 j_n(kr)
                 \end{bmatrix}
                 \begin{bmatrix}
                     a_{mn}
@@ -194,9 +201,9 @@
                 \end{bmatrix}
                 +
                 \begin{bmatrix}
-                    0 & (kr)^2 h_n
-                    \\
-                    -\tilde{h_n} & 0
+                    -\tilde{h_n}(kr) & 0
+                    \\                
+                    0 & (kr)^2 h_n(kr)
                 \end{bmatrix}
                 \begin{bmatrix}
                     c_{mn}
@@ -204,19 +211,19 @@
                     d_{mn}
                 \end{bmatrix}
             \right)
-        \end{equation}
+        \end{multline}
 
         \begin{defn}
             On définit les vecteurs de \(\RR^2\) \(\hat{\vE_t}(r,m,n)\) et \(\hat{\vJ}(r,m,n)\) tels que
             \begin{align}
                 \vE_t(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
                 \begin{bmatrix}
-                  \Umn^\perp & \Umn
+                  \Umn & \Umn^\perp
                 \end{bmatrix}\hat{\vE_t}(r,m,n)
                 \\
                 \vJ(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
                 \begin{bmatrix}
-                  \Umn^\perp & \Umn
+                  \Umn & \Umn^\perp
                 \end{bmatrix}\hat{\vJ}(r,m,n)
             \end{align}
         \end{defn}
@@ -226,30 +233,30 @@
             \begin{align}
                 \mJ_{E}(r,n) &=
                 \begin{bmatrix}
-                    0 & \tilde{j_n}(kr)
-                    \\
                     j_n(kr) & 0
+                    \\                
+                    0 & \tilde{j_n}(kr)
                 \end{bmatrix}
                 \\
                 \mH_{E}(r,n) &=
                 \begin{bmatrix}
-                    0 & \tilde{h_n}(kr)
-                    \\
                     h_n(kr) & 0
+                    \\                
+                    0 & \tilde{h_n}(kr)
                 \end{bmatrix}
                 \\
-                \mJ_{H}(r,n) &=
+                \mJ_{H}(r,n) &= \frac{i}{\w\mu r}
                 \begin{bmatrix}
-                    0 & (kr)^2 j_n(kr)
-                    \\
                     -\tilde{j_n}(kr) & 0
+                    \\                
+                    0 & (kr)^2 j_n(kr)
                 \end{bmatrix}
                 \\
-                \mH_{H}(r,n) &=
+                \mH_{H}(r,n) &= \frac{i}{\w\mu r}
                 \begin{bmatrix}
-                    0 & (kr)^2 h_n(kr)
-                    \\
                     -\tilde{h_n}(kr) & 0
+                    \\
+                    0 & (kr)^2 h_n(kr)
                 \end{bmatrix}
             \end{align}
         \end{defn}
@@ -274,8 +281,7 @@
         \end{equation}
 
         \begin{equation}
-            \hat{\vJ}(r,m,n) = \frac{i}{\eta k r}
-            \left(
+            \hat{\vJ}(r,m,n) = 
             \mJ_{H}(r,n)
             \begin{bmatrix}
                 a_{mn}
@@ -289,7 +295,6 @@
                 \\
                 d_{mn}
             \end{bmatrix}
-            \right)
         \end{equation}
 
     \subsection{Matrice d'impédance pour une couche}

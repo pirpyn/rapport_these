@@ -259,11 +259,22 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        \begin{figure}[!h]
+            \begin{center}
+                \tikzsetnextfilename{plan_1_couche}
+                \begin{tikzpicture}
+                    \input{tikz/schema/plan_1_couche.tikz}
+                \end{tikzpicture}
+            \end{center}
+        \end{figure}
+
+        Par abus de notation, on identifie  \(\eps\equiv \eps(-d^+)=\eps(0^-)\), \(\mu\equiv\mu(-d^+)=\mu(0^-)\), \(k\equiv k(-d^+)=k(0^-)\), \(k_3 \equiv k_3(-d^+) = k_3(0^-)\).
+
         \begin{defn}
           \label{def:plan:impedance:1c}
           On définit \(\hat \mZ(k_x,k_y)\) la fonction de \(\RR \times \RR\) telle que
           \begin{align*}
-            \hat \mZ(k_x,k_y) &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}
+            \hat \mZ(k_x,k_y) &= i\frac{\tan\left(k_3d\right)}{\w\eps k_3}
             \begin{bmatrix}
                k^2-k_x^2  & -k_xk_y\\
                 -k_xk_y & k^2-k_y^2\\
@@ -278,10 +289,9 @@
                 k_3     & \not = 0 \\
                 k_3d    & \not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN
             \end{align*}
-
             Alors
             \begin{align*}
-            \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \vH_t(k_x,k_y,0^-)\right)
+              \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \vH_t(k_x,k_y,0^-)\right)
             \end{align*}
         \end{prop}
 
@@ -305,10 +315,10 @@
                 \vect{C_2}(k_x,k_y) &= -\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y)
             \end{align*}
 
-            On part de l'expression de l'impédance, exprimée à l'intérieur
-            \begin{align*}
-                \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0^-)\right)
-            \end{align*}
+            % On part de l'expression de l'impédance, exprimée à l'intérieur
+            % \begin{align*}
+            %     \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0^-)\right)
+            % \end{align*}
             Or on injecte le résultat précèdent
             \begin{multline*}
                 \hat \vE_t(k_x,k_y,0^-) =
@@ -342,14 +352,14 @@
                 \\
                 \mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= e^{-ik_3d}\mI
                 \\
-                \mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &= e^{ik_3d}\frac{1}{kk_3\eta}
+                \mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &= e^{ik_3d}\frac{1}{\w\mu k_3}
                 \begin{bmatrix}
                     k^2 - k_y^2 & k_x k_y
                     \\
                     k_x k _y & k^2 - k_x^2
                 \end{bmatrix}
                 \\
-                \mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= -e^{-ik_3d}\frac{1}{kk_3\eta}
+                \mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= -e^{-ik_3d}\frac{1}{\w\mu k_3}
                     \begin{bmatrix}
                     k^2 - k_y^2 & k_x k_y
                     \\
@@ -357,7 +367,7 @@
                 \end{bmatrix} 
             \end{align*}
 
-            Définissons alors les matrices \(\hat\mLD,\hat\mLR\) telle que
+            Soit les matrices \(\hat\mLD,\hat\mLR\) définies à la section \ref{sec:plan:hoibc:LD-LR}
             \begin{align*}
                 \hat{\mLD} = -\begin{bmatrix}
                 k_x^2 & k_x k_y
@@ -374,36 +384,32 @@
 
             On remarque alors que 
             \begin{align*}
-                \mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &=  e^{ik_3d}\frac{1}{kk_3\eta}(k^2\mI  -\hat\mLR)
+                \mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &=  e^{ik_3d}\frac{1}{\w\mu k_3}(k^2\mI  -\hat\mLR)
                 \\
-                \mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= -e^{-ik_3d}\frac{1}{kk_3\eta}(k^2\mI  -\hat\mLR)
+                \mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= -e^{-ik_3d}\frac{1}{\w\mu k_3}(k^2\mI  -\hat\mLR)
             \end{align*}
 
             Ces matrices sont inversibles si \(k_3\) est non nul, ce que nous avons déjà supposé.
 
             Un simple calcul matriciel permet de trouver que \( (k^2\mI - \hat{\mLR})^{-1} = \frac{1}{k^2k_3^2}\left(k^2 \mI + \hat{\mLD}\right) \).
 
-            En supposant \(k_3d \not = \frac{\pi}{2} + n\pi\), on déduit donc que
+            En supposant \(k_3d \not = \frac{\pi}{2} + n\pi\), donc \(e^{ik_3d}+e^{-ik_3d}\not=0\) on déduit donc que
             \begin{align*}
-                \hat \mZ(k_x,k_y) &= \frac{\eta}{kk_3} \frac{e^{ik_3d} - e^{-ik_3d}}{e^{ik_3d} + e^{-ik_3d}}\left(k^2\mI + \hat{\mLD}\right)
+                \hat \mZ(k_x,k_y) &= \frac{\w\mu}{k^2 k_3} \frac{e^{ik_3d} - e^{-ik_3d}}{e^{ik_3d} + e^{-ik_3d}}\left(k^2\mI + \hat{\mLD}\right)
                 \\
-                &= i\eta\frac{\tan\left(k_3d\right)}{kk_3}\left(k^2\mI + \hat{\mLD}\right)
+                &= i\frac{\tan\left(k_3d\right)}{\w\eps k_3}\left(k^2\mI + \hat{\mLD}\right)
             \end{align*}
-
         \end{proof}
         %On remarque que \(\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)\) et donc pour un matériau \((\eps,\mu,d)\) donné, l'opérateur d'impédance n'est pas inversible pour tous  \((k_x,k_y) \in \RR^2, n \in \NN\), \(k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2\), qui ne peut être vérifié que si \(\eps\mu\) est réel\footnote{Comme \(\eps, \mu\) sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}.
 
-        Dans l'article de \cite{marceaux_high-order_2000}, l'opérateur est exprimé comme
-        \begin{equation*}
-            \vn \pvect \hat{\vE} = \hat{\mathfrak{Z}} \hat{\vH_t}
-        \end{equation*}
-
-        Pour une couche de matériau, cet article énonce que 
+        Dans l'article de \cite{marceaux_high-order_2000},
         \begin{align*}
-            \hat{\mathfrak{Z}} &= -i\eta\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right)
+            \hat{\mathfrak{Z}} = -i\eta\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right) && \vn \pvect \hat{\vE} = \hat{\mathfrak{Z}} \eta_0\hat{\vH_t}
         \end{align*}
 
-        Sachant que dans le cadre des vecteurs tangents \(\vn\pvect \vx = \mA \vy_t\) est équivalent à \(\vx_t = -\det(\mA)\left(\mA^{-1}\right)^t\left(\vn\pvect\vy\right)\), alors en développant les calculs, on retrouve bien le résultat de l'article de \cite{marceaux_high-order_2000}.\\
+        Comme dans cet article, le champs \(\vH\) est normalisé par \(\eta_0\), \(\w\eps\) devient \(k\eta^{-1}\) (voir annexe \ref{sec:annex:maxwell_equation}).
+
+        De plus si \(\vn\pvect \vx = z\mA \vy_t\) alors \(\vx_t = -z\det(\mA)\left(\mA^{-1}\right)^t\left(\vn\pvect\vy\right)\). Donc en développant les calculs, on retrouve bien le résultat de l'article de \cite{marceaux_high-order_2000}.\\
 
         En pratique, on néglige toute les dépendance en \(y\) ce qui revient à fixer \(k_y\) à \(0\). Grâce à cette hypothèse, on trouve que \(\hat \mZ\) est une matrice diagonale.
 
@@ -433,7 +439,7 @@
             \label{fig:imp_fourier:plan:hoppe}
         \end{figure}
 
-        La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où \(k_3d = \frac{\pi}{2}\) pour \(k_x \simeq 0.9 k_0\). On a donc une asymptote bien visible sur le module des coefficients diagonaux de \(\hat\mZ\) pour \(k_x\slash k_0 \simeq 0.94\).
+        La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où \(k_3d = \frac{\pi}{2}\) pour \(k_x \simeq 0.94 k_0\). On a donc une asymptote bien visible sur le module des coefficients diagonaux de \(\hat\mZ\) pour \(k_x\slash k_0 \simeq 0.94\).
 
         \begin{figure}[!hbt]
             \centering
@@ -452,70 +458,9 @@
             \label{fig:reflex_fourier:plan:soudais}
         \end{figure}
 
-
-    \subsection{Expression de la matrice de réflexion pour une couche de matériau}
-
-        Dans le cas de la diffraction par un plan infini, une grandeur d’intérêt est le rapport entre l'onde réfléchie et l'onde incidente.
-         
-        \begin{defn}
-          On définit la matrice \(\hat\mR\) dépendante de \((k_x,k_y)\) telle que pour tout point de la surface \(z=0_+\)
-          \begin{equation}
-            \vect{C_2}(k_x,k_y)  = \hat\mR(k_x,k_y) \vect{C_1}(k_x,k_y)
-          \end{equation}
-        \end{defn}
-
-        On peut toujours définir cette matrice dans chaque couche, mais ce n'est alors plus la matrice de réflexion. Mais par abus de langage, on l'y nommera quand même matrice de réflexion.
-        Cette matrice \(\hat\mR\) est propre à chaque couche là où la matrice d'impédance \(\hat\mZ\) est propre à chaque interface.
-
-        \begin{lemme}[Matrice de réflexion associée à une impédance]
-            \label{lem:plan:reflexion_from_impedance}
-            Soit \(z_m\) une interface entre deux matériaux, et on se place juste au dessus (\(z>z_m\)). 
-
-            Soit \(\hat{\mZ}(k_x,k_y)\) la matrice d'impédance à cette interface.
-            \begin{align*}
-                \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right)
-            \end{align*}
-            Alors la matrice de réflexion est fonction de la matrice d'impédance et
-            \begin{multline*}
-                    \hat\mR(k_x,k_y) = - \left(\mB_E(k_x,k_y,z_m^+) - \hat{\mZ}(k_x,k_y) \mB_H(k_x,k_y,z_m^+) \right)^{-1}\\
-                    \left(\mA_E(k_x,k_y,z_m^+) - \hat{\mZ}(k_x,k_y) \mA_H(k_x,k_y,z_m^+) \right)
-            \end{multline*}
-        \end{lemme}
-        \begin{proof}
-            Il suffit de partir de la définition des deux matrices pour conclure.
-        \end{proof}
-
-        Cependant, il est aussi possible de déterminer la matrice de réflexion directement sans passer par l'impédance. Pour cela, nous avons besoin du lemme suivant
-
-        \begin{lemme}[Discontinuité des matrices de réflexions]
-            \label{lem:plan:discontinuite_reflexion}
-            Soit \(z_m\) une interface entre deux matériaux \(+\) (\(z>z_m\)) et \(-\) (\(z<z_m\)). On considère les matrices de réflexions de part et d'autre de l'interface
-            \begin{align*}
-                \vect{C_2}^+(k_x,k_y)  = \hat\mR^+(k_x,k_y) \vect{C_1}^+(k_x,k_y)
-                \\
-                \vect{C_2}^-(k_x,k_y)  = \hat\mR^-(k_x,k_y) \vect{C_1}^-(k_x,k_y)
-            \end{align*}
-            Allégeons les notations: omettons les \((k_x,k_y)\) et indiquons par \(\pm\) lorsque l'on se trouve en \(z_m^\pm\).
-            Alors il y a discontinuité de la matrice de réflexion au travers de l'interface et
-            \begin{multline*}
-            \hat\mR^+ = - \left((\mA_E^- + \mB_E^-\hat\mR^-)^{-1}\mB_E^+ - (\mA_H^- + \mB_H^-\hat\mR^-)^{-1}\mB_H^+\right)^{-1}
-            \\
-            \left((\mA_E^- + \mB_E^-\hat\mR^-)^{-1}\mA_E^+ - (\mA_H^- + \mB_H^-\hat\mR^-)^{-1}\mA_H^+\right)
-            \end{multline*}
-        \end{lemme}
-        \begin{proof}
-            Il suffit d'utiliser le lemme précèdent de part et d'autre de l'interface conjointement avec le lemme \ref{lem:plan:continuite_impedance}. La conclusion est immédiate.
-        \end{proof}
-
-        On peut exprimer alors la matrice de réflexion dans le vide \(\hat\mR\) en utilisant la condition limite de conducteur parfait.
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    \subsection{Expression de la matrice d'impédance pour plusieurs couches de matériaux}
+    \FloatBarrier
+    \subsection{Expression de la matrice d'impédance pour plusieurs couches}
         On suppose que l'on a \(n\) couches de matériaux :
-
         \begin{figure}[h!btp]
             \centering
             \tikzsetnextfilename{plan_n_couches}            
@@ -524,11 +469,9 @@
             \end{tikzpicture}
         \end{figure}
 
-        Pour chaque couche caractérisée par \((k_m,\eta_m,d_m)\), on définit
+        Les fonctions \(\eps\) et \(\mu\) sont constantes par morceaux et pour chaque couche caractérisée par \((k_m,\eta_m,d_m)\), on définit
         \begin{align}
-        k_{3m} &= \sqrt{k_m^2 - k_y^2 - k_x^2}
-        \\
-        z_m &= -\sum_{i=0}^{n-m} d_{n-i}
+          k_{3m} &= \sqrt{k_m^2 - k_y^2 - k_x^2}
         \end{align}
         Afin de ne pas alourdir la thèse, on ne redéfinit pas les matrices \(\mA_E,\mB_E,\mA_H,\mB_H\) mais il est très important de considérer que pour \(z_{m-1}<z<z_m\), ces matrices font intervenir les constantes de matériaux \(k_m,\eta_m\) et sont nommées \(\mA_{Em},\mB_{Em},\mA_{Hm},\mB_{Hm}\). De même pour les vecteurs \(\vect{C_{1m}},\vect{C_{2m}}\).
 
@@ -611,3 +554,65 @@
 
             Pour démontrer la récurrence, on se place dans la couche \(z_{m-1}<z<z_m\). On suppose que l'on ait une matrice d'impédance sur l'interface \(z= z_{m-1}^+\). Grâce au lemme \ref{lem:plan:reflexion_from_impedance}, on peut en déduire la matrice de réflexion dans la couche. Il est alors aisé de déduire l'impédance sur l'interface \(z=z_m^-\).
         \end{proof}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    \subsection{Expression de la matrice de réflexion pour une couche de matériau}
+
+        Dans le cas de la diffraction par un plan infini, une grandeur d’intérêt est le rapport entre l'onde réfléchie et l'onde incidente.
+         
+        \begin{defn}
+          On définit la matrice \(\hat\mR\) dépendante de \((k_x,k_y)\) telle que pour tout point de la surface \(z=0_+\)
+          \begin{equation}
+            \vect{C_2}(k_x,k_y)  = \hat\mR(k_x,k_y) \vect{C_1}(k_x,k_y)
+          \end{equation}
+        \end{defn}
+
+        On peut toujours définir cette matrice dans chaque couche, mais ce n'est alors plus la matrice de réflexion. Mais par abus de langage, on l'y nommera quand même matrice de réflexion.
+        Cette matrice \(\hat\mR\) est propre à chaque couche là où la matrice d'impédance \(\hat\mZ\) est propre à chaque interface.
+
+        \begin{lemme}[Matrice de réflexion associée à une impédance]
+            \label{lem:plan:reflexion_from_impedance}
+            Soit \(z_m\) une interface entre deux matériaux, et on se place juste au dessus (\(z>z_m\)). 
+
+            Soit \(\hat{\mZ}(k_x,k_y)\) la matrice d'impédance à cette interface.
+            \begin{align*}
+                \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right)
+            \end{align*}
+            Alors la matrice de réflexion est fonction de la matrice d'impédance et
+            \begin{multline*}
+                    \hat\mR(k_x,k_y) = - \left(\mB_E(k_x,k_y,z_m^+) - \hat{\mZ}(k_x,k_y) \mB_H(k_x,k_y,z_m^+) \right)^{-1}\\
+                    \left(\mA_E(k_x,k_y,z_m^+) - \hat{\mZ}(k_x,k_y) \mA_H(k_x,k_y,z_m^+) \right)
+            \end{multline*}
+        \end{lemme}
+        \begin{proof}
+            Il suffit de partir de la définition des deux matrices pour conclure.
+        \end{proof}
+
+        Cependant, il est aussi possible de déterminer la matrice de réflexion directement sans passer par l'impédance. Pour cela, nous avons besoin du lemme suivant
+
+        \begin{lemme}[Discontinuité des matrices de réflexions]
+            \label{lem:plan:discontinuite_reflexion}
+            Soit \(z_m\) une interface entre deux matériaux \(+\) (\(z>z_m\)) et \(-\) (\(z<z_m\)). On considère les matrices de réflexions de part et d'autre de l'interface
+            \begin{align*}
+                \vect{C_2}^+(k_x,k_y)  = \hat\mR^+(k_x,k_y) \vect{C_1}^+(k_x,k_y)
+                \\
+                \vect{C_2}^-(k_x,k_y)  = \hat\mR^-(k_x,k_y) \vect{C_1}^-(k_x,k_y)
+            \end{align*}
+            Allégeons les notations: omettons les \((k_x,k_y)\) et indiquons par \(\pm\) lorsque l'on se trouve en \(z_m^\pm\).
+            Alors il y a discontinuité de la matrice de réflexion au travers de l'interface et
+            \begin{multline*}
+            \hat\mR^+ = - \left((\mA_E^- + \mB_E^-\hat\mR^-)^{-1}\mB_E^+ - (\mA_H^- + \mB_H^-\hat\mR^-)^{-1}\mB_H^+\right)^{-1}
+            \\
+            \left((\mA_E^- + \mB_E^-\hat\mR^-)^{-1}\mA_E^+ - (\mA_H^- + \mB_H^-\hat\mR^-)^{-1}\mA_H^+\right)
+            \end{multline*}
+        \end{lemme}
+        \begin{proof}
+            Il suffit d'utiliser le lemme précèdent de part et d'autre de l'interface conjointement avec le lemme \ref{lem:plan:continuite_impedance}. La conclusion est immédiate.
+        \end{proof}
+
+        On peut exprimer alors la matrice de réflexion dans le vide \(\hat\mR\) en utilisant la condition limite de conducteur parfait.
+

@@ -82,7 +82,7 @@
     % On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice.
     %Nous allons donc trouver une équation de Bessel en développant le système de Maxwell.
 
-    On remarque que les 2 premières composantes de ces deux égalités permettent de déduire \(\hat\vE_r,\hat\vE_\theta, \hat\vH_r,\hat\vH_\theta\) de \(\hat E_z,\hat H_z\).
+    On remarque que les 2 premières composantes de ces deux égalités permettent de déduire \(\hat E_r,\hat E_\theta, \hat H_r,\hat H_\theta\) de \(\hat E_z,\hat H_z\).
 
     On couple les 2 équations du système de Maxwell pour obtenir une EDO sur ces fonctions.
 
@@ -343,14 +343,13 @@
         \\
         \hat{H_\theta} &= -\frac{i\w\eps}{k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
       \end{align*}
-
     \end{proof}
 
-    \begin{lemme}
+    \begin{prop}
       \label{lem:cylindre:imp:inv_matrices_JE-HE}
-      Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mJ_E(r,n,k_z)\), \(\mH_E(r,n,k_z)\), \(\mJ_H(r,n,k_z)\), \(\mH_H(r,n,k_z)\) sont inversibles pour tout couple \((n,k_z)\).
+      Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mJ_E(r,n,k_z)\), \(\mH_E(r,n,k_z)\)  sont inversibles pour tout couple \((n,k_z)\).
       % Sinon, pour \(n\) donné, il existe un nombre fini de \(k_z\) tels que ces matrices ne soient pas inversibles. 
-    \end{lemme}
+    \end{prop}
 
     \begin{proof}
       Par définition des matrices,
@@ -358,15 +357,24 @@
         \det(\mJ_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
         \\
         \det(\mJ_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
-        \\
-        \det(\mH_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
-        \\
-        \det(\mH_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+        % \\
+        % \det(\mH_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+        % \\
+        % \det(\mH_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
       \end{align}
 
-      D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels.
-      Donc si \(k_3 \in\CC\backslash\RR\), comme l'ordre est entier naturel donc \(n\ge 0\), ces matrices sont inversibles.
+      D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels donc si \(k_3 \in\CC\backslash\RR\) alors ces matrices sont inversibles.
     \end{proof}
+
+
+    Pour les matrices \(\mJ_H(r,n,k_z)\), \(\mH_H(r,n,k_z)\), on a
+    \begin{align}
+      \det(\mH_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+      \\
+      \det(\mH_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+     \end{align}
+    Et on ne peut rien conclure, car les zéros peuvent être complexes ( voir \cite{sandstrom_note_2007} ). On va donc supposer ces déterminants non nuls.
+
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
