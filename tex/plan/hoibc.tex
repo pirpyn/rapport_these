@@ -1,6 +1,7 @@
 \section{Approximation de la matrice d'impédance pour un plan infini par une CIOE}
 
   \subsection[Expression des opérateurs LD, LR en Fourier]{Expression des opérateurs \(\LD\), \(\LR\) en Fourier}
+    \label{sec:plan:hoibc:LD-LR}
     Soit un plan d'équation \(z=0\) et \((x,y,z)\) les coordonnées plan d'un point de l'espace.
 
     Soit \(V = \left(\mathcal{C}^\infty(\RR^2)\right)^2 \cap L^2(\RR^2)\) l'espace des fonctions infiniment dérivables définies sur ce plan et de carré intégrable.
@@ -122,23 +123,23 @@
 
     Les CIOE dérivées de la CI3 s'obtiennent tout aussi facilement.
 
-    \begin{equation}
+    \begin{equation*}
         \hat{\mZ}_{CI4}(k_x,k_y) = a_0 \mI + a_1 \frac{\hat{\mLD}}{k_0^2}(k_x,k_y) - a_2 \frac{\hat{\mLR}}{k_0^2}(k_x,k_y)
-    \end{equation}
-    \begin{equation}
+    \end{equation*}
+    \begin{equation*}
         \hat{\mZ}_{CI1}(k_x,k_y) =  \left(\mI + b \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)^{-1}\left(a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)
-    \end{equation}
-    \begin{equation}
+    \end{equation*}
+    \begin{equation*}
         \hat{\mZ}_{CI01}(k_x,k_y) =  a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y)
-    \end{equation}
+    \end{equation*}
     Pour calculer les coefficients de la CIOE, il faut minimiser la distance entre \(\hat{\mZ}(k_x,k_y)\) et \(\hat{\mZ}_{CI3}(k_x,k_y)\) \footnote{La distance est la norme de Frobenius}. Évidemment, il existe une infinité de combinaisons pour un couple \((k_x,k_y)\) données. Nous avons choisis de nous donner un grand nombre de couples et de minimiser au sens des moindres carrés.
 
   \subsection{Le cas spécial de la condition de Leontovich}
 
     La condition de Leontovich consiste à approcher la matrice par une constante, et donc d'avoir \(a_1=a_2=b_1=b_2=0\). Cependant, cette condition rend compte exactement de l'impédance à incidence normale. Dans ce cas particulier, nous ne réaliserons pas de minimisation mais on fixera cette constante à la valeur de la matrice quand \((k_x,k_y) = (0,0)\).
 
-    \begin{align}
+    \begin{align*}
       \hat{\mZ}_{CI0} & = a_0\mI 
       \\
       &= \hat{\mZ}(0,0)
-    \end{align}
+    \end{align*}
