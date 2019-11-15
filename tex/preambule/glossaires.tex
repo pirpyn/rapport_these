@@ -120,7 +120,7 @@
   type={mat},
   sort={tild},
   name={tilde},
-  description={\(\tilde{f}(z) = \ddp{z}{zf(z)}\)},
+  description={\(\tilde{f}(z) = \ddp{z}{(zf(z))}\)},
 }
 \newglossaryentry{mat-four}{
   type={mat},
@@ -300,25 +300,31 @@
   type={phy},
   sort={E},
   name={\ensuremath{\vec{E}}},
-  description={champ électrique},
+  description={champ électrique \([V.m^{-1}]\)},
 }
 \newglossaryentry{phy-h}{
   type={phy},
-  sort={H},
+  sort={Ha},
   name={\ensuremath{\vec{H}}},
-  description={champ magnétique (ou excitation magnétique si normalisé par \(\gls{phy-eta}_0\))},
+  description={champ magnétique \([A.m^{-1}]\)},
+}
+\newglossaryentry{phy-h2}{
+  type={phy},
+  sort={Hb},
+  name={\ensuremath{\vec{\mathcal{H}}}},
+  description={excitation magnétique \(\vec{\mathcal{H}} = \gls{phy-eta}_0 \gls{phy-h}\) \([V.m^{-1}]\)},
 }
 \newglossaryentry{phy-f}{
   type={phy},
   sort={f},
   name={\ensuremath{f}},
-  description={fréquence \([Hz]\)},
+  description={fréquence [Hz]},
 }
 \newglossaryentry{phy-c}{
   type={phy},
   sort={c},
   name={\ensuremath{c}},
-  description={célérité de la lumière \(3 \times 10^{8} [m.s^{-1}]\)},
+  description={célérité de la lumière \(c=2.99792458\,10^{8}\) \([m.s^{-1}]\)},
 }
 \newglossaryentry{phy-d}{
   type={phy},
@@ -328,71 +334,82 @@
 }
 \newglossaryentry{phy-w}{
   type={phy},
-  sort={w},
-  name={\ensuremath{w}},
+  sort={omega},
+  name={\ensuremath{\w}},
   description={pulsation d'une onde \([s^{-1}]\)},
 }
 \newglossaryentry{phy-mu0}{
   type={phy},
   sort={mu_zero},
   name={\ensuremath{\mu_0}},
-  description={permittivité magnétique du vide []},
+  description={perméabilité du vide \([H.m^{-1}]\)},
 }
 \newglossaryentry{phy-eps0}{
   type={phy},
   sort={eps_zero},
   name={\ensuremath{\eps_0}},
-  description={permittivité diélectrique du vide []},
+  description={permittivité du vide \([F.m^{-1}]\)},
 }
 \newglossaryentry{phy-mu}{
   type={phy},
   sort={mu},
   name={\ensuremath{\mu}},
-  description={permittivité magnétique relative complexe[1]},
+  description={perméabilité relative complexe [1]},
 }
 \newglossaryentry{phy-eps}{
   type={phy},
   sort={eps},
   name={\ensuremath{\eps}},
-  description={permittivité diélectrique relative complexe [1]},
+  description={permittivité relative complexe [1]},
 }
 \newglossaryentry{phy-eta}{
   type={phy},
   sort={eta},
   name={\ensuremath{\eta}},
-  description={impédance diélectrique \(\eta=\sqrt{\mu\slash\eps}\)},
+  description={impédance \(\eta=\sqrt{\gls{phy-mu}\slash\gls{phy-eps}}\)  [Ohm]},
 }
-\newglossaryentry{phy-eta_zero}{
+\newglossaryentry{phy-eta0}{
   type={phy},
   sort={eta_zero},
   name={\ensuremath{\eta_0}},
-  description={impédance du vide \(120 \pi [Ohm]\)},
+  description={impédance du vide \(\eta_0=120 \pi\) [Ohm]},
 }
 \newglossaryentry{phy-nu}{
   type={phy},
   sort={nu},
   name={\ensuremath{\nu}},
-  description={indice du matériau \(\nu = \sqrt{\mu\eps}\)},
+  description={indice relatif du matériau \(\nu = \sqrt{\mu_r\eps_r}\) [1]},
 }
 \newglossaryentry{phy-k0}{
   type={phy},
   sort={kzero},
   name={\ensuremath{k_0}},
-  description={nombre d'onde dans le vide \(k_0=\frac{2\pi \gls{phy-f}}{\gls{phy-c}}\)},
+  description={nombre d'onde dans le vide \(k_0=\frac{2\pi \gls{phy-f}}{\gls{phy-c}}\) \([m^{-1}]\)},
+}
+\newglossaryentry{phy-k}{
+  type={phy},
+  sort={k},
+  name={\ensuremath{k}},
+  description={nombre d'onde dans le matériau \(k=\gls{phy-k0}\gls{phy-nu}\) \([m^{-1}]\)},
 }
 \newglossaryentry{phy-Mmn}{
   type={phy},
   sort={Mmn},
   name={\ensuremath{\vec{M_{m,n}}}},
-  description={harmonique sphérique d'ordre \(m\) et de degré \(n\)},
+  description={Vecteur harmonique sphérique d'ordre \(m\) \\ & et de degré \(n\) de 1er espèce},
 }
 \newglossaryentry{phy-Nmn}{
   type={phy},
   sort={Nmn},
   name={\ensuremath{\vec{N_{m,n}}}},
-  description={rotationnel d'une harmonique sphérique d'ordre \(m\) et de degré \(n\)},
+  description={Vecteur harmonique sphérique d'ordre \(m\) \\ & et de degré \(n\) de 2eme espèce},
 }
-
+\newglossaryentry{phy-J}{
+  type={phy},
+  sort={J},
+  name={\ensuremath{\vec{J}}},
+  description={Trace tangentielle sur \gls{mat-ga} de l'excitation \\ & magnétique \(\gls{phy-J} = \gls{mat-vn} \times \gls{phy-h2}\) \([V.m^{-1}]\)},
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -12,6 +12,8 @@
 
   \subsection{Équations intégrales}
 
+      La démonstration de ces formules dépassent le cadre de cette thèse et nous renvoyons à \cite[\textsection~5.6]{nedelec_mixed_1980}.
+
       Soit \(G\) la fonction de Green défini en tout point extérieur à \(\Gamma_h\) telle que
       \begin{equation}
         G(\vz) = \frac{e^{-ik_0|\vz|}}{4\pi|\vz|}
@@ -34,9 +36,6 @@
           \end{multline}
         \end{defn}
 
-        \begin{REF}
-          Mettre source de l'EFIE (Nédélec, p243 - 253)
-        \end{REF}
 
       \subsubsection{MFIE}
 
@@ -52,15 +51,9 @@
           \end{multline}
         \end{defn}
 
-        \begin{REF}
-          Mettre source de la MFIE (Nédélec, p243 - 253)
-        \end{REF}
-
   \subsection{Discrétisation de la surface de l'objet}
 
-    \begin{REF}
-      Mettre \cite{medgyesi-mitschang_integral_1985}
-    \end{REF}
+    La méthode numérique utilisé au CEA depuis les années 90 est basé sur l'article de \cite{medgyesi-mitschang_integral_1985}. Nous rappelons cette méthode en conservant les notations de \cite{stupfel_implementation_2015}.\\
 
     Soit \(\Gamma_h\) un maillage fermé de \(\Gamma\) en \(N_e\) éléments triangulaires. Soit \(N=\frac{3}{2}N_e\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
 

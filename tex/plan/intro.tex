@@ -10,33 +10,55 @@ Nous les rappellerons ainsi la méthode pour les obtenir puis nous montrerons qu
 
 Soit \(\OO\) un domaine fermé, bornée, de frontière régulière. Soit \(\vect{e_1},\vect{e_2},\vect{e_n}\) un repère local adapté à la surface de \(\OO\).
 
-Supposons qu'il existe des champs  qui vérifient les équations de Maxwell:
-\begin{equation}
+Supposons qu'il existe des champs \((\vE,\vect H)\) qui vérifient les équations de Maxwell:
+\begin{equation*}
     \left\lbrace
     \begin{matrix}
-    \vrot \vE(\vect{x},t) &=& -\mu(\vx) \ddr{t}{\vH}(\vx,t) \\
-    \vrot \vH(\vect{x},t) &=& \eps(\vx) \ddr{t}{\vE}(\vx,t)
+    \vrot \vE(\vect{x},t) &=& -\mu(\vx) \ddr{t}{\vect H}(\vx,t) \\
+    \vrot \vect H(\vect{x},t) &=& \eps(\vx) \ddr{t}{\vE}(\vx,t)
     \end{matrix}
     \right.
-\end{equation}
+\end{equation*}
 
 On suppose aussi que \(\eps\) et \(\mu\) sont constant par couche: \(\eps(x_1,x_2,x_n)=\eps(x_n)\).
 
-On suppose enfin que ces champs \(\vE(\vect{x},t),\vH(\vect{x},t)\) ont des transformées de Fourier partielles suivant les coordonnées tangentielles et le temps \(\hat{\vE}(k_1,k_2,x_n,\w), \hat{\vH}(k_1,k_2,x_n,\w)\) (\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995}) telle que
+On suppose enfin que ces champs \(\vE(\vect{x},t),\vect H(\vect{x},t)\) ont des transformées de Fourier partielles suivant les coordonnées tangentielles et le temps \(\hat{\vE}(k_1,k_2,x_n,\w), \hat{\vect H}(k_1,k_2,x_n,\w)\) (\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995}) telle que
 
+\begin{align*}
+    \hat{\vE} (k_1,k_2,x_n,\w) &= \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{-i(k_1x_1+k_2x_2+\w t)}\vE(x_1,x_2,x_n,t) \dd{x_1}\dd{x_2}\dd{t}
+    \\
+    \vE(x_1,x_2,x_n,t) &= \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{i(k_1x_1+k_2x_2+\w t)}\hat{\vE} (k_1,k_2,x_n,\w) \dd{k_1}\dd{k_2} \dd{\w}
+\end{align*}
+
+Dans cette thèse, on utilise les équations harmoniques de Maxwell ainsi on réalise au moins une transformée partielle en temps. La variable de Fourier associée est \(\w\), et donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\gls{phy-w}\).
+
+On va donc utiliser le système d'équations de Maxwell harmonique:
 \begin{equation}
-    \hat{\vE} (k_1,k_2,x_n,\w) = \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{-i(k_1x_1+k_2x_2+\w t)}\vE(x_1,x_2,x_n,t) \dd{x_1}\dd{x_2}\dd{t}
-\end{equation}
-\begin{equation}
-    \vE(x_1,x_2,x_n,t) = \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{i(k_1x_1+k_2x_2+\w t)}\hat{\vE} (k_1,k_2,x_n,\w) \dd{k_1}\dd{k_2} \dd{\w}
+    \left\lbrace
+    \begin{matrix}
+    \vrot \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)  &=& -i \omega \mu(x_n) \hat{\gls{phy-h}}(k_1,k_2,x_n,\w)  \\
+    \vrot \hat{\gls{phy-h}}(k_1,k_2,x_n,\w)  &=& i \omega \eps(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)
+    \end{matrix}
+    \right.
+    \label{eq:imp_fourier:intro:maxwell_harmonique}
 \end{equation}
 
-\begin{defn}
-    L'impédance est la matrice \(\hat\mZ(k_1,k_2,\w)\) telle que
-    \begin{equation*}
-        \hat{\vE}_t(k_1,k_2,0,\w) =  \hat{\mZ}(k_1,k_2,\w) \left(\vn \pvect \hat{\vH}(k_1,k_2,0,\w) \right)
-    \end{equation*}
-\end{defn}
+Afin d'utiliser les mêmes conventions que \cite{stupfel_implementation_2015}, on substitue au champ magnétique \gls{phy-h} l’excitation magnétique \gls{phy-h2}. Les équations de Maxwell harmoniques sont en définitive
+\begin{equation}
+    \left\lbrace
+    \begin{matrix}
+    \vrot \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)  &=& -i k(x_n) \eta_r(x_n) \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w)  \\
+    \vrot \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w)  &=& i k(x_n) \eta_r^{-1}(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)
+    \end{matrix}
+    \right.
+    \label{eq:imp_fourier:intro:maxwell_harmonique:form_cea}
+\end{equation}
+où \(\gls{phy-h2} = \gls{phy-eta0} \gls{phy-h}\), \(\eps(x_n)=\gls{phy-eps}_r(x_n)\gls{phy-eps0}\), \(\mu(x_n)=\gls{phy-mu}_r(x_n)\gls{phy-mu0}\), \(\eta_r(x_n)=\sqrt{\mu_r(x_n)/\eps_r(x_n)}\), \(\gls{phy-k}=\gls{phy-k0}\sqrt{\gls{phy-mu}_r(x_n)\gls{phy-eps}_r(x_n)}\), \(\gls{phy-k0} = \w\sqrt{\mu_0\eps_0}\) tel qu'en tout point extérieur de \(\OO\), \(\gls{phy-eps}_r(x_n) = \gls{phy-mu}_r(x_n)= 1\).
+
+Notre but est de prouver l'existence d'une matrice \(\hat\mZ(k_1,k_2,\w)\) telle que
+\begin{equation*}
+    \hat{\vE}_t(k_1,k_2,0,\w) =  \hat{\mZ}(k_1,k_2,\w) \left(\vn \pvect \hat{\vH}(k_1,k_2,0,\w) \right)
+\end{equation*}
 
 La méthode pour trouver une expression cette dernière est la suivante.
 \begin{itemize}
@@ -48,30 +70,4 @@ La méthode pour trouver une expression cette dernière est la suivante.
     \item En déduire la matrice d'impédance en Fourier.
 \end{itemize}
 
-Dans cette thèse, on utilise les équations harmonique de Maxwell ainsi on réalise au moins une transformée partielle en temps. La variable de Fourier associée est \(\w\), et donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\w\).
-
-On va donc utiliser le système d'équations de Maxwell harmonique:
-\begin{equation}
-    \left\lbrace
-    \begin{matrix}
-    \vrot \hat \vE(k_1,k_2,x_n,\w)  &=& -i \omega \mu(x_n) \hat \vH(k_1,k_2,x_n,\w)  \\
-    \vrot \hat \vH(k_1,k_2,x_n,\w)  &=& i \omega \eps(x_n) \hat \vE(k_1,k_2,x_n,\w)
-    \end{matrix}
-    \right.
-    \label{eq:imp_fourier:intro:maxwell_harmonique}
-\end{equation}
-
-A partir de maintenant, la dépendance en \(\w\) sera implicite: \(\hat \vE(\vx) \equiv \hat \vE (\vx, \w)\).
-
-Enfin, on remarque que les équations de Maxwell peuvent se réécrire
-\begin{equation}
-    \left\lbrace
-    \begin{matrix}
-    \vrot \hat \vE(k_1,k_2,x_n,\w)  &=& -i k(x_n) \eta_r(x_n) \hat{\mathcal{\vH}}(k_1,k_2,x_n,\w)  \\
-    \vrot \hat{\mathcal{\vH}}(k_1,k_2,x_n,\w)  &=& i k(x_n) \eta_r^{-1}(x_n) \hat \vE(k_1,k_2,x_n,\w)
-    \end{matrix}
-    \right.
-    \label{eq:imp_fourier:intro:maxwell_harmonique:form_cea}
-\end{equation}
-où \(\mathcal{\vH} = \eta_0\vH\), \(\epsilon(x_n)=\eps_r(x_n)\eps_0\), \(\mu(x_n)=\mu_r(x_n)\mu_0\), \(\eta_r(x_n)=\sqrt{\mu_r(x_n)/\eps_r(x_n)}\), \(k=k_0\sqrt{\mu_r(x_n)\eps_r(x_n)}\), \(k_0 = \w\sqrt{\mu_0\eps_0}\) tel qu'en tout point extérieur de \(\OO\), \(\eps_r(x_n) = \mu_r(x_n)= 1\).
-
+A partir de maintenant, la dépendance en \(\w\) sera implicite.

@@ -466,11 +466,11 @@
       \end{tikzpicture}
     \end{figure}
 
-    Soient \(r_p\) le rayon de l'interface \(p\), \(r_p = r_0 +\sum_{i=1}^{p} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(r_{p-1} \le r \le r_p \).
+    Soit \(r_p\) le rayon de l'interface \(p\), \(r_p = r_0 +\sum_{i=1}^{p} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(r_{p-1} \le r \le r_p \).
 
     \begin{defn}
       \label{def:cylindre:matrices_MJ-MH}
-      On définit les fonctions de \([r_{p-1}, r_p]\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
+      On définit les fonctions de \([r_{p-1}, r_p[\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{align*}
         \mM_{\mJ}(r,n,k_z,\mA) &= \mJ_{E}(r,n,k_z) -  \mA \mJ_{H}(r,n,k_z)
         \\
@@ -479,18 +479,20 @@
     \end{defn}
 
     \begin{defn}
-      \label{def:cylindre;reflexion:impedance}
-      On définit la fonction de \([r_{p-1}, r_p]\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
+      \label{def:cylindre:reflexion:impedance}
+      On définit la fonction de \([r_{p-1}, r_p[\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{align*}
         \mR(r,n,k_z,\mA) &= -\mM_{\mH}(r,n,k_z,\mA)^{-1}\mM_{\mJ}(r,n,k_z,\mA)
       \end{align*}
     \end{defn}
     A priori, pour \(r,n,k_z\) donné, \(\mR(r,n,k_z,\mA)\) n'est pas défini pour toute matrice \(\mA\).
 
+    On prolonge ces définitions aux autres couches.
+
     \begin{defn}%[Fonction de transfert]{}~
       \label{def:cylindre:transfert:impedance}
 
-      On définit \(\mT_p\) la fonction de \([r_{p-1}, r_p]^2\times\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
+      On définit \(\mT_p\) la fonction de \([r_{p-1}, r_p[^2\times\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{multline*}
         \mT_p(r,r',n,k_z,\mA) = \\
           \left(\mJ_{E}(r,n,k_z)\mM_{\mJ}(r',n,k_z,\mA)^{-1} - \mH_{E}(r,n,k_z)\mM_{\mH}(r',n,k_z,\mA)^{-1}\right) 
@@ -566,7 +568,7 @@
         \end{bmatrix}
       \end{equation*}
 
-      On suppose que les matrices \(\mM_{\mJ}(r_p,n,k_z,\hat\mZ_p(n,k_z)), \mM_{\mH}(r_p,n,k_z,\hat\mZ_p(n,k_z))\) sont inversibles pour tout \((n,k_z)\) donc
+      On suppose que les matrices \(\mM_{\mJ}(r_p,n,k_z,\hat\mZ_p(n,k_z)), \mM_{\mH}(r_p,n,k_z,\hat\mZ_p(n,k_z))\) sont inversibles pour donc
       \begin{equation*}
         \begin{bmatrix}
           c_2(n,k_z) \\
@@ -634,7 +636,7 @@
     \end{prop}
 
     \begin{proof}
-      Même méthodologie que pour la proposition \ref{prop:cylindre:transfert}.
+      Même méthodologie que pour la proposition \ref{prop:cylindre:transfert:impedance}.
     \end{proof}
 
     \begin{prop}%[Corollaire aux théorèmes de transfert et de relèvement.]{}~
@@ -785,7 +787,7 @@
       \begin{align*}
         \vE_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z)
         \\
-        \vE_t(r_{p}^+,n,k_z) &= \mN_{H}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\\hatmR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z)
+        \vE_t(r_{p}^+,n,k_z) &= \mN_{H}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z)
       \end{align*}
     \end{prop}
 
