@@ -708,9 +708,9 @@
       \end{align*}
       alors
       \begin{align*}
-        \vE_t(r_{p}^-,k_x,k_y) &= \mN_{E}(k_x,k_y,z_p^-,\mathfrak{T}_p(k_x,k_y,z_p^-,z_p^+,\hat\mR_{p+1}(k_x,k_y)))\vect{C}_{p}(k_x,k_y)
+        \vE_t(k_x,k_y,z_p^-) &= \mN_{E}(k_x,k_y,z_p^-,\mathfrak{T}_p(k_x,k_y,z_p^-,z_p^+,\hat\mR_{p+1}(k_x,k_y)))\vect{C}_{p}(k_x,k_y)
         \\
-        \vE_t(r_{p}^-,k_x,k_y) &= \mN_{H}(k_x,k_y,z_p^-,\mathfrak{T}_p(k_x,k_y,z_p^-,z_p^+,\hat\mR_{p+1}(k_x,k_y)))\vect{C}_{p}(k_x,k_y)
+        \vE_t(k_x,k_y,z_p^-) &= \mN_{H}(k_x,k_y,z_p^-,\mathfrak{T}_p(k_x,k_y,z_p^-,z_p^+,\hat\mR_{p+1}(k_x,k_y)))\vect{C}_{p}(k_x,k_y)
       \end{align*}
     \end{prop}
 
@@ -769,9 +769,9 @@
 
       On suppose qu'il existe \(\hat\mR_{p}(k_x,k_y)\) telle que 
       \begin{align*}
-        \vE_t(r_{p}^-,k_x,k_y) &= \mN_{E}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y)
+        \vE_t(k_x,k_y,z_p^-) &= \mN_{E}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y)
         \\
-        \vect{e_r}\pvect\vH(r_{p}^-,k_x,k_y) &= \mN_{H}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y)
+        \vect{e_r}\pvect\vH(k_x,k_y,z_p^-) &= \mN_{H}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y)
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -799,9 +799,9 @@
       On suppose qu'il existe \(\hat\mR_{p}(k_x,k_y)\) et \(\hat\mR_{p+1}(k_x,k_y)\) telles que 
       \begin{align*}
       &\left\lbrace\begin{aligned}
-        \vE_t(r_{p}^-,k_x,k_y) &= \mN_{E}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y)
+        \vE_t(k_x,k_y,z_p^-) &= \mN_{E}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y)
         \\
-        \vect{e_r}\pvect\vH(r_{p}^-,k_x,k_y) &= \mN_{H}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y)
+        \vect{e_r}\pvect\vH(k_x,k_y,z_p^-) &= \mN_{H}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y)
         \end{aligned}
       \right.
       \\
@@ -838,7 +838,7 @@
 
   La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte. Dans cet ouvrage, la matrice n’est pas exactement la même ( voir annexe \ref{sec:annexe:hoppe} ) et on pose \(\hat{\mathfrak{Z}} = \hat{\mZ}\begin{bmatrix}0&1\\-1&0\end{bmatrix}\) la matrice d'impédance utilisée par Hoppe.
 
-  On applique les hypothèses précédentes, donc \(k_y=0\). On remarque que pour \(k_x\slash k_0=2\), \(k_3\) est nul et l'impédance n'est pas définie en ce point. 
+  On applique les hypothèses précédentes, donc \(k_y=0\). On remarque que pour \(k_x\slash k_0=2\), \(k_3(k_x,k_y,0^-)\) est nul et l'impédance n'est pas définie en ce point. 
 
   Comme le matériau n'a pas de perte, la partie réelle de \(\hat{\mathfrak{\mZ}}\) est nulle et n'est donc pas tracée.
 
