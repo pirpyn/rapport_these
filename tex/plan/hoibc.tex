@@ -2,7 +2,7 @@
 
   \subsection[Expression des opérateurs LD, LR en Fourier]{Expression des opérateurs \(\LD\), \(\LR\) en Fourier}
     \label{sec:plan:hoibc:LD-LR}
-    Soit un plan d'équation \(z=0\) et \((x,y,z)\) les coordonnées plan d'un point de l'espace.
+    Soient \((x,y,z)\) les coordonnées plan d'un point de l'espace et un plan d'équation \(z=0\).
 
     Soit \(V = \left(\mathcal{C}^\infty(\RR^2)\right)^2 \cap L^2(\RR^2)\) l'espace des fonctions infiniment dérivables définies sur ce plan et de carré intégrable.
 
@@ -37,7 +37,7 @@
       \begin{align*}
         \LD \vect{U} & = \vgrads{} \vdivs{} \vect{U}
       \end{align*}
-      On utilise les expression en coordonnées cartésiennes des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
+      On utilise les expressions en coordonnées cartésiennes des opérateurs différentiels (voir annexe \ref{sec:annexe:div_grad_rot}).
       \begin{align*}
         \vdivs{\vect{U}}(x,y,z) &= \ddr{x}{U_x}(x,y,z) + \ddr{y}{U_z}(x,y,z)
         \\
@@ -93,9 +93,9 @@
       \begin{align*}
         \LR \vect{U} & = \vrots{} (\rots{} \vect{U})
       \end{align*}
-      On utilise les expression en coordonnées cartésiennes des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
+      On utilise les expressions en coordonnées cartésiennes des opérateurs différentiels (voir annexe \ref{sec:annexe:div_grad_rot}).
       \begin{align*}
-        \rots{\vect{U}}(x,y,z) &= \ddr{x}{U_z}(x,y,z) - \ddr{y}{U_x}(x,y,z)
+        \rots{\vect{U}}(x,y,z) &= \ddr{x}{U_y}(x,y,z) - \ddr{y}{U_x}(x,y,z)
         \\
         \vrots{f}(x,y,z) &= \ddr{y}{f}(x,y,z)\vect{e_x} - \ddr{x}{f}(x,y,z)\vect{e_y}
       \end{align*}
