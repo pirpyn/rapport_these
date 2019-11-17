@@ -32,7 +32,7 @@
     \begin{prop}
       Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((n,k_z)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre, alors
       \begin{equation*}
-        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,k_z,X) - \hat\mZ_{ex}(n,k_z)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,k_z,\hat\mZ_{ex}(n,k_z))X - b(\hat\mZ_{ex}(n,k_z))}
+        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,k_z,X) - \hat\mZ_{ex}(n,k_z)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,k_z,\hat\mZ_{ex}(n,k_z))X - b(\hat\mZ_{ex}(n,k_z))}^2
       \end{equation*}
     \end{prop}
 
@@ -97,7 +97,7 @@
     \begin{defn}
       On définit la fonctionnelle \(J_Z\)
       \begin{equation*}
-        J_Z(X) = \norm{{\mA}_{CI3}X - {g}}
+        J_Z(X) = \norm{{\mA}_{CI3}X - {g}}^2
       \end{equation*}
     \end{defn}
     \begin{thm}[Minimisation sans contraintes pour la CI3]
@@ -119,19 +119,19 @@
     \end{prop}
 
     \begin{proof}
-      Soit \(\left<\cdot,\cdot\right>\) le produit scalaire associé à la norme \(\norm{\cdot}\). Soit \(J\) la fonctionnelle telle que
+      Soit \(\ps{\cdot}{\cdot}\) le produit scalaire associé à la norme \(\norm{\cdot}\). Soit \(J\) la fonctionnelle telle que
       \begin{align*}
-      J(X) &= \norm{\mA_{CI3}X - g} 
+      J(X) &= \norm{\mA_{CI3}X - g}^2
       \\
-      &= \left<\mA_{CI3}X - g,\mA_{CI3}X - g\right>
-      \intertext{le produit scalaire est symétrique donc \(\left<a,b\right> = \left<b,a\right>\)}
-      &=\left<\mA_{CI3}X,\mA_{CI3}X\right> - 2\left<\mA_{CI3}X,g\right> + \left<g,g\right>
+      &= \ps{\mA_{CI3}X - g}{\mA_{CI3}X - g}
+      \intertext{le produit scalaire est symétrique donc \(\ps{a}{b} = \ps{b}{a}\)}
+      &=\ps{\mA_{CI3}X}{\mA_{CI3}X} - 2\ps{\mA_{CI3}X}{g} + \ps{g}{g}
       \\
-      &=\left<X,\conj{\mA_{CI3}^t}\mA_{CI3}X\right> - 2\left<X,\conj{\mA_{CI3}^t}g\right> + \left<g,g\right>
+      &=\ps{X}{\conj{\mA_{CI3}^t}\mA_{CI3}X} - 2\ps{X}{\conj{\mA_{CI3}^t}g} + \ps{g}{g}
       \end{align*}
       Si la matrice \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, comme elle est par définition hermitienne et positive alors la fonctionnelle est quadratique. Donc il existe une unique minimum où le gradient de cette fonctionnelle s'annule. Or
       \begin{align*}
-        \nabla J(X^*) &= 2\conj{\mA_{CI3}^t}\mA_{CI3}X^* - 2\conj{\mA_{CI3}^t}g
+        \nabla J_Z(X^*) &= 2\conj{\mA_{CI3}^t}\mA_{CI3}X^* - 2\conj{\mA_{CI3}^t}g
         \\ 
         &= 0
       \end{align*}

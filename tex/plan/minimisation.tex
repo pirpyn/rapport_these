@@ -137,11 +137,11 @@
     \end{proof}
 
     \begin{defn}
-      Soit \(\ps{\cdot}{\cdot}\) le produit scalaire usuel de \(\CC^{N_{k}}\)
+      Soit \(\ps{\cdot}{\cdot}\) le produit scalaire usuel de \(\CC^{N_{k}}\) et \(\norm{\cdot}\) la norme associée.
       \begin{equation*}
         \ps{a}{b} = \sum_{i=1}^{N_k} \conj{a_i} b_i
       \end{equation*}
-      Soit \(\ps{\cdot}{\cdot}_F\) le produit scalaire usuel de \(\mathcal{M}_2(\CC)\)
+      Soit \(\ps{\cdot}{\cdot}_F\) le produit scalaire usuel de \(\mathcal{M}_2(\CC)\) et \(\norm{\cdot}_F\) la norme associée.
       \begin{equation*}
         \ps{\mA}{\mB}_F = \operatorname{Tr}(\conj{\mA^t}\mB)
       \end{equation*}
@@ -150,14 +150,14 @@
     \subsubsection{Existence du minimum pour la CI01}
 
       \begin{prop}
-        La matrice \({\mM}\) associé à la CI01 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{xi},k_{yi})\) différents.
+        La matrice \({\mM}_{CI01}\) associé à la CI01 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{xi},k_{yi})\) différents.
       \end{prop}
 
       \begin{proof}
         Soit \(t\) le vecteur de \(\RR^{N_{k}}\) tel que \(t_i = k_{xi}^2 + k_{yi}^2\) et \(1\) le vecteur de \(\RR^{N_{k}}\) tel que \(1_i = 1\). On a l'expression suivante de \({\mM}\)
 
         \begin{equation*}
-          {\mM} = 2\begin{bmatrix}
+          {\mM}_{CI01} = 2\begin{bmatrix}
           N_{k} & -\sum_{i=1}^{N_{k}} t_i
           \\
           -\sum_{i=1}^{N_{k}} t_i & \sum_{i=1}^{N_{k}} t_i^2
@@ -165,9 +165,9 @@
         \end{equation*}
         Pour prouver son inversibilité, on exprime son déterminant 
         \begin{align*}
-          \det( {\mM}) &= 4\left(N_{k}\sum_{i=1}^{N_{k}} t_i^2 - \left( \sum_{i=1}^{N_{k}} t_i\right)^2\right)
+          \det( {\mM}_{CI01}) &= 4\left(N_{k}\sum_{i=1}^{N_{k}} t_i^2 - \left( \sum_{i=1}^{N_{k}} t_i\right)^2\right)
           \\
-          \det( {\mM}) &= 4\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right)
+           &= 4\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right)
         \end{align*}
         Donc d'après Cauchy–Schwarz (voir \cite[\href{https://dlmf.nist.gov/1.7\#E1}{eq.~1.7.1}]{dlmf_nist_2019}), le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est-à-dire n'importe quel vecteur ayant au moins deux composantes différentes.
       \end{proof}
@@ -175,12 +175,12 @@
     \subsubsection{Existence du minimum pour la CI4}
 
       \begin{prop}
-        La matrice \({\mM}\) associé à la CI4 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{xi},k_{yi})\) différents.
+        La matrice \({\mM}_{CI4}\) associé à la CI4 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{xi},k_{yi})\) différents.
       \end{prop}
 
       \begin{proof}
         \begin{equation*}
-          {\mM} = \begin{bmatrix}
+          {\mM}_{CI4} = \begin{bmatrix}
           2\ps{1}{1} & -\ps{1}{t} & -\ps{1}{t}
           \\
           -\ps{1}{t} & \ps{t}{t}  & 0
@@ -190,38 +190,35 @@
         \end{equation*}
         Pour prouver son inversibilité, on exprime son déterminant 
         \begin{align*}
-          \det( {\mM}) &= 2\ps{t}{t}\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right)
+          \det({\mM}_{CI4}) &= 2\ps{t}{t}\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right)
         \end{align*}
         Donc d'après Cauchy–Schwarz (voir \cite[\href{https://dlmf.nist.gov/1.7\#E1}{eq.~1.7.1}]{dlmf_nist_2019}), le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est-à-dire n'importe quel vecteur ayant au moins deux composantes différentes.
       \end{proof}
 
-      \subsubsection{Existence du minimum pour la CI1}
+      \subsubsection{Cas de la CI1 \& la CI3}
 
-      \begin{prop}
-        La matrice \({\mM}\) associé à la CI01 est inversible, donc définie, si et seulement
-      \end{prop}
+
+      L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière. Nous n'avons pas réussi à prouver que ces matrices étaient définies. Cependant nous avons vérifié numériquement qu'elles l'étaient pour tous les empilements que nous avons testés.
 
       \begin{proof}
-        Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\mI}{\hat{\mZ}(k_{xi},k_{yi})}_F\). On a l'expression suivante de \({\mM}\)
+        Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\mI}{\hat{\mZ}(k_{xi},k_{yi})}_F\) et \(z\) le vecteur de \(\RR^{N_{k}}\) tel que \(z_i = \norm{\hat{\mZ}(k_{xi},k_{yi})}_F^2\). On a l'expression suivante de \({\mM}\)
 
         \begin{equation*}
-          {\mM} = \begin{bmatrix}
-          2\ps{1}{1}  & -\ps{t}{1} & \ps{t}{s}
+          {\mM}_{CI1} = \begin{bmatrix}
+          2\ps{1}{1}  & -2\ps{t}{1} & \ps{t}{s}
           \\
-          -\ps{t}{1} & \ps{t}{t} & -\sum_{i=1}^{N_{k}} t_i^2 s_i
+          -2\ps{t}{1} & 2\ps{t}{t} & -\sum_{i=1}^{N_{k}} t_i^2 s_i
           \\
-          \ps{s}{t} & -\sum_{i=1}^{N_{k}} t_i^2 \conj{s_i} & \sum_{i=1}^{N_{k}} t_i^2 |s_i|^2
+          \ps{t}{\conj{s}} & -\sum_{i=1}^{N_{k}} t_i^2 \conj{s_i} & \sum_{i=1}^{N_{k}} t_i^2 z_i
           \end{bmatrix}
         \end{equation*}
         Pour prouver son inversibilité, on exprime son déterminant 
-        \begin{align*}
-          \det( {\mM}) &= 
-        \end{align*}
+        \begin{multline*}
+          \det( {\mM}_{CI1}) = \ps{t^2}{z}\det({\mM}_{CI01}) + 4 \ps{t}{1}\Re\left(\ps{t^2}{s}\ps{t}{\conj{s}}\right)
+          \\
+          - 2\norm{t}^2|\ps{t}{s}|^2 - 2 N_k|\ps{t^2}{s}|^2
+        \end{multline*}
       \end{proof}
-
-      \subsubsection{Existence du minimum pour la CI3}
-
-        L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière. Nous n'avons pas réussi à prouver que cette matrice était définie. Cependant nous avons vérifié numériquement qu'elle l'était pour tous les empilements que nous avons testés.
 
   \subsection{Résultats numériques sans contraintes}
 
@@ -361,3 +358,5 @@
     X_{CI}^* = \argmin{X \in SUC(CI)} \left\lVert {\mH}(CI)X_{CI} - {b}\right\rVert^2_{\RR^{Ni}}
   \]
   \end{prop}
+
+  
