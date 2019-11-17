@@ -1,126 +1,177 @@
-\section{Calcul des coefficient des CIOE par moindres carrés}
+\section{Calcul des coefficients de la CI3 par moindres carrés sur l'impédance}
 
-% Pour calculer les coefficients, nous minimisons par moindres carrés
-% \begin{itemize}
-%   \item dans le cas du plan infini la différence entre l'impédance \(\hat\mZ_{ex}(k_x,k_y)\) et son approximation \(\hat\mZ_{ap}(k_x,k_y)\);
-%   \item dans le cas du cylindre infini la différence entre les coefficients de Fourier \(\hat\mF_{ex}(n,k_z)\) et leurs approximations \(\hat\mF_{ap}(n,k_z)\);
-%   \item dans le cas de la sphère la différence entre les coefficients de Mie \(\hat\mM_{ex}(n,m)\) et leurs approximations \(\hat\mM_{ap}(n,m)\);
-% \end{itemize}
-% Toutes ces quantités ont été définies aux chapitres \ref{sec:chap1} et \ref{sec:chap2}
+    On se donne \(N_x\) \(k_x\) et \(N_y\) \(k_y\). Il existe donc \(N_k=N_xN_y\) couples tels que \((k_{xi},k_{yj}) = (k_x,k_y)_{(j-1)N_x+i}\).
+    \begin{defn}
+      Soit \(\ps{\cdot}{\cdot}\) le produit scalaire usuel de \(\CC^{N_{k}}\) et \(\norm{\cdot}\) la norme associée.
+      \begin{equation*}
+        \ps{a}{b} = \sum_{i=1}^{N_k} \conj{a_i} b_i
+      \end{equation*}
+      Soit \(\ps{\cdot}{\cdot}_F\) le produit scalaire usuel de \(\mathcal{M}_2(\CC)\) et \(\norm{\cdot}_F\) la norme associée.
+      \begin{equation*}
+        \ps{\mA}{\mB}_F = \operatorname{Tr}(\conj{\mA^t}\mB)
+      \end{equation*}
+    \end{defn}
 
-\subsection{Expression des moindre carrés dans le cadre de l'approximation plan infini}
-  Pour toutes les CIOE, on cherche à approcher la matrice \(\hat\mZ_{ex}(k_x,k_y)\) par \(\hat\mZ_{CI}(k_x,k_y)\). 
+  \subsection{Expression de la fonctionnelle}
 
-  \begin{prop}
-    Soit \(N_k\) le nombre de couples \((k_x,k_y)\).
-    Il existe une matrice \(\mH(CI,\hat\mZ_{ex})\) et un vecteur \(X(CI)\) de \(\CC^{N_{CI}}\) composé des coefficients de la CIOE choisie, tels que minimiser selon la norme euclidienne
-    \begin{align*}
-      \left\lVert \hat\mZ_{ap}(k_x,k_y)-\hat\mZ_{ex}(k_x,k_y)\right\rVert^2_{eucl} & & \text{pour tous \((k_x,k_y)\)}
-    \end{align*}
-    revient à minimiser selon une norme équivalente mais dépendante de la CI, la fonctionnelle
-    \[ 
-      F(CI) = \left\lVert  \mH(CI,\hat\mZ_{ex}) X(CI) - b(\hat\mZ_{ex}) \right\rVert^2_{CI}
-    \]
-    La matrice \(\mH\) a \(4N_{k}\) lignes, \(N_{CI}\) colonnes et le vecteur colonne \(b\) a \(4N_{k}\) coefficients
-  \end{prop}
-
-  \begin{proof}
-    Nous démontrons ce résultat pour la \hyperlink{ci3}{CI3} où les termes \(k_0^2\) sont omis, la matrice \(\mH\) et le vecteur \(X\) des autres CIOE se déduisent facilement.
-
-    Soient les matrices symétriques \(\hat\mLD, \hat\mLR\) telles que
-    \begin{align*}
-      \hat\mLD(k_x,k_y) & = - \begin{bmatrix} k_x^2 & k_x k_y \\ k_x k_y & k_y^2 \end{bmatrix}
-      \\
-      \hat\mLR(k_x,k_y) & =  \begin{bmatrix} k_y^2 & -k_x k_y \\ -k_x k_y &  k_x^2 \end{bmatrix}
-    \end{align*}
-    Soit \((k_{x},k_{y})\) un couple parmi ceux que l'on se donne. Pour ce couple, par définition, on a
-    \begin{align*}
-    \left\lVert \hat\mZ_{ap}-\hat\mZ_{ex}\right\rVert^2_{eucl} &= \left\lVert \left(\mI + b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)^{-1}\left(a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR}\right)-\hat\mZ_{ex} \right\rVert^2_{eucl}
-    \\
-    \intertext{Posons pour alléger les formules \(\hat{\mZ}_N = a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR}\) et \(\hat{\mZ}_D = \mI + b_1 \hat{\mLD} - b_2 \hat{\mLR}\)}
-    \left\lVert \hat\mZ_{ap}-\hat\mZ_{ex}\right\rVert^2_{eucl} &= \left\lVert \hat{\mZ}_D^{-1}\hat\mZ_N-\hat\mZ_{ex} \right\rVert^2_{eucl}
-    \\
-    &= \left\lVert \hat{\mZ}_D^{-1}\left(\hat{\mZ}_N-\hat{\mZ}_D\hat\mZ_{ex}\right) \right\rVert^2_{eucl}
-    \\
-    \intertext{On sépare alors \(\hat{\mZ}_D\) en deux parties}
-    \left\lVert \hat\mZ_{ap}-\hat\mZ_{ex}\right\rVert^2_{eucl} &= \left\lVert \hat{\mZ}_D^{-1}\left(\hat{\mZ}_N - \left(b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)\hat\mZ_{ex} - \hat\mZ_{ex}\right)\right\rVert^2_{eucl}
-    \intertext{On voit alors apparaitre une nouvelle norme}
-    \left\lVert \hat\mZ_{ap}-\hat\mZ_{ex}\right\rVert^2_{eucl} &= \left\lVert \hat{\mZ}_N - \left(b_1 \hat{\mLD} - b_2 \hat{\mLR}\right)\hat\mZ_{ex} - \hat\mZ_{ex}\right\rVert^2_{\hat{\mZ}_D^{-1}}
-  \end{align*}
-  On réorganise alors les matrices \(\hat{\mZ}_N,\hat{\mLD},\hat{\mLR}\) comme des vecteurs colonnes, on obtient alors une partie du système final
-  \begin{align*}
-      \mH_{k_{x},k_{y}}(CI3,\hat\mZ) = \begin{bmatrix}
-      1 & \hat{\mLD}_{11} & -\hat{\mLR}_{11} & -\left(\hat{\mLD}\hat\mZ\right)_{11} & \left(\hat{\mLR}\hat\mZ\right)_{11}
-      \\
-      0 & \hat{\mLD}_{12} & -\hat{\mLR}_{12} & -\left(\hat{\mLD}\hat\mZ\right)_{12} & \left(\hat{\mLR}\hat\mZ\right)_{12}
-      \\
-      0 & \hat{\mLD}_{21} & -\hat{\mLR}_{21} & -\left(\hat{\mLD}\hat\mZ\right)_{21} & \left(\hat{\mLR}\hat\mZ\right)_{21}
-      \\
-      1 & \hat{\mLD}_{22} & -\hat{\mLR}_{22} & -\left(\hat{\mLD}\hat\mZ\right)_{22} & \left(\hat{\mLR}\hat\mZ\right)_{22}
-      \end{bmatrix}
-  \end{align*}
-  \begin{align*}
-      b_{k_{x},k_{y}}(\hat\mZ_{ex}) = \begin{bmatrix}
-      \hat\mZ_{11}
-      \\
-      \hat\mZ_{12}
-      \\
-      \hat\mZ_{21}
-      \\
-      \hat\mZ_{22}
-      \end{bmatrix} && X = \begin{bmatrix} a_0 \\ a_1 \\ a_2 \\ b_1 \\ b_2 \end{bmatrix}
-  \end{align*}
-  Le système final est obtenu en prenant en compte tous les couples, soit
-  \begin{align*}
-      \mH(CI3,\hat\mZ) = 
-      \begin{bmatrix}
-        \mH_{k_{x1},k_{y1}}(CI3,\hat\mZ)
+    \begin{defn}
+      On définit \(\mH_{CI3}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
+      \begin{equation*}
+        \mH_{CI3}(k_x,k_y,\mA) = \begin{bmatrix}
+        1 & \hat{\mLD}(k_x,k_y)_{11} & -\hat{\mLR}(k_x,k_y)_{11} & -\left(\hat{\mLD}(k_x,k_y){\mA}\right)_{11} & \left(\hat{\mLR}(k_x,k_y){\mA}\right)_{11}
         \\
-        \vdots
+        0 & \hat{\mLD}(k_x,k_y)_{12} & -\hat{\mLR}(k_x,k_y)_{12} & -\left(\hat{\mLD}(k_x,k_y){\mA}\right)_{12} & \left(\hat{\mLR}(k_x,k_y){\mA}\right)_{12}
         \\
-        \mH_{k_{xn},k_{yn}}(CI3,\hat\mZ)
-      \end{bmatrix}
-      &&  b(\hat\mZ) = 
-      \begin{bmatrix}
-        b_{k_{x1},k_{y1}}(\hat\mZ)
+        0 & \hat{\mLD}(k_x,k_y)_{21} & -\hat{\mLR}(k_x,k_y)_{21} & -\left(\hat{\mLD}(k_x,k_y){\mA}\right)_{21} & \left(\hat{\mLR}(k_x,k_y){\mA}\right)_{21}
         \\
-        \vdots
+        1 & \hat{\mLD}(k_x,k_y)_{22} & -\hat{\mLR}(k_x,k_y)_{22} & -\left(\hat{\mLD}(k_x,k_y){\mA}\right)_{22} & \left(\hat{\mLR}(k_x,k_y){\mA}\right)_{22}
+        \end{bmatrix}
+      \end{equation*}
+      On définit \(b\) la fonction de \(\mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
+      \begin{equation*}
+        b(\mA) = \begin{bmatrix}
+        {\mA}_{11}
         \\
-        b_{k_{xn},k_{yn}}(\hat\mZ)
-      \end{bmatrix}
-  \end{align*}
-
-  % \begin{align}
-  %     \mH(CI3,\hat\mZ) = \begin{bmatrix}
-  %     1 & \hat{\mLD}_{11}(k_{x1},k_{y1}) & -\hat{\mLR}_{11}(k_{x1},k_{y1}) & -\left(\hat{\mLD}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{11} & \left(\hat{\mLR}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{11}
-  %     \\
-  %     0 & \hat{\mLD}_{12}(k_{x1},k_{y1}) & -\hat{\mLR}_{12}(k_{x1},k_{y1}) & -\left(\hat{\mLD}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{12} & \left(\hat{\mLR}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{12}
-  %     \\
-  %     0 & \hat{\mLD}_{21}(k_{x1},k_{y1}) & -\hat{\mLR}_{21}(k_{x1},k_{y1}) & -\left(\hat{\mLD}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{21} & \left(\hat{\mLR}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{21}
-  %     \\
-  %     1 & \hat{\mLD}_{22}(k_{x1},k_{y1}) & -\hat{\mLR}_{22}(k_{x1},k_{y1}) & -\left(\hat{\mLD}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{22} & \left(\hat{\mLR}(k_{x1},k_{y1})\hat\mZ(k_{x1},k_{y1})\right)_{22}
-  %     \\
-  %     \vdots & \vdots & \vdots & \vdots & \vdots
-  %     \\
-  %     1 & \hat{\mLD}_{11}(k_{xn},k_{yn}) & -\hat{\mLR}_{11}(k_{xn},k_{yn}) & -\left(\hat{\mLD}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{11} & \left(\hat{\mLR}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{11}
-  %     \\
-  %     0 & \hat{\mLD}_{12}(k_{xn},k_{yn}) & -\hat{\mLR}_{12}(k_{xn},k_{yn}) & -\left(\hat{\mLD}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{12} & \left(\hat{\mLR}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{12}
-  %     \\
-  %     0 & \hat{\mLD}_{21}(k_{xn},k_{yn}) & -\hat{\mLR}_{21}(k_{xn},k_{yn}) & -\left(\hat{\mLD}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{21} & \left(\hat{\mLR}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{21}
-  %     \\
-  %     1 & \hat{\mLD}_{22}(k_{xn},k_{yn}) & -\hat{\mLR}_{22}(k_{xn},k_{yn}) & -\left(\hat{\mLD}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{22} & \left(\hat{\mLR}(k_{xn},k_{yn})\hat\mZ(k_{xn},k_{yn})\right)_{22}
-  %     \end{bmatrix}
-  % \end{align}
-  \end{proof}
-
-  \subsection{Existence et unicité du minimum}
+        {\mA}_{12}
+        \\
+        {\mA}_{21}
+        \\
+        {\mA}_{22}
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
 
     \begin{prop}
-      Il existe un unique minimum si la matrice \(\conj{\mH^t}{\mH}\) est inversible
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((k_x,k_y)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du plan, alors
+      \begin{equation*}
+        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(k_x,k_y,X) - \hat\mZ_{ex}(k_x,k_y)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(k_x,k_y,\hat\mZ_{ex}(k_x,k_y))X - b(\hat\mZ_{ex}(k_x,k_y))}
+      \end{equation*}
     \end{prop}
 
     \begin{proof}
-      On remarque que la fonctionnelle \(F\) est quadratique si la matrice \(\mM=\conj{\mH^t}{\mH}\) est hermitienne définie positive. Une matrice \(A\) est hermitienne si \(\forall x, \conj{x^t}Ax \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}Ax \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}Ax \in \RR^{+*}\).
+      On rappelle que dans la section précédente, on a introduit
+      \begin{multline*}
+        \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y) \right)^{-1}\\\left(a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)}\right)
+      \end{multline*}
+      On pose
+      \begin{align*}
+        \hat\mZ_D(k_x,k_y) &= \mI + b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y)
+        \\
+        \hat\mZ_N(k_x,k_y) &= a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)}
+      \end{align*}
+
+      \begin{align*}
+      &{}~ \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(k_x,k_y,X) - \hat\mZ_{ex}(k_x,k_y)}
+      \\
+      & = \argmin{X\in\CC^5} \norm{\hat\mZ_D(k_x,k_y)^{-1}\hat\mZ_N(k_x,k_y) - \hat\mZ_{ex}(k_x,k_y) }
+      \\
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_D(k_x,k_y)^{-1}\left(\hat\mZ_N(k_x,k_y) - \hat\mZ_D(k_x,k_y)\hat\mZ_{ex}(k_x,k_y)\right) }
+      \\
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(k_x,k_y) - \hat\mZ_D(k_x,k_y)\hat\mZ_{ex}(k_x,k_y)}
+      \\
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(k_x,k_y) - \left(b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y)\right)\hat\mZ_{ex}(k_x,k_y) - \hat\mZ_{ex}(k_x,k_y) }
+      \\
+      &= \argmin{X\in\CC^5} \norm{\mH_{CI3}(k_x,k_y,\hat\mZ_{ex}(k_x,k_y))X - b(\hat\mZ_{ex}(k_x,k_y))}
+      \end{align*}
+    \end{proof}
+
+    \begin{defn}
+      On définit \(\mA_{CI3}\) la matrice de \(\mathcal{M}_{4N_xN_y\times5}(\CC)\) telle que
+      \begin{equation*}
+        \mA_{CI3} = 
+        \begin{bmatrix}
+          \mH_{CI3}(k_{x1},k_{y1},\hat\mZ_{ex}(k_{x1},k_{y1}))
+          \\
+          \vdots
+          \\
+          \mH_{CI3}(k_{xi},k_{yj},\hat\mZ_{ex}(k_{xi},k_{yj}))
+          \\
+          \vdots
+          \\
+          \mH_{CI3}(k_{xN_x},k_{yN_y},\hat\mZ_{ex}(k_{xN_x},k_{yN_y}))
+        \end{bmatrix}
+      \end{equation*}
+      On définit \(g\) la matrice de \(\mathcal{M}_{4N_xN_y\times1}(\CC)\) telle que
+      \begin{equation*}
+        g = 
+        \begin{bmatrix}
+          b(\hat\mZ_{ex}(k_{x1},k_{y1}))
+          \\
+          \vdots
+          \\
+          b(\hat\mZ_{ex}(k_{xi},k_{yj}))
+          \\
+          \vdots
+          \\
+          b(\hat\mZ_{ex}(k_{xN_x},k_{yN_y}))
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
+
+    On peut alors calculer les coefficients de la CI3
+    \begin{defn}
+      On définit la fonctionnelle \(J_Z\)
+      \begin{equation*}
+        J_Z(X) = \norm{{\mA}_{CI3}X - {g}}^2
+      \end{equation*}
+    \end{defn}
+
+    \begin{thm}[Minimisation sans contraintes pour la CI3]
+      Les coefficients de la CIOE sont solutions du problème
+
+      Trouver \(X^* \in \CC^5\) tel que
+      \begin{equation*}
+        X^* = \argmin{X\in \CC^5}  J_Z(X)
+      \end{equation*}
+    \end{thm}
+
+    \begin{prop}
+      \label{prop:plan:minimisation:minimum_sans_contraintes}
+      Si \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible alors
+      \begin{equation*}
+        X^* = (\conj{\mA_{CI3}^t}\mA_{CI3})^{-1}(\conj{\mA_{CI3}^t}g)
+      \end{equation*}
+    \end{prop}
+
+    \begin{proof}
+      \begin{align*}
+      J_Z(X) &= \norm{\mA_{CI3}X - g}^2
+      \\
+      &= \ps{\mA_{CI3}X - g}{\mA_{CI3}X - g}
+      \intertext{le produit scalaire est hermitien donc}
+      &=\ps{\mA_{CI3}X}{\mA_{CI3}X} - \ps{\mA_{CI3}X}{g} - \ps{g}{\mA_{CI3}X} + \ps{g}{g}
+      \\
+      &=\ps{X}{\conj{\mA_{CI3}^t}\mA_{CI3}X} - \ps{X}{\conj{\mA_{CI3}^t}g} - \ps{\conj{\mA_{CI3}^t}g}{X} + \ps{g}{g}
+      \end{align*}
+      Si la matrice \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, comme elle est par définition hermitienne et positive alors la fonctionnelle est quadratique. Donc il existe une unique minimum où le gradient de cette fonctionnelle s'annule. Or
+      \begin{align*}
+        \nabla J_Z(X^*) &= 2\conj{\mA_{CI3}^t}\mA_{CI3}X^* - 2\conj{\mA_{CI3}^t}g
+        \\ 
+        &= 0
+      \end{align*}
+    \end{proof}
+
+    Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et tout incidence.
+
+    \begin{thm}[Minimisation avec contraintes pour la CI3]
+
+      Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
+      Alors les coefficients de la CIOE respectant cette CSU sont solutions du problème
+
+      Trouver \(X^* \in \CC^5\) tel que
+      \begin{equation*}
+        X^* = \argmin{X\in \CSU[3]{CI3}}  J_Z(X)
+      \end{equation*}
+    \end{thm}
+
+  \subsection{Existence et unicité du minimum pour d'autres CIOE}
+
+    \begin{prop}
+      Il existe un unique minimum si la matrice \(\mM=\conj{\mH^t}{\mH}\) est inversible
+    \end{prop}
+
+    \begin{proof}
+      On remarque que la fonctionnelle \(F\) est quadratique si la matrice \(\conj{\mH^t}{\mH}\) est hermitienne définie positive. Une matrice \(\mA\) est hermitienne si \(\forall x, \conj{x^t}\mA x \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}\mA x \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}\mA x \in \RR^{+*}\).
 
       On remarque que par construction, notre matrice \(\mM\) est hermitienne positive. Il reste à montrer qu'elle est définie.
     \end{proof}
@@ -136,25 +187,14 @@
       C'est une application directe de \(\tgrad{} F(CI) = 0 \), avec la propriété précédente.
     \end{proof}
 
-    \begin{defn}
-      Soit \(\ps{\cdot}{\cdot}\) le produit scalaire usuel de \(\CC^{N_{k}}\) et \(\norm{\cdot}\) la norme associée.
-      \begin{equation*}
-        \ps{a}{b} = \sum_{i=1}^{N_k} \conj{a_i} b_i
-      \end{equation*}
-      Soit \(\ps{\cdot}{\cdot}_F\) le produit scalaire usuel de \(\mathcal{M}_2(\CC)\) et \(\norm{\cdot}_F\) la norme associée.
-      \begin{equation*}
-        \ps{\mA}{\mB}_F = \operatorname{Tr}(\conj{\mA^t}\mB)
-      \end{equation*}
-    \end{defn}
-
     \subsubsection{Existence du minimum pour la CI01}
 
       \begin{prop}
-        La matrice \({\mM}_{CI01}\) associé à la CI01 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{xi},k_{yi})\) différents.
+        La matrice \({\mM}_{CI01}\) associé à la CI01 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{x},k_{y})\) différents.
       \end{prop}
 
       \begin{proof}
-        Soit \(t\) le vecteur de \(\RR^{N_{k}}\) tel que \(t_i = k_{xi}^2 + k_{yi}^2\) et \(1\) le vecteur de \(\RR^{N_{k}}\) tel que \(1_i = 1\). On a l'expression suivante de \({\mM}\)
+        Soit \(t\) le vecteur de \(\RR^{N_{k}}\) tel que \(t_{(j-1)N_x+i} = k_{xi}^2 + k_{yj}^2\) et \(1\) le vecteur de \(\RR^{N_{k}}\) où tous ces éléments valent \(1\). On a l'expression suivante de \({\mM}\)
 
         \begin{equation*}
           {\mM}_{CI01} = 2\begin{bmatrix}
@@ -195,8 +235,7 @@
         Donc d'après Cauchy–Schwarz (voir \cite[\href{https://dlmf.nist.gov/1.7\#E1}{eq.~1.7.1}]{dlmf_nist_2019}), le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est-à-dire n'importe quel vecteur ayant au moins deux composantes différentes.
       \end{proof}
 
-      \subsubsection{Cas de la CI1 \& la CI3}
-
+      \subsubsection{Cas de la CI1}
 
       L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière. Nous n'avons pas réussi à prouver que ces matrices étaient définies. Cependant nous avons vérifié numériquement qu'elles l'étaient pour tous les empilements que nous avons testés.
 
@@ -219,6 +258,7 @@
           - 2\norm{t}^2|\ps{t}{s}|^2 - 2 N_k|\ps{t^2}{s}|^2
         \end{multline*}
       \end{proof}
+
 
   \subsection{Résultats numériques sans contraintes}
 
@@ -341,22 +381,3 @@
         \label{tab:imp_fourier:plan:triple_asymptote:hoibc}
       \end{table}
       Il faut donc une CIOE d'ordre 2 fois le nombre d'asymptote que l'on rencontre sur notre balayage.
-
-\subsection{Énoncé de la minimisation au sens des moindres carrés avec contraintes}
-  Le problème des moindres carrés avec \gls{acr-csu} s'énonce:
-
-  \begin{prop}[Moindres carrés avec CSU dans le cas plan infini]
-  ~
-
-  Soit \(SUC(CI)\) les conditions suffisante d'unicité associées à la CIOE \(CI\). 
-
-  Alors les coefficients de la CIOE sont solution de 
-
-  Trouver \(X_{CI}^*\) tel que
-
-  \[
-    X_{CI}^* = \argmin{X \in SUC(CI)} \left\lVert {\mH}(CI)X_{CI} - {b}\right\rVert^2_{\RR^{Ni}}
-  \]
-  \end{prop}
-
-  
