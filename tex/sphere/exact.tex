@@ -1,3 +1,898 @@
+Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur les fonctions spéciales usuelles.
+
+\section{Les harmoniques sphériques vectorielles}
+
+    \begin{defn}[Harmonique sphérique d'ordre \(n\) et de degré \(m\)]
+        \label{def:sphere:harmoniques_spheriques}
+        Soit \(\PP^m_n\) la fonction associée de Legendre (voir \cite[\href{https://dlmf.nist.gov/14}{Chapitre.~14}]{dlmf_nist_2019}) d'ordre \(n\) et de degré \(m\). 
+
+        On appelle harmoniques sphériques d'ordre \(n\) et de degré \(m\) les fonctions de \(\RR\times\RR \rightarrow \CC\) telles que
+        \begin{align*}
+            Y_{m,n}(\tp) &= (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}}e^{im\phi}\PP^m_n(\cos \theta)
+        \end{align*}
+    \end{defn}
+
+    \begin{prop}
+        Les harmoniques sphériques \(Y_{m,n}\) sont solutions de 
+        \begin{align*}
+            \lapls{} u(\tp) = 0 && \forall (\tp) \in [0,\pi]\times[0,2\pi]
+        \end{align*}
+    \end{prop}
+    \begin{prop}
+        Soit \(S\) la sphère unité. Les harmoniques sphériques forment une base orthonormale de \(L^2(S)\).
+    \end{prop}
+    \begin{proof}
+        Voir \cite[p.~14]{nedelec_acoustic_2001}
+    \end{proof}
+
+    \begin{defn}
+        \label{def:sphere:bessel_spheriques}
+        On appelle fonction de Bessel sphérique d'ordre \(n\) les fonctions de \(\CC \rightarrow \CC\) solution de
+        \begin{align*}
+            z^{2}\ddp[2]{z}{u(z)}+2z\ddp{z}{u(z)}+\left(z^{2}-n(n+1)\right)u(z)=0
+        \end{align*}
+    \end{defn}
+    Ces fonctions sont détaillées dans \cite[\href{https://dlmf.nist.gov/10.47}{section.~10.47}]{dlmf_nist_2019}.
+    On note \(j_n\) la fonction de Bessel sphérique de première espèce et \(h^{(2)_n}\) la fonction de Hankel de deuxième espèce.
+
+    \begin{prop}
+        Soit \(z_n\) une fonction de Bessel sphérique d'ordre \(n\) et \(Y_{m,n}\) une harmonique sphérique d'ordre \(n\) et de degré \(m\). Les fonctions \((\rtp) \mapsto z_n(k(r)r)Y_{m,n}(\tp)\) sont solutions de 
+        \begin{align*}
+            \lapl u(\rtp) + k^2u(\rtp) = 0 && \forall (\rtp) \in \RR\times[0,\pi]\times[0,2\pi]
+        \end{align*}
+    \end{prop}
+    \begin{proof}
+        Voir \cite[section.~2.6.1]{nedelec_acoustic_2001}
+    \end{proof}
+
+    \begin{defn}
+        On définit l’opérateur \gls{mat-tild} agissant sur les fonctions dérivables tel que soit \(f \in C^1(\CC)\),
+        \begin{align*}
+        &\tilde{f}(z) = f(z) + zf'(z)&& \forall z \in \CC
+        \end{align*}
+    \end{defn}
+
+    \begin{defn}
+        \label{def:sphere:harmoniques_spheriques_vect}
+        Soit \(z_n\) une fonction de Bessel sphérique d'ordre \(n\) et \(Y_{m,n}\) une harmonique sphérique d'ordre \(n\) et de degré \(m\).
+        On appelle harmoniques sphériques vectorielles les fonctions \(\gls{phy-Mmn},\gls{phy-Nmn}\) telles que
+        \begin{align}
+            \label{eq:defMmn}
+            \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(k(r)r) Y_{m,n}(\tp) \right)
+            \\
+            &= z_n(k(r)r)
+            \begin{bmatrix}
+                0
+                \\
+                \frac{im}{\sin\theta}Y_{mn}(\tp)
+                \\
+                - \ddr{\theta}{Y_{mn}}(\tp)
+            \end{bmatrix}
+            \\
+            \label{eq:defNnn}
+            \Nmn[z_n](\rtp) &:= \frac{\vrot \Mmn[z_n]}{k}(\rtp) 
+            \\
+            &= \frac{1}{k(r)r}\begin{bmatrix}
+                z_n(k(r)r)n(n+1)Y_{mn}(\tp)
+                \\
+                \tilde{z_n}(k(r)r)\ddr{\theta}{Y_{mn}}(\tp)
+                \\
+                \tilde{z_n}(k(r)r)\frac{im}{\sin\theta}Y_{mn}(\tp)
+            \end{bmatrix}
+        \end{align}
+    \end{defn}
+
+    \begin{prop}
+        Ces fonctions sont solutions de 
+        \begin{equation*}
+            \left\lbrace
+                \begin{aligned}
+                    \vrot \vrot \vect{U}(\rtp) - k^2 \vect{U}(\rtp) &= 0
+                    \\
+                    \vdiv \vect{U}(\rtp) &= 0
+                \end{aligned}
+            \right.
+        \end{equation*}
+    \end{prop}
+    \begin{proof}
+        Voir \cite[Théorème.~5.3.1]{nedelec_acoustic_2001} et sa démonstration ou l'annexe \ref{sec:annex:harmoniques_spheriques}.
+    \end{proof}
+
+    On admet les propriétés suivantes
+    \begin{prop}
+        \label{prop:Mmn_Nmn_rot}
+        \begin{align*}
+            \vrot \Mmn[z_n](\rtp) &= k\Nmn[z_n](\rtp)
+            \\
+            \vrot \Nmn[z_n](\rtp) &= k\Mmn[z_n](\rtp)
+        \end{align*}
+    \end{prop}
+
+    % Ces vecteurs harmoniques sphériques possèdent les propriétés suivantes
+
+    % \begin{align}
+    % \int_{S(0,R)} \vect{M_{m,n}^{z_n}} \cdot \conj{\vect{N_{p,q}^{z_n}}} ds &= 0
+    % \\
+    % \int_{S(0,R)} \vect{M_{m,n}^{z_n}} \cdot \conj{\vect{M_{p,q}^{z_n}}} ds &= \gamma_{m,n}R^2 \delta_{mp}\delta_{nq}
+    % \\
+    % \int_{S(0,R)} \vect{N_{m,n}^{z_n}} \cdot \conj{\vect{N_{p,q}^{z_n}}} ds &= \frac{\gamma_{m,n}}{k^2} \delta_{mp}\delta_{nq}
+    % \end{align}
+
+    \begin{defn}
+        On définit les fonctions de \(\RR\times\RR\mapsto \CC^2\)
+        \begin{align}
+            \label{eq:defUmn_tgt}
+            \Umn(\tp) &=
+            \begin{bmatrix}
+                \frac{im}{\sin\theta}Y_{mn}(\tp)
+                \\
+                - \ddr{\theta}{Y_{mn}}(\tp)
+            \end{bmatrix}
+            \\
+            \label{eq:defNmn_tgt}
+            \Umn^\perp(\tp) &=
+            \begin{bmatrix}
+                \ddr{\theta}{Y_{mn}}(\tp)
+                \\
+                \frac{im}{\sin\theta}Y_{mn}(\tp)
+            \end{bmatrix}
+        \end{align}
+    \end{defn}
+
+    \begin{prop}
+        On remarque alors que les parties tangentielles des vecteurs harmoniques sphériques peuvent s'écrire:
+        \begin{align*}
+          \Mmn[z_n]_t(\rtp) &= z_n(k(r)r)\Umn(\tp)
+          \\
+          \Nmn[z_n]_t(\rtp) &= \frac{1}{k(r)r}\tilde{z_n}(k(r)r)\Umn^\perp(\tp)
+        \end{align*}
+    \end{prop}
+
+    On a alors les propriétés supplémentaires
+    \begin{prop}
+        \label{prop:Mmn_Nmn_vect}
+        \begin{align*}
+          \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= k(r)rz_n(k(r)r)\Umn^\perp(\tp)
+          \\
+          \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{k(r)r}\tilde{z_n}(k(r)r)\Umn(\tp)
+        \end{align*}
+    \end{prop}
+
+\section{Expressions exactes des matrices d'impédance et des matrice de réflexions pour une sphère}
+
+    \begin{figure}[!hbt]
+        \centering
+        \tikzsetnextfilename{sphere_1_couche}
+        \begin{tikzpicture}
+              \input{tikz/schema/sphere_1_couche.tikz}
+        \end{tikzpicture}
+    \end{figure}
+
+    On exprime les équations de Maxwell dans le matériau en coordonnées sphériques.
+
+    Les solutions des équations de Maxwell sont développables en série de Mie
+    \begin{prop}
+        Il existe des constantes \((a_{mn},c_{mn},d_{mn},d_{mn})\) constantes par morceaux en \(r\) telles que les champs sont
+        \begin{multline*}
+            \vE(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Mmn[j_n](\rtp) + b_{mn} \Nmn[j_n](\rtp)
+            \\
+            + c_{mn} \Mmn[h^{(2)}_n](\rtp) + d_{mn} \Nmn[h^{(2)}_n](\rtp)
+        \end{multline*}
+        \begin{multline*}
+            \vH(\rtp) = \frac{i}{\eta(r)}\sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Nmn[j_n](\rtp) + b_{mn} \Mmn[j_n](\rtp)
+            \\
+            + c_{mn} \Nmn[h^{(2)}_n](\rtp) + d_{mn} \Mmn[h^{(2)}_n](\rtp)
+        \end{multline*}
+    \end{prop}
+    \begin{proof}
+        Admise. On renvoie à \cite{cheng_spectral_1993}.
+    \end{proof}
+
+  \subsection{Expressions des champs tangentiels dans chaque couche}
+
+
+    \begin{defn}
+      \label{def:sphere:je-jH-hE-hH}
+      On définit les matrices \(\mj_{E}(r,n),\mh_{E}(r,n),\mj_{H}(r,n),\mh_{H}(r,n)\) où \(k,\eta\) sont constants par morceaux en \(r\)
+      \begin{align*}
+        \mj_{E}(r,n) &=
+        \begin{bmatrix}
+            j_n(k(r)r) & 0
+            \\
+            0 & \tilde{j_n}(k(r)r)
+        \end{bmatrix}
+        \\
+        \mh_{E}(r,n) &=
+        \begin{bmatrix}
+            h^{(2)}_n(k(r)r) & 0
+            \\
+            0 & \tilde{h^{(2)}_n}(k(r)r)
+        \end{bmatrix}
+        \\
+        \mj_{H}(r,n) &=\frac{i}{k\eta(r)r}
+        \begin{bmatrix}
+                -\tilde{j_n}(k(r)r) & 0
+                \\
+                0 & (k(r)r)^2 j_n(k(r)r)
+        \end{bmatrix}
+        \\
+        \mh_{H}(r,n) &=\frac{i}{k\eta(r)r}
+        \begin{bmatrix}
+                -\tilde{h^{(2)}_n}(k(r)r) & 0
+                \\
+                0 & (k(r)r)^2 h^{(2)}_n(k(r)r)
+        \end{bmatrix}
+      \end{align*}
+    \end{defn}
+
+    En utilisant les fonctions définies précédemment, on a les expressions des coordonnées tangentielles de \(\vE,\vect{e_r}\times\vH\).
+    \begin{prop}
+        \label{prop:imp_fourier:sphere:Et}
+     \begin{align*}
+            \vE_t(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+              \Umn(\tp) & \Umn^\perp(\tp)
+            \end{bmatrix}
+            \left(
+              \mj_E(r,n)
+              \begin{bmatrix}
+                  a_{mn}
+                  \\
+                  b_{mn}
+              \end{bmatrix}
+              +
+              \mh_E(r,n)
+              \begin{bmatrix}
+                  c_{mn}
+                  \\
+                  d_{mn}
+              \end{bmatrix}
+            \right)
+            \\
+            \vJ(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+                \Umn(\tp) & \Umn^\perp(\tp)
+            \end{bmatrix}
+            \left(
+                \mj_H(r,n)
+                \begin{bmatrix}
+                    a_{mn}
+                    \\
+                    b_{mn}
+                \end{bmatrix}
+                +
+                \mh_H(r,n)
+                \begin{bmatrix}
+                    c_{mn}
+                    \\
+                    d_{mn}
+                \end{bmatrix}
+            \right)
+        \end{align*}
+    \end{prop}
+
+    \begin{proof}
+        On exprime les champs tangentiels
+        \begin{multline*}
+            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} j_n(k(r)r)\Umn(\tp) + b_{mn} \frac{\tilde{j_n}(k(r)r)}{k(r)r}\Umn^\perp(\tp)
+            \\
+            + c_{mn} h^{(2)}_n(k(r)r)\Umn(\tp) + d_{mn} \frac{\tilde{j_n}(k(r)r)}{k(r)r}\Umn^\perp(\tp)
+        \end{multline*}
+        \begin{multline*}
+            \vJ(\rtp) = \frac{i}{\eta(r)}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{\tilde{j_n}(k(r)r)}{k(r)r}\Umn(\tp) + b_{mn} k(r)r j_n(k(r)r) \Umn^\perp(\tp)
+            \\
+            -  \frac{\tilde{h^{(2)}_n}(k(r)r)}{k(r)r} c_{mn} \Umn(\tp) + k(r)r h^{(2)}_n(k(r)r) d_{mn} \Umn^\perp(\tp)
+        \end{multline*}
+        Puis en réorganisant les termes, on a la propriété
+        \begin{multline*}
+            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+              \Umn(\tp) & \Umn^\perp(\tp)
+            \end{bmatrix}
+            \\
+            \left(
+              \begin{bmatrix}
+                j_n(k(r)r) & 0
+                \\              
+                0 & \tilde{j_n}(k(r)r)
+              \end{bmatrix}
+              \begin{bmatrix}
+                  a_{mn}
+                  \\
+                  b_{mn}
+              \end{bmatrix}
+              +
+              \begin{bmatrix}
+                h^{(2)}_n(k(r)r) & 0
+                \\
+                0 & \tilde{h^{(2)}_n}(k(r)r)
+              \end{bmatrix}
+              \begin{bmatrix}
+                  c_{mn}
+                  \\
+                  d_{mn}
+              \end{bmatrix}
+            \right)
+        \end{multline*}
+        \begin{multline*}
+            \vJ(\rtp) = \frac{i}{k(r)\eta(r)r}\sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+                \Umn(\tp) & \Umn^\perp(\tp)
+            \end{bmatrix}
+            \\
+            \left(
+                \begin{bmatrix}
+                    -\tilde{j_n}(k(r)r) & 0
+                    \\
+                    0 & (k(r)r)^2 j_n(k(r)r)
+                \end{bmatrix}
+                \begin{bmatrix}
+                    a_{mn}
+                    \\
+                    b_{mn}
+                \end{bmatrix}
+                +
+                \begin{bmatrix}
+                    -\tilde{h^{(2)}_n}(k(r)r) & 0
+                    \\                
+                    0 & (k(r)r)^2 h^{(2)}_n(k(r)r)
+                \end{bmatrix}
+                \begin{bmatrix}
+                    c_{mn}
+                    \\
+                    d_{mn}
+                \end{bmatrix}
+            \right)
+        \end{multline*}
+    \end{proof}
+
+    On remarque que \(\eps,\mu\) sont constantes par morceaux.
+    Sur une interface d'équation \(r=r_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mj_E(r_p+ \delta,n) - \mj_E(r_p - \delta,n) \not = 0\) .
+
+    \begin{prop}
+      \label{lem:cylindre:imp:inv_matrices_JE-HE}
+      Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mj_E(r,n)\), \(\mj_H(r,n)\)  sont inversibles pour tout couple \((n)\).
+      % Sinon, pour \(n\) donné, il existe un nombre fini de \(k_z\) tels que ces matrices ne soient pas inversibles. 
+    \end{prop}
+
+    \begin{proof}
+      Par définition des matrices,
+      \begin{align*}
+        \det(\mj_E(r,n)) &= j_n(k(r)r)\tilde{j_n}(k(r)r)
+        \\
+        \det(\mj_H(r,n)) &= j_n(k(r)r)\tilde{j_n}(k(r)r)(k(r)r)^2
+      \end{align*}
+
+      D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels, or les fonctions de Bessel sphériques d'ordre \(n\) sont des fonctions de Bessel d'ordre \(n+1/2\) donc si \(k(r) \in\CC\backslash\RR\) alors ces matrices sont inversibles.
+    \end{proof}
+
+
+    Pour les matrices \(\mh_E(r,n)\), \(\mh_H(r,n)\), on a
+    \begin{align*}
+        \det(\mh_E(r,n)) &= h^{(2)}_n(k(r)r)\tilde{h^{(2)}_n}(k(r)r)
+        \\
+        \det(\mh_H(r,n)) &= h^{(2)}_n(k(r)r)\tilde{h^{(2)}_n}(k(r)r)(k(r)r)^2
+     \end{align*}
+    Et on ne peut rien conclure, car les zéros peuvent être complexes (voir \cite{sandstrom_note_2007}). On va donc supposer ces déterminants non nuls.
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+  \subsection{Expression de la matrice d'impédance pour une couche}
+
+    Soit \(r_1 = r_0 + d\). On se place dans le matériau donc \(r_0 \le r < r_1\).
+
+    \begin{prop}
+      Si on suppose que la matrice \(\mh_{H}(r_1^-,n) - \mj_{H}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\mh_{E}(r_0^+,n)\) est inversible pour tout \(n\), alors on a 
+      \begin{equation*}
+        \hat \vE_t(r_1^-,n) = \hat \mZ(n) \left(\vect{e_r}\pvect \hat \vH_t(r_1^-,n)\right)
+      \end{equation*}
+      où
+      \begin{multline*}
+        \hat \mZ(n) =
+        \left(\mh_{E}(r_1^-,n)\mh_{E}(r_0^+,n)^{-1} - \mj_{E}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\right)\\
+        \left(\mh_{H}(r_1^-,n)\mh_{E}(r_0^+,n)^{-1} - \mj_{H}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\right)^{-1}
+      \end{multline*}
+    \end{prop}
+
+    \begin{proof}
+      On se place dans la matériau: \(r_0 \le r \le r_ 1 \).
+
+      On applique la condition limite du conducteur parfait \(\hat \vE(r_0,n) = 0\) dans \eqref{prop:imp_fourier:sphere:Et}. Comme les harmoniques sphériques forment un base de \(L^2(S(r_0))\), chaque terme doit être nul.
+      \begin{equation*}
+        \mj_{E}(r_0,n)
+        \begin{bmatrix}
+          a_{nm} \\
+          b_{nm}
+        \end{bmatrix}
+        =-\mh_{E}(r_0,n)
+        \begin{bmatrix}
+          c_{nm} \\
+          d_{nm}
+        \end{bmatrix}
+      \end{equation*}
+
+      On peut donc exprimer les composantes tangentielles%, on omet les dépendances en \((n)\).
+      \begin{align*}
+        \hat \vE_t(r_1,n) &=
+        \left(\mh_{E}(r_1,n) - \mj_{E}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)
+        \begin{bmatrix}
+          c_{nm} \\
+          d_{nm}
+        \end{bmatrix}
+        \\
+        \vect{e_r}\pvect \hat \vH_t(r_1,n) &=
+        \left(\mh_{H}(r_1,n) - \mj_{H}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n) \right)
+        \begin{bmatrix}
+          c_{nm} \\
+          d_{nm}
+        \end{bmatrix}
+      \end{align*}
+
+      On calcule le déterminant de cette matrice 
+      \begin{multline*}
+        \det(\mh_{H}(r_1,n) - \mj_{H}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)) = \\
+        i\w\eps\frac{(H_n^{(2)}(r_1k_3)J_n'(r_0k_3)-J_n(r_1k_3)H_n^{(2)}{}'(r_0k_3))(H_n^{(2)}{}'(r_1k_3)J_n(r_0k_3)-J_n'(r_1k_3)H_n^{(2)}(r_0k_3))}{J_n'(r_0^+k_3)J_n(r_0^+k_3)}
+      \end{multline*}
+      Ce dernier s'annule quand \(\frac{H_n^{(2)}(r_1k_3)}{J_n(r_1k_3)} = \frac{H_n^{(2)}{}'(r_0k_3)}{J_n'(r_0k_3)}\) ou quand \(\frac{H_n^{(2)}{}'(r_1k_3)}{J_n'(r_1k_3)} = \frac{H_n^{(2)}(r_0k_3)}{J_n(r_0k_3)}\).
+
+      Il n'existe pas à notre connaissance de propriétés connues des fonctions de Bessel pour déduire de ces égalités des conditions sur \(\omega^2\eps\mu,k_z,r_1,r_0\).
+
+      On suppose donc simplement \(\mh_{H}(r_1,n) - \mj_{H}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\) inversible, la matrice \(\hat\mZ(n)\) telle que \(\hat\vE_t(r_1,n) = \hat\mZ(n) (\vect{e_r}\pvect\vH(r_1,n))\) est alors
+
+      \begin{multline*}
+        \hat \mZ =
+        \left(\mh_{E}(r_1,n) - \mj_{E}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)
+        \\
+        \left(\mh_{H}(r_1,n) - \mj_{H}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)^{-1}.
+      \end{multline*}
+      Comme on a supposé la matrice \(\mh_E(r_0,n)\) inversible, on peut factoriser par cette matrice à droite le numérateur et le dénominateur d'où la proposition.
+
+    \end{proof}
+
+
+  \subsection{Expression de la matrice d'impédance pour plusieurs couches}
+
+    \begin{figure}[!hbt]
+      \centering
+      \tikzsetnextfilename{cylindre_n_couches}
+      \begin{tikzpicture}
+        \input{tikz/schema/cylindre_n_couches.tikz}
+      \end{tikzpicture}
+    \end{figure}
+
+    Soit \(r_p\) le rayon de l'interface \(p\), \(r_p = r_0 +\sum_{i=1}^{p} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(r_{p-1} \le r \le r_p \).
+
+    \begin{defn}
+      \label{def:cylindre:matrices_MJ-MH}
+      On définit les fonctions de \([r_{p-1}, r_p[\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
+      \begin{align*}
+        \mM_{\mj}(r,n,\mA) &= \mj_{E}(r,n) -  \mA \mj_{H}(r,n)
+        \\
+        \mM_{\mh}(r,n,\mA) &= \mh_{E}(r,n) -  \mA \mh_{H}(r,n)
+      \end{align*}
+    \end{defn}
+
+    \begin{defn}
+      \label{def:cylindre:reflexion:impedance}
+      On définit la fonction de \([r_{p-1}, r_p[\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
+      \begin{align*}
+        \mR(r,n,\mA) &= -\mM_{\mh}(r,n,\mA)^{-1}\mM_{\mj}(r,n,\mA)
+      \end{align*}
+    \end{defn}
+    A priori, pour \(r,n\) donné, \(\mR(r,n,\mA)\) n'est pas défini pour toute matrice \(\mA\).
+
+    On prolonge ces définitions aux autres couches.
+
+    \begin{defn}%[Fonction de transfert]{}~
+      \label{def:cylindre:transfert:impedance}
+
+      On définit \(\mT_p\) la fonction de \([r_{p-1}, r_p[^2\times\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
+      \begin{multline*}
+        \mT_p(r,r',n,\mA) = \\
+          \left(\mj_{E}(r,n)\mM_{\mj}(r',n,\mA)^{-1} - \mh_{E}(r,n)\mM_{\mh}(r',n,\mA)^{-1}\right) 
+          \\
+          \left(\mj_{H}(r,n)\mM_{\mj}(r',n,\mA)^{-1} - \mh_{H}(r,n)\mM_{\mh}(r',n,\mA)^{-1}\right)^{-1}
+      \end{multline*}
+    \end{defn}
+    A priori, pour \(r,r',n\) donné, \(\mT_p(r,r',n,\mA)\) n'est pas défini pour toute matrice \(\mA\).
+
+    \begin{prop}%[Théorème de transfert]~
+      \label{prop:cylindre:transfert:impedance}
+
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p}^-,n) = \hat\mZ_{p}(n)(\vn \pvect \hat\vH(r_{p}^-,n)\).
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mM_{\mj}(r_p^-,n,\hat\mZ_{p}(n)) && \mM_{\mh}(r_p^-,n,\hat\mZ_{p}(n))
+      \end{align*}
+      \begin{align*}
+        \mj_{H}(r_{p-1}^+,n)\mM_{\mj}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1} - \mh_{H}(r_{p-1}^+,n)\mM_{\mh}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1}
+      \end{align*}
+
+      alors \(\hat\vE_t(r_{p-1}^+,n) = \mT_p(r_{p-1}^+,r_{p}^-,n,\hat\mZ_{p}(n))(\vn \pvect \hat\vH(r_{p-1}^+,n))\).
+
+      Une condition d'impédance sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
+    \end{prop}
+
+
+    \begin{proof}
+      On se situe dans la couche \(p\) (\(r_{p-1}\le r\le r_p\))
+      \begin{multline*}
+        \mj_{E}(r_{p},n)
+        \begin{bmatrix}
+          a_{nm} \\
+          b_{nm}
+        \end{bmatrix}
+        +
+        \mh_{E}(r_{p},n)
+        \begin{bmatrix}
+          c_{nm} \\
+          d_{nm}
+        \end{bmatrix}
+        =
+        \\
+        \hat \mZ_{p}(n)
+        \left(
+          \mj_{H}(r_{p},n)
+          \begin{bmatrix}
+            a_{nm} \\
+            b_{nm}
+          \end{bmatrix}
+          +
+          \mh_{H}(r_{p},n)
+          \begin{bmatrix}
+            c_{nm} \\
+            d_{nm}
+          \end{bmatrix}
+        \right)
+      \end{multline*}
+
+      Ce qui revient à 
+      \begin{equation*}
+        \mM_{\mj}(r_{p},n,\hat\mZ_p(n))
+        \begin{bmatrix}
+          a_{nm} \\
+          b_{nm}
+        \end{bmatrix}
+        =
+        -\mM_{\mh}(r_{p},n,\hat\mZ_p(n))
+        \begin{bmatrix}
+          c_{nm} \\
+          d_{nm}
+        \end{bmatrix}
+      \end{equation*}
+
+      On suppose que les matrices \(\mM_{\mj}(r_p,n,\hat\mZ_p(n)), \mM_{\mh}(r_p,n,\hat\mZ_p(n))\) sont inversibles pour donc
+      \begin{equation*}
+        \begin{bmatrix}
+          c_{nm} \\
+          d_{nm}
+        \end{bmatrix}
+        =
+        \mR(r_{p},n,\hat\mZ_p(n))
+        \begin{bmatrix}
+          a_{nm} \\
+          b_{nm}
+        \end{bmatrix}
+      \end{equation*}
+
+      On injecte ce qui précède en \(r = r_{p-1}\)
+      \begin{multline*}
+        \hat{\vE}_t(r_{p-1},n) = 
+        \\
+        \left(\mh_{E}(r_{p-1},n)\mR(r_{p},n,\hat{\mZ}_p(n)) + \mj_{E}(r_{p-1},n)\right)
+        \begin{bmatrix}
+          a_{nm} \\
+          b_{nm}
+        \end{bmatrix}
+      \end{multline*}        
+      \begin{multline*}
+        \vect{e_r}\times\hat{\vH}_t(r_{p-1},n) =
+        \\
+        \left(\mh_{H}(r_{p-1},n)\mR(r_{p},n,\hat{\mZ}_p(n)) + \mj_{H}(r_{p-1},n))\right)
+        \begin{bmatrix}
+          a_{nm} \\
+          b_{nm}
+        \end{bmatrix}
+      \end{multline*}
+
+      On suppose alors que cette dernière est inversible pour tout \((n)\).
+
+      On obtient
+      \begin{multline*}
+        \hat{\vE}_t(r_{p-1},n) =
+        \\
+        \left(\mj_{E}(r_{p-1},n) + \mh_{E}(r_{p-1},n)\mR(r_{p},n,\hat{\mZ}_p(n))\right) \\
+        \left(\mj_{H}(r_{p-1},n) + \mh_{H}(r_{p-1},n)\mR(r_{p},n,\hat{\mZ}_p(n))\right)^{-1}
+        \\
+        \vect{e_r}\times\hat{\vH}_t(r_{p-1},n)
+      \end{multline*}
+
+      Comme on a supposé l'inversibilité des deux matrices \(\mM_J\), \(\mM_H\) alors on peut factoriser à droite le numérateur et le dénominateur et on a la propriété.
+    \end{proof}
+
+    \begin{prop}%[Théorème de relèvement]~
+      \label{prop:cylindre:relevement:impedance}
+
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p-1}^+,n) = \hat\mZ_{p-1}(n)(\vn \pvect \hat\vH(r_{p-1}^+,n)\).
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mM_{\mj}(r_{p-1}^+,n,\hat\mZ_{p-1}(n)), && \mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n)),
+      \end{align*}
+      \begin{align*}
+        \mh_{H}(r_{p}^-,n)\mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1} - \mj_{H}(r_{p}^-,n)\mM_{\mj}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1},
+      \end{align*}
+
+      alors \(\hat\vE_t(r_{p}^-,n) = \mT_p(r_p^-,r_{p-1}^+,n,\hat\mZ_{p-1}(n))(\vn \pvect \hat\vH(r_{p}^-,n))\).
+
+      Une condition d'impédance sur le bord inférieur d'une couche détermine la condition limite sur le bord supérieur.
+    \end{prop}
+
+    \begin{proof}
+      Même méthodologie que pour la proposition \ref{prop:cylindre:transfert:impedance}.
+    \end{proof}
+
+    \begin{prop}%[Corollaire aux théorèmes de transfert et de relèvement.]{}~
+      \label{prop:cylindre:synthese:impedance}{}~
+
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que 
+      \begin{align*}
+      \vE_t(r_{p-1}^+,n) &= \hat\mZ_{p-1}(n)(\vn \pvect \hat\vH(r_{p-1}^+,n))
+      \\
+      \vE_t(r_{p}^-,n) &= \hat\mZ_{p}(n)(\vn \pvect \hat\vH(r_{p}^-,n))
+      \end{align*}
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mM_{\mj}(r_p^-,n,\hat\mZ_{p}(n)), && \mM_{\mj}(r_{p-1}^+,n,\hat\mZ_{p-1}(n)),
+        \\
+        \mM_{\mh}(r_p^-,n,\hat\mZ_{p}(n)), && \mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n)),
+      \end{align*}
+      \begin{align*}
+        \mj_{H}(r_{p}^-,n)\mM_{\mj}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1} - \mh_{H}(r_{p}^-,n)\mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1},
+        \\
+        \mj_{H}(r_{p-1}^+,n)\mM_{\mj}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1} - \mh_{H}(r_{p-1}^+,n)\mM_{\mh}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1},
+      \end{align*}
+
+      Alors 
+      \begin{align*}
+        \hat\mZ_{p-1}(n) &= \mT_p(r_{p-1}^+,r_{p}^-,n,\hat\mZ_{p}(n))
+        \\
+        \hat\mZ_{p}(n) &= \mT_p(r_{p}^-,r_{p-1}^+,n,\hat\mZ_{p-1}(n))
+      \end{align*}
+
+    \end{prop}
+
+    On peut donc déterminer itérativement les matrices d'impédance. Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(r=r_0^+\) implique \(\hat\mZ_{0}(n) = 0\).
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \subsection{Expression des coefficients de la série de Fourier}
+
+    On se place à l'interface \(p\) donc \(r_{p-1} \le r \le r_{p+1} \).
+
+    \begin{defn}
+      \label{def:cylindre:matrices_NE-NH}
+      On définit les fonctions de \(\RR\times \NN \times \RR \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
+      \begin{align*}
+        \mN_{E}(r,n,\mA) &= \mj_{E}(r,n) + \mh_{E}(r,n)\mA
+        \\
+        \mN_{H}(r,n,\mA) &= \mj_{H}(r,n) + \mh_{H}(r,n)\mA
+      \end{align*}
+    \end{defn}
+
+    \begin{defn}%[Fonction de transfert]{}~
+      \label{def:cylindre:transfert:reflexion}{}~
+
+      On définit \(\mathfrak{T}_p\) la fonction de \([r_{p-1}, r_p]\times[r_p, r_{p+1}]\times\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
+      \begin{multline*}
+        \mathfrak{T}_p(r,r',n,\mA) = \\
+          -\left(\mN_{E}(r',n,\mA)^{-1}\mh_{E}(r,n) - \mN_{H}(r',n,\mA)^{-1}\mh_{H}(r,n)\right)^{-1}
+          \\
+          \left(\mN_{E}(r',n,\mA)^{-1}\mj_{E}(r,n) - \mN_{H}(r',n,\mA)^{-1}\mj_{H}(r,n)\right)
+      \end{multline*}
+    \end{defn}
+    A priori, pour \(r,r',n\) donné, \(\mathfrak{T}_p(r,r',n,\mA)\) n'est pas défini pour toute matrice \(\mA\).
+
+    \begin{prop}%[Théorème de transfert]~
+      \label{prop:cylindre:transfert:reflexion}{}~
+
+      On suppose qu'il existe \(\hat\mR_{p+1}(n)\) telle que 
+      \begin{align*}
+        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n)
+        \\
+        \vect{e_r}\pvect\vH(r_{p}^+,n) &= \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n)
+      \end{align*}
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n)), && \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n)),
+      \end{align*}
+      \begin{align*}
+        \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_{E}(r_p^-,n) - \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_{H}(r_p^-,n),
+      \end{align*}
+      alors
+      \begin{align*}
+        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n)
+        \\
+        \vE_t(r_{p}^-,n) &= \mN_{H}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n)
+      \end{align*}
+    \end{prop}
+
+    \begin{proof}
+      De part et d'autre de \(r=r_p\), on a 
+      \begin{align*}
+        \vE_t(r_p^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n)
+        \\
+        \vE_t(r_p^-,n) &= \mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n)
+      \end{align*}
+      \begin{align*}
+        \vect{e_r}\pvect\vH(r_p^+,n) &= \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n)
+        \\
+        \vect{e_r}\pvect\vH(r_p^-,n) &= \mj_H(r_p^-,n)\vect{C}_{1}^-(n) + \mh_H(r_p^-,n)\vect{C}_{2}^-(n)
+      \end{align*}
+      Il y a continuité des champs au travers de l'interface donc
+      \begin{align*}
+        \mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n)
+        \\
+        \mj_H(r_p^-,n)\vect{C}_{1}^-(n) + \mh_H(r_p^-,n)\vect{C}_{2}^-(n) &= \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n)
+      \end{align*}
+      donc si on suppose les matrices \(\mN_E, \mN_H\) inversibles
+      \begin{multline*}
+        \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\left(\mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n)\right) =
+        \\
+        \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\left(\mj_H(r_p^-,n)\vect{C}_{1}^-(n) + \mh_H(r_p^-,n)\vect{C}_{2}^-(n)\right)
+      \end{multline*}
+
+      On factorise les termes
+      \begin{multline*}
+        \left(\mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mj_E(r_p^-,n) - \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mj_H(r_p^-,n)\right)\vect{C}_{1}^-(n) =
+        \\
+        -\left(\mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_E(r_p^-,n) + \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_H(r_p^-,n)\right)\vect{C}_{2}^-(n)
+      \end{multline*}
+
+      On suppose l'inversion de cette dernière et alors
+      \begin{equation*}
+        \vect{C}_{2}^-(n) = \mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)) \vect{C}_{1}^-(n)
+      \end{equation*}
+    \end{proof}
+
+    \begin{prop}%[Théorème de relévement]~
+      \label{prop:cylindre:relevement:reflexion}{}~
+
+      On suppose qu'il existe \(\hat\mR_{p}(n)\) telle que 
+      \begin{align*}
+        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n)
+        \\
+        \vect{e_r}\pvect\vH(r_{p}^-,n) &= \mN_{H}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n)
+      \end{align*}
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mN_{E}(r_p^-,n,\mR_{p}(n)), && \mN_{H}(r_p^-,n,\hat\mR_{p}(n)),
+      \end{align*}
+      \begin{align*}
+        \mN_{E}(r_p^-,n,\mR_{p}(n))^{-1}\mh_{E}(r_p^+,n) - \mN_{H}(r_p^-,n,\hat\mR_{p}(n))^{-1}\mh_{H}(r_p^+,n),
+      \end{align*}
+      alors
+      \begin{align*}
+        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n)
+        \\
+        \vE_t(r_{p}^+,n) &= \mN_{H}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n)
+      \end{align*}
+    \end{prop}
+
+    \begin{proof}
+      Même méthodologie que pour la proposition \ref{prop:cylindre:transfert:reflexion}.
+    \end{proof}
+
+    \begin{prop}%[Théorème de relévement]~
+      \label{prop:cylindre:synthese:reflexion}{}~
+
+      On suppose qu'il existe \(\hat\mR_{p}(n)\) et \(\hat\mR_{p+1}(n)\) telles que 
+      \begin{align*}
+      &\left\lbrace\begin{aligned}
+        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n)
+        \\
+        \vect{e_r}\pvect\vH(r_{p}^-,n) &= \mN_{H}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n)
+        \end{aligned}
+      \right.
+      \\
+      &\left\lbrace\begin{aligned}
+        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n)
+        \\
+        \vect{e_r}\pvect\vH(r_{p}^+,n) &= \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n)
+        \end{aligned}
+      \right.      
+      \end{align*}
+
+      Si les matrices suivantes sont inversibles
+      \begin{align*}
+        \mN_{E}(r_p^-,n,\mR_{p}(n)), && \mN_{H}(r_p^-,n,\hat\mR_{p}(n)),
+        \\
+        \mN_{E}(r_p^+,n,\mR_{p+1}(n)), && \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n)),
+      \end{align*}
+      \begin{align*}
+        \mN_{E}(r_p^-,n,\mR_{p}(n))^{-1}\mh_{E}(r_p^+,n) - \mN_{H}(r_p^-,n,\hat\mR_{p}(n))^{-1}\mh_{H}(r_p^+,n),
+        \\
+        \mN_{E}(r_p^+,n,\mR_{p+1}(n))^{-1}\mh_{E}(r_p^-,n) - \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_{H}(r_p^-,n),
+      \end{align*}
+      alors
+      \begin{align*}
+        \hat\mR_{p+1}(n) &= \mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n))
+        \\
+        \hat\mR_{p}(n) &= \mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n))
+      \end{align*}
+    \end{prop}
+
+    On peut donc déterminer itérativement les matrices de réflexions. Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(r=r_0^+\) implique \(\mR_{1}(n) = -\mh_E(r_0^+,n)^{-1}\mj_E(r_0^+,n)\).
+
+  \subsection{Applications numérique}
+
+    La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte (voir Figure \ref{fig:annex:hoppe:p62}). 
+
+    Deux graphes sont superposés sur cette figure. D'abord, 3 courbes représentant les valeurs des parties imaginaires des termes diagonaux de la matrice \(\hat\mZ_{cylindre}\) en fonction de \((n)\) où \(k_z=0\) et \(n\) varie de \(0\) à \(\lfloor k_t r_1 \rfloor\) pour 3 rayons intérieur différent. Puis une courbe représentant les valeurs des parties imaginaires des termes diagonaux de la matrice \(\hat\mZ_{plan}\) en fonction de \((k_x,k_y)\) où \(k_y=0\)).
+    \begin{figure}[!hbt]
+      \centering
+      \input{tikz/plot/HOPPE_62/Z_HOPPE_62_cylindre_converge.tikz}
+      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
+      \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon}
+    \end{figure}
+    Pour une couche de matériau sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
+
+
+    La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:coeff_fourier} affiche le module des coefficients de la série de Fourier, c'est à dire les coefficients diagonaux de la matrice \(\hat\mR\) définie plus haut. Comme on peut le voir, dès que \(n\) dépasse \(k_0r_{1}\), le module des coefficients décroit très rapidement. Ce dépassement arrive pour \(n\) supérieur à 2 (resp. 7, 64) pour \(r_0\) égal à 0.03m (resp. 0.3m, 3m).
+
+    \begin{figure}[!hbt]
+      \centering
+      \input{tikz/plot/HOPPE_62/F_HOPPE_62_cylindre_converge.tikz}
+      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
+      \label{fig:imp_fourier:cylindre:hoppe_p62:coeff_fourier}
+    \end{figure}
+
+
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !-!-!-!-!!--!-!!-!-!-!--!-!-!-!-!-!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 \section{Cas d'un objet sphérique}
 
     Les champs solutions de Maxwell dans le cas d'un repère sphérique sont décomposables en harmoniques sphériques. Nous rappelons d'abord l’expression de ces dernières puis nous donnerons l'expression de la matrice d'impédance de la même manière que \cite{cheng_spectral_1993}.
@@ -10,7 +905,7 @@
 
         On définit les harmoniques sphériques les solutions de \(\Delta U + k^2 U = 0 \). Ce sont les fonctions \(Y_{m,n} = C(m,n) e^{im\phi}\PP^m_n(\cos \theta) \) avec \(C(m,n)\)\footnote{D’après \cite[p.~24]{nedelec_acoustic_2001}, \( C(m,n) = (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}}\)} tel que
         \[
-         \ds\int_S Y_{m,n} \conj{Y_{p,q}} ds = \delta_m^p \delta_n^q
+         \ds\int_S Y_{m,n} \conj{Y_{p,q}} ds = \delta_m^p \delta_{nm}^q
         \]
 
 
@@ -25,8 +920,8 @@
         \]
         \begin{align}
             \label{eq:defMmn}
-            \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(kr) Y_{m,n}(\tp) \right)\\
-            &= z_n(kr)
+            \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(k(r)r) Y_{m,n}(\tp) \right)\\
+            &= z_n(k(r)r)
             \begin{bmatrix}
                 0
                 \\
@@ -48,12 +943,12 @@
         \begin{align}
         \label{eq:defNnn}
           \Nmn[z_n](\rtp) &:= \frac{\vrot \Mmn[z_n]}{k}(\rtp) \\
-          &= \frac{1}{kr}\begin{bmatrix}
-            z_n(kr)n(n+1)Y_{mn}(\tp)
+          &= \frac{1}{k(r)r}\begin{bmatrix}
+            z_n(k(r)r)n(n+1)Y_{mn}(\tp)
             \\
-            \tilde{z_n}(kr)\ddr{\theta}{Y_{mn}}(\tp)
+            \tilde{z_n}(k(r)r)\ddr{\theta}{Y_{mn}}(\tp)
             \\
-            \tilde{z_n}(kr)\frac{im}{\sin\theta}Y_{mn}(\tp)
+            \tilde{z_n}(k(r)r)\frac{im}{\sin\theta}Y_{mn}(\tp)
           \end{bmatrix}
         \end{align}
 
@@ -62,11 +957,11 @@
         Par définition de ces vecteurs, on a les propriétés suivantes
         \begin{prop}
             \label{prop:Mmn_Nmn_rot}
-            \begin{align}
+            \begin{align*}
                 \vrot \Mmn[z_n](\rtp) &= k\Nmn[z_n](\rtp)
                 \\
                 \vrot \Nmn[z_n](\rtp) &= k\Mmn[z_n](\rtp)
-            \end{align}
+            \end{align*}
         \end{prop}
 
         % Ces vecteurs harmoniques sphériques possèdent les propriétés suivantes
@@ -80,18 +975,18 @@
         % \end{align}
 
         On a (\cite{cheng_spectral_1993})
-        \begin{multline}
+        \begin{multline*}
             \vE(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Mmn[j_n](\rtp) + b_{mn} \Nmn[j_n](\rtp)
             \\
-            + c_{mn} \Mmn[h_n](\rtp) + d_{mn} \Nmn[h_n](\rtp)
-        \end{multline}
+            + c_{mn} \Mmn[h^{(2)}_n](\rtp) + d_{mn} \Nmn[h^{(2)}_n](\rtp)
+        \end{multline*}
 
         D'après les équations de Maxwell, \(\vH = i\frac{\vrot \vE}{\w\mu}\)
 
         \begin{multline}
             \vH(\rtp) = \frac{ik}{\w\mu}\sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Nmn[j_n](\rtp) + b_{mn} \Mmn[j_n](\rtp)
             \\
-            + c_{mn} \Nmn[h_n](\rtp) + d_{mn} \Mmn[h_n](\rtp)
+            + c_{mn} \Nmn[h^{(2)}_n](\rtp) + d_{mn} \Mmn[h^{(2)}_n](\rtp)
         \end{multline}
 
         On définit alors le vecteur de \(\RR^2\) suivant ( resp. son orthogonal ), la réduction du vecteur harmonique sphérique \gls{phy-Mmn} ( resp. \gls{phy-Nmn} ) aux composantes tangentielles et indépendant du rayon:
@@ -118,50 +1013,50 @@
 
 
         On remarque alors que les parties tangentielles des vecteurs harmoniques sphériques peuvent s'écrire:
-        \begin{align}
-          \Mmn[z_n]_t(\rtp) &= z_n(kr)\Umn(\tp)
+        \begin{align*}
+          \Mmn[z_n]_t(\rtp) &= z_n(k(r)r)\Umn(\tp)
           \\
-          \Nmn[z_n]_t(\rtp) &= \frac{1}{kr}\tilde{z_n}(kr)\Umn^\perp(\tp)
-        \end{align}
+          \Nmn[z_n]_t(\rtp) &= \frac{1}{k(r)r}\tilde{z_n}(k(r)r)\Umn^\perp(\tp)
+        \end{align*}
 
         On a alors les propriétés supplémentaires
         \begin{prop}
             \label{prop:Mmn_Nmn_vect}
-            \begin{align}
-              \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= krz_n(kr)\Umn^\perp(\tp)
+            \begin{align*}
+              \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= k(r)rz_n(k(r)r)\Umn^\perp(\tp)
               \\
-              \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{kr}\tilde{z_n}(kr)\Umn(\tp)
-            \end{align}
+              \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{k(r)r}\tilde{z_n}(k(r)r)\Umn(\tp)
+            \end{align*}
         \end{prop}
         Sachant donc que les composantes tangentielles du champs \(\vE\) s'écrivent
 
-        \begin{multline}
-            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} j_n(kr)\Umn(\tp) + b_{mn} \frac{1}{kr}\tilde{j_n}(kr)\Umn^\perp(\tp)
+        \begin{multline*}
+            \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} j_n(k(r)r)\Umn(\tp) + b_{mn} \frac{1}{k(r)r}\tilde{j_n}(k(r)r)\Umn^\perp(\tp)
             \\
-            + c_{mn} h_n(kr)\Umn(\tp) + d_{mn} \frac{1}{kr}\tilde{j_n}(kr)\Umn^\perp(\tp)
-        \end{multline}
+            + c_{mn} h^{(2)}_n(k(r)r)\Umn(\tp) + d_{mn} \frac{1}{k(r)r}\tilde{j_n}(k(r)r)\Umn^\perp(\tp)
+        \end{multline*}
 
 
         Donc \(\vJ = \vect{e_r} \pvect \vH\) s'écrit
 
-        \begin{multline}
-            \vJ(\rtp) = \frac{ik}{\w\mu}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{1}{kr}\tilde{j_n}(kr)\Umn(\tp) + b_{mn} k r j_n(kr) \Umn^\perp(\tp)
+        \begin{multline*}
+            \vJ(\rtp) = \frac{ik}{\w\mu}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{1}{k(r)r}\tilde{j_n}(k(r)r)\Umn(\tp) + b_{mn} k(r)r j_n(k(r)r) \Umn^\perp(\tp)
             \\
-            -  \frac{1}{kr}\tilde{h_n}(kr) c_{mn} \Umn(\tp) + k r h_n(kr) d_{mn} \Umn^\perp(\tp)
-        \end{multline}
+            -  \frac{1}{k(r)r}\tilde{h^{(2)}_n}(k(r)r) c_{mn} \Umn(\tp) + k(r)r h^{(2)}_n(k(r)r) d_{mn} \Umn^\perp(\tp)
+        \end{multline*}
 
         Alors on a 
 
-        \begin{multline}
+        \begin{multline*}
             \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ}\\
             \begin{bmatrix}
               \Umn & \Umn^\perp
             \end{bmatrix}
             \left(
               \begin{bmatrix}
-                j_n(kr) & 0
+                j_n(k(r)r) & 0
                 \\              
-                0 & \tilde{j_n}(kr)
+                0 & \tilde{j_n}(k(r)r)
               \end{bmatrix}
               \begin{bmatrix}
                   a_{mn}
@@ -170,9 +1065,9 @@
               \end{bmatrix}
               +
               \begin{bmatrix}
-                h_n(kr) & 0
+                h^{(2)}_n(k(r)r) & 0
                 \\
-                0 & \tilde{h_n}(kr)
+                0 & \tilde{h^{(2)}_n}(k(r)r)
               \end{bmatrix}
               \begin{bmatrix}
                   c_{mn}
@@ -180,19 +1075,19 @@
                   d_{mn}
               \end{bmatrix}
             \right)
-        \end{multline}
+        \end{multline*}
 
 
-        \begin{multline}
+        \begin{multline*}
             \vJ(\rtp) = \frac{i}{\w\mu r}\sum_{n\in\ZZ}\sum_{m\in\ZZ}\\
             \begin{bmatrix}
                 \Umn & \Umn^\perp
             \end{bmatrix}
             \left(
                 \begin{bmatrix}
-                    -\tilde{j_n}(kr) & 0
+                    -\tilde{j_n}(k(r)r) & 0
                     \\
-                    0 & (kr)^2 j_n(kr)
+                    0 & (k(r)r)^2 j_n(k(r)r)
                 \end{bmatrix}
                 \begin{bmatrix}
                     a_{mn}
@@ -201,9 +1096,9 @@
                 \end{bmatrix}
                 +
                 \begin{bmatrix}
-                    -\tilde{h_n}(kr) & 0
+                    -\tilde{h^{(2)}_n}(k(r)r) & 0
                     \\                
-                    0 & (kr)^2 h_n(kr)
+                    0 & (k(r)r)^2 h^{(2)}_n(k(r)r)
                 \end{bmatrix}
                 \begin{bmatrix}
                     c_{mn}
@@ -211,11 +1106,11 @@
                     d_{mn}
                 \end{bmatrix}
             \right)
-        \end{multline}
+        \end{multline*}
 
         \begin{defn}
             On définit les vecteurs de \(\RR^2\) \(\hat{\vE_t}(r,m,n)\) et \(\hat{\vJ}(r,m,n)\) tels que
-            \begin{align}
+            \begin{align*}
                 \vE_t(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
                 \begin{bmatrix}
                   \Umn & \Umn^\perp
@@ -225,77 +1120,77 @@
                 \begin{bmatrix}
                   \Umn & \Umn^\perp
                 \end{bmatrix}\hat{\vJ}(r,m,n)
-            \end{align}
+            \end{align*}
         \end{defn}
 
         \begin{defn}
-            On définit les matrices \(\mJ_{E}(r,n),\mH_{E}(r,n),\mJ_{H}(r,n),\mH_{H}(r,n)\)
-            \begin{align}
-                \mJ_{E}(r,n) &=
+            On définit les matrices \(\mj_{E}(r,n),\mh_{E}(r,n),\mj_{H}(r,n),\mh_{H}(r,n)\)
+            \begin{align*}
+                \mj_{E}(r,n) &=
                 \begin{bmatrix}
-                    j_n(kr) & 0
+                    j_n(k(r)r) & 0
                     \\                
-                    0 & \tilde{j_n}(kr)
+                    0 & \tilde{j_n}(k(r)r)
                 \end{bmatrix}
                 \\
-                \mH_{E}(r,n) &=
+                \mh_{E}(r,n) &=
                 \begin{bmatrix}
-                    h_n(kr) & 0
+                    h^{(2)}_n(k(r)r) & 0
                     \\                
-                    0 & \tilde{h_n}(kr)
+                    0 & \tilde{h^{(2)}_n}(k(r)r)
                 \end{bmatrix}
                 \\
-                \mJ_{H}(r,n) &= \frac{i}{\w\mu r}
+                \mj_{H}(r,n) &= \frac{i}{\w\mu r}
                 \begin{bmatrix}
-                    -\tilde{j_n}(kr) & 0
+                    -\tilde{j_n}(k(r)r) & 0
                     \\                
-                    0 & (kr)^2 j_n(kr)
+                    0 & (k(r)r)^2 j_n(k(r)r)
                 \end{bmatrix}
                 \\
-                \mH_{H}(r,n) &= \frac{i}{\w\mu r}
+                \mh_{H}(r,n) &= \frac{i}{\w\mu r}
                 \begin{bmatrix}
-                    -\tilde{h_n}(kr) & 0
+                    -\tilde{h^{(2)}_n}(k(r)r) & 0
                     \\
-                    0 & (kr)^2 h_n(kr)
+                    0 & (k(r)r)^2 h^{(2)}_n(k(r)r)
                 \end{bmatrix}
-            \end{align}
+            \end{align*}
         \end{defn}
 
         On peut donc expliciter les vecteurs précédemment introduits
 
-        \begin{equation}
+        \begin{equation*}
             \hat{\vE_t}(r,m,n) =
-            \mJ_{E}(r,n)
+            \mj_{E}(r,n)
             \begin{bmatrix}
                 a_{mn}
                 \\
                 b_{mn}
             \end{bmatrix}
             +
-            \mH_{E}(r,n)
+            \mh_{E}(r,n)
             \begin{bmatrix}
                 c_{mn}
                 \\
                 d_{mn}
             \end{bmatrix}
-        \end{equation}
+        \end{equation*}
 
-        \begin{equation}
+        \begin{equation*}
             \hat{\vJ}(r,m,n) = 
-            \mJ_{H}(r,n)
+            \mj_{H}(r,n)
             \begin{bmatrix}
                 a_{mn}
                 \\
                 b_{mn}
             \end{bmatrix}
             +
-            \mH_{H}(r,n)
+            \mh_{H}(r,n)
             \begin{bmatrix}
                 c_{mn}
                 \\
                 d_{mn}
             \end{bmatrix}
-        \end{equation}
+        \end{equation*}
 
     \subsection{Matrice d'impédance pour une couche}
 
@@ -316,96 +1211,96 @@
 
         En \(r=r_0\), on a la relation \(\vE_t(\rtp) = 0\) donc \(\hat{\vE_t}(r_0,m,n) = 0 \)
 
-        \begin{equation}
-            \mJ_{E}(r_0,n)
+        \begin{equation*}
+            \mj_{E}(r_0,n)
             \begin{bmatrix}
                 a_{mn}
                 \\
                 b_{mn}
             \end{bmatrix}
             = -
-            \mH_{E}(r_0,n)
+            \mh_{E}(r_0,n)
             \begin{bmatrix}
                 c_{mn}
                 \\
                 d_{mn}
             \end{bmatrix}
-        \end{equation}
+        \end{equation*}
 
-        On suppose que les matrices \(\mJ_{E}(r_0,n)\) et \(\mH_{E}(r_0,n)\) soient inversibles.
+        On suppose que les matrices \(\mj_{E}(r_0,n)\) et \(\mh_{E}(r_0,n)\) soient inversibles.
 
         % \begin{TODO}
-        %   Inversibilité \(\mJ_{E}(r,n), \mH_{E}(r,n)\)
+        %   Inversibilité \(\mj_{E}(r,n), \mh_{E}(r,n)\)
         % \end{TODO}
 
-        \begin{equation}
+        \begin{equation*}
             \hat{\vE_t}(r,m,n) =
             \left(
-                \mH_{E}(r,n)
+                \mh_{E}(r,n)
                 -
-                \mJ_{E}(r,n)
-                \mJ_{E}(r_0,n)^{-1}
-                \mH_{E}(r_0,n)
+                \mj_{E}(r,n)
+                \mj_{E}(r_0,n)^{-1}
+                \mh_{E}(r_0,n)
             \right)
             \begin{bmatrix}
                 c_{mn}
                 \\
                 d_{mn}
             \end{bmatrix}
-        \end{equation}
+        \end{equation*}
 
 
-        \begin{equation}
+        \begin{equation*}
             \hat{\vJ}(r,m,n) = \frac{i}{\eta}
             \left(
-                \mH_{H}(r,n)
+                \mh_{H}(r,n)
                 -
-                \mJ_{H}(r,n)
-                \mJ_{E}(r_0,n)^{-1}
-                \mH_{E}(r_0,n)
+                \mj_{H}(r,n)
+                \mj_{E}(r_0,n)^{-1}
+                \mh_{E}(r_0,n)
             \right)
             \begin{bmatrix}
                 c_{mn}
                 \\
                 d_{mn}
             \end{bmatrix}
-        \end{equation}
+        \end{equation*}
 
         De la même manière que pour le plan et le cylindre, on en déduit la matrice d'impédance
 
-        \begin{multline}
+        \begin{multline*}
             \hat{\mZ}(m,n) = -i\eta
             \left(
-                \mH_{E}(r_1,n)
-                \mH_{E}(r_0,n)^{-1}
+                \mh_{E}(r_1,n)
+                \mh_{E}(r_0,n)^{-1}
                 -
-                \mJ_{E}(r_1,n)
-                \mJ_{E}(r_0,n)^{-1}
+                \mj_{E}(r_1,n)
+                \mj_{E}(r_0,n)^{-1}
             \right)
             \\
             \left(
-                \mH_{H}(r_1,n)
-                \mH_{E}(r_0,n)^{-1}
+                \mh_{H}(r_1,n)
+                \mh_{E}(r_0,n)^{-1}
                 -
-                \mJ_{H}(r_1,n)
-                \mJ_{E}(r_0,n)^{-1}
+                \mj_{H}(r_1,n)
+                \mj_{E}(r_0,n)^{-1}
             \right)^{-1}
-        \end{multline}
+        \end{multline*}
 
-        Par définition des matrices \(\mJ_E,\mH_E,\mJ_H,\mH_H\), elle sont anti-diagonale. Donc leur inverse l'est aussi. Donc le produit de l'une avec l'inverse d'une autre est une matrice diagonale. Donc la matrice d'impédance est une matrice diagonale.
+        Par définition des matrices \(\mj_E,\mh_E,\mj_H,\mh_H\), elle sont anti-diagonale. Donc leur inverse l'est aussi. Donc le produit de l'une avec l'inverse d'une autre est une matrice diagonale. Donc la matrice d'impédance est une matrice diagonale.
 
-        \begin{equation}
+        \begin{equation*}
             \hat{\mZ}(m,n) = -i\eta
             \begin{bmatrix}
                 \frac
-                {\tilde{h_n}(kr_1)\tilde{j_n}(kr_0)-\tilde{j_n}(kr_1)\tilde{h_n}(kr_0)}
-                {{h_n}(kr_1)\tilde{j_n}(kr_0)-{j_n}(kr_1)\tilde{h_n}(kr_0)} & 0
+                {\tilde{h^{(2)}_n}(k(r)r_1)\tilde{j_n}(k(r)r_0)-\tilde{j_n}(k(r)r_1)\tilde{h^{(2)}_n}(k(r)r_0)}
+                {{h^{(2)}_n}(k(r)r_1)\tilde{j_n}(k(r)r_0)-{j_n}(k(r)r_1)\tilde{h^{(2)}_n}(k(r)r_0)} & 0
                 \\
                 0 & \frac
-                {{j_n}(kr_1){h_n}(kr_0)-{h_n}(kr_1){j_n}(kr_0)}
-                {\tilde{h_n}(kr_1){j_n}(kr_0)-\tilde{j_n}(kr_1){h_n}(kr_0)}
+                {{j_n}(k(r)r_1){h^{(2)}_n}(k(r)r_0)-{h^{(2)}_n}(k(r)r_1){j_n}(k(r)r_0)}
+                {\tilde{h^{(2)}_n}(k(r)r_1){j_n}(k(r)r_0)-\tilde{j_n}(k(r)r_1){h^{(2)}_n}(k(r)r_0)}
             \end{bmatrix}
-        \end{equation}
+        \end{equation*}
 
     \subsection{Matrice d'impédance pour plusieurs couches}
     
@@ -429,29 +1324,29 @@
 
         En \(r=r_{p}=r_0+\sum_{i=1}^p d_p\), on a la relation \( \hat{\vE_t}(r_p,m,n) = \hat{\mZ}_p(m,n)\hat{\vJ}(r_p,m,n)\) où \(\hat{\mZ}_p(m,n)\) est un matrice diagonale
 
-        \begin{equation}
-            \left(\mJ_{E}(r_p,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mJ_{H}(r_p,n) \right)
+        \begin{equation*}
+            \left(\mj_{E}(r_p,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mj_{H}(r_p,n) \right)
             \begin{bmatrix}
                 a_{mn}
                 \\
                 b_{mn}
             \end{bmatrix}
             = -
-            \left(\mH_{E}(r_p,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mH_{H}(r_p,n) \right)
+            \left(\mh_{E}(r_p,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mh_{H}(r_p,n) \right)
             \begin{bmatrix}
                 c_{mn}
                 \\
                 d_{mn}
             \end{bmatrix}
-        \end{equation}
+        \end{equation*}
 
         On définit les matrices \(\mA_{J}(r,n)\) et \(\mA_{H}(r,n)\) telle que
 
-        \begin{align}
-            \mA_{J}(r,n) &= \mJ_{E}(r,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mJ_{H}(r,n)
+        \begin{align*}
+            \mA_{J}(r,n) &= \mj_{E}(r,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mj_{H}(r,n)
             \\
-            \mA_{H}(r,n) &= \mH_{E}(r,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mH_{H}(r,n)
-        \end{align}
+            \mA_{H}(r,n) &= \mh_{E}(r,n) - \frac{i}{\eta_p}\hat{\mZ}_p(m,n)\mh_{H}(r,n)
+        \end{align*}
 
         On suppose que les matrices \(\mA_{E}(r,n)\) et \(\mA_{H}(r,n)\) soient inversibles.
 
@@ -463,12 +1358,12 @@
 
         On en déduit
 
-        \begin{equation}
+        \begin{equation*}
             \hat{\vE_t}(r_{p+1},m,n) =
             \left(
-                \mH_{E}(r_{p+1},n)
+                \mh_{E}(r_{p+1},n)
                 -
-                \mJ_{E}(r_{p+1},n)
+                \mj_{E}(r_{p+1},n)
                 \mA_{J}(r_p,n)^{-1}
                 \mA_{H}(r_p,n)
             \right)
@@ -477,15 +1372,15 @@
                 \\
                 d_{mn}
             \end{bmatrix}
-        \end{equation}
+        \end{equation*}
 
 
-        \begin{equation}
+        \begin{equation*}
             \hat{\vJ}(r_{p+1},m,n) = \frac{i}{\eta_p}
             \left(
-                \mH_{H}(r_{p+1},n)
+                \mh_{H}(r_{p+1},n)
                 -
-                \mJ_{H}(r_{p+1},n)
+                \mj_{H}(r_{p+1},n)
                 \mA_{J}(r_{p+1},n)^{-1}
                 \mA_{H}(r_{p+1},n)
             \right)
@@ -494,28 +1389,28 @@
                 \\
                 d_{mn}
             \end{bmatrix}
-        \end{equation}
+        \end{equation*}
 
         On en déduit la matrice de la couche \(p+1\)
 
-        \begin{multline}
+        \begin{multline*}
             \hat{\mZ}_{p+1}(m,n) = -i\eta_p
             \left(
-                \mH_{E}(r_{p+1},n)
+                \mh_{E}(r_{p+1},n)
                 \mA_{H}(r_p,n)^{-1}
                 -
-                \mJ_{E}(r_{p+1},n)
+                \mj_{E}(r_{p+1},n)
                 \mA_{E}(r_p,n)^{-1}
             \right)
             \\
             \left(
-                \mH_{H}(r_{p+1},n)
+                \mh_{H}(r_{p+1},n)
                 \mA_{H}(r_p,n)^{-1}
                 -
-                \mJ_{H}(r_{p+1},n)
+                \mj_{H}(r_{p+1},n)
                 \mA_{E}(r_p,n)^{-1}
             \right)^{-1}
-        \end{multline}
+        \end{multline*}
 
         Pour les mêmes raisons que dans le cas d'une couche, cette matrice est diagonale. Cependant son expression n'est plus aussi simple (voir annexe \ref{sec:annex:imp_sphere} ).
 

@@ -112,16 +112,16 @@ On voit alors que l'on peut résoudre le problème si l'on minimise uniquement s
 \subsubsection{Application de la réduction à la CI3}
 
 On rappelle l'expression de la CI3
-\begin{equation}
+\begin{equation*}
   \hat{\mZ}_{ap}(k_x,0.) = \left(\mI + b_1 \hat{\mLD} - b_2 \hat{\mLR} \right)^{-1}\left(a_0\mI + a_1 \hat{\mLD} - a_2 \hat{\mLR} \right)
-\end{equation}
+\end{equation*}
 
 On voit donc que pour faire apparaître une asymptote, il faut que la matrice de gauche ne soit pas inversible en \(s_z\).
 
 La matrice \({\mH}_\infty\) est donc nulle partout sauf en 8 termes, placés sur les deux dernières colonnes et les 4 lignes correspondantes à \((k_x,k_y)=(k_0 s_z,0)\).
 
 Connaissant les expressions des matrices \(\hat\mLD,\hat\mLR\) introduites dans la partie précédente alors on déduit que
-\begin{align}
+\begin{align*}
   X_\infty = \begin{bmatrix}
     0\\
     0\\
@@ -137,7 +137,7 @@ Connaissant les expressions des matrices \(\hat\mLD,\hat\mLR\) introduites dans 
   0\\
   0\\
   \end{bmatrix}
-\end{align}
+\end{align*}
 
 \subsection{Choix de la méthode numérique pour résoudre la minimisation sous contraintes}
 
@@ -145,11 +145,11 @@ Connaissant les expressions des matrices \(\hat\mLD,\hat\mLR\) introduites dans 
  
   \begin{itemize}
     \item Elle est éprouvée depuis \cite{kraft_software_1988} et des sources Fortran à jour sont disponibles à \url{https://github.com/jacobwilliams/slsqp}, ce qui est capital pour l'intégrer dans un code industriel.
-    \item Elle est rapide, nous avons observés que cette méthode convergeait en quelques dizaines d'itérations au pire.
-    \item Elle accepte des contraintes non-linaire donc elle est adaptée à nos CSU.
+    \item Elle est rapide, nous avons observés que cette méthode convergeait en quelques dizaines d'itérations au plus.
+    \item Elle accepte des contraintes non-linaires donc elle est adaptée à nos CSU.
   \end{itemize}
 
-\subsection{Résultats numérique avec contraintes}
+% \subsection{Résultats numérique avec contraintes}
 
   % \begin{TODO}
   %   Quelques résultats avec contraintes

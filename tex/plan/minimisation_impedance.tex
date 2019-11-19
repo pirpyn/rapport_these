@@ -12,31 +12,31 @@
       \end{equation*}
     \end{defn}
 
-  \subsection{Expression de la fonctionnelle}
+  \subsection[Expression de la fonctionnelle JZ]{Expression de la fonctionnelle \(J_Z\)}
 
     \begin{defn}
       On définit \(\mH_{CI3}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
       \begin{equation*}
         \mH_{CI3}(k_x,k_y,\mA) = \begin{bmatrix}
-        1 & \hat{\mLD}(k_x,k_y)_{11} & -\hat{\mLR}(k_x,k_y)_{11} & -\left(\hat{\mLD}(k_x,k_y){\mA}\right)_{11} & \left(\hat{\mLR}(k_x,k_y){\mA}\right)_{11}
+        1 & \hat{\mLD}(k_x,k_y)_{11} & -\hat{\mLR}(k_x,k_y)_{11} & -\left(\hat{\mLD}(k_x,k_y)\mZ\right)_{11} & \left(\hat{\mLR}(k_x,k_y)\mZ\right)_{11}
         \\
-        0 & \hat{\mLD}(k_x,k_y)_{12} & -\hat{\mLR}(k_x,k_y)_{12} & -\left(\hat{\mLD}(k_x,k_y){\mA}\right)_{12} & \left(\hat{\mLR}(k_x,k_y){\mA}\right)_{12}
+        0 & \hat{\mLD}(k_x,k_y)_{12} & -\hat{\mLR}(k_x,k_y)_{12} & -\left(\hat{\mLD}(k_x,k_y)\mZ\right)_{12} & \left(\hat{\mLR}(k_x,k_y)\mZ\right)_{12}
         \\
-        0 & \hat{\mLD}(k_x,k_y)_{21} & -\hat{\mLR}(k_x,k_y)_{21} & -\left(\hat{\mLD}(k_x,k_y){\mA}\right)_{21} & \left(\hat{\mLR}(k_x,k_y){\mA}\right)_{21}
+        0 & \hat{\mLD}(k_x,k_y)_{21} & -\hat{\mLR}(k_x,k_y)_{21} & -\left(\hat{\mLD}(k_x,k_y)\mZ\right)_{21} & \left(\hat{\mLR}(k_x,k_y)\mZ\right)_{21}
         \\
-        1 & \hat{\mLD}(k_x,k_y)_{22} & -\hat{\mLR}(k_x,k_y)_{22} & -\left(\hat{\mLD}(k_x,k_y){\mA}\right)_{22} & \left(\hat{\mLR}(k_x,k_y){\mA}\right)_{22}
+        1 & \hat{\mLD}(k_x,k_y)_{22} & -\hat{\mLR}(k_x,k_y)_{22} & -\left(\hat{\mLD}(k_x,k_y)\mZ\right)_{22} & \left(\hat{\mLR}(k_x,k_y)\mZ\right)_{22}
         \end{bmatrix}
       \end{equation*}
       On définit \(b\) la fonction de \(\mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
       \begin{equation*}
-        b(\mA) = \begin{bmatrix}
-        {\mA}_{11}
+        b(\mZ) = \begin{bmatrix}
+        \mZ_{11}
         \\
-        {\mA}_{12}
+        \mZ_{12}
         \\
-        {\mA}_{21}
+        \mZ_{21}
         \\
-        {\mA}_{22}
+        \mZ_{22}
         \end{bmatrix}
       \end{equation*}
     \end{defn}

@@ -1,0 +1,185 @@
+\section{Calcul des coefficients de la CI3 par moindres carrés sur les coefficients de la série de Fourier}
+
+  On peut aussi résoudre calculer les coefficients en minimisant l'erreur entre les coefficients de Fourier.
+
+  Soit \(\mM_A\) et \(\mM_B\) les fonctions introduites à la définition \ref{def:plan:matrices_MA-MB} et \(\hat\mR\) la fonction définie en \ref{def:plan:reflexion:impedance}.
+
+  \begin{defn}%[]
+    \label{def:plan:minimisation:matrices_MR}
+    On définit les fonctions \(\hat\mR_{ex}, \hat\mR_{CI3}\) de \(\RR\times\RR\times \rightarrow \mathcal{M}_2(\CC)\) telles que
+    \begin{align*}
+      \hat\mR_{ex}(k_x,k_y) &= \hat\mR(k_x,k_y, \hat\mZ_{ex}(k_x,k_y))
+      \\
+      \hat\mR_{CI3}(k_x,k_y) &= \hat\mR(k_x,k_y, \hat\mZ_{CI3}(k_x,k_y))
+    \end{align*}
+    où \(\hat\mZ_{ex},\hat\mZ_{CI3}\) sont des fonctions définies à la proposition \ref{prop:plan:synthese:impedance} et à l'équation \eqref{eq:plan:hoibc:ci3}.
+  \end{defn}
+
+  \subsection[Expression de la fonctionnelle JR]{Expression de la fonctionnelle \(J_R\)}
+
+    On utilise les fonctions \(\mN_E, \mN_H\) introduite à la définition \ref{def:plan:matrices_NE-NH} et \(\hat\mLD,\hat\mLR\) définies aux définitions \ref{eq:plan:fourier:LD}-\ref{eq:plan:fourier:LR}.
+
+    \begin{defn}
+      On définit \(\mA_0,\mA_1,\mA_2,\mA_2,\mB_1,\mB_2\) les fonctions de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \ \mathcal{M}_2(\CC)\) telles que        
+      \begin{align*}
+        \mA_0(k_x,k_y,\mR) &= \mN_E(k_x,k_y,0^+,\mR)
+        \\
+        \mA_1(k_x,k_y,\mR) &= \hat{\mLD}(k_x,k_y)\mN_E(k_x,k_y,0^+,\mR)
+        \\
+        \mA_2(k_x,k_y,\mR) &= -\hat{\mLR}(k_x,k_y)\mN_E(k_x,k_y,0^+,\mR)
+        \\
+        \mB_1(k_x,k_y,\mR) &= \hat{\mLD}(k_x,k_y)\mN_H(k_x,k_y,0^+,\mR)
+        \\
+        \mB_2(k_x,k_y,\mR) &= -\hat{\mLR}(k_x,k_y)\mN_H(k_x,k_y,0^+,\mR)            
+      \end{align*}
+
+      On définit \(\tilde{\mH}_{CI3}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
+      \begin{align*}
+        & \tilde\mH_{CI3}(k_x,k_y,\mR) =  \\ &
+        \begin{bmatrix}
+          \mA_0(k_x,k_y,\mR)_{11} & \mA_1(k_x,k_y,\mR)_{11} & \mA_2(k_x,k_y,\mR)_{11} & \mB_1(k_x,k_y,\mR)_{11} & \mB_2(k_x,k_y,\mR)_{11}
+          \\
+          \mA_0(k_x,k_y,\mR)_{12} & \mA_1(k_x,k_y,\mR)_{12} & \mA_2(k_x,k_y,\mR)_{12} & \mB_1(k_x,k_y,\mR)_{12} & \mB_2(k_x,k_y,\mR)_{12}
+          \\
+          \mA_0(k_x,k_y,\mR)_{21} & \mA_1(k_x,k_y,\mR)_{21} & \mA_2(k_x,k_y,\mR)_{21} & \mB_1(k_x,k_y,\mR)_{21} & \mB_2(k_x,k_y,\mR)_{21}
+          \\
+          \mA_0(k_x,k_y,\mR)_{22} & \mA_1(k_x,k_y,\mR)_{22} & \mA_2(k_x,k_y,\mR)_{22} & \mB_1(k_x,k_y,\mR)_{22} & \mB_2(k_x,k_y,\mR)_{22}
+        \end{bmatrix}
+      \end{align*}
+
+      On définit \(\tilde{b}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
+      \begin{equation*}
+        \tilde{b}(k_x,k_y,\mR) = -
+        \begin{bmatrix}
+          \mN_H(k_x,k_y,0^+,\mR)_{11}
+          \\
+          \mN_H(k_x,k_y,0^+,\mR)_{12}
+          \\
+          \mN_H(k_x,k_y,0^+,\mR)_{21}
+          \\
+          \mN_H(k_x,k_y,0^+,\mR)_{22}
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
+
+    \begin{prop}
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((k_x,k_y)\) fixé et \(\hat\mR_{ex}\) la matrice définie en \ref{def:plan:minimisation:matrices_MR}, alors
+      \begin{multline*}
+        \argmin{X\in\CC^5} \norm{\hat\mR_{CI3}(k_x,k_y,X) - \hat\mR_{ex}(k_x,k_y)} =
+        \\
+        \argmin{X\in\CC^5} \norm{\tilde{\mH}_{CI3}(k_x,k_y,\hat\mR_{ex}(k_x,k_y))X - \tilde{b}(k_x,k_y,\hat\mR_{ex}(k_x,k_y))}
+      \end{multline*}
+    \end{prop}
+
+    \begin{proof}
+      C'est la même méthodologie que pour l'impédance.
+      On rappelle de la section précédente
+      \begin{multline*}
+        \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y) \right)^{-1}
+        \\
+        \left(a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)}\right)
+      \end{multline*}
+      On pose \(\hat\mZ_D(k_x,k_y) = \mI + b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y)\) et \(\hat\mZ_N(k_x,k_y) = a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)}\) donc
+
+      \begin{align*}
+        &{\hspace{1em}}~ \argmin{X\in\CC^5} \norm{\hat\mR_{CI3}(k_x,k_y,X) - \hat\mR_{ex}(k_x,k_y)}
+        \\
+        & = \argmin{X\in\CC^5} \norm{ - \mM_B(k_x,k_y,0^+,\hat\mZ_{CI3})^{-1}\mM_A(k_x,k_y,0^+,\hat\mZ_{CI3})- \hat\mR_{ex}(k_x,k_y) }
+        \\
+        & = \argmin{X\in\CC^5} \norm{ - \mM_B(k_x,k_y,0^+,\hat\mZ_{CI3})^{-1}\left(\mM_A(k_x,k_y,0^+,\hat\mZ_{CI3}) +  \mM_B(k_x,k_y,0^+,\hat\mZ_{CI3})\hat\mR_{ex}(k_x,k_y)\right) }      
+        \\ 
+        & = \argmin{X\in\CC^5} \norm{\mM_A(k_x,k_y,0^+,\hat\mZ_{CI3}) +\mM_B(k_x,k_y,0^+,\hat\mZ_{CI3})\hat\mR_{ex}(k_x,k_y)}
+        \intertext{D'après la définition \ref{def:plan:matrices_MJ-MH} des fonctions \(\mM_A, \mM_B\),}
+        & = \argmin{X\in\CC^5} \left\lVert \left(\mJ_E(k_x,k_y,0^+)-\hat\mZ_{CI3}(k_x,k_y)\mJ_H(k_x,k_y,0^+)\right) \right.
+        \\
+        & \qquad \qquad \quad + \left.\left(\mH_E(k_x,k_y,0^+)-\hat\mZ_{CI3}(k_x,k_y)\mH_H(k_x,k_y,0^+)\right)\hat\mR_{ex}(k_x,k_y) \right\lVert
+        \intertext{D'après la définition de \(\hat\mZ_{CI3}\),}        
+        & = \argmin{X\in\CC^5} \left\lVert \hat\mZ_D(k_x,k_y)^{-1}\left(\hat\mZ_D(k_x,k_y)\mJ_E(k_x,k_y,0^+)-\hat\mZ_N(k_x,k_y)\mJ_H(k_x,k_y,0^+)\right) \right.
+        \\
+        & \qquad \qquad \quad + \left.\hat\mZ_D(k_x,k_y)^{-1}\left(\hat\mZ_D(k_x,k_y)\mH_E(k_x,k_y,0^+)-\hat\mZ_N(k_x,k_y)\mH_H(k_x,k_y,0^+)\right)\hat\mR_{ex}(k_x,k_y) \right\lVert
+        \\
+        & = \argmin{X\in\CC^5} \left\lVert \left(\hat\mZ_D(k_x,k_y)\mJ_E(k_x,k_y,0^+)-\hat\mZ_N(k_x,k_y)\mJ_H(k_x,k_y,0^+)\right) \right.
+        \\
+        & \qquad \qquad \quad + \left.\left(\hat\mZ_D(k_x,k_y)\mH_E(k_x,k_y,0^+)-\hat\mZ_N(k_x,k_y)\mH_H(k_x,k_y,0^+)\right)\hat\mR_{ex}(k_x,k_y) \right\lVert
+        \intertext{D'après la définition \ref{def:plan:matrices_NE-NH} des fonctions \(\mN_E, \mN_H\),}        
+        & = \argmin{X\in\CC^5} \norm{\hat\mZ_N(k_x,k_y)\mN_E(k_x,k_y,0^+,\hat\mR_{ex}(k_x,k_y)) + \hat\mZ_D(k_x,k_y)\mN_H(k_x,k_y,0^+,\hat\mR_{ex}(k_x,k_y))}
+      \end{align*}
+      et on conclut d'après la définition des fonctions \(\hat\mZ_D, \hat\mZ_N\).
+    \end{proof}
+
+    \begin{defn}
+      On définit \(\tilde{\mA}_{CI3}\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times5}(\CC)\) telle que
+      \begin{equation*}
+        \tilde{\mA}_{CI3} = 
+        \begin{bmatrix}
+          \tilde\mH_{CI3}(n_1,k_{z1},\hat\mR_{ex}(n_1,k_{z1}))
+          \\
+          \vdots
+          \\
+          \tilde\mH_{CI3}(n_i,k_{zj},\hat\mR_{ex}(n_i,k_{zj}))
+          \\
+          \vdots
+          \\
+          \tilde\mH_{CI3}(n_{N_n},k_{zN_{k_z}},\hat\mR_{ex}(n_{N_n},k_{zN_{k_z}}))
+        \end{bmatrix}
+      \end{equation*}
+      On définit \(\tilde{g}\) le vecteur colonne \(\CC^{4N_{n}N_{k_z}}\) telle que
+      \begin{equation*}
+        \tilde{g} = 
+        \begin{bmatrix}
+          \tilde{b}(n_1,k_{z1},\hat\mR_{ex}(n_1,k_{z1}))
+          \\
+          \vdots
+          \\
+          \tilde{b}(n_i,k_{zj},\hat\mR_{ex}(n_i,k_{zj}))
+          \\
+          \vdots
+          \\
+          \tilde{b}(n_{N_n},k_{zN_{k_z}},\hat\mR_{ex}(n_{N_n},k_{zN_{k_z}}))
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
+
+    On peut alors calculer les coefficients de la CI3
+
+    \begin{defn}
+      On définit la fonctionnelle \(J_R\)
+      \begin{equation*}
+        J_R(X) = \norm{\tilde{\mA}_{CI3}X - \tilde{g}}
+      \end{equation*}
+    \end{defn}
+
+    \begin{thm}[Minimisation sans contraintes pour la CI3]
+
+      Les coefficients de la CIOE sont solutions du problème
+
+      Trouver \(X^* \in \CC^5\) tel que
+      \begin{equation*}
+        X^* = \argmin{X\in \CC^5} J_R(X)
+      \end{equation*}
+    \end{thm}
+
+    \begin{prop}
+      Si \(\conj{\tilde{\mA}_{CI3}^t}\tilde{\mA}_{CI3}\) est inversible alors
+      \begin{equation*}
+        X^* = (\conj{\tilde{\mA}_{CI3}^t}\tilde{\mA}_{CI3})^{-1}\conj{\tilde{\mA}_{CI3}^t}\tilde{g}
+      \end{equation*}
+    \end{prop}
+    \begin{proof}
+      Même méthode que pour la proposition \ref{prop:plan:minimisation:minimum_sans_contraintes} sur l'impédance.
+    \end{proof}
+
+    Nous n'avons pas réussi à démontrer que cette matrice était définie pour tout empilement et tout incidence, pas même pour des CIOE plus simple.
+
+    \begin{thm}[Minimisation avec contraintes pour la CI3]
+
+      Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
+      Alors les coefficients de la CIOE respectant les CSU sont solutions du problème
+
+      Trouver \(X^* \in \CC^5\) tel que
+      \begin{equation*}
+        X^* = \argmin{X\in \CSU[3]{CI3}} J_R(X)
+      \end{equation*}
+    \end{thm}
+
+    

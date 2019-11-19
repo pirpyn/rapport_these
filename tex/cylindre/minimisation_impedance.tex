@@ -119,22 +119,7 @@
     \end{prop}
 
     \begin{proof}
-      Soit \(\ps{\cdot}{\cdot}\) le produit scalaire associé à la norme \(\norm{\cdot}\). Soit \(J\) la fonctionnelle telle que
-      \begin{align*}
-      J(X) &= \norm{\mA_{CI3}X - g}^2
-      \\
-      &= \ps{\mA_{CI3}X - g}{\mA_{CI3}X - g}
-      \intertext{le produit scalaire est symétrique donc \(\ps{a}{b} = \ps{b}{a}\)}
-      &=\ps{\mA_{CI3}X}{\mA_{CI3}X} - 2\ps{\mA_{CI3}X}{g} + \ps{g}{g}
-      \\
-      &=\ps{X}{\conj{\mA_{CI3}^t}\mA_{CI3}X} - 2\ps{X}{\conj{\mA_{CI3}^t}g} + \ps{g}{g}
-      \end{align*}
-      Si la matrice \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, comme elle est par définition hermitienne et positive alors la fonctionnelle est quadratique. Donc il existe une unique minimum où le gradient de cette fonctionnelle s'annule. Or
-      \begin{align*}
-        \nabla J_Z(X^*) &= 2\conj{\mA_{CI3}^t}\mA_{CI3}X^* - 2\conj{\mA_{CI3}^t}g
-        \\ 
-        &= 0
-      \end{align*}
+      Même démonstration que pour le théorème \ref{prop:plan:minimisation:minimum_sans_contraintes}.
     \end{proof}
 
     Nous n'avons pas réussi à démontrer que cette matrice était définie pour tout empilement et tout incidence.

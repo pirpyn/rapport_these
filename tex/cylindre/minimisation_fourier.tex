@@ -1,33 +1,8 @@
-\section{Calcul des coefficients des CIOE par moindres carrés sur les coefficients de la série de Fourier}
+\section{Calcul des coefficients de la CI3 par moindres carrés sur les coefficients de la série de Fourier}
 
   On remarque alors que sans contraintes, la CI3 n'est pas adaptée au cylindre, même en incidence radiale. Cependant, on peut aussi résoudre l'erreur entre les coefficients de Fourier. Pour cela, on adapte au cylindre le lemme permettant de déduire d'une impédance la matrice de réflexion qui contient les coefficients de la série de Fourier.
 
-  \begin{defn}[Matrice de réflexion associée à une impédance]\label{def:cylindre:reflexion_from_impedance}{}~
-
-    Soit \(\mM_\mJ\) et \(\mM_\mH\) les fonctions introduite à la définition \ref{def:cylindre:matrices_MJ-MH}.
-
-    On définit la fonction \(\hat\mR\) de \(\NN\times\RR\times\mathcal{M}_2(\CC) \rightarrow \mathcal{M}_2(\CC)\) telle que
-    \begin{equation*}
-      \hat\mR(n,k_z,\tilde{\mA}) = - \mM_\mH(r_c^+,n,k_z,\tilde{\mA})^{-1}\mM_\mJ(r_c^+,n,k_z,\tilde{\mA})
-    \end{equation*}
-  \end{defn}
-  % \begin{prop}
-  %   Soit \(r_c^+\) l'interface cylindre-vide.
-
-  %   Soit \(\hat{\mZ}(n,k_z)\) la matrice d'impédance à cette interface.
-  %   \begin{align*}
-  %     \hat{\vE}_t(r_c^+,n,k_z) &= \hat{\mZ}(n,k_z) \left(\vect{e_r} \pvect \hat{\vH}_t(r_c^+,n,k_z)\right)
-  %   \end{align*}
-  %   alors il existe \(\vect{C}(n,k_z) \in \CC^2\) tel que 
-  %   \begin{align*}
-  %     \hat{\vE}_t(r_c^+,n,k_z) &= \left(\mJ_E(r_c^+,n,k_z) + \mH_E(r_c^+,n,k_z)\hat\mR(n,k_z,\hat\mZ(n,k_z)\right)\vect{C}(n,k_z)
-  %     \\
-  %     \vect{e_r} \pvect \hat{\vH}_t(r_c^+,n,k_z) &= \left(\mJ_H(r_c^+,n,k_z) + \mH_H(r_c^+,n,k_z)\hat\mR(n,k_z,\hat\mZ(n,k_z)\right)\vect{C}(n,k_z)
-  %   \end{align*}
-  % \end{prop}
-  % \begin{proof}
-  %   Immédiat depuis la définition des champs \eqref{eq:imp_fourier:cylindre:Et},\eqref{eq:imp_fourier:cylindre:Ht}.
-  % \end{proof}
+  Soit \(\mM_\mJ\) et \(\mM_\mH\) les fonctions introduites à la définition \ref{def:cylindre:matrices_MJ-MH} et \(\hat\mR\) la fonction définie à la définition \ref{def:cylindre:reflexion:impedance}.
 
   \begin{defn}%[]
     \label{def:cylindre:minimisation:matrices_MR}

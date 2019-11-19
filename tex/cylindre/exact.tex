@@ -61,9 +61,9 @@
 
     \begin{equation*}
     % \left\lbrace \begin{aligned}
-    %   \vrot \hat \vE(r,n,k_z) &=-i\w\mu \hat \vH(r,n,k_z)
+    %   \vrot \hat \vE(r,n,k_z) &=-ik(r)\eta(r) \hat \vH(r,n,k_z)
     %   \\
-    %   \vrot \hat \vH(r,n,k_z) &= i\w\eps \hat \vE(r,n,k_z)
+    %   \vrot \hat \vH(r,n,k_z) &= i\frac{k(r)}{\eta(r)} \hat \vE(r,n,k_z)
     % \end{aligned}\right.
     \end{equation*}
     \begin{equation*}
@@ -71,12 +71,12 @@
       i\left(\frac{n}{r}\hat{E_z} - k_z\hat{E_\theta}\right)\vect{e_r} +
       \left(ik_z\hat{E_r} - \ddp{r}{\hat{E_z}}\right)\vect{e_\theta} +
       \frac{1}{r}\left(\ddp{r}{(r\hat{E_\theta})}-in\hat{E_r}\right)\vect{e_z}
-      &=-i\w\mu \hat \vH
+      &=-ik(r)\eta(r) \hat \vH
       \\
       i\left(\frac{n}{r}\hat{H_z} - k_z\hat{H_\theta}\right)\vect{e_r} +
       \left(ik_z\hat{H_r} - \ddp{r}{\hat{H_z}}\right)\vect{e_\theta} +
       \frac{1}{r}\left(\ddp{r}{(r\hat{H_\theta})}-in\hat{H_r}\right)\vect{e_z}
-      &=i\w\eps \hat \vE
+      &=i\frac{k(r)}{\eta(r)} \hat \vE
     \end{aligned}\right.
     \end{equation*}    % On remarque que la méthode utilisée pour le plan aboutie à une équation différentielle à coefficients non constants de type \(r\ddp{r}{\vect{X}}(r,n,k_z) = \mat{M}(r,n,k_z)\vect{X}(r,n,k_z)\).
     % On ne peut pas exprimer la solution avec les valeurs et vecteurs propres de la matrice.
@@ -167,18 +167,18 @@
 
     \begin{defn}
       \label{def:cylindre:JE-JH-HE-HH}
-      On définit les matrices \(\mJ_{E}(r,n,k_z),\mH_{E}(r,n,k_z),\mJ_{H}(r,n,k_z),\mH_{H}(r,n,k_z)\) constantes par morceaux en \(r\)
+      On définit les matrices \(\mJ_{E}(r,n,k_z),\mH_{E}(r,n,k_z),\mJ_{H}(r,n,k_z),\mH_{H}(r,n,k_z)\) où \(k_3,\eta\) sont constants par morceaux en \(r\)
       \begin{align*}
         \mJ_{E}(r,n,k_z) &=
         \begin{bmatrix}
-          -\frac{nk_z}{rk_3(r)^2}J_n(k_3(r)r) & \frac{i\w\mu(r)}{k_3(r)}J_n'(k_3(r)r)
+          -\frac{nk_z}{rk_3(r)^2}J_n(k_3(r)r) & \frac{ik(r)\eta(r)}{k_3(r)}J_n'(k_3(r)r)
           \\
           J_n(k_3(r)r) & 0
         \end{bmatrix}
         \\
         \mH_{E}(r,n,k_z) &=
         \begin{bmatrix}
-          -\frac{nk_z}{rk_3(r)^2}H_n^{(2)}(k_3(r)r) & \frac{i\w\mu(r)}{k_3(r)}H_n^{(2)}{}'(k_3(r)r)
+          -\frac{nk_z}{rk_3(r)^2}H_n^{(2)}(k_3(r)r) & \frac{ik(r)\eta(r)}{k_3(r)}H_n^{(2)}{}'(k_3(r)r)
           \\
           H_n^{(2)}(k_3(r)r) & 0
         \end{bmatrix}
@@ -187,19 +187,18 @@
         \begin{bmatrix}
           0 & -J_n(k_3(r)r)
           \\
-          -\frac{i\w\eps(r)}{k_3(r)}J_n'(k_3(r)r) & -\frac{nk_z}{rk_3(r)^2}J_n(k_3(r)r)
+          -\frac{ik(r)}{\eta(r)k_3(r)}J_n'(k_3(r)r) & -\frac{nk_z}{rk_3(r)^2}J_n(k_3(r)r)
         \end{bmatrix}
         \\
         \mH_{H}(r,n,k_z) &=
         \begin{bmatrix}
           0 & -H_n^{(2)}(k_3(r)r)
           \\
-          -\frac{i\w\eps(r)}{k_3(r)}H_n^{(2)}{}'(k_3(r)r) & -\frac{nk_z}{rk_3(r)^2}H_n^{(2)}(k_3(r)r)
+          -\frac{ik(r)}{\eta(r)k_3(r)}H_n^{(2)}{}'(k_3(r)r) & -\frac{nk_z}{rk_3(r)^2}H_n^{(2)}(k_3(r)r)
         \end{bmatrix}
       \end{align*}
     \end{defn}
 
-    On remarque que \(\eps,\mu\) sont constantes par morceaux.
     Sur une interface d'équation \(r=r_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mJ_E(r_p+ \delta,n,k_z) - \mJ_E(r_p - \delta,n,k_z) \not = 0\) .
 
     \begin{prop}
@@ -242,17 +241,17 @@
       \begin{align*}
         \left\lbrace
         \begin{matrix}
-          -ik_z\hat{E_\theta} + i\w\mu \hat{H_r} = -\frac{in}{r}\hat{E_z}
+          -ik_z\hat{E_\theta} + ik(r)\eta(r) \hat{H_r} = -\frac{in}{r}\hat{E_z}
           \\
-          ik_z\hat{E_r} + i\w\mu \hat{H_\theta} = \ddp{r}{\hat{E_z}}
+          ik_z\hat{E_r} + ik(r)\eta(r) \hat{H_\theta} = \ddp{r}{\hat{E_z}}
         \end{matrix}
         \right.
         &&
         \left\lbrace
         \begin{matrix}
-          i\w\eps \hat{E_r} + ik_z \hat{H_\theta} = \frac{in}{r}\hat{H_z}
+          i\frac{k(r)}{\eta(r)} \hat{E_r} + ik_z \hat{H_\theta} = \frac{in}{r}\hat{H_z}
           \\
-          i\w\eps \hat{E_\theta} - ik_z \hat{H_r} = -\ddp{r}{\hat{H_z}}
+          i\frac{k(r)}{\eta(r)} \hat{E_\theta} - ik_z \hat{H_r} = -\ddp{r}{\hat{H_z}}
         \end{matrix}
         \right.
       \end{align*}
@@ -261,13 +260,13 @@
       \begin{align*}
         \mat{M} =
         \begin{bmatrix}
-        0 & -ik_z & i\w\mu & 0
+        0 & -ik_z & ik(r)\eta(r) & 0
         \\
-        ik_z & 0 & 0 & i\w\mu
+        ik_z & 0 & 0 & ik(r)\eta(r)
         \\
-        i\w\eps & 0 & 0 & ik_z
+        i\frac{k(r)}{\eta(r)} & 0 & 0 & ik_z
         \\
-        0 & i\w\eps & -ik_z & 0
+        0 & i\frac{k(r)}{\eta(r)} & -ik_z & 0
         \end{bmatrix}
         ,&&
         \vect{X} =
@@ -287,7 +286,7 @@
         \end{bmatrix}
       \end{align*}
 
-      On remarque que \(\mM\mM = \left(k_z^2 - \omega^2\eps\mu\right)\mI\) et donc que \(\det(\mat{M})^2 = k_3^4\).
+      On remarque que \(\mM\mM = \left(k_z^2 - k(r)^2\right)\mI=-k_3(r)^2\mI\) et donc que \(\det(\mat{M})^2 = k_3(r)^4\).
 
       % \subsection{Cas \(k_3\not=0\)}
 
@@ -302,13 +301,13 @@
         \end{bmatrix} =
         \frac{1}{-k_3^2}
         \begin{bmatrix}
-        0 & -ik_z & i\w\mu & 0
+        0 & -ik_z & ik(r)\eta(r) & 0
         \\
-        ik_z & 0 & 0 & i\w\mu
+        ik_z & 0 & 0 & ik(r)\eta(r)
         \\
-        i\w\eps & 0 & 0 & ik_z
+        i\frac{k(r)}{\eta(r)} & 0 & 0 & ik_z
         \\
-        0 & i\w\eps & -ik_z & 0
+        0 & i\frac{k(r)}{\eta(r)} & -ik_z & 0
         \end{bmatrix}
         \begin{bmatrix}
           -\frac{in}{r}\hat{E_z}\\
@@ -323,56 +322,52 @@
       \begin{align*}
         % \hat{E_r} & = \frac{1}{k_3^2}\left(ik_z\ddp{r}{\hat{E_z}}+\frac{k\eta n}{r}\hat{H_z}\right)
         % \\
-        \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} - i\w\mu\ddp{r}{\hat{H_z}}\right)
+        \hat{E_\theta} &= -\frac{1}{k_3^2}\left(\frac{nk_z}{r}\hat{E_z} - ik(r)\eta(r)\ddp{r}{\hat{H_z}}\right)
         \\
         \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
         \\
         -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
         \\
-        \hat{H_\theta} &= -\frac{1}{k_3^2}\left(i\w\eps\ddp{r}{\hat{E_z}} + \frac{nk_z}{r}\hat{H_z}\right)
+        \hat{H_\theta} &= -\frac{1}{k_3^2}\left(i\frac{k(r)}{\eta(r)}\ddp{r}{\hat{E_z}} + \frac{nk_z}{r}\hat{H_z}\right)
       \end{align*}
 
       ce qui donne
 
        \begin{align*}
-        \hat{E_\theta} &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) + \frac{i\w\mu}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
+        \hat{E_\theta} &= -\frac{nk_z}{rk_3^2}\left(c_1J_n(k_3r) + c_2 H_n^{(2)}(k_3r)\right) + \frac{ik(r)\eta(r)}{k_3}\left(c_3J_n'(k_3r) + c_4 H_n^{(2)}{}'(k_3r)\right)
         \\
         \hat{E_z} &= c_1 J_n(k_3 r) + c_2 H_n^{(2)}(k_3 r)
         \\
         -\hat{H_z} &= -c_3 J_n(k_3 r) - c_4 H_n^{(2)}(k_3 r)
         \\
-        \hat{H_\theta} &= -\frac{i\w\eps}{k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
+        \hat{H_\theta} &= -\frac{i\frac{k(r)}{\eta(r)}}{k_3}\left(c_1J_n'(k_3r) + c_2 H_n^{(2)}{}'(k_3r)\right) - \frac{nk_z}{rk_3^2}\left(c_3J_n(k_3r) + c_4 H_n^{(2)}(k_3r)\right)
       \end{align*}
     \end{proof}
 
     \begin{prop}
       \label{lem:cylindre:imp:inv_matrices_JE-HE}
-      Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mJ_E(r,n,k_z)\), \(\mH_E(r,n,k_z)\)  sont inversibles pour tout couple \((n,k_z)\).
+      Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mJ_E(r,n,k_z)\), \(\mJ_H(r,n,k_z)\)  sont inversibles pour tout couple \((n,k_z)\).
       % Sinon, pour \(n\) donné, il existe un nombre fini de \(k_z\) tels que ces matrices ne soient pas inversibles. 
     \end{prop}
 
     \begin{proof}
       Par définition des matrices,
-      \begin{align}
-        \det(\mJ_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
+      \begin{align*}
+        \det(\mJ_E(r,n,k_z)) &= -\frac{ik(r)\eta(r)(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
         \\
-        \det(\mJ_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
-        % \\
-        % \det(\mH_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
-        % \\
-        % \det(\mH_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
-      \end{align}
+        \det(\mJ_H(r,n,k_z)) &= -\frac{i\frac{k(r)}{\eta(r)}(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
+      \end{align*}
 
       D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels donc si \(k_3 \in\CC\backslash\RR\) alors ces matrices sont inversibles.
     \end{proof}
 
 
-    Pour les matrices \(\mJ_H(r,n,k_z)\), \(\mH_H(r,n,k_z)\), on a
-    \begin{align}
-      \det(\mH_E(r,n,k_z)) &= -\frac{i\w\mu(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+    Pour les matrices \(\mH_E(r,n,k_z)\), \(\mH_H(r,n,k_z)\), on a
+    \begin{align*}
+      \det(\mH_E(r,n,k_z)) &= -\frac{ik(r)\eta(r)(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
       \\
-      \det(\mH_H(r,n,k_z)) &= -\frac{i\w\eps(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
-     \end{align}
+      \det(\mH_H(r,n,k_z)) &= -\frac{i\frac{k(r)}{\eta(r)}(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+     \end{align*}
     Et on ne peut rien conclure, car les zéros peuvent être complexes ( voir \cite{sandstrom_note_2007} ). On va donc supposer ces déterminants non nuls.
 
 
@@ -383,10 +378,10 @@
 
   \subsection{Expression de la matrice d'impédance pour une couche}
 
-    Soit \(r_1 = r_0 + d\). On se place dans le matériau donc \(r_0 \le r r_1\).
+    Soit \(r_1 = r_0 + d\). On se place dans le matériau donc \(r_0 \le r < r_1\).
 
     \begin{prop}
-      Si on suppose que \(k_3(r_0^+) \not \in \RR\) et que la matrice \(\mH_{H}(r_1^-,n,k_z) - \mJ_{H}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\mH_{E}(r_0^+,n,k_z)\) est inversible pour tout \(n,k_z\), alors on a 
+      Si on suppose que la matrice \(\mH_{H}(r_1^-,n,k_z) - \mJ_{H}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\mH_{E}(r_0^+,n,k_z)\) est inversible pour tout \(n,k_z\), alors on a 
       \begin{equation*}
         \hat \vE_t(r_1^-,n,k_z) = \hat \mZ(n,k_z) \left(\vect{e_r}\pvect \hat \vH_t(r_1^-,n,k_z)\right)
       \end{equation*}
@@ -415,8 +410,6 @@
         \end{bmatrix}
       \end{equation*}
 
-      On a supposé \(k_3(r_0)\not \in \RR \) donc on applique le lemme \ref{lem:cylindre:imp:inv_matrices_JE-HE} pour pouvoir inverser ces matrices.\\
-
       On peut donc exprimer les composantes tangentielles%, on omet les dépendances en \((n,k_z)\).
       \begin{align*}
         \hat \vE_t(r_1,n,k_z) &=
@@ -437,7 +430,7 @@
       On calcule le déterminant de cette matrice 
       \begin{multline*}
         \det(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)) = \\
-        i\w\eps\frac{(H_n^{(2)}(r_1k_3)J_n'(r_0k_3)-J_n(r_1k_3)H_n^{(2)}{}'(r_0k_3))(H_n^{(2)}{}'(r_1k_3)J_n(r_0k_3)-J_n'(r_1k_3)H_n^{(2)}(r_0k_3))}{J_n'(r_0^+k_3)J_n(r_0^+k_3)}
+        i\frac{k(r)}{\eta(r)}\frac{(H_n^{(2)}(r_1k_3)J_n'(r_0k_3)-J_n(r_1k_3)H_n^{(2)}{}'(r_0k_3))(H_n^{(2)}{}'(r_1k_3)J_n(r_0k_3)-J_n'(r_1k_3)H_n^{(2)}(r_0k_3))}{J_n'(r_0^+k_3)J_n(r_0^+k_3)}
       \end{multline*}
       Ce dernier s'annule quand \(\frac{H_n^{(2)}(r_1k_3)}{J_n(r_1k_3)} = \frac{H_n^{(2)}{}'(r_0k_3)}{J_n'(r_0k_3)}\) ou quand \(\frac{H_n^{(2)}{}'(r_1k_3)}{J_n'(r_1k_3)} = \frac{H_n^{(2)}(r_0k_3)}{J_n(r_0k_3)}\).
 

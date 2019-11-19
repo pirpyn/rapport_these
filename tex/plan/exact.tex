@@ -467,10 +467,10 @@
       \label{def:plan:reflexion:impedance}
       On définit la fonction de \(\RR\times\RR\times [z_{p-1}, z_p[ \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{align*}
-        \mR(k_x,k_y,z,\mZ) &= -\mM_{B}(k_x,k_y,z,\mZ)^{-1}\mM_{A}(k_x,k_y,z,\mZ)
+        \hat\mR(k_x,k_y,z,\mZ) &= -\mM_{B}(k_x,k_y,z,\mZ)^{-1}\mM_{A}(k_x,k_y,z,\mZ)
       \end{align*}
     \end{defn}
-    A priori, pour \(k_x,k_y,z\) donné, \(\mR(k_x,k_y,z,\mZ)\) n'est pas défini pour toute matrice \(\mZ\).
+    A priori, pour \(k_x,k_y,z\) donné, \(\hat\mR(k_x,k_y,z,\mZ)\) n'est pas défini pour toute matrice \(\mZ\).
     On prolonge ces définitions aux autres couches.
 
     \begin{defn}%[Fonction de transfert]{}~
@@ -560,7 +560,7 @@
           c_4(k_x,k_y)
         \end{bmatrix}
         =
-        \mR(k_x,k_y,z_p^-,\hat\mZ_p(k_x,k_y))
+        \hat\mR(k_x,k_y,z_p^-,\hat\mZ_p(k_x,k_y))
         \begin{bmatrix}
           c_1(k_x,k_y) \\
           c_3(k_x,k_y)
@@ -571,7 +571,7 @@
       \begin{multline*}
         \hat{\vE}_t(k_x,k_y,z_{p-1}) = 
         \\
-        \left(\mB_{E}(k_x,k_y,z_{p-1})\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y)) + \mA_{E}(k_x,k_y,z_{p-1})\right)
+        \left(\mB_{E}(k_x,k_y,z_{p-1})\hat\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y)) + \mA_{E}(k_x,k_y,z_{p-1})\right)
         \begin{bmatrix}
           c_1(k_x,k_y) \\
           c_3(k_x,k_y)
@@ -580,7 +580,7 @@
       \begin{multline*}
         \vect{e_r}\times\hat{\vH}_t(k_x,k_y,z_{p-1}) =
         \\
-        \left(\mB_{H}(k_x,k_y,z_{p-1})\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y)) + \mA_{H}(k_x,k_y,z_{p-1}))\right)
+        \left(\mB_{H}(k_x,k_y,z_{p-1})\hat\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y)) + \mA_{H}(k_x,k_y,z_{p-1}))\right)
         \begin{bmatrix}
           c_1(k_x,k_y) \\
           c_3(k_x,k_y)
@@ -593,8 +593,8 @@
       \begin{multline*}
         \hat{\vE}_t(k_x,k_y,z_{p-1}) =
         \\
-        \left(\mA_{E}(k_x,k_y,z_{p-1}) + \mB_{E}(k_x,k_y,z_{p-1})\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y))\right) \\
-        \left(\mA_{H}(k_x,k_y,z_{p-1}) + \mB_{H}(k_x,k_y,z_{p-1})\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y))\right)^{-1}
+        \left(\mA_{E}(k_x,k_y,z_{p-1}) + \mB_{E}(k_x,k_y,z_{p-1})\hat\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y))\right) \\
+        \left(\mA_{H}(k_x,k_y,z_{p-1}) + \mB_{H}(k_x,k_y,z_{p-1})\hat\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y))\right)^{-1}
         \\
         \vect{e_r}\times\hat{\vH}_t(k_x,k_y,z_{p-1})
       \end{multline*}
@@ -670,9 +670,9 @@
       \label{def:plan:matrices_NE-NH}
       On définit les fonctions de \(\RR^2 \times [z_{p-1},z_{p+1}[ \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{align*}
-        \mN_{E}(k_x,k_y,z,\mZ) &= \mA_{E}(k_x,k_y,z) + \mB_{E}(k_x,k_y,z)\mZ
+        \mN_{E}(k_x,k_y,z,\mR) &= \mA_{E}(k_x,k_y,z) + \mB_{E}(k_x,k_y,z)\mR
         \\
-        \mN_{H}(k_x,k_y,z,\mZ) &= \mA_{H}(k_x,k_y,z) + \mB_{H}(k_x,k_y,z)\mZ
+        \mN_{H}(k_x,k_y,z,\mR) &= \mA_{H}(k_x,k_y,z) + \mB_{H}(k_x,k_y,z)\mR
       \end{align*}
     \end{defn}
 
