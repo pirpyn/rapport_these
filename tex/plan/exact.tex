@@ -454,7 +454,7 @@
     Soit \(z_p\) la hauteur de l'interface \(p\), \(z_p = -\sum_{i=p+1}^{n} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(z_{p-1} \le z < z_p \).
 
     \begin{defn}
-      \label{def:plan:matrices_MJ-MH}
+      \label{def:plan:matrices_MA-MB}
       On définit les fonctions de \(\RR\times\RR\times [z_{p-1}, z_p[ \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{align*}
         \mM_{A}(k_x,k_y,z,\mZ) &= \mA_{E}(k_x,k_y,z)-\mZ\mA_{H}(k_x,k_y,z)
@@ -841,7 +841,6 @@
   On applique les hypothèses précédentes, donc \(k_y=0\). On remarque que pour \(k_x\slash k_0=2\), \(k_3(k_x,k_y,0^-)\) est nul et l'impédance n'est pas définie en ce point. 
 
   Comme le matériau n'a pas de perte, la partie réelle de \(\hat{\mathfrak{\mZ}}\) est nulle et n'est donc pas tracée.
-
   \begin{figure}[!hbt]
       \centering
       \input{tikz/plot/Z_HOPPE_33_plan.tikz}
@@ -850,7 +849,6 @@
   \end{figure}
 
   La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où \(k_3d = \frac{\pi}{2}\) pour \(k_x \simeq 0.94 k_0\). On a donc une asymptote bien visible sur le module des coefficients diagonaux de \(\hat\mZ\) pour \(k_x\slash k_0 \simeq 0.94\).
-
   \begin{figure}[!hbt]
       \centering
       \input{tikz/plot/Z_SOUDAIS_plan.tikz}
@@ -858,9 +856,7 @@
       \label{fig:imp_fourier:plan:soudais}
   \end{figure}
 
-
   Grâce à la figure \ref{fig:reflex_fourier:plan:soudais}, on remarque que la matrice de réflexion est parfaitement définie en ce point. De plus, cet empilement permet d'obtenir une onde guidée pour \(k_x\slash k_0 \simeq 1.4\) car le coefficient TM diverge en ce point. C'est donc un cas très intéressant.
-
   \begin{figure}[!hbt]
       \centering
       \input{tikz/plot/R_SOUDAIS_plan.tikz}

@@ -5,14 +5,14 @@
     \begin{defn}
       On définit \(\mH_{CI3}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
       \begin{equation*}
-        \mH_{CI3}(n,k_z,\mZ) = \begin{bmatrix}
-        1 & \hat{\mLD}(n,k_z)_{11} & -\hat{\mLR}(n,k_z)_{11} & -\left(\hat{\mLD}(n,k_z){\mZ}\right)_{11} & \left(\hat{\mLR}(n,k_z){\mZ}\right)_{11}
+        \mH_{CI3}(n,\mZ) = \begin{bmatrix}
+        1 & \hat{\mLD}(n)_{11} & -\hat{\mLR}(n)_{11} & -\left(\hat{\mLD}(n){\mZ}\right)_{11} & \left(\hat{\mLR}(n){\mZ}\right)_{11}
         \\
-        0 & \hat{\mLD}(n,k_z)_{12} & -\hat{\mLR}(n,k_z)_{12} & -\left(\hat{\mLD}(n,k_z){\mZ}\right)_{12} & \left(\hat{\mLR}(n,k_z){\mZ}\right)_{12}
+        0 & \hat{\mLD}(n)_{12} & -\hat{\mLR}(n)_{12} & -\left(\hat{\mLD}(n){\mZ}\right)_{12} & \left(\hat{\mLR}(n){\mZ}\right)_{12}
         \\
-        0 & \hat{\mLD}(n,k_z)_{21} & -\hat{\mLR}(n,k_z)_{21} & -\left(\hat{\mLD}(n,k_z){\mZ}\right)_{21} & \left(\hat{\mLR}(n,k_z){\mZ}\right)_{21}
+        0 & \hat{\mLD}(n)_{21} & -\hat{\mLR}(n)_{21} & -\left(\hat{\mLD}(n){\mZ}\right)_{21} & \left(\hat{\mLR}(n){\mZ}\right)_{21}
         \\
-        1 & \hat{\mLD}(n,k_z)_{22} & -\hat{\mLR}(n,k_z)_{22} & -\left(\hat{\mLD}(n,k_z){\mZ}\right)_{22} & \left(\hat{\mLR}(n,k_z){\mZ}\right)_{22}
+        1 & \hat{\mLD}(n)_{22} & -\hat{\mLR}(n)_{22} & -\left(\hat{\mLD}(n){\mZ}\right)_{22} & \left(\hat{\mLR}(n){\mZ}\right)_{22}
         \end{bmatrix}
       \end{equation*}
       On définit \(b\) la fonction de \(\mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
@@ -30,9 +30,9 @@
     \end{defn}
 
     \begin{prop}
-      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((n,k_z)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre, alors
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \(n\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre, alors
       \begin{equation*}
-        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,k_z,X) - \hat\mZ_{ex}(n,k_z)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,k_z,\hat\mZ_{ex}(n,k_z))X - b(\hat\mZ_{ex}(n,k_z))}^2
+        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,X) - \hat\mZ_{ex}(n)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,\hat\mZ_{ex}(n))X - b(\hat\mZ_{ex}(n))}^2
       \end{equation*}
     \end{prop}
 
@@ -40,55 +40,55 @@
       C'est la même méthodologie que pour le plan.
       On rappelle que dans la section précédente, on a introduit
       \begin{multline*}
-        \hat{\mZ}_{CI3}(n,k_z) = \left(\mI + b_1 \hat{\mLD}(n,k_z) - b_2 \hat{\mLR}(n,k_z) \right)^{-1}\\\left(a_0 \mI + a_1 {\hat{\mLD}(n,k_z)} - a_2 {\hat{\mLR}(n,k_z)}\right)
+        \hat{\mZ}_{CI3}(n) = \left(\mI + b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n) \right)^{-1}\\\left(a_0 \mI + a_1 {\hat{\mLD}(n)} - a_2 {\hat{\mLR}(n)}\right)
       \end{multline*}
-      On pose \(\hat\mZ_D(n,k_z) = \mI + b_1 \hat{\mLD}(n,k_z) - b_2 \hat{\mLR}(n,k_z)\) et \(\hat\mZ_N(n,k_z) = a_0 \mI + a_1 {\hat{\mLD}(n,k_z)} - a_2 {\hat{\mLR}(n,k_z)}\) donc
+      On pose \(\hat\mZ_D(n) = \mI + b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n)\) et \(\hat\mZ_N(n) = a_0 \mI + a_1 {\hat{\mLD}(n)} - a_2 {\hat{\mLR}(n)}\) donc
 
       \begin{align*}
-      &{}~ \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,k_z,X) - \hat\mZ_{ex}(n,k_z)}
+      &{}~ \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,X) - \hat\mZ_{ex}(n)}
       \\
-      & = \argmin{X\in\CC^5} \norm{\hat\mZ_D(n,k_z)^{-1}\hat\mZ_N(n,k_z) - \hat\mZ_{ex}(n,k_z) }
+      & = \argmin{X\in\CC^5} \norm{\hat\mZ_D(n)^{-1}\hat\mZ_N(n) - \hat\mZ_{ex}(n) }
       \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_D(n,k_z)^{-1}\left(\hat\mZ_N(n,k_z) - \hat\mZ_D(n,k_z)\hat\mZ_{ex}(n,k_z)\right) }
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_D(n)^{-1}\left(\hat\mZ_N(n) - \hat\mZ_D(n)\hat\mZ_{ex}(n)\right) }
       \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n,k_z) - \hat\mZ_D(n,k_z)\hat\mZ_{ex}(n,k_z)}
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n) - \hat\mZ_D(n)\hat\mZ_{ex}(n)}
       \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n,k_z) - \left(b_1 \hat{\mLD}(n,k_z) - b_2 \hat{\mLR}(n,k_z)\right)\hat\mZ_{ex}(n,k_z) - \hat\mZ_{ex}(n,k_z) }
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n) - \left(b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n)\right)\hat\mZ_{ex}(n) - \hat\mZ_{ex}(n) }
       \\
-      &= \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,k_z,\hat\mZ_{ex}(n,k_z))X - b(\hat\mZ_{ex}(n,k_z))}
+      &= \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,\hat\mZ_{ex}(n))X - b(\hat\mZ_{ex}(n))}
       \end{align*}
     \end{proof}
 
-    On tronque la série de Fourier à \(N_{n}\) termes et on se dote de \(N_{k_z}\) \(k_z\). Il existe donc \(N_{n}N_{k_z}\) couples tels que \((n_i,k_{zj}) = (n,k_z)_{(j-1)N_{n}+i}\).
+    On tronque la série de Mie à \(N_{n}\) termes.
     \begin{defn}
-      On définit \(\mA_{CI3}\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times5}(\CC)\) telle que
+      On définit \(\mA_{CI3}\) la matrice de \(\mathcal{M}_{4N_{n}\times5}(\CC)\) telle que
       \begin{equation*}
         \mA_{CI3} = 
         \begin{bmatrix}
-          \mH_{CI3}(n_1,k_{z1},\hat\mZ_{ex}(n_1,k_{z1}))
+          \mH_{CI3}(n_1,\hat\mZ_{ex}(n_1))
           \\
           \vdots
           \\
-          \mH_{CI3}(n_i,k_{zj},\hat\mZ_{ex}(n_i,k_{zj}))
+          \mH_{CI3}(n_i,\hat\mZ_{ex}(n_i))
           \\
           \vdots
           \\
-          \mH_{CI3}(n_{N_n},k_{zN_{k_z}},\hat\mZ_{ex}(n_{N_n},k_{zN_{k_z}}))
+          \mH_{CI3}(n_{N_n},k_{z},\hat\mZ_{ex}(n_{N_n},k_{z}))
         \end{bmatrix}
       \end{equation*}
-      On définit \(g\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times1}(\CC)\) telle que
+      On définit \(g\) la matrice de \(\mathcal{M}_{4N_{n}\times1}(\CC)\) telle que
       \begin{equation*}
         g = 
         \begin{bmatrix}
-          b(\hat\mZ_{ex}(n_1,k_{z1}))
+          b(\hat\mZ_{ex}(n_1))
           \\
           \vdots
           \\
-          b(\hat\mZ_{ex}(n_i,k_{zj}))
+          b(\hat\mZ_{ex}(n_i))
           \\
           \vdots
           \\
-          b(\hat\mZ_{ex}(n_{N_n},k_{zN_{k_z}}))
+          b(\hat\mZ_{ex}(n_{N_n},k_{z}))
         \end{bmatrix}
       \end{equation*}
     \end{defn}

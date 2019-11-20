@@ -2,135 +2,226 @@
 
   \subsection[Expression des opérateurs LD,LR en Fourier]{Expression des opérateurs \(\LD,\LR\) en Fourier}
 
-    Par définition de \(\LD\), on a
-    \begin{align}
-      \LD \vE_t & = \vgrads{} \vdivs{} \vE_t
-    \end{align}
-    Or 
-    \begin{align*}
-      \vE_t(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ} (a_{mn} j_n + c_{mn}h_n) \Umn(\rtp) + (b_{mn} \tilde{j_n}+d_{mn} \tilde{h_n}) \Umn^\perp(\rtp)
-      %\intertext{donc}
-      %\LD\vE_t(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ} (a_{mn} j_n + c_{mn}h_n) \LD\Umn(\rtp) + (b_{mn} \tilde{j_n}+d_{mn} \tilde{h_n}) \LD\Umn^\perp(\rtp)
-    \end{align*}
 
-    On rappelle  les expressions des vecteurs (voir \eqref{eq:defUmn_tgt}, \eqref{eq:defNmn_tgt}) dans la base sphérique (\(\vect{e_r},\vect{e_\theta},\vect{e_\phi}\))
-    \begin{align*}
-      \Umn(\tp) =
-      \begin{bmatrix}
+Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)\) les coordonnées sphérique d'un point de l'espace.
+
+    Soit \(V = \left(\mathcal{C}^\infty(S(0,r_s))\right)^2 \cap L^2(S(0,r_s)))\) l'espace des fonctions infiniment dérivables définies sur cette sphère et de carré intégrable.
+
+    \begin{defn}
+      \label{eq:sphere:fourier:LD}
+      On définit \(\LD\) l'endomorphisme de \(V\) tel que
+      \begin{align*}
+        \LD \vect{U}(r_s,\theta,\phi) & = \vgrads{} \vdivs{} \vect{U}(r_s,\theta,\phi)
+      \end{align*}
+
+      On définit \(\hat{\mLD}\) la fonction de \(\NN \rightarrow \mathcal{M}_2(\RR)\) telle que
+      \begin{equation*}
+        \hat{\mLD}(n) = -
+        \begin{bmatrix}
+          0 & 0
+          \\
+          0 & \frac{n(n+1)}{r_s^2}
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
+
+    \begin{prop}
+      Soit \(\vE_t\) dans \(V\) donc il existe \(a_{nm},b_{nm},c_{nm},d_{nm}\) tels que
+      \begin{align*}
+      \vE_t(r_s,\theta,\phi) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+              \Umn(\tp) & \Umn^\perp(\tp)
+            \end{bmatrix}
+            \left(
+              \mj_E(r_s,n)
+              \begin{bmatrix}
+                  a_{mn}
+                  \\
+                  b_{mn}
+              \end{bmatrix}
+              +
+              \mh_E(r_s,n)
+              \begin{bmatrix}
+                  c_{mn}
+                  \\
+                  d_{mn}
+              \end{bmatrix}
+            \right)
+      \intertext{Alors}
+        \LD\vE_t(r_s,\theta,\phi) &=  \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+              \Umn(\tp) & \Umn^\perp(\tp)
+            \end{bmatrix}
+            \hat\mLD(n)
+            \left(
+              \mj_E(r_s,n)
+              \begin{bmatrix}
+                  a_{mn}
+                  \\
+                  b_{mn}
+              \end{bmatrix}
+              +
+              \mh_E(r_s,n)
+              \begin{bmatrix}
+                  c_{mn}
+                  \\
+                  d_{mn}
+              \end{bmatrix}
+            \right)
+      \end{align*}
+    \end{prop}
+
+    \begin{proof}
+      Par définition de \(\LD\), on a
+      \begin{align*}
+        \LD \vE_t & = \vgrads{} \vdivs{} \vE_t
+      \end{align*}
+      Or 
+      \begin{multline*}
+        \vE_t(r_s,\theta,\phi) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} \left( (a_{mn} j_n(kr_s) + c_{mn}h_n(kr_s)) \Umn(\tp) 
+        \right.
+        \\
+        \left.
+        + (b_{mn} \tilde{j_n}(kr_s)+d_{mn} \tilde{h_n}(kr_s)) \Umn^\perp(\tp)\right.
+        %\intertext{donc}
+        %\LD\vE_t(r_s,\theta,\phi) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ} (a_{mn} j_n + c_{mn}h_n) \LD\Umn(r_s,\theta,\phi) + (b_{mn} \tilde{j_n}+d_{mn} \tilde{h_n}) \LD\Umn^\perp(r_s,\theta,\phi)
+      \end{multline*}
+
+      On rappelle  les expressions des vecteurs (voir \eqref{eq:defUmn_tgt}, \eqref{eq:defNmn_tgt}) dans la base sphérique (\(\vect{e_r},\vect{e_\theta},\vect{e_\phi}\))
+      \begin{align*}
+        \Umn(\tp) =
+        \begin{bmatrix}
+            0
+            \\
+            \frac{im}{\sin\theta}\Pmn(\cos(\theta))e^{im\phi}
+            \\
+            - \ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}
+        \end{bmatrix}
+        &&
+        \Umn^\perp(\tp) =
+        \begin{bmatrix}
           0
           \\
-          \frac{im}{\sin\theta}\Pmn(\cos(\theta))e^{im\phi}
+          \ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}
           \\
-          - \ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}
-      \end{bmatrix}
-      &&
-      \Umn^\perp(\tp) =
-      \begin{bmatrix}
-        0
+          \frac{im}{\sin\theta}\Pmn(\cos(\theta))e^{im\phi}
+        \end{bmatrix}
+      \end{align*}
+
+      On commence par calculer le divergent surfacique (cf annexe \ref{sec:annexe:div_grad_rot}) en sphérique
+      \begin{align*}
+        \vdivs{}\Umn(r_s,\theta,\phi) &= \frac{1}{r_s\sin(\theta)} \ddr{\theta}{(\sin(\theta)\Umn_\theta)} + \frac{1}{r_s\sin(\theta)}\ddr{\phi}{(\Umn_\phi)}
         \\
-        \ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}
+        &=\frac{ime^{im\phi}}{r_s\sin(\theta)}\left( \ddr{\theta}{\Pmn(\cos(\theta))} - \ddr{\theta}{\Pmn(\cos(\theta))} \right)
         \\
-        \frac{im}{\sin\theta}\Pmn(\cos(\theta))e^{im\phi}
-      \end{bmatrix}
-    \end{align*}
+        &= 0
+      \end{align*}
+      Donc 
+      \begin{align*}
+        \LD\Umn(r_s,\theta,\phi) = 0
+      \end{align*}
 
-    On commence par calculer le divergent surfacique (cf annexe \ref{sec:annexe:div_grad_rot}) en sphérique
-    \begin{align*}
-      \vdivs{}\Umn(\rtp) &= \frac{1}{r\sin(\theta)} \ddr{\theta}{(\sin(\theta)\Umn_\theta)} + \frac{1}{r\sin(\theta)}\ddr{\phi}{(\Umn_\phi)}
-      \\
-      &=\frac{ime^{im\phi}}{r\sin(\theta)}\left( \ddr{\theta}{\Pmn(\cos(\theta))} - \ddr{\theta}{\Pmn(\cos(\theta))} \right)
-      \\
-      &= 0
-    \end{align*}
-    Donc 
-    \begin{align*}
-      \LD\Umn(\rtp) = 0
-    \end{align*}
-
-    Calculons maintenant l'action de \(\LD\) sur \(\Umn^\perp\)
-    \begin{align*}
-      \vdivs{}\Umn^\perp(\rtp) &= \frac{1}{r\sin(\theta)} \ddr{\theta}{(\sin(\theta)\Umn^\perp_\theta)} + \frac{1}{r\sin(\theta)}\ddr{\phi}{(\Umn^\perp_\phi)}
-      \\
-      &= \frac{e^{im\phi}}{r\sin(\theta)}
-      \left(
-        \ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Pmn(\cos(\theta))}\right) - \frac{m^2}{\sin\theta}\Pmn(\cos(\theta))
-      \right)
-    \end{align*}
-    Or les fonctions de Legendre sont solutions de l'équation différentielle de Legendre
-    \begin{align}
-      \frac{1}{\sin(\theta)}\ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Pmn(\cos(\theta))}\right) + \left(n(n+1)-\frac{m^2}{\sin(\theta)^2}\right)\Pmn(\cos(\theta) = 0
-    \end{align}
-
-    Donc 
-    \begin{align*}
-       \vdivs{}\Umn^\perp(\rtp) = -\frac{n(n+1)}{r}\Pmn(\cos(\theta))e^{im\phi}
-    \end{align*}
-    Enfin d’après la définition du gradient surfacique en coordonnées sphériques
-    \begin{align*}
-       \vgrads{}\vdivs{}\Umn^\perp(\rtp) &= -\frac{n(n+1)}{r}\left(\frac{1}{r}\ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}\vect{e_\theta}+\frac{1}{r\sin(\theta)}\ddr{\phi}{e^{im\phi}}\Pmn(\cos(\theta))\vect{e_\phi}\right)
-       \\
-       &=-\frac{n(n+1)}{r^2}\Umn^\perp(\rtp)
-    \end{align*}
-    On utilise les résultats de \cite{marceaux_high-order_2000}
-
-    \begin{align*}
-      \vgrads{}\vdivs{} \Mmn[z_n]_t(r,\theta,\phi) &= 0
-      \\
-      \vgrads{}\vdivs{} \Nmn[z_n]_t(r,\theta,\phi) &= -\frac{n(n+1)}{r^2}\Nmn[z_n]_t(r,\theta,\phi)
-    \end{align*}
-
-    On définit \(\hat{\mLD}\) l'opérateur matriciel tel que
-    \begin{align}
-      \LD \vE_t (r_{ext},\theta,\phi)
-      &= \frac{1}{2\pi}\sum_{n=-\infty}^\infty\sum_{m=-n}^n \hat{\mLD} \hat{\vE_t}(r_{ext},n,m)
-    \end{align}
-
-    Son expression est de ce qui précède
-    \begin{equation}
-      \label{eq:sphere:fourier:LD}
-      \hat{\mLD}(n,m) = -
-      \begin{bmatrix}
-        0 & 0
+      Calculons maintenant l'action de \(\LD\) sur \(\Umn^\perp\)
+      \begin{align*}
+        \vdivs{}\Umn^\perp(r_s,\theta,\phi) &= \frac{1}{r_s\sin(\theta)} \ddr{\theta}{(\sin(\theta)\Umn^\perp_\theta)} + \frac{1}{r_s\sin(\theta)}\ddr{\phi}{(\Umn^\perp_\phi)}
         \\
-        0 & \frac{n(n+1)}{r_{ext}^2}
-      \end{bmatrix}
-    \end{equation}
+        &= \frac{e^{im\phi}}{r_s\sin(\theta)}
+        \left(
+          \ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Pmn(\cos(\theta))}\right) - \frac{m^2}{\sin\theta}\Pmn(\cos(\theta))
+        \right)
+      \end{align*}
+      Or les fonctions de Legendre sont solutions de l'équation différentielle de Legendre
+      \begin{align*}
+        \frac{1}{\sin(\theta)}\ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Pmn(\cos(\theta))}\right) + \left(n(n+1)-\frac{m^2}{\sin(\theta)^2}\right)\Pmn(\cos(\theta) = 0
+      \end{align*}
 
-    On reprend exactement la même méthode pour l'opérateur \(\LR\).
-    Par définition de \(\LR\), on a
-    \begin{align}
-      \LR \vE_t & = \vrots{} \vrots{} \vE_t
-    \end{align}
+      Donc 
+      \begin{align*}
+         \vdivs{}\Umn^\perp(r_s,\theta,\phi) = -\frac{n(n+1)}{r_s}\Pmn(\cos(\theta))e^{im\phi}
+      \end{align*}
+      Enfin d’après la définition du gradient surfacique en coordonnées sphériques
+      \begin{align*}
+         \vgrads{}\vdivs{}\Umn^\perp(r_s,\theta,\phi) &= -\frac{n(n+1)}{r_s}\left(\frac{1}{r_s}\ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}\vect{e_\theta}+\frac{1}{r_s\sin(\theta)}\ddr{\phi}{e^{im\phi}}\Pmn(\cos(\theta))\vect{e_\phi}\right)
+         \\
+         &=-\frac{n(n+1)}{r_s^2}\Umn^\perp(r_s,\theta,\phi)
+      \end{align*}
+    \end{proof}
 
-    On utilise les résultats de \cite{marceaux_high-order_2000}
 
-    \begin{align*}
-      \vrots{}\vrots{} \Mmn[z_n]_t(r,\theta,\phi) &= \frac{n(n+1)}{r^2}\Mmn[z_n]_t(r,\theta,\phi)
-      \\
-      \vrots{}\vrots{} \Nmn[z_n]_t(r,\theta,\phi) &= 0
-    \end{align*}
-
-    On définit \(\hat{\LR}\) l'opérateur matriciel tel que
-    \begin{align}
-      \LR \vE_t(r_{ext},\theta,\phi)
-      &= \frac{1}{2\pi}\sum_{n=-\infty}^\infty\sum_{m=-n}^n \hat{\LR} \hat{\vE_t}(r_{ext},n,m)
-    \end{align}
-
-    \begin{equation}
+    \begin{defn}
       \label{eq:sphere:fourier:LR}
-      \hat{\mLR}(n,m) =
-      \begin{bmatrix}
-        \frac{n(n+1)}{r_{ext}^2} & 0
-        \\
-        0 & 0
-      \end{bmatrix}
-    \end{equation}
+      On définit \(\LR\) l'endomorphisme de \(V\) tel que
+      \begin{align*}
+        \LR \vect{U}(r_s,\theta,\phi) & = \vrots{} \vrots{} \vect{U}(r_s,\theta,\phi)
+      \end{align*}
+
+      On définit \(\hat{\mLR}\) la fonction de \(\NN \rightarrow \mathcal{M}_2(\RR)\) telle que
+      \begin{equation*}
+        \hat{\mLR}(n) =
+        \begin{bmatrix}
+          \frac{n(n+1)}{r_s^2} & 0
+          \\
+          0 & 0
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
+
+    \begin{prop}
+      Soit \(\vE_t\) dans \(V\) donc il existe \(a_{nm},b_{nm},c_{nm},d_{nm}\) tels que
+      \begin{align*}
+      \vE_t(r_s,\theta,\phi) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+              \Umn(\tp) & \Umn^\perp(\tp)
+            \end{bmatrix}
+            \left(
+              \mj_E(r_s,n)
+              \begin{bmatrix}
+                  a_{mn}
+                  \\
+                  b_{mn}
+              \end{bmatrix}
+              +
+              \mh_E(r_s,n)
+              \begin{bmatrix}
+                  c_{mn}
+                  \\
+                  d_{mn}
+              \end{bmatrix}
+            \right)
+      \intertext{Alors}
+        \LR\vE_t(r_s,\theta,\phi) &=  \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \begin{bmatrix}
+              \Umn(\tp) & \Umn^\perp(\tp)
+            \end{bmatrix}
+            \hat\mLR(n)
+            \left(
+              \mj_E(r_s,n)
+              \begin{bmatrix}
+                  a_{mn}
+                  \\
+                  b_{mn}
+              \end{bmatrix}
+              +
+              \mh_E(r_s,n)
+              \begin{bmatrix}
+                  c_{mn}
+                  \\
+                  d_{mn}
+              \end{bmatrix}
+            \right)
+      \end{align*}
+    \end{prop}
+
+    \begin{proof}
+      On reprend exactement la même méthode que pour \(\LD\).
+    \end{proof}
 
   \subsection{Expression de la matrice d'impédance approchée par la CI3}
 
     Tout comme dans le cas du plan infini, on peut donc définir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance.
 
-    \begin{multline}
-        \hat{\mZ}_{CI3}(n,m) = \left(\mI + b_1 \frac{\hat{\mLD}(n,m)}{k_0^2} - b_2 \frac{\hat{\mLR}(n,m)}{k_0^2} \right)^{-1}\\
-        \left(a_0 \mI + a_1 \frac{\hat{\mLD}(n,m)}{k_0^2} - a_2 \frac{\hat{\mLR}(n,m)}{k_0^2}\right)
-    \end{multline}
+    \begin{align}
+        \label{eq:sphere:hoibc:ci3}
+        \hat{\mZ}_{CI3}(n) = \left(\mI + b_1 \frac{\hat{\mLD}(n)}{k_0^2} - b_2 \frac{\hat{\mLR}(n)}{k_0^2} \right)^{-1}
+        \left(a_0 \mI + a_1 \frac{\hat{\mLD}(n)}{k_0^2} - a_2 \frac{\hat{\mLR}(n)}{k_0^2}\right)
+    \end{align}

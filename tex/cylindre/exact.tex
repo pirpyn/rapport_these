@@ -353,9 +353,9 @@
     \begin{proof}
       Par définition des matrices,
       \begin{align*}
-        \det(\mJ_E(r,n,k_z)) &= -\frac{ik(r)\eta(r)(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
+        \det(\mJ_E(r,n,k_z)) &= -\frac{ik(r)\eta(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
         \\
-        \det(\mJ_H(r,n,k_z)) &= -\frac{i\frac{k(r)}{\eta(r)}(r)}{k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
+        \det(\mJ_H(r,n,k_z)) &= -\frac{ik(r)}{\eta(r)k_3(r)}J_n(k_3(r)r)J_n'(k_3(r)r)
       \end{align*}
 
       D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels donc si \(k_3 \in\CC\backslash\RR\) alors ces matrices sont inversibles.
@@ -364,9 +364,9 @@
 
     Pour les matrices \(\mH_E(r,n,k_z)\), \(\mH_H(r,n,k_z)\), on a
     \begin{align*}
-      \det(\mH_E(r,n,k_z)) &= -\frac{ik(r)\eta(r)(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+      \det(\mH_E(r,n,k_z)) &= -\frac{ik(r)\eta(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
       \\
-      \det(\mH_H(r,n,k_z)) &= -\frac{i\frac{k(r)}{\eta(r)}(r)}{k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
+      \det(\mH_H(r,n,k_z)) &= -\frac{ik(r)}{\eta(r)k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r)
      \end{align*}
     Et on ne peut rien conclure, car les zéros peuvent être complexes ( voir \cite{sandstrom_note_2007} ). On va donc supposer ces déterminants non nuls.
 
@@ -430,7 +430,7 @@
       On calcule le déterminant de cette matrice 
       \begin{multline*}
         \det(\mH_{H}(r_1,n,k_z) - \mJ_{H}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)) = \\
-        i\frac{k(r)}{\eta(r)}\frac{(H_n^{(2)}(r_1k_3)J_n'(r_0k_3)-J_n(r_1k_3)H_n^{(2)}{}'(r_0k_3))(H_n^{(2)}{}'(r_1k_3)J_n(r_0k_3)-J_n'(r_1k_3)H_n^{(2)}(r_0k_3))}{J_n'(r_0^+k_3)J_n(r_0^+k_3)}
+        -\frac{k(r)^2}{\eta(r)^2}\frac{(H_n^{(2)}(r_1k_3)J_n'(r_0k_3)-J_n(r_1k_3)H_n^{(2)}{}'(r_0k_3))(H_n^{(2)}{}'(r_1k_3)J_n(r_0k_3)-J_n'(r_1k_3)H_n^{(2)}(r_0k_3))}{J_n'(r_0^+k_3)J_n(r_0^+k_3)}
       \end{multline*}
       Ce dernier s'annule quand \(\frac{H_n^{(2)}(r_1k_3)}{J_n(r_1k_3)} = \frac{H_n^{(2)}{}'(r_0k_3)}{J_n'(r_0k_3)}\) ou quand \(\frac{H_n^{(2)}{}'(r_1k_3)}{J_n'(r_1k_3)} = \frac{H_n^{(2)}(r_0k_3)}{J_n(r_0k_3)}\).
 
@@ -459,7 +459,7 @@
       \end{tikzpicture}
     \end{figure}
 
-    Soit \(r_p\) le rayon de l'interface \(p\), \(r_p = r_0 +\sum_{i=1}^{p} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(r_{p-1} \le r \le r_p \).
+    Soit \(r_p\) le rayon de l'interface \(p\), \(r_p = r_0 +\sum_{i=1}^{p} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(r_{p-1} \le r < r_p \).
 
     \begin{defn}
       \label{def:cylindre:matrices_MJ-MH}
@@ -671,7 +671,7 @@
 
   \subsection{Expression des coefficients de la série de Fourier}
 
-    On se place à l'interface \(p\) donc \(r_{p-1} \le r \le r_{p+1} \).
+    On se place à l'interface \(p\) donc \(r_{p-1} \le r < r_{p+1} \).
 
     \begin{defn}
       \label{def:cylindre:matrices_NE-NH}

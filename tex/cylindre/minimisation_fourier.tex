@@ -20,46 +20,47 @@
     On utilise les fonctions \(\mN_E, \mN_H\) introduite à la définition \ref{def:cylindre:matrices_NE-NH}.
 
     \begin{defn}
-      On définit \(\tilde{\mH}_{CI3}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
-      \begin{equation*}
-        \tilde\mH_{CI3}(n,k_z,\tilde{\mA}) = 
-        \begin{bmatrix}
-          A_0(n,k_z,\tilde{\mA})_{11} & A_1(n,k_z,\tilde{\mA})_{11} & A_2(n,k_z,\tilde{\mA})_{11} & B_1(n,k_z,\tilde{\mA})_{11} & B_2(n,k_z,\tilde{\mA})_{11}
-          \\
-          A_0(n,k_z,\tilde{\mA})_{12} & A_1(n,k_z,\tilde{\mA})_{12} & A_2(n,k_z,\tilde{\mA})_{12} & B_1(n,k_z,\tilde{\mA})_{12} & B_2(n,k_z,\tilde{\mA})_{12}
-          \\
-          A_0(n,k_z,\tilde{\mA})_{21} & A_1(n,k_z,\tilde{\mA})_{21} & A_2(n,k_z,\tilde{\mA})_{21} & B_1(n,k_z,\tilde{\mA})_{21} & B_2(n,k_z,\tilde{\mA})_{21}
-          \\
-          A_0(n,k_z,\tilde{\mA})_{22} & A_1(n,k_z,\tilde{\mA})_{22} & A_2(n,k_z,\tilde{\mA})_{22} & B_1(n,k_z,\tilde{\mA})_{22} & B_2(n,k_z,\tilde{\mA})_{22}
-        \end{bmatrix}
-        \end{equation*}
-        où
-        \begin{align*}
-          A_0(n,k_z,\tilde{\mA}) &= \mN_E(r_c^+,n,k_z,\tilde{\mA})
-          \\
-          A_1(n,k_z,\tilde{\mA}) &= \hat{\mLD}(n,k_z)\mN_E(r_c^+,n,k_z,\tilde{\mA})
-          \\
-          A_2(n,k_z,\tilde{\mA}) &= -\hat{\mLR}(n,k_z)\mN_E(r_c^+,n,k_z,\tilde{\mA})
-          \\
-          B_1(n,k_z,\tilde{\mA}) &= \hat{\mLD}(n,k_z)\mN_H(r_c^+,n,k_z,\tilde{\mA})
-          \\
-          B_2(n,k_z,\tilde{\mA}) &= -\hat{\mLR}(n,k_z)\mN_H(r_c^+,n,k_z,\tilde{\mA})            
-        \end{align*}
+      On définit \(\mA_0,\mA_1,\mA_2,\mA_2,\mB_1,\mB_2\) les fonctions de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \ \mathcal{M}_2(\CC)\) telles que        
+      \begin{align*}
+        \mA_0(n,k_z,\mR) &= \mN_E(r_c^+,n,k_z,\mR)
+        \\
+        \mA_1(n,k_z,\mR) &= \hat{\mLD}(n,k_z)\mN_E(r_c^+,n,k_z,\mR)
+        \\
+        \mA_2(n,k_z,\mR) &= -\hat{\mLR}(n,k_z)\mN_E(r_c^+,n,k_z,\mR)
+        \\
+        \mB_1(n,k_z,\mR) &= \hat{\mLD}(n,k_z)\mN_H(r_c^+,n,k_z,\mR)
+        \\
+        \mB_2(n,k_z,\mR) &= -\hat{\mLR}(n,k_z)\mN_H(r_c^+,n,k_z,\mR)            
+      \end{align*}
 
-        On définit \(\tilde{b}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
-        \begin{equation*}
-          \tilde{b}(n,k_z,\tilde{\mA}) = -
-          \begin{bmatrix}
-            \mN_H(r_c^+,n,k_z,\tilde{\mA})_{11}
-            \\
-            \mN_H(r_c^+,n,k_z,\tilde{\mA})_{12}
-            \\
-            \mN_H(r_c^+,n,k_z,\tilde{\mA})_{21}
-            \\
-            \mN_H(r_c^+,n,k_z,\tilde{\mA})_{22}
-          \end{bmatrix}
-        \end{equation*}
-      \end{defn}
+      On définit \(\tilde{\mH}_{CI3}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
+      \begin{align*}
+        & \tilde\mH_{CI3}(n,k_z,\mR) =  \\ &
+        \begin{bmatrix}
+          \mA_0(n,k_z,\mR)_{11} & \mA_1(n,k_z,\mR)_{11} & \mA_2(n,k_z,\mR)_{11} & \mB_1(n,k_z,\mR)_{11} & \mB_2(n,k_z,\mR)_{11}
+          \\
+          \mA_0(n,k_z,\mR)_{12} & \mA_1(n,k_z,\mR)_{12} & \mA_2(n,k_z,\mR)_{12} & \mB_1(n,k_z,\mR)_{12} & \mB_2(n,k_z,\mR)_{12}
+          \\
+          \mA_0(n,k_z,\mR)_{21} & \mA_1(n,k_z,\mR)_{21} & \mA_2(n,k_z,\mR)_{21} & \mB_1(n,k_z,\mR)_{21} & \mB_2(n,k_z,\mR)_{21}
+          \\
+          \mA_0(n,k_z,\mR)_{22} & \mA_1(n,k_z,\mR)_{22} & \mA_2(n,k_z,\mR)_{22} & \mB_1(n,k_z,\mR)_{22} & \mB_2(n,k_z,\mR)_{22}
+        \end{bmatrix}
+      \end{align*}
+
+      On définit \(\tilde{b}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
+      \begin{equation*}
+        \tilde{b}(n,k_z,\mR) = -
+        \begin{bmatrix}
+          \mN_H(r_c^+,n,k_z,\mR)_{11}
+          \\
+          \mN_H(r_c^+,n,k_z,\mR)_{12}
+          \\
+          \mN_H(r_c^+,n,k_z,\mR)_{21}
+          \\
+          \mN_H(r_c^+,n,k_z,\mR)_{22}
+        \end{bmatrix}
+      \end{equation*}
+    \end{defn}
 
     \begin{prop}
       Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((n,k_z)\) fixé et \(\hat\mR_{ex}\) la matrice définie en \ref{def:cylindre:minimisation:matrices_MR}, alors
