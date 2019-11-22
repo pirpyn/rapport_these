@@ -38,13 +38,15 @@
 
 \section*{Plan de la thèse}
 
+La finalité de cette thèse est d'évaluer la furtivité électromagnétique d'un objet. Pour cela, nous devons calculer les champs électromagnétiques sur la surface de ce dernier. Ce calcul, réalisé par une méthode numérique, nécessite d'y définir une condition limite paramétré par des coefficients. Ces derniers peuvent être déterminés localement en résolvant un problème de minimisation sous contraintes, ces dernières permettant d'assurer l'unicité des solutions. Cette thèse présente donc chacun de ses points précédents dans l'ordre inverse.
+
 \subsection*{Chapitre 1}
 Dans ce chapitre on présente une condition suffisante qui garantie l'unicité des solutions des équations de Maxwell à l'extérieur de l'objet.
-Cette condition s'exprime sur sa surface. Nous présentons alors des conditions suffisantes sur les coefficients pour impliquer la précédente condition, donc garantir l'unicité des solutions.
+Cette condition s'exprime sur sa surface. Cette condition est satisfaite pour chacune des conditions limites que l'on appliquera à l'objet. Nous présentons alors des conditions suffisantes sur les coefficients pour impliquer la précédente condition, donc garantir l'unicité des solutions.
 Nous en présentons plusieurs par CIOE pour marquer le caractère suffisant de ces conditions, puis nous définirons lesquelles sont conservées et utilisées dans la suite de la thèse.
 
 \subsection*{Chapitre 2}
-Nous supposons que l'objet est un plan infini. Ce cas d'étude classique permet de calculer exactement dans le domaine spectral la condition d’impédance.
+Pour calculer les coefficients, sachant les conditions qu'ils doivent vérifier, nous supposons que l'objet est un plan infini. Ce cas d'étude classique permet de calculer exactement dans le domaine spectral la condition d’impédance. 
 Cet opérateur est alors un multiplicateur de Fourier matriciel dépendant de la pulsation \(\w\), de l'empilement des matériaux et des modes de Fourier \(k_x, k_y\) associés aux coordonnées cartésiennes tangentielle du plan infini \(x,y\).
 L'opérateur approché est aussi un multiplicateur de Fourier matriciel dépendant de \(\w, k_x, k_y\) et de coefficients complexes.
 Le calcul de ces coefficients se fait par optimisation sous contraintes où l'on minimise l'erreur entre ces deux matrices pour plusieurs couples \(k_x,k_y\) en utilisant les CSU du premier chapitre comme contraintes.

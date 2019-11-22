@@ -3,7 +3,8 @@
 \minitoc
 \newpage
 \sectionstar{Introduction}
-Pour calculer les coefficients, nous commençons par la méthode de l'approximation du plan tangent tel que \cite{hoppe_impedance_1995}. Cette méthode consiste à regarder localement l'objet comme un plan infini, ce qui reste valable dans le cadre de cette thèse car nos objets d'études sont des objets idéaux de types cylindres arrondis, sphère ou cône-sphère.
+Pour calculer les coefficients, nous commençons par la méthode de l'approximation du plan tangent tel que \cite{hoppe_impedance_1995,marceaux_high-order_2000,aubakirov_electromagnetic_2014}. Cette méthode consiste à regarder localement l'objet comme un plan infini, ce qui reste valable dans le cadre de cette thèse car nos objets d'études sont des objets idéaux de types cylindres arrondis, sphère ou cône-sphère.
+
 \input{tex/plan/intro}
 \input{tex/plan/exact}
 \input{tex/plan/hoibc}
@@ -12,8 +13,10 @@ Pour calculer les coefficients, nous commençons par la méthode de l'approximat
 \input{tex/plan/minimisation_fourier}
 
 \sectionstar{Conclusion}
-Nous avons montré comment calculer les coefficients dans le cas d'un objet plan infini plan en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées. 
+Nous avons montré comment calculer les coefficients dans le cas d'un objet plan infini plan en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées et  nous pouvons aussi minimiser l'erreur entre les matrice de réflexion mais cela n'apporte rien.
 
 Pour cela, nous avons réalisé une analyse spectrale des équations de Maxwell et montré que la condition d'impédance s'exprime comme un multiplicateur de Fourier matriciel, tout comme la matrice de réflexion. Grâce à cette analyse spectrale, nous avons aussi exprimé les CIOE comme des multiplicateurs de Fourier matriciels dont on a déduit la matrice de réflexion associée. Nous avons alors exprimé le problème de minimisation sous contraintes et montré que celui-ci a besoin d'être réduit dans le cas d'une couche de matériau sans pertes.
 
-Nous avons alors conclu que la \hyperlink{ci3}{CI3} était la plus performante et que le jeu de CSU retenu dans la partie précédente permettait d'obtenir de bons coefficients de réflexions.
+Nous avons montré sur cette géométrie que la CIOE choisie, la \hyperlink{ci3}{CI3}, était largement plus précise que les précédentes \hyperlink{ci01}{CI01} et \hyperlink{ci1}{CI1}. Ce gain en précision est tel que l'on peut introduire des contraintes lors du calcul et avoir une solution finale convenable, relativement à l'opérateur exacte.
+
+Dans la partie équation intégrale, nous verrons que cette approximation locale de la géométrie est souvent suffisante.

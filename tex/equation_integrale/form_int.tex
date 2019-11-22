@@ -2,48 +2,48 @@
 
     La démonstration de ces formules dépassent le cadre de cette thèse et nous renvoyons à \cite[\textsection~5.6]{nedelec_mixed_1980}.
 
-    Soit \(G\) la fonction de Green défini en tout point extérieur à \(\Gamma_h\) telle que
+    Soit \(k_0\) le nombre d'onde dans le vide. Soit \(G\) la fonction de Green définie en tout point extérieur à \(\Gamma\) telle que
     \begin{equation*}
       G(\vz) = \frac{e^{-ik_0|\vz|}}{4\pi|\vz|}
     \end{equation*}
     On définit \(g(\vx,\vy) := G(\vx - \vy)\).
 
-    Soit \(\vE^{inc}_t,\vH^{inc}_t\) le champ incident tangentiel à \(\Gamma_h\). On définit le long de la surface \(\Gamma_h\), les traces tangentielles des champs \(\vJ = \vn \pvect \vH\), \(\vK = \vn \pvect \vE\).
+    Soit \(\vE^{inc}_t,\vH^{inc}_t\) le champ incident tangentiel à \(\Gamma\). On définit sur la surface \(\Gamma\), les traces tangentielles des champs \(\vJ = \vn \pvect \vH\), \(\vK = \vn \pvect \vE\).
 
+    En utilisant le théorème de représentation intégrale (voir \cite[Théorème 5.5.1]{nedelec_acoustic_2001}), on obtient les équations intégrales suivantes
     \subsection{EFIE}
 
-      \begin{defn}
+      \begin{prop}
         \label{eq:form_int:EFIE}
-        \(\vJ,\vK\) sont solutions des équations intégrales en champ électrique (\gls{acr-efie}) s'il existe \((\vJ,\vK) \in \Hdiv(\Gamma_h)^2\) tels que
+        \(\vJ,\vK\) sont solutions des équations intégrales en champ électrique (\gls{acr-efie}) s'il existe \((\vJ,\vK) \in \Hdiv^{-1/2}(\Gamma)^2\) tels que
         \begin{multline*}
           \vE^{inc}_t(\vx) =
             \frac{\vE_t(\vx)}{2}
-              - \int_{\Gamma_h} \vgrad g(\vx - \vy) \pvect \vK(\vy) \dd{s}(\vy) \cdots \\
-            + \frac{i}{k}\vgrad \int_{\Gamma_h}  g(\vx - \vy)\vdiv\vJ(\vy)(\vx) \dd{s}(\vy)
-              +  ik\int_{\Gamma_h} g(\vx - \vy)\vJ(\vy) \dd{s}(\vy)
+              - \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vK(\vy) \dd{s}(\vy) \cdots \\
+            + \frac{i}{k}\vgrad \int_{\Gamma}  g(\vx - \vy)\vdiv\vJ(\vy)(\vx) \dd{s}(\vy)
+              +  ik\int_{\Gamma} g(\vx - \vy)\vJ(\vy) \dd{s}(\vy)
         \end{multline*}
-      \end{defn}
+      \end{prop}
 
 
     \subsection{MFIE}
-
-      \begin{defn}
+      \begin{prop}
         \label{eq:form_int:MFIE}
-        \(\vJ,\vK\) sont solutions des équations intégrales en champ magnétique (\gls{acr-mfie}) s'il existe \((\vJ,\vK) \in \Hdiv(\Gamma_h)^2\) tels que
+        \(\vJ,\vK\) sont solutions des équations intégrales en champ magnétique (\gls{acr-mfie}) s'il existe \((\vJ,\vK) \in \Hdiv^{-1/2}(\Gamma)^2\) tels que
         \begin{multline*}
           \vH^{inc}(\vx) =
           \frac{\vH_t(\vx)}{2}
-            - \int_{\Gamma_h} \vgrad g(\vx - \vy) \pvect \vJ(\vy) \dd{s}(\vy) \cdots \\
-          - \frac{i}{k} \vgrad \int_{\Gamma_h}  g(\vx - \vy)\vdiv\vK(\vy)\dd{s}(\vy)
-            - ik \int_{\Gamma_h} g(\vx - \vy)\vK(\vy)\dd{s}(\vy)
+            - \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vJ(\vy) \dd{s}(\vy) \cdots \\
+          - \frac{i}{k} \vgrad \int_{\Gamma}  g(\vx - \vy)\vdiv\vK(\vy)\dd{s}(\vy)
+            - ik \int_{\Gamma} g(\vx - \vy)\vK(\vy)\dd{s}(\vy)
         \end{multline*}
-      \end{defn}
+      \end{prop}
 
 \section{Discrétisation de la surface de l'objet}
 
-  La méthode numérique utilisé au CEA depuis les années 90 est basé sur l'article de \cite{medgyesi-mitschang_integral_1985}. Nous rappelons cette méthode en conservant les notations de \cite{stupfel_implementation_2015}.\\
+  La méthode numérique utilisé au CEA  est basée sur l'article de \cite{medgyesi-mitschang_integral_1985}. Nous rappelons cette méthode en conservant les notations de \cite{stupfel_implementation_2015}.\\
 
-  Soit \(\Gamma_h\) un maillage fermé de \(\Gamma\) en \(N_e\) éléments triangulaires. Soit \(N=\frac{3}{2}N_e\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
+  Soit \(\Gamma_h\) une triangulation de \(\Gamma\) en \(N_e\) éléments triangulaires. Soit \(N=\frac{3}{2}N_e\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
 
   Soit \(T\) un triangle défini par un nœud \(N_1\) et deux vecteurs \(\vect{e_1}\) et \(\vect{e_2}\). On rappelle la relation entre l'aire du triangle et ces vecteurs
   \begin{equation*}
@@ -77,7 +77,7 @@
     \label{fig:form_int:fon_base:tri}
   \end{minipage}
   \begin{minipage}{0.54\textwidth}
-   On se place dans le repère local au triangle, on fait donc les changement de coordonnées suivant:
+   On se place dans le repère local au triangle, on fait donc le changement de coordonnées suivant:
   \begin{align*}
     \RR^3 &\rightarrow [0,1]^2 \\
     (x_1,x_2,x_3) & \mapsto (\xi_1,\xi_2)
@@ -153,7 +153,7 @@
 
   \subsection[Fonctions de Nédélec p Hrot-conforme]{Fonctions de Nédelec \(\vect{p}\) \(\Hrot\)-conforme}
 
-    Une première famille est celle des \(\pj=-\vn\pvect\phij\), où la normale est défini dans un triangle. On les nomme fonctions de Nédélec car elles correspondent en 2D aux fonctions volumiques de Nédélec (voir \cite{nedelec_mixed_1980}).
+    Une première famille est celle des \(\pj=-\vn\pvect\phij\), où \(\vn\) est la normale extérieur au maillage. On les nomme fonctions de Nédélec car elles correspondent en 2D aux fonctions volumiques de Nédélec (voir \cite{nedelec_mixed_1980}).
 
     \begin{minipage}{\textwidth}
       \begin{minipage}{0.329\textwidth}
@@ -263,17 +263,12 @@
       Les fonctions \(\qj\) ne sont pas dans \(\Hrot\)
     \end{prop}
     \begin{proof}
-      La composante de la fonction le long des arêtes extérieurs des 2 triangles n'est pas nulle.
+      La composante tangentielle à l'arête le long d'une arête n'est pas nulle.
     \end{proof}
 
     \begin{prop}
-      Les fonctions \(\qj\) forment un base de \(L^2(\Gamma_h)\)
+      Les fonctions \(\qj\) forment une base de \(L^2(\Gamma_h)\)
     \end{prop}
-    \begin{proof}
-
-      Les fonctions sont linéairement indépendantes, car le produit scalaire est inférieur au normes de deux fonctions par l'inégalité de Schwarz qui sont nulles car la fonction est un polynôme de degré 1 dont la valeur au milieu d'une arête est nulle. La famille est libre.
-      De plus, le nombre de fonctions correspond au nombre d'arêtes, la famille est génératrice. Donc la famille est une base.
-    \end{proof}
 
     \begin{defn}
       Pour tout \(\vect{W} \in L^2(\Gamma_h)\), alors
@@ -288,8 +283,7 @@
 
 \section{Matrices de projections}
 
-  De ces familles de fonctions, on va définir les produits scalaire associés
-
+  Nous allons souvent réaliser le produit scalaire entre ces fonctions. On note donc
   \begin{defn}
     Soient \(f \in \Vect{\vect{f_1},\ldots,\vect{f_N}}\) et \(g \in \Vect{\vect{g_1},\ldots,\vect{g_N}}\), on définit la matrice \(\mG{f}{g}\) telle que
     \begin{equation*}
@@ -297,29 +291,15 @@
     \end{equation*}
   \end{defn}
 
-  % \begin{prop}
-  %   Par définition
-  %   \begin{equation*}
-  %     \left(\mG{f}{g}\right)^t = \mG{g}{f}
-  %   \end{equation*}
-  % \end{prop}
-
   \begin{prop}
     \begin{equation*}
       \mG{\phi}{\phi} = \mG{p}{p}
     \end{equation*}
   \end{prop}
-
-  % \begin{prop}
-  %   \(\mG{p}{\phi}\) est anti-symétrique
-  % \end{prop}
-
   \begin{proof}
-    C'est un conséquence immédiate du produit triangulaire et que les fonctions de bases soient tangentes à la surface..
+    C'est un conséquence immédiate du produit triangulaire \(a\cdot (b \pvect c) = c\cdot (a \pvect b)\) et que les fonctions de bases soient tangentes à la surface.
     \[
       \begin{aligned}
-        a\cdot (b \pvect c) &= c\cdot (a \pvect b)
-        \\
         \pj \cdot \pii &= (\vn \pvect \phij) \cdot ( \vn \pvect \phii)
         \\
         &= \phii \cdot ( (\vn \pvect \phij) \pvect \vn)
@@ -355,11 +335,11 @@
     Soit  \(\vect{W}(\vx) = \sum_{j=1}^N w_j \qj(\vx) \in L^2(\Gamma_h)\).
 
     On définit alors deux éléments de \(L^2(\Gamma_h)\) :
-    \begin{align}
+    \begin{align*}
       \vect{U}(\vx) &= \sum_{j=1}^N u_j \phij(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\phij(\vy)\dd{s}(\vy) \phij(\vx  )
       \\
       \vect{V}(\vx) &= \sum_{j=1}^N v_j \pj(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\pj(\vy)\dd{s}(\vy) \pj(\vx)
-    \end{align}
+    \end{align*}
 
     Les deux propriétés se déduisent en injectant \(\vect{W}\) dans \(\vect{U}\) et \(\vect{V}\).
   \end{proof}
@@ -370,100 +350,50 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Matrice de changement de base}
+\section{Matrice de changement d'espace}
 
   Soit \(\vect{U}(\vx) = \sum_{i=1}^N u_j \phij(\vx) \in \Hdiv(\Gamma_h)\).
   Soit \(\vect{V}(\vx) = \sum_{i=1}^N v_j \pj(\vx) \in \Hrot(\Gamma_h)\)  
 
-  On veut déterminer une relation pour exprimer les \(v_j\) en fonction des \(u_j\).
+  Pour utiliser la CIOE \hyperlink{ci3}{CI3}, nous devons appliquer les opérateurs \gls{ope-LD} et \gls{ope-LR} sur un même objet. Or l'espace fonctionnel usuel \(\Hdiv\) ne permet pas d'appliquer \(\LR\). 
 
+  On veut déterminer une relation pour passer de \(\Hdiv\) à \(\Hrot\).
 
-  \begin{prop}
-    On définit alors le passage de \(\comp{u}\) à \(\comp{v}\)
-    \begin{align*}
-      \comp{v} &= \mP{\phi}{p}{q} \comp{u}
-      \\
-      \mP{\phi}{p}{q} &= (\mG{q}{p})^{-1}\mG{q}{\phi} = 3 \mG{q}{\phi}
-    \end{align*}
+  \begin{defn}On définit \(\mPP\) la matrice
+  \label{def:eq_int:matrice_changment_mP}
+    \begin{equation*}
+      \mP{\phi}{p}{q} = (\mG{q}{p})^{-1}\mG{q}{\phi}
+    \end{equation*}
+  \end{defn}
+
+  \begin{prop}La projection de \(\Hdiv\) vers \(\Hrot\) est
+    \begin{equation*}
+      \Pi(\phii) = \sum_{j=1}^N \mPP_{ji}\pj
+    \end{equation*}
   \end{prop}
 
   \begin{proof}
-  ~
-  %\subsection[Méthode de Stupfel 2015]{Méthode de \cite{stupfel_implementation_2015}}
-
-  \begin{enumerate}
-    \item Méthode de \cite{stupfel_implementation_2015}
-
-      On projette ces deux éléments dans \(\Vect{\qj}\).
-      On a alors
-      \begin{align*}
-        \vect{W}_u = \sum_{i=1}^n w_{uj} \qj(\vx) && w_{uj} = \sum_{i=1}^N u_j \int_{\Gamma_h}\qi(\vx) \cdot \phij(\vx)
-        \\
-        \vect{W}_v = \sum_{i=1}^n w_{vj} \qj(\vx) && w_{vj} = \sum_{i=1}^N v_j \int_{\Gamma_h}\qi(\vx) \cdot \pj(\vx)
-      \end{align*}
-
-      On a donc
-      \begin{align*}
-        \comp{w_u} = \mG{q}{\phi}\comp{u} 
-        && 
-        \comp{w_v} =\mG{q}{p}\comp{v}
-      \end{align*}
-      On suppose qu'ils sont égaux: \(\mG{q}{\phi}\comp{u} = \mG{q}{p}\comp{v}\)
-
-      On en déduit \(\comp{v} = (\mG{q}{p})^{-1}\mG{q}{\phi}  \comp{u} \).
-
-      D’après \cite{stupfel_implementation_2015} \((\mG{q}{p})^{-1}\mG{q}{\phi} = 3 \mG{q}{\phi}\).
-
-    \item{Deuxième méthode fausse}
-    %\subsection{Deuxième méthode, fausse}
-
       Soit \(\vect{W}(\vx) = \sum_{i=1}^N w_j \qj(\vx) \in L^2(\Gamma_h)\).
 
-      On définit \(\vect{U}= \sum_{i=1}^N u_j \phij(\vx)\) et \(\vect{V} = \sum_{i=1}^N v_j \pj(\vx)\) où
+      On définit
       \begin{align*}
-        u_i = \int_{\Gamma_h} \vect{W}(\vx)\cdot\phii(\vx)
+        \vect{U}= \sum_{i=1}^N u_j \phij(\vx) && \text{où~} u_i = \int_{\Gamma_h} \vect{W}(\vx)\cdot\phii(\vx),
         \\
-        v_i = \int_{\Gamma_h} \vect{W}(\vx)\cdot\pii(\vx)
+        \vect{V} = \sum_{i=1}^N v_j \pj(\vx) && \text{où~} v_i = \int_{\Gamma_h} \vect{W}(\vx)\cdot\pii(\vx).
       \end{align*}
 
       On a donc
       \begin{align*}
         \comp{u}=\mG{\phi}{q}\comp{w}
+        &&
         \comp{v}=\mG{p}{q}\comp{w}
       \end{align*}
 
-      On suppose la deuxième inversible alors  \(\comp{v} =\mG{p}{q} (\mG{\phi}{q})^{-1} \comp{u} \).
+      On suppose la deuxième inversible alors  \(\comp{u} = \mG{\phi}{q} (\mG{p}{q})^{-1} \comp{v}\). On peut identifier \(\comp{u}= \left(\mG{\phi}{q}(\mG{p}{q})^{-1}\right)^{t}\comp{v}\).
 
-      D’après \cite{stupfel_implementation_2015} \(\mG{\phi}{q}\)  n'est pas inversible.
-    \end{enumerate}
     \end{proof}
 
-  % \begin{prop}
-  %   \begin{equation*}
-  %     \left(\mP{u}{v}{w}\right)^t = \mG{v}{w}\left(\mG{u}{w}\right)^{-1}
-  %   \end{equation*}
-  % \end{prop}
-
-  % \begin{prop}
-  %   On suppose de plus que la matrice \(\mG{w}{v}\) est inversible alors
-  %   \begin{equation*}
-  %     \left(\mP{u}{v}{w}\right)^{-1} = \mP{v}{u}{w}
-  %   \end{equation*}
-  % \end{prop}
-
-  % \begin{prop}
-  %   Soit \(\vect{U}(\vx) \simeq \sum u_j \phij(\vx) \simeq \sum v_j \pj(\vx)\)
-  %   \begin{align}
-  %     \vect{u} & \simeq \mP{\phi}{p}{p} \vect{v} & \text{projection sur } \pj \\
-  %     \vect{u} & \simeq \mP{\phi}{p}{q} \vect{v} & \text{projection sur } \qj
-  %   \end{align}
-  % \end{prop}
-
-  \begin{defn}
-    On désigne par \(\mPP\) la matrice \(\mP{\phi}{p}{q}\).
-  \end{defn}
-
-
+    On retrouve le résultat de \cite[annexe B]{stupfel_implementation_2015}, à la différence que dans cet article, un élément de \(\Hdiv\) et un élément de \(\Hrot\) sont projeté dans \(L^2\) et cet article conclu que si les projetés sont identiques alors les deux éléments initiaux représentent le même objet.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -508,33 +438,37 @@
     \end{align*}
 
   \subsection[Discrétisation des opérateurs LD, LR]{Discrétisation des opérateurs \(\LD,\LR\)}
-    Les CIOE font intervenir les opérateurs différentiels \gls{ope-LD}, \gls{ope-LR}, \gls{ope-L}. On introduit donc les matrices \(\mLD,\mLR,\mL\) correspondantes.
+    Les CIOE font intervenir les opérateurs différentiels \gls{ope-LD}, \gls{ope-LR}. On introduit donc les matrices \(\mLD,\mLR\) correspondantes.
 
-    Comme les \(\phij\) sont dans \(\Hdiv\), de l'opérateur \gls{ope-LD}, on définit la matrice \(\mLD\) :
-    \begin{align*}
-      \int_{\Gamma_h} L_D(\vect{U})(\vx) \cdot \phii(\vx) \dd{s}(\vx)
-        & = - \sum_{j=1}^N u_j \int_{\Gamma_h} \vdiv \phij(\vx) \vdiv \phii(\vx) \dd{s}(\vx) \\
-        & = \mLD \vu
-    \end{align*}
+    Comme les \(\phij\) sont dans \(\Hdiv\), de l'opérateur \gls{ope-LD} on définit la matrice \(\mLD\)
+    \begin{defn}[Discrétisation de l'opérateur \(\LD\)]
+      \begin{align*}
+          \mLD = - \sum_{j=1}^N \int_{\Gamma_h} \vdiv \phij(\vx) \vdiv \phii(\vx) \dd{s}(\vx)
+      \end{align*}
+    \end{defn}
+    Par définition des fonctions \(\phij\), on ne peut pas définir \( \int_{\Gamma_h} \LR(\phii)(\vx) \cdot \phij(\vx) \dd{s}(\vx)\) puisqu'elles ne sont pas dans \(\Hrot\).
 
-    Par définition des fonctions \(\phij\), leur rotationnel est nul à l'intérieur et non défini sur les bords. On projette alors les fonctions \(\phij\) sur les fonctions \(\pj\) grâce aux \(\qj\) \footnote{On peut aussi projeter grâce aux \(\pj\), voir annexe}.
-
-    \begin{prop}
+    On projette alors les fonctions \(\phij\) sur les fonctions \(\pj\) grâce aux \(\qj\).
+    \begin{defn}[Discrétisation de l'opérateur \(\LR\)]
+      Soit \(\mPP\) la matrice introduite à la définition \ref{def:eq_int:matrice_changment_mP}. Alors on définit la matrice
       \begin{align*}
         \mLR & = -\mPP^t\mLD\mPP
       \end{align*}
+    \end{defn}
+    \begin{prop}
+      Cette matrice approche l'action de \(\LR\) sur les \(\phij\).
     \end{prop}
     \begin{proof}
-      Cette propriété est démontré par \cite[eq.~(13)]{stupfel_implementation_2015}). On projette les fonctions \(\phij\) sur les fonctions \(\pj\).
-      \begin{equation*}
-        \begin{aligned}
-          \int_{\Gamma_h} L_R (\phij) (\vx) \cdot \phii(\vx) \dd{s}(\vx) & \simeq \sum_{p=1}^{N} \sum_{q=1}^{N} \int_{\Gamma_h} c_q^j c_p^i L_R (\vn \pvect \phiq) (\vx) \cdot (\vn \pvect \phip)(\vx) \dd{s}(\vx)
-          \\
-          & \simeq -\sum_{p=1}^{N} \sum_{q=1}^{N} c_q^j c_p^i \int_{\Gamma_h} L_D (\phiq) (\vx) \cdot (\phip)(\vx) \dd{s}(\vx)
-          \\
-          & \simeq -\vect{\delta_i}^t \mPP^t \mLD \mPP \vect{\delta_j}
-        \end{aligned}
-      \end{equation*}
+      Cette propriété est démontrée par \cite[eq.~(13)]{stupfel_implementation_2015}). On projette les fonctions \(\phij\) sur les fonctions \(\pj\).
+      \begin{align*}
+        \int_{\Gamma_h} \phii(\vx) \cdot \LR(\phij)(\vx) \dd{s}(\vx) &\simeq \int_{\Gamma_h} \Pi(\phii)(\vx) \cdot \LR(\Pi(\phij)) (\vx) \dd{s}(\vx)
+        \\
+        &=\sum_{n=1}^{N} \sum_{m=1}^{N} \mPP_{ni} \mPP_{mj} \int_{\Gamma_h}\pn(\vx)\cdot\LR(\ppm)) \dd{s}(\vx)
+        \\
+        &=-\sum_{n=1}^{N} \sum_{m=1}^{N} \mPP_{ni} \mPP_{mj} \int_{\Gamma_h}\phin(\vx)\cdot\LD(\phim)) \dd{s}(\vx)
+        \\
+        &=-\sum_{n=1}^{N} \sum_{m=1}^{N} \mPP_{ni} \mPP_{mj} \mLD_{nm}
+      \end{align*}
     \end{proof}
 
   \subsection{Contribution de la CIOE à l'EFIE}
@@ -542,13 +476,13 @@
     \begin{equation*}
       \begin{aligned}
         \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{s}(\vx)
-        &= \frac{1}{2} \int_{\Gamma_h}  \left( \left(I_d + b_1 L_D - b_2 L_R\right) \vJ (\vx)\right.
+        &= \frac{1}{2} \int_{\Gamma_h}  \left( \left(I_d + b_1 \LD - b_2 \LR\right) \vJ (\vx)\right.
         \\
-        & \hspace{5em} \left.  - \left( b_1 L_D - b_2 L_R\right) \vE_t (\vx) \right) \cdot \phii(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right) \cdot \phii(\vx) \dd{s}(\vx)
         \\
-        & \simeq \frac{1}{2} \sum_{j=1}^N \int_{\Gamma_h} \left( \left(I_d + b_1 L_D - b_2 L_R\right) I_j \phij (\vx)\right.
+        & \simeq \frac{1}{2} \sum_{j=1}^N \int_{\Gamma_h} \left( \left(I_d + b_1 \LD - b_2 \LR\right) I_j \phij (\vx)\right.
         \\
-        & \hspace{5em} \left.  - \left( b_1 L_D - b_2 L_R\right) e_j \phij (\vx) \right) \cdot \phii(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) e_j \phij (\vx) \right) \cdot \phii(\vx) \dd{s}(\vx)
         \\
         & = \frac{1}{2} \left( \left(\mG{\phi}{\phi} + b_1 \mLD - b_2 \mLR\right) \vect{I}  - \left( b_1 \mLD - b_2 \mLR\right) \vect{e}\right)
       \end{aligned}
@@ -578,21 +512,21 @@
         \frac{1}{2}\int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{s}(\vx)
         &= \frac{1}{2}\int_{\Gamma_h} \vJ(\vx) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
         \\
-        &= \frac{1}{2a_0}\int_{\Gamma_h} \left( \left(I_d + b_1 L_D - b_2 L_R\right) \vE_t (\vx) \right.
+        &= \frac{1}{2a_0}\int_{\Gamma_h} \left( \left(I_d + b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right.
         \\
-        & \hspace{5em} \left.- \left(a_1 L_D - a_2 L_R\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
         \\
-        &= \frac{1}{2a_0}\int_{\Gamma_h} \left( -\left(I_d + b_1 L_D - b_2 L_R\right) \vn \pvect \vK (\vx) \right.
+        &= \frac{1}{2a_0}\int_{\Gamma_h} \left( -\left(I_d + b_1 \LD - b_2 \LR\right) \vn \pvect \vK (\vx) \right.
         \\
-        & \hspace{5em} \left.- \left(a_1 L_D - a_2 L_R\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
         \\
-        & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(I_d + b_1 L_D - b_2 L_R\right) k_j \vn \pvect   \phij (\vx) \right.
+        & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(I_d + b_1 \LD - b_2 \LR\right) k_j \vn \pvect   \phij (\vx) \right.
         \\
-        & \hspace{5em} \left. - \left(a_1 L_D - a_2 L_R\right) I_j' \vn \pvect \phij (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left. - \left(a_1 \LD - a_2 \LR\right) I_j' \vn \pvect \phij (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
         \\
-        & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(I_d + b_1 L_R - b_2 L_D\right) k_j \phij (\vx) \right.
+        & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(I_d + b_1 \LR - b_2 \LD\right) k_j \phij (\vx) \right.
         \\
-        & \hspace{5em} \left. - \left(a_1 L_R - a_2 L_D\right) I_j' \phij (\vx) \right) \cdot \phii(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left. - \left(a_1 \LR - a_2 \LD\right) I_j' \phij (\vx) \right) \cdot \phii(\vx) \dd{s}(\vx)
         \\
         & = \frac{1}{2a_0} \left( -\left(\mG{\phi}{\phi} + b_1 \mLR - b_2 \mLD\right) \vect{k}  - \left( a_1 \mLR - a_2 \mLD\right) \vect{I'}\right)
         \\

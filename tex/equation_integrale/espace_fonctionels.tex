@@ -1,10 +1,16 @@
 \section{Espaces fonctionnels}
-  Les équations intégrales sont résolues grâce à la méthode des éléments finis de frontière. On rappelle dans cette partie des résultats connus nécessaires pour intégrer les CIOE.
+  Les équations intégrales sont résolues grâce à la méthode des éléments finis de frontière. Nous rappelons le théorème de trace le plus important pour résoudre les équations de Maxwell par équations intégrale.
 
   \begin{defn}
-    Pour toute fonction \(\vect{U}(\vx) \in \Hrot(\OO_h), \vrot \vect{U}(\vx) \in L^2(\OO_h)\)
+    Pour toute fonction \(\vect{U}(\vx) \in \Hrot(\OO_h), \vrot \vect{U}(\vx) \in L^2(\OO)\).
 
-    Pour toute fonction \(\vect{U}(\vx) \in \Hdiv(\Gamma_h), \vdivs\vect{U}(\vx) \in L^2(\Gamma_h)\)
+    Pour toute fonction \(\vect{U}(\vx) \in \Hrot^{-1/2}(\Gamma), \vrots \vect{U}(\vx) \in L^2(\Gamma)\).
 
-    Pour toute fonction \(\vect{U}(\vx) \in \Hrot(\Gamma_h), \vrots\vect{U}(\vx) \in L^2(\Gamma_h)\)
+    Pour toute fonction \(\vect{U}(\vx) \in \Hdiv^{-1/2}(\Gamma), \vdivs \vect{U}(\vx) \in L^2(\Gamma)\).
   \end{defn}
+  \begin{thm}[Théorème de trace de \(\Hrot\)]
+    L'opérateur \(\gamma_t\) qui pour tout  \(\vect{v}\in\Hrot(\OO)\) associe ses composantes tangentielles \(\vect{v}_t\) sur \(\Gamma\) est continu et surjectif de \(\Hrot(\OO)\) vers \(\Hrot^{-1/2}(\Gamma)\) et l'opérateur \(\gamma_t'\) qui pour tout  \(\vect{v}\in\Hrot{\OO}\) associe \(\vn \pvect \vect{v}\) sur \(\Gamma\) est continu et surjectif de \(\Hrot(\OO)\) vers \(\Hdiv^{-1/2}(\Gamma)\).
+  \end{thm}
+  \begin{proof}
+    Voir la démonstration de \cite[Théorème~5.4.2]{nedelec_acoustic_2001}, page 209.
+  \end{proof}
