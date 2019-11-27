@@ -1,4 +1,4 @@
-\section[Des CSU pour la CIOE de Aubakirov 2014]{Des conditions suffisantes pour la CIOE de \cite{aubakirov_electromagnetic_2014}}
+\section[Des CSU pour la CIOE de Aubakirov 2014]{Des conditions suffisantes pour la CIOE de \cite{marceaux_high-order_2000}}
 
   \begin{defn}
     On définit les opérateurs \gls{ope-LD} et \gls{ope-LR} tels que %sont introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\) 
@@ -128,18 +128,18 @@
 
 \subsection{CSU pour la CI3}
 
-  Soit la CIOE énoncée dans \cite{aubakirov_electromagnetic_2014} que l'on nomme \hyperlink{ci3}{CI3} :
+  Soit la CIOE énoncée dans \cite{marceaux_high-order_2000} que l'on nomme \hyperlink{ci3}{CI3} :
   \begin{equation}
     \label{eq:unicite:ci3:ci3}
     ( 1 + b_1 \LD - b_2 \LR)\vE_t = (a_0 + a_1 \LD - a_2 \LR ) \vJ
   \end{equation}
 
   Par abus de notation, on omet les variables de la fonction \(\Delta\) \eqref{eq:unicite:delta} 
-  \begin{align}
+  \begin{align*}
      \Delta(a_0,a_1,b_1) &\equiv \Delta_1
      \\
      \Delta(a_0,a_2,b_2) &\equiv \Delta_2
-  \end{align}
+  \end{align*}
 
   \begin{defn}
     \label{def:csu:ci3-1}
@@ -576,6 +576,8 @@
   \begin{proof}
     Par définition de la CIOE, on a
 
+    Supposons l'opérateur \(a_0 + a_1 \LD - a_2 \LR\) inversible.
+
     \begin{align*}
       X &= \int_\Gamma \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\left( 1 + b_1 \LD - b_2 \LR \right) \vE_t\cdot \conj{\vE_t}
     \end{align*}
@@ -647,8 +649,7 @@
       X = \int_\Gamma z \vV \cdot \left(\conj{a_0}  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vV} - \frac{b_1}{a_1}\conj{a_2}\vR_1\cdot\vW_1 + \frac{b_2}{a_2}\conj{a_1}\vR_2\cdot\vW_2
     \end{equation*}
 
-    Puisque \(\LD\) (resp. \(\LR\)) commute avec lui-même, on a les égalités suivantes
-
+    On commute les opérateurs
     \begin{align*}
       \LD\left(\conj{a_0}  + \conj{a_1} \LD \right)&=\left(\conj{a_0}  + \conj{a_1} \LD \right)\LD
       \\

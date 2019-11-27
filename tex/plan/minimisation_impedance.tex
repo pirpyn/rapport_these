@@ -287,7 +287,7 @@
         \end{bmatrix}
       \end{equation*}
 
-      La matrice \(\mL\) est multiple de l'identité donc la matrice \(\hat\mZ_{CI}\) associée à ces CIOE n'approchera pas bien la matrice \(\hat{\mZ}_{ex}\). La figure \ref{fig:imp_fourier:plan:stupfel:hoibc} présente donc quelques résultats où l'on voit bien la limite de ces CIOE par rapport à la CI3.
+      La matrice \(\mL\) est multiple de l'identité donc la matrice \(\hat\mZ_{CI}\) associée à ces CIOE n'approchera pas bien la matrice \(\hat{\mZ}_{ex}\). La figure \ref{fig:imp_fourier:plan:stupfel:hoibc} présente donc quelques résultats où l'on voit bien la limite de ces CIOE par rapport à la CI3 et il en est de même pour les coefficients de réflexion visible à la figure figure \ref{fig:reflex_fourier:plan:stupfel:hoibc}.
       \begin{figure}[!hbt]
         \centering
         \input{tikz/plot/Z_STUPFEL_plan_hoibc.tikz}
@@ -342,15 +342,15 @@
         \label{tab:imp_fourier:plan:soudais:hoibc}
       \end{table}
 
-      On voit sur la figure \ref{fig:reflex_fourier:plan:soudais:hoibc} que cela va de même pour la matrice de réflexion. On a vu que la matrice \(\hat\mR(k_x,k_y)\) diverge pour \((k_x,k_y)\simeq(1.4k_0,0)\), et on remarque que la CI3 reproduit ce phénomène.
-      \begin{figure}[!hbt]
-          \centering
-          \input{tikz/plot/R_SOUDAIS_plan_hoibc.tikz}
-          \caption[CIOE sur empilement de P.~Soudais p.~11]{Module des coefficients diagonaux de \(\mR\) pour \(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
-          \label{fig:reflex_fourier:plan:soudais:hoibc}
-      \end{figure}
+      % On voit sur la figure \ref{fig:reflex_fourier:plan:soudais:hoibc} que cela va de même pour la matrice de réflexion. On a vu que la matrice \(\hat\mR(k_x,k_y)\) diverge pour \((k_x,k_y)\simeq(1.4k_0,0)\), et on remarque que la CI3 reproduit ce phénomène.
+      % \begin{figure}[!hbt]
+      %     \centering
+      %     \input{tikz/plot/R_SOUDAIS_plan_hoibc.tikz}
+      %     \caption[CIOE sur empilement de P.~Soudais p.~11]{Module des coefficients diagonaux de \(\mR\) pour \(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
+      %     \label{fig:reflex_fourier:plan:soudais:hoibc}
+      % \end{figure}
 
-      La figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc} montre la limite de la CI3 pour capturer 3 asymptotes. Pour cela, il faudrait utiliser une CI d'ordre au moins 6.
+      La figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc} montre la limite de la CI3 pour capturer 3 asymptotes. Pour cela, il faudrait utiliser une CI d'ordre au moins  sur l'opérateur agissant sur \(\vE_t\).
 
       L'expression de cette CIOE que l'on nomme \hyperlink{ci7}{CI7} est
       \begin{equation}

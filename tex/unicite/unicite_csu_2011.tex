@@ -8,6 +8,7 @@
 
   \begin{defn}
     % Pour tout \(\vu \in (\mathcal{C}^\infty(\Gamma))^2\)
+    Definir les opérateurs
     \begin{equation}
       \label{eq:operator:L}
         \fonction{\LL}{(\mathcal{C}^\infty(\Gamma))^2}{(\mathcal{C}^\infty(\Gamma))^2}%
@@ -16,7 +17,7 @@
   \end{defn}
 
   \begin{prop}
-    Par définition, l’opérateur hermitien \(\LL\) est symétrique négatif.
+    L’opérateur hermitien \(\LL\) est symétrique négatif:
 
     Pour tous \(\vu,\vv \in (\mathcal C^\infty(\Gamma))^2\)
     \begin{align}
@@ -277,9 +278,11 @@
         \vE_t &= (a_0\oI + a_1\LL)\vect{D}
         \\
         \int_\Gamma \vJ \cdot \conj{\vE_t} &= \int_\Gamma \vJ \cdot (\conj{a_0}\oI + \conj{a_1}\LL)\conj{\vect{D}}
+        \intertext{On rappelle \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\)}
         \\
         X &= \int_\Gamma (\oI + b \LL)\vect{D} \cdot (\conj{a_0}\oI + \conj{a_1}\LL)\conj{\vect{D}}
         \\
+        \intertext{Or on sait que l'opérateur est hermitien négatif donc }
         X &= \conj{a_0}\norm{\vect{D}}^2 - (b\conj{a_0}+\conj{a_1})\norm{\vgrads{\vect{D}}}^2 + b\conj{a_1} \norm{\LL\vect{D}}^2
       \end{align*}
     \end{proof}

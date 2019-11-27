@@ -15,6 +15,7 @@
 
       \begin{prop}
         \label{eq:form_int:EFIE}
+        Soit \(\Gamma\) une surface régulière.
         \(\vJ,\vK\) sont solutions des équations intégrales en champ électrique (\gls{acr-efie}) s'il existe \((\vJ,\vK) \in \Hdiv^{-1/2}(\Gamma)^2\) tels que
         \begin{multline*}
           \vE^{inc}_t(\vx) =
@@ -29,6 +30,7 @@
     \subsection{MFIE}
       \begin{prop}
         \label{eq:form_int:MFIE}
+        Soit \(\Gamma\) une surface régulière.
         \(\vJ,\vK\) sont solutions des équations intégrales en champ magnétique (\gls{acr-mfie}) s'il existe \((\vJ,\vK) \in \Hdiv^{-1/2}(\Gamma)^2\) tels que
         \begin{multline*}
           \vH^{inc}(\vx) =
@@ -66,7 +68,6 @@
   \newcommand{\yb}{0.0}
   \newcommand{\xc}{0.0}
   \newcommand{\yc}{3.0}
-  \begin{minipage}{0.45\textwidth}
     \begin{center}
       \tikzsetnextfilename{fonbasloc_triangle_loc}
       \begin{tikzpicture}[scale=1]
@@ -75,15 +76,18 @@
     \end{center}
     \captionof{figure}{Triangles, arêtes et nœuds définis par l'arête \(\uj\)}
     \label{fig:form_int:fon_base:tri}
-  \end{minipage}
-  \begin{minipage}{0.54\textwidth}
+
+
+    \begin{TODO}
+    numéro arete
+    \end{TODO}
+
    On se place dans le repère local au triangle, on fait donc le changement de coordonnées suivant:
   \begin{align*}
     \RR^3 &\rightarrow [0,1]^2 \\
     (x_1,x_2,x_3) & \mapsto (\xi_1,\xi_2)
   \end{align*}
     tel que \(\vx =\vect{N_1}+ \xi_1 \vect{e_1} + \xi_2 \vect{e_2}\).
-  \end{minipage}
 
   \subsection[Fonctions de Raviart-Thomas phi Hdiv-conforme]{Fonctions de Raviart-Thomas \(\vect{\phi}\) \(\Hdiv\)-conforme}
 
@@ -153,7 +157,10 @@
 
   \subsection[Fonctions de Nédélec p Hrot-conforme]{Fonctions de Nédelec \(\vect{p}\) \(\Hrot\)-conforme}
 
-    Une première famille est celle des \(\pj=-\vn\pvect\phij\), où \(\vn\) est la normale extérieur au maillage. On les nomme fonctions de Nédélec car elles correspondent en 2D aux fonctions volumiques de Nédélec (voir \cite{nedelec_mixed_1980}).
+    Une première famille est celle des \(\pj=-\vn\pvect\phij\), où \(\vn\) est la normale extérieur au maillage. 
+    \begin{TODO} trace ttangetielle \end{TODO}
+
+    % On les nomme fonctions de Nédélec car elles correspondent en 2D aux fonctions volumiques de Nédélec (voir \cite{nedelec_mixed_1980}).
 
     \begin{minipage}{\textwidth}
       \begin{minipage}{0.329\textwidth}
@@ -362,7 +369,7 @@
   \begin{defn}On définit \(\mPP\) la matrice
   \label{def:eq_int:matrice_changment_mP}
     \begin{equation*}
-      \mP{\phi}{p}{q} = (\mG{q}{p})^{-1}\mG{q}{\phi}
+      \mPP = (\mG{q}{p})^{-1}\mG{q}{\phi}
     \end{equation*}
   \end{defn}
 
@@ -393,7 +400,7 @@
 
     \end{proof}
 
-    On retrouve le résultat de \cite[annexe B]{stupfel_implementation_2015}, à la différence que dans cet article, un élément de \(\Hdiv\) et un élément de \(\Hrot\) sont projeté dans \(L^2\) et cet article conclu que si les projetés sont identiques alors les deux éléments initiaux représentent le même objet.
+    On retrouve le résultat de \cite[annexe B]{stupfel_implementation_2015}.%, à la différence que dans cet article, un élément de \(\Hdiv\) et un élément de \(\Hrot\) sont projetés dans \(L^2\) et cet article conclu que si les projetés sont identiques alors les deux éléments initiaux représentent le même objet.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -459,7 +466,7 @@
       Cette matrice approche l'action de \(\LR\) sur les \(\phij\).
     \end{prop}
     \begin{proof}
-      Cette propriété est démontrée par \cite[eq.~(13)]{stupfel_implementation_2015}). On projette les fonctions \(\phij\) sur les fonctions \(\pj\).
+      Cette propriété est démontrée par \cite[eq.~(17)]{stupfel_implementation_2015}. On projette les fonctions \(\phij\) sur les fonctions \(\pj\).
       \begin{align*}
         \int_{\Gamma_h} \phii(\vx) \cdot \LR(\phij)(\vx) \dd{s}(\vx) &\simeq \int_{\Gamma_h} \Pi(\phii)(\vx) \cdot \LR(\Pi(\phij)) (\vx) \dd{s}(\vx)
         \\
