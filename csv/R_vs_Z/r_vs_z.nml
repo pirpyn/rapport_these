@@ -10,7 +10,7 @@
   name = 'ibc0','ibc0', 'ibc0','ibc0','ibc0','ibc0'
   suc  = F, F, F, F, F ,F
   type = 'P','P', 'C','C','S','S'
-  inner_radius = 0., 0., 0.1, 0.1, 0.1, 0.1
+  inner_radius = 0., 0., 1, 1, 1, 1
   mode = 1, 2, 1, 2, 1, 2
 /
   
@@ -23,7 +23,7 @@
 /
 
 &OUT
-  backend = "thesis"
+  backend = "matlab"
   basename = "./thesis/R_vs_Z/R_vs_Z"
   coeff = .true.
   z_ex = .true.

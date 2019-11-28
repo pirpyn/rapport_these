@@ -819,3 +819,18 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
     \end{prop}
 
     On peut donc déterminer itérativement les matrices de réflexions. Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(r=r_0^+\) implique \(\mR_{1}(n) = -\mh_E(r_0^+,n)^{-1}\mj_E(r_0^+,n)\).
+
+  \subsection{Applications numériques}
+    Comme pour le cylindre, on pose \((k_x,k_y) = (k_0 s, 0)\) pour le plan. On compare l'impédance du plan \(\hat{\mZ}(k_x,0)\) à l'impédance de la sphère \(\hat{\mZ}(n)\) quand \(n\) est de l'ordre de \(k_0r_1s\). On reprend la notation de \cite[p.~62]{hoppe_impedance_1995} qui défini \(k_t= n/r_1\).
+
+    Pour une couche de matériau sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
+
+    On trace dans la figure \ref{fig:imp_fourier:sphere:hoppe_p62:converge_rayon} les parties imaginaires des coefficients diagonaux de ces matrices.
+
+    \begin{figure}[!hbt]
+      \centering
+      \input{tikz/plot/HOPPE_62/Z_HOPPE_62_sphere_converge.tikz}
+      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
+      \label{fig:imp_fourier:sphere:hoppe_p62:converge_rayon}
+    \end{figure}
+     On voit donc que l'impédance de la sphère tend vers celle du plan quand \(r\) augmente.

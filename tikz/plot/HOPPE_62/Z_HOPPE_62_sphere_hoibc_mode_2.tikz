@@ -1,0 +1,41 @@
+\tikzsetnextfilename{Z_HOPPE_62_sphere_hoibc_mode_2.TM}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={Polarisation TM},
+            ylabel={\(\Im(\hat{Z}(n,0)\)},
+            xlabel={\(k_t\slash k_0\)},
+            width=0.4\textwidth,
+            xmin=0,
+            xmax=1.5,
+            mark repeat=1,
+            legend pos=outer north east
+        ]
+        \addplot [black,mark=square*] table [col sep=comma, x={s2}, y={Im(z_ex.22)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_S_+3.000E-02m.csv};
+
+        \addplot [blue,mark=x] table [col sep=comma, x={s2}, y={Im(z_ibc0.22)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_S_+3.000E-02m.csv};
+
+        \addplot [red,mark=diamond*] table [col sep=comma, x={s2}, y={Im(z_ibc3.22)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_S_+3.000E-02m.csv};
+    \end{axis}
+\end{tikzpicture}
+\tikzsetnextfilename{Z_HOPPE_62_sphere_hoibc_mode_2.TE}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={Polarisation TE},
+            ylabel={},
+            xlabel={\(k_t\slash k_0\)},
+            width=0.4\textwidth,
+            xmin=0,
+            xmax=1.5,
+            mark repeat=1,
+            legend pos=outer north east
+        ]
+        \addplot [black,mark=square*] table [col sep=comma, x={s2}, y={Im(z_ex.11)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_S_+3.000E-02m.csv};
+        \addlegendentry{Exact};
+
+        \addplot [blue,mark=x] table [col sep=comma, x={s2}, y={Im(z_ibc0.11)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_S_+3.000E-02m.csv};
+        \addlegendentry{CI0};
+
+        \addplot [red,mark=diamond*] table [col sep=comma, x={s2}, y={Im(z_ibc3.11)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_S_+3.000E-02m.csv};
+        \addlegendentry{CI3};
+    \end{axis}
+\end{tikzpicture}

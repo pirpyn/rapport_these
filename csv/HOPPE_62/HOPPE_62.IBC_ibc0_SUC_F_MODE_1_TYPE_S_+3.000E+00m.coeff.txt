@@ -1,0 +1,7 @@
+% IBC ibc0 type S suc F mode 1 (IBC_ibc0_SUC_F_MODE_1_TYPE_S_+3.000E+00m)
+% inner radius  3.000E+00, outer_radius  3.022E+00
+% Z = a0*I
+  \verb|a0| & \verb| 7.929E-15 -7.502E+00i| \\
+% Verifying the Sufficient Uniqueness Conditions (SUC)
+%    [OK] SUC, Negative inequality constraints, IN <=  1.000E-08
+%    IN(1) = -7.929428E-15 ! -Re(a0)

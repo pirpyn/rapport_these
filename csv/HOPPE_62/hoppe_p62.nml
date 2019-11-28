@@ -1,17 +1,17 @@
 &MAIN
   frequency  =  1,
-  s1 = 0., 0., 1.E-2,
-  s2 = 0., 1.5, 1.E-2,
+  s1 = 0., 1.5, 1.E-2,  
+  s2 = 0., 0., 1.E-2,
   number_of_layer = 1,
-  number_of_hoibc = 6,
+  number_of_hoibc = 9,
 /
 
 &HOIBC
-  name = 'ibc3','ibc0', 'ibc3', 'ibc6', 'ibc6', 'ibc6',
-  suc  = F,F, F, F, F, F,
-  type = 'P','C', 'C', 'C', 'C', 'C',
-  mode = 2,1,1,1,1,1
-  inner_radius = 0.,0.03, 0.03, 0.03, 0.3, 3.0,
+  name = 'ibc0','ibc0','ibc0', 'ibc0','ibc3','ibc6', 'ibc0','ibc3','ibc6'
+  suc  = F,F,F, F,F,F, F,F,F,
+  type = 'P','C','C', 'C','C','C', 'C','C','C',
+  mode = 2,1,1, 1,1,1, 2,2,2,
+  inner_radius = 0.00,3.00,0.30, 0.03,0.03,0.03, 0.03,0.03,0.03,
 /
 
 &MATERIAL

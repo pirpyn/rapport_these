@@ -1,0 +1,35 @@
+&MAIN
+  frequency  =  1,
+  s1 = 1.01, 1.5, 1.E-2,
+  s2 = 0., 0., 1.E-2,
+  number_of_layer = 1,
+  number_of_hoibc = 5,
+/
+
+&HOIBC
+  name = 'ibc3','ibc0', 'ibc3', 'ibc3', 'ibc3',
+  suc  = F, F, F, F, F,
+  type = 'P','C', 'C', 'C', 'C'
+  mode = 2,1,1,1,1
+  inner_radius = 0.,0.03, 0.03, 0.06, 0.12,
+/
+
+&MATERIAL
+  epsr  = (6., 0.),
+  mur   = (1., 0.),
+  thickness =  0.0225,
+  loss =  0.,
+  initial_impedance =  (0.,0.),
+/
+
+&OUT
+ basename = "./thesis/HOPPE_62_kz/HOPPE_62_kz"
+ backend = 'thesis'
+ coeff = .true.
+ z_ex = .True.
+ z_ibc = .True.
+ r_ex = .True.
+ r_ibc = .True.
+ skip_nan = .false.
+/
+
