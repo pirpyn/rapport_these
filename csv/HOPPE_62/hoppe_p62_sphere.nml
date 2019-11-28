@@ -3,14 +3,14 @@
   s1 = 0., 1.5, 1.E-2,  
   s2 = 0., 0., 1.E-2,
   number_of_layer = 1,
-  number_of_hoibc = 9,
+  number_of_hoibc = 7,
 /
 
 &HOIBC
-  name = 'ibc0','ibc0','ibc0', 'ibc0','ibc3','ibc6', 'ibc0','ibc3','ibc6'
-  suc  = F,F,F, F,F,F, F,F,F,
-  type = 'P','S','S', 'S','S','S', 'S','S','S',
-  mode = 2,1,1, 1,1,1, 2,2,2,
+  name = 'ibc0','ibc0','ibc0', 'ibc0','ibc3', 'ibc0','ibc3'
+  suc  = F,F,F, F,F, F,F,
+  type = 'P','S','S', 'S','S', 'S','S',
+  mode = 2,1,1, 1,1, 2,2,
   inner_radius = 0.00,3.00,0.30, 0.03,0.03,0.03, 0.03,0.03,0.03,
 /
 
