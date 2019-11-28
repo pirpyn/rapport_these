@@ -1,21 +1,17 @@
 \section{Résultats numériques}
 
-  Dans cette partie, toutes les CIOE faisant intervenir des opérateurs différentielles normalisent ces derniers par \(k_0^2\). Ainsi la CI3 s'exprime
-    
+  Dans cette partie, toutes les CIOE faisant intervenir des opérateurs différentielles normalisent ces derniers par \(k_0^2\). Ainsi la CI3 s'exprime  
   \begin{equation*}
-    \left(\oI + c_1\frac{\LD}{k_0^2} -c_2\frac{\LR}{k_0^2}\right)\vE_t = \left(a_0\oI + b_1\frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vJ
+    \left(\oI + b_1\frac{\LD}{k_0^2} -b_2\frac{\LR}{k_0^2}\right)\vE_t = \left(a_0\oI + a_1\frac{\LD}{k_0^2} - a_2 \frac{\LR}{k_0^2} \right)\vJ
   \end{equation*}
-
-
-  \begin{TODO}
-    Mieux présenté
-  \end{TODO}
-  On remarque que la CI3 si performante dans l'approximation plan infini ne donnent pas de bons résultats dans l’approximation cylindre infini. 
-  En effet, pour \(n=k_z=0\) la matrice d'impédance exacte n'est pas une constante mais une matrice diagonale. 
-  Or par définition la CIOE est une constante pour ce couple, c'est la CI0. On subit donc cette erreur dans les résultats. 
-
-  Une CIOE plus intéressante, que l'on nomme CI6 et qui est inspirée de \cite[p.~60]{hoppe_impedance_1995}, serait alors:
-
+  et donc la matrice d'impédance associée est
+  \begin{multline*}
+    \hat{\mZ}_{CI3}(n,k_z) = \left(\mI + \frac{b_1}{k_0^2}\hat{\mLD}(n,k_z)- \frac{b_2}{k_0^2}\hat{\mLR}(n,k_z)\right)^{-1}
+    \\
+    \left(a_0\mI + \frac{a_1}{k_0^2}\hat{\mLD}(n,k_z)- \frac{a_2}{k_0^2}\hat{\mLR}(n,k_z)\right).
+  \end{multline*}
+  On remarque que cette dernière en \((0,0)\) vaut \(a_0\mI\). Or la matrice d'impédance exacte \(\hat\mZ(0,0)\) est diagonale. La CI3 n'est pas une bonne CIOE pour approcher l'impédance exacte du cylindre.
+  Une CIOE plus intéressante, que l'on nomme CI6 et qui est inspirée de \cite[p.~60]{hoppe_impedance_1995}, est alors
   \begin{equation*}
     \left(\oI + c_1\frac{\LD}{k_0^2} -c_2\frac{\LR}{k_0^2}\right)\vE_t = \left(\diag{a_1}{a_2} + b_1\frac{\LD}{k_0^2} - b_2 \frac{\LR}{k_0^2} \right)\vJ
   \end{equation*}
@@ -23,7 +19,7 @@
   La figure \ref{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_2} trace les valeurs des termes diagonaux de la matrice \(\hat\mZ\) quand les coefficients sont calculés en minimisant \(J_Z\).
   La figure \ref{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_1} trace les valeurs des termes diagonaux de la matrice \(\hat\mZ\) quand les coefficients sont calculés en minimisant \(J_R\).
 
-  On prend un incidence normale au cylindre, donc les matrices d'impédance exactes et approchées sont diagonales. On fait varier \(n\) de 0 à \(\lceil k_0 (r_0+d) \rceil\). On trace sur cette figure les parties imaginaires des termes diagonaux pour chaque \(n\) de cette matrice, les parties réelles étant nulles. Les coefficients sont calculés sans contraintes.
+  On prend un incidence normale au cylindre (\(k_z=0\)), donc les matrices d'impédance exactes et approchées sont diagonales. On fait varier \(n\) de 0 à \(\lceil k_0 (r_0+d) \rceil\). On trace sur ces figures les parties imaginaires des termes diagonaux pour chaque \(n\), les parties réelles étant nulles. Les coefficients sont calculés sans contraintes.
 
   \begin{figure}[!hbt]
     \centering
@@ -35,12 +31,13 @@
   \begin{figure}[!hbt]
     \centering
     \input{tikz/plot/HOPPE_62/Z_HOPPE_62_cylindre_hoibc_mode_1.tikz}
-    \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{ikz}
     \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{Minimisation de \(J_R\): Partie imaginaire des termes diagonaux des matrices d'impédance pour l'empilement \(\eps = 6\), \(\mu = 1\), \(d=0.0225\text{m}\), \(f=1\text{GHz}\), \(r_0=0.03\text{m}\) en fonction de \(k_t = n / (r_0+d)\).}
     \label{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}
   \end{figure}
 
-  Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier.
+  On voit donc bien que les deux méthodes donnent des résultats différents, mais dans les deux cas, la CI3 est une mauvaise approximation tandis que le calcul des coefficients de la CI6 par la minimisation de \(J_R\) donne la meilleure approximation de l'impédance.
+
+  Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier et nous n'avons pas de CSU.
 
   \begin{table}[!hbt]
     \centering
@@ -91,7 +88,7 @@
     \label{tab:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}
   \end{table}
 
-  Les tableaux \ref{tab:cylindre:hoppe:62:erreurs_Z} contient les valeurs des erreurs relatives au carré \(\hat\mZ\). 
+  Les tableaux \ref{tab:cylindre:hoppe:62:erreurs_Z} contient les valeurs des erreurs relatives au carré de \(\hat\mZ\). 
   Plus précisément, l'expression de ces erreurs est 
   \begin{align*}
     \text{TM} &= \frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}-\hat\mZ_{ap}(n_i,k_{zj})_{11}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}|^2}

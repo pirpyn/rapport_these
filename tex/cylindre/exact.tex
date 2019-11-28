@@ -833,24 +833,22 @@
 
     La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} pour une couche de matériau sans perte (voir Figure \ref{fig:annex:hoppe:p62}). 
 
-    \begin{TODO}
-      refaire
-    \end{TODO}
-    On pose \(s=k_x/k_0\) pour le plan. On montre que l'impédance du plan \(\hat{Z}(k_0s,0)\) est comparable \(\hat{Z}(n,0)\) des que \(r_1\) est assez grand.
+    On pose \((k_x,k_y) = (k_0 s, 0)\) pour le plan. On compare l'impédance du plan \(\hat{\mZ}(k_x,0)\) à l'impédance du cylindre \(\hat{\mZ}(n,0)\) quand \(n\) est de l'ordre de \(k_0r_1s\). On reprend la notation de \cite[p.~62]{hoppe_impedance_1995} qui défini \(k_t= n/r_1\).
     \begin{figure}[!hbt]
       \centering
       \input{tikz/plot/HOPPE_62/Z_HOPPE_62_cylindre_converge.tikz}
       \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
       \label{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon}
     \end{figure}
-    Pour une couche de matériau sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
+    Pour une couche de matériau sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées. On voit donc que l'impédance du cylindre tend vers celle du plan quand \(r\) augmente. On peut postuler de ce graphe que pour \(r_0\ge100d\) alors on peut se ramener à un plan infini.
 
 
-    La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:coeff_fourier} affiche le module des coefficients de la série de Fourier, c'est à dire les coefficients diagonaux de la matrice \(\hat\mR\) définie plus haut. On vérifie que dès que \(n\) dépasse \(k_0r_{1}\), le module des coefficients décroit très rapidement. Ce dépassement arrive pour \(n\) supérieur à 2 (resp. 7, 64) pour \(r_0\) égal à 0.03m (resp. 0.3m, 3m).
 
-    \begin{figure}[!hbt]
-      \centering
-      \input{tikz/plot/HOPPE_62/F_HOPPE_62_cylindre_converge.tikz}
-      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
-      \label{fig:imp_fourier:cylindre:hoppe_p62:coeff_fourier}
-    \end{figure}
+    % La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:coeff_fourier} affiche le module des coefficients de la série de Fourier, c'est à dire les coefficients diagonaux de la matrice \(\hat\mR\) définie plus haut. On vérifie que dès que \(n\) dépasse \(k_0r_{1}\), le module des coefficients décroit très rapidement. Ce dépassement arrive pour \(n\) supérieur à 2 (resp. 7, 64) pour \(r_0\) égal à 0.03m (resp. 0.3m, 3m).
+
+    % \begin{figure}[!hbt]
+    %   \centering
+    %   \input{tikz/plot/HOPPE_62/F_HOPPE_62_cylindre_converge.tikz}
+    %   \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
+    %   \label{fig:imp_fourier:cylindre:hoppe_p62:coeff_fourier}
+    % \end{figure}

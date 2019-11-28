@@ -1,13 +1,10 @@
 \section{Calcul des coefficients de la CI3 par moindres carrés sur les coefficients de la série de Fourier}
 
-  % On remarque alors que sans contraintes, la CI3 n'est pas adaptée au cylindre, même en incidence radiale. Cependant, on peut aussi résoudre l'erreur entre les coefficients de Fourier. Pour cela, on adapte au cylindre le lemme permettant de déduire d'une impédance la matrice de réflexion qui contient les coefficients de la série de Fourier.
-  On adapte au cylindre \begin{TODO}lemme plan\end{TODO}.
-
-  Soit \(\mM_\mJ\) et \(\mM_\mH\) les fonctions introduites à la définition \ref{def:cylindre:matrices_MJ-MH} et \(\hat\mR\) la fonction définie à la définition \ref{def:cylindre:reflexion:impedance}.
+  Soient \(\mM_\mJ\) et \(\mM_\mH\) les fonctions introduites à la définition \ref{def:cylindre:matrices_MJ-MH} et \(\hat\mR\) la fonction définie à la définition \ref{def:cylindre:reflexion:impedance}.
 
   \begin{defn}%[]
     \label{def:cylindre:minimisation:matrices_MR}
-    On définit les fonctions \(\hat\mR_{ex}, \hat\mR_{CI3}\) de \(\NN\times\RR\times \rightarrow \mathcal{M}_2(\CC)\) telles que
+    On définit les fonctions \(\hat\mR_{ex}, \hat\mR_{CI3}\) de \(\NN\times\RR  \rightarrow \mathcal{M}_2(\CC)\) telles que
     \begin{align*}
       \hat\mR_{ex}(n,k_z) &= \hat\mR(n,k_z, \hat\mZ_{ex}(n,k_z))
       \\
@@ -16,7 +13,7 @@
     où \(\hat\mZ_{ex},\hat\mZ_{CI3}\) sont des fonctions définies à la proposition \ref{prop:cylindre:synthese:impedance} et à l'équation \eqref{eq:cylindre:hoibc:ci3}.
   \end{defn}
 
-  \subsection{Expression de la fonctionnelle}
+  \subsection[Expression de la fonctionnelle JR]{Expression de la fonctionnelle \(J_R\)}
 
     On utilise les fonctions \(\mN_E, \mN_H\) introduite à la définition \ref{def:cylindre:matrices_NE-NH}.
 

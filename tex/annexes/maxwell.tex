@@ -4,16 +4,16 @@
 Les équations de Maxwell temporelles sont
 \begin{equation}
   \left\lbrace \begin{matrix}
-  \vrot \vE + \mu \ddr{t}{\vH} &=& 0 \\
-  \vrot \vH - \eps \ddr{t}{\vE} &=& 0 \\
+  \vrot \vE + \mu \ddr{t}{\vect{H}} &=& 0 \\
+  \vrot \vect{H} - \eps \ddr{t}{\vE} &=& 0 \\
   \end{matrix} \right.
 \end{equation}
 
 Donc les équations de Maxwell harmoniques en convention \(e^{i\w t}\) sont
 \begin{equation}
   \left\lbrace \begin{matrix}
-  \vrot \vE + i\w\mu \vH &=& 0 \\
-  \vrot \vH - i\w\eps \vE &=& 0 \\
+  \vrot \vE + i\w\mu \vect{H} &=& 0 \\
+  \vrot \vect{H} - i\w\eps \vE &=& 0 \\
   \end{matrix} \right.
 \end{equation}
 
@@ -21,11 +21,11 @@ On pose \(\mu_r = \mu \slash \mu_0\), \(\eps_r = \eps \slash \eps_0\), \(k_0 = \
 
 \begin{equation}
 \left\lbrace \begin{matrix}
-\vrot \vE + ik_0\eta_0\mu_r \vH &=& 0 \\
-\vrot \vH - ik_0\eta_0^{-1}\eps_r \vE &=& 0 \\
+\vrot \vE + ik_0\eta_0\mu_r \vect{H} &=& 0 \\
+\vrot \vect{H} - ik_0\eta_0^{-1}\eps_r \vE &=& 0 \\
 \end{matrix} \right.
 \quad
-\overset{\mathcal{\vH} = \eta_0 \vH}{\Rightarrow}
+\overset{\mathcal{\vH} = \eta_0 \vect{H}}{\Rightarrow}
 \quad
 \left\lbrace \begin{matrix}
 \vrot \vE + ik_0\mu_r \mathcal{\vH} &=& 0 \\
@@ -37,11 +37,11 @@ On pose \(k=k_0\nu_r\), \(\nu_r = \sqrt{\mu_r\eps_r}\), \(\eta_r = \sqrt{\mu_r \
 
 \begin{equation}
 \left\lbrace \begin{matrix}
-\vrot \vE + ik\eta_0\eta_r \vH &=& 0 \\
-\vrot \vH - ik\eta_0^{-1}\eta_r^{-1} \vE &=& 0 \\
+\vrot \vE + ik\eta_0\eta_r \vect{H} &=& 0 \\
+\vrot \vect{H} - ik\eta_0^{-1}\eta_r^{-1} \vE &=& 0 \\
 \end{matrix} \right.
 \quad
-\overset{\mathcal{\vH} = \eta_0 \vH}{\Rightarrow}
+\overset{\mathcal{\vH} = \eta_0 \vect{H}}{\Rightarrow}
 \quad
 \left\lbrace \begin{matrix}
 \vrot \vE + ik\eta_r \mathcal{\vH} &=& 0 \\

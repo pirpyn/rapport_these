@@ -6,6 +6,8 @@
 \draw [-Latex] (n1) -- (n3) node [midway,below] {\(\vect{e_1}\)};
 \draw [-Latex] (n1) -- (n2) node [midway,left] {\(\vect{e_2}\)};
 
+\draw [-Latex] (n2) -- (n3) node [midway,above,sloped] {\(\vect{u_j}\)};
+
 \coordinate (pt) at  ($1/3*(n1)+1/3*(n2)+1/3*(n3)$);
 
 \draw (pt) node {\(T\)};
