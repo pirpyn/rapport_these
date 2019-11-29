@@ -1,6 +1,6 @@
 \section*{Contexte industriel}
 La diffraction des ondes est un problème commun à de nombreux secteurs d'activités: défense, aéronautique, médical, pétrolier.
-Selon le secteur, la nature des ondes et des matériaux diffèrent mais les problématiques sont les mêmes.
+Selon le secteur, la nature des ondes et des matériaux diffère, mais les problématiques sont les mêmes.
 On étudie souvent la propagation d'une onde autour d'obstacles dans un milieu d’intérêt.
 Cette onde est émise et réceptionnée à un endroit qui selon le problème est loin ou proche de l'objet.
 Le problème réel est alors souvent non borné, car les ondes continuent à se propager souvent en dehors du domaine.
@@ -18,19 +18,20 @@ La dimension du système linéaire est de l’ordre de plusieurs centaines de mi
 La complexité numérique (temps de calcul et taille mémoire) requise pour la résolution précise du système, même si elle est réduite par l'emploi d'une méthode de décomposition de domaines et une parallélisation massive, reste élevée.
 
 Il en est de même pour les méthodes surfaciques faisant intervenir des équations intégrales définies sur la surface de l'objet et sur les interfaces entre les matériaux qui les composent. Après discrétisation pour une méthode d’éléments finis de frontière, ce problème se ramène aussi à un système linéaire où l'inconnu représente alors les valeurs discrétisées des composantes tangentielles des champs sur ces surfaces).
-Des études paramétriques (propagation d’incertitudes, variations de la géométrie ou des caractéristiques de l'empilement de matériaux,...) nécessitent de très nombreux calculs.
+Des études paramétriques (propagation d’incertitudes, variations de la géométrie ou des caractéristiques de l'empilement de matériaux...) nécessitent de très nombreux calculs.
 Mais elles requièrent une précision moindre, et des approximations peuvent s'avérer intéressantes.
 La plus connue consiste à remplacer l'empilement par une \gls{acr-ci} écrite sur sa la surface extérieure de l'objet: cette CI, implémentée dans une \gls{acr-ei}, permet de s’affranchir de la résolution des équations de Maxwell dans les matériaux.
 
 La CI la plus simple (Leontovich) relie par une impédance scalaire les composantes tangentielles du champ électrique à celles du champ magnétique.
 Elle est strictement locale et ne constitue une bonne approximation que pour des matériaux dont les indices sont suffisamment élevés.
 Des CI plus performantes, dites \glspl{acr-cioe}, plus ou moins locales, sont proposées dans \cite{hoppe_impedance_1995,stupfel_implementation_2015}.
-La grande majorité des CIOE ne tient pas compte des courbures et ne sont donc valables que dans l'approximation du plan tangent.
-Mentionnons qu'aucune de ces CI ne modélise correctement une singularité de surface (normale non définie, courbures ou/et leurs dérivées discontinues) ou une discontinuité de matériaux.
+La grande majorité des CIOE ne tient pas compte des courbures et n’est donc valable que dans l'approximation du plan tangent.
+Mentionnons qu'aucune de ces CI ne modélise correctement une singularité de surface (normale non définie, courbures ou leurs dérivées discontinues) ou une discontinuité de matériaux.
 
-Pour approcher l’opérateur impédance exact, non local, on introduit généralement des dérivées tangentielles multipliées par des coefficients dont les valeurs peuvent être déterminées dans le domaine spectral. Dans ce domaine, les opérateurs différentiels sont remplacés par des opérateurs matriciels d'ordre deux ou supérieur selon la géométrie.
+Pour approcher l’opérateur impédance exact, non local, on introduit généralement des dérivées tangentielles multipliées par des coefficients dont les valeurs peuvent être déterminées dans le domaine spectral. Dans ce domaine, les opérateurs différentiels sont remplacés par des opérateurs matriciels d'ordre au moins deux selon la géométrie.
 Il faut également assurer l’unicité des solutions du problème de Maxwell correspondant.
 Les CIOE présentées dans \cite{stupfel_sufficient_2011,stupfel_implementation_2015} présentent ces deux caractéristiques: les coefficients, optimisés dans le domaine spectral, garantissent des solutions uniques.
-Implémentées dans des équations intégrales, leur efficacité a été évaluée sur des objets 3D.
-Des CIOE similaires mais plus performantes ont été proposées dans \cite{marceaux_high-order_2000,aubakirov_electromagnetic_2014,soudais_3d_2017}.
+Implémentées dans des équations intégrales, leurs efficacités ont été évaluées sur des objets 3D.
+Des CIOE similaires, mais plus performantes ont été proposées dans \cite{marceaux_high-order_2000,aubakirov_electromagnetic_2014,soudais_3d_2017}.
 Il restait à définir les \glspl{acr-csu} associées.
+

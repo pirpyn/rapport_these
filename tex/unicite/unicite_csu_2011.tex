@@ -2,13 +2,21 @@
 
   Nous définissons les \glspl{acr-cioe} comme une condition limite liant \(\vE_t\) et \(\vn\pvect\vH\) sur \(\Gamma\). L'existence des CIOE est en dehors du cadre de cette thèse, nous ne ferons donc qu'utiliser des CIOE existantes.
 
-  Grâce à ces CIOE, nous allons établir des conditions suffisante qui impliquent la \gls{acr-cgu} \eqref{eq:unicite:form_var:cgu}. Par leur nature suffisante, il n'y pas un unique jeu de CSU pour une CIOE donnée. Une difficulté est d'être capable de juger si ce jeu est satisfaisant, et si ce n'est pas le cas, être capable de proposer un autre jeu.
+  Grâce à ces CIOE,   allons établir des conditions suffisantes qui impliquent la \gls{acr-cgu} \eqref{eq:unicite:form_var:cgu}. Par leur nature suffisante, il n'y pas un unique jeu de CSU pour une CIOE donnée. Une difficulté est d'être capable de juger si ce jeu est satisfaisant, et si ce n'est pas le cas, être capable de proposer un autre jeu.
 
   Les CIOE de \cite{stupfel_sufficient_2011} font intervenir l'opérateur de Hodge \(\mathcal{L}\), commençons par rappeler son expression et quelques propriétés.
 
+  Soit les opérateurs différentiels surfaciques (voir annexe \ref{sec:annexe:div_grad_rot})
+  \begin{align*}
+        \vgrads{f}(\vx) &= \vgrad{f}(\vx) - \vn(\vx) (\vn(\vx) \cdot \vgrad{f}(\vx))
+        \\
+        \vdivs{\vu} &= \vdiv\left(\vu(\vx) - \vn(\vx) (\vn(\vx) \cdot \vu(\vx)\right)
+        \\
+        \vrots{\vu}(\vx) &= \vn(\vx)\left(\vn(\vx) \cdot \vrot{\vu}(\vx)\right)
+    \end{align*}
+
   \begin{defn}
     % Pour tout \(\vu \in (\mathcal{C}^\infty(\Gamma))^2\)
-    Definir les opérateurs
     \begin{equation}
       \label{eq:operator:L}
         \fonction{\LL}{(\mathcal{C}^\infty(\Gamma))^2}{(\mathcal{C}^\infty(\Gamma))^2}%
@@ -32,7 +40,7 @@
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI0}
-    Considérons la condition d’impédance de Leontovich, la \hyperlink{ci0}{CI0} caractérisé par
+    Considérons la condition d’impédance de Leontovich, la \hyperlink{ci0}{CI0} caractérisée par
     \begin{align}
       \label{eq:unicite:ci0}
       \vE_t = a_0 \vJ && \forall a_0 \in \CC
@@ -93,7 +101,7 @@
         \intertext{donc}
         \Re(X) & = \Re{(a_0)} \norm{\vJ} ^2 - \Re{(a_1)}\norm{\vgrads{\vJ}}^2
       \end{align*}
-      Si on suppose \((a_0,a_1) \in \CSU{CI01}\), tous les termes sont positifs.
+      Si l’on suppose \((a_0,a_1) \in \CSU{CI01}\), tous les termes sont positifs.
     \end{proof}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

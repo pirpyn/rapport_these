@@ -33,7 +33,7 @@
     \end{defn}
 
     \begin{prop}
-        On se place dans le matériau et on suppose que \(\forall z \in [-d,0], k_3(z) \not = 0\).
+        On se place dans le matériau et l’on suppose que \(\forall z \in [-d,0], k_3(z) \not = 0\).
         Alors existe \((c_i(k_x,k_y))_{1\le i \le4}, \in \CC(\RR^2)^4\) tels que les champs solutions de \ref{eq:imp_fourier:intro:maxwell_harmonique:form_cea} sont de la forme
         \begin{align*}
             \hat{E}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_1(k_x,k_y) + e^{-ik_3(z)z}c_2(k_x,k_y)
@@ -62,7 +62,7 @@
           \ddr[2]{z}{\hat{\mathcal{H}}_y}(k_x,k_y,z) + \left( k(z)^2 - k_x^2 - k_y^2\right) \hat{\mathcal{H}}_y(k_x,k_y,z) & = 0
       \end{align*}
 
-      On suppose alors que \(k_3(z)^2\) ne s'annule pas dans la couche. S'il s'annule, les solutions sont linéaire en \(z\) et nous référons à l'annexe \ref{sec:annexe:plan:k3_nul}.
+      On suppose alors que \(k_3(z)^2\) ne s'annule pas dans la couche. S'il s'annule, les solutions sont linéaires en \(z\) et nous référons à l'annexe \ref{sec:annexe:plan:k3_nul}.
 
       Une solution générale s'écrit alors
       \begin{align*}
@@ -122,8 +122,8 @@
       \end{prop}
 
       \begin{proof}
-        On se place dans une couche, les constantes de matériaux sont donc fixés.
-        On reprend les équations de Maxwell, appliquées sur les transformées de Fourier. À partir des composantes \(\vect{e_x},\vect{e_y}\) des équation de Maxwell, on peut déterminer \(\hat{E_x},\hat{E_z},\hat{H_x},\hat{H_z}\).
+        On se place dans une couche, les constantes de matériaux sont donc fixées.
+        On reprend les équations de Maxwell, appliquées sur les transformées de Fourier. À partir des composantes \(\vect{e_x},\vect{e_y}\) des équations de Maxwell, on peut déterminer \(\hat{E_x},\hat{E_z},\hat{H_x},\hat{H_z}\).
         \begin{align*}
             \left\lbrace
             \begin{matrix}
@@ -265,7 +265,7 @@
         On commence par montrer un lemme très utile pour trouver l'expression de \(\hat \mZ(k_x,k_y)\)
         \begin{lemme}[Continuité des impédances]
           \label{lem:plan:continuite_impedance}
-          Soit \(z_m\) une interface entre deux matériaux. On suppose qu'il existe les matrices d'impédances de part et d'autre de l'interface
+          Soit \(z_m\) une interface entre deux matériaux. On suppose qu'il existe les matrices d'impédances de part et d'autre de l'interface.
           \begin{align*}
               \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right)
               \\
@@ -325,7 +325,7 @@
         \end{prop}
 
         \begin{proof}
-            Grâce au lemme \eqref{lem:plan:continuite_impedance}, on sait donc que l'on peut uniquement se placer dans la couche. Nous n'avons donc pas besoin de distinguer les vecteurs indépendant de \(z\) mais qui sont différents dans chaque couche, dans l'expression des champs tangentiels. Nous posons donc
+            Grâce au lemme \eqref{lem:plan:continuite_impedance}, on sait donc que l'on peut uniquement se placer dans la couche. Nous n'avons donc pas besoin de distinguer les vecteurs indépendants de \(z\) mais qui sont différents dans chaque couche, dans l'expression des champs tangentiels. Nous posons donc
             \begin{align*}
                 \vect{C_1}(k_x,k_y) = \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} 
                 && 
@@ -337,7 +337,7 @@
                 \\
                 &=  \mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y) + \mB_E(k_x,k_y,-d^+)\vect{C_2}(k_x,k_y)
             \end{align*}
-            Si on suppose que ces matrices sont inversibles, donc que \(k_3\) est non-nul alors on a
+            Si l’on suppose que ces matrices sont inversibles, donc que \(k_3\) est non-nul alors on a
             \begin{align*}
                 \vect{C_2}(k_x,k_y) &= -\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y)
             \end{align*}
@@ -345,7 +345,7 @@
             % \begin{align*}
             %     \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0^-)\right)
             % \end{align*}
-            Or on injecte le résultat précèdent
+            Or on injecte le résultat précédent
             \begin{multline*}
                 \hat \vE_t(k_x,k_y,0^-) =
                 \\
@@ -427,7 +427,7 @@
         \begin{align*}
              \vn \pvect \hat{\vE} = \hat{\mathfrak{Z}} \hat{\vH_t}, && \hat{\mathfrak{Z}} = -i\eta_r\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right).
         \end{align*}
-        C'est un forme équivalente à la notre où \(\hat{\mZ} = \mT\hat{\mathfrak{Z}}\mT\) avec \(\mT = \begin{bmatrix}0&-1\\1&0\end{bmatrix}\).
+        C'est une forme équivalente à la nôtre où \(\hat{\mZ} = \mT\hat{\mathfrak{Z}}\mT\) avec \(\mT = \begin{bmatrix}0&-1\\1&0\end{bmatrix}\).
         Si on fixe \(k_y\) à \(0\) alors \(\hat \mZ\) est une matrice diagonale et dans la littérature (\cite{stupfel_implementation_2015,aubakirov_electromagnetic_2014,hoppe_impedance_1995}) on nomme les termes diagonaux \(\hat Z_{TM}, \hat Z_{TE}\) tels que
          % le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x} + {E_z} \vect{e_z} \), tandis que le champ \(\vH\)-TE correspond à \({H_x} \vect{e_x} + {H_z} \vect{e_z}\) et le champ \(\vH\)-TM correspond à \({H_y} \vect{e_y}\).
         
@@ -599,7 +599,7 @@
         \vect{e_r}\times\hat{\vH}_t(k_x,k_y,z_{p-1})
       \end{multline*}
 
-      Comme on a supposé l'inversibilité des deux matrices \(\mM_{A}\), \(\mM_{B}\) alors on peut factoriser à droite le numérateur et le dénominateur et on a la propriété.
+      Comme on a supposé l'inversibilité des deux matrices \(\mM_{A}\), \(\mM_{B}\) alors on peut factoriser à droite le numérateur et le dénominateur et l’on a la propriété.
     \end{proof}
 
     \begin{prop}%[Théorème de relèvement]~
