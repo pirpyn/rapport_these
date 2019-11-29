@@ -1,6 +1,6 @@
 \section[Espaces Hdiv et Hrot]{Espaces \(\Hdiv\) et \(\Hrot\)}
 
-Ces espaces ont été étudié par \cite{nedelec_mixed_1980}. Nous rappelons dans cette annexe, les résultats principaux et les relations de compatibilité pour des fonctions de bases associées à ces espaces.
+Ces espaces ont été étudiés par \cite{nedelec_mixed_1980}. Nous rappelons dans cette annexe, les résultats principaux et les relations de compatibilité pour des fonctions de bases associées à ces espaces.
 
 Soit \(\Gamma\) une surface fermée bornée régulière de \(\RR^3\).
 Soit \(\Gamma_h\) une approximation de \(\Gamma\) par un maillage triangulaire, on désigne notamment un triangle de \(\Gamma_h\) par \(T\).
@@ -31,7 +31,7 @@ Soit \(\Gamma_h\) une approximation de \(\Gamma\) par un maillage triangulaire, 
 
 Autrement dit, \cite[eq.~5.3]{bendali_equations_2014}
 \begin{defn}
-    On dit que \(\vect{\Psi_h} \in \Hdiv(\Gamma_h)\) si et seulement si il existe \(\psi\in L^2(\Gamma)\) telle que pour toute \(\phi \in C^1(\Gamma)\)
+    On dit que \(\vect{\Psi_h} \in \Hdiv(\Gamma_h)\) si et seulement s’ il existe \(\psi\in L^2(\Gamma)\) telle que pour toute \(\phi \in C^1(\Gamma)\)
     \begin{equation}
         \left< \vdivs \vect{\Psi_h}, \phi \right> = \int_\Gamma \psi \phi \dd{\Gamma}
     \end{equation}
@@ -48,7 +48,7 @@ On déduit la relation de compatibilité \(\Hdiv\) suivante (\cite[Lemme.~8]{ned
 \end{prop}
 
 \begin{proof}
-    Cela ce démontre grâce aux formules de Green pour la divergence surfacique (voir \cite[eq.~(A3.47)]{bladel_electromagnetic_2007}) en remarquant que la surface \(\Gamma_h\) est fermée et qu'un triangle possède toujours une arête en commun avec un autre.
+    Cela se démontre grâce aux formules de Green pour la divergence surfacique (voir \cite[eq.~(A3.47)]{bladel_electromagnetic_2007}) en remarquant que la surface \(\Gamma_h\) est fermée et qu'un triangle possède toujours une arête en commun avec un autre.
 
     \begin{align}
     \left< \vdivs \vect{\Psi_h}, \phi \right>
@@ -61,7 +61,7 @@ On déduit la relation de compatibilité \(\Hdiv\) suivante (\cite[Lemme.~8]{ned
 
 \subsection[Hrot]{\(\Hrot\)}
 
-L'espace \(\Hrot\) à déjà été étudié par \cite[Lemme.~ 6]{nedelec_mixed_1980}. Nous rappelons les résultats de compatibilité et leurs démonstration.
+L'espace \(\Hrot\) a déjà été étudié par \cite[Lemme.~ 6]{nedelec_mixed_1980}. Nous rappelons les résultats de compatibilité et leurs démonstrations.
 
 \begin{defn}
     On dit que \(\vect{\Psi_h} \in \Hrot(\Gamma_h)\) si et seulement si \(\vect{\Psi}_{|T} \in \Hrot(T)\) pour tout \(T \in \Gamma_h\).\\

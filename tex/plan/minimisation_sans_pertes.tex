@@ -1,8 +1,8 @@
 \subsection{Problème de la singularité de l'impédance dans le cadre du plan infini pour une couche de matériau sans perte}
 
-Dans la partie précédente nous avons introduit la fonctionnelle que l'on cherche à minimiser qui est \(F(X) = \left\lVert{\mH} X - b(\mZ_{ex})\right\rVert_{\RR^N}\).
+Dans la partie précédente, nous avons introduit la fonctionnelle que l'on cherche à minimiser qui est \(F(X) = \left\lVert{\mH} X - b(\mZ_{ex})\right\rVert_{\RR^N}\).
 
-On se place dans le cadre du plan infini de \cite{aubakirov_electromagnetic_2014}, où \(\eps=4,\mu=1,f=12\) Ghz, et \(d=3.5\) mm. %Ce cas non physique possède un onde guidée pour \((k_x,k_y) = (k_0s^\star,0.)\) où \(\mR(k_0s^\star,0.) = \infty\).
+On se place dans le cadre du plan infini de \cite{aubakirov_electromagnetic_2014}, où \(\eps=4,\mu=1,f=12\) GHz, et \(d=3.5\) mm. %Ce cas non physique possède un onde guidée pour \((k_x,k_y) = (k_0s^\star,0.)\) où \(\mR(k_0s^\star,0.) = \infty\).
 
 Il existe un \(s_z\) tel que \(\hat\mZ_{ex}(k_0s_z,0.) = \infty\). En effet, d'après la formule pour une couche de matériau de la définition \ref{def:plan:impedance:1c}, 
 
@@ -14,7 +14,7 @@ Donc il est facile de voir que l'on a une asymptote à cause de la tangente et d
   s_z = \sqrt{\eps \mu - \left(\frac{\pi/2}{k_0 d}\right)^2}
 \end{equation}
 
-Le problème est donc que si nous balayons en incidence et que l'on passe par ce point, alors la matrice \(\hat\mZ\) n'est pas défini en ce point. Or comme le gradient de la fonctionnelle est fonction de cette matrice, le gradient n'est pas défini pour tout \(X\). Si l'on utilise une méthode basée sur le gradient de type Newton, ce que nous avons fait, on comprend pourquoi la méthode numérique échoue à calculer des coefficients.
+Le problème est donc que si nous balayons en incidence et que l'on passe par ce point, alors la matrice \(\hat\mZ\) n'est pas définie en ce point. Or comme le gradient de la fonctionnelle est fonction de cette matrice, le gradient n'est pas défini pour tout \(X\). Si l'on utilise une méthode basée sur le gradient de type Newton, ce que nous avons fait, on comprend pourquoi la méthode numérique échoue à calculer des coefficients.
 
 \subsubsection{Réduction du nombre de variables de la minimisation}
 
@@ -36,7 +36,7 @@ Ces matrices et vecteurs sont reliés par les relations
   {\mH}_\infty X_r &= 0
 \end{align}
 
-Il faut vraiment voir cette décomposition comme deux partie, où l'une est nulle quasiment partout sauf pour le \(s_z\) problématique et l'autre est définie normalement sauf aux termes correspondant au \(s_z\) où elle est nulle.
+Il faut vraiment voir cette décomposition comme deux parties, où l'une est nulle quasiment partout sauf pour le \(s_z\) problématique et l'autre est définie normalement sauf aux termes correspondant au \(s_z\) où elle est nulle.
 
 Schématiquement on définit \(i_z\) l'indice d'une ligne telle que \({b}(\hat{\mZ})_{i_z} = \infty\)
 
@@ -93,7 +93,7 @@ Schématiquement on définit \(i_z\) l'indice d'une ligne telle que \({b}(\hat{\
     \end{bmatrix}
   \end{matrix}
 \end{equation*}
-Dans les fait, \({\mH}_\infty\) à \(4\) lignes non-nulles et \({\mH}_r\) en a autant de nulles au même endroits.
+Dans les faits, \({\mH}_\infty\) à \(4\) lignes non nulles et \({\mH}_r\) en a autant de nulles aux mêmes endroits.
 
 
 On développe donc la fonctionnelle suivant cette décomposition.
@@ -141,12 +141,12 @@ Connaissant les expressions des matrices \(\hat\mLD,\hat\mLR\) introduites dans 
 
 \subsection{Choix de la méthode numérique pour résoudre la minimisation sous contraintes}
 
-  Des méthodes basées sur le gradient sont adaptées car la fonctionnelle est dérivable pour tout \(X\) et les contraintes se comportent comme des polynômes dépendant uniquement des composantes de \(X\). Nous avons donc fait le choix de la méthode \gls{acr-sqp} pour les raisons suivantes:
+  Des méthodes basées sur le gradient sont adaptées, car la fonctionnelle est dérivable pour tout \(X\) et les contraintes se comportent comme des polynômes dépendant uniquement des composantes de \(X\). Nous avons donc fait le choix de la méthode \gls{acr-sqp} pour les raisons suivantes:
  
   \begin{itemize}
     \item Elle est éprouvée depuis \cite{kraft_software_1988} et des sources Fortran à jour sont disponibles à \url{https://github.com/jacobwilliams/slsqp}, ce qui est capital pour l'intégrer dans un code industriel.
-    \item Elle est rapide, nous avons observés que cette méthode convergeait en quelques dizaines d'itérations au plus.
-    \item Elle accepte des contraintes non-linaires donc elle est adaptée à nos CSU.
+    \item Elle est rapide, nous avons observé que cette méthode convergeait en quelques dizaines d'itérations au plus.
+    \item Elle accepte des contraintes non linéaires donc elle est adaptée à nos CSU.
   \end{itemize}
 
 % \subsection{Résultats numérique avec contraintes}

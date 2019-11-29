@@ -40,7 +40,7 @@ On suppose que \( \frac{r^2\sin^2(\theta)}{f(r)g(\theta)h(\phi)}\) ne peut pas s
 \left(\frac{1}{ \sin(\theta)g} \ddr{\theta}{}(\sin(\theta)g') +  \frac{1}{ \sin^2(\theta)}\frac{h''}{h} \right)\\
 0 &=R(r) + \Theta(\tp)
 \end{align*}
-Chaque terme doit donc être égal à une constante dont le somme sera nulle. En séparent les dépendances en \(\theta\) et \(\phi\) dans \(\Theta\), on trouve que chaque terme est aussi constant:
+Chaque terme doit donc être égal à une constante dont la somme sera nulle. En séparent les dépendances en \(\theta\) et \(\phi\) dans \(\Theta\), on trouve que chaque terme est aussi constant:
 
   %On notera que les deux termes doivent être constant.\\
 \[
@@ -89,7 +89,7 @@ Dans la littérature \cite{abramowitz_handbook_1964}, on fait apparaître "l'éq
 %\forall A \in \CC,
 \nu \in \CC,-A = \nu(\nu + 1)\). Des solutions de ce problème sont les fonctions associées de Legendre du 1er type, notées \(\PP^m_\nu(\cos \theta)\)
 
-D'apres \cite[p.~1264]{abramowitz_handbook_1964}, \cite[p.~84]{bohren_absorption_2004}, \(\nu \in \NN, n\ge m \). On pose alors \(n = \nu\).
+D'après \cite[p.~1264]{abramowitz_handbook_1964}, \cite[p.~84]{bohren_absorption_2004}, \(\nu \in \NN, n\ge m \). On pose alors \(n = \nu\).
 
 
 { \color{red}
@@ -103,7 +103,7 @@ Les fonctions associées de Legendre s'expriment en fonction de la fonction hype
 
 Comme \(z=\cos\theta \in [-1,1] \), \(\frac{1-z}{2} \in [0,1]\) donc on se situe dans le disque de convergence de la série entière de la fonction hypergéométrique. Cette dernière n'est pas définie si \(\forall p\in \NN, m=1+p \) sauf si \(\forall n \in [0,m[, -\nu = -n \) ou alors \( \nu +1 = -n \) \cite[p.~556]{abramowitz_handbook_1964}. Dans ce cas, la série devient un polynôme de dégrée \(m\) \cite[p.~561]{abramowitz_handbook_1964}.
 
-On conclus que pour obtenir des solutions définis pour tout \(m\), alors \(\nu:=n \in \NN, n< m \).
+On conclut que pour obtenir des solutions définis pour tout \(m\), alors \(\nu:=n \in \NN, n< m \).
 }
 
 
@@ -128,20 +128,20 @@ On normalise l'équation de Helmholtz en remplaçant les derniers termes par la 
 &= \ddr{r}{}\left(r^2f'\right) + \left((kr)^2 - n(n+1)\right)f
 \end{align*}
   On voit alors apparaître l'équation de Bessel d'ordre \(n +1/2\) dont des solutions linéairement indépendantes sont les fonctions de Bessel d'ordre \(n +1/2\) du 1\ier type \(J_{n+1/2}\) et du 2\ieme type \(Y_{n+1/2}\)\cite[p.~86]{bohren_absorption_2004}\cite[p.~1465]{morse_methods_1953}.
-  À partir de ces dernières, on définit les fonction de Bessel sphériques \(j_n\) et \(y_n\)
+  À partir de ces dernières, on définit les fonctions de Bessel sphérique \(j_n\) et \(y_n\)
   \begin{align*}
   j_n(kr) &= \sqrt{\frac{\pi}{2kr}}J_{n+1/2}(kr) &
   y_n(kr) &= \sqrt{\frac{\pi}{2kr}}Y_{n+1/2}(kr)
   \end{align*}
-  Lorsque \(r\) tend vers \(0\), les \(y_n(r)\) tendent vers l'infini. On présente aussi comme solution une combinaisons linéaires de ces deux solutions: les fonctions de Bessel sphérique du 3\ieme type \(h_n\):
+  Lorsque \(r\) tend vers \(0\), les \(y_n(r)\) tendent vers l'infini. On présente aussi comme solution une combinaison linéaire de ces deux solutions: les fonctions de Bessel sphérique du 3\ieme type \(h_n\):
   \[
   h_n(kr)=j_n(kr)-i y_n(kr)
   \]
-  Les \(h_n\) sont aussi singulières à l'origine pour tout \(n\). On choisit alors de prendre alternativement l'une ou l'autre selon le domaine
+  Les \(h_n\) sont aussi singulières à l'origine pour tout \(n\). On choisit alors de prendre alternativement l'une ou l'autre selon le domaine.
   \end{proof}
 
 
-\subsubsection{Solutions scalaire de l'équation de Helmholtz sur la sphère}
+\subsubsection{Solutions scalaires de l'équation de Helmholtz sur la sphère}
 
 On définit les harmoniques sphériques comme les fonctions \(Y_n^m = C(m,n) e^{im\phi}\PP^m_n(\cos \theta) \) avec \(C(m,n)\) tel que,
 \[
@@ -172,3 +172,4 @@ z_n(r) &= \left\lbrace
   h_n(k_0r) & \text{dans \(\OO^c\)} \\
   \end{matrix}\right.
 \end{align}
+

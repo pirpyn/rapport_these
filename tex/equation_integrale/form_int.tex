@@ -1,6 +1,6 @@
 \section{Équations intégrales}
 
-    La démonstration de ces formules dépassent le cadre de cette thèse et nous renvoyons à \cite[\textsection~5.6]{nedelec_mixed_1980}.
+    La démonstration de ces formules dépasse le cadre de cette thèse et nous renvoyons à \cite[\textsection~5.6]{nedelec_mixed_1980}.
 
     Soit \(k_0\) le nombre d'onde dans le vide. Soit \(G\) la fonction de Green définie en tout point extérieur à \(\Gamma\) telle que
     \begin{equation*}
@@ -43,7 +43,7 @@
 
 \section{Discrétisation de la surface de l'objet}
 
-  La méthode numérique utilisé au CEA  est basée sur l'article de \cite{medgyesi-mitschang_integral_1985}. Nous rappelons cette méthode en conservant les notations de \cite{stupfel_implementation_2015}.\\
+  La méthode numérique utilisée au CEA  est basée sur l'article de \cite{medgyesi-mitschang_integral_1985}. Nous rappelons cette méthode en conservant les notations de \cite{stupfel_implementation_2015}.\\
 
   Soit \(\Gamma_h\) une triangulation de \(\Gamma\) en \(N_e\) éléments triangulaires. Soit \(N=\frac{3}{2}N_e\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
 
@@ -86,7 +86,7 @@
 
   \subsection[Fonctions de Raviart-Thomas phi Hdiv-conforme]{Fonctions de Raviart-Thomas \(\vect{\phi}\) \(\Hdiv\)-conforme}
 
-    Ces fonctions ont été introduites par \cite{raviart_mixed_1977}. Nous présentons ici les fonctions Raviart-Thomas de degré 0, c'est à dire telles que les degrés de libertés soient au milieu de chaque arête (voir \cite[eq.~(3.10)]{raviart_mixed_1977}).
+    Ces fonctions ont été introduites par \cite{raviart_mixed_1977}. Nous présentons ici les fonctions Raviart-Thomas de degré 0, c'est à dire telles que les degrés de liberté soient au milieu de chaque arête (voir \cite[eq.~(3.10)]{raviart_mixed_1977}).
 
     \begin{minipage}{\textwidth}
       \begin{minipage}{0.329\textwidth}
@@ -152,7 +152,7 @@
 
   \subsection[Fonctions de Nédélec p Hrot-conforme]{Fonctions de Nédelec \(\vect{p}\) \(\Hrot\)-conforme}
 
-    Une première famille est celle des \(\pj=-\vn\pvect\phij\), où \(\vn\) est la normale extérieur au maillage. 
+    Une première famille est celle des \(\pj=-\vn\pvect\phij\), où \(\vn\) est la normale extérieure au maillage. 
 
     \begin{minipage}{\textwidth}
       \begin{minipage}{0.329\textwidth}
@@ -296,7 +296,7 @@
     \end{equation*}
   \end{prop}
   \begin{proof}
-    C'est un conséquence immédiate du produit triangulaire \(a\cdot (b \pvect c) = c\cdot (a \pvect b)\) et que les fonctions de bases soient tangentes à la surface.
+    C'est une conséquence immédiate du produit triangulaire \(a\cdot (b \pvect c) = c\cdot (a \pvect b)\) et que les fonctions de bases soient tangentes à la surface.
     \[
       \begin{aligned}
         \pj \cdot \pii &= (\vn \pvect \phij) \cdot ( \vn \pvect \phii)

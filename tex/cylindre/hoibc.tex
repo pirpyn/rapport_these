@@ -1,7 +1,7 @@
 \section{Approximation de la matrice d'impédance pour un cylindre infini par une CIOE}
 
   \subsection[Expression des opérateurs LD, LR en Fourier]{Expression des opérateurs \(\LD\), \(\LR\) en Fourier}
-    Soit \(C(0,r_c)\) un cylindre de centre 0, de rayon \(r_c\) et d'axe \(\vect{e_z}\) et \((r,\theta,z)\) les coordonnées cylindre d'un point de l'espace.
+    Soit \(C(0,r_c)\) un cylindre de centre 0, de rayon \(r_c\) et d'axe \(\vect{e_z}\) et \((r,\theta,z)\) les coordonnées cylindriques d'un point de l'espace.
 
     Soit \(V = \left(\mathcal{C}^\infty(C(0,r_c))\right)^2 \cap L^2(C(0,r_c)))\) l'espace des fonctions infiniment dérivables définies sur le cylindre et de carré intégrable.
 
@@ -36,7 +36,7 @@
       \begin{align*}
         \LD \vect{U} & = \vgrads{} \vdivs{} \vect{U}
       \end{align*}
-      On utilise les expression en coordonnées cylindrique des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
+      On utilise les expressions en coordonnées cylindriques des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
       \begin{align*}
         \vdivs{\vect{U}}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{U_\theta}(r,\theta,z) + \ddr{z}{U_z}(r,\theta,z)
         \\
@@ -92,7 +92,7 @@
       \begin{align*}
         \LR \vect{U} & = \vrots{} (\rots{} \vect{U})
       \end{align*}
-      On utilise les expression en coordonnées cylindrique des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
+      On utilise les expressions en coordonnées cylindriques des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
       \begin{align*}
         \rots{\vect{U}}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{U_z}(r,\theta,z) - \ddr{z}{U_\theta}(r,\theta,z)
         \\
@@ -119,3 +119,4 @@
       \label{eq:cylindre:hoibc:ci3}
       \hat{\mZ}_{CI3}(n,k_z) = \left(\mI + b_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - b_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2} \right)^{-1}\\\left(a_0 \mI + a_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - a_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2}\right)
     \end{multline}
+

@@ -143,7 +143,7 @@
       \\
       &=\ps{X}{\conj{\mA_{CI3}^t}\mA_{CI3}X} - \ps{X}{\conj{\mA_{CI3}^t}g} - \ps{\conj{\mA_{CI3}^t}g}{X} + \ps{g}{g}
       \end{align*}
-      Si la matrice \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, comme elle est par définition hermitienne et positive alors la fonctionnelle est quadratique. Donc il existe une unique minimum où le gradient de cette fonctionnelle s'annule. Or
+      Si la matrice \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, comme elle est par définition hermitienne et positive alors la fonctionnelle est quadratique. Donc il existe un unique minimum où le gradient de cette fonctionnelle s'annule. Or
       \begin{align*}
         \nabla J_Z(X^*) &= 2\conj{\mA_{CI3}^t}\mA_{CI3}X^* - 2\conj{\mA_{CI3}^t}g
         \\ 
@@ -151,7 +151,7 @@
       \end{align*}
     \end{proof}
 
-    Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et tout incidence.
+    Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et toute incidence.
 
     \begin{thm}[Minimisation avec contraintes pour la CI3]
 
@@ -177,7 +177,7 @@
     \end{proof}
 
     \begin{prop}
-      S'il existe une unique minimum \(X_{CI}^*\), celui ci vaut
+      S'il existe un unique minimum \(X_{CI}^*\), celui-ci vaut
       \[
         X_{CI}^* = \left(\conj{\mH_{CI}^t}{\mH_{CI}}\right)^{-1}\conj{\mH_{CI}^t}b
       \]
@@ -190,7 +190,7 @@
     \subsubsection{Existence du minimum pour la CI01}
 
       \begin{prop}
-        La matrice \({\mM}_{CI01}\) associé à la CI01 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{x},k_{y})\) différents.
+        La matrice \({\mM}_{CI01}\) associée à la CI01 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{x},k_{y})\) différents.
       \end{prop}
 
       \begin{proof}
@@ -215,7 +215,7 @@
     \subsubsection{Existence du minimum pour la CI4}
 
       \begin{prop}
-        La matrice \({\mM}_{CI4}\) associé à la CI4 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{xi},k_{yi})\) différents.
+        La matrice \({\mM}_{CI4}\) associée à la CI4 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{xi},k_{yi})\) différents.
       \end{prop}
 
       \begin{proof}
@@ -277,7 +277,7 @@
           \end{equation*}
       \end{itemize}
 
-      L'opérateur \(\LL\) est le laplacien tangentiel \(\lapls\) appliqué à chaque composante. Le multiplicateur de Fourier associé est la matrice
+      L'opérateur \(\LL\) est le laplacien tangentiel \(\lapls\) appliqué à chaque composante. Le multiplicateur de Fourier associé est la matrice.
       \begin{equation*}
         \hat{\mL}  = -
         \begin{bmatrix}
@@ -287,7 +287,7 @@
         \end{bmatrix}
       \end{equation*}
 
-      La matrice \(\mL\) est multiple de l'identité donc la matrice \(\hat\mZ_{CI}\) associée à ces CIOE n'approchera pas bien la matrice \(\hat{\mZ}_{ex}\). La figure \ref{fig:imp_fourier:plan:stupfel:hoibc} présente donc quelques résultats où l'on voit bien la limite de ces CIOE par rapport à la CI3 et il en est de même pour les coefficients de réflexion visible à la figure figure \ref{fig:reflex_fourier:plan:stupfel:hoibc}.
+      La matrice \(\mL\) est multiple de l'identité donc la matrice \(\hat\mZ_{CI}\) associée à ces CIOE n'approchera pas bien la matrice \(\hat{\mZ}_{ex}\). La figure \ref{fig:imp_fourier:plan:stupfel:hoibc} présente donc quelques résultats où l'on voit bien la limite de ces CIOE par rapport à la CI3 et il en est de même pour les coefficients de réflexion visible à la figure \ref{fig:reflex_fourier:plan:stupfel:hoibc}.
       \begin{figure}[!hbt]
         \centering
         \input{tikz/plot/Z_STUPFEL_plan_hoibc.tikz}
@@ -327,7 +327,7 @@
         \label{tab:imp_fourier:plan:hoppe:33:hoibc}
       \end{table}
 
-      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériau sans perte où il y a une asymptote. La CI3 capture cet asymptote grâce à son dénominateur et est donc bien meilleure que la condition de Leontovich.
+      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériau sans perte où il y a une asymptote. La CI3 capture cette asymptote grâce à son dénominateur et est donc bien meilleure que la condition de Leontovich.
       \begin{figure}[!hbt]
           \centering
           \input{tikz/plot/Z_SOUDAIS_plan_hoibc.tikz}
@@ -352,7 +352,7 @@
 
       Si la matrice d'impédance exacte possède plusieurs asymptotes, il faut autant de pôles à la CIOE pour être une bonne approximation.
 
-      La figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc} montre la limite de la CI3 pour capturer 3 asymptotes. Pour cela, il faudrait utiliser une CI d'ordre au moins 6 sur l'opérateur agissant sur \(\vE_t\). La CI3 n'est donc une bonne CIOE que si le nombre d'asymptote est inférieur à 1, ce que l'on peut calculer connaissant l'empilement (voir proposition \ref{prop:imp_plan:symb_z:1c}).
+      La figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc} montre la limite de la CI3 pour capturer 3 asymptotes. Pour cela, il faudrait utiliser une CI d'ordre au moins 6 sur l'opérateur agissant sur \(\vE_t\). La CI3 n'est donc une bonne CIOE que si le nombre d'asymptotes est inférieur à 1, ce que l'on peut calculer connaissant l'empilement (voir proposition \ref{prop:imp_plan:symb_z:1c}).
 
       L'expression d'une CIOE vérifiant ce critère est la \hyperlink{ci7}{CI7}
       \begin{equation}

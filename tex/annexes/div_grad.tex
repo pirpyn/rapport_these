@@ -58,7 +58,73 @@
         \\
         \vrots{\vu}(\vx) &= \vn(\vx)\left(\vn(\vx) \cdot \vrot{\vu}(\vx)\right)
     \end{align}
-    Si l'on veut appliquer le rotationnel surfacique comme une application sur les champs tangentielles, les opérateurs rotationnel surfacique scalaire et rotationnel surfacique vectoriel
+    Si l'on veut appliquer le rotationnel surfacique comme une application sur les champs tangentiels, les opérateurs rotationnels surfaciques scalaire et rotationnel surfacique vectoriel
+    \begin{align}
+        \trots{\vu}(\vx) &= \vn(\vx) \cdot \vrot{\vu}(\vx)
+        \\
+        \tvrots{f}(\vx) &= - \vn \pvect \vgrads f(\vx)
+    \end{align}
+\section{Opérateurs gradient, divergent et rotationnel en coordonnées cartésiennes, cylindriques, sphériques et opérateurs surfaciques}
+\label{sec:annexe:div_grad_rot}
+\subsection{Cartésien}
+
+    \begin{align}
+        \vgrad f &= \ddr{x}{f}\vect{e_x} + \ddr{y}{f}\vect{e_y}  + \ddr{z}{f}\vect{e_z} \\
+        \vdiv \vu &= \ddr{x}{u_x} + \ddr{y}{u_y} + \ddr{z}{u_z} \\
+        \vrot\vu &= \left(\ddr{y}{u_z}-\ddr{z}{u_y}\right)\vect{e_x} + \left(\ddr{z}{u_x}-\ddr{x}{u_y}\right)\vect{e_y} + \left(\ddr{x}{u_y}-\ddr{y}{u_x}\right)\vect{e_z}
+    \end{align}
+
+\subsection{Cylindrique}
+
+    \[
+        (x,y,z) = (r\cos\theta,r\sin\theta,z)
+    \]
+
+    \begin{align}
+        \vgrad f &= \ddr{r}{f}\vect{e_r}
+        +\frac{1}{r}\ddr{\theta}{f}\vect{e_\theta} + \ddr{z}{f}\vect{e_z}
+        \\
+        \vdiv \vu &= \frac{1}{r}\ddr{r}{(ru_r)}+\frac{1}{r}\ddr{\theta}{u_\theta}+\ddr{z}{u_z}
+        \\
+        \vrot \vu &= \left(\frac{1}{r}\ddr{\theta}{u_z} - \ddr{z}{u_\theta}\right)\vect{e_r} +
+        \left(\ddr{z}{u_r} - \ddr{r}{u_z}\right)\vect{e_\theta} +
+        \frac{1}{r}\left(\ddr{r}{(ru_\theta)}-\ddr{\theta}{u_r}\right)\vect{e_z}
+    \end{align}
+
+\subsection{Sphérique}
+
+    \[
+        (x,y,z) = (r\cos\phi\sin\theta,r\sin\theta\sin\theta,r\cos\theta)
+    \]
+
+    \begin{align}
+        \vgrad f &= \ddr{r}{f}\vect{e_r}
+        +\frac{1}{r}\ddr{\theta}{f}\vect{e_\theta} + \frac{1}{r\sin\theta}\ddr{\phi}{f}\vect{e_\phi}
+        \\
+        \vdiv \vu &= \frac{1}{r^2}\ddr{r}{(r^2u_r)}
+        + \frac{1}{r\sin\theta}\ddr{\theta}{}\left(\sin(\theta)u_\theta\right) + \frac{1}{r\sin\theta}\ddr{\phi}{u_\phi}
+    \end{align}
+
+    \begin{multline}
+        \vrot \vu = \frac{1}{r\sin\theta}\left(\ddr{\theta}{}\left(\sin(\theta)u_\phi\right) - \ddr{\phi}{u_\theta}\right)\vect{e_r}\dots
+        \\
+        + \left(\frac{1}{r\sin\theta}\ddr{\phi}{u_r} - \frac{1}{r}\ddr{r}{(ru_\phi)} \right)\vect{e_\theta} \dots
+        \\
+        + \frac{1}{r}\left(\ddr{r}{(ru_\theta)}-\ddr{\theta}{u_r}\right)\vect{e_\phi}
+    \end{multline}
+
+\subsection{Opérateurs surfaciques}
+
+    Soit \(\Omega\) un objet de surface \(\Gamma\) régulière et \(\vn\) la normale unitaire sortante de cet objet.
+    Soit \(f\) et \(\vu\) une fonction et un champ de vecteurs dérivables en tout point \(\vx\) de \(\Gamma\), on rappelle de \cite{nedelec_acoustic_2001} les opérateurs différentiels surfaciques
+    \begin{align}
+        \vgrads{f}(\vx) &= \vgrad{f}(\vx) - \vn(\vx) (\vn(\vx) \cdot \vgrad{f}(\vx))
+        \\
+        \vdivs{\vu} &= \vdiv\left(\vu(\vx) - \vn(\vx) (\vn(\vx) \cdot \vu(\vx)\right)
+        \\
+        \vrots{\vu}(\vx) &= \vn(\vx)\left(\vn(\vx) \cdot \vrot{\vu}(\vx)\right)
+    \end{align}
+    Si l'on veut appliquer le rotationnel surfacique comme une application sur les champs tangentiels, les opérateurs rotationnels surfaciques scalaire et rotationnel surfacique vectoriel
     \begin{align}
         \trots{\vu}(\vx) &= \vn(\vx) \cdot \vrot{\vu}(\vx)
         \\

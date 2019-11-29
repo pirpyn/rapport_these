@@ -5,7 +5,7 @@
 
 Soit \(\OO\) une sphère de rayon \(R\) centré sur l'origine. On cherche les champs solution des équations de Maxwell harmoniques.
 
-Comme le domaine est un ouvert étoilé et que par définition, la divergence des champs est nulle, d'après le Théorème de Helmholtz-Hodge \cite{gui_rigorous_2007}, on peut les représenter comme issus de rotationnels.\\
+Comme le domaine est un ouvert étoilé et que par définition, la divergence des champs est nulle, d'après le théorème de Helmholtz-Hodge \cite{gui_rigorous_2007}, on peut les représenter comme issus de rotationnels.\\
 On peut donc choisir une représentation en potentiel pour l'un et définir l'autre grâce à une équation du système de Maxwell:\\
  \(\exists \vect \Phi \in (C^\infty(\OO))^3\) tels que
 \begin{equation}
@@ -21,7 +21,7 @@ On peut donc choisir une représentation en potentiel pour l'un et définir l'au
   \end{matrix}\right.
 \end{equation}
 Dans le domaine extérieur, les constantes \(k,\eta\) sont \(k_0\) et \(\eta_0\).
-Une solution du problème général est alors une combinaison linéaire des deux problème ci-dessus.
+Une solution du problème général est alors une combinaison linéaire des deux problèmes ci-dessus.
 
 On utilise alors l'équation de Maxwell restante:
 \[
@@ -35,7 +35,7 @@ Puisque \(\vrot  \vgrad  V  \equiv 0\) et que \(\vrot\, \vrot \vect V = -\lapl \
 
 On choisit \(\vect \Phi\) comme un vecteur radial: \(\vect \Phi = r \Psi \vect e_r\) \cite[p.~84]{bohren_absorption_2004}. On va alors montrer que \(\Psi\) doit satisfaire à l'équation de Helmholtz scalaire.\\
 
-Rappel: dans base une sphérique \((\vect e_r, \vect e_\theta, \vect e_\phi)\), pour
+Rappel: dans la base sphérique \((\vect e_r, \vect e_\theta, \vect e_\phi)\), pour
 %un vecteur radial \(\vect A\),
 un vecteur \(\vect V\)
 et un scalaire \(\Psi\), on a:
@@ -73,7 +73,7 @@ et un scalaire \(\Psi\), on a:
 % \end{align*}
 % En injectant ceci dans \eqref{eq:helmholtz_vect}, on a le résultat suivant:
 %
-En développant les calculs on obtient
+En développant les calculs, on obtient
 \begin{align*}
   \vrot \vrot \vect \Phi - k^2 \vect \Phi
   &= \left(\frac{1}{r\sin\theta}\left(-\ddr{\theta}{}\left(\sin\theta\ddr{\theta}{\Psi}\right)-\frac{1}{\sin\theta}\ddr[2]{\phi}{\Psi}\right)-k^2\Psi\right)\vect e_r \cdots \\
@@ -99,3 +99,4 @@ On voit donc que si on a \(\Psi\) solution l'équation de Helmholtz homogène  \
 
 Et alors on obtient des solutions du problème de Maxwell grâce aux formulations en potentiels \eqref{eq:sol_maxwell:pot_hertz}.
 % On choisit de prenddre \(f \equiv 0\) et nous allons détailler les solutions de l'équation de Helmholtz dans le cas d'un objet sphérique dans le \secref{sec:helmholtz_scal}.
+
