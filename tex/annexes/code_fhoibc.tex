@@ -1,0 +1,165 @@
+% \section[La librairie Fortran fhoibc]{La librairie Fortran \texttt{fhoibc}}
+% Pour mener à bien cette thèse, nous avons écrit une librairie Fortran pour calculer les coefficients des CIOE. 
+
+% Les besoins étaient de
+% \begin{itemize}
+%   \item calculer les coefficients de plusieurs CIOE sur un même empilement,
+%   \item appliquer différentes CSU à une même CIOE,
+%   \item prendre en compte les différentes géométries.
+% \end{itemize}
+
+% Nous avons alors fait le choix d'une programmation orientée objet, puisque les CIOE partagent des propriétés communes (CSU, coefficients, empilement ...) sur lesquelles on applique des méthodes qui dépendent du contexte (impédance exacte plane, cylindrique, sphérique ...)
+
+% Par contre, chaque CIOE contient des méthodes spécifiques, donc elles dérivent d'une classe mère. Afin de fournir une base de documentation, nous présentons dans la suite les propriétés interfaces de cette classe mère. Enfin, nous montrerons un petit programme pour calculer les coefficients d'une CIOE simple.
+
+% Au moment de la rédaction de cette thèse, les CIOE déjà codées dans cette librairie sont
+% la \hyperlink{ci0}{CI0},
+% la \hyperlink{ci01}{CI01} avec \(\CSU{CI01}\) (définition \ref{def:csu:ci01}),
+% la \hyperlink{ci1}{CI1} sans CSU,
+% la \hyperlink{ci4}{CI4} avec \(\CSU{CI4}\) (définition \ref{def:csu:ci4}),
+% la \hyperlink{ci3}{CI3} avec \(\CSU[3]{CI3}\) (définition \ref{def:csu:ci3-3}),
+% la \hyperlink{ci6}{CI6} sans CSU,
+% la \hyperlink{ci7}{CI7} sans CSU.
+
+% \subsection[La classe mère hoibc_class]{La classe mère \lstinline{hoibc_class}}
+
+% \subsection{Ses composantes publiques}
+% Ses composantes publiques sont
+% \begin{lstlisting}
+% character(len=:), allocatable :: name
+% character(len=:), allocatable :: label
+% character(len=1) :: type = 'P'       
+% logical  :: suc = .False.            
+% real(wp) :: inner_radius = 0.        
+% real(wp) :: outer_radius = 0.        
+% logical :: normalised = .True.       
+% integer :: mode = 1                  
+% \end{lstlisting}
+
+% \begin{itemize}
+%   \item \lstinline{name}: l'identifiant de la \gls{acr-cioe}. Comme c'est une chaîne de caractères à taille variable, on ne peut lui donner de valeur lors de la définition du type. Cette propriété est donc définie dans une routine.
+%   \item \lstinline{label}:lLa chaîne de caractères qui s'affiche dans les fichiers et sur l'écran. Si non renseignée, elle est générée à partir du nom, de la géométrie et de la CSU.
+%   \item \lstinline{type}: ce caractère indique le type de géométrie, donc `P' pour le plan, `C' pour le cylindre et `S' pour la sphère.
+%   \item \lstinline{suc}: ce booléen indique si l'on doit minimiser en satisfaisant les CSU.
+%   \item \lstinline{inner_radius} et \lstinline{outer_radius}: dans le cas des géométries courbes, indique les rayons des couches intérieures et extérieures.
+%   \item \lstinline{normalised}: ce booléen indique si l'on normalise les opérateurs \(\LD\) et \(\LR\) par \(k_0^2\).
+%   \item \lstinline{mode}: cet entier permet de choisir la fonctionnelle à minimiser. S'il vaut 1, c'est \(J_R\) et 2 pour \(J_Z\).
+% \end{itemize}
+% Les coefficients étant dépendants de la CIOE, la propriété correspondante est à définir dans l'extension du type abstrait.
+
+% \subsection{Ses procédures différées}
+% Les procédures différées de ce type abstrait sont
+% \begin{lstlisting}
+% procedure(itf_get_coeff_no_suc),deferred,pass(self) :: get_coeff_no_suc
+% procedure(itf_get_impedance),deferred,pass(self)    :: get_impedance
+% procedure(itf_array_to_coeff),deferred,pass(self)   :: array_to_coeff
+% procedure(itf_coeff_to_array),deferred,pass(self)   :: coeff_to_array
+% procedure(itf_get_suc),deferred,pass(self)          :: get_suc
+% procedure(itf_disp_coeff),deferred,pass(self)       :: disp_coeff
+% \end{lstlisting}
+% Comme ce sont des procédures différées, elles ont des interfaces abstraites. Nous les décrivons ici
+% \begin{lstlisting}
+% subroutine itf_get_coeff_no_suc(self,f1,f2,exact,k0)
+%   import :: wp, hoibc_class
+%   class(hoibc_class), intent(inout) :: self
+%   real(wp),dimension(:),intent(in) :: f1
+%   real(wp),dimension(:),intent(in) :: f2
+%   complex(wp),dimension(size(f1),size(f2),2,2),intent(in) :: exact
+%   real(wp),intent(in) :: k0
+% end subroutine
+% \end{lstlisting}
+% Cette routine calcule les coefficients de la CIOE \lstinline{self} par moindre carré sans minimisation (voir les propriétés \ref{prop:plan:minimisation:minimum_sans_contraintes}, \ref{prop:cylindre:minimisation:minimum_sans_contraintes}, \ref{prop:sphere:minimisation:minimum_sans_contraintes}). Les tableaux \lstinline{f1},\lstinline{f2} contiennent les valeurs des variables de Fourier: 
+% \begin{itemize}
+% \item \lstinline{self%type = 'P'} alors \lstinline{f1} contient les valeurs de \(k_x\) \lstinline{f2} celles de \(k_y\).
+% \item \lstinline{self%type = 'C'} alors \lstinline{f1} contient les valeurs de \(n\) \lstinline{f2} celles de \(k_z\).
+% \item \lstinline{self%type = 'S'} alors \lstinline{f1} contient les valeurs de \(n\) et \lstinline{f2} ne sert pas.
+% \end{itemize}
+% Le tableau de rang 4 \lstinline{exact} dépend de la géométrie et du choix de la fonctionnelle. Si par exemple, \lstinline{self%mode = 1} et \lstinline{self%type = 'P'}, alors \lstinline{exact(i,j,p,q)} doit valoir à \(\hat\mR(k_{xi},k_{yj})_{pq}\). Tandis que  si \lstinline{self%mode = 2} et \lstinline{self%type = 'C'}, alors \lstinline{exact(i,j,p,q)} doit valoir à \(\hat\mZ(n_i,k_{zj})_{pq}\).
+% Enfin, \lstinline{k0} est le nombre d'onde dans le vide.
+% En dehors du module où elle est définie, le seul moyen d'appeler cette routine est \lstinline{call cioe%get_coeff_no_suc(f1,f2,exact,k0)}.
+
+% \begin{lstlisting}
+% function itf_get_impedance(self,k0,f1,f2) result(imp_ap)
+%   import :: wp, hoibc_class
+%   class(hoibc_class), intent(in) :: self
+%   real(wp),intent(in) :: k0
+%   real(wp),dimension(:),intent(in) :: f1
+%   real(wp),dimension(:),intent(in) :: f2
+%   complex(wp),dimension(size(f1),size(f2),2,2) :: imp_ap
+% end function
+% \end{lstlisting}
+% En reprenant les explications des paramètres de la routine précèdent, cette fonction renvoie \lstlisting{imp_ap} un tableau de rang 4 tel que \lstinline{self%imp_ap(i,j,p,q)} vaut \(\hat\mZ_{CI}(k_{xi},k_{yj})_{pq}\). L'appel à cette fonction est donc \lstinline{z_cioe = cioe%get_impedance(k0,f1,f2)}.
+
+% Les deux routines qui suivent servent à la minimisation sous contraintes. Dans cette dernière, les inconnus (les coefficients de la CIOE) doivent être fournis dans un tableau de réels de rang 1. Les coefficients étant complexes, ces routines permettent de passer de l'un à l'autre. Cependant, il n'y a aucune règle pour réaliser cette action, d'autant plus que chaque cioe doit définir comment elle code ses coefficients. Il revient donc naturellement à cet objet d'implémenter ces méthodes.
+% \begin{lstlisting}
+% subroutine itf_coeff_to_array(self,x)
+%   import :: wp, hoibc_class
+%   class(hoibc_class), intent(in) :: self
+%   real(wp),dimension(:),allocatable,intent(out) :: x
+% end subroutine
+% \end{lstlisting}
+% Cette routine prend les coefficients de la cioe \lstinline{self} et modifie le tableau \lstinline{x}. 
+
+% \begin{lstlisting}
+% subroutine itf_array_to_coeff(self,x)
+%   import :: wp, hoibc_class
+%   class(hoibc_class), intent(inout) :: self
+%   real(wp),dimension(:),intent(in) :: x
+% end subroutine
+% \end{lstlisting}
+% Cette routine fait l'inverse et modifie les coefficients de la cioe avec le tableau fourni en argument.
+
+% Dans le code slsqp, les contraintes à respecter sont de types inégalités positives et égalités nulles, mais nous utilisons les contraintes inégalités négatives. La routine suivante permet de fournir les CSU au code de minimisation.
+% \begin{lstlisting}
+% subroutine itf_get_suc(self,cle,ceq,cne,sle,seq,sne)
+%   import :: wp, hoibc_class, string
+%   class(hoibc_class),intent(in)  :: self
+%   real(wp),dimension(:),allocatable,intent(out) :: cle
+%   real(wp),dimension(:),allocatable,intent(out) :: ceq
+%   real(wp),dimension(:),allocatable,intent(out) :: cne
+%   type(string),dimension(:),allocatable,intent(out) :: sle
+%   type(string),dimension(:),allocatable,intent(out) :: seq
+%   type(string),dimension(:),allocatable,intent(out) :: sne
+% end subroutine
+% \end{lstlisting}
+% Les 3 premiers tableaux contiennent respectivement les contraintes inégalités négatives, égalités nulles et différentes de zéros à respecter. Les contraintes de différences (par exemple, un coefficient non nul) sont vérifiées a posteriori.
+% Les 3 tableaux suivants doivent contenir le même nombre d'éléments respectivement. Ce sont des types dérivés n'ayant qu'une composante \lstinline{string%s} qui est une chaîne de caractère à taille variable. C'est le seul moyen d'avoir un tableau à taille variable de chaîne de caractères de longueur variable. Ils contiennent une description de la contrainte correspondante.
+% Dans son état actuel, la libraire n'associe qu'une CSU à une CIOE. Si l'on veut comparer plusieurs jeux de CSU d'une même CIOE, alors il faut étendre le type dérivé de cette cioe et surcharger cette routine.
+
+% \begin{lstlisting}
+% subroutine itf_disp_coeff(self,unit)
+%   import :: hoibc_class
+%   class(hoibc_class), intent(in) :: self
+%   integer,intent(in) :: unit
+% end subroutine
+% \end{lstlisting}
+% Cette dernière routine différée sert à afficher les coefficients sur le fichier associé à l'unité \lstinline{unit}. De plus, on recommande d'y ajouter une description de la CIOE.
+
+% \subsection{Ses procédures statiques}
+% % Ce type dérivé abstrait possède aussi des procédures déjà intégrées.
+% % \begin{lstlisting}
+% % procedure,pass(self) :: get_coeff
+% % procedure,pass(self) :: get_reflexion
+% % procedure,pass(self) :: print_coeff
+% % procedure,pass(self) :: disp_suc
+% % procedure,pass(self) :: set_fourier_variables
+% % \end{lstlisting}
+
+% % Premièrement, pour calculer les coefficients, un certain nombre d'étapes doivent être faits pour tout cioe: vérification du mode et de la géométrie, calcul des opérateurs exacts, appel si besoin à la minimisation sous contraintes. C'est ce que fait la routine suivante.
+% % \begin{lstlisting}
+% % subroutine get_coeff(self,f1,f2,k0,epsr,mur,thickness,initial_impedance,loss,optim)
+% %     class(hoibc_class), intent(inout) :: self
+% %     real(wp),dimension(:),intent(in) :: f1
+% %     real(wp),dimension(:),intent(in) :: f2
+% %     real(wp),intent(in) :: k0
+% %     complex(wp),dimension(:),intent(in) :: epsr
+% %     complex(wp),dimension(:),intent(in) :: mur
+% %     real(wp),dimension(:),intent(in) :: thickness
+% %     complex(wp),dimension(2,2),intent(in) :: initial_impedance
+% %     real(wp),intent(in) :: loss
+% %     type(data_optim),intent(in) :: optim
+% % \end{lstlisting}
+
+% Nous savons que l'on peut calculer la matrice de réflexion sur la couche extérieure grâce à l'impédance.
+
+% \subsection{Exemple de programme qui utilise la librairie}
