@@ -16,27 +16,30 @@
     \end{align*}
 
   \begin{defn}
+    \label{def:operator:L}
     % Pour tout \(\vu \in (\mathcal{C}^\infty(\Gamma))^2\)
-    \begin{equation}
-      \label{eq:operator:L}
+    \begin{equation*}
         \fonction{\LL}{(\mathcal{C}^\infty(\Gamma))^2}{(\mathcal{C}^\infty(\Gamma))^2}%
-          {\vu}{\tgrads{\tdivs \vu} - \tvrots{\tvrots \vu}}
-    \end{equation}
+          {\vu}{\vgrads{\vdivs \vu} - \vrots{\vrots \vu}}
+    \end{equation*}
   \end{defn}
 
   \begin{prop}
-    L’opérateur hermitien \(\LL\) est symétrique négatif:
+    \label{eq:hodge:negatif}
+    L’opérateur hermitien \(\LL\) est symétrique négatif.
+  \end{prop}
 
+  \begin{proof}
     Pour tous \(\vu,\vv \in (\mathcal C^\infty(\Gamma))^2\)
-    \begin{align}
+    \begin{align*}
       \int_\Gamma \vu\cdot \LL(\conj{\vv}) &= \int_\Gamma \conj{\vv}\cdot \LL(\vu)
       \\
       \int_\Gamma \vu\cdot \LL(\conj{\vu}) &= -\norm{\vgrads{\vu}}^2 \le 0
-      \label{eq:hodge:negatif}
-    \end{align}
-  \end{prop}
+    \end{align*}
+    La deuxième propriété se démontré car l'opérateur \(\LL\) est le laplacien surfacique tangentielle (voir \cite[p.~1028]{bladel_electromagnetic_2007}).
+  \end{proof}
 
-  On rappelle que l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu} soit \(\Re(X)\ge0\) où \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\) sachant que \gls{phy-J} est la trace tangentielle sur \(\Gamma\) de l’excitation magnétique.
+  On rappelle que l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu} soit \(\Re(X)\ge0\) où \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\) sachant que \gls{phy-J} est la trace tangentielle sur \(\Gamma\) de l’excitation magnétique (\(\vJ = \vn \pvect \vH\)).
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI0}
@@ -50,7 +53,7 @@
       \label{def:csu:ci0}
       On définit le sous-espace fermé de \(\CC\)
       \begin{equation*}
-        \CSU{CI0} = \lbrace a_0 \in \CC; \Re(a_0) \ge 0 \rbrace
+        \CSU{CI0} = \lbrace a_0 \in \CC, \Re(a_0) \ge 0 \rbrace
       \end{equation*}
     \end{defn}
 
@@ -77,7 +80,8 @@
       \label{def:csu:ci01}
       On définit le sous-espace fermé de \(\CC^2\)
       \begin{equation*}
-        \CSU{CI01} = \left\lbrace (a_0,a_1) \in \CC^2; \begin{matrix}
+        \CSU{CI01} = \left\lbrace (a_0,a_1) \in \CC^2,
+        \begin{matrix}
         \Re\left(a_0\right) \ge 0
         \\
         \Re\left(a_1\right) \le 0
@@ -113,7 +117,7 @@
       (\oI + b \LL) \vE_t = (a_0\oI + a_1 \LL) \vJ && \forall (a_0, a_1,b) \in \CC^3
     \end{align}
 
-    Pour cette CIOE, nous démontrons qu'il existe plusieurs CSU.
+    Pour cette CIOE, nous démontrons qu'il y plusieurs sous-espaces différents, inclus dans \(\CC^3\) qui conduise à l'unicité de la solution du problème.
 
     %\subsubsection{CSU de \cite{stupfel_sufficient_2011}}
 
@@ -131,7 +135,7 @@
        \Delta(a_0,a_1,b) \equiv \Delta
     \end{equation}
 
-    On rappelle la CSU montrée dans \cite{stupfel_sufficient_2011}.
+    On rappelle la CSU énoncée dans \cite{stupfel_sufficient_2011}.
 
     \begin{defn}
       \label{def:csu:ci1-1}
@@ -139,9 +143,8 @@
       On définit le sous-espace ouvert de \(\CC^3\)
       \begin{equation*}
         \CSU[1]{CI1} = \left\lbrace 
+        (a_0,a_1,b) \in \CC^3,
         \begin{matrix}
-        (a_0,a_1,b) \in \CC^3
-        \\
         \Re(\Delta) = 0
         \\
         \Im(\Delta) \not = 0
@@ -156,22 +159,22 @@
 
     \begin{prop}[Une première CSU pour la CI1]
       \label{prop:csu:ci1-1}
-      Il suffit que
+      On a 
       \begin{equation*}
-        (a_0,a_1,b) \in \CSU[1]{CI1}
+        (a_0,a_1,b) \in \CSU[1]{CI1} \Rightarrow (\Re(X)\ge 0. 
       \end{equation*}
-      pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
+      C'est à dire \((a_0,a_1,b) \in \CSU[1]{CI1}\) entraîne l'unicité de la solution du problème de maxwell extérieure.
     \end{prop}
 
     \begin{proof}
-      On utilise l'identité \((a_1-a_0\conj{b})\oI = (a_1(\oI +\conj{b}\LL) - \conj{b}(a_0\oI + a_1\LL))\):
+      On utilise l'identité \(\Delta\oI = (a_1(\oI +\conj{b}\LL) - \conj{b}(a_0\oI + a_1\LL))\):
       \begin{align*}
-        (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \vJ\right)\cdot\conj{\vE_t} - \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
+        \Delta X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \vJ\right)\cdot\conj{\vE_t} - \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
         \intertext{Comme l'opérateur \(\LL\) est symétrique}
-        (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \conj{\vE_t}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
+        \Delta X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \conj{\vE_t}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
         \intertext{Par définition de la CI1}
-        (a_1-a_0\conj{b})X &= \int_\Gamma \left(a_1(\conj{a_0}+\conj{a_1}\LL) \conj{\vJ}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(\oI +b \LL)\vE_t\right)\cdot\conj{\vE_t} \\
-        (a_1-a_0\conj{b})X &= a_1\conj{a_0} \norm{ \vJ }^2 - |a_1|^2 \norm{\vgrads{\vJ}}^2 - \conj{b} \norm{ \vE_t }^2 + |b|^2\norm{\vgrads{\vE_t}}^2
+        \Delta X &= \int_\Gamma \left(a_1(\conj{a_0}+\conj{a_1}\LL) \conj{\vJ}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(\oI +b \LL)\vE_t\right)\cdot\conj{\vE_t} \\
+        \Delta X &= a_1\conj{a_0} \norm{ \vJ }^2 - |a_1|^2 \norm{\vgrads{\vJ}}^2 - \conj{b} \norm{ \vE_t }^2 + |b|^2\norm{\vgrads{\vE_t}}^2
       \end{align*}
 
       % On pose 
@@ -181,14 +184,14 @@
       %   G &= -\int_\Gamma \vE_t \LL \conj{\vE_t} \ge 0
       % \end{align*}
 
-      Explicitons la partie imaginaire de \( (a_1-a_0\conj{b})X\),
+      La partie imaginaire de \(\Delta X\) est
       \begin{align*}
         % \Re(\Delta)\Re(X) - \Im(\Delta)\Im(X) &= \Re(a_1\conj{a_0}) \norm{\vJ}^2 - \Re(\conj{b})\norm{\vE_t}^2 -|a_1|^2 F + |b|^2 G \\
-        \Im(\Delta)\Re(X) + \Re(\Delta)\Im(X) &= \Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\conj{b})\norm{\vE_t}^2
-        \intertext{En supposant \(\Re(\Delta)= 0\) et \(\Im(\Delta) \not = 0\) nous pouvons conclure car}
+        \Im(\Delta) &= \Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\conj{b})\norm{\vE_t}^2
+        \intertext{En supposant \(\Re(\Delta)= 0\) et \(\Im(\Delta) \not = 0\), on a alors \(\Im(\Delta X) = \Im(\Delta)\Re(X)\) d'où}
         \Im(\Delta)^2\Re(X) &= \Im(\Delta)\Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\Delta)\Im(\conj{b})\norm{\vE_t}^2
       \end{align*}
-      Dans le cas où \(\Im(\Delta)\not=0\), il suffit d'imposer que tous ces termes soient positifs pour que \(\Re(X)\) le soit.
+      Dans le cas où \(\Im(\Delta)\not=0\), il suffit d'imposer que les termes du membre de droite soient positifs pour que \(\Re(X)\) le soit.
     \end{proof}
 
     On remarque que
@@ -196,19 +199,21 @@
       \CSU[1]{CI1} &\subset \CSU{CI01}\times\CC
       \\
       \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &\subsetneq (\CSU{CI01}\times\lbrace0\rbrace)
-      \intertext{C'est insatisfaisant, car pour des fonctions infiniment régulières, la CIOE CI1 avec \(b=0\) est équivalente à la CI01.
+      \intertext{C'est insatisfaisant, la CIOE CI1 avec \(b=0\) est équivalente à la CI01.
       Plus précisément, soit \(S = \lbrace (a_0,a_1) \in \CC^2; \Re(a_1)=0 \rbrace\), on a}
       \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &= ((\CSU{CI01}\cap S) \times\lbrace0\rbrace) 
     \end{align}
 
     \begin{lemme}
-      Soit \(z\in \CC\) et \(a\) alors la forme bilinéaire
+    \label{lem:coercivite:operateur-l}
+      Soit \(z\in \CC\), \(\vu,\vv \in \Sobolev[1]{(\Gamma)}\) et \(a\) la forme bilinéaire
       \begin{equation*}
-        a(\vect{u},\vect{v}) = \int_\Gamma(\oI + z\LL)\vect{u}\cdot\conj{\vect{v}}
+        a(\vect{u},\vect{v}) = \int_\Gamma(\oI + z\LL)\vect{u}\cdot\conj{\vect{v}}.
       \end{equation*}
-      Si \(z\in \CC\backslash \RR_+^*\) alors \(a\) est coercive.
+      Si \(z\in \CC\backslash \RR_+^*\) alors \(a\) est coercive sur \(\Sobolev[1]{(\Gamma)}\).
     \end{lemme}
     \begin{proof}
+      On cherche à montrer que \(\exists \delta \in \RR^+, \forall \vu \in \Sobolev[1]{(\Gamma)}, |a(\vu,\vu)|^2\ge \delta\left(\norm{\vu}^2+\norm{\vgrads{\vu}}^2\right)^2\).
       \begin{align*}
         |a(\vect{u},\vect{u})|^2 &= \left(\norm{\vu}^2-\Re(z)\norm{\vgrads{\vu}}^2\right)^2 + \left(\Im(z)\norm{\vgrads{\vu}}^2\right)^2
         \\
@@ -229,7 +234,7 @@
         \end{bmatrix}
         \\
       \end{align*}
-      Or la matrice n'est inversible que si \(\Im(z)^2\not=0\). Dans ce cas, on a la coercivité.
+      Cette matrice est positive. Mais elle n'est définie que si \((\Im(z))^2\not=0\). Dans ce cas, on a la coercivité \(\Sobolev[1]{(\Gamma})\).
 
       Si \(\Im(z)=0\) alors
       \begin{align*}
@@ -237,7 +242,7 @@
         \\
         &\ge \min(1,-\Re(z))\left(\norm{\vu}^2+\norm{\vgrads{\vu}}^2\right)
       \end{align*}
-      Il suffit que \(-\Re(z) \ge 0 \) pour avoir la coercivité
+      Il suffit que \(\Re(z) < 0 \) pour avoir la coercivité
     \end{proof}
 
     \begin{defn}
@@ -245,10 +250,9 @@
 
       On définit le sous-espace fermé de \(\CC^3\)
       \begin{equation*}
-        \CSU[2]{CI1} = \left\lbrace 
+        \CSU[2]{CI1} = \left\lbrace
+        (a_0,a_1,b) \in \CC^3,
         \begin{matrix}
-        (a_0,a_1,b) \in \CC^3
-        \\
         \Re(b) \le 0
         \\
         \Re\left(a_0\right) \ge 0
@@ -271,27 +275,27 @@
     \end{prop}
 
     \begin{proof}
-      On suppose \(\Re(b)\le 0\) donc l'opérateur \(\oI + b\LL\) est bijectif. Il existe \(\vect{D}\) tel que
+      On suppose \(\Re(b)\le 0\) donc l'opérateur \(\oI + b\LL\) est injectif d'après le lemme \ref{lem:coercivite:operateur-l}. Il existe \(\vect{D}\) tel que
       \begin{align*}
-        \vJ &= (\oI + b \LL)\vect{D}
+        \vJ &= (\oI + b \LL)\vect{D}.
       \end{align*}
       Donc 
       \begin{align*}
-        (\oI + b \LL)\vE_t &= (a_0\oI + a_1\LL)\vJ
+        (\oI + b \LL)\vE_t &= (a_0\oI + a_1\LL)\vJ,
         \\
-        (\oI + b \LL)\vE_t &= (a_0\oI + a_1\LL)(\oI + b \LL)\vect{D}
+        (\oI + b \LL)\vE_t &= (a_0\oI + a_1\LL)(\oI + b \LL)\vect{D},
         \\
-        0 &= (\oI + b \LL)(\vE_t -  (a_0\oI + a_1\LL)\vect{D})
-        \intertext{L'opérateur est injectif donc}
-        \vE_t &= (a_0\oI + a_1\LL)\vect{D}
+        0 &= (\oI + b \LL)(\vE_t -  (a_0\oI + a_1\LL)\vect{D}).
+        \intertext{L'opérateur \(\oI + b \LL\) est injectif donc}
+        \vE_t &= (a_0\oI + a_1\LL)\vect{D},
         \\
         \int_\Gamma \vJ \cdot \conj{\vE_t} &= \int_\Gamma \vJ \cdot (\conj{a_0}\oI + \conj{a_1}\LL)\conj{\vect{D}}
-        \intertext{On rappelle \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\)}
+        \intertext{On rappelle \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\)},
         \\
-        X &= \int_\Gamma (\oI + b \LL)\vect{D} \cdot (\conj{a_0}\oI + \conj{a_1}\LL)\conj{\vect{D}}
+        X &= \int_\Gamma (\oI + b \LL)\vect{D} \cdot (\conj{a_0}\oI + \conj{a_1}\LL)\conj{\vect{D}}.
         \\
         \intertext{Or on sait que l'opérateur est hermitien négatif donc }
-        X &= \conj{a_0}\norm{\vect{D}}^2 - (b\conj{a_0}+\conj{a_1})\norm{\vgrads{\vect{D}}}^2 + b\conj{a_1} \norm{\LL\vect{D}}^2
+        X &= \conj{a_0}\norm{\vect{D}}^2 - (b\conj{a_0}+\conj{a_1})\norm{\vgrads{\vect{D}}}^2 + b\conj{a_1} \norm{\LL\vect{D}}^2.
       \end{align*}
     \end{proof}
 

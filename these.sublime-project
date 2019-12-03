@@ -60,7 +60,9 @@
         "*.toc",
         "*.glg",
         "*.fdb_latexmk",
-        "*.synctex.gz"
+        "*.synctex.gz",
+        "*.pdf",
+        "*.log"
       ],
       "path": ".",
     }

@@ -294,6 +294,15 @@
         basewidth={.48em}, % largeur d'un caractère
         showstringspaces=false, % Ne pas accentuer les espaces dans les chaines de caractères
     }
+    \lstdefinestyle{shell}{ % Un nouveau style
+        numbers=none, % pas de numéros de lignes
+        language=bash, % Le language par défaut
+        keywords=,
+        basicstyle={\small\ttfamily}, % Style du texte
+        columns=fixed, % rendue du texte en monospace, espaces compris
+        basewidth={.48em}, % largeur d'un caractère
+        showstringspaces=false, % Ne pas accentuer les espaces dans les chaines de caractères
+    }
     \lstset{ % paramètres par défaut
         style=fortran, % style
         literate=% lstlistings ne comprend pas les accents utf8 é à ...

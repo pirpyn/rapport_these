@@ -1,16 +1,16 @@
 \section[Une CSU des solutions du problème de Maxwell extérieur]{Une condition suffisante assurant l'unicité des solutions du problème de Maxwell extérieur}
 
-  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, sans sources. Les champs associés sont solutions des équations de Maxwell harmoniques \(e^{i\w t}\). Cependant dans cette thèse, nous utilisons une forme non usuelle des équations de Maxwell et nous renvoyons à l'annexe \ref{sec:annex:maxwell_equation}.
+  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, sans sources. Les champs associés sont solutions des équations de Maxwell harmoniques \(e^{i\w t}\). 
 
   Soit \(\gls{mat-ga}=\partial\overline{\gls{mat-om}}\) la frontière de \(\OO\), on décompose donc tout l'espace entre l'intérieur et l'extérieur 
   \[
-    \RR^3 = \overline{\OO}\cup{\OO}^c
+    \RR^3 = \overline{\OO}\cup{\OO}^c.
   \]
   On définit en tout point de \(\Gamma\), supposée régulière, \(\gls{mat-vn}\) la normale unitaire sortante à \(\OO\).
   Dans \(\OO^c\) on définit \(\gls{phy-k0}=\gls{phy-w} / \gls{phy-c} \in \RR_+^*\) le nombre d'onde dans le vide où \gls{phy-c} est la célérité d'une onde dans le vide.
 
   % Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
-  Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}^\infty(\OO^c)\cap\Sobolev[1](\OO^c))^2\) tels que:
+  Nous utilisons une forme non usuelle des équations de Maxwell et nous renvoyons à l'annexe \ref{sec:annex:maxwell_equation} pour son obtention. Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}^\infty(\OO^c)\cap\Sobolev[1](\OO^c))^2\) tels que
   \begin{align}
   \left\lbrace
     \begin{matrix}
@@ -18,17 +18,17 @@
       \\
       \trot \vH - i k_0 \vE &= 0
     \end{matrix}
-    \right. && \text{dans \(\OO^c\)}
+    \right. && \text{dans \(\OO^c\).}
     \label{eq:unicite:maxwell_ext}
   \end{align}
 
 %  En l'absence de source, le rotationnel d'un des champs a la même régularité que le champs lui-même, donc ces champs sont \(\mathcal{C}^\infty\).
 
-  Afin de pouvoir étudier ce problème, on se ramène à un ouvert borné de la manière suivante. On définit \(B_R\) la boule ouverte de rayon \(R\) suffisamment grand pour englober \(\OO\). On cherche alors les solutions dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\) , où \(S_R\) est la sphère de rayon \(R\) où sur cette dernière est définie la condition de rayonnement \eqref{eq:unicite:TR}.
+  Afin de pouvoir étudier ce problème, on se ramène à un ouvert borné de la manière suivante. On définit \(B_R\) la boule ouverte de rayon \(R\) suffisamment grand pour englober \(\OO\). On cherche alors les solutions dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\) , où \(S_R\) est la sphère de rayon \(R\) où sur cette dernière est définie la condition de rayonnement
   \begin{equation}
     \label{eq:unicite:TR}
     \begin{aligned}
-    \Tr(\vE_t) = - \vn_{S_R} \pvect \vH && \text{sur \(S(0,R)\)}
+    \Tr(\vE_t) = - \vn_{S_R} \pvect \vH && \text{sur \(S(0,R)\).}
     \end{aligned}
   \end{equation}
   \(\Tr\) est l'opérateur de capacité défini par \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{S_R}\) la normale unitaire sortante à \(B_R\).
@@ -39,7 +39,7 @@
   \begin{prop}[Formulation variationnelle du problème de Maxwell extérieur]
     Trouver \(\vE \in V\),
     \begin{align*}
-      a(\vE,\vect\phi) = 0 && \forall \vect \phi \in V
+      a(\vE,\vect\phi) = 0 && \forall \vect \phi \in V,
     \end{align*}
 
     où a est la forme sesquilinéaire donnée par
@@ -47,7 +47,7 @@
       \begin{aligned}
       a(\vE,\vect\phi) &:=  \frac{1}{ik_0} \int_{\OO^c_R} \trot \vE(\vx) \cdot \trot \conj{\vect{\phi}}(\vx) \dd{x} + ik_0\int_{\OO^c_R}\vE(\vx)\cdot\conj{\vect{\phi}}(\vx) \dd{x}
         \\ 
-        & \quad + \int_{S_R} \conj{ \vect \phi }(\vx) \cdot \Tr(\vE_t)(\vx) \dd{S_R}(\vx) - \int_\Gamma \left(\vn \pvect \frac{\trot \vE(\vx)}{ik_0}\right) \cdot \conj{\vect \phi} (\vx) \dd{\Gamma}(\vx)
+        & \quad + \int_{S_R} \conj{ \vect \phi }(\vx) \cdot \Tr(\vE_t)(\vx) \dd{S_R}(\vx) - \int_\Gamma \left(\vn \pvect \frac{\trot \vE(\vx)}{ik_0}\right) \cdot \conj{\vect \phi} (\vx) \dd{\Gamma}(\vx).
       \end{aligned}
     \end{equation*}
   \end{prop}
@@ -56,22 +56,22 @@
     Nous omettons les dépendances en \(\vx\).
     Partons de la première équation de Maxwell
     \begin{align*}
-          0 & = \frac{\trot \vE}{ik_0} + \vH
-          \intertext{En appliquant cette égalité à \(\trot\vect{\phi}\) pour \(\vect{\phi} \in V\). On déduit la forme variationnelle }
-          0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot \conj{\vect{\phi}} + \int_{\OO^c_R} \vH \cdot \trot\conj{\vect{\phi}} && \forall \vect{\phi} \in V
+          0 & = \frac{\trot \vE}{ik_0} + \vH.
+          \intertext{En appliquant cette égalité à \(\trot\vect{\phi}\) pour \(\vect{\phi} \in V\), on déduit la forme variationnelle }
+          0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot \conj{\vect{\phi}} + \int_{\OO^c_R} \vH \cdot \trot\conj{\vect{\phi}} && \forall \vect{\phi} \in V.
           \intertext{Utilisons la formule de Green du rotationnel (voir \cite[eq.~(A1.32)]{bladel_electromagnetic_2007}).
           \[
             \int_V \vect{u}\cdot \trot{\vect{v}} = \int_V \trot\vect{u}\cdot \vect{v} + \int_{\partial V} \left( \vect{v}\pvect\vect{u} \right)\cdot \vn_V
           \]
           où \(\vn_V\) est la normale unitaire sortante de \(V\). On rappelle que \(\vn_\Gamma\) est la normale sortante de  \(\OO\) et \(\vn_{S_R}\) la normale sortante de \(B_R\).}
-          0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot\vect{\phi} +\int_{\OO^c_R} \trot\vH \cdot \conj{\vect{\phi}} 
+          0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot\vect{\phi} +\int_{\OO^c_R} \trot\vH \cdot \conj{\vect{\phi}},
           \\
-          & \qquad \qquad+ \int_{S_R} \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_{S_R} - \int_\Gamma \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_\Gamma && \forall \vect{\phi} \in V
+          & \qquad \qquad+ \int_{S_R} \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_{S_R} - \int_\Gamma \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_\Gamma && \forall \vect{\phi} \in V.
           \intertext{On utilise  la deuxième équation de Maxwell, la condition de rayonnement et on permute les termes de l'intégrale sur \(\Gamma\)}
-          0 & =\int_{\OO^c_R} \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}  +  \int_{\OO^c_R} ik_0 \vE \cdot \conj{\vect{\phi}} 
+          0 & =\int_{\OO^c_R} \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}  +  \int_{\OO^c_R} ik_0 \vE \cdot \conj{\vect{\phi}} ,
           \\
-          & \qquad \qquad + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} + \int_\Gamma \left(\vn_\Gamma \pvect \vH \right) \cdot \conj{\vect \phi}
-          && \forall \vect{\phi} \in V
+          & \qquad \qquad + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} + \int_\Gamma \left(\vn_\Gamma \pvect \vH \right) \cdot \conj{\vect \phi},
+          && \forall \vect{\phi} \in V.
       \end{align*}
   \end{proof}
 
@@ -81,9 +81,9 @@
     Si la condition suivante est vérifiée
     \begin{equation}
       \label{eq:unicite:form_var:cgu}
-      \Re\left(\int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx) \dd{\Gamma}(\vx)\right) \ge 0
+      \Re\left(\int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx) \dd{\Gamma(\vx)}\right) \ge 0,
     \end{equation}
-    alors l'unicité des solutions du problème de Maxwell extérieur \eqref{eq:unicite:maxwell_ext} avec la condition de rayonnement \eqref{eq:unicite:TR} est assurée.
+    alors \(\vE=\vH=0\), donc l'unicité des solutions du problème de Maxwell extérieur \eqref{eq:unicite:maxwell_ext} avec la condition de rayonnement \eqref{eq:unicite:TR} est assurée.
   \end{prop}
 
 \begin{proof}
@@ -92,9 +92,9 @@
     Soit \(\OO^c\) un domaine connexe, complément d'un domaine borné, et soit \(u\) satisfaisant
     \begin{subequations}
       \begin{align}
-        \Delta u + k^2 u = 0 & &\text{dans \(\OO^c\)}
+        \Delta u + k^2 u = 0 & &\text{dans \(\OO^c\)},
         \\
-        \lim_{R\rightarrow\infty}\int_{S_R} |u(\vx)|^2 ds(\vx) = 0
+        \lim_{R\rightarrow\infty}\int_{S_R} |u(\vx)|^2 ds(\vx) = 0,
       \end{align}
     \end{subequations}
     alors \(u=0\) dans \(\OO^c\).
@@ -105,27 +105,32 @@
 
   On définit les quantités suivantes
   \begin{align}
-    X &= \int_\Gamma \vJ \cdot \conj{\vE_t}
+    X &= \int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx)\dd{\Gamma(\vx)},
     \label{eq:unicite:x}
     \\
-    C &= \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vE_t}
+    C &= \int_{S_R} \Tr(\vE_t)(\vx)  \cdot \conj{\vE_t}(\vx)\dd{S_R(\vx)}.
   \end{align}
 
   \begin{align*}
     \intertext{De}
-    a(\vE,\vE) &= 0
+    a(\vE,\vE) &= 0,
+    \\
+    &= \frac{1}{ik_0} \int_{\OO^c_R} \norm{\trot \vE(\vx)}^2 \dd{x} + ik_0\int_{\OO^c_R}\norm{\vE(\vx)}^2 \dd{x}
+     + X + C,
     \intertext{on déduit}
-    \Re(a(\vE,\vE)) & = 0
+    \Re(a(\vE,\vE)) & = 0,
     \intertext{ce qui se réecrit}
-    \Re(C) + \Re(X) & = 0
-    \intertext{comme d'après \cite[Théorème~5.3.5, p.~200]{nedelec_acoustic_2001}}
-    \Re(C) &\ge 0
-    \intertext{si de plus on suppose \eqref{eq:unicite:form_var:cgu} alors tous ces termes positifs sont nuls } 
-    \Re(C) = \Re(X) &= 0
-    \intertext{alors d'après le même théorème}
-    \vE_t &= 0 && \text{sur \(S_R\)}
+    \Re(C) + \Re(X) & = 0,
+    \intertext{comme d'après \cite[Théorème~5.3.5, p.~200]{nedelec_acoustic_2001} \(\Re(C) \ge 0\) alors} 
+    \Re(X) &\le 0.
+  \end{align*}
+  L'hypothèse \eqref{eq:unicite:form_var:cgu} impose alors \(\Re(X)=0\) et donc
+  \begin{align*} 
+    \Re(C) &= 0,
+    \intertext{donc d'après le même théorème}
+    \vE_t &= 0 && \text{sur \(S_R\)},
     \intertext{et d'après le lemme de Rellich}
-    \vE &= 0 && \text{dans \(\OO^c_R\)}
+    \vE &= 0 && \text{dans \(\OO^c_R\)}.
   \end{align*}
 
   Et par conséquent, \(\vH = 0 \) aussi.

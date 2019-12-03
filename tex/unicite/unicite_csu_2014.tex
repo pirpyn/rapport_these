@@ -5,37 +5,36 @@
 
     Pour tous \(\vect U,\vect V \in (\mathcal{C}^\infty(\Gamma))^2\): 
     \begin{align*}
-      \LD(\vect U) &= \tgrads (\tdivs \vect U)
+      \LD(\vect U) &= \vgrads \vdivs \vect U
       \\
-      \LR(\vect V) &= \tvrots( \tvrots \vect V)
+      \LR(\vect V) &= \vrots \vrots \vect V
     \end{align*}
   \end{defn}
 
   \begin{prop}
     \(\LD\) est hermitien symétrique négatif et \(\LR\) est hermitien symétrique positif.
-
-    Pour tous \(\vect U \in (\mathcal{C}^\infty(\Gamma))^2\): 
-    \begin{align*}
-      \int_\Gamma \LD(\vect U)\cdot \conj{\vect U} &= -\norm{\tdivs \vect U}^2
-      \\
-      \int_\Gamma \LR(\vect U)\cdot \conj{\vect U} &=\norm{\vn \cdot \tvrots \vect U}^2
-    \end{align*}
   \end{prop}
 
+  \begin{proof}
+    Pour tous \(\vect U \in (\mathcal{C}^\infty(\Gamma))^2\),
+    \begin{align*}
+      \int_\Gamma \LD(\vect U)\cdot \conj{\vect U} &= -\norm{\vdivs \vect U}^2
+      \\
+      \int_\Gamma \LR(\vect U)\cdot \conj{\vect U} &=\norm{\vn \cdot \vrots \vect U}^2
+    \end{align*}
+  \end{proof}
+
   \begin{prop}
-    Soit \(\OO\) un domaine borné de \(\RR^3\) , de surface \(\Gamma\) fermée et régulière où \(\vect n\) y est la normale unitaire
-    sortante
-    \begin{equation}
-      \begin{matrix}
-        \forall \vect U \in (\mathcal{C}^\infty(\Gamma,\CC)) ,& \LR(\LD(\vect U)) = \LD(\LR(\vect U)) = 0
-      \end{matrix}
-    \end{equation}
+    Soit \(\OO\) un domaine borné de \(\RR^3\), de surface \(\Gamma\) fermée et régulière, de normale unitaire sortante \(\vect n\) et \(\vect{U} \in \mathcal{C}^{\infty}(\Gamma)\) alors
+    \begin{equation*}
+        \LR(\LD(\vect U)) = \LD(\LR(\vect U)) = 0.
+    \end{equation*}
   \end{prop}
 
   \begin{proof}
     Soit (\(x_1,x_2\)) un système de coordonnées locales à \(\Gamma\)
 
-    Soit un vecteur tangent défini en tout point de la surface, et exprimé dans la base locale \(\vect{u_1},\vect{u_2},\vect{n}\)
+    Soit un vecteur tangent défini en tout point de la surface. On définie une base locale \(\vect{u_1},\vect{u_2},\vect{n}\) où \((\vect{u_1},\vect{u_2})\) sont tangents à \(\Gamma\) et \(\vn\) est le vecteur normal unitaire sortant à \(\Gamma\).
     \[
       \vect{U} = 
       \begin{bmatrix}
@@ -47,26 +46,26 @@
       \end{bmatrix}
     \]
 
-    D'après \cite[p.~1028, A3.22]{bladel_electromagnetic_2007}, le rotationnel surfacique d'un vecteur tangent est un vecteur normal à la surface
-    \[
-      \tvrots{\vect{U}} =\vn \left(\vn\cdot\trot{\vect{U}}\right)
-    \]
+    % D'après \cite[p.~1028, A3.22]{bladel_electromagnetic_2007}, le rotationnel surfacique d'un vecteur tangent est un vecteur normal à la surface
+    % \[
+    %   \vrots{\vect{U}} =\vn \left(\vn\cdot\trot{\vect{U}}\right)
+    % \]
 
     Montrons que \(\LR\LD = 0\).
 
-    D’après \cite[p.~1029, A3.42]{bladel_electromagnetic_2007}, soit \(f(x_1,x_2)\) une fonction régulière définie sur \(\Gamma\) alors \(\vn \cdot \tvrots(\tgrads f(x_1,x_2)) = 0\).
+    D’après \cite[p.~1029, A3.42]{bladel_electromagnetic_2007}, soit \(f(x_1,x_2)\) une fonction régulière de \(\Gamma\) dans \(\CC\) alors \(\vn \cdot \vrots(\vgrads f(x_1,x_2)) = 0\).
 
     On exprime les opérateurs
     \begin{align*}
-      \LR(\LD \vect U)  &= \tvrots \left(\vn \left(\vn \cdot \tvrots \left( \tgrads \left(\tdivs \vect U\right)\right)\right)\right) \\
+      \LR(\LD \vect U)  &= \vrots \left(\vn \left(\vn \cdot \vrots \left( \vgrads \left(\vdivs \vect U\right)\right)\right)\right) \\
       &= 0
     \end{align*}
 
     Montrons que \(\LD\LR = 0\).
 
-    D’après \cite[p.~1029, A3.43]{bladel_electromagnetic_2007}, \(\tdivs \trots (f\vn) = 0\).
+    D’après \cite[p.~1029, A3.43]{bladel_electromagnetic_2007}, \(\vdivs \vrots (f\vn) = 0\).
     \begin{align*}
-      \LD(\LR \vect U) &= \tgrads \tdivs \tvrots (\vn (\vn \cdot \tvrots \vect U)) \\
+      \LD(\LR \vect U) &= \vgrads \vdivs \vrots (\vn (\vn \cdot \vrots \vect U)) \\
       &= 0
     \end{align*}
   \end{proof}
@@ -84,9 +83,8 @@
     On définit le sous-espace fermé de \(\CC^3\)
     \begin{equation*}
       \CSU{CI4} = \left\lbrace 
+      (a_0,a_1,a_2) \in \CC^3,
       \begin{matrix}
-      (a_0,a_1,a_2) \in \CC^3
-      \\
       \Re(a_0) \ge 0
       \\
       \Re(a_1) \le 0
@@ -99,11 +97,11 @@
 
  \begin{prop}[Une CSU pour la CI4]
     \label{prop:csu:ci4}
-    Il suffit que
+    On a 
     \begin{equation*}
-      (a_0,a_1,a_2) \in \CSU{CI4}
+      (a_0,a_1,a_2) \in \CSU{CI4} \Rightarrow (\Re(X)\ge 0,
     \end{equation*}
-    pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
+    ce qui entraîne l'unicité de la solution du problème de maxwell extérieure.
   \end{prop}
 
   \begin{proof}
@@ -119,7 +117,7 @@
   \begin{align}
     \CSU{CI4}\cap S &= (\CSU{CI01}\times\CC)\cap S 
   \end{align}
-  Pour des fonctions infiniment régulières, la CIOE CI4 avec \(a_1=a_2\) est équivalente à la CI01 et on a équivalence des CSU correspondantes.
+  Pour des fonctions infiniment régulières, la CIOE CI4 avec \(a_1=a_2\) est équivalente à la CI01 et on a égalité des CSU correspondantes.
 
 
 \subsection{CSU pour la CI3}
@@ -132,57 +130,56 @@
 
   Par abus de notation, on omet les variables de la fonction \(\Delta\) \eqref{eq:unicite:delta} 
   \begin{align*}
-     \Delta(a_0,a_1,b_1) &\equiv \Delta_1
+     \Delta(a_0,a_1,b_1) &\equiv \Delta_1 = a_1 - a_0\conj{b_1}
      \\
-     \Delta(a_0,a_2,b_2) &\equiv \Delta_2
+     \Delta(a_0,a_2,b_2) &\equiv \Delta_2 = a_2 - a_0\conj{b_2}
   \end{align*}
 
   \begin{defn}
     \label{def:csu:ci3-1}
 
-    On définit le sous-espace ouvert de \(\CC^5\)
+    On définit le sous-espace de \(\CC^5\)
     \begin{equation*}
       \CSU[1]{CI3} = \left\lbrace 
-      \begin{matrix}
-      (a_0,a_1,a_2,b_1,b_2) \in \CC^5
+      (a_0,a_1,a_2,b_1,b_2) \in \CC^5,
+      \begin{aligned}
+      &\Delta_1 \not = 0
       \\
-      \Delta_1 \not = 0
+      &\Delta_2 \not = 0
       \\
-      \Delta_2 \not = 0
+      &\Re\left(a_0\conj{a_1}\Delta_1\right) \ge 0
       \\
-      \Re\left(a_0\conj{a_1}\Delta_1\right) \ge 0
+      &\Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0
       \\
-      \Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0
+      &\Re\left(\conj{a_0}a_2\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_2}a_1}{\Delta_1} \right)\le 0
       \\
-      \Re\left(\conj{a_0}a_2\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_2}a_1}{\Delta_1} \right)\le 0
+      &\Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right) \ge 0
       \\
-      \Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right) \ge 0
+      &\Re\left(a_0\conj{a_2}\Delta_2\right) \ge 0
       \\
-      \Re\left(a_0\conj{a_2}\Delta_2\right) \ge 0
+      &\Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0
       \\
-      \Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0
+      &\Re\left(\conj{a_0}a_1\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_1}a_2}{\Delta_2} \right)\le 0
       \\
-      \Re\left(\conj{a_0}a_1\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_1}a_2}{\Delta_2} \right)\le 0
+      &\Re\left(2\Re(b_1)\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}^2}{\Delta_1}\right) \ge 0
       \\
-      \Re\left(2\Re(b_1)\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}^2}{\Delta_1}\right) \ge 0
+      &\Re\left(\Delta_1\right) = 0
       \\
-      \Re\left(\Delta_1\right) = 0
+      &\Re\left(\Delta_2\right) = 0
       \\
-      \Re\left(\Delta_2\right) = 0
-      \\
-      \Re\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}}{\Delta_1}\right) = 0
-      \end{matrix}
+      &\Re\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}}{\Delta_1}\right) = 0
+      \end{aligned}
       \right\rbrace
     \end{equation*}
   \end{defn}
   
  \begin{prop}[Une première CSU pour la CI3]
     \label{prop:csu:ci3-1}
-    Il suffit que
+    On a 
     \begin{equation*}
-      (a_0,a_1,a_2,b_1,b_2) \in \CSU[1]{CI3}
+      (a_0,a_1,a_2,b_1,b_2) \in \CSU[1]{CI3} \Rightarrow \Re(X)\ge 0,
     \end{equation*}
-    pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
+    ce qui entraîne l'unicité de la solution du problème de maxwell extérieure.
   \end{prop}
 
   \begin{proof}
@@ -190,46 +187,46 @@
     \begin{equation}
       \label{eq:unicite:ci3:L3}
       \begin{matrix}
-      \LL_3:& (\mathcal{C}^\infty(\Gamma)^2)^2 & \rightarrow & (\mathcal{C}^\infty(\Gamma)^2)^2
+      \LL_3:& (\mathcal{C}^\infty(\Gamma))^3 \times (\mathcal{C}^\infty(\Gamma))^3 & \rightarrow & (\mathcal{C}^\infty(\Gamma))^3
       \\
       &(\vE_t,\vJ) & \mapsto & ( 1 + b_1 \LD - b_2 \LR) \vE_t - (a_0 + a_1 \LD - a_2 \LR ) \vJ
       \end{matrix}
     \end{equation}
 
-    On calcule \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot \vJ = 0\)
+    On utilise l'identité \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot \vJ = 0\),
     \begin{multline}
       \label{eq:unicite:ci3:csu3-1}
       \int_\Gamma \vJ \cdot \conj{\vE_t}   + \conj{b_1} \int_\Gamma \vJ\cdot \LD\conj{\vE_t}  - \conj{b_2} \int_\Gamma \vJ \LR\conj{\vE_t}  \\
-      = \conj{a_0} \norm{\vJ}^2ds - \conj{a_1} \norm{\tdivs \vJ}^2  - \conj{a_2} \norm{\trots \vJ}^2 
+      = \conj{a_0} \norm{\vJ}^2ds - \conj{a_1} \norm{\vdivs \vJ}^2  - \conj{a_2} \norm{\vrots \vJ}^2 
     \end{multline}
-    On calcule \(\int_\Gamma {\LL_3(\vE_t,\vJ)}\cdot \conj{\vE_t} = 0\)
+    On utilise \(\int_\Gamma {\LL_3(\vE_t,\vJ)}\cdot \conj{\vE_t} = 0\)
     \begin{multline}
       \label{eq:unicite:ci3:csu3-2}
-      \norm{\vE_t}^2   - b_1 \norm{ \tdivs \vE }^2  - b_2 \norm{\trots \vE_t}^2  \\
+      \norm{\vE_t}^2   - b_1 \norm{ \vdivs \vE }^2  - b_2 \norm{\vrots \vE_t}^2  \\
       = a_0 \int_\Gamma \vJ\cdot \conj{\vE_t} + a_1 \int_\Gamma \conj{\vE_t} \LD \vJ  - a_2 \int_\Gamma \conj{\vE_t} \cdot \LR \vJ 
     \end{multline}
-    On calcule \(\int_\Gamma \LR\conj{\LL_3(\vE_t,\vJ)}\cdot\vJ = 0\)
+    On utilise \(\int_\Gamma \LR\conj{\LL_3(\vE_t,\vJ)}\cdot\vJ = 0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-3}
       \int_\Gamma \vJ \cdot \LR \conj{\vE_t}   - \conj{b_2} \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t}
-      =  \conj{a_0} \norm{\vn \cdot \trots \vJ}^2ds - \conj{a_2} \norm{ \LR \vJ}^2 
+      =  \conj{a_0} \norm{\vn \cdot \vrots \vJ}^2ds - \conj{a_2} \norm{ \LR \vJ}^2 
     \end{equation}
-    On calcule \(\int_\Gamma \LR{\LL_3(\vE_t,\vJ)}\cdot\conj{\vE_t}=0\)
+    On utilise \(\int_\Gamma \LR{\LL_3(\vE_t,\vJ)}\cdot\conj{\vE_t}=0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-4}
-      \norm{ \vn \cdot \trots \vE_t }^2   - \conj{b_2} \norm{ \LR \vE_t}^2 
+      \norm{ \vn \cdot \vrots \vE_t }^2   - \conj{b_2} \norm{ \LR \vE_t}^2 
       = a_0 \int_\Gamma \conj{\vE_t} \LR \vJ  - a_2 \int_\Gamma \LR \conj{\vE_t} \cdot \LR \vJ 
     \end{equation}
-    On calcule \(\int_\Gamma \LD\conj{\LL_3(\vE_t,\vJ)}\cdot\vJ=0\)
+    On utilise \(\int_\Gamma \LD\conj{\LL_3(\vE_t,\vJ)}\cdot\vJ=0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-5}
       \int_\Gamma \vJ \cdot \LD \conj{\vE_t}   + \conj{b_1} \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t}
-      = - \conj{a_0} \norm{\tdivs \vJ}^2ds + \conj{a_1} \norm{ \LD \vJ}^2 
+      = - \conj{a_0} \norm{\vdivs \vJ}^2ds + \conj{a_1} \norm{ \LD \vJ}^2 
     \end{equation}
-    On calcule \(\int_\Gamma \LD{\LL_3(\vE_t,\vJ)}\cdot\conj{\vE_t}=0\)
+    On utilise \(\int_\Gamma \LD{\LL_3(\vE_t,\vJ)}\cdot\conj{\vE_t}=0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-6}
-      -\norm{ \tdivs \vE_t }^2   + \conj{b_1} \norm{ \LD \vE_t}^2
+      -\norm{ \vdivs \vE_t }^2   + \conj{b_1} \norm{ \LD \vE_t}^2
       = a_0 \int_\Gamma \conj{\vE_t} \LD \vJ  + a_1 \int_\Gamma \LD \conj{\vE_t} \cdot \LD \vJ 
     \end{equation}
 
@@ -242,7 +239,7 @@
       Z_R &= \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t} 
     \end{align*}
 
-    Les égalités \eqref{eq:unicite:ci3:csu3-1} à \eqref{eq:unicite:ci3:csu3-4} sont équivalentes au système
+    Les 4 égalités \eqref{eq:unicite:ci3:csu3-1} à \eqref{eq:unicite:ci3:csu3-4} sont équivalentes au système
 
     \begin{align*}
       \mM_R X_R &= F_R
@@ -265,16 +262,16 @@
       \end{bmatrix}
       &=
       \begin{bmatrix}
-        \conj{a_0} \norm{\vJ}^2 - \conj{a_1} \norm{\tdivs \vJ}^2 - \conj{a_2} \norm{\trots \vJ}^2
+        \conj{a_0} \norm{\vJ}^2 - \conj{a_1} \norm{\vdivs \vJ}^2 - \conj{a_2} \norm{\vrots \vJ}^2
         \\
-        \norm{\vE_t}^2  - b_1 \norm{\tdivs \vE}^2  - b_2 \norm{\trots \vE_t}^2
+        \norm{\vE_t}^2  - b_1 \norm{\vdivs \vE}^2  - b_2 \norm{\vrots \vE_t}^2
         \\
-        \conj{a_0} \norm{\trots \vJ}^2 - \conj{a_2} \norm{\LR \vJ}^2
+        \conj{a_0} \norm{\vrots \vJ}^2 - \conj{a_2} \norm{\LR \vJ}^2
         \\
-        \norm{\trots \vE_t}^2 - \conj{b_2} \norm{\LR \vE_t}^2
+        \norm{\vrots \vE_t}^2 - \conj{b_2} \norm{\LR \vE_t}^2
       \end{bmatrix}
     \end{align*}
-    tandis que les égalités \eqref{eq:unicite:ci3:csu3-1},\eqref{eq:unicite:ci3:csu3-2},\eqref{eq:unicite:ci3:csu3-5},\eqref{eq:unicite:ci3:csu3-6} sont équivalentes au système
+    tandis que les 4 égalités \eqref{eq:unicite:ci3:csu3-1},\eqref{eq:unicite:ci3:csu3-2},\eqref{eq:unicite:ci3:csu3-5},\eqref{eq:unicite:ci3:csu3-6} sont équivalentes au système
 
     \begin{align*}
       \mM_D  X_D & =  F_D
@@ -299,20 +296,19 @@
       \end{bmatrix}
       & =
       \begin{bmatrix}
-        \conj{a_0} \norm{\vJ}^2ds - \conj{a_1} \norm{\tdivs \vJ}^2 - \conj{a_2} \norm{\trots \vJ}^2  \\
-        \norm{\vE_t}^2   - b_1 \norm{\tdivs \vE }^2  - b_2 \norm{\trots \vE_t}^2  \\
-        -\conj{a_0} \norm{\tdivs \vJ}^2ds + \conj{a_1} \norm{\LR \vJ}^2  \\
-        -\norm{\tdivs \vE_t}^2   + \conj{b_1} \norm{\LR \vE_t}^2 
+        \conj{a_0} \norm{\vJ}^2 - \conj{a_1} \norm{\vdivs \vJ}^2 - \conj{a_2} \norm{\vrots \vJ}^2  \\
+        \norm{\vE_t}^2   - b_1 \norm{\vdivs \vE }^2  - b_2 \norm{\vrots \vE_t}^2  \\
+        -\conj{a_0} \norm{\vdivs \vJ}^2ds + \conj{a_1} \norm{\LR \vJ}^2  \\
+        -\norm{\vdivs \vE_t}^2   + \conj{b_1} \norm{\LR \vE_t}^2 
       \end{bmatrix}
     \end{align*}
 
-    Dans le cas où ces matrices sont inversibles
+    Le déterminant de ces matrices triangulaires par bloc est \(\Delta_1\Delta_2\). Dans le cas où
     \begin{equation*}
       \label{eq:unicite:ci3:csu3-cn-det}
-      \Delta_1\Delta_2 \not = 0
+      \Delta_1\Delta_2 \not = 0,
     \end{equation*}
-
-    On a alors
+    elles sont inversibles et on a alors
     \begin{align*}
       \mM_R^{-1} & =\frac{1}{\Delta_1\Delta_2}
       \begin{bmatrix}
@@ -323,7 +319,7 @@
         0 & 0 & a_2\Delta_1 & -\conj{b_2}\Delta_1
         \\
         0 & 0 & a_0\Delta_1 & -\Delta_1
-      \end{bmatrix}
+      \end{bmatrix},
       \\
       \mM_D^{-1} & =\frac{1}{\Delta_1\Delta_2}
       \begin{bmatrix}
@@ -334,10 +330,10 @@
         0 & 0 & a_1\Delta_2 & -\conj{b_1}\Delta_2
         \\
         0 & 0 & -a_0\Delta_2 & \Delta_2
-      \end{bmatrix}
+      \end{bmatrix}.
     \end{align*}
     
-    On déduit \(X_D\) et \(X_R\) en fonction de toutes les normes présentent dans \(F_D\) et \(F_R\), on développe les expressions et on considère la partie réelle de chaque coefficient. Pour conclure, il suffit qu'elles soient toutes positives.
+    On déduit alors \(X_D\) et \(X_R\) en fonction des normes présentes dans \(F_D\) et \(F_R\). Informellement, \(X_D = A \norm{\vJ}^2 + B \norm{\vdivs \vJ}^2 + \ldots \) Une condition suffisante est que toutes les constantes \(A,B \ldots\) soient positives.
 
     On pose \(\Theta=\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\).
 
@@ -357,10 +353,6 @@
       \begin{equation}
         \Re\left(\Delta_2\right) = 0
       \end{equation}
-      \eqref{eq:unicite:ci3:csu3r-rj2} et \eqref{eq:unicite:ci3:csu3r-re2} impliquent :
-      \begin{equation}
-        \Re\left(\Theta\right) = 0
-      \end{equation}
     \end{minipage}
     \begin{minipage}{0.49\textwidth}
       {Système \(\mM_DX_D=F_D\)}:
@@ -378,20 +370,17 @@
       \begin{equation}
         \Re\left(\Delta_1\right) = 0
       \end{equation}
-      \eqref{eq:unicite:ci3:csu3d-dj2} et \eqref{eq:unicite:ci3:csu3d-de2} impliquent :
-      \begin{equation}
-        \Re\left(\Theta\right) = 0
-      \end{equation}
     \end{minipage}
-
+     \eqref{eq:unicite:ci3:csu3r-rj2} \& \eqref{eq:unicite:ci3:csu3r-re2} et \eqref{eq:unicite:ci3:csu3d-dj2} \& \eqref{eq:unicite:ci3:csu3d-de2} impliquent
+    \begin{equation}
+      \Re\left(\Theta\right) = 0.
+    \end{equation}
     Pour conclure, on remarque que l'on obtient 3 CSU
     \begin{itemize}
-      \item Les conditions du 1\ier système
-      \item Les conditions du 2\ieme système
-      \item L'union de ce ces deux ensembles
+      \item Les conditions du 1\ier système,
+      \item Les conditions du 2\ieme système,
+      \item L'union de ce ces deux ensembles.
     \end{itemize}
-
-    Subjectivement, nous choisissons la dernière, car il n'y a \textit{a priori} pas de raisons de privilégier un opérateur et non l'autre.
   \end{proof}
 
   Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 = 0 \right\rbrace \). On remarque que
@@ -404,12 +393,11 @@
   \begin{defn}
     \label{def:csu:ci3-2}
 
-    On définit le sous-espace ouvert de \(\CC^5\)
+    On définit le sous-espace de \(\CC^5\)
     \begin{equation*}
       \CSU[2]{CI3} = \left\lbrace 
+      (a_0,a_1,a_2,b_1,b_2) \in \CC^5,
       \begin{matrix}
-      (a_0,a_1,a_2,b_1,b_2) \in \CC^5
-      \\
       \Delta_1 \not = 0
       \\
       \Delta_2 \not = 0
@@ -437,9 +425,9 @@
     \label{prop:csu:ci3-2}
     Il suffit que
     \begin{equation*}
-      (a_0,a_1,a_2,b_1,b_2) \in \CSU[2]{CI3}
+      (a_0,a_1,a_2,b_1,b_2) \in \CSU[2]{CI3} \Rightarrow \Re(X) \ge 0,
     \end{equation*}
-    pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
+    ce qui entraîne l'unicité de la solution du problème de maxwell extérieure.
   \end{prop}
 
   \begin{proof}
@@ -447,41 +435,41 @@
 
     On déduit donc que si \(\Delta_1 \not = 0\) et \(\Delta_2 \not = 0\) alors
 
-    \begin{align}
+    \begin{align*}
       Y_R &= \frac{1}{\Delta_2}\left(a_2\left(\conj{a_0}\int_\Gamma \vJ\cdot\LR\conj{\vJ} - \conj{a_2}\norm{\LR \vJ}^2\right)  -\conj{b_2}\left(\int_\Gamma \conj{\vE}\LR{\vE} - b_2 \norm{\LR \vE}^2\right)\right) \\
       Y_D &= \frac{1}{\Delta_1}\left(a_1\left(\conj{a_0}\int_\Gamma \vJ\cdot\LD\conj{\vJ} + \conj{a_1}\norm{\LD \vJ}^2\right)  -\conj{b_1}\left(\int_\Gamma \conj{\vE}\LD{\vE} + b_1 \norm{\LD \vE}^2\right)\right)
-    \end{align}
+    \end{align*}
 
-    Il reste alors à utiliser l'équation \eqref{eq:unicite:ci3:csu3-1} pour obtenir
-    \begin{equation}
+    Utilisons \eqref{eq:unicite:ci3:csu3-1}, on obtient
+    \begin{equation*}
       X = -\conj{b_1} Y_D + \conj{b_2} Y_R + \conj{a_0} \norm{\vJ}^2 + \conj{a_1} \int_\Gamma \vJ \cdot \LD \conj{\vJ} - \conj{a_2} \int_\Gamma \vJ \cdot \LR \conj{\vJ}
-    \end{equation}
+    \end{equation*}
 
-    \begin{multline}
+    \begin{multline*}
       X = \conj{a_0} \norm{\vJ }^2 - \conj{a_1} \norm{\vdivs \vJ }^2 - \conj{a_2} \norm{\vrots \vJ }^2
       \\
       + \frac{\conj{b_2}}{\Delta_2}\left(a_2\left(\conj{a_0}\norm{\vrots \vJ}^2 - \conj{a_2}\norm{\LR J}^2\right)  -\conj{b_2}\left(\norm{\vrots\vE}^2 - b_2 \norm{\LR \vE }^2\right)\right)
       \\
       - \frac{\conj{b_1}}{\Delta_1}\left(a_1\left(-\conj{a_0}\norm{\vdivs\vJ}^2 + \conj{a_1}\norm{\LD J}^2\right)  -\conj{b_1}\left(-\norm{\vdivs\vE}^2 + b_1 \norm{\LD \vE }^2\right)\right)
-    \end{multline}
+    \end{multline*}
 
     On regroupe les termes en \(\norm{\vJ}^2\), \(\norm{\vdivs\vJ}^2\),  \(\norm{\vrots\vJ}^2\)
-    \begin{multline}
+    \begin{multline*}
       X = \conj{a_0} \norm{\vJ }^2 - \left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \norm{\vdivs \vJ}^2 - \left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \norm{\vrots \vJ }^2
       \\
       + \frac{\conj{b_2}}{\Delta_2}\left( - |a_2|^2\norm{\LR \vJ}^2  - \conj{b_2}\left(\norm{\vrots\vE}^2 - b_2 \norm{\LR \vE }^2\right)\right) 
       \\
       - \frac{\conj{b_1}}{\Delta_1}\left( |a_1|^2\norm{\LD \vJ}^2  - \conj{b_1}\left(-\norm{\vdivs\vE}^2 + b_1 \norm{\LD \vE }^2\right)\right)
-    \end{multline}
+    \end{multline*}
 
     On développe tous les termes
-    \begin{multline}
+    \begin{multline*}
       X = \conj{a_0} \norm{\vJ }^2 - \left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \norm{\vdivs \vJ }^2 - \left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \norm{\vrots \vJ }^2
       \\
       - \frac{\conj{b_2}|a_2|^2}{\Delta_2}\norm{\LR \vJ}^2  -  \frac{\conj{b_2}^2}{\Delta_2}\norm{\vrots\vE}^2 +  \frac{|b_2|}{\Delta_2} \norm{\LR \vE }^2
       \\
       - \frac{\conj{b_1}|a_1|^2}{\Delta_1}\norm{\LD \vJ}^2  - \frac{\conj{b_1}^2}{\Delta_1}\norm{\vdivs\vE}^2 + \frac{|b_1|^2}{\Delta_1} \norm{\LD \vE }^2
-    \end{multline}
+    \end{multline*}
 
     On impose alors à la partie réelle de chaque terme d'être positive, et on obtient
     \begin{equation*}
@@ -504,7 +492,7 @@
       \end{align*}
     \end{minipage}
 
-    On remarque alors que certaines CSU peuvent se combiner et imposent que les parties réelles de \(b_1\Delta_1\) et \(b_2\Delta_2\) soient nulles.
+    On remarque alors les conditions des deux dernières lignes se combinent et imposent que les parties réelles de \(b_1\Delta_1\) et \(b_2\Delta_2\) soient nulles.
   \end{proof}
 
   Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 = 0 \right\rbrace \). On remarque que
@@ -529,10 +517,9 @@
 
     On définit le sous-espace ouvert de \(\CC^5\)
     \begin{equation*}
-      \CSU[3]{CI3} = \left\lbrace 
+      \CSU[3]{CI3} = \left\lbrace
+      (a_0,a_1,a_2,b_1,b_2) \in \CC^5,
       \begin{matrix}
-        (a_0,a_1,a_2,b_1,b_2) \in \CC^5
-        \\
         a_1 \not = 0
         \\
         a_2 \not = 0
@@ -566,47 +553,47 @@
     \label{prop:csu:ci3-3}
     Il suffit que
     \begin{equation*}
-      (a_0,a_1,a_2,b_1,b_2) \in \CSU[3]{CI3}
+      (a_0,a_1,a_2,b_1,b_2) \in \CSU[3]{CI3} \Rightarrow \Re(X) \ge 0,
     \end{equation*}
-    pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
+    ce qui entraîne l'unicité.
   \end{prop}
 
   \begin{proof}
     Par définition de la CIOE, on a
 
-    Supposons l'opérateur \(a_0 + a_1 \LD - a_2 \LR\) inversible.
+    Supposons l'opérateur \(a_0\oI + a_1 \LD - a_2 \LR\) inversible.
 
     \begin{align*}
-      X &= \int_\Gamma \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\left( 1 + b_1 \LD - b_2 \LR \right) \vE_t\cdot \conj{\vE_t}
+      X &= \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left( \oI + b_1 \LD - b_2 \LR \right) \vE_t\cdot \conj{\vE_t}
     \end{align*}
 
     On développe chaque terme
 
     \begin{multline*}
-      X = \int_\Gamma \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}
+      X = \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
       \\
-      + b_1 \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\LD
+      + b_1 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LD
       \\
       \left.
-      - b_2 \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
+      - b_2 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LR \right) \vE_t\cdot \conj{\vE_t}
     \end{multline*}
 
     On suppose \(a_1\not=0\) et \(a_2\not=0\) alors
     \begin{align*}
-      \LD & = \frac{a_0 + a_1 \LD - a_0}{a_1}
+      \LD & = \frac{1}{a_1}\left(a_0\oI + a_1 \LD - a_0\oI\right)
       \\
-      \LR & = -\frac{a_0 - a_2 \LR - a_0}{a_2}
+      \LR & = -\frac{1}{a_1}\left(a_0\oI - a_2 \LR - a_0\oI\right)
     \end{align*}
 
 
     On déduit de ce qui précède que
 
     \begin{multline*}
-      X = \int_\Gamma z\left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}
+      X = \int_\Gamma z\left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
       \\
-      + \frac{b_1}{a_1} \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0+a_1\LD\right)
+      + \frac{b_1}{a_1} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0+a_1\LD\right)
       \\
-      - \frac{b_2}{a_2} \left(a_0 + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0-a_2\LR\right) \vE_t\cdot \conj{\vE_t}
+      - \frac{b_2}{a_2} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0-a_2\LR\right) \vE_t\cdot \conj{\vE_t}
     \end{multline*}
 
     On définit
@@ -615,21 +602,21 @@
     \newcommand{\vW}{\vect{W}}
 
     \begin{align*}
-      \vV & = \left(a_0  + a_1 \LD - a_2\LR \right)^{-1} \vE_t
+      \vV & = \left(a_0\oI  + a_1 \LD - a_2\LR \right)^{-1} \vE_t
       \\
-      \vW_1 & = \left( - a_2 \left( a_0 + a_1\LD\right)^{-1}\LR\right)^{-1} \vE_t
+      \vW_1 & = \left( - a_2 \left( a_0\oI + a_1\LD\right)^{-1}\LR\right)^{-1} \vE_t
       \\
-      \vW_2 & = \left( + a_1 \left( a_0 - a_2\LR\right)^{-1}\LD\right)^{-1} \vE_t
+      \vW_2 & = \left( + a_1 \left( a_0\oI - a_2\LR\right)^{-1}\LD\right)^{-1} \vE_t
     \end{align*}
 
     On déduit
 
     \begin{multline*}
-      X = \int_\Gamma z \vV \cdot \left(\conj{a_0}  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vV}
+      X = \int_\Gamma z \vV \cdot \left(\conj{a_0}\oI  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vV}
       \\
-      + \frac{b_1}{a_1} \left( - \conj{a_2} \left( \conj{a_0} + \conj{a_1}\LD\right)^{-1}\LR\right)\conj{\vW_1}\cdot\vW_1
+      + \frac{b_1}{a_1} \left( - \conj{a_2} \left( \conj{a_0}\oI + \conj{a_1}\LD\right)^{-1}\LR\right)\conj{\vW_1}\cdot\vW_1
       \\
-      + \frac{b_2}{a_2} \left( + \conj{a_1} \left( \conj{a_0} - \conj{a_2}\LR\right)^{-1}\LD\right)\conj{\vW_2}\cdot\vW_2
+      + \frac{b_2}{a_2} \left( + \conj{a_1} \left( \conj{a_0}\oI - \conj{a_2}\LR\right)^{-1}\LD\right)\conj{\vW_2}\cdot\vW_2
     \end{multline*}
 
     Notons
@@ -637,37 +624,37 @@
     \newcommand{\vR}{\vect{R}}
 
     \begin{align*}
-      \vR_1 & = \left(\conj{a_0}  + \conj{a_1} \LD \right)^{-1}\LR \conj{\vW_1}
+      \vR_1 & = \left(\conj{a_0}\oI  + \conj{a_1} \LD \right)^{-1}\LR \conj{\vW_1}
       \\
-      \vR_2 & = \left(\conj{a_0}  - \conj{a_2} \LR \right)^{-1}\LD \conj{\vW_2}
+      \vR_2 & = \left(\conj{a_0}\oI  - \conj{a_2} \LR \right)^{-1}\LD \conj{\vW_2}
     \end{align*}
 
     Donc 
     \begin{equation*}
-      X = \int_\Gamma z \vV \cdot \left(\conj{a_0}  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vV} - \frac{b_1}{a_1}\conj{a_2}\vR_1\cdot\vW_1 + \frac{b_2}{a_2}\conj{a_1}\vR_2\cdot\vW_2
+      X = \int_\Gamma z \vV \cdot \left(\conj{a_0}\oI  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vV} - \frac{b_1}{a_1}\conj{a_2}\vR_1\cdot\vW_1 + \frac{b_2}{a_2}\conj{a_1}\vR_2\cdot\vW_2
     \end{equation*}
 
     On commute les opérateurs
     \begin{align*}
-      \LD\left(\conj{a_0}  + \conj{a_1} \LD \right)&=\left(\conj{a_0}  + \conj{a_1} \LD \right)\LD
+      \LD\left(\conj{a_0}\oI  + \conj{a_1} \LD \right)&=\left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\LD
       \\
-      \LR\left(\conj{a_0}  - \conj{a_2} \LR \right)&=\left(\conj{a_0}  - \conj{a_2} \LR \right)\LR
+      \LR\left(\conj{a_0}\oI  - \conj{a_2} \LR \right)&=\left(\conj{a_0}\oI  - \conj{a_2} \LR \right)\LR
     \end{align*}
 
     Or on a démontré que \(\LD\LR=\LR\LD=0\), et ainsi
 
     \begin{equation*}
       \begin{aligned}
-        \LD\LR\conj{\vW_1} &= \LD\left(\conj{a_0}  + \conj{a_1} \LD \right)\vR_1
+        \LD\LR\conj{\vW_1} &= \LD\left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\vR_1
         \\
-        0 & =\left(\conj{a_0}  + \conj{a_1} \LD \right)\LD\vR_1
+        0 & =\left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\LD\vR_1
       \end{aligned}
     \end{equation*}
     \begin{equation*}
       \begin{aligned}
-        \LR\LD\conj{\vW_2} &= \LR\left(\conj{a_0}  - \conj{a_2} \LR \right)\vR_2
+        \LR\LD\conj{\vW_2} &= \LR\left(\conj{a_0}\oI  - \conj{a_2} \LR \right)\vR_2
         \\
-        0 & =\left(\conj{a_0}  - \conj{a_2} \LR \right)\LR\vR_2
+        0 & =\left(\conj{a_0}\oI  - \conj{a_2} \LR \right)\LR\vR_2
       \end{aligned}
     \end{equation*}
 
@@ -677,28 +664,28 @@
       \begin{align*}
         \Re(a_0)\ge0 && \Re(a_1) \le 0 && \Re(a_2) \le 0
       \end{align*}
-      alors \(a_0 + a_1 \LD\)  et \(a_0 - a_2 \LR\) sont injectif
+      alors \(a_0\oI + a_1 \LD\)  et \(a_0\oI - a_2 \LR\) sont injectif
     \end{prop}
 
     \begin{proof}
-      Par définition, \(a_0 + a_1 \LD\) est injectif si pour \(\vect{U}\) vecteur régulier tangent  à  \(\Gamma\)
+      Par définition, \(a_0\oI + a_1 \LD\) est injectif si pour \(\vect{U}\) vecteur régulier tangent  à  \(\Gamma\)
       \begin{align*}
-        \int_\Gamma \left(a_0 + a_1 \LD\right)\vect{U}\cdot\conj{\vect{U}} &= 0 \Rightarrow \vect{U} = 0
+        \int_\Gamma \left(a_0\oI + a_1 \LD\right)\vect{U}\cdot\conj{\vect{U}} &= 0 \Rightarrow \vect{U} = 0
         \intertext{Or par définition de l'opérateur \(\LD\)}
-        \int_\Gamma \left(a_0 + a_1 \LD\right)\vect{U}\cdot\conj{\vect{U}} &=a_0\norm{\vect{U}}^2 - a_1\norm{\tdivs{\vect{U}}}^2
+        \int_\Gamma \left(a_0\oI + a_1 \LD\right)\vect{U}\cdot\conj{\vect{U}} &=a_0\norm{\vect{U}}^2 - a_1\norm{\vdivs{\vect{U}}}^2
       \end{align*}
       
-      Prenons la partie réelle de cette égalité et injectons les hypothèses sur les coefficients. Alors le membre de droite ne contient que des termes positifs, donc tous ces termes sont nuls. Pour que ce soit vrai pour tous \(a_0,a_1,a_2\), c'est donc que \(\norm{\vect{U}} = 0\) et \(\norm{\tdivs\vect{U}} = 0\) donc \(\vect{U} = 0\).
+      Prenons la partie réelle de cette égalité et utilisons les hypothèses sur les coefficients. Alors le membre de droite ne contient que des termes positifs, donc tous ces termes sont nuls, donc \(\norm{\vect{U}} = 0\) et \(\norm{\vdivs\vect{U}} = 0\) donc \(\vect{U} = 0\).
 
-      Le même raisonnement est valable pour \(a_0 - a_2 \LR\).
+      Le même raisonnement est valable pour \(a_0\oI - a_2 \LR\).
     \end{proof}
 
     On suppose donc \(\Re(a_0) \ge 0 \),\(\Re(a_1) \le 0\) et \(\Re(a_2)\le0\)), donc \(\left(\conj{a_0}  + \conj{a_1} \LD \right)\) et \(\left(\conj{a_0}  - \conj{a_2} \LR \right)\) sont injectifs et donc on déduit que
 
     \begin{align*}
-      \left(\conj{a_0}  + \conj{a_1} \LD \right)\LD\vR_1 = 0 &\Rightarrow \LD\vR_1 = 0
+      \left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\LD\vR_1 = 0 &\Rightarrow \LD\vR_1 = 0
       \\
-      \left(\conj{a_0}  - \conj{a_2} \LR \right)\LR\vR_2 = 0 &\Rightarrow \LR\vR_2 = 0
+      \left(\conj{a_0}\oI  - \conj{a_2} \LR \right)\LR\vR_2 = 0 &\Rightarrow \LR\vR_2 = 0
     \end{align*}
 
     Or par définition \(\LR\conj{\vW_1} = \left(\conj{a_0}  + \conj{a_1} \LD \right)\vR_1\) et \(\LD\conj{\vW_2} = \left(\conj{a_0}  - \conj{a_2} \LR \right)\vR_2\) donc
@@ -711,7 +698,7 @@
     On réinjecte ce résultat dans la définition de \(X\)
 
     \begin{multline*}
-      X = \int_\Gamma z \vV \cdot \left(\conj{a_0}  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vV}
+      X = \int_\Gamma z \vV \cdot \left(\conj{a_0}\oI  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vV}
       \\
       + \frac{b_1}{a_1} \norm{\vW_1}^2 - \frac{b_1\conj{a_2}}{a_1\conj{a_0}}\int_\Gamma \LR\conj{\vW_1}\cdot\vW_1
       \\
