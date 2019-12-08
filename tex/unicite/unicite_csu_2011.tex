@@ -34,11 +34,34 @@
     \begin{align*}
       \int_\Gamma \vu\cdot \LL(\conj{\vv}) &= \int_\Gamma \conj{\vv}\cdot \LL(\vu)
       \\
-      \int_\Gamma \vu\cdot \LL(\conj{\vu}) &= -\norm{\vgrads{\vu}}^2 \le 0
+      \int_\Gamma \vu\cdot \LL(\conj{\vu}) &= -\norm{\vdivs{\vu}}^2 - \norm{\vrots\vu}^2 \le 0
     \end{align*}
-    La deuxième propriété se démontré car l'opérateur \(\LL\) est le laplacien surfacique tangentielle (voir \cite[p.~1028]{bladel_electromagnetic_2007}).
   \end{proof}
 
+  \begin{prop}
+    \label{prop:unicite:injectif:operateur:L}
+    Soit \(\vu \in V=\Sobolev[div]{(\Gamma)}\cap\Sobolev[rot]{(\Gamma)}\).
+    
+    Soit \(\mathcal{P}\) l'opérateur tel que \(\mathcal{P}\vu = (a_0\oI + a_1 \LL)\vu\).
+
+    Si \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\) alors l'opérateur \(\mathcal{P}\) est injectif sur \(V\).
+  \end{prop}
+  \begin{proof}
+    Soit \(\vu \in \Ker{\mathcal{P}}\). Donc
+    \begin{align*}
+      \mathcal{P}\vu &= 0
+      \\
+      \int_\Gamma \mathcal{P}\vu\cdot\conj{\vu}  &= 0
+      \\
+      & = \int_\Gamma (a_0\oI + a_1 \LL)\vu\cdot\conj{\vu}
+      \\
+      & = a_0 \norm{{\vu}}^2 - a_1 \left(\norm{\vdivs{\vu}}^2 + \norm{\vrots{\vu}}^2\right)
+      \intertext{Donc}
+      \Re\left(\int_\Gamma \mathcal{P}\vu\cdot\conj{\vu}\right) &= \Re(a_0) \norm{{\vu}}^2 - \Re(a_1) \left(\norm{\vdivs{\vu}}^2 + \norm{\vrots{\vu}}^2\right)
+    \end{align*}
+    Or \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\), donc tous les termes de l'expression précédente sont nuls donc \(\norm{\vu}=0\) donc \(\vu=0\).
+    Donc l'opérateur \(\mathcal{P}\) est injectif.
+  \end{proof}
   On rappelle que l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu} soit \(\Re(X)\ge0\) où \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\) sachant que \gls{phy-J} est la trace tangentielle sur \(\Gamma\) de l’excitation magnétique (\(\vJ = \vn \pvect \vH\)).
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,9 +124,9 @@
     \begin{proof}
       On a
       \begin{align*}
-        X & = \conj{a_0} \norm{\vJ} ^2 - \conj{a_1} \norm{\vgrads{\vJ}}^2
+        X & = \conj{a_0} \norm{\vJ} ^2 - \conj{a_1} \left(\norm{\vdivs{\vJ}}^2 + \norm{\vrots{\vJ}}^2\right)
         \intertext{donc}
-        \Re(X) & = \Re{(a_0)} \norm{\vJ} ^2 - \Re{(a_1)}\norm{\vgrads{\vJ}}^2
+        \Re(X) & = \Re{(a_0)} \norm{\vJ} ^2 - \Re{(a_1)}\left(\norm{\vdivs{\vJ}}^2 + \norm{\vrots{\vJ}}^2\right)
       \end{align*}
       Si l’on suppose \((a_0,a_1) \in \CSU{CI01}\), tous les termes sont positifs.
     \end{proof}
@@ -163,7 +186,7 @@
       \begin{equation*}
         (a_0,a_1,b) \in \CSU[1]{CI1} \Rightarrow (\Re(X)\ge 0. 
       \end{equation*}
-      C'est à dire \((a_0,a_1,b) \in \CSU[1]{CI1}\) entraîne l'unicité de la solution du problème de maxwell extérieure.
+      C'est à dire \((a_0,a_1,b) \in \CSU[1]{CI1}\) entraîne l'unicité de la solution du problème de Maxwell extérieur.
     \end{prop}
 
     \begin{proof}
@@ -174,7 +197,7 @@
         \Delta X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \conj{\vE_t}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
         \intertext{Par définition de la CI1}
         \Delta X &= \int_\Gamma \left(a_1(\conj{a_0}+\conj{a_1}\LL) \conj{\vJ}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(\oI +b \LL)\vE_t\right)\cdot\conj{\vE_t} \\
-        \Delta X &= a_1\conj{a_0} \norm{ \vJ }^2 - |a_1|^2 \norm{\vgrads{\vJ}}^2 - \conj{b} \norm{ \vE_t }^2 + |b|^2\norm{\vgrads{\vE_t}}^2
+        \Delta X &= a_1\conj{a_0} \norm{ \vJ }^2 - |a_1|^2 \left(\norm{\vdivs{\vJ}}^2 + \norm{\vrots{\vJ}}^2\right) - \conj{b} \norm{ \vE_t }^2 + |b|^2\left(\norm{\vdivs{\vE_t}}^2 + \norm{\vrots{\vE_t}}^2\right)
       \end{align*}
 
       % On pose 
@@ -187,11 +210,11 @@
       La partie imaginaire de \(\Delta X\) est
       \begin{align*}
         % \Re(\Delta)\Re(X) - \Im(\Delta)\Im(X) &= \Re(a_1\conj{a_0}) \norm{\vJ}^2 - \Re(\conj{b})\norm{\vE_t}^2 -|a_1|^2 F + |b|^2 G \\
-        \Im(\Delta) &= \Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\conj{b})\norm{\vE_t}^2
+        \Im(\Delta X)&= \Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\conj{b})\norm{\vE_t}^2
         \intertext{En supposant \(\Re(\Delta)= 0\) et \(\Im(\Delta) \not = 0\), on a alors \(\Im(\Delta X) = \Im(\Delta)\Re(X)\) d'où}
         \Im(\Delta)^2\Re(X) &= \Im(\Delta)\Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\Delta)\Im(\conj{b})\norm{\vE_t}^2
       \end{align*}
-      Dans le cas où \(\Im(\Delta)\not=0\), il suffit d'imposer que les termes du membre de droite soient positifs pour que \(\Re(X)\) le soit.
+      Dans le cas où \(\Im(\Delta)\not=0\), il suffit d'imposer que les termes de droite soient positifs pour que \(\Re(X)\) le soit.
     \end{proof}
 
     On remarque que
@@ -213,14 +236,14 @@
       Si \(z\in \CC\backslash \RR_+^*\) alors \(a\) est coercive sur \(\Sobolev[1]{(\Gamma)}\).
     \end{lemme}
     \begin{proof}
-      On cherche à montrer que \(\exists \delta \in \RR^+, \forall \vu \in \Sobolev[1]{(\Gamma)}, |a(\vu,\vu)|^2\ge \delta\left(\norm{\vu}^2+\norm{\vgrads{\vu}}^2\right)^2\).
+      On cherche à montrer que \(\exists \delta \in \RR^+, \forall \vu \in \Sobolev[1]{(\Gamma)}, |a(\vu,\vu)|^2\ge \delta\left(\norm{\vu}^2+\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)^2\).
       \begin{align*}
-        |a(\vect{u},\vect{u})|^2 &= \left(\norm{\vu}^2-\Re(z)\norm{\vgrads{\vu}}^2\right)^2 + \left(\Im(z)\norm{\vgrads{\vu}}^2\right)^2
+        |a(\vect{u},\vect{u})|^2 &= \left(\norm{\vu}^2-\Re(z)\left(\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)\right)^2 + \left(\Im(z)\left(\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)\right)^2
         \\
         &= \begin{bmatrix}
           \norm{\vu}^2
           &
-          \norm{\vgrads{\vu}}^2
+          \norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2
         \end{bmatrix}
         \begin{bmatrix}
           1 & - \Re(z)
@@ -230,7 +253,7 @@
         \begin{bmatrix}
           \norm{\vu}^2
           \\
-          \norm{\vgrads{\vu}}^2
+          \norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2
         \end{bmatrix}
         \\
       \end{align*}
@@ -238,9 +261,9 @@
 
       Si \(\Im(z)=0\) alors
       \begin{align*}
-        a(\vect{u},\vect{u}) &= \norm{\vu}^2-\Re(z)\norm{\vgrads{\vu}}^2
+        a(\vect{u},\vect{u}) &= \norm{\vu}^2-\Re(z)\left(\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)
         \\
-        &\ge \min(1,-\Re(z))\left(\norm{\vu}^2+\norm{\vgrads{\vu}}^2\right)
+        &\ge \min(1,-\Re(z))\left(\norm{\vu}^2+\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)
       \end{align*}
       Il suffit que \(\Re(z) < 0 \) pour avoir la coercivité
     \end{proof}
@@ -294,8 +317,8 @@
         \\
         X &= \int_\Gamma (\oI + b \LL)\vect{D} \cdot (\conj{a_0}\oI + \conj{a_1}\LL)\conj{\vect{D}}.
         \\
-        \intertext{Or on sait que l'opérateur est hermitien négatif donc }
-        X &= \conj{a_0}\norm{\vect{D}}^2 - (b\conj{a_0}+\conj{a_1})\norm{\vgrads{\vect{D}}}^2 + b\conj{a_1} \norm{\LL\vect{D}}^2.
+        \intertext{Or on sait d'après la définition de l'opérateur \(\LL\) }
+        X &= \conj{a_0}\norm{\vect{D}}^2 - (b\conj{a_0}+\conj{a_1})\left(\norm{\vdivs{\vect{D}}}^2+\norm{\vrots{\vect{D}}}^2\right) + b\conj{a_1} \norm{\LL\vect{D}}^2.
       \end{align*}
     \end{proof}
 
