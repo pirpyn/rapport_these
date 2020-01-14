@@ -312,19 +312,29 @@
     On désigne par \(\mM\) la matrice \(\mG{\phi}{\phi} = \mG{p}{p}\).
   \end{defn}
 
-  \begin{prop}
-    Pour toute fonction \(\vect{W}(\vx) \in L^2(\Gamma_h)\cap\Vect{(\qj)_j}\),
+  On rappelle les décompositions sur ces familles de fonctions.
+  \begin{align*}
+    \vect{U}(\vx) &= \sum_j^N  u_j \phij(\vx),
+    &
+    \vect{V}(\vx) &= \sum_j^N  v_j \pj(\vx),
+    &
+    \vect{W}(\vx) &= \sum_j^N  w_j \qj(\vx).
+  \end{align*}
 
-    il existe \(\vect{U}(\vx) \in L^2(\Gamma_h) \cap \Vect{(\phij)_j} \) telle que
+  \begin{prop}
+    Pour toute fonction \(\vect{W} \in L^2(\Gamma_h)\cap\Vect{(\qj)_j}\),
+
+    il existe \(\vect{U} \in L^2(\Gamma_h) \cap \Vect{(\phij)_j} \) telle que \(\) avec
+
     \begin{equation*}
       \comp{u} = \mG{\phi}{q}\comp{w}
     \end{equation*}
   \end{prop}
 
   \begin{prop}
-    Pour toute fonction \(\vect{W}(\vx) \in L^2(\Gamma_h)\cap\Vect{(\qj)_j}\),
+    Pour toute fonction \(\vect{W} \in L^2(\Gamma_h)\cap\Vect{(\qj)_j}\),
 
-    il existe \(\vect{V}(\vx) \in L^2(\Gamma_h) \cap \Vect{(\pj)_j} \) telle que
+    il existe \(\vect{V} \in L^2(\Gamma_h) \cap \Vect{(\pj)_j} \) telle que
     \begin{equation*}
       \comp{v} = \mG{p}{q}\comp{w}
     \end{equation*}
@@ -372,7 +382,7 @@
   \end{prop}
 
   \begin{proof}
-      Soit \(\vect{W}(\vx) = \sum_{i=1}^N w_j \qj(\vx) \in L^2(\Gamma_h)\).
+      Soit \(\vect{W}(\vx) = \sum_{i=1}^N w_j \qj \in L^2(\Gamma_h)\).
 
       On définit
       \begin{align*}
@@ -399,28 +409,36 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
 \section{Forme variationnelle des équations intégrales}
-  Étant donné \((k,\vE^{inc},\vH^{inc})\) on cherche \(\vJ = \vn \pvect \vH, \vK = \vn \pvect \vE \in \Hdiv(\Gamma_h)^2\)  tel que
 
-  Pour tout \(\vect{\phi} \in \Hdiv(\Gamma_h)\), on a
+  Nous ne redémontrerons pas l'obtention des équations intégrales. Nous renvoyons à \cite[Section~5.5, p.~234]{nedelec_acoustic_2001}.
+
+  Nous rappelons notamment le théorème de trace (Theorem~5.4.2, p.~209) qui est déterminant dans les choix de discrétisations. Ce dernier stipule que si \(\vE,\vH \in \Sobolev[rot]{(\Omega)}\) alors \(\vn \pvect \vH,\vn \pvect \vE \in \Sobolev[div]^{-1/2}{(\Gamma)}\). 
+
+  Les équations intégrales s'énoncent alors:
+
+  Étant donné \((k,\vE^{inc},\vH^{inc})\), on cherche \(\vJ = \vn \pvect \vH, \vK = \vn \pvect \vE \in \Sobolev[div]^{-1/2}{(\Gamma)}\)  tels que
+
+  Pour tout \(\vect{\phi} \in \Sobolev[div]^{-1/2}(\Gamma)\),
 
   \begin{multline}
     \label{eq:form_int:EFIE:var}
-    \int_{\Gamma_h} \vE^{inc}_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) =
-      \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
-        - \int_{\Gamma_h} \left( \int_{\Gamma_h} \vgrad g(\vx - \vy) \pvect \vK(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
-      - \frac{i}{k} \int_{\Gamma_h} \left( \int_{\Gamma_h}  g(\vx - \vy)\tdivs\vJ(\vy) \dd{s}(\vy) \right) \cdot \tdivs \vect{\phi}(\vx) \dd{s}(\vx) \\
-        +  ik\int_{\Gamma_h} \left( \int_{\Gamma_h} g(\vx - \vy)\vJ(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx)
+    \int_{\Gamma} \vE^{inc}_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) =
+      \frac{1}{2} \int_{\Gamma} \vE_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
+        - \int_{\Gamma} \left( \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vK(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
+      - \frac{i}{k} \int_{\Gamma} \left( \int_{\Gamma}  g(\vx - \vy)\vdivs\vJ(\vy) \dd{s}(\vy) \right)\vdivs \vect{\phi}(\vx) \dd{s}(\vx) \\
+        +  ik\int_{\Gamma} \left( \int_{\Gamma} g(\vx - \vy)\vJ(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx)
   \end{multline}
   \begin{multline}
     \label{eq:form_int:MFIE:var}
-    \int_{\Gamma_h} \vH^{inc}_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) =
-      \frac{1}{2} \int_{\Gamma_h} \vH_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
-        - \int_{\Gamma_h} \left( \int_{\Gamma_h} \vgrad g(\vx - \vy) \pvect \vJ(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
-      + \frac{i}{k} \int_{\Gamma_h} \left( \int_{\Gamma_h}  g(\vx - \vy)\tdivs\vK(\vy) \dd{s}(\vy) \right) \cdot \tdivs \vect{\phi}(\vx) \dd{s}(\vx) \\
-        -  ik\int_{\Gamma_h} \left( \int_{\Gamma_h} g(\vx - \vy)\vK(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx)
+    \int_{\Gamma} \vH^{inc}_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) =
+      \frac{1}{2} \int_{\Gamma} \vH_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
+        - \int_{\Gamma} \left( \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vJ(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
+      + \frac{i}{k} \int_{\Gamma} \left( \int_{\Gamma}  g(\vx - \vy)\vdivs\vK(\vy) \dd{s}(\vy) \right)\vdivs \vect{\phi}(\vx) \dd{s}(\vx) \\
+        -  ik\int_{\Gamma} \left( \int_{\Gamma} g(\vx - \vy)\vK(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx)
   \end{multline}
+
+  Ceci est l'expression continue de la formulation variationnelle des équations intégrales. Dans la suite nous approcherons cette forme variationnelle à l'aide des familles de fonction présentées précédemment. De plus, dans un abus de notation, nous omettrons le \(-1/2\) dans l'espace \(\Sobolev[div]^{-1/2}(\Gamma)\equiv\Sobolev[div](\Gamma)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -428,13 +446,15 @@
 
 \section{Contribution de la CIOE dans la discrétisation de la forme variationnelle}
 
-
   On prend comme fonction test \(\phii\), la fonction de base associée à l'arête \(i\).
-  On décompose \(\vJ,\vK \in \Hdiv(\Gamma_h)\) sur les fonctions de base \(\phij\):
+  On décompose \(\vJ,\vK \in \Hdiv(\Gamma)\) sur les fonctions de base \(\phij \in \Hdiv(\Gamma_h)\).
     \begin{align*}
-      \vJ & = \sum_{j=1}^N I_j \phij\\
-      \vK & = \sum_{j=1}^N k_j \phij
+      \vJ & \simeq \sum_{j=1}^N I_j \phij,
+      &
+      \vK & \simeq \sum_{j=1}^N k_j \phij.
     \end{align*}
+
+  Il reste alors à trouver une bonne approximations de \(\vE_t\) et \(\vH_t\) pour exprimer \( \frac{1}{2} \int_{\Gamma} \vE_t(\vx) \cdot \phii(\vx) \dd{s}(\vx)\) et \(\frac{1}{2} \int_{\Gamma} \vH_t(\vx) \cdot \phii(\vx) \dd{s}(\vx)\) en fonctions des inconnues \(\vJ, \vK\). Selon la CIOE employée, cette décomposition ne sera pas la même. Notre but est alors de trouver une formulation qui se comporte bien quand on déduit d'une CIOE un autre plus simple. C'est-à-dire que la formulation intégrale déterminée avec la CI3 doit être équivalente à la formulation intégrale déterminée avec la CI0 quand les coefficients \(a_1,a_2,b_1,b_2\) sont nuls. En effet, à cause des opérateurs différentiels, nous ne représenterons pas \(\vE_t\) et \(\vH_t\) à l'aide d'une seule famille, mais potentiellement plusieurs familles. Nous préciserons lesquels dans la suite.
 
   \subsection[Discrétisation des opérateurs LD, LR]{Discrétisation des opérateurs \(\LD,\LR\)}
     Les CIOE font intervenir les opérateurs différentiels \gls{ope-LD}, \gls{ope-LR}. On introduit donc les matrices \(\mLD,\mLR\) correspondantes.
