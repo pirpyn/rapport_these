@@ -10,13 +10,15 @@
   Dans \(\OO^c\) on définit \(\gls{phy-k0}=\gls{phy-w} / \gls{phy-c} \in \RR_+^*\) le nombre d'onde dans le vide où \gls{phy-c} est la célérité d'une onde dans le vide.
 
   % Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
-  Nous utilisons une forme non usuelle des équations de Maxwell et nous renvoyons à l'annexe \ref{sec:annex:maxwell_equation} pour son obtention. Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}^\infty(\OO^c)\cap\Sobolev[1](\OO^c))^2\) tels que
+  Nous utilisons les équations de Maxwell-Helmholtz où les inconnus sont le champ électrique \gls{phy-e} et l'induction magnétique \gls{phy-h2} et nous renvoyons à l'annexe \ref{sec:annex:maxwell_equation} pour son obtention. 
+
+  Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}^\infty(\OO^c)\cap\Sobolev[1](\OO^c))^2\) tels que
   \begin{align}
   \left\lbrace
     \begin{matrix}
-      \trot \vE + i k_0 \vH &= 0
+      \vrot \vE + i k_0 \vH &= 0
       \\
-      \trot \vH - i k_0 \vE &= 0
+      \vrot \vH - i k_0 \vE &= 0
     \end{matrix}
     \right. && \text{dans \(\OO^c\).}
     \label{eq:unicite:maxwell_ext}
@@ -24,7 +26,7 @@
 
 %  En l'absence de source, le rotationnel d'un des champs a la même régularité que le champs lui-même, donc ces champs sont \(\mathcal{C}^\infty\).
 
-  Afin de pouvoir étudier ce problème, on se ramène à un ouvert borné de la manière suivante. On définit \(B_R\) la boule ouverte de rayon \(R\) suffisamment grand pour englober \(\OO\). On cherche alors les solutions dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\) , où \(S_R\) est la sphère de rayon \(R\) où sur cette dernière est définie la condition de rayonnement
+  Afin de pouvoir étudier ce problème, on se ramène à un ouvert borné de la manière suivante. On définit \(B_R\) la boule ouverte de rayon \(R\) suffisamment grand pour englober \(\OO\). On cherche alors les solutions dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\) , où \(S_R\) est la sphère de rayon \(R\) où sur cette dernière est définie la condition de rayonnement à l'infini
   \begin{equation}
     \label{eq:unicite:TR}
     \begin{aligned}
@@ -35,7 +37,7 @@
 
   Soit \(V = \lbrace \vect{u} \in (\mathcal{C}^\infty(\OO^c_R)\cap\Sobolev[1](\OO^c_R) \rbrace\).
 
-  Le problème \eqref{eq:unicite:maxwell_ext} muni de la condition \eqref{eq:unicite:TR} est équivalent à
+  Le problème \eqref{eq:unicite:maxwell_ext} sans sources muni de la condition \eqref{eq:unicite:TR} est équivalent à
   \begin{prop}[Formulation variationnelle du problème de Maxwell extérieur]
     Trouver \(\vE \in V\),
     \begin{align*}
@@ -75,19 +77,21 @@
       \end{align*}
   \end{proof}
 
+  Puisque le problème n'a pas de sources, l'unique solution du problème si ce dernier est bien posé est \(\vE=\vH=0\).
+
   On définit en tout point de \(\Gamma\) la trace tangentielle de \(\vH\) que l'on note \(\vJ = \vn_\Gamma \pvect \vH\).
 
   \begin{prop}[Une \glsentrydesc{acr-csu}]~\\
-    Si la condition suivante est vérifiée
+    Si on suppose que
     \begin{equation}
       \label{eq:unicite:form_var:cgu}
       \Re\left(\int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx) \dd{\Gamma(\vx)}\right) \ge 0,
     \end{equation}
-    alors \(\vE=\vH=0\), donc l'unicité des solutions du problème de Maxwell extérieur \eqref{eq:unicite:maxwell_ext} avec la condition de rayonnement \eqref{eq:unicite:TR} est assurée.
+    alors le problème \eqref{eq:unicite:maxwell_ext}  muni de la condition \eqref{eq:unicite:TR} admet \(\vE=\vH=0\) comme unique solution.
   \end{prop}
 
 \begin{proof}
-  Pour démontrer cela, on utilise le Lemme de Rellich, énoncé dans \cite[p.~74]{cessenat_mathematical_1996}:
+  Pour démontrer cela, on utilise le lemme de Rellich, énoncé dans \cite[p.~74]{cessenat_mathematical_1996}:
   \begin{lemme}[Lemme de Rellich]
     Soit \(\OO^c\) un domaine connexe, complément d'un domaine borné, et soit \(u\) satisfaisant
     \begin{subequations}
@@ -100,7 +104,7 @@
     alors \(u=0\) dans \(\OO^c\).
   \end{lemme}
   \begin{proof}
-    Voir \cite[p.~74]{cessenat_mathematical_1996}
+    Voir \cite[p.~74]{cessenat_mathematical_1996}.
   \end{proof}
 
   On définit les quantités suivantes
@@ -117,14 +121,14 @@
     \\
     &= \frac{1}{ik_0} \int_{\OO^c_R} \norm{\trot \vE(\vx)}^2 \dd{x} + ik_0\int_{\OO^c_R}\norm{\vE(\vx)}^2 \dd{x}
      + X + C,
-    \intertext{on déduit}
+    \intertext{et on déduit}
     \Re(a(\vE,\vE)) & = 0,
     \intertext{ce qui se réecrit}
     \Re(C) + \Re(X) & = 0,
-    \intertext{comme d'après \cite[Théorème~5.3.5, p.~200]{nedelec_acoustic_2001} \(\Re(C) \ge 0\) alors} 
-    \Re(X) &\le 0.
+    \intertext{d'après \cite[Théorème~5.3.5, p.~200]{nedelec_acoustic_2001} \(\Re(C) \ge 0\)} 
+    \Re(X) & \le 0.
   \end{align*}
-  L'hypothèse \eqref{eq:unicite:form_var:cgu} impose alors \(\Re(X)=0\) et donc
+  L'hypothèse \eqref{eq:unicite:form_var:cgu} \(\Re(X) \ge 0\) impose alors \(\Re(X)=0\) et donc
   \begin{align*} 
     \Re(C) &= 0,
     \intertext{donc d'après le même théorème}

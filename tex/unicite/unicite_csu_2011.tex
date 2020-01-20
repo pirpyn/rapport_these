@@ -8,13 +8,15 @@
 
   Soit les opérateurs différentiels surfaciques (voir annexe \ref{sec:annexe:div_grad_rot})
   \begin{align*}
-        \vgrads{f}(\vx) &= \vgrad{f}(\vx) - \vn(\vx) (\vn(\vx) \cdot \vgrad{f}(\vx))
-        \\
-        \vdivs{\vu} &= \vdiv\left(\vu(\vx) - \vn(\vx) (\vn(\vx) \cdot \vu(\vx)\right)
-        \\
-        \vrots{\vu}(\vx) &= \vn(\vx)\left(\vn(\vx) \cdot \vrot{\vu}(\vx)\right)
-    \end{align*}
+      \vgrads{f}(\vx) &= \vgrad{f}(\vx) - \vn(\vx) (\vn(\vx) \cdot \vgrad{f}(\vx))
+      \\
+      \vdivs{\vu} &= \vdiv\left(\vu(\vx) - \vn(\vx) (\vn(\vx) \cdot \vu(\vx)\right)
+      \\
+      \vrots{\vu}(\vx) &= \vn(\vx)\left(\vn(\vx) \cdot \vrot{\vu}(\vx)\right)
+  \end{align*}
 
+
+  Enfin par abus de notations, nous omettrons tous les dépendances en \(\vx\) dans les intégrales \(\int_\Gamma f(\vx)\vE(\vx)\dd{\Gamma(\vx)}\equiv \int_\Gamma f\vE\).
   \begin{defn}
     \label{def:operator:L}
     % Pour tout \(\vu \in (\mathcal{C}^\infty(\Gamma))^2\)
@@ -62,6 +64,20 @@
     Or \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\), donc tous les termes de l'expression précédente sont nuls donc \(\norm{\vu}=0\) donc \(\vu=0\).
     Donc l'opérateur \(\mathcal{P}\) est injectif.
   \end{proof}
+
+  \begin{prop}
+    \label{prop:unicite:inversible:operateur:L}
+    Soit \(\vu \in V=\Sobolev[div]{(\Gamma)}\cap\Sobolev[rot]{(\Gamma)}\).
+    
+    Soit \(\mathcal{P}\) l'opérateur tel que \(\mathcal{P}\vu = (a_0\oI + a_1 \LL)\vu\).
+
+    Si \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\) alors l'opérateur \(\mathcal{P}\) est bijectif sur \(V\).
+  \end{prop}
+  \begin{proof}
+  D'après l'alternative de Fredholm (voir \cite[Théorème~VI.6, p.~92]{brezis_analyse_1996}), si l'opérateur \(\LL\) est compact, alors \(\mathcal{P}\) est soit non-injectif soit bijectif.
+  Montrons que \(\LL\) est compact
+  \end{proof}
+  
   On rappelle que l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu} soit \(\Re(X)\ge0\) où \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\) sachant que \gls{phy-J} est la trace tangentielle sur \(\Gamma\) de l’excitation magnétique (\(\vJ = \vn \pvect \vH\)).
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -89,7 +105,7 @@
       pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
     \end{prop}
     \begin{proof}
-      On a \( X = \conj{a_0}\norm{\vJ}^2\) donc \(\Re(X) = \Re(a_0)\norm{\vJ}^2 \)
+      Cela découle de \( X = \conj{a_0}\norm{\vJ}^2\) donc \(\Re(X) = \Re(a_0)\norm{\vJ}^2 \).
     \end{proof}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI01}
@@ -128,7 +144,7 @@
         \intertext{donc}
         \Re(X) & = \Re{(a_0)} \norm{\vJ} ^2 - \Re{(a_1)}\left(\norm{\vdivs{\vJ}}^2 + \norm{\vrots{\vJ}}^2\right)
       \end{align*}
-      Si l’on suppose \((a_0,a_1) \in \CSU{CI01}\), tous les termes sont positifs.
+      Si l’on suppose \((a_0,a_1) \in \CSU{CI01}\), tous les termes sont positifs donc \(\Re(X)\ge 0\).
     \end{proof}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -140,7 +156,7 @@
       (\oI + b \LL) \vE_t = (a_0\oI + a_1 \LL) \vJ && \forall (a_0, a_1,b) \in \CC^3
     \end{align}
 
-    Pour cette CIOE, nous démontrons qu'il y plusieurs sous-espaces différents, inclus dans \(\CC^3\) qui conduise à l'unicité de la solution du problème.
+    Pour cette CIOE, nous observons qu'il y plusieurs sous-espaces différents, inclus dans \(\CC^3\) qui conduisent à l'unicité de la solution du problème.
 
     %\subsubsection{CSU de \cite{stupfel_sufficient_2011}}
 
@@ -150,12 +166,12 @@
       \begin{matrix}
         \Delta: & \CC^3 &\rightarrow& \CC
         \\
-        & (a_0,a_1,b) & \mapsto & a_1 - a_0\conj{b}
+        & (a_0,a_1,b) & \mapsto & a_1 - a_0\conj{b}.
       \end{matrix}
     \end{equation}
     Par abus de notation, on omet les variables \((a_0,a_1,b)\)
     \begin{equation}
-       \Delta(a_0,a_1,b) \equiv \Delta
+       \Delta(a_0,a_1,b) \equiv \Delta.
     \end{equation}
 
     On rappelle la CSU énoncée dans \cite{stupfel_sufficient_2011}.
@@ -184,7 +200,7 @@
       \label{prop:csu:ci1-1}
       On a 
       \begin{equation*}
-        (a_0,a_1,b) \in \CSU[1]{CI1} \Rightarrow (\Re(X)\ge 0. 
+        (a_0,a_1,b) \in \CSU[1]{CI1} \Rightarrow \Re(X)\ge 0. 
       \end{equation*}
       C'est à dire \((a_0,a_1,b) \in \CSU[1]{CI1}\) entraîne l'unicité de la solution du problème de Maxwell extérieur.
     \end{prop}
@@ -211,10 +227,10 @@
       \begin{align*}
         % \Re(\Delta)\Re(X) - \Im(\Delta)\Im(X) &= \Re(a_1\conj{a_0}) \norm{\vJ}^2 - \Re(\conj{b})\norm{\vE_t}^2 -|a_1|^2 F + |b|^2 G \\
         \Im(\Delta X)&= \Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\conj{b})\norm{\vE_t}^2
-        \intertext{En supposant \(\Re(\Delta)= 0\) et \(\Im(\Delta) \not = 0\), on a alors \(\Im(\Delta X) = \Im(\Delta)\Re(X)\) d'où}
-        \Im(\Delta)^2\Re(X) &= \Im(\Delta)\Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\Delta)\Im(\conj{b})\norm{\vE_t}^2
+        \intertext{\(\Im(\Delta X) = \Im(\Delta)\Re(X)\) ce qui entraine si \((a_0,a_1,b)\in\CSU[1]{CI1}\) alors \(\Re(\Delta)=0, \Im(\Delta)\not=0\) d'où}
+        \Im(\Delta)^2\Re(X) &= \Im(\Delta)\Im(a_1\conj{a_0}) \norm{\vJ}^2 + \Im(\Delta)\Im({b})\norm{\vE_t}^2
       \end{align*}
-      Dans le cas où \(\Im(\Delta)\not=0\), il suffit d'imposer que les termes de droite soient positifs pour que \(\Re(X)\) le soit.
+      Les deux autres conditions de la CSU imposent que les termes du membre de droite sont positifs donc \(\Re(X)\ge0\).
     \end{proof}
 
     On remarque que
@@ -227,46 +243,46 @@
       \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &= ((\CSU{CI01}\cap S) \times\lbrace0\rbrace) 
     \end{align}
 
-    \begin{lemme}
-    \label{lem:coercivite:operateur-l}
-      Soit \(z\in \CC\), \(\vu,\vv \in \Sobolev[1]{(\Gamma)}\) et \(a\) la forme bilinéaire
-      \begin{equation*}
-        a(\vect{u},\vect{v}) = \int_\Gamma(\oI + z\LL)\vect{u}\cdot\conj{\vect{v}}.
-      \end{equation*}
-      Si \(z\in \CC\backslash \RR_+^*\) alors \(a\) est coercive sur \(\Sobolev[1]{(\Gamma)}\).
-    \end{lemme}
-    \begin{proof}
-      On cherche à montrer que \(\exists \delta \in \RR^+, \forall \vu \in \Sobolev[1]{(\Gamma)}, |a(\vu,\vu)|^2\ge \delta\left(\norm{\vu}^2+\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)^2\).
-      \begin{align*}
-        |a(\vect{u},\vect{u})|^2 &= \left(\norm{\vu}^2-\Re(z)\left(\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)\right)^2 + \left(\Im(z)\left(\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)\right)^2
-        \\
-        &= \begin{bmatrix}
-          \norm{\vu}^2
-          &
-          \norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2
-        \end{bmatrix}
-        \begin{bmatrix}
-          1 & - \Re(z)
-          \\
-          -\Re(z) & |z|^2
-        \end{bmatrix}
-        \begin{bmatrix}
-          \norm{\vu}^2
-          \\
-          \norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2
-        \end{bmatrix}
-        \\
-      \end{align*}
-      Cette matrice est positive. Mais elle n'est définie que si \((\Im(z))^2\not=0\). Dans ce cas, on a la coercivité \(\Sobolev[1]{(\Gamma})\).
+    % \begin{lemme}
+    % \label{lem:coercivite:operateur-l}
+    %   Soit \(z\in \CC\), \(\vu,\vv \in \Sobolev[1]{(\Gamma)}\) et \(a\) la forme bilinéaire
+    %   \begin{equation*}
+    %     a(\vect{u},\vect{v}) = \int_\Gamma(\oI + z\LL)\vect{u}\cdot\conj{\vect{v}}.
+    %   \end{equation*}
+    %   Si \(z\in \CC\backslash \RR_+^*\) alors \(a\) est coercive sur \(\Sobolev[1]{(\Gamma)}\).
+    % \end{lemme}
+    % \begin{proof}
+    %   On cherche à montrer que \(\exists \delta \in \RR^+, \forall \vu \in \Sobolev[1]{(\Gamma)}, |a(\vu,\vu)|^2\ge \delta\left(\norm{\vu}^2+\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)^2\).
+    %   \begin{align*}
+    %     |a(\vect{u},\vect{u})|^2 &= \left(\norm{\vu}^2-\Re(z)\left(\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)\right)^2 + \left(\Im(z)\left(\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)\right)^2
+    %     \\
+    %     &= \begin{bmatrix}
+    %       \norm{\vu}^2
+    %       &
+    %       \norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2
+    %     \end{bmatrix}
+    %     \begin{bmatrix}
+    %       1 & - \Re(z)
+    %       \\
+    %       -\Re(z) & |z|^2
+    %     \end{bmatrix}
+    %     \begin{bmatrix}
+    %       \norm{\vu}^2
+    %       \\
+    %       \norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2
+    %     \end{bmatrix}
+    %     \\
+    %   \end{align*}
+    %   Cette matrice est positive. Mais elle n'est définie que si \((\Im(z))^2\not=0\). Dans ce cas, on a la coercivité \(\Sobolev[1]{(\Gamma})\).
 
-      Si \(\Im(z)=0\) alors
-      \begin{align*}
-        a(\vect{u},\vect{u}) &= \norm{\vu}^2-\Re(z)\left(\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)
-        \\
-        &\ge \min(1,-\Re(z))\left(\norm{\vu}^2+\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)
-      \end{align*}
-      Il suffit que \(\Re(z) < 0 \) pour avoir la coercivité
-    \end{proof}
+    %   Si \(\Im(z)=0\) alors
+    %   \begin{align*}
+    %     a(\vect{u},\vect{u}) &= \norm{\vu}^2-\Re(z)\left(\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right)
+    %     \\
+    %     &\ge \min(1,-\Re(z))\left(\norm{\vu}^2+\norm{\vdivs{\vu}}^2+\norm{\vrots{\vu}}^2\right).
+    %   \end{align*}
+    %   Il suffit que \(\Re(z) < 0 \) pour avoir la coercivité
+    % \end{proof}
 
     \begin{defn}
       \label{def:csu:ci1-2}
@@ -298,9 +314,11 @@
     \end{prop}
 
     \begin{proof}
-      On suppose \(\Re(b)\le 0\) donc l'opérateur \(\oI + b\LL\) est injectif d'après le lemme \ref{lem:coercivite:operateur-l}. Il existe \(\vect{D}\) tel que
+      On suppose \(\Re(b)\le 0\) donc l'opérateur \(\oI + b\LL\) est injectif d'après la propriété \ref{prop:unicite:injectif:operateur:L}.
+
+      Il existe donc \(\vect{D}\) tel que
       \begin{align*}
-        \vJ &= (\oI + b \LL)\vect{D}.
+        (\oI + b \LL)^{-1}\vJ &= \vect{D}.
       \end{align*}
       Donc 
       \begin{align*}
@@ -313,7 +331,7 @@
         \vE_t &= (a_0\oI + a_1\LL)\vect{D},
         \\
         \int_\Gamma \vJ \cdot \conj{\vE_t} &= \int_\Gamma \vJ \cdot (\conj{a_0}\oI + \conj{a_1}\LL)\conj{\vect{D}}
-        \intertext{On rappelle \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\)},
+        \intertext{On rappelle \(\vJ = (\oI + b \LL)\vect{D}.\)},
         \\
         X &= \int_\Gamma (\oI + b \LL)\vect{D} \cdot (\conj{a_0}\oI + \conj{a_1}\LL)\conj{\vect{D}}.
         \\
