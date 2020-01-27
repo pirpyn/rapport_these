@@ -20,9 +20,9 @@
         \begin{multline*}
           \vE^{inc}_t(\vx) =
             \frac{\vE_t(\vx)}{2}
-              - \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vK(\vy) \dd{s}(\vy) \cdots \\
-            + \frac{i}{k}\vgrad \int_{\Gamma}  g(\vx - \vy)\vdiv\vJ(\vy)(\vx) \dd{s}(\vy)
-              +  ik\int_{\Gamma} g(\vx - \vy)\vJ(\vy) \dd{s}(\vy)
+              - \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vK(\vy) \dd{\Gamma}(\vy) \cdots \\
+            + \frac{i}{k}\vgrad \int_{\Gamma}  g(\vx - \vy)\vdiv\vJ(\vy)(\vx) \dd{\Gamma}(\vy)
+              +  ik\int_{\Gamma} g(\vx - \vy)\vJ(\vy) \dd{\Gamma}(\vy)
         \end{multline*}
       \end{prop}
 
@@ -35,9 +35,9 @@
         \begin{multline*}
           \vH^{inc}(\vx) =
           \frac{\vH_t(\vx)}{2}
-            - \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vJ(\vy) \dd{s}(\vy) \cdots \\
-          - \frac{i}{k} \vgrad \int_{\Gamma}  g(\vx - \vy)\vdiv\vK(\vy)\dd{s}(\vy)
-            - ik \int_{\Gamma} g(\vx - \vy)\vK(\vy)\dd{s}(\vy)
+            - \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vJ(\vy) \dd{\Gamma}(\vy) \cdots \\
+          - \frac{i}{k} \vgrad \int_{\Gamma}  g(\vx - \vy)\vdiv\vK(\vy)\dd{\Gamma}(\vy)
+            - ik \int_{\Gamma} g(\vx - \vy)\vK(\vy)\dd{\Gamma}(\vy)
         \end{multline*}
       \end{prop}
 
@@ -286,7 +286,7 @@
   \begin{defn}
     Soient \(f \in \Vect{\vect{f_1},\ldots,\vect{f_N}}\) et \(g \in \Vect{\vect{g_1},\ldots,\vect{g_N}}\), on définit la matrice \(\mG{f}{g}\) telle que
     \begin{equation*}
-      \mG{f}{g}_{ij} = \int_{\Gamma_h} \vect{f_i}(\vx)\cdot \vect{g_j}(\vx) \dd{s}(\vx)
+      \mG{f}{g}_{ij} = \int_{\Gamma_h} \vect{f_i}(\vx)\cdot \vect{g_j}(\vx) \dd{\Gamma}(\vx)
     \end{equation*}
   \end{defn}
 
@@ -345,9 +345,9 @@
 
     On définit alors deux éléments de \(L^2(\Gamma_h)\) :
     \begin{align*}
-      \vect{U}(\vx) &= \sum_{j=1}^N u_j \phij(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\phij(\vy)\dd{s}(\vy) \phij(\vx  )
+      \vect{U}(\vx) &= \sum_{j=1}^N u_j \phij(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\phij(\vy)\dd{\Gamma}(\vy) \phij(\vx  )
       \\
-      \vect{V}(\vx) &= \sum_{j=1}^N v_j \pj(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\pj(\vy)\dd{s}(\vy) \pj(\vx)
+      \vect{V}(\vx) &= \sum_{j=1}^N v_j \pj(\vx) = \sum_{j=1}^N \int_{\Gamma_h}\vect{W}(\vy)\cdot\pj(\vy)\dd{\Gamma}(\vy) \pj(\vx)
     \end{align*}
 
     Les deux propriétés se déduisent en injectant \(\vect{W}\) dans \(\vect{U}\) et \(\vect{V}\).
@@ -421,19 +421,19 @@
 
   \begin{multline}
     \label{eq:form_int:EFIE:var}
-    \int_{\Gamma} \vE^{inc}_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) =
-      \frac{1}{2} \int_{\Gamma} \vE_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
-        - \int_{\Gamma} \left( \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vK(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
-      - \frac{i}{k} \int_{\Gamma} \left( \int_{\Gamma}  g(\vx - \vy)\vdivs\vJ(\vy) \dd{s}(\vy) \right)\vdivs \vect{\phi}(\vx) \dd{s}(\vx) \\
-        +  ik\int_{\Gamma} \left( \int_{\Gamma} g(\vx - \vy)\vJ(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx)
+    \int_{\Gamma} \vE^{inc}_t(\vx) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx) =
+      \frac{1}{2} \int_{\Gamma} \vE_t(\vx) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx) \\
+        - \int_{\Gamma} \left( \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vK(\vy) \dd{\Gamma}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx) \\
+      - \frac{i}{k} \int_{\Gamma} \left( \int_{\Gamma}  g(\vx - \vy)\vdivs\vJ(\vy) \dd{\Gamma}(\vy) \right)\vdivs \vect{\phi}(\vx) \dd{\Gamma}(\vx) \\
+        +  ik\int_{\Gamma} \left( \int_{\Gamma} g(\vx - \vy)\vJ(\vy) \dd{\Gamma}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx)
   \end{multline}
   \begin{multline}
     \label{eq:form_int:MFIE:var}
-    \int_{\Gamma} \vH^{inc}_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) =
-      \frac{1}{2} \int_{\Gamma} \vH_t(\vx) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
-        - \int_{\Gamma} \left( \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vJ(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx) \\
-      + \frac{i}{k} \int_{\Gamma} \left( \int_{\Gamma}  g(\vx - \vy)\vdivs\vK(\vy) \dd{s}(\vy) \right)\vdivs \vect{\phi}(\vx) \dd{s}(\vx) \\
-        -  ik\int_{\Gamma} \left( \int_{\Gamma} g(\vx - \vy)\vK(\vy) \dd{s}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{s}(\vx)
+    \int_{\Gamma} \vH^{inc}_t(\vx) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx) =
+      \frac{1}{2} \int_{\Gamma} \vH_t(\vx) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx) \\
+        - \int_{\Gamma} \left( \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vJ(\vy) \dd{\Gamma}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx) \\
+      + \frac{i}{k} \int_{\Gamma} \left( \int_{\Gamma}  g(\vx - \vy)\vdivs\vK(\vy) \dd{\Gamma}(\vy) \right)\vdivs \vect{\phi}(\vx) \dd{\Gamma}(\vx) \\
+        -  ik\int_{\Gamma} \left( \int_{\Gamma} g(\vx - \vy)\vK(\vy) \dd{\Gamma}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx)
   \end{multline}
 
   Ceci est l'expression continue de la formulation variationnelle des équations intégrales. Dans la suite nous approcherons cette forme variationnelle à l'aide des familles de fonction présentées précédemment. De plus, dans un abus de notation, nous omettrons le \(-1/2\) dans l'espace \(\Sobolev[div]^{-1/2}(\Gamma)\equiv\Sobolev[div](\Gamma)\).
@@ -444,7 +444,7 @@
 
 \section{Contribution de la CIOE dans la discrétisation de la forme variationnelle}
 
-  On prend comme fonction test \(\phii\), la fonction de base associée à l'arête \(i\).
+  On prend comme fonction test \(\phii\), la fonction de base associée à l'arête \(i\) qui appartient à \(\Hdiv(\Gamma_h)\).
   On décompose \(\vJ,\vK \in \Hdiv(\Gamma)\) sur les fonctions de base \(\phij \in \Hdiv(\Gamma_h)\).
     \begin{align*}
       \vJ & \simeq \sum_{j=1}^N I_j \phij,
@@ -452,7 +452,7 @@
       \vK & \simeq \sum_{j=1}^N k_j \phij.
     \end{align*}
 
-  Il reste alors à trouver une bonne approximations de \(\vE_t\) et \(\vH_t\) pour exprimer \( \frac{1}{2} \int_{\Gamma} \vE_t(\vx) \cdot \phii(\vx) \dd{s}(\vx)\) et \(\frac{1}{2} \int_{\Gamma} \vH_t(\vx) \cdot \phii(\vx) \dd{s}(\vx)\) en fonctions des inconnues \(\vJ, \vK\). Selon la CIOE employée, cette décomposition ne sera pas la même. Notre but est alors de trouver une formulation qui se comporte bien quand on déduit d'une CIOE un autre plus simple. C'est-à-dire que la formulation intégrale déterminée avec la CI3 doit être équivalente à la formulation intégrale déterminée avec la CI0 quand les coefficients \(a_1,a_2,b_1,b_2\) sont nuls. En effet, à cause des opérateurs différentiels, nous ne représenterons pas \(\vE_t\) et \(\vH_t\) à l'aide d'une seule famille, mais potentiellement plusieurs familles. Nous préciserons lesquels dans la suite.
+  Il reste alors à trouver une bonne approximations de \(\vE_t\) et \(\vH_t\) pour exprimer \( \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)\) et \(\frac{1}{2} \int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)\) en fonctions des inconnues \(\vJ, \vK\). Selon la CIOE employée, cette décomposition ne sera pas la même. Notre but est alors de trouver une formulation qui se comporte bien quand on déduit d'une CIOE un autre plus simple. C'est-à-dire que la formulation intégrale déterminée avec la CI3 doit être équivalente à la formulation intégrale déterminée avec la CI0 quand les coefficients \(a_1,a_2,b_1,b_2\) sont nuls. En effet, à cause des opérateurs différentiels, nous ne représenterons pas \(\vE_t\) et \(\vH_t\) à l'aide d'une seule famille, mais potentiellement plusieurs familles. Nous préciserons lesquels dans la suite.
 
   \subsection[Discrétisation des opérateurs LD, LR]{Discrétisation des opérateurs \(\LD,\LR\)}
     Les CIOE font intervenir les opérateurs différentiels \gls{ope-LD}, \gls{ope-LR}. On introduit donc les matrices \(\mLD,\mLR\) correspondantes.
@@ -460,10 +460,10 @@
     Comme les \(\phij\) sont dans \(\Hdiv\), de l'opérateur \gls{ope-LD} on définit la matrice \(\mLD\)
     \begin{defn}[Discrétisation de l'opérateur \(\LD\)]
       \begin{align*}
-          \mLD = - \sum_{j=1}^N \int_{\Gamma_h} \vdivs \phij(\vx) \vdivs \phii(\vx) \dd{s}(\vx)
+          \mLD = - \sum_{j=1}^N \int_{\Gamma_h} \vdivs \phij(\vx) \vdivs \phii(\vx) \dd{\Gamma}(\vx)
       \end{align*}
     \end{defn}
-    Par définition des fonctions \(\phij\), on ne peut pas définir \( \int_{\Gamma_h} \LR(\phii)(\vx) \cdot \phij(\vx) \dd{s}(\vx)\) puisqu'elles ne sont pas dans \(\Hrot\).
+    Par définition des fonctions \(\phij\), on ne peut pas définir \( \int_{\Gamma_h} \LR(\phii)(\vx) \cdot \phij(\vx) \dd{\Gamma}(\vx)\) puisqu'elles ne sont pas dans \(\Hrot\).
 
     On projette alors les fonctions \(\phij\) sur les fonctions \(\pj\) grâce aux \(\qj\).
     \begin{defn}[Discrétisation de l'opérateur \(\LR\)]
@@ -478,11 +478,11 @@
     \begin{proof}
       Cette propriété est démontrée par \cite[eq.~(17)]{stupfel_implementation_2015}. On projette les fonctions \(\phij\) sur les fonctions \(\pj\).
       \begin{align*}
-        \int_{\Gamma_h} \phii(\vx) \cdot \LR(\phij)(\vx) \dd{s}(\vx) &\simeq \int_{\Gamma_h} \Pi(\phii)(\vx) \cdot \LR(\Pi(\phij)) (\vx) \dd{s}(\vx)
+        \int_{\Gamma_h} \phii(\vx) \cdot \LR(\phij)(\vx) \dd{\Gamma}(\vx) &\simeq \int_{\Gamma_h} \Pi(\phii)(\vx) \cdot \LR(\Pi(\phij)) (\vx) \dd{\Gamma}(\vx)
         \\
-        &=\sum_{n=1}^{N} \sum_{m=1}^{N} \mPP_{ni} \mPP_{mj} \int_{\Gamma_h}\pn(\vx)\cdot\LR(\ppm)) \dd{s}(\vx)
+        &=\sum_{n=1}^{N} \sum_{m=1}^{N} \mPP_{ni} \mPP_{mj} \int_{\Gamma_h}\pn(\vx)\cdot\LR(\ppm)) \dd{\Gamma}(\vx)
         \\
-        &=-\sum_{n=1}^{N} \sum_{m=1}^{N} \mPP_{ni} \mPP_{mj} \int_{\Gamma_h}\phin(\vx)\cdot\LD(\phim)) \dd{s}(\vx)
+        &=-\sum_{n=1}^{N} \sum_{m=1}^{N} \mPP_{ni} \mPP_{mj} \int_{\Gamma_h}\phin(\vx)\cdot\LD(\phim)) \dd{\Gamma}(\vx)
         \\
         &=-\sum_{n=1}^{N} \sum_{m=1}^{N} \mPP_{ni} \mPP_{mj} \mLD_{nm}
       \end{align*}
@@ -492,14 +492,14 @@
 
     \begin{equation*}
       \begin{aligned}
-        \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{s}(\vx)
-        &= \frac{1}{2} \int_{\Gamma_h}  \left( \left(I_d + b_1 \LD - b_2 \LR\right) \vJ (\vx)\right.
+        \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)
+        &= \frac{1}{2} \int_{\Gamma_h}  \left( \left(\oI + b_1 \LD - b_2 \LR\right) \vJ (\vx)\right.
         \\
-        & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right) \cdot \phii(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx)
         \\
-        & \simeq \frac{1}{2} \sum_{j=1}^N \int_{\Gamma_h} \left( \left(I_d + b_1 \LD - b_2 \LR\right) I_j \phij (\vx)\right.
+        & \simeq \frac{1}{2} \sum_{j=1}^N \int_{\Gamma_h} \left( \left(\oI + b_1 \LD - b_2 \LR\right) I_j \phij (\vx)\right.
         \\
-        & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) e_j \phij (\vx) \right) \cdot \phii(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) e_j \phij (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx)
         \\
         & = \frac{1}{2} \left( \left(\mG{\phi}{\phi} + b_1 \mLD - b_2 \mLR\right) \vect{I}  - \left( b_1 \mLD - b_2 \mLR\right) \vect{e}\right)
       \end{aligned}
@@ -516,7 +516,7 @@
     Donc la contribution des CIOE à l'EFIE est
     \begin{equation*}
       \begin{aligned}
-        \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{s}(\vx)
+        \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)
         & \simeq \frac{1}{2} \left( \left(\mM + b_1 \mLD - b_2 \mLR\right) \vect{I}  - \left( b_1 \mLD - b_2 \mLR\right) \mPP \vect{m}\right)
       \end{aligned}
     \end{equation*}
@@ -526,24 +526,24 @@
     Pour la MFIE, on commence par remarquer que
     \begin{equation*}
       \begin{aligned}
-        \frac{1}{2}\int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{s}(\vx)
-        &= \frac{1}{2}\int_{\Gamma_h} \vJ(\vx) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
+        \frac{1}{2}\int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)
+        &= \frac{1}{2}\int_{\Gamma_h} \vJ(\vx) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx)
         \\
-        &= \frac{1}{2a_0}\int_{\Gamma_h} \left( \left(I_d + b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right.
+        &= \frac{1}{2a_0}\int_{\Gamma_h} \left( \left(\oI + b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right.
         \\
-        & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx)
         \\
-        &= \frac{1}{2a_0}\int_{\Gamma_h} \left( -\left(I_d + b_1 \LD - b_2 \LR\right) \vn \pvect \vK (\vx) \right.
+        &= \frac{1}{2a_0}\int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) \vn \pvect \vK (\vx) \right.
         \\
-        & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx)
         \\
-        & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(I_d + b_1 \LD - b_2 \LR\right) k_j \vn \pvect   \phij (\vx) \right.
+        & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) k_j \vn \pvect   \phij (\vx) \right.
         \\
-        & \hspace{5em} \left. - \left(a_1 \LD - a_2 \LR\right) I_j' \vn \pvect \phij (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left. - \left(a_1 \LD - a_2 \LR\right) I_j' \vn \pvect \phij (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx)
         \\
-        & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(I_d + b_1 \LR - b_2 \LD\right) k_j \phij (\vx) \right.
+        & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_1 \LR - b_2 \LD\right) k_j \phij (\vx) \right.
         \\
-        & \hspace{5em} \left. - \left(a_1 \LR - a_2 \LD\right) I_j' \phij (\vx) \right) \cdot \phii(\vx) \dd{s}(\vx)
+        & \hspace{5em} \left. - \left(a_1 \LR - a_2 \LD\right) I_j' \phij (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx)
         \\
         & = \frac{1}{2a_0} \left( -\left(\mG{\phi}{\phi} + b_1 \mLR - b_2 \mLD\right) \vect{k}  - \left( a_1 \mLR - a_2 \mLD\right) \vect{I'}\right)
         \\
@@ -553,7 +553,7 @@
     Donc la contribution des CIOE à la MFIE est
     \begin{equation*}
       \begin{aligned}
-        \frac{1}{2}\int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{s}(\vx)
+        \frac{1}{2}\int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)
         &\simeq -\frac{1}{2a_0} \left( \left(\mM + b_1 \mLR - b_2 \mLD\right) \vect{k}  + \left( a_1 \mLR - a_2 \mLD\right) \mPP \vect{I} \right)
       \end{aligned}
     \end{equation*}
@@ -569,10 +569,10 @@
 
     \begin{align*}
       S_{pq}
-        &= ik \int_{\Gamma_h} \left( \int_{\Gamma_h} g(\vx - \vy) \phip(\vy) \dd{s}(\vy) \right) \cdot \phiq (\vx)\dd{s}(\vx) \cdots\\
-        \notag&~+ \frac{i}{k}\int_{\Gamma_h} \left( \int_{\Gamma_h} g(\vx - \vy) \vdiv \phip (\vy) \dd{s}(\vy) \right) \vdiv \phiq(\vx)\dd{s}(\vx)\\
+        &= ik \int_{\Gamma_h} \left( \int_{\Gamma_h} g(\vx - \vy) \phip(\vy) \dd{\Gamma}(\vy) \right) \cdot \phiq (\vx)\dd{\Gamma}(\vx) \cdots\\
+        \notag&~+ \frac{i}{k}\int_{\Gamma_h} \left( \int_{\Gamma_h} g(\vx - \vy) \vdiv \phip (\vy) \dd{\Gamma}(\vy) \right) \vdiv \phiq(\vx) \dd{\Gamma}(\vx)\\
       \tilde{S}_{pq}
-        &= \int_{\Gamma_h} \left( \int_{\Gamma_h} \vgrad g(\vx - \vy) \pvect \phip(\vy) \dd{s}(\vy) \right) \cdot \phiq(\vx)\dd{s}(\vx)
+        &= \int_{\Gamma_h} \left( \int_{\Gamma_h} \vgrad g(\vx - \vy) \pvect \phip(\vy) \dd{\Gamma}(\vy) \right) \cdot \phiq(\vx) \dd{\Gamma}(\vx)
     \end{align*}
   \end{defn}
 
@@ -585,8 +585,8 @@
 
   Le second membre est obtenu en projetant le champ incident
     \begin{align*}
-      b_i^E &= \int_{\Gamma_h} \vE_t^{inc}(\vx) \cdot \phii(\vx)\dd{s}(\vx) \\
-      b_i^H &= \int_{\Gamma_h} \vH_t^{inc}(\vx) \cdot \phii(\vx)\dd{s}(\vx)
+      b_i^E &= \int_{\Gamma_h} \vE_t^{inc}(\vx) \cdot \phii(\vx)\dd{\Gamma}(\vx) \\
+      b_i^H &= \int_{\Gamma_h} \vH_t^{inc}(\vx) \cdot \phii(\vx)\dd{\Gamma}(\vx)
     \end{align*}
 
   \begin{prop}

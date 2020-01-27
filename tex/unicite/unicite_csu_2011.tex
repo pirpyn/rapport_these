@@ -49,10 +49,8 @@
     Si \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\) alors l'opérateur \(\mathcal{P}\) est injectif sur \(V\).
   \end{prop}
   \begin{proof}
-    Soit \(\vu \in \Ker{\mathcal{P}}\). Donc
+    Soit \(\vu \in \Ker{\mathcal{P}}\). Donc \(\mathcal{P}\vu  = 0\) ce qui implique,
     \begin{align*}
-      \mathcal{P}\vu &= 0
-      \\
       \int_\Gamma \mathcal{P}\vu\cdot\conj{\vu}  &= 0
       \\
       & = \int_\Gamma (a_0\oI + a_1 \LL)\vu\cdot\conj{\vu}
@@ -80,12 +78,30 @@
   
   On rappelle que l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu} soit \(\Re(X)\ge0\) où \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\) sachant que \gls{phy-J} est la trace tangentielle sur \(\Gamma\) de l’excitation magnétique (\(\vJ = \vn \pvect \vH\)).
 
+  Le problème dont on veut prouver que \((\vE,\vH) = (0,0)\) est l'unique solution est 
+  \begin{equation}
+    \label{eq:unicite:probleme_sans_ci}
+    \begin{aligned}
+      \left\lbrace
+      \begin{aligned}
+        \vrot{\vE} + ik_0\vH &= 0
+        \\
+        \vrot{\vH} - ik_0\vE &= 0
+      \end{aligned}
+      \right. && \text{dans \(\OO^c_R\)},
+      \\
+      \Tr(\vE_t) = - \vn_{S_R} \pvect \vH && \text{sur \(S_R\),}
+      \\
+      \text{Une condition limite définis ci-après }  && \text{sur \(\Gamma\).}
+    \end{aligned}
+  \end{equation}
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI0}
     Considérons la condition d’impédance de Leontovich, la \hyperlink{ci0}{CI0} caractérisée par
     \begin{align}
       \label{eq:unicite:ci0}
-      \vE_t = a_0 \vJ && \forall a_0 \in \CC
+      \vE_t = a_0 \vJ &&  a_0 \in \CC
     \end{align}
 
     \begin{defn}
@@ -98,11 +114,11 @@
 
     \begin{prop}[Une CSU pour la CI0]
       \label{prop:csu:ci0}
-      Il suffit que
+      Si
       \begin{equation*}
         a_0 \in \CSU{CI0}
       \end{equation*}
-      pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
+      alors le problème \eqref{eq:unicite:probleme_sans_ci} avec la CI0 a une unique solution.
     \end{prop}
     \begin{proof}
       Cela découle de \( X = \conj{a_0}\norm{\vJ}^2\) donc \(\Re(X) = \Re(a_0)\norm{\vJ}^2 \).
@@ -131,11 +147,11 @@
 
     \begin{prop}[Une CSU pour la CI01]
       \label{prop:csu:ci01}
-      Il suffit que
+      Si
       \begin{equation*}
         (a_0,a_1) \in \CSU{CI01}
       \end{equation*}
-      pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
+      alors le problème \eqref{eq:unicite:probleme_sans_ci} avec la CI01 a une unique solution.
     \end{prop}
     \begin{proof}
       On a
@@ -202,7 +218,7 @@
       \begin{equation*}
         (a_0,a_1,b) \in \CSU[1]{CI1} \Rightarrow \Re(X)\ge 0. 
       \end{equation*}
-      C'est à dire \((a_0,a_1,b) \in \CSU[1]{CI1}\) entraîne l'unicité de la solution du problème de Maxwell extérieur.
+      C'est à dire \((a_0,a_1,b) \in \CSU[1]{CI1}\) entraîne l'unicité de la solution du problème \eqref{eq:unicite:probleme_sans_ci} avec la CI1.
     \end{prop}
 
     \begin{proof}
@@ -211,7 +227,7 @@
         \Delta X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \vJ\right)\cdot\conj{\vE_t} - \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
         \intertext{Comme l'opérateur \(\LL\) est symétrique}
         \Delta X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \conj{\vE_t}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}
-        \intertext{Par définition de la CI1}
+        \intertext{En utilisant la CI1}
         \Delta X &= \int_\Gamma \left(a_1(\conj{a_0}+\conj{a_1}\LL) \conj{\vJ}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(\oI +b \LL)\vE_t\right)\cdot\conj{\vE_t} \\
         \Delta X &= a_1\conj{a_0} \norm{ \vJ }^2 - |a_1|^2 \left(\norm{\vdivs{\vJ}}^2 + \norm{\vrots{\vJ}}^2\right) - \conj{b} \norm{ \vE_t }^2 + |b|^2\left(\norm{\vdivs{\vE_t}}^2 + \norm{\vrots{\vE_t}}^2\right)
       \end{align*}
@@ -238,7 +254,7 @@
       \CSU[1]{CI1} &\subset \CSU{CI01}\times\CC
       \\
       \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &\subsetneq (\CSU{CI01}\times\lbrace0\rbrace)
-      \intertext{C'est insatisfaisant, la CIOE CI1 avec \(b=0\) est équivalente à la CI01.
+      \intertext{Comme La CIOE CI1 avec \(b=0\) est équivalente à la CI01, cela veut dire que cette CSU n'est pas idéale. 
       Plus précisément, soit \(S = \lbrace (a_0,a_1) \in \CC^2; \Re(a_1)=0 \rbrace\), on a}
       \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &= ((\CSU{CI01}\cap S) \times\lbrace0\rbrace) 
     \end{align}
@@ -306,15 +322,15 @@
 
     \begin{prop}[Une deuxième CSU pour la CI1]
       \label{prop:csu:ci1-2}
-      Il suffit que
+      On a 
       \begin{equation*}
-        (a_0,a_1,b) \in \CSU[2]{CI1}
+        (a_0,a_1,b) \in \CSU[2]{CI1} \Rightarrow \Re(X)\ge 0. 
       \end{equation*}
-      pour que \(\Re(X)\ge 0\), ce qui entraîne l'unicité.
+      C'est à dire \((a_0,a_1,b) \in \CSU[2]{CI1}\) entraîne l'unicité de la solution du problème \eqref{eq:unicite:probleme_sans_ci} avec la CI1.
     \end{prop}
 
     \begin{proof}
-      On suppose \(\Re(b)\le 0\) donc l'opérateur \(\oI + b\LL\) est injectif d'après la propriété \ref{prop:unicite:injectif:operateur:L}.
+      Comme on suppose \(\Re(b)\le 0\) donc l'opérateur \(\oI + b\LL\) est injectif d'après la propriété \ref{prop:unicite:injectif:operateur:L}.
 
       Il existe donc \(\vect{D}\) tel que
       \begin{align*}
