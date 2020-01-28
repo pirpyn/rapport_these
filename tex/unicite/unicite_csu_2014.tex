@@ -3,12 +3,15 @@
   \begin{defn}
     On définit les opérateurs \gls{ope-LD} et \gls{ope-LR} tels que %sont introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\) 
 
-    Pour tous \(\vu \in \mathcal{C}^\infty(\Gamma)\): 
-    \begin{align*}
-      \LD(\vu) &= \vgrads \vdivs \vu
-      \\
-      \LR(\vu) &= \vrots \vrots \vu
-    \end{align*}
+    \begin{equation*}
+      \begin{aligned}
+        &\fonction{\LD}{(\mathcal{C}^\infty(\Gamma))^3}{(\mathcal{C}^\infty(\Gamma))^3}%
+          {\vu}{\vgrads{\vdivs \vu}}
+        \\
+        &\fonction{\LR}{(\mathcal{C}^\infty(\Gamma))^3}{(\mathcal{C}^\infty(\Gamma))^3}%
+          {\vu}{\vrots{\vrots \vu}}
+      \end{aligned}
+    \end{equation*}
   \end{defn}
 
   \begin{prop}
@@ -16,7 +19,7 @@
   \end{prop}
 
   \begin{proof}
-    Pour tous \(\vu \in \Sobolev[div](\Gamma)\cap\Sobolev[rot]{(\Gamma)}\),
+    Pour tous \(\vu \in (\mathcal C^\infty(\Gamma))^3\),
     \begin{align*}
       \int_\Gamma \LD(\vu)\cdot \conj{\vu} &= -\norm{\vdivs \vu}^2
       \\
@@ -24,25 +27,26 @@
     \end{align*}
   \end{proof}
 
+  Soit \(V=(\mathcal{C}^\infty(\Gamma))^3\).
   \begin{prop}
     \label{prop:unicite:injectif:operateur:LD}
-    Soit \(\vu \in \Sobolev[div]{(\Gamma)}\).
+    Soit \(\vu \in V\).
 
     Soit \(\mathcal{P}_D\) l'opérateur tel que \(\mathcal{P}_D\vu = (a_0\oI + a_1 \LD)\vu\).
 
-    Si \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\) alors l'opérateur \(\mathcal{P}_D\) est injectif sur \(\Sobolev[div]{(\Gamma)}\).
+    Si \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\) alors l'opérateur \(\mathcal{P}_D\) est injectif sur \(V\).
   \end{prop}
   \begin{prop}
     \label{prop:unicite:injectif:operateur:LR}
-    Soit \(\vu \in \Sobolev[rot]{(\Gamma)}\).
+    Soit \(\vu \in V\).
 
     Soit \(\mathcal{P}_R\) l'opérateur tel que \(\mathcal{P}_R\vu = (a_0\oI - a_2 \LR)\vu\).
 
-    Si \(\Re(a_0)\ge 0\) et \(\Re(a_2)\le 0\) alors l'opérateur \(\mathcal{P}_R\) est injectif sur \(\Sobolev[rot]{(\Gamma)}\).
+    Si \(\Re(a_0)\ge 0\) et \(\Re(a_2)\le 0\) alors l'opérateur \(\mathcal{P}_R\) est injectif sur \(V\).
   \end{prop}
   \begin{prop}
     \label{prop:unicite:injectif:operateur:LD-LR}
-    Soit \(\vu \in V=\Sobolev[div]{(\Gamma)}\cap \Sobolev[rot]{(\Gamma)}\).
+    Soit \(\vu \in V\).
     
     Soit \(\mathcal{P}\) l'opérateur tel que \(\mathcal{P}\vu = (a_0\oI + a_1 \LD - a_2\LR)\vu\).
 
@@ -53,16 +57,16 @@
   \end{proof}
 
   \begin{prop}
-    Soit \(\OO\) un domaine borné de \(\RR^3\), de surface \(\Gamma\) fermée et régulière, de normale unitaire sortante \(\vect n\) et \(\vect{U} \in \mathcal{C}^{\infty}(\Gamma)\) alors
+    Soit \(\OO\) un domaine borné de \(\RR^3\), de surface \(\Gamma\) fermée et régulière, de normale unitaire sortante \(\vect n\) et \(\vect{U} \in (\mathcal{C}^\infty(\Gamma))^3\) alors
     \begin{equation*}
         \LR(\LD(\vu)) = \LD(\LR(\vu)) = 0.
     \end{equation*}
   \end{prop}
 
   \begin{proof}
-    Soit (\(x_1,x_2\)) un système de coordonnées locales à \(\Gamma\)
+    Soit (\(x_1,x_2\)) un système de coordonnées locales sur \(\Gamma\).
 
-    Soit un vecteur tangent défini en tout point de la surface. On définie une base locale \(\vect{u_1},\vect{u_2},\vect{n}\) où \((\vect{u_1},\vect{u_2})\) sont tangents à \(\Gamma\) et \(\vn\) est le vecteur normal unitaire sortant à \(\Gamma\).
+    Soit un vecteur tangent défini en tout point de la surface. On définit une base locale \(\vect{u_1},\vect{u_2},\vect{n}\) où \((\vect{u_1},\vect{u_2})\) sont tangents à \(\Gamma\) et \(\vn\) est le vecteur normal unitaire sortant à \(\Gamma\).
     \[
       \vect{U} = 
       \begin{bmatrix}
@@ -211,57 +215,57 @@
   \end{prop}
 
   \begin{proof}
-    Soit \(\LL_3\) l'opérateur tel que
+    Soit \(\LL_3\) l'opérateur
     \begin{equation}
       \label{eq:unicite:ci3:L3}
       \fonction{\LL_3}{(\mathcal{C}^\infty(\Gamma))^3 \times (\mathcal{C}^\infty(\Gamma))^3}{(\mathcal{C}^\infty(\Gamma))^3}
       {(\vE_t,\vJ)}{( \oI + b_1 \LD - b_2 \LR) \vE_t - (a_0\oI + a_1 \LD - a_2 \LR ) \vJ}
     \end{equation}
 
-    On utilise l'identité \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot \vJ = 0\) qui découle de la CI3, et dont on déduit
+    On utilise l'identité \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot \vJ \dd{\Gamma}(\vx) = 0\) qui découle de la CI3, et dont on déduit
     \begin{multline}
       \label{eq:unicite:ci3:csu3-1}
-      \int_\Gamma \vJ \cdot \conj{\vE_t}   + \conj{b_1} \int_\Gamma \vJ\cdot \LD\conj{\vE_t}  - \conj{b_2} \int_\Gamma \vJ \LR\conj{\vE_t}  \\
-      = \conj{a_0} \norm{\vJ}^2ds - \conj{a_1} \norm{\vdivs \vJ}^2  - \conj{a_2} \norm{\vrots \vJ}^2 
+      \int_\Gamma \vJ \cdot \conj{\vE_t}\dd{\Gamma}(\vx)   + \conj{b_1} \int_\Gamma \vJ\cdot \LD\conj{\vE_t}\dd{\Gamma}(\vx)  - \conj{b_2} \int_\Gamma \vJ \LR\conj{\vE_t}\dd{\Gamma}(\vx)  \\
+      = \conj{a_0} \norm{\vJ}^2 - \conj{a_1} \norm{\vdivs \vJ}^2  - \conj{a_2} \norm{\vrots \vJ}^2 
     \end{multline}
     On utilise de même \(\int_\Gamma {\LL_3(\vE_t,\vJ)}\cdot \conj{\vE_t} = 0\)
     \begin{multline}
       \label{eq:unicite:ci3:csu3-2}
-      \norm{\vE_t}^2   - b_1 \norm{ \vdivs \vE }^2  - b_2 \norm{\vrots \vE_t}^2  \\
-      = a_0 \int_\Gamma \vJ\cdot \conj{\vE_t} + a_1 \int_\Gamma \conj{\vE_t} \LD \vJ  - a_2 \int_\Gamma \conj{\vE_t} \cdot \LR \vJ 
+      \norm{\vE_t}^2   - b_1 \norm{ \vdivs \vE }^2  - b_2 \norm{\vrots \vE_t}^2\dd{\Gamma}(\vx)  \\
+      = a_0 \int_\Gamma \vJ\cdot \conj{\vE_t}\dd{\Gamma}(\vx) + a_1 \int_\Gamma \conj{\vE_t} \LD \vJ\dd{\Gamma}(\vx)  - a_2 \int_\Gamma \conj{\vE_t} \cdot \LR \vJ \dd{\Gamma}(\vx)
     \end{multline}
-    On utilise \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot\LR\vJ = 0\)
+    On utilise \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot\LR\vJ\dd{\Gamma}(\vx) = 0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-3}
-      \int_\Gamma \vJ \cdot \LR \conj{\vE_t}   - \conj{b_2} \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t}
+      \int_\Gamma \vJ \cdot \LR \conj{\vE_t}\dd{\Gamma}(\vx)   - \conj{b_2} \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t}\dd{\Gamma}(\vx)
       =  \conj{a_0} \norm{ \vrots \vJ}^2ds - \conj{a_2} \norm{ \LR \vJ}^2 
     \end{equation}
-    On utilise \(\int_\Gamma {\LL_3(\vE_t,\vJ)}\cdot\LR\conj{\vE_t}=0\)
+    On utilise \(\int_\Gamma {\LL_3(\vE_t,\vJ)}\cdot\LR\conj{\vE_t}\dd{\Gamma}(\vx)=0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-4}
       \norm{ \vrots \vE_t }^2   - \conj{b_2} \norm{ \LR \vE_t}^2 
-      = a_0 \int_\Gamma \conj{\vE_t} \cdot \LR \vJ  - a_2 \int_\Gamma \LR \conj{\vE_t} \cdot \LR \vJ 
+      = a_0 \int_\Gamma \conj{\vE_t} \cdot \LR \vJ \dd{\Gamma}(\vx) - a_2 \int_\Gamma \LR \conj{\vE_t} \cdot \LR \vJ \dd{\Gamma}(\vx)
     \end{equation}
-    On utilise \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot\LD\vJ=0\)
+    On utilise \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot\LD\vJ\dd{\Gamma}(\vx)=0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-5}
-      \int_\Gamma \vJ \cdot \LD \conj{\vE_t}   + \conj{b_1} \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t}
-      = - \conj{a_0} \norm{\vdivs \vJ}^2ds + \conj{a_1} \norm{ \LD \vJ}^2 
+      \int_\Gamma \vJ \cdot \LD \conj{\vE_t}\dd{\Gamma}(\vx)   + \conj{b_1} \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t}\dd{\Gamma}(\vx)
+      = - \conj{a_0} \norm{\vdivs \vJ}^2 + \conj{a_1} \norm{ \LD \vJ}^2 
     \end{equation}
-    On utilise \(\int_\Gamma {\LL_3(\vE_t,\vJ)}\cdot\LD\conj{\vE_t}=0\)
+    On utilise \(\int_\Gamma {\LL_3(\vE_t,\vJ)}\cdot\LD\conj{\vE_t}\dd{\Gamma}(\vx)=0\)
     \begin{equation}
       \label{eq:unicite:ci3:csu3-6}
       -\norm{ \vdivs \vE_t }^2   + \conj{b_1} \norm{ \LD \vE_t}^2
-      = a_0 \int_\Gamma \conj{\vE_t} \cdot \LD \vJ  + a_1 \int_\Gamma \LD \conj{\vE_t} \cdot \LD \vJ 
+      = a_0 \int_\Gamma \conj{\vE_t} \cdot \LD \vJ\dd{\Gamma}(\vx)  + a_1 \int_\Gamma \LD \conj{\vE_t} \cdot \LD \vJ \dd{\Gamma}(\vx)
     \end{equation}
 
     On note
     \begin{align*}
-      Y_D &= \int_\Gamma \vJ \cdot \LD \conj{\vE_t}  &
-      Y_R &= \int_\Gamma \vJ \cdot \LR \conj{\vE_t} 
+      Y_D &= \int_\Gamma \vJ \cdot \LD \conj{\vE_t}\dd{\Gamma}(\vx),  &
+      Y_R &= \int_\Gamma \vJ \cdot \LR \conj{\vE_t} \dd{\Gamma}(\vx),
       \\
-      Z_D &= \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t}  &
-      Z_R &= \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t} 
+      Z_D &= \int_\Gamma \LD \vJ \cdot \LD \conj{\vE_t}\dd{\Gamma}(\vx),  &
+      Z_R &= \int_\Gamma \LR \vJ \cdot \LR \conj{\vE_t} \dd{\Gamma}(\vx).
     \end{align*}
 
     Les 4 égalités \eqref{eq:unicite:ci3:csu3-1} à \eqref{eq:unicite:ci3:csu3-4} sont équivalentes au système
@@ -359,9 +363,11 @@
       \end{bmatrix}.
     \end{align*}
     
-    On déduit alors \(X_D\) et \(X_R\) en fonction des normes présentes dans \(F_D\) et \(F_R\). Informellement, \(X_D = A \norm{\vJ}^2 + B \norm{\vdivs \vJ}^2 + \ldots \) Une condition suffisante est que toutes les constantes \(A,B \ldots\) soient positives.
+    On déduit alors les vecteurs \(X_D\) et \(X_R\) en fonction des normes présentes dans \(F_D\) et \(F_R\), et donc pour chacun de ces vecteurs, on a une expression de \(X\). 
+    Cette dernière quantité est une combinaison linéaire de toutes les normes rencontrées, donc \(X = A_{D/R} \norm{\vJ}^2 + B_{D/R} \norm{\vdivs \vJ}^2 + \ldots \)
+    Une condition suffisante sur la positivité de la partie réelle de \(X\) est que toutes les parties réelles de ces  constantes \(A_{D/R},B_{D/R} \ldots\) soient positives.
 
-    On pose \(\Theta=\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\).
+    On pose \(\Theta=\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\). Les conditions suivantes garantissent que \(\Re(X)\ge 0\).
 
     \begin{minipage}{0.49\textwidth}
       {Système \(\mM_RX_R=F_R\)}:
@@ -377,6 +383,7 @@
       \end{align}
       \eqref{eq:unicite:ci3:csu3r-jrj} et \eqref{eq:unicite:ci3:csu3r-ere} impliquent :
       \begin{equation}
+        \label{eq:unicite:ci3:csu3r-jre}
         \Re\left(\Delta_2\right) = 0
       \end{equation}
     \end{minipage}
@@ -394,19 +401,21 @@
       \end{align}
       \eqref{eq:unicite:ci3:csu3d-jdj} et \eqref{eq:unicite:ci3:csu3d-ede} impliquent :
       \begin{equation}
+        \label{eq:unicite:ci3:csu3d-jde}
         \Re\left(\Delta_1\right) = 0
       \end{equation}
     \end{minipage}
 
-   \eqref{eq:unicite:ci3:csu3r-rj2} \& \eqref{eq:unicite:ci3:csu3r-re2} et \eqref{eq:unicite:ci3:csu3d-dj2} \& \eqref{eq:unicite:ci3:csu3d-de2} impliquent
+    Enfin \eqref{eq:unicite:ci3:csu3r-rj2} \& \eqref{eq:unicite:ci3:csu3r-re2} et \eqref{eq:unicite:ci3:csu3d-dj2} \& \eqref{eq:unicite:ci3:csu3d-de2} impliquent
     \begin{equation}
+      \label{eq:unicite:ci3:csu3-rdje2}
       \Re\left(\Theta\right) = 0.
     \end{equation}
-    Pour conclure, on remarque que l'on déduit 3 CSU
+    Pour conclure, on remarque que l'on peut utiliser 3 CSU
     \begin{itemize}
-      \item Les conditions du 1\ier système,
-      \item Les conditions du 2\ieme système,
-      \item L'union de ces deux ensembles.
+      \item Les conditions \eqref{eq:unicite:ci3:csu3r-j2} à \eqref{eq:unicite:ci3:csu3r-ede}, \eqref{eq:unicite:ci3:csu3r-jre} et \eqref{eq:unicite:ci3:csu3-rdje2},
+      \item Les conditions \eqref{eq:unicite:ci3:csu3d-j2} à \eqref{eq:unicite:ci3:csu3d-ere}, \eqref{eq:unicite:ci3:csu3d-jde} et \eqref{eq:unicite:ci3:csu3-rdje2}. 
+      \item L'union de ces deux ensembles, qui est la CSU de la proposition.
     \end{itemize}
   \end{proof}
 
@@ -462,8 +471,8 @@
     On déduit donc que si \(\Delta_1 \not = 0\) et \(\Delta_2 \not = 0\) alors
 
     \begin{align*}
-      Y_R &= \frac{1}{\Delta_2}\left(a_2\left(\conj{a_0}\int_\Gamma \vJ\cdot\LR\conj{\vJ} - \conj{a_2}\norm{\LR \vJ}^2\right)  -\conj{b_2}\left(\int_\Gamma \conj{\vE}\LR{\vE} - b_2 \norm{\LR \vE}^2\right)\right) \\
-      Y_D &= \frac{1}{\Delta_1}\left(a_1\left(\conj{a_0}\int_\Gamma \vJ\cdot\LD\conj{\vJ} + \conj{a_1}\norm{\LD \vJ}^2\right)  -\conj{b_1}\left(\int_\Gamma \conj{\vE}\LD{\vE} + b_1 \norm{\LD \vE}^2\right)\right)
+      Y_R &= \frac{1}{\Delta_2}\left(a_2\left(\conj{a_0}\int_\Gamma \vJ\cdot\LR\conj{\vJ} - \conj{a_2}\norm{\LR \vJ}^2\right)  -\conj{b_2}\left(\int_\Gamma \conj{\vE}\cdot\LR{\vE} - b_2 \norm{\LR \vE}^2\right)\right) \\
+      Y_D &= \frac{1}{\Delta_1}\left(a_1\left(\conj{a_0}\int_\Gamma \vJ\cdot\LD\conj{\vJ} + \conj{a_1}\norm{\LD \vJ}^2\right)  -\conj{b_1}\left(\int_\Gamma \conj{\vE}\cdot\LD{\vE} + b_1 \norm{\LD \vE}^2\right)\right)
     \end{align*}
 
     Utilisons \eqref{eq:unicite:ci3:csu3-1}, on obtient
@@ -471,6 +480,7 @@
       X = -\conj{b_1} Y_D + \conj{b_2} Y_R + \conj{a_0} \norm{\vJ}^2 + \conj{a_1} \int_\Gamma \vJ \cdot \LD \conj{\vJ} - \conj{a_2} \int_\Gamma \vJ \cdot \LR \conj{\vJ}
     \end{equation*}
 
+    On développe les résultats de la démonstration précédente,
     \begin{multline*}
       X = \conj{a_0} \norm{\vJ }^2 - \conj{a_1} \norm{\vdivs \vJ }^2 - \conj{a_2} \norm{\vrots \vJ }^2
       \\
@@ -481,7 +491,7 @@
 
     On regroupe les termes en \(\norm{\vJ}^2\), \(\norm{\vdivs\vJ}^2\),  \(\norm{\vrots\vJ}^2\)
     \begin{multline*}
-      X = \conj{a_0} \norm{\vJ }^2 - \left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \norm{\vdivs \vJ}^2 - \left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \norm{\vrots \vJ }^2
+      X = \conj{a_0} \norm{\vJ }^2 - \left(\conj{a_1} - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \norm{\vdivs \vJ}^2 - \left(\conj{a_2} - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \norm{\vrots \vJ }^2
       \\
       + \frac{\conj{b_2}}{\Delta_2}\left( - |a_2|^2\norm{\LR \vJ}^2  - \conj{b_2}\left(\norm{\vrots\vE}^2 - b_2 \norm{\LR \vE }^2\right)\right) 
       \\
@@ -490,33 +500,26 @@
 
     On développe tous les termes
     \begin{multline*}
-      X = \conj{a_0} \norm{\vJ }^2 - \left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \norm{\vdivs \vJ }^2 - \left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \norm{\vrots \vJ }^2
+      X = \conj{a_0} \norm{\vJ }^2 - \left(\conj{a_1} - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \norm{\vdivs \vJ }^2 - \left(\conj{a_2} - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \norm{\vrots \vJ }^2
       \\
-      - \frac{\conj{b_2}|a_2|^2}{\Delta_2}\norm{\LR \vJ}^2  -  \frac{\conj{b_2}^2}{\Delta_2}\norm{\vrots\vE}^2 +  \frac{|b_2|}{\Delta_2} \norm{\LR \vE }^2
+      - \frac{\conj{b_2}|a_2|^2}{\Delta_2}\norm{\LR \vJ}^2  -  \frac{\conj{b_2}^2}{\Delta_2}\norm{\vrots\vE}^2 +  \frac{\conj{b_2}|b_2|^2}{\Delta_2} \norm{\LR \vE }^2
       \\
-      - \frac{\conj{b_1}|a_1|^2}{\Delta_1}\norm{\LD \vJ}^2  - \frac{\conj{b_1}^2}{\Delta_1}\norm{\vdivs\vE}^2 + \frac{|b_1|^2}{\Delta_1} \norm{\LD \vE }^2
+      - \frac{\conj{b_1}|a_1|^2}{\Delta_1}\norm{\LD \vJ}^2  - \frac{\conj{b_1}^2}{\Delta_1}\norm{\vdivs\vE}^2 + \frac{\conj{b_1}|b_1|^2}{\Delta_1} \norm{\LD \vE }^2
     \end{multline*}
 
     Comme condition suffisante, on impose alors à la partie réelle de chaque terme d'être positive, ce qui s'écrit
-    \begin{equation*}
-      \Re\left(a_0\right)\ge 0
-    \end{equation*}
-    \begin{minipage}{0.5\textwidth}
-      \begin{align*}
-        \Re\left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \le 0 \\
-        \Re\left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \le 0 \\
-        \Re\left(\frac{|a_1|^2\conj{b_1}}{\Delta_1}\right) \le 0 \\
-        \Re\left(\frac{|a_2|^2\conj{b_2}}{\Delta_2}\right) \le 0
-      \end{align*}
-    \end{minipage}
-    \begin{minipage}{0.5\textwidth}
-      \begin{align*}
-        \Re\left(\frac{\conj{b_1}^2}{\Delta_1}\right) \le 0 \\
-        \Re\left(\frac{\conj{b_2}^2}{\Delta_2}\right) \le 0 \\
-        \Re\left(\frac{|b_1|^2\conj{b_1}}{\Delta_1}\right) \ge 0 \\
-        \Re\left(\frac{|b_2|^2\conj{b_2}}{\Delta_2}\right) \ge 0
-      \end{align*}
-    \end{minipage}
+    \begin{align*}
+      \Re\left(a_0\right)\ge 0, && 
+      \\
+      \Re\left(\conj{a_1} - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \le 0, && \Re\left(\frac{\conj{b_1}^2}{\Delta_1}\right) \le 0,
+      \\
+      \Re\left(\conj{a_2} - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \le 0, && \Re\left(\frac{\conj{b_2}^2}{\Delta_2}\right) \le 0,
+      \\
+      \Re\left(\frac{|a_1|^2\conj{b_1}}{\Delta_1}\right) \le 0, && \Re\left(\frac{|b_1|^2\conj{b_1}}{\Delta_1}\right) \ge 0,
+      \\
+      \Re\left(\frac{|a_2|^2\conj{b_2}}{\Delta_2}\right) \le 0, && \Re\left(\frac{|b_2|^2\conj{b_2}}{\Delta_2}\right) \ge 0.
+    \end{align*}
+
 
     On remarque alors les conditions des deux dernières lignes se combinent et imposent que les parties réelles de \(b_1\Delta_1\) et \(b_2\Delta_2\) sont nulles.
   \end{proof}
@@ -593,7 +596,8 @@
     On développe chaque terme
 
     \begin{multline*}
-      X = \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
+      X = \int_\Gamma \left(\left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
+      \right.
       \\
       + b_1 \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\LD
       \\
@@ -614,9 +618,9 @@
     \begin{multline*}
       X = \int_\Gamma \left(1-\frac{b_1}{a_1} -\frac{b_2}{a_2}\right)\left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}
       \\
-      + \frac{b_1}{a_1} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0+a_1\LD\right)
+      + \frac{b_1}{a_1} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0\oI + a_1\LD\right)
       \\
-      + \frac{b_2}{a_2} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0-a_2\LR\right) \vE_t\cdot \conj{\vE_t}
+      + \frac{b_2}{a_2} \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left(a_0\oI - a_2\LR\right) \vE_t\cdot \conj{\vE_t}
     \end{multline*}
 
     On définit
@@ -683,44 +687,44 @@
       \end{aligned}
     \end{equation*}
 
-    Pour conclure, il faut utiliser le résultat suivant
-    \begin{prop}[Injectivité]
-      On suppose que
-      \begin{align*}
-        \Re(a_0)\ge0 && \Re(a_1) \le 0 && \Re(a_2) \le 0
-      \end{align*}
-      alors \(a_0\oI + a_1 \LD\)  et \(a_0\oI - a_2 \LR\) sont injectif
-    \end{prop}
+    % Pour conclure, il faut utiliser le résultat suivant
+    % \begin{prop}[Injectivité]
+    %   On suppose que
+    %   \begin{align*}
+    %     \Re(a_0)\ge0 && \Re(a_1) \le 0 && \Re(a_2) \le 0
+    %   \end{align*}
+    %   alors \(a_0\oI + a_1 \LD\)  et \(a_0\oI - a_2 \LR\) sont injectif
+    % \end{prop}
 
-    \begin{proof}
-      Par définition, \(a_0\oI + a_1 \LD\) est injectif si pour \(\vect{U}\) vecteur régulier tangent  à  \(\Gamma\)
-      \begin{align*}
-        \int_\Gamma \left(a_0\oI + a_1 \LD\right)\vect{U}\cdot\conj{\vect{U}} &= 0 \Rightarrow \vect{U} = 0
-        \intertext{Or par définition de l'opérateur \(\LD\)}
-        \int_\Gamma \left(a_0\oI + a_1 \LD\right)\vect{U}\cdot\conj{\vect{U}} &=a_0\norm{\vect{U}}^2 - a_1\norm{\vdivs{\vect{U}}}^2
-      \end{align*}
+    % \begin{proof}
+    %   Par définition, \(a_0\oI + a_1 \LD\) est injectif si pour \(\vect{U}\) vecteur régulier tangent  à  \(\Gamma\)
+    %   \begin{align*}
+    %     \int_\Gamma \left(a_0\oI + a_1 \LD\right)\vect{U}\cdot\conj{\vect{U}} &= 0 \Rightarrow \vect{U} = 0
+    %     \intertext{Or par définition de l'opérateur \(\LD\)}
+    %     \int_\Gamma \left(a_0\oI + a_1 \LD\right)\vect{U}\cdot\conj{\vect{U}} &=a_0\norm{\vect{U}}^2 - a_1\norm{\vdivs{\vect{U}}}^2
+    %   \end{align*}
       
-      Prenons la partie réelle de cette égalité et utilisons les hypothèses sur les coefficients. Alors le membre de droite ne contient que des termes positifs, donc tous ces termes sont nuls, donc \(\norm{\vect{U}} = 0\) et \(\norm{\vdivs\vect{U}} = 0\) donc \(\vect{U} = 0\).
+    %   Prenons la partie réelle de cette égalité et utilisons les hypothèses sur les coefficients. Alors le membre de droite ne contient que des termes positifs, donc tous ces termes sont nuls, donc \(\norm{\vect{U}} = 0\) et \(\norm{\vdivs\vect{U}} = 0\) donc \(\vect{U} = 0\).
 
-      Le même raisonnement est valable pour \(a_0\oI - a_2 \LR\).
-    \end{proof}
+    %   Le même raisonnement est valable pour \(a_0\oI - a_2 \LR\).
+    % \end{proof}
 
-    On suppose donc \(\Re(a_0) \ge 0 \),\(\Re(a_1) \le 0\) et \(\Re(a_2)\le0\)), donc \(\left(\conj{a_0}  + \conj{a_1} \LD \right)\) et \(\left(\conj{a_0}  - \conj{a_2} \LR \right)\) sont injectifs et donc on déduit que
+    On utilise les propositions \ref{prop:unicite:injectif:operateur:LD},\ref{prop:unicite:injectif:operateur:LR},\ref{prop:unicite:injectif:operateur:L}. On suppose donc \(\Re(a_0) \ge 0 \),\(\Re(a_1) \le 0\) et \(\Re(a_2)\le0\)), donc \(\left(\conj{a_0}  + \conj{a_1} \LD \right)\) et \(\left(\conj{a_0}  - \conj{a_2} \LR \right)\) sont injectifs et donc on déduit que
 
     \begin{align*}
-      \left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\LD\vR_1 = 0 &\Rightarrow \LD\vR_1 = 0
+      \left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\LD\vR_1 = 0 &\Rightarrow \LD\vR_1 = 0,
       \\
       \left(\conj{a_0}\oI  - \conj{a_2} \LR \right)\LR\vR_2 = 0 &\Rightarrow \LR\vR_2 = 0
     \end{align*}
 
     Or par définition \(\LR\conj{\vW_1} = \left(\conj{a_0}  + \conj{a_1} \LD \right)\vR_1\) et \(\LD\conj{\vW_2} = \left(\conj{a_0}  - \conj{a_2} \LR \right)\vR_2\) donc
     \begin{align*}
-      \LR\conj{\vW_1} = \conj{a_0}\vR_1 && \LD\conj{\vW_2} = \conj{a_0}\vR_2
+      \LR\conj{\vW_1} = \conj{a_0}\vR_1, && \LD\conj{\vW_2} = \conj{a_0}\vR_2,
       \intertext{donc}
-      \vR_1 = \frac{1}{\conj{a_0}}\LR\conj{\vW_1} && \vR_2 = \frac{1}{\conj{a_0}}\LD\conj{\vW_2}
+      \vR_1 = \frac{1}{\conj{a_0}}\LR\conj{\vW_1}, && \vR_2 = \frac{1}{\conj{a_0}}\LD\conj{\vW_2}.
     \end{align*}
 
-    On réinjecte ce résultat dans la définition de \(X\)
+    On réinjecte ce résultat dans la définition de \(X\).
 
     \begin{multline*}
       X = \int_\Gamma z \vV \cdot \left(\conj{a_0}\oI  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vV}
@@ -730,7 +734,7 @@
       + \frac{b_2}{a_2} \norm{\vW_2}^2 + \frac{b_2\conj{a_1}}{a_2\conj{a_0}}\int_\Gamma \LD\conj{\vW_2}\cdot\vW_2
     \end{multline*}
 
-    On impose la positivité de la partie réelle de chaque terme pour avoir \(\Re(X)\ge 0\)
+    On impose la positivité de la partie réelle de chaque terme pour avoir \(\Re(X)\ge 0\).
   \end{proof}
 
   Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 = 0 \right\rbrace \). On remarque que

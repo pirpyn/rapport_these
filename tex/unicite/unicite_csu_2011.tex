@@ -21,7 +21,7 @@
     \label{def:operator:L}
     % Pour tout \(\vu \in (\mathcal{C}^\infty(\Gamma))^2\)
     \begin{equation*}
-        \fonction{\LL}{(\mathcal{C}^\infty(\Gamma))^2}{(\mathcal{C}^\infty(\Gamma))^2}%
+        \fonction{\LL}{(\mathcal{C}^\infty(\Gamma))^3}{(\mathcal{C}^\infty(\Gamma))^3}%
           {\vu}{\vgrads{\vdivs \vu} - \vrots{\vrots \vu}}
     \end{equation*}
   \end{defn}
@@ -32,7 +32,7 @@
   \end{prop}
 
   \begin{proof}
-    Pour tous \(\vu,\vv \in (\mathcal C^\infty(\Gamma))^2\)
+    Pour tous \(\vu,\vv \in (\mathcal C^\infty(\Gamma))^3\)
     \begin{align*}
       \int_\Gamma \vu\cdot \LL(\conj{\vv}) &= \int_\Gamma \conj{\vv}\cdot \LL(\vu)
       \\
@@ -42,7 +42,7 @@
 
   \begin{prop}
     \label{prop:unicite:injectif:operateur:L}
-    Soit \(\vu \in V=\Sobolev[div]{(\Gamma)}\cap\Sobolev[rot]{(\Gamma)}\).
+    Soit \(\vu \in V=(\mathcal C^\infty(\Gamma))^3, a_0 \in \CC, a_1 \in \CC\).
     
     Soit \(\mathcal{P}\) l'opérateur tel que \(\mathcal{P}\vu = (a_0\oI + a_1 \LL)\vu\).
 
@@ -62,7 +62,7 @@
     Or \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\), donc tous les termes de l'expression précédente sont nuls donc \(\norm{\vu}=0\) donc \(\vu=0\).
     Donc l'opérateur \(\mathcal{P}\) est injectif.
   \end{proof}
-
+  
   \begin{prop}
     \label{prop:unicite:inversible:operateur:L}
     Soit \(\vu \in V=\Sobolev[div]{(\Gamma)}\cap\Sobolev[rot]{(\Gamma)}\).
@@ -72,13 +72,14 @@
     Si \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\) alors l'opérateur \(\mathcal{P}\) est bijectif sur \(V\).
   \end{prop}
   \begin{proof}
-  D'après l'alternative de Fredholm (voir \cite[Théorème~VI.6, p.~92]{brezis_analyse_1996}), si l'opérateur \(\LL\) est compact, alors \(\mathcal{P}\) est soit non-injectif soit bijectif.
-  Montrons que \(\LL\) est compact
+    D'après l'alternative de Fredholm (voir \cite[Théorème~VI.6, p.~92]{brezis_analyse_1996}), si l'opérateur \(\LL\) est compact, alors \(\mathcal{P}\) est soit non-injectif soit bijectif. D'après la proposition \ref{prop:unicite:injectif:operateur:L}, comme \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\) alors il est injectif.
+    Montrons que \(\LL\) est compact.
   \end{proof}
-  
+
+
   On rappelle que l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu} soit \(\Re(X)\ge0\) où \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\) sachant que \gls{phy-J} est la trace tangentielle sur \(\Gamma\) de l’excitation magnétique (\(\vJ = \vn \pvect \vH\)).
 
-  Le problème dont on veut prouver que \((\vE,\vH) = (0,0)\) est l'unique solution est 
+  Ces conditions garantissent que \((\vE,\vH) = (0,0)\) est l'unique solution de 
   \begin{equation}
     \label{eq:unicite:probleme_sans_ci}
     \begin{aligned}
@@ -92,7 +93,7 @@
       \\
       \Tr(\vE_t) = - \vn_{S_R} \pvect \vH && \text{sur \(S_R\),}
       \\
-      \text{Une condition limite définis ci-après }  && \text{sur \(\Gamma\).}
+      \text{une condition limite définit ci-après }  && \text{sur \(\Gamma\).}
     \end{aligned}
   \end{equation}
 
