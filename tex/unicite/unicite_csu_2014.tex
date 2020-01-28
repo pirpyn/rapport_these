@@ -638,6 +638,22 @@
       \vW_2 & = \left( \oI + a_1 \left( a_0\oI - a_2\LR\right)^{-1}\LD\right)^{-1} \vE_t
     \end{align*}
 
+    On remarque que
+    \begin{align*}
+      \left( \oI - a_2 \left( a_0\oI + a_1\LD\right)^{-1}\LR\right)\vW_1 &= \vE_t
+      \\
+      \left( a_0\oI + a_1 \LD \right)\left( \oI - a_2 \left( a_0\oI + a_1\LD\right)^{-1}\LR\right)\vW_1&= \left( a_0\oI + a_1 \LD \right)\vE_t
+      \\
+      \left( a_0\oI + a_1 \LD - a_2 \LR\right)\vW_1 &= \left( a_0\oI + a_1 \LD \right)\vE_t
+    \end{align*}
+    \begin{align*}
+      \left( \oI + a_1 \left( a_0\oI - a_2\LR\right)^{-1}\LD\right)\vW_2 &= \vE_t
+      \\
+      \left( a_0\oI - a_2 \LR \right)\left( \oI + a_1 \left( a_0\oI - a_2\LR\right)^{-1}\LD\right)\vW_2&= \left( a_0\oI - a_2 \LR \right)\vE_t
+      \\
+      \left( a_0\oI + a_1 \LR - a_2 \LR\right)\vW_2 &= \left( a_0\oI - a_2 \LR \right)\vE_t
+    \end{align*}
+
     On déduit
 
     \begin{multline*}
@@ -663,14 +679,14 @@
       X = \int_\Gamma z \vV \cdot \left(\conj{a_0}\oI  + \conj{a_1} \LD - \conj{a_2}\LR\right)\conj{\vV} + \frac{b_1}{a_1} \norm{\vW_1} +\frac{b_2}{a_2} \norm{\vW_2} - \frac{b_1}{a_1}\conj{a_2}\vR_1\cdot\vW_1 + \frac{b_2}{a_2}\conj{a_1}\vR_2\cdot\vW_2
     \end{equation*}
 
-    On commute les opérateurs
+    Comme
     \begin{align*}
-      \LD\left(\conj{a_0}\oI  + \conj{a_1} \LD \right)&=\left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\LD
+      \LD\left(\conj{a_0}\oI  + \conj{a_1} \LD \right)&=\left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\LD,
       \\
       \LR\left(\conj{a_0}\oI  - \conj{a_2} \LR \right)&=\left(\conj{a_0}\oI  - \conj{a_2} \LR \right)\LR
     \end{align*}
 
-    Or on a démontré que \(\LD\LR=\LR\LD=0\), et ainsi
+    et que \(\LD\LR=\LR\LD=0\), on trouve
 
     \begin{equation*}
       \begin{aligned}
@@ -709,13 +725,15 @@
     %   Le même raisonnement est valable pour \(a_0\oI - a_2 \LR\).
     % \end{proof}
 
-    On utilise les propositions \ref{prop:unicite:injectif:operateur:LD},\ref{prop:unicite:injectif:operateur:LR},\ref{prop:unicite:injectif:operateur:L}. On suppose donc \(\Re(a_0) \ge 0 \),\(\Re(a_1) \le 0\) et \(\Re(a_2)\le0\)), donc \(\left(\conj{a_0}  + \conj{a_1} \LD \right)\) et \(\left(\conj{a_0}  - \conj{a_2} \LR \right)\) sont injectifs et donc on déduit que
+    % On utilise les propositions \ref{prop:unicite:injectif:operateur:LD},\ref{prop:unicite:injectif:operateur:LR},\ref{prop:unicite:injectif:operateur:L}. On suppose donc \(\Re(a_0) \ge 0 \),\(\Re(a_1) \le 0\) et \(\Re(a_2)\le0\)), donc \(\left(\conj{a_0}  + \conj{a_1} \LD \right)\) et \(\left(\conj{a_0}  - \conj{a_2} \LR \right)\) sont injectifs et donc on déduit que
 
-    \begin{align*}
-      \left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\LD\vR_1 = 0 &\Rightarrow \LD\vR_1 = 0,
-      \\
-      \left(\conj{a_0}\oI  - \conj{a_2} \LR \right)\LR\vR_2 = 0 &\Rightarrow \LR\vR_2 = 0
-    \end{align*}
+    % \begin{align*}
+    %   \left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\LD\vR_1 = 0 &\Rightarrow \LD\vR_1 = 0,
+    %   \\
+    %   \left(\conj{a_0}\oI  - \conj{a_2} \LR \right)\LR\vR_2 = 0 &\Rightarrow \LR\vR_2 = 0
+    % \end{align*}
+
+    Donc on déduit que \(\LD\vR_1 = 0\), \(\LR\vR_2 = 0\).
 
     Or par définition \(\LR\conj{\vW_1} = \left(\conj{a_0}  + \conj{a_1} \LD \right)\vR_1\) et \(\LD\conj{\vW_2} = \left(\conj{a_0}  - \conj{a_2} \LR \right)\vR_2\) donc
     \begin{align*}
