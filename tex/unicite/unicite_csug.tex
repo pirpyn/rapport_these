@@ -10,7 +10,7 @@
   Dans \(\OO^c\) on définit \(\gls{phy-k0}=\gls{phy-w} / \gls{phy-c} \in \RR_+^*\) le nombre d'onde dans le vide où \gls{phy-c} est la célérité d'une onde dans le vide.
 
   % Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
-  Nous utilisons les équations de Maxwell-Helmholtz où les inconnues sont le champ électrique \gls{phy-e} et l'induction magnétique \gls{phy-h2} et nous renvoyons à l'annexe \ref{sec:annex:maxwell_equation} pour son obtention. 
+  Nous utilisons les équations de Maxwell-Helmholtz où les inconnues sont le champ électrique \gls{phy-e} et l'induction magnétique \gls{phy-h2} dans le vide et nous renvoyons à l'annexe \ref{sec:annex:maxwell_equation} pour son obtention. 
 
   Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}^\infty(\OO^c)\cap\Sobolev[rot](\OO^c))^2\) tels que
   \begin{align}
@@ -26,16 +26,16 @@
 
 %  En l'absence de source, le rotationnel d'un des champs a la même régularité que le champs lui-même, donc ces champs sont \(\mathcal{C}^\infty\).
 
-  Pour étudier ce problème numériquement, on se ramène à un ouvert borné de la manière suivante. Soit \(R\in\RR\) tel que \(\overline{\Omega}\in B_R\), la boule ouverte de rayon \(R\). On cherche alors les solutions de \eqref{eq:unicite:maxwell_ext} dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\) , où \(S_R\) est la sphère de rayon \(R\) où sur cette dernière est définie la condition de rayonnement à l'infini
+  Pour étudier ce problème numériquement, on se ramène à un ouvert borné de la manière suivante. Soit \(R\in\RR\) tel que le domaine \(\overline{\Omega}\) soit inclus dans \(B_R\), la boule de rayon \(R\). On cherche alors les solutions de \eqref{eq:unicite:maxwell_ext} dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\) avec \(S_R\) est la sphère de rayon \(R\) où est définie la condition de rayonnement à l'infini
   \begin{equation}
     \label{eq:unicite:TR}
     \begin{aligned}
     \Tr(\vE_t) = - \vn_{S_R} \pvect \vH && \text{sur \(S_R\).}
     \end{aligned}
   \end{equation}
-  \(\Tr\) est l'opérateur de capacité défini par \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{S_R}\) la normale unitaire sortante à \(B_R\).
+  \(\Tr\) est l'opérateur de capacité défini par \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{S_R}\) la normale unitaire sortante à \(B_R\), définie uniquement sur \(S_R\).
 
-  Soit \(V = \lbrace \vect{u} \in (\mathcal{C}^\infty(\OO^c_R)\cap\Sobolev[1](\OO^c_R) \rbrace\).
+  Soit \(V = \lbrace \vect{u} \in (\mathcal{C}^\infty(\OO^c_R)\cap\Sobolev[rot](\OO^c_R) \rbrace\).
 
   Le problème \eqref{eq:unicite:maxwell_ext} sans sources muni de la condition \eqref{eq:unicite:TR} est équivalent à
   \begin{prop}[Formulation variationnelle du problème de Maxwell extérieur sans sources]
@@ -60,19 +60,19 @@
     \begin{align*}
           0 & = \frac{\trot \vE}{ik_0} + \vH.
           \intertext{En appliquant cette égalité à \(\trot\vect{\phi}\) pour \(\vect{\phi} \in V\), on déduit la forme variationnelle }
-          0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot \conj{\vect{\phi}} + \int_{\OO^c_R} \vH \cdot \trot\conj{\vect{\phi}} && \forall \vect{\phi} \in V.
+          0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot \conj{\vect{\phi}}\dd{x} + \int_{\OO^c_R} \vH \cdot \trot\conj{\vect{\phi}}\dd{x} && \forall \vect{\phi} \in V.
           \intertext{Utilisons la formule de Green du rotationnel (voir \cite[eq.~(A1.32)]{bladel_electromagnetic_2007}).
           \[
-            \int_V \vect{u}\cdot \trot{\vect{v}} = \int_V \trot\vect{u}\cdot \vect{v} + \int_{\partial V} \left( \vect{v}\pvect\vect{u} \right)\cdot \vn_V
+            \int_V \vect{u}\cdot \trot{\vect{v}}\dd{x} = \int_V \trot\vect{u}\cdot \vect{v}\dd{x} + \int_{\partial V} \left( \vect{v}\pvect\vect{u} \right)\cdot \vn_V \dd{\Gamma(x)}
           \]
           où \(\vn_V\) est la normale unitaire sortante de \(V\). On rappelle que \(\vn_\Gamma\) est la normale sortante de  \(\OO\) et \(\vn_{S_R}\) la normale sortante de \(B_R\).}
-          0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot\vect{\phi} +\int_{\OO^c_R} \trot\vH \cdot \conj{\vect{\phi}},
+          0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot\vect{\phi}\dd{x} +\int_{\OO^c_R} \trot\vH \cdot \conj{\vect{\phi}}\dd{x}
           \\
-          & \qquad \qquad+ \int_{S_R} \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_{S_R} - \int_\Gamma \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_\Gamma && \forall \vect{\phi} \in V.
+          & \qquad \qquad+ \int_{S_R} \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_{S_R}\dd{S_R(x)} - \int_\Gamma \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_\Gamma \dd{\Gamma(x)} && \forall \vect{\phi} \in V.
           \intertext{On utilise  la deuxième équation de Maxwell, la condition de rayonnement et on permute les termes de l'intégrale sur \(\Gamma\)}
-          0 & =\int_{\OO^c_R} \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}  +  \int_{\OO^c_R} ik_0 \vE \cdot \conj{\vect{\phi}} ,
+          0 & =\int_{\OO^c_R} \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}\dd{x}  +  \int_{\OO^c_R} ik_0 \vE \cdot \conj{\vect{\phi}}\dd{x}
           \\
-          & \qquad \qquad + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}} + \int_\Gamma \left(\vn_\Gamma \pvect \vH \right) \cdot \conj{\vect \phi},
+          & \qquad \qquad + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}}\dd{S_R(x)} + \int_\Gamma \left(\vn_\Gamma \pvect \vH \right) \cdot \conj{\vect \phi}\dd{\Gamma(x)},
           && \forall \vect{\phi} \in V.
       \end{align*}
   \end{proof}
@@ -98,7 +98,7 @@
       \begin{align}
         \Delta u + k^2 u = 0 & &\text{dans \(\OO^c\)},
         \\
-        \lim_{R\rightarrow\infty}\int_{S_R} |u(\vx)|^2 ds(\vx) = 0,
+        \lim_{R\rightarrow\infty}\int_{S_R} |u(\vx)|^2 \dd{S_R}(\vx) = 0,
       \end{align}
     \end{subequations}
     alors \(u=0\) dans \(\OO^c\).
@@ -121,7 +121,7 @@
     \\
     &= \frac{1}{ik_0} \int_{\OO^c_R} \norm{\trot \vE(\vx)}^2 \dd{x} + ik_0\int_{\OO^c_R}\norm{\vE(\vx)}^2 \dd{x}
      + X + C,
-    \intertext{et on déduit}
+    \intertext{on déduit}
     \Re(a(\vE,\vE)) & = 0,
     \intertext{ce qui se réecrit}
     \Re(C) + \Re(X) & = 0.
@@ -131,13 +131,13 @@
   L'hypothèse \eqref{eq:unicite:form_var:cgu} \(\Re(X) \ge 0\) impose alors \(\Re(X)=0\) et donc
   \begin{align*} 
     \Re(C) &= 0,
-    \intertext{donc d'après ce théorème}
+    \intertext{donc d'après le théorème 5.3.5 de }
     \vE_t &= 0 && \text{sur \(S_R\)},
     \intertext{et d'après le lemme de Rellich}
     \vE &= 0 && \text{dans \(\OO^c_R\)}.
   \end{align*}
 
-  On en déduit, \(\vH = 0 \).
+  On en déduit \(\vH = 0 \).
 
   On conclut donc que si on suppose \eqref{eq:unicite:form_var:cgu}, alors en l'absence de sources le couple \((\vE,\vH)=(0,0)\) est l'unique solution, ce qui démontre l'unicité par linéarité.
 \end{proof}

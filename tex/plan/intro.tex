@@ -25,13 +25,16 @@ On suppose enfin que ces champs \(\vE(\vect{x},t),\vect H(\vect{x},t)\) ont des 
     \vE(x_1,x_2,x_n,t) &= \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{i(k_1x_1+k_2x_2+\w t)}\hat{\vE} (k_1,k_2,x_n,\w) \dd{k_1}\dd{k_2} \dd{\w}
 \end{align*}
 
+Pour avoir le droit d'appliquer la transformée de Fourier, nous supposons que pour notre empilement nous n'avons pas de résonances tel que nous l'avions évoqué à la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}. 
+
 Dans cette thèse, on utilise les équations harmoniques de Maxwell ainsi on réalise au moins une transformée partielle en temps. La variable de Fourier associée est \(\w\), et donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\gls{phy-w}\).
 
 On va donc utiliser le système d'équations de Maxwell harmonique:
 \begin{equation}
     \left\lbrace
     \begin{matrix}
-    \vrot \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)  &=& -i \omega \mu(x_n) \hat{\gls{phy-h}}(k_1,k_2,x_n,\w)  \\
+    \vrot \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)  &=& -i \omega \mu(x_n) \hat{\gls{phy-h}}(k_1,k_2,x_n,\w)
+    \\
     \vrot \hat{\gls{phy-h}}(k_1,k_2,x_n,\w)  &=& i \omega \eps(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)
     \end{matrix}
     \right.

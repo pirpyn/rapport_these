@@ -40,6 +40,7 @@
             \\
             \hat{\mathcal{H}}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y)
         \end{align*}
+        Les constantes \(c_i\) ne peuvent en réalité pas être choisis arbitrairement, car les exponentiels complexes divergent quand \(k_x^2 + k_y^2 \rightarrow \infty\) et ces solutions n'ont pas de transformées de Fourier. Nous supposons que les constantes \(c_i\) satisfassent la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}, où il n'y a pas de résonances.
     \end{prop}
 
     \begin{proof}
@@ -679,7 +680,7 @@
     \begin{defn}%[Fonction de transfert]{}~
       \label{def:plan:transfert:reflexion}{}~
 
-      On définit \(\mathfrak{T}_p\) la fonction de \(\RR^2 \times [r_{p-1}, r_p[\times[r_p, r_{p+1}[\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
+      On définit \(\mathfrak{T}_p\) la fonction de \(\RR^2 \times [z_{p-1}, z_p[\times[z_p, z_{p+1}[\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{multline*}
         \mathfrak{T}_p(k_x,k_y,z,z',\mZ) = \\
           -\left(\mN_{E}(k_x,k_y,z',\mZ)^{-1}\mB_{E}(k_x,k_y,z) - \mN_{H}(k_x,k_y,z',\mZ)^{-1}\mB_{H}(k_x,k_y,z)\right)^{-1}

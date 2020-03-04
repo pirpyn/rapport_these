@@ -57,7 +57,7 @@
   \end{proof}
 
   \begin{prop}
-    Soit \(\OO\) un domaine borné de \(\RR^3\), de surface \(\Gamma\) fermée et régulière, de normale unitaire sortante \(\vect n\) et \(\vect{U} \in (\mathcal{C}^\infty(\Gamma))^3\) alors
+    Soit \(\OO\) un domaine borné de \(\RR^3\), de surface \(\Gamma\) fermée et régulière, de normale unitaire sortante \(\vect n\) et \(\vect{u} \in (\mathcal{C}^\infty(\Gamma))^3\) alors
     \begin{equation*}
         \LR(\LD(\vu)) = \LD(\LR(\vu)) = 0.
     \end{equation*}
@@ -68,7 +68,7 @@
 
     Soit un vecteur tangent défini en tout point de la surface. On définit une base locale \(\vect{u_1},\vect{u_2},\vect{n}\) où \((\vect{u_1},\vect{u_2})\) sont tangents à \(\Gamma\) et \(\vn\) est le vecteur normal unitaire sortant à \(\Gamma\).
     \[
-      \vect{U} = 
+      \vect{u} = 
       \begin{bmatrix}
         U_1(x_1,x_2)
         \\
@@ -80,16 +80,20 @@
 
     % D'après \cite[p.~1028, A3.22]{bladel_electromagnetic_2007}, le rotationnel surfacique d'un vecteur tangent est un vecteur normal à la surface
     % \[
-    %   \vrots{\vect{U}} =\vn \left(\vn\cdot\trot{\vect{U}}\right)
+    %   \vrots{\vect{u}} =\vn \left(\vn\cdot\trot{\vect{u}}\right)
     % \]
 
     Montrons que \(\LR\LD = 0\).
 
-    D’après \cite[p.~1029, A3.42]{bladel_electromagnetic_2007}, soit \(f(x_1,x_2)\) une fonction régulière de \(\Gamma\) dans \(\CC\) alors \(\vn \cdot \vrots(\vgrads f(x_1,x_2)) = 0\).
+    D’après \cite[propriété A3.42, p.~1029]{bladel_electromagnetic_2007}, 
+    % on sait que l'application de \(\vrots \vgrads\) sur une fonction scalaire renvoi un vecteur tangent à la surface. Or par définition, le rotationnel surfacique d'un
+    soit \(f(x_1,x_2)\) une fonction régulière de \(\Gamma\) dans \(\CC\) alors \(\vn \cdot \vrots(\vgrads f(x_1,x_2)) = 0\).
 
-    On exprime les opérateurs
     \begin{align*}
-      \LR(\LD \vu)  &= \vrots \left(\vn \left(\vn \cdot \vrots \left( \vgrads \left(\vdivs \vu\right)\right)\right)\right) \\
+      \LR(\LD \vu) &= \vrots \left(\left(\vn \cdot \vrots \left( \vgrads \left(\vdivs \vu\right)\right)\right)\vn \right)
+      \\
+      &= \vrots \left(0\vn \right) 
+      \\
       &= 0
     \end{align*}
 
@@ -97,7 +101,10 @@
 
     D’après \cite[p.~1029, A3.43]{bladel_electromagnetic_2007}, \(\vdivs \vrots (f\vn) = 0\).
     \begin{align*}
-      \LD(\LR \vu) &= \vgrads \vdivs \vrots (\vn (\vn \cdot \vrots \vu)) \\
+      \LD(\LR \vu) &= \vgrads \vdivs \vrots (\vn (\vn \cdot \vrots \vu))
+      \\
+      &= \vgrads 0
+      \\
       &= 0
     \end{align*}
   \end{proof}
@@ -131,7 +138,7 @@
     \label{prop:csu:ci4}
     On a 
     \begin{equation*}
-      (a_0,a_1,a_2) \in \CSU{CI4} \Rightarrow (\Re(X)\ge 0,
+      (a_0,a_1,a_2) \in \CSU{CI4} \Rightarrow \Re(X)\ge 0,
     \end{equation*}
     ce qui entraîne l'unicité de la solution du problème de Maxwell extérieur.
   \end{prop}
@@ -157,7 +164,7 @@
   Soit la CIOE énoncée dans \cite{marceaux_high-order_2000} que l'on nomme \hyperlink{ci3}{CI3} :
   \begin{equation}
     \label{eq:unicite:ci3:ci3}
-    ( 1 + b_1 \LD - b_2 \LR)\vE_t = (a_0 + a_1 \LD - a_2 \LR ) \vJ
+    ( \oI + b_1 \LD - b_2 \LR)\vE_t = (a_0\oI + a_1 \LD - a_2 \LR ) \vJ
   \end{equation}
 
   Par abus de notation, on omet les variables de la fonction \(\Delta\) \eqref{eq:unicite:delta} 
@@ -173,8 +180,9 @@
     On définit le sous-espace de \(\CC^5\)
     \begin{equation*}
       \CSU[1]{CI3} = \left\lbrace 
-      (a_0,a_1,a_2,b_1,b_2) \in \CC^5,
       \begin{aligned}
+      &(a_0,a_1,a_2,b_1,b_2) \in \CC^5,
+      \\
       &\Delta_1 \not = 0
       \\
       &\Delta_2 \not = 0
