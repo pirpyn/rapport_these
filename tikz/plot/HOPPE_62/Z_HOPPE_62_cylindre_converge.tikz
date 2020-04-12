@@ -10,13 +10,13 @@
       legend pos=outer north east
     ]
 
-    \addplot [black,dotted,mark=diamond] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-02.csv};
+    \addplot [black,dotted,mark=diamond] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-02m.csv};
 
-    \addplot [black,dotted,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-01.csv};
+    \addplot [black,dotted,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-01m.csv};
 
-    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E+00.csv};
+    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E+00m.csv};
 
-    \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_P.csv};
+    \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_P.csv};
   \end{axis}
 \end{tikzpicture}
 \tikzsetnextfilename{Z_HOPPE_62_cylindre_converge.TE}
@@ -31,16 +31,16 @@
       legend pos=outer north east
     ]
 
-    \addplot [black,dotted,mark=diamond] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-02.csv};
+    \addplot [black,dotted,mark=diamond] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-02m.csv};
     \addlegendentry{\(r_0=0.03m\)}
 
-    \addplot [black,dotted,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-01.csv};
+    \addplot [black,dotted,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-01m.csv};
     \addlegendentry{\(r_0=0.3m\)}
 
-    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E+00.csv};
+    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E+00m.csv};
     \addlegendentry{\(r_0=3m\)}
 
-    \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_P.csv};
+    \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_P.csv};
     \addlegendentry{plan}
   \end{axis}
 \end{tikzpicture}

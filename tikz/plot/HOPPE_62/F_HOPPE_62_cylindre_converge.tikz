@@ -10,11 +10,11 @@
       legend pos=outer north east
     ]
 
-    \addplot [black,dotted,mark=diamond] table [col sep=comma, x={n}, y={Abs(f_ex.tm)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E-02.csv};
+    \addplot [black,dotted,mark=diamond] table [col sep=comma, x={n}, y={Abs(f_ex.11)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E-02.csv};
 
-    \addplot [black,dotted,mark=*] table [col sep=comma, x={n}, y={Abs(f_ex.tm)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E-01.csv};
+    \addplot [black,dotted,mark=*] table [col sep=comma, x={n}, y={Abs(f_ex.11)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E-01.csv};
 
-    \addplot [black,dashed] table [col sep=comma, x={n}, y={Abs(f_ex.tm)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E+00.csv};
+    \addplot [black,dashed] table [col sep=comma, x={n}, y={Abs(f_ex.11)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E+00.csv};
 
   \end{loglogaxis}
 \end{tikzpicture}
@@ -30,13 +30,13 @@
       legend pos=outer north east
     ]
 
-    \addplot [black,dotted,mark=diamond] table [col sep=comma, x={n}, y={Abs(f_ex.te)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E-02.csv};
+    \addplot [black,dotted,mark=diamond] table [col sep=comma, x={n}, y={Abs(f_ex.22)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E-02.csv};
     \addlegendentry{\(r_0=0.03m\)}
 
-    \addplot [black,dotted,mark=*] table [col sep=comma, x={n}, y={Abs(f_ex.te)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E-01.csv};
+    \addplot [black,dotted,mark=*] table [col sep=comma, x={n}, y={Abs(f_ex.22)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E-01.csv};
     \addlegendentry{\(r_0=0.3m\)}
 
-    \addplot [black,dashed] table [col sep=comma, x={n}, y={Abs(f_ex.te)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E+00.csv};
+    \addplot [black,dashed] table [col sep=comma, x={n}, y={Abs(f_ex.22)}] {csv/HOPPE_62/HOPPE_62.f_ex.MODE_2_TYPE_C_+3.000E+00.csv};
     \addlegendentry{\(r_0=3m\)}
 
   \end{loglogaxis}

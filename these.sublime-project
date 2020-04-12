@@ -68,7 +68,7 @@
 				"*.fdb_latexmk",
 				"*.synctex.gz",
 				"*.pdf",
-				"*.log"
+				//"*.log"
 			],
 			"path": "."
 		}
