@@ -1,4 +1,4 @@
-\tikzsetnextfilename{Z_STUPFEL_plan_hoibc.TM}
+\tikzsetnextfilename{Z_STUPFEL_plan_hoibc.11}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TM},
@@ -13,18 +13,18 @@
             mark repeat=10,
             legend pos=outer north east
         ]
-        \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(z_ex.tm)}] {csv/STUPFEL/STUPFEL.z_ex.MODE_2_TYPE_P.csv};
+        \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(z_ex.11)}] {csv/STUPFEL/STUPFEL.z_ex.MODE_2_TYPE_P.csv};
 
-        \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Abs(z_ibc0.tm)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Abs(z_ibc0.11)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
 
-        \addplot [color=green!50!black,mark=pentagon*] table [col sep=comma, x={s1}, y={Abs(z_ibc01.tm)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc01_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=green!50!black,mark=pentagon*] table [col sep=comma, x={s1}, y={Abs(z_ibc01.11)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc01_SUC_F_MODE_2_TYPE_P.csv};
 
-        \addplot [color=orange,mark=*] table [col sep=comma, x={s1}, y={Abs(z_ibc1.tm)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc1_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=orange,mark=*] table [col sep=comma, x={s1}, y={Abs(z_ibc1.11)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc1_SUC_F_MODE_2_TYPE_P.csv};
 
-        \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.tm)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.11)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
     \end{axis}
 \end{tikzpicture}
-\tikzsetnextfilename{Z_STUPFEL_plan_hoibc.TE}
+\tikzsetnextfilename{Z_STUPFEL_plan_hoibc.22}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TE},
@@ -39,19 +39,19 @@
             restrict y to domain=0:11,
             legend pos=outer north east
         ]
-        \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(z_ex.te)}] {csv/STUPFEL/STUPFEL.z_ex.MODE_2_TYPE_P.csv};
+        \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(z_ex.22)}] {csv/STUPFEL/STUPFEL.z_ex.MODE_2_TYPE_P.csv};
         \addlegendentry{Exact};
 
-        \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Abs(z_ibc0.te)},color=] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Abs(z_ibc0.22)},color=] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
         \addlegendentry{CI0};
 
-        \addplot [color=green!50!black,mark=pentagon*] table [col sep=comma, x={s1}, y={Abs(z_ibc01.te)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc01_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=green!50!black,mark=pentagon*] table [col sep=comma, x={s1}, y={Abs(z_ibc01.22)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc01_SUC_F_MODE_2_TYPE_P.csv};
         \addlegendentry{CI01};
 
-        \addplot [color=orange,mark=*] table [col sep=comma, x={s1}, y={Abs(z_ibc1.te)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc1_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=orange,mark=*] table [col sep=comma, x={s1}, y={Abs(z_ibc1.22)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc1_SUC_F_MODE_2_TYPE_P.csv};
         \addlegendentry{CI1};
 
-        \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.te)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.22)}] {csv/STUPFEL/STUPFEL.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
         \addlegendentry{CI3};
 
     \end{axis}

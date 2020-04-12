@@ -10,10 +10,10 @@
             mark repeat=20,
             legend pos=outer north east
         ]
-        \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.tm)}] {csv/HOPPE_33/HOPPE_33.z_ex.MODE_2_TYPE_P.csv};
+        \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/HOPPE_33/HOPPE_33.z_ex.MODE_2_TYPE_P.csv};
         \addlegendentry{TM};
 
-        \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.te)}] {csv/HOPPE_33/HOPPE_33.z_ex.MODE_2_TYPE_P.csv};
+        \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/HOPPE_33/HOPPE_33.z_ex.MODE_2_TYPE_P.csv};
         \addlegendentry{TE};
     \end{axis}
 \end{tikzpicture}

@@ -10,8 +10,8 @@
             mark repeat=20,
             legend pos=outer north east
         ]
-        \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {csv/SOUDAIS/SOUDAIS.z_ex.MODE_2_TYPE_P.csv};
-        \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {csv/SOUDAIS/SOUDAIS.z_ex.MODE_2_TYPE_P.csv};
+        \addplot [black] table [x={s1}, y={Im(z_ex.11)},col sep=comma] {csv/SOUDAIS/SOUDAIS.z_ex.MODE_2_TYPE_P.csv};
+        \addplot [black,dashed] table [x={s1}, y={Im(z_ex.22)},col sep=comma] {csv/SOUDAIS/SOUDAIS.z_ex.MODE_2_TYPE_P.csv};
     \end{axis}
 \end{tikzpicture}
 \tikzsetnextfilename{Z_SOUDAIS_plan_zoom}
@@ -29,9 +29,9 @@
             mark repeat=20,
             legend pos=outer north east
         ]
-        \addplot [black] table [x={s1}, y={Im(z_ex.tm)},col sep=comma] {csv/SOUDAIS/SOUDAIS.z_ex.MODE_2_TYPE_P.csv};
+        \addplot [black] table [x={s1}, y={Im(z_ex.11)},col sep=comma] {csv/SOUDAIS/SOUDAIS.z_ex.MODE_2_TYPE_P.csv};
         \addlegendentry{TM};
-        \addplot [black,dashed] table [x={s1}, y={Im(z_ex.te)},col sep=comma] {csv/SOUDAIS/SOUDAIS.z_ex.MODE_2_TYPE_P.csv};
+        \addplot [black,dashed] table [x={s1}, y={Im(z_ex.22)},col sep=comma] {csv/SOUDAIS/SOUDAIS.z_ex.MODE_2_TYPE_P.csv};
         \addlegendentry{TE};
     \end{axis}
 \end{tikzpicture}
