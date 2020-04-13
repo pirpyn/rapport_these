@@ -6,9 +6,9 @@
     \label{def:sphere:minimisation:matrices_MR}
     On définit les fonctions \(\hat\mR_{ex}, \hat\mR_{CI3}\) de \(\NN\times \rightarrow \mathcal{M}_2(\CC)\) telles que
     \begin{align*}
-      \hat\mR_{ex}(n) &= \hat\mR(n, \hat\mZ_{ex}(n))
+      \hat\mR_{ex}(n) &= \hat\mR(n, \hat\mZ_{ex}(n)),
       \\
-      \hat\mR_{CI3}(n) &= \hat\mR(n, \hat\mZ_{CI3}(n))
+      \hat\mR_{CI3}(n) &= \hat\mR(n, \hat\mZ_{CI3}(n)),
     \end{align*}
     où \(\hat\mZ_{ex},\hat\mZ_{CI3}\) sont des fonctions définies à la proposition \ref{prop:sphere:synthese:impedance} et à l'équation \eqref{eq:sphere:hoibc:ci3}.
   \end{defn}
@@ -20,15 +20,15 @@
     \begin{defn}
       On définit \(\mA_0,\mA_1,\mA_2,\mA_2,\mB_1,\mB_2\) les fonctions de \(\NN \times \mathcal{M}_2(\CC) \rightarrow \ \mathcal{M}_2(\CC)\) telles que        
       \begin{align*}
-        \mA_0(n,\mR) &= \mN_E(r_c^+,n,\mR)
+        \mA_0(n,\mR) &= \mN_E(r_c^+,n,\mR),
         \\
-        \mA_1(n,\mR) &= \hat{\mLD}(n)\mN_E(r_c^+,n,\mR)
+        \mA_1(n,\mR) &= \hat{\mLD}(n)\mN_E(r_c^+,n,\mR),
         \\
-        \mA_2(n,\mR) &= -\hat{\mLR}(n)\mN_E(r_c^+,n,\mR)
+        \mA_2(n,\mR) &= -\hat{\mLR}(n)\mN_E(r_c^+,n,\mR),
         \\
-        \mB_1(n,\mR) &= \hat{\mLD}(n)\mN_H(r_c^+,n,\mR)
+        \mB_1(n,\mR) &= \hat{\mLD}(n)\mN_H(r_c^+,n,\mR),
         \\
-        \mB_2(n,\mR) &= -\hat{\mLR}(n)\mN_H(r_c^+,n,\mR)            
+        \mB_2(n,\mR) &= -\hat{\mLR}(n)\mN_H(r_c^+,n,\mR).
       \end{align*}
 
       On définit \(\tilde{\mH}_{CI3}\) la fonction de \(\NN \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
@@ -42,7 +42,7 @@
           \mA_0(n,\mR)_{21} & \mA_1(n,\mR)_{21} & \mA_2(n,\mR)_{21} & \mB_1(n,\mR)_{21} & \mB_2(n,\mR)_{21}
           \\
           \mA_0(n,\mR)_{22} & \mA_1(n,\mR)_{22} & \mA_2(n,\mR)_{22} & \mB_1(n,\mR)_{22} & \mB_2(n,\mR)_{22}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{align*}
 
       On définit \(\tilde{b}\) la fonction de \(\NN \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
@@ -56,15 +56,15 @@
           \mN_H(r_c^+,n,\mR)_{21}
           \\
           \mN_H(r_c^+,n,\mR)_{22}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
     \begin{prop}
-      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((n)\) fixé et \(\hat\mR_{ex}\) la matrice définie en \ref{def:sphere:minimisation:matrices_MR}, alors
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)^t\), \((n)\) fixé et \(\hat\mR_{ex}\) la matrice définie en \ref{def:sphere:minimisation:matrices_MR}, alors
       \begin{align*}
         \argmin{X\in\CC^5} \norm{\hat\mR_{CI3}(n,X) - \hat\mR_{ex}(n)} =
-        \argmin{X\in\CC^5} \norm{\tilde{\mH}_{CI3}(n,\hat\mR_{ex}(n))X - \tilde{b}(n,\hat\mR_{ex}(n))}
+        \argmin{X\in\CC^5} \norm{\tilde{\mH}_{CI3}(n,\hat\mR_{ex}(n))X - \tilde{b}(n,\hat\mR_{ex}(n))}.
       \end{align*}
     \end{prop}
 
@@ -73,32 +73,31 @@
       On rappelle de la section précédente
       \begin{align*}
         \hat{\mZ}_{CI3}(n) = \left(\mI + b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n) \right)^{-1}
-        \left(a_0 \mI + a_1 {\hat{\mLD}(n)} - a_2 {\hat{\mLR}(n)}\right)
+        \left(a_0 \mI + a_1 {\hat{\mLD}(n)} - a_2 {\hat{\mLR}(n)}\right).
       \end{align*}
-      On pose \(\hat\mZ_D(n) = \mI + b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n)\) et \(\hat\mZ_N(n) = a_0 \mI + a_1 {\hat{\mLD}(n)} - a_2 {\hat{\mLR}(n)}\) donc
-
+      On pose \(\hat\mZ_D(n,X) = \mI + b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n)\) et \(\hat\mZ_N(n,X) = a_0 \mI + a_1 {\hat{\mLD}(n)} - a_2 {\hat{\mLR}(n)}\) donc
       \begin{align*}
         &{\hspace{1em}}~ \argmin{X\in\CC^5} \norm{\hat\mR_{CI3}(n,X) - \hat\mR_{ex}(n)}
         \\
-        & = \argmin{X\in\CC^5} \norm{ - \mM_h(r_s^+,n,\hat\mZ_{CI3})^{-1}\mM_j(r_s^+,n,\hat\mZ_{CI3})- \hat\mR_{ex}(n) }
+        & = \argmin{X\in\CC^5} \norm{ - \mM_h(r_s^+,n,\hat\mZ_{CI3})^{-1}\mM_j(r_s^+,n,\hat\mZ_{CI3})- \hat\mR_{ex}(n) },
         \\
-        & = \argmin{X\in\CC^5} \norm{ - \mM_h(r_s^+,n,\hat\mZ_{CI3})^{-1}\left(\mM_j(r_s^+,n,\hat\mZ_{CI3}) +  \mM_h(r_s^+,n,\hat\mZ_{CI3})\hat\mR_{ex}(n)\right) }      
+        & = \argmin{X\in\CC^5} \norm{ - \mM_h(r_s^+,n,\hat\mZ_{CI3})^{-1}\left(\mM_j(r_s^+,n,\hat\mZ_{CI3}) +  \mM_h(r_s^+,n,\hat\mZ_{CI3})\hat\mR_{ex}(n)\right) },      
         \\ 
-        & = \argmin{X\in\CC^5} \norm{\mM_j(r_s^+,n,\hat\mZ_{CI3}) +\mM_h(r_s^+,n,\hat\mZ_{CI3})\hat\mR_{ex}(n)}
+        & = \argmin{X\in\CC^5} \norm{\mM_j(r_s^+,n,\hat\mZ_{CI3}) +\mM_h(r_s^+,n,\hat\mZ_{CI3})\hat\mR_{ex}(n)}.
         \intertext{D'après la définition \ref{def:sphere:matrices_MJ-MH} des fonctions \(\mM_j, \mM_h\),}
         & = \argmin{X\in\CC^5} \left\lVert \left(\mJ_E(r_s^+,n)-\hat\mZ_{CI3}(n)\mJ_H(r_s^+,n)\right) \right.
         \\
-        & \qquad \qquad \quad + \left.\left(\mH_E(r_s^+,n)-\hat\mZ_{CI3}(n)\mH_H(r_s^+,n)\right)\hat\mR_{ex}(n) \right\lVert
+        & \qquad \qquad \quad + \left.\left(\mH_E(r_s^+,n)-\hat\mZ_{CI3}(n)\mH_H(r_s^+,n)\right)\hat\mR_{ex}(n) \right\lVert.
         \intertext{D'après la définition de \(\hat\mZ_{CI3}\),}        
         & = \argmin{X\in\CC^5} \left\lVert \hat\mZ_D(n)^{-1}\left(\hat\mZ_D(n)\mJ_E(r_s^+,n)-\hat\mZ_N(n)\mJ_H(r_s^+,n)\right) \right.
         \\
-        & \qquad \qquad \quad + \left.\hat\mZ_D(n)^{-1}\left(\hat\mZ_D(n)\mH_E(r_s^+,n)-\hat\mZ_N(n)\mH_H(r_s^+,n)\right)\hat\mR_{ex}(n) \right\lVert
+        & \qquad \qquad \quad + \left.\hat\mZ_D(n)^{-1}\left(\hat\mZ_D(n)\mH_E(r_s^+,n)-\hat\mZ_N(n)\mH_H(r_s^+,n)\right)\hat\mR_{ex}(n) \right\lVert,
         \\
         & = \argmin{X\in\CC^5} \left\lVert \left(\hat\mZ_D(n)\mJ_E(r_s^+,n)-\hat\mZ_N(n)\mJ_H(r_s^+,n)\right) \right.
         \\
-        & \qquad \qquad \quad + \left.\left(\hat\mZ_D(n)\mH_E(r_s^+,n)-\hat\mZ_N(n)\mH_H(r_s^+,n)\right)\hat\mR_{ex}(n) \right\lVert
+        & \qquad \qquad \quad + \left.\left(\hat\mZ_D(n)\mH_E(r_s^+,n)-\hat\mZ_N(n)\mH_H(r_s^+,n)\right)\hat\mR_{ex}(n) \right\lVert.
         \intertext{D'après la définition \ref{def:sphere:matrices_NE-NH} des fonctions \(\mN_E, \mN_H\),}        
-        & = \argmin{X\in\CC^5} \norm{\hat\mZ_N(n)\mN_E(r_s^+,n,\hat\mR_{ex}(n)) + \hat\mZ_D(n)\mN_H(r_s^+,n,\hat\mR_{ex}(n))}
+        & = \argmin{X\in\CC^5} \norm{\hat\mZ_N(n)\mN_E(r_s^+,n,\hat\mR_{ex}(n)) + \hat\mZ_D(n)\mN_H(r_s^+,n,\hat\mR_{ex}(n))},
       \end{align*}
       et on conclut d'après la définition des fonctions \(\hat\mZ_D, \hat\mZ_N\).
     \end{proof}
@@ -118,7 +117,7 @@
           \vdots
           \\
           \tilde\mH_{CI3}(n_{N_n},\hat\mR_{ex}(n_{N_n}))
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
       On définit \(\tilde{g}\) le vecteur colonne \(\CC^{4N_{n}}\) telle que
       \begin{equation*}
@@ -133,7 +132,7 @@
           \vdots
           \\
           \tilde{b}(n_{N_n},\hat\mR_{ex}(n_{N_n}))
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
@@ -142,7 +141,7 @@
     \begin{defn}
       On définit la fonctionnelle \(J_R\)
       \begin{equation*}
-        J_R(X) = \norm{\tilde{\mA}_{CI3}X - \tilde{g}}
+        J_R(X) = \norm{\tilde{\mA}_{CI3}X - \tilde{g}}.
       \end{equation*}
     \end{defn}
 
@@ -152,14 +151,14 @@
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CC^5} J_R(X)
+        X^* = \argmin{X\in \CC^5} J_R(X).
       \end{equation*}
     \end{thm}
 
     \begin{prop}
-      Si \(\conj{\tilde{\mA}_{CI3}^t}\tilde{\mA}_{CI3}\) est inversible alors
+      Si \(\conj{\tilde{\mA}_{CI3}^t}\tilde{\mA}_{CI3}\) est inversible, alors
       \begin{equation*}
-        X^* = (\conj{\tilde{\mA}_{CI3}^t}\tilde{\mA}_{CI3})^{-1}\conj{\tilde{\mA}_{CI3}^t}\tilde{g}
+        X^* = (\conj{\tilde{\mA}_{CI3}^t}\tilde{\mA}_{CI3})^{-1}\conj{\tilde{\mA}_{CI3}^t}\tilde{g}.
       \end{equation*}
     \end{prop}
     \begin{proof}
@@ -170,11 +169,10 @@
 
     \begin{thm}[Minimisation avec contraintes pour la CI3]
 
-      Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
-      Alors les coefficients de la CIOE respectant les CSU sont solutions du problème
+      Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}, alors les coefficients de la CIOE respectant les CSU sont solutions du problème
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CSU[3]{CI3}} J_R(X)
+        X^* = \argmin{X\in \CSU[3]{CI3}} J_R(X).
       \end{equation*}
     \end{thm}

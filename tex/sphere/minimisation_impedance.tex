@@ -13,7 +13,7 @@
         0 & \hat{\mLD}(n)_{21} & -\hat{\mLR}(n)_{21} & -\left(\hat{\mLD}(n){\mZ}\right)_{21} & \left(\hat{\mLR}(n){\mZ}\right)_{21}
         \\
         1 & \hat{\mLD}(n)_{22} & -\hat{\mLR}(n)_{22} & -\left(\hat{\mLD}(n){\mZ}\right)_{22} & \left(\hat{\mLR}(n){\mZ}\right)_{22}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
       On définit \(b\) la fonction de \(\mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
       \begin{equation*}
@@ -25,14 +25,14 @@
         {\mZ}_{21}
         \\
         {\mZ}_{22}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
     \begin{prop}
-      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \(n\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre, alors
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)^t\), \(n\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre, alors
       \begin{equation*}
-        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,X) - \hat\mZ_{ex}(n)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,\hat\mZ_{ex}(n))X - b(\hat\mZ_{ex}(n))}^2
+        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,X) - \hat\mZ_{ex}(n)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,\hat\mZ_{ex}(n))X - b(\hat\mZ_{ex}(n))}^2.
       \end{equation*}
     \end{prop}
 
@@ -40,22 +40,19 @@
       C'est la même méthodologie que pour le plan.
       On rappelle que dans la section précédente, on a introduit
       \begin{equation*}
-        \hat{\mZ}_{CI3}(n) = \left(\mI + b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n) \right)^{-1}\left(a_0 \mI + a_1 {\hat{\mLD}(n)} - a_2 {\hat{\mLR}(n)}\right)
+        \hat{\mZ}_{CI3}(n) = \left(\mI + b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n) \right)^{-1}\left(a_0 \mI + a_1 {\hat{\mLD}(n)} - a_2 {\hat{\mLR}(n)}\right).
       \end{equation*}
-      On pose \(\hat\mZ_D(n) = \mI + b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n)\) et \(\hat\mZ_N(n) = a_0 \mI + a_1 {\hat{\mLD}(n)} - a_2 {\hat{\mLR}(n)}\) donc
-
+      On pose \(\hat\mZ_D(n,X) = \mI + b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n)\) et \(\hat\mZ_N(n,X) = a_0 \mI + a_1 {\hat{\mLD}(n)} - a_2 {\hat{\mLR}(n)}\) donc \(\argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,X) - \hat\mZ_{ex}(n)}\)
       \begin{align*}
-      &{}~ \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,X) - \hat\mZ_{ex}(n)}
+      & = \argmin{X\in\CC^5} \norm{\hat\mZ_D(n,X)^{-1}\hat\mZ_N(n,X) - \hat\mZ_{ex}(n) },
       \\
-      & = \argmin{X\in\CC^5} \norm{\hat\mZ_D(n)^{-1}\hat\mZ_N(n) - \hat\mZ_{ex}(n) }
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_D(n,X)^{-1}\left(\hat\mZ_N(n,X) - \hat\mZ_D(n,X)\hat\mZ_{ex}(n)\right) },
       \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_D(n)^{-1}\left(\hat\mZ_N(n) - \hat\mZ_D(n)\hat\mZ_{ex}(n)\right) }
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n,X) - \hat\mZ_D(n)\hat\mZ_{ex}(n,X)}
       \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n) - \hat\mZ_D(n)\hat\mZ_{ex}(n)}
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n,X) - \left(b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n)\right)\hat\mZ_{ex}(n) - \hat\mZ_{ex}(n) },
       \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(n) - \left(b_1 \hat{\mLD}(n) - b_2 \hat{\mLR}(n)\right)\hat\mZ_{ex}(n) - \hat\mZ_{ex}(n) }
-      \\
-      &= \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,\hat\mZ_{ex}(n))X - b(\hat\mZ_{ex}(n))}
+      &= \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,\hat\mZ_{ex}(n))X - b(\hat\mZ_{ex}(n))}.
       \end{align*}
     \end{proof}
 
@@ -74,7 +71,7 @@
           \vdots
           \\
           \mH_{CI3}(n_{N_n},k_{z},\hat\mZ_{ex}(n_{N_n},k_{z}))
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
       On définit \(g\) la matrice de \(\mathcal{M}_{4N_{n}\times1}(\CC)\) telle que
       \begin{equation*}
@@ -89,7 +86,7 @@
           \vdots
           \\
           b(\hat\mZ_{ex}(n_{N_n},k_{z}))
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
@@ -97,7 +94,7 @@
     \begin{defn}
       On définit la fonctionnelle \(J_Z\)
       \begin{equation*}
-        J_Z(X) = \norm{{\mA}_{CI3}X - {g}}^2
+        J_Z(X) = \norm{{\mA}_{CI3}X - {g}}^2.
       \end{equation*}
     \end{defn}
     \begin{thm}[Minimisation sans contraintes pour la CI3]
@@ -106,15 +103,15 @@
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CC^5}  J_Z(X)
+        X^* = \argmin{X\in \CC^5}  J_Z(X).
       \end{equation*}
     \end{thm}
 
     \begin{prop}
       \label{prop:sphere:minimisation:minimum_sans_contraintes}
-      Si \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible alors
+      Si \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, alors
       \begin{equation*}
-        X^* = (\conj{\mA_{CI3}^t}\mA_{CI3})^{-1}\conj{\mA_{CI3}^t}g
+        X^* = (\conj{\mA_{CI3}^t}\mA_{CI3})^{-1}\conj{\mA_{CI3}^t}g.
       \end{equation*}
     \end{prop}
 
@@ -126,12 +123,11 @@
 
     \begin{thm}[Minimisation avec contraintes pour la CI3]
 
-      Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
-      Alors les coefficients de la CIOE respectant les CSU sont solutions du problème
+      Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}, alors les coefficients de la CIOE respectant les CSU sont solutions du problème
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CSU[3]{CI3}}  J_Z(X)
+        X^* = \argmin{X\in \CSU[3]{CI3}}  J_Z(X).
       \end{equation*}
     \end{thm}
 

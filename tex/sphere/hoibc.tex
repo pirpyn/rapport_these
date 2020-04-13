@@ -11,7 +11,7 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
       \label{eq:sphere:fourier:LD}
       On définit \(\LD\) l'endomorphisme de \(V\) tel que
       \begin{align*}
-        \LD \vect{U}(r_s,\theta,\phi) & = \vgrads{} \vdivs{} \vect{U}(r_s,\theta,\phi)
+        \LD \vect{U}(r_s,\theta,\phi) & = \vgrads{} \vdivs{} \vect{U}(r_s,\theta,\phi).
       \end{align*}
 
       On définit \(\hat{\mLD}\) la fonction de \(\NN \rightarrow \mathcal{M}_2(\RR)\) telle que
@@ -21,7 +21,7 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
           0 & 0
           \\
           0 & \frac{n(n+1)}{r_s^2}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
@@ -46,8 +46,8 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
                   \\
                   d_{mn}
               \end{bmatrix}
-            \right)
-      \intertext{Alors}
+            \right),
+      \intertext{alors}
         \LD\vE_t(r_s,\theta,\phi) &=  \sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
               \Umn(\tp) & \Umn^\perp(\tp)
@@ -67,16 +67,16 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
                   \\
                   d_{mn}
               \end{bmatrix}
-            \right)
+            \right).
       \end{align*}
     \end{prop}
 
     \begin{proof}
       Par définition de \(\LD\), on a
       \begin{align*}
-        \LD \vE_t & = \vgrads{} \vdivs{} \vE_t
+        \LD \vE_t & = \vgrads{} \vdivs{} \vE_t.
       \end{align*}
-      Or 
+      De plus, 
       \begin{multline*}
         \vE_t(r_s,\theta,\phi) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} \left( (a_{mn} j_n(kr_s) + c_{mn}h_n(kr_s)) \Umn(\tp) 
         \right.
@@ -85,9 +85,10 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
         + (b_{mn} \tilde{j_n}(kr_s)+d_{mn} \tilde{h_n}(kr_s)) \Umn^\perp(\tp)\right.
         %\intertext{donc}
         %\LD\vE_t(r_s,\theta,\phi) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ} (a_{mn} j_n + c_{mn}h_n) \LD\Umn(r_s,\theta,\phi) + (b_{mn} \tilde{j_n}+d_{mn} \tilde{h_n}) \LD\Umn^\perp(r_s,\theta,\phi)
+        .
       \end{multline*}
 
-      On rappelle  les expressions des vecteurs (voir \eqref{eq:defUmn_tgt}, \eqref{eq:defNmn_tgt}) dans la base sphérique (\(\vect{e_r},\vect{e_\theta},\vect{e_\phi}\))
+      On rappelle  les expressions des vecteurs (voir \eqref{eq:defUmn_tgt}, \eqref{eq:defNmn_tgt}) dans la base sphérique (\(\vect{e_r},\vect{e_\theta},\vect{e_\phi}\)): 
       \begin{align*}
         \Umn(\tp) =
         \begin{bmatrix}
@@ -96,7 +97,7 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
             \frac{im}{\sin\theta}\Pmn(\cos(\theta))e^{im\phi}
             \\
             - \ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}
-        \end{bmatrix}
+        \end{bmatrix},
         &&
         \Umn^\perp(\tp) =
         \begin{bmatrix}
@@ -105,45 +106,45 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
           \ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}
           \\
           \frac{im}{\sin\theta}\Pmn(\cos(\theta))e^{im\phi}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{align*}
 
-      On commence par calculer le divergent surfacique (cf annexe \ref{sec:annexe:div_grad_rot}) en sphérique
+      On commence par calculer le divergent surfacique (cf annexe \ref{sec:annexe:div_grad_rot}) en sphérique.
       \begin{align*}
-        \vdivs{}\Umn(r_s,\theta,\phi) &= \frac{1}{r_s\sin(\theta)} \ddr{\theta}{(\sin(\theta)\Umn_\theta)} + \frac{1}{r_s\sin(\theta)}\ddr{\phi}{(\Umn_\phi)}
+        \vdivs{}\Umn(r_s,\theta,\phi) &= \frac{1}{r_s\sin(\theta)} \ddr{\theta}{(\sin(\theta)\Umn_\theta)} + \frac{1}{r_s\sin(\theta)}\ddr{\phi}{(\Umn_\phi)},
         \\
-        &=\frac{ime^{im\phi}}{r_s\sin(\theta)}\left( \ddr{\theta}{\Pmn(\cos(\theta))} - \ddr{\theta}{\Pmn(\cos(\theta))} \right)
+        &=\frac{ime^{im\phi}}{r_s\sin(\theta)}\left( \ddr{\theta}{\Pmn(\cos(\theta))} - \ddr{\theta}{\Pmn(\cos(\theta))} \right),
         \\
-        &= 0
+        &= 0.
       \end{align*}
       Donc 
       \begin{align*}
-        \LD\Umn(r_s,\theta,\phi) = 0
+        \LD\Umn(r_s,\theta,\phi) = 0.
       \end{align*}
 
-      Calculons maintenant l'action de \(\LD\) sur \(\Umn^\perp\)
+      Calculons maintenant l'action de \(\LD\) sur \(\Umn^\perp\).
       \begin{align*}
-        \vdivs{}\Umn^\perp(r_s,\theta,\phi) &= \frac{1}{r_s\sin(\theta)} \ddr{\theta}{(\sin(\theta)\Umn^\perp_\theta)} + \frac{1}{r_s\sin(\theta)}\ddr{\phi}{(\Umn^\perp_\phi)}
+        \vdivs{}\Umn^\perp(r_s,\theta,\phi) &= \frac{1}{r_s\sin(\theta)} \ddr{\theta}{(\sin(\theta)\Umn^\perp_\theta)} + \frac{1}{r_s\sin(\theta)}\ddr{\phi}{(\Umn^\perp_\phi)},
         \\
         &= \frac{e^{im\phi}}{r_s\sin(\theta)}
         \left(
           \ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Pmn(\cos(\theta))}\right) - \frac{m^2}{\sin\theta}\Pmn(\cos(\theta))
-        \right)
+        \right),
       \end{align*}
-      Or les fonctions de Legendre sont solutions de l'équation différentielle de Legendre
+      or les fonctions de Legendre sont solutions de l'équation différentielle éponyme, donc
       \begin{align*}
-        \frac{1}{\sin(\theta)}\ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Pmn(\cos(\theta))}\right) + \left(n(n+1)-\frac{m^2}{\sin(\theta)^2}\right)\Pmn(\cos(\theta) = 0
+        \frac{1}{\sin(\theta)}\ddr{\theta}{}\left(\sin(\theta)\ddr{\theta}{\Pmn(\cos(\theta))}\right) + \left(n(n+1)-\frac{m^2}{\sin(\theta)^2}\right)\Pmn(\cos(\theta) = 0.
       \end{align*}
 
-      Donc 
+      Nous déduisons 
       \begin{align*}
-         \vdivs{}\Umn^\perp(r_s,\theta,\phi) = -\frac{n(n+1)}{r_s}\Pmn(\cos(\theta))e^{im\phi}
+         \vdivs{}\Umn^\perp(r_s,\theta,\phi) = -\frac{n(n+1)}{r_s}\Pmn(\cos(\theta))e^{im\phi}.
       \end{align*}
-      Enfin d’après la définition du gradient surfacique en coordonnées sphériques
+      Enfin d’après la définition du gradient surfacique en coordonnées sphériques,
       \begin{align*}
-         \vgrads{}\vdivs{}\Umn^\perp(r_s,\theta,\phi) &= -\frac{n(n+1)}{r_s}\left(\frac{1}{r_s}\ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}\vect{e_\theta}+\frac{1}{r_s\sin(\theta)}\ddr{\phi}{e^{im\phi}}\Pmn(\cos(\theta))\vect{e_\phi}\right)
+         \vgrads{}\vdivs{}\Umn^\perp(r_s,\theta,\phi) &= -\frac{n(n+1)}{r_s}\left(\frac{1}{r_s}\ddr{\theta}{\Pmn(\cos(\theta))}e^{im\phi}\vect{e_\theta}+\frac{1}{r_s\sin(\theta)}\ddr{\phi}{e^{im\phi}}\Pmn(\cos(\theta))\vect{e_\phi}\right),
          \\
-         &=-\frac{n(n+1)}{r_s^2}\Umn^\perp(r_s,\theta,\phi)
+         &=-\frac{n(n+1)}{r_s^2}\Umn^\perp(r_s,\theta,\phi).
       \end{align*}
     \end{proof}
 
@@ -152,7 +153,7 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
       \label{eq:sphere:fourier:LR}
       On définit \(\LR\) l'endomorphisme de \(V\) tel que
       \begin{align*}
-        \LR \vect{U}(r_s,\theta,\phi) & = \vrots{} \vrots{} \vect{U}(r_s,\theta,\phi)
+        \LR \vect{U}(r_s,\theta,\phi) & = \vrots{} \vrots{} \vect{U}(r_s,\theta,\phi).
       \end{align*}
 
       On définit \(\hat{\mLR}\) la fonction de \(\NN \rightarrow \mathcal{M}_2(\RR)\) telle que
@@ -162,12 +163,12 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
           \frac{n(n+1)}{r_s^2} & 0
           \\
           0 & 0
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
     \begin{prop}
-      Soit \(\vE_t\) dans \(V\) donc il existe \(a_{nm},b_{nm},c_{nm},d_{nm}\) tels que
+      Soit \(\vE_t\) dans \(V\). Il existe \((a_{nm},b_{nm},c_{nm},d_{nm})\) tels que
       \begin{align*}
       \vE_t(r_s,\theta,\phi) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
@@ -187,9 +188,9 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
                   \\
                   d_{mn}
               \end{bmatrix}
-            \right)
+            \right),
       \end{align*}
-      Alors
+      alors
       \begin{multline*}
         \LR\vE_t(r_s,\theta,\phi) = 
         \\
@@ -212,7 +213,7 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
                   \\
                   d_{mn}
               \end{bmatrix}
-            \right)
+            \right).
       \end{multline*}
     \end{prop}
 
@@ -222,10 +223,9 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
 
   \subsection{Expression de la matrice d'impédance approchée par la CI3}
 
-    Tout comme dans le cas du plan infini, on peut donc définir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance.
-
+    Tout comme dans le cas du plan infini, on peut donc définir \(\hat{\mZ}_{IBC}\) l’opérateur matriciel associé à la condition d'impédance:
     \begin{align}
         \label{eq:sphere:hoibc:ci3}
         \hat{\mZ}_{CI3}(n) = \left(\mI + b_1 \frac{\hat{\mLD}(n)}{k_0^2} - b_2 \frac{\hat{\mLR}(n)}{k_0^2} \right)^{-1}
-        \left(a_0 \mI + a_1 \frac{\hat{\mLD}(n)}{k_0^2} - a_2 \frac{\hat{\mLR}(n)}{k_0^2}\right)
+        \left(a_0 \mI + a_1 \frac{\hat{\mLD}(n)}{k_0^2} - a_2 \frac{\hat{\mLR}(n)}{k_0^2}\right).
     \end{align}

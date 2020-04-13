@@ -8,14 +8,14 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
 
         On appelle harmoniques sphériques d'ordre \(n\) et de degré \(m\) les fonctions de \(\RR\times\RR \rightarrow \CC\) telles que
         \begin{align*}
-            Y_{m,n}(\tp) &= (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}}e^{im\phi}\PP^m_n(\cos \theta)
+            Y_{m,n}(\tp) &= (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}}e^{im\phi}\PP^m_n(\cos \theta).
         \end{align*}
     \end{defn}
 
     \begin{prop}
         Les harmoniques sphériques \(Y_{m,n}\) sont solutions de 
         \begin{align*}
-            \lapls{} u(\tp) = 0 && \forall (\tp) \in [0,\pi]\times[0,2\pi]
+            \lapls{} u(\tp) = 0, && \forall (\tp) \in [0,\pi]\times[0,2\pi].
         \end{align*}
     \end{prop}
     \begin{prop}
@@ -27,58 +27,58 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
 
     \begin{defn}
         \label{def:sphere:bessel_spheriques}
-        On appelle fonction de Bessel sphérique d'ordre \(n\) les fonctions de \(\CC \rightarrow \CC\) solution de
+        On appelle fonctions de Bessel sphérique d'ordre \(n\) les fonctions de \(\CC \rightarrow \CC\) solution de
         \begin{align*}
-            z^{2}\ddp[2]{z}{u(z)}+2z\ddp{z}{u(z)}+\left(z^{2}-n(n+1)\right)u(z)=0
+            z^{2}\ddp[2]{z}{u(z)}+2z\ddp{z}{u(z)}+\left(z^{2}-n(n+1)\right)u(z)=0.
         \end{align*}
     \end{defn}
-    Ces fonctions sont détaillées dans \cite[\href{https://dlmf.nist.gov/10.47}{section.~10.47}]{dlmf_nist_2019}.
-    On note \(j_n\) la fonction de Bessel sphérique de première espèce et \(h^{(2)_n}\) la fonction de Hankel de deuxième espèce.
+    Ces fonctions sont détaillées dans \cite[p.~437]{abramowitz_handbook_1964} ou \cite[\url{https://dlmf.nist.gov/10.47}]{dlmf_nist_2019}.
+    On note \(j_n\) la fonction de Bessel sphérique de première espèce et \(h^{(2)}_n\) la fonction de Hankel sphérique de deuxième espèce.
 
     \begin{prop}
-        Soit \(z_n\) une fonction de Bessel sphérique d'ordre \(n\) et \(Y_{m,n}\) une harmonique sphérique d'ordre \(n\) et de degré \(m\). Les fonctions \((\rtp) \mapsto z_n(k(r)r)Y_{m,n}(\tp)\) sont solutions de 
+        Soit \(z_n\) une fonction de Bessel sphérique d'ordre \(n\) et \(Y_{m,n}\) une harmonique sphérique d'ordre \(n\) et de degré \(m\), alors les fonctions \((\rtp) \mapsto z_n(k(r)r)Y_{m,n}(\tp)\) sont solutions de 
         \begin{align*}
-            \lapl u(\rtp) + k^2u(\rtp) = 0 && \forall (\rtp) \in \RR\times[0,\pi]\times[0,2\pi]
+            \lapl u(\rtp) + k^2u(\rtp) = 0, && \forall (\rtp) \in \RR\times[0,\pi]\times[0,2\pi].
         \end{align*}
     \end{prop}
     \begin{proof}
-        Voir \cite[section.~2.6.1]{nedelec_acoustic_2001}
+        Voir \cite[section.~2.6.1]{nedelec_acoustic_2001}.
     \end{proof}
 
     \begin{defn}
         On définit l’opérateur \gls{mat-tild} agissant sur les fonctions dérivables tel que soit \(f \in C^1(\CC)\),
         \begin{align*}
-        &\tilde{f}(z) = f(z) + zf'(z)&& \forall z \in \CC
+        &\tilde{f}(z) = f(z) + zf'(z), && \forall z \in \CC.
         \end{align*}
     \end{defn}
 
     \begin{defn}
         \label{def:sphere:harmoniques_spheriques_vect}
         Soit \(z_n\) une fonction de Bessel sphérique d'ordre \(n\) et \(Y_{m,n}\) une harmonique sphérique d'ordre \(n\) et de degré \(m\).
-        On appelle harmoniques sphériques vectorielles les fonctions \(\gls{phy-Mmn},\gls{phy-Nmn}\) telles que
+        On appelle harmoniques sphériques vectorielles (ou vecteurs harmoniques sphériques) les fonctions \(\gls{phy-Mmn},\gls{phy-Nmn}\) telles que
         \begin{align}
             \label{eq:defMmn}
-            \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(k(r)r) Y_{m,n}(\tp) \right)
+            \Mmn[z_n](\rtp) &:= \vrot \left( \vect{r} z_n(k(r)r) Y_{m,n}(\tp) \right),
             \\
-            &= z_n(k(r)r)
+            \notag&= z_n(k(r)r)
             \begin{bmatrix}
                 0
                 \\
                 \frac{im}{\sin\theta}Y_{mn}(\tp)
                 \\
                 - \ddr{\theta}{Y_{mn}}(\tp)
-            \end{bmatrix}
+            \end{bmatrix},
             \\
             \label{eq:defNnn}
-            \Nmn[z_n](\rtp) &:= \frac{\vrot \Mmn[z_n]}{k}(\rtp) 
+            \Nmn[z_n](\rtp) &:= \frac{\vrot \Mmn[z_n]}{k}(\rtp),
             \\
-            &= \frac{1}{k(r)r}\begin{bmatrix}
+            \notag&= \frac{1}{k(r)r}\begin{bmatrix}
                 z_n(k(r)r)n(n+1)Y_{mn}(\tp)
                 \\
                 \tilde{z_n}(k(r)r)\ddr{\theta}{Y_{mn}}(\tp)
                 \\
                 \tilde{z_n}(k(r)r)\frac{im}{\sin\theta}Y_{mn}(\tp)
-            \end{bmatrix}
+            \end{bmatrix}.
         \end{align}
     \end{defn}
 
@@ -87,9 +87,9 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \begin{equation*}
             \left\lbrace
                 \begin{aligned}
-                    \vrot \vrot \vect{U}(\rtp) - k^2 \vect{U}(\rtp) &= 0
+                    \vrot \vrot \vect{U}(\rtp) - k^2 \vect{U}(\rtp) &= 0,
                     \\
-                    \vdiv \vect{U}(\rtp) &= 0
+                    \vdiv \vect{U}(\rtp) &= 0.
                 \end{aligned}
             \right.
         \end{equation*}
@@ -98,13 +98,13 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         Voir \cite[Théorème.~5.3.1]{nedelec_acoustic_2001} et sa démonstration ou l'annexe \ref{sec:annex:harmoniques_spheriques}.
     \end{proof}
 
-    On admet les propriétés suivantes
+    On admet les propriétés suivantes:
     \begin{prop}
         \label{prop:Mmn_Nmn_rot}
         \begin{align*}
-            \vrot \Mmn[z_n](\rtp) &= k\Nmn[z_n](\rtp)
+            \vrot \Mmn[z_n](\rtp) &= k\Nmn[z_n](\rtp),
             \\
-            \vrot \Nmn[z_n](\rtp) &= k\Mmn[z_n](\rtp)
+            \vrot \Nmn[z_n](\rtp) &= k\Mmn[z_n](\rtp).
         \end{align*}
     \end{prop}
 
@@ -127,7 +127,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
                 \frac{im}{\sin\theta}Y_{mn}(\tp)
                 \\
                 - \ddr{\theta}{Y_{mn}}(\tp)
-            \end{bmatrix}
+            \end{bmatrix},
             \\
             \label{eq:defNmn_tgt}
             \Umn^\perp(\tp) &=
@@ -135,26 +135,26 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
                 \ddr{\theta}{Y_{mn}}(\tp)
                 \\
                 \frac{im}{\sin\theta}Y_{mn}(\tp)
-            \end{bmatrix}
+            \end{bmatrix}.
         \end{align}
     \end{defn}
 
     \begin{prop}
-        On remarque alors que les parties tangentielles des vecteurs harmoniques sphériques peuvent s'écrire:
+        Les parties tangentielles des vecteurs harmoniques sphériques peuvent s'écrire:
         \begin{align*}
-          \Mmn[z_n]_t(\rtp) &= z_n(k(r)r)\Umn(\tp)
+          \Mmn[z_n]_t(\rtp) &= z_n(k(r)r)\Umn(\tp),
           \\
-          \Nmn[z_n]_t(\rtp) &= \frac{1}{k(r)r}\tilde{z_n}(k(r)r)\Umn^\perp(\tp)
+          \Nmn[z_n]_t(\rtp) &= \frac{1}{k(r)r}\tilde{z_n}(k(r)r)\Umn^\perp(\tp).
         \end{align*}
     \end{prop}
 
-    On a alors les propriétés supplémentaires
+    On en déduit les propriétés supplémentaires
     \begin{prop}
         \label{prop:Mmn_Nmn_vect}
         \begin{align*}
-          \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= k(r)rz_n(k(r)r)\Umn^\perp(\tp)
+          \vect{e_r} \pvect \Mmn[z_n]_t(\rtp) &= k(r)rz_n(k(r)r)\Umn^\perp(\tp),
           \\
-          \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{k(r)r}\tilde{z_n}(k(r)r)\Umn(\tp)
+          \vect{e_r} \pvect \Nmn[z_n]_t(\rtp) &= -\frac{1}{k(r)r}\tilde{z_n}(k(r)r)\Umn(\tp).
         \end{align*}
     \end{prop}
 
@@ -172,16 +172,16 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
 
     Les solutions des équations de Maxwell sont développables en série de Mie
     \begin{prop}
-        Il existe des constantes \((a_{mn},c_{mn},d_{mn},d_{mn})\) constantes par morceaux en \(r\) telles que les champs sont
+        Il existe \((a_{mn},c_{mn},d_{mn},d_{mn})\) constantes par morceaux en \(r\) telles que les champs sont
         \begin{multline*}
             \vE(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Mmn[j_n](\rtp) + b_{mn} \Nmn[j_n](\rtp)
             \\
-            + c_{mn} \Mmn[h^{(2)}_n](\rtp) + d_{mn} \Nmn[h^{(2)}_n](\rtp)
+            + c_{mn} \Mmn[h^{(2)}_n](\rtp) + d_{mn} \Nmn[h^{(2)}_n](\rtp),
         \end{multline*}
         \begin{multline*}
             \vH(\rtp) = \frac{i}{\eta(r)}\sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} \Nmn[j_n](\rtp) + b_{mn} \Mmn[j_n](\rtp)
             \\
-            + c_{mn} \Nmn[h^{(2)}_n](\rtp) + d_{mn} \Mmn[h^{(2)}_n](\rtp)
+            + c_{mn} \Nmn[h^{(2)}_n](\rtp) + d_{mn} \Mmn[h^{(2)}_n](\rtp).
         \end{multline*}
     \end{prop}
     \begin{proof}
@@ -193,39 +193,39 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
 
     \begin{defn}
       \label{def:sphere:je-jH-hE-hH}
-      On définit les matrices \(\mj_{E}(r,n),\mh_{E}(r,n),\mj_{H}(r,n),\mh_{H}(r,n)\) où \(k,\eta\) sont constants par morceaux en \(r\)
+      On définit les matrices \(\mj_{E}(r,n),\mh_{E}(r,n),\mj_{\cH}(r,n),\mh_{\cH}(r,n)\) où \(k(r),\eta(r)\) sont constants par morceaux
       \begin{align*}
         \mj_{E}(r,n) &=
         \begin{bmatrix}
             j_n(k(r)r) & 0
             \\
             0 & \tilde{j_n}(k(r)r)
-        \end{bmatrix}
+        \end{bmatrix},
         \\
         \mh_{E}(r,n) &=
         \begin{bmatrix}
             h^{(2)}_n(k(r)r) & 0
             \\
             0 & \tilde{h^{(2)}_n}(k(r)r)
-        \end{bmatrix}
+        \end{bmatrix},
         \\
-        \mj_{H}(r,n) &=\frac{i}{k(r)\eta(r)r}
+        \mj_{\cH}(r,n) &=\frac{i}{k(r)\eta(r)r}
         \begin{bmatrix}
                 -\tilde{j_n}(k(r)r) & 0
                 \\
                 0 & (k(r)r)^2 j_n(k(r)r)
-        \end{bmatrix}
+        \end{bmatrix},
         \\
-        \mh_{H}(r,n) &=\frac{i}{k(r)\eta(r)r}
+        \mh_{\cH}(r,n) &=\frac{i}{k(r)\eta(r)r}
         \begin{bmatrix}
                 -\tilde{h^{(2)}_n}(k(r)r) & 0
                 \\
                 0 & (k(r)r)^2 h^{(2)}_n(k(r)r)
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{align*}
     \end{defn}
 
-    En utilisant les fonctions définies précédemment, on a les expressions des coordonnées tangentielles de \(\vE,\vect{e_r}\times\vH\).
+    En utilisant les fonctions définies précédemment, on a les expressions des coordonnées tangentielles de \(\vE,\vJ = \vect{e_r}\times\vH\).
     \begin{prop}
         \label{prop:imp_fourier:sphere:Et}
      \begin{align*}
@@ -247,27 +247,27 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
                   \\
                   d_{mn}
               \end{bmatrix}
-            \right)
+            \right),
             \\
-            \vJ(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \vJ_t(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
                 \Umn(\tp) & \Umn^\perp(\tp)
             \end{bmatrix}
             \left(
-                \mj_H(r,n)
+                \mj_\cH(r,n)
                 \begin{bmatrix}
                     a_{mn}
                     \\
                     b_{mn}
                 \end{bmatrix}
                 +
-                \mh_H(r,n)
+                \mh_\cH(r,n)
                 \begin{bmatrix}
                     c_{mn}
                     \\
                     d_{mn}
                 \end{bmatrix}
-            \right)
+            \right).
         \end{align*}
     \end{prop}
 
@@ -276,14 +276,14 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \begin{multline*}
             \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ} a_{mn} j_n(k(r)r)\Umn(\tp) + b_{mn} \frac{\tilde{j_n}(k(r)r)}{k(r)r}\Umn^\perp(\tp)
             \\
-            + c_{mn} h^{(2)}_n(k(r)r)\Umn(\tp) + d_{mn} \frac{\tilde{j_n}(k(r)r)}{k(r)r}\Umn^\perp(\tp)
+            + c_{mn} h^{(2)}_n(k(r)r)\Umn(\tp) + d_{mn} \frac{\tilde{j_n}(k(r)r)}{k(r)r}\Umn^\perp(\tp),
         \end{multline*}
         \begin{multline*}
-            \vJ(\rtp) = \frac{i}{\eta(r)}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{\tilde{j_n}(k(r)r)}{k(r)r}\Umn(\tp) + b_{mn} k(r)r j_n(k(r)r) \Umn^\perp(\tp)
+            \vJ_t(\rtp) = \frac{i}{\eta(r)}\sum_{n\in\ZZ}\sum_{m\in\ZZ} - a_{mn} \frac{\tilde{j_n}(k(r)r)}{k(r)r}\Umn(\tp) + b_{mn} k(r)r j_n(k(r)r) \Umn^\perp(\tp)
             \\
-            -  \frac{\tilde{h^{(2)}_n}(k(r)r)}{k(r)r} c_{mn} \Umn(\tp) + k(r)r h^{(2)}_n(k(r)r) d_{mn} \Umn^\perp(\tp)
+            -  \frac{\tilde{h^{(2)}_n}(k(r)r)}{k(r)r} c_{mn} \Umn(\tp) + k(r)r h^{(2)}_n(k(r)r) d_{mn} \Umn^\perp(\tp).
         \end{multline*}
-        Puis en réorganisant les termes, on a la propriété
+        Puis en réorganisant les termes, on a
         \begin{multline*}
             \vE_t(\rtp) = \sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
@@ -312,10 +312,10 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
                   \\
                   d_{mn}
               \end{bmatrix}
-            \right)
+            \right),
         \end{multline*}
         \begin{multline*}
-            \vJ(\rtp) = \frac{i}{k(r)\eta(r)r}\sum_{n\in\ZZ}\sum_{m\in\ZZ}
+            \vJ_t(\rtp) = \frac{i}{k(r)\eta(r)r}\sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
                 \Umn(\tp) & \Umn^\perp(\tp)
             \end{bmatrix}
@@ -342,38 +342,38 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
                     \\
                     d_{mn}
                 \end{bmatrix}
-            \right)
+            \right).
         \end{multline*}
     \end{proof}
 
-    On remarque que \(\eps,\mu\) sont constantes par morceaux.
+    On remarque que les paramètres \(\eps,\mu\) ( ou équivalent \(k,\eta\)) sont constants par morceaux.
     Sur une interface d'équation \(r=r_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mj_E(r_p+ \delta,n) - \mj_E(r_p - \delta,n) \not = 0\) .
 
     \begin{prop}
       \label{lem:sphere:imp:inv_matrices_JE-HE}
-      Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mj_E(r,n)\), \(\mj_H(r,n)\)  sont inversibles pour tout \(n\).
+      Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mj_E(r,n)\), \(\mj_\cH(r,n)\)  sont inversibles pour tout \(n\).
       % Sinon, pour \(n\) donné, il existe un nombre fini de \(k_z\) tels que ces matrices ne soient pas inversibles. 
     \end{prop}
 
     \begin{proof}
       Par définition des matrices,
       \begin{align*}
-        \det(\mj_E(r,n)) &= j_n(k(r)r)\tilde{j_n}(k(r)r)
+        \det(\mj_E(r,n)) &= j_n(k(r)r)\tilde{j_n}(k(r)r),
         \\
-        \det(\mj_H(r,n)) &= -\frac{1}{\eta(r)^2}j_n(k(r)r)\tilde{j_n}
+        \det(\mj_\cH(r,n)) &= -\frac{1}{\eta(r)^2}j_n(k(r)r)\tilde{j_n}
       \end{align*}
 
-      D’après \cite[p.~370]{abramowitz_handbook_1964}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels, or les fonctions de Bessel sphériques d'ordre \(n\) sont des fonctions de Bessel d'ordre \(n+1/2\) donc si \(k(r) \in\CC\backslash\RR\) alors ces matrices sont inversibles.
+      D’après \cite[p.~370]{abramowitz_handbook_1964} ou \cite[\url{https://dlmf.nist.gov/10.58}]{dlmf_nist_2019}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels, or les fonctions de Bessel sphériques d'ordre \(n\) sont des fonctions de Bessel d'ordre \(n+1/2\) donc si \(k(r) \in\CC\backslash\RR\) alors ces matrices sont inversibles.
     \end{proof}
 
 
-    Pour les matrices \(\mh_E(r,n)\), \(\mh_H(r,n)\), on a
+    Pour les matrices \(\mh_E(r,n)\), \(\mh_\cH(r,n)\), on a
     \begin{align*}
-        \det(\mh_E(r,n)) &= h^{(2)}_n(k(r)r)\tilde{h^{(2)}_n}(k(r)r)
+        \det(\mh_E(r,n)) &= h^{(2)}_n(k(r)r)\tilde{h^{(2)}_n}(k(r)r),
         \\
-        \det(\mh_H(r,n)) &= -\frac{1}{\eta(r)^2}h^{(2)}_n(k(r)r)\tilde{h^{(2)}_n}
+        \det(\mh_\cH(r,n)) &= -\frac{1}{\eta(r)^2}h^{(2)}_n(k(r)r)\tilde{h^{(2)}_n}.
      \end{align*}
-    Et on ne peut rien conclure, car les zéros peuvent être complexes (voir \cite{sandstrom_note_2007}). On va donc supposer ces déterminants non nuls.
+    On ne peut rien conclure, car les zéros peuvent être complexes (voir \cite{sandstrom_note_2007}). On va donc supposer ces déterminants non nuls.
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -386,7 +386,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
     Soit \(r_1 = r_0 + d\). On se place dans le matériau donc \(r_0 \le r < r_1\).
 
     \begin{prop}
-      Si on suppose que la matrice \(\mh_{H}(r_1^-,n) - \mj_{H}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\mh_{E}(r_0^+,n)\) est inversible pour tout \(n\), alors on a 
+     Supposons que la matrice \(\mh_{\cH}(r_1^-,n) - \mj_{\cH}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\mh_{E}(r_0^+,n)\) est inversible pour tout \(n\), alors
       \begin{equation*}
         \hat \vE_t(r_1^-,n) = \hat \mZ(n) \left(\vect{e_r}\pvect \hat \vH_t(r_1^-,n)\right)
       \end{equation*}
@@ -394,14 +394,12 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
       \begin{multline*}
         \hat \mZ(n) =
         \left(\mh_{E}(r_1^-,n)\mh_{E}(r_0^+,n)^{-1} - \mj_{E}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\right)\\
-        \left(\mh_{H}(r_1^-,n)\mh_{E}(r_0^+,n)^{-1} - \mj_{H}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\right)^{-1}
+        \left(\mh_{\cH}(r_1^-,n)\mh_{E}(r_0^+,n)^{-1} - \mj_{\cH}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\right)^{-1}.
       \end{multline*}
     \end{prop}
 
     \begin{proof}
-      On se place dans le matériau: \(r_0 \le r \le r_ 1 \).
-
-      On applique la condition limite du conducteur parfait \(\hat \vE(r_0,n) = 0\) dans \eqref{prop:imp_fourier:sphere:Et}. Comme les harmoniques sphériques forment une base de \(L^2(S(r_0))\), chaque terme doit être nul.
+      On applique la condition limite du conducteur parfait \(\hat \vE(r_0,n) = 0\) dans \eqref{prop:imp_fourier:sphere:Et}. Comme les harmoniques sphériques forment une base de \(L^2(S(r_0))\), chaque terme doit être nul, donc par identification
       \begin{equation*}
         \mj_{E}(r_0,n)
         \begin{bmatrix}
@@ -412,7 +410,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \begin{bmatrix}
           c_{nm} \\
           d_{nm}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
 
       On peut donc exprimer les composantes tangentielles%, on omet les dépendances en \((n)\).
@@ -422,23 +420,23 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \begin{bmatrix}
           c_{nm} \\
           d_{nm}
-        \end{bmatrix}
+        \end{bmatrix},
         \\
         \vect{e_r}\pvect \hat \vH_t(r_1,n) &=
-        \left(\mh_{H}(r_1,n) - \mj_{H}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n) \right)
+        \left(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n) \right)
         \begin{bmatrix}
           c_{nm} \\
           d_{nm}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{align*}
 
-      On suppose donc \(\mh_{H}(r_1,n) - \mj_{H}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\) inversible, la matrice \(\hat\mZ(n)\) telle que \(\hat\vE_t(r_1,n) = \hat\mZ(n) (\vect{e_r}\pvect\vH(r_1,n))\) est alors
+      On suppose donc \(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\) inversible, la matrice \(\hat\mZ(n)\) telle que \(\hat\vE_t(r_1,n) = \hat\mZ(n) (\vect{e_r}\pvect\vH(r_1,n))\) est alors
 
       \begin{multline*}
         \hat \mZ =
         \left(\mh_{E}(r_1,n) - \mj_{E}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)
         \\
-        \left(\mh_{H}(r_1,n) - \mj_{H}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)^{-1}.
+        \left(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)^{-1}.
       \end{multline*}
       Comme on a supposé la matrice \(\mh_E(r_0,n)\) inversible, on peut factoriser par cette matrice à droite le numérateur et le dénominateur d'où la proposition.
 
@@ -461,9 +459,9 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
       \label{def:sphere:matrices_MJ-MH}
       On définit les fonctions de \([r_{p-1}, r_p[\times \NN \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{align*}
-        \mM_{\mj}(r,n,\mZ) &= \mj_{E}(r,n) -  \mZ \mj_{H}(r,n)
+        \mM_{\mj}(r,n,\mZ) &= \mj_{E}(r,n) -  \mZ \mj_{\cH}(r,n),
         \\
-        \mM_{\mh}(r,n,\mZ) &= \mh_{E}(r,n) -  \mZ \mh_{H}(r,n)
+        \mM_{\mh}(r,n,\mZ) &= \mh_{E}(r,n) -  \mZ \mh_{\cH}(r,n).
       \end{align*}
     \end{defn}
 
@@ -471,7 +469,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
       \label{def:sphere:reflexion:impedance}
       On définit la fonction de \([r_{p-1}, r_p[\times \NN \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{align*}
-        \hat\mR(r,n,\mZ) &= -\mM_{\mh}(r,n,\mZ)^{-1}\mM_{\mj}(r,n,\mZ)
+        \hat\mR(r,n,\mZ) &= -\mM_{\mh}(r,n,\mZ)^{-1}\mM_{\mj}(r,n,\mZ).
       \end{align*}
     \end{defn}
     A priori, pour \(r,n\) donné, \(\hat\mR(r,n,\mZ)\) n'est pas défini pour toute matrice \(\mZ\).
@@ -486,7 +484,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \mT_p(r,r',n,\mA) = \\
           \left(\mj_{E}(r,n)\mM_{\mj}(r',n,\mA)^{-1} - \mh_{E}(r,n)\mM_{\mh}(r',n,\mA)^{-1}\right) 
           \\
-          \left(\mj_{H}(r,n)\mM_{\mj}(r',n,\mA)^{-1} - \mh_{H}(r,n)\mM_{\mh}(r',n,\mA)^{-1}\right)^{-1}
+          \left(\mj_{\cH}(r,n)\mM_{\mj}(r',n,\mA)^{-1} - \mh_{\cH}(r,n)\mM_{\mh}(r',n,\mA)^{-1}\right)^{-1}.
       \end{multline*}
     \end{defn}
     A priori, pour \(r,r',n\) donné, \(\mT_p(r,r',n,\mA)\) n'est pas défini pour toute matrice \(\mA\).
@@ -498,10 +496,10 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
-        \mM_{\mj}(r_p^-,n,\hat\mZ_{p}(n)) && \mM_{\mh}(r_p^-,n,\hat\mZ_{p}(n))
+        \mM_{\mj}(r_p^-,n,\hat\mZ_{p}(n)), && \mM_{\mh}(r_p^-,n,\hat\mZ_{p}(n)),
       \end{align*}
       \begin{align*}
-        \mj_{H}(r_{p-1}^+,n)\mM_{\mj}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1} - \mh_{H}(r_{p-1}^+,n)\mM_{\mh}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1}
+        \mj_{\cH}(r_{p-1}^+,n)\mM_{\mj}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1} - \mh_{\cH}(r_{p-1}^+,n)\mM_{\mh}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1},
       \end{align*}
 
       alors \(\hat\vE_t(r_{p-1}^+,n) = \mT_p(r_{p-1}^+,r_{p}^-,n,\hat\mZ_{p}(n))(\vn \pvect \hat\vH(r_{p-1}^+,n))\).
@@ -511,15 +509,15 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
 
 
     \begin{proof}
-      On se situe dans la couche \(p\) (\(r_{p-1}\le r\le r_p\))
+      On se situe dans la couche \(p\) (\(r_{p-1}\le r\le r_p\)). On utilise la relation en \(r=r_p^-\):
       \begin{multline*}
-        \mj_{E}(r_{p},n)
+        \mj_{E}(r_{p}^-,n)
         \begin{bmatrix}
           a_{nm} \\
           b_{nm}
         \end{bmatrix}
         +
-        \mh_{E}(r_{p},n)
+        \mh_{E}(r_{p}^-,n)
         \begin{bmatrix}
           c_{nm} \\
           d_{nm}
@@ -528,74 +526,72 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \\
         \hat \mZ_{p}(n)
         \left(
-          \mj_{H}(r_{p},n)
+          \mj_{\cH}(r_{p}^-,n)
           \begin{bmatrix}
             a_{nm} \\
             b_{nm}
           \end{bmatrix}
           +
-          \mh_{H}(r_{p},n)
+          \mh_{\cH}(r_{p}^-,n)
           \begin{bmatrix}
             c_{nm} \\
             d_{nm}
           \end{bmatrix}
-        \right)
+        \right).
       \end{multline*}
 
       Ce qui revient à 
       \begin{equation*}
-        \mM_{\mj}(r_{p},n,\hat\mZ_p(n))
+        \mM_{\mj}(r_{p}^-,n,\hat\mZ_p(n))
         \begin{bmatrix}
           a_{nm} \\
           b_{nm}
         \end{bmatrix}
         =
-        -\mM_{\mh}(r_{p},n,\hat\mZ_p(n))
+        -\mM_{\mh}(r_{p}^-,n,\hat\mZ_p(n))
         \begin{bmatrix}
           c_{nm} \\
           d_{nm}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
 
-      On suppose que les matrices \(\mM_{\mj}(r_p,n,\hat\mZ_p(n)), \mM_{\mh}(r_p,n,\hat\mZ_p(n))\) sont inversibles pour donc
+      On suppose que les matrices \(\mM_{\mj}(r_p^-,n,\hat\mZ_p(n)), \mM_{\mh}(r_p^-,n,\hat\mZ_p(n))\) sont inversibles donc
       \begin{equation*}
         \begin{bmatrix}
           c_{nm} \\
           d_{nm}
         \end{bmatrix}
         =
-        \mR(r_{p},n,\hat\mZ_p(n))
+        \mR(r_{p}^-,n,\hat\mZ_p(n))
         \begin{bmatrix}
           a_{nm} \\
           b_{nm}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
 
-      On injecte ce qui précède en \(r = r_{p-1}\)
+      On injecte ce qui précède en \(r = r_{p-1}^+\)
       \begin{align*}
-        \hat{\vE}_t(r_{p-1},n) &= 
-        \left(\mh_{E}(r_{p-1},n)\mR(r_{p},n,\hat{\mZ}_p(n)) + \mj_{E}(r_{p-1},n)\right)
+        \hat{\vE}_t(r_{p-1}^+,n) &= 
+        \left(\mh_{E}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n)) + \mj_{E}(r_{p-1}^+,n)\right)
         \begin{bmatrix}
           a_{nm} \\
           b_{nm}
         \end{bmatrix}
         \\
-        \vect{e_r}\times\hat{\vH}_t(r_{p-1},n) &=
-        \left(\mh_{H}(r_{p-1},n)\mR(r_{p},n,\hat{\mZ}_p(n)) + \mj_{H}(r_{p-1},n))\right)
+        \vect{e_r}\times\hat{\vH}_t(r_{p-1}^+,n) &=
+        \left(\mh_{\cH}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n)) + \mj_{\cH}(r_{p-1}^+,n))\right)
         \begin{bmatrix}
           a_{nm} \\
           b_{nm}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{align*}
 
-      On suppose alors que cette dernière est inversible pour tout \((n)\).
-
-      On obtient
+      On suppose alors que \(\mh_{\cH}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n)) + \mj_{\cH}(r_{p-1}^+,n))\) est inversible pour tout \((n)\):
       \begin{multline*}
-        \hat{\vE}_t(r_{p-1},n) =
-        \left(\mj_{E}(r_{p-1},n) + \mh_{E}(r_{p-1},n)\mR(r_{p},n,\hat{\mZ}_p(n))\right) \\
-        \left(\mj_{H}(r_{p-1},n) + \mh_{H}(r_{p-1},n)\mR(r_{p},n,\hat{\mZ}_p(n))\right)^{-1}
-        \vect{e_r}\times\hat{\vH}_t(r_{p-1},n)
+        \hat{\vE}_t(r_{p-1}^+,n) =
+        \left(\mj_{E}(r_{p-1}^+,n) + \mh_{E}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n))\right) \\
+        \left(\mj_{\cH}(r_{p-1}^+,n) + \mh_{\cH}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n))\right)^{-1}
+        \vect{e_r}\times\hat{\vH}_t(r_{p-1}^+,n).
       \end{multline*}
 
       Comme on a supposé l'inversibilité des deux matrices \(\mM_j\), \(\mM_h\) alors on peut factoriser à droite le numérateur et le dénominateur et on a la propriété.
@@ -611,7 +607,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \mM_{\mj}(r_{p-1}^+,n,\hat\mZ_{p-1}(n)), && \mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n)),
       \end{align*}
       \begin{align*}
-        \mh_{H}(r_{p}^-,n)\mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1} - \mj_{H}(r_{p}^-,n)\mM_{\mj}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1},
+        \mh_{\cH}(r_{p}^-,n)\mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1} - \mj_{\cH}(r_{p}^-,n)\mM_{\mj}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1},
       \end{align*}
 
       alors \(\hat\vE_t(r_{p}^-,n) = \mT_p(r_p^-,r_{p-1}^+,n,\hat\mZ_{p-1}(n))(\vn \pvect \hat\vH(r_{p}^-,n))\).
@@ -624,13 +620,12 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
     \end{proof}
 
     \begin{prop}%[Corollaire aux théorèmes de transfert et de relèvement.]{}~
-      \label{prop:sphere:synthese:impedance}{}~
-
+      \label{prop:sphere:synthese:impedance}
       Soient \(\hat\vE_t,\hat\vH_t\) tels que 
       \begin{align*}
-      \vE_t(r_{p-1}^+,n) &= \hat\mZ_{p-1}(n)(\vn \pvect \hat\vH(r_{p-1}^+,n))
+      \vE_t(r_{p-1}^+,n) &= \hat\mZ_{p-1}(n)(\vn \pvect \hat\vH(r_{p-1}^+,n)),
       \\
-      \vE_t(r_{p}^-,n) &= \hat\mZ_{p}(n)(\vn \pvect \hat\vH(r_{p}^-,n))
+      \vE_t(r_{p}^-,n) &= \hat\mZ_{p}(n)(\vn \pvect \hat\vH(r_{p}^-,n)).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -640,16 +635,15 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \mM_{\mh}(r_p^-,n,\hat\mZ_{p}(n)), && \mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n)),
       \end{align*}
       \begin{align*}
-        \mj_{H}(r_{p}^-,n)\mM_{\mj}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1} - \mh_{H}(r_{p}^-,n)\mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1},
+        \mj_{\cH}(r_{p}^-,n)\mM_{\mj}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1} - \mh_{\cH}(r_{p}^-,n)\mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1},
         \\
-        \mj_{H}(r_{p-1}^+,n)\mM_{\mj}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1} - \mh_{H}(r_{p-1}^+,n)\mM_{\mh}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1},
+        \mj_{\cH}(r_{p-1}^+,n)\mM_{\mj}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1} - \mh_{\cH}(r_{p-1}^+,n)\mM_{\mh}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1},
       \end{align*}
-
-      Alors 
+      alors 
       \begin{align*}
-        \hat\mZ_{p-1}(n) &= \mT_p(r_{p-1}^+,r_{p}^-,n,\hat\mZ_{p}(n))
+        \hat\mZ_{p-1}(n) &= \mT_p(r_{p-1}^+,r_{p}^-,n,\hat\mZ_{p}(n)),
         \\
-        \hat\mZ_{p}(n) &= \mT_p(r_{p}^-,r_{p-1}^+,n,\hat\mZ_{p-1}(n))
+        \hat\mZ_{p}(n) &= \mT_p(r_{p}^-,r_{p-1}^+,n,\hat\mZ_{p-1}(n)).
       \end{align*}
 
     \end{prop}
@@ -662,116 +656,112 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
 
   \subsection{Expression des coefficients de la série de Fourier}
 
-    On se place à l'interface \(p\) donc \(r_{p-1} \le r \le r_{p+1} \).
+    On se place à l'interface \(p\) donc \(r_{p-1} \le r < r_{p+1} \).
 
     \begin{defn}
       \label{def:sphere:matrices_NE-NH}
       On définit les fonctions de \(\RR\times \NN \times \mathcal{M}_{2}(\CC) \rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{align*}
-        \mN_{E}(r,n,\mA) &= \mj_{E}(r,n) + \mh_{E}(r,n)\mA
+        \mN_{E}(r,n,\mA) &= \mj_{E}(r,n) + \mh_{E}(r,n)\mA,
         \\
-        \mN_{H}(r,n,\mA) &= \mj_{H}(r,n) + \mh_{H}(r,n)\mA
+        \mN_{\cH}(r,n,\mA) &= \mj_{\cH}(r,n) + \mh_{\cH}(r,n)\mA.
       \end{align*}
     \end{defn}
 
     \begin{defn}%[Fonction de transfert]{}~
-      \label{def:sphere:transfert:reflexion}{}~
-
-      On définit \(\mathfrak{T}_p\) la fonction de \([r_{p-1}, r_p]\times[r_p, r_{p+1}]\times\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
+      \label{def:sphere:transfert:reflexion}
+      On définit \(\mathfrak{T}_p\) la fonction de \([r_{p-1}, r_p[\times[r_p, r_{p+1}[\times\NN\times\RR\times\mathcal{M}_2(\CC)\rightarrow \mathcal{M}_{2}(\CC)\)
       \begin{multline*}
         \mathfrak{T}_p(r,r',n,\mA) = \\
-          -\left(\mN_{E}(r',n,\mA)^{-1}\mh_{E}(r,n) - \mN_{H}(r',n,\mA)^{-1}\mh_{H}(r,n)\right)^{-1}
+          -\left(\mN_{E}(r',n,\mA)^{-1}\mh_{E}(r,n) - \mN_{\cH}(r',n,\mA)^{-1}\mh_{\cH}(r,n)\right)^{-1}
           \\
-          \left(\mN_{E}(r',n,\mA)^{-1}\mj_{E}(r,n) - \mN_{H}(r',n,\mA)^{-1}\mj_{H}(r,n)\right)
+          \left(\mN_{E}(r',n,\mA)^{-1}\mj_{E}(r,n) - \mN_{\cH}(r',n,\mA)^{-1}\mj_{\cH}(r,n)\right).
       \end{multline*}
     \end{defn}
     A priori, pour \(r,r',n\) donné, \(\mathfrak{T}_p(r,r',n,\mA)\) n'est pas défini pour toute matrice \(\mA\).
 
-    \begin{prop}%[Théorème de transfert]~
-      \label{prop:sphere:transfert:reflexion}{}~
-
+    \begin{prop}%[Théorème de transfert]{}~
+      \label{prop:sphere:transfert:reflexion}
       On suppose qu'il existe \(\hat\mR_{p+1}(n)\) telle que 
       \begin{align*}
-        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n)
+        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^+,n) &= \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n)
+        \vect{e_r}\pvect\vH(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
-        \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n)), && \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n)),
+        \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n)), && \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n)),
       \end{align*}
       \begin{align*}
-        \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_{E}(r_p^-,n) - \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_{H}(r_p^-,n),
+        \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_{E}(r_p^-,n) - \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_{\cH}(r_p^-,n),
       \end{align*}
       alors
       \begin{align*}
-        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n)
+        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n),
         \\
-        \vE_t(r_{p}^-,n) &= \mN_{H}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n)
+        \vect{e_r}\pvect\vH(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n).
       \end{align*}
     \end{prop}
 
     \begin{proof}
       De part et d'autre de \(r=r_p\), on a 
       \begin{align*}
-        \vE_t(r_p^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n)
+        \vE_t(r_p^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
         \\
-        \vE_t(r_p^-,n) &= \mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n)
-      \end{align*}
-      \begin{align*}
-        \vect{e_r}\pvect\vH(r_p^+,n) &= \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n)
+        \vE_t(r_p^-,n) &= \mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n),
         \\
-        \vect{e_r}\pvect\vH(r_p^-,n) &= \mj_H(r_p^-,n)\vect{C}_{1}^-(n) + \mh_H(r_p^-,n)\vect{C}_{2}^-(n)
+        \vect{e_r}\pvect\vH(r_p^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
+        \\
+        \vect{e_r}\pvect\vH(r_p^-,n) &= \mj_\cH(r_p^-,n)\vect{C}_{1}^-(n) + \mh_\cH(r_p^-,n)\vect{C}_{2}^-(n).
       \end{align*}
       Il y a continuité des champs au travers de l'interface donc
       \begin{align*}
-        \mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n)
+        \mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
         \\
-        \mj_H(r_p^-,n)\vect{C}_{1}^-(n) + \mh_H(r_p^-,n)\vect{C}_{2}^-(n) &= \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n)
+        \mj_\cH(r_p^-,n)\vect{C}_{1}^-(n) + \mh_\cH(r_p^-,n)\vect{C}_{2}^-(n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
       \end{align*}
       donc si on suppose les matrices \(\mN_E, \mN_H\) inversibles
       \begin{multline*}
         \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\left(\mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n)\right) =
         \\
-        \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\left(\mj_H(r_p^-,n)\vect{C}_{1}^-(n) + \mh_H(r_p^-,n)\vect{C}_{2}^-(n)\right)
+        \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\left(\mj_\cH(r_p^-,n)\vect{C}_{1}^-(n) + \mh_\cH(r_p^-,n)\vect{C}_{2}^-(n)\right).
       \end{multline*}
 
-      On factorise les termes
+      Factorisons:
       \begin{multline*}
-        \left(\mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mj_E(r_p^-,n) - \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mj_H(r_p^-,n)\right)\vect{C}_{1}^-(n) =
+        \left(\mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mj_E(r_p^-,n) - \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mj_\cH(r_p^-,n)\right)\vect{C}_{1}^-(n) =
         \\
-        -\left(\mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_E(r_p^-,n) + \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_H(r_p^-,n)\right)\vect{C}_{2}^-(n)
+        -\left(\mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_E(r_p^-,n) + \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_\cH(r_p^-,n)\right)\vect{C}_{2}^-(n).
       \end{multline*}
 
-      On suppose l'inversion de cette dernière et alors
+      On suppose l'inversibilité de cette dernière et alors
       \begin{equation*}
-        \vect{C}_{2}^-(n) = \mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)) \vect{C}_{1}^-(n)
+        \vect{C}_{2}^-(n) = \mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)) \vect{C}_{1}^-(n).
       \end{equation*}
     \end{proof}
 
     \begin{prop}%[Théorème de relévement]~
-      \label{prop:sphere:relevement:reflexion}{}~
-
+      \label{prop:sphere:relevement:reflexion}
       On suppose qu'il existe \(\hat\mR_{p}(n)\) telle que 
       \begin{align*}
-        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n)
+        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^-,n) &= \mN_{H}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n)
+        \vect{e_r}\pvect\vH(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
-        \mN_{E}(r_p^-,n,\mR_{p}(n)), && \mN_{H}(r_p^-,n,\hat\mR_{p}(n)),
+        \mN_{E}(r_p^-,n,\mR_{p}(n)), && \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n)),
       \end{align*}
       \begin{align*}
-        \mN_{E}(r_p^-,n,\mR_{p}(n))^{-1}\mh_{E}(r_p^+,n) - \mN_{H}(r_p^-,n,\hat\mR_{p}(n))^{-1}\mh_{H}(r_p^+,n),
+        \mN_{E}(r_p^-,n,\mR_{p}(n))^{-1}\mh_{E}(r_p^+,n) - \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))^{-1}\mh_{\cH}(r_p^+,n),
       \end{align*}
       alors
       \begin{align*}
-        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n)
+        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n),
         \\
-        \vE_t(r_{p}^+,n) &= \mN_{H}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n)
+        \vect{e_r}\pvect\vH(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n).
       \end{align*}
     \end{prop}
 
@@ -780,41 +770,40 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
     \end{proof}
 
     \begin{prop}%[Théorème de relévement]~
-      \label{prop:sphere:synthese:reflexion}{}~
-
+      \label{prop:sphere:synthese:reflexion}
       On suppose qu'il existe \(\hat\mR_{p}(n)\) et \(\hat\mR_{p+1}(n)\) telles que 
       \begin{align*}
       &\left\lbrace\begin{aligned}
-        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n)
+        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^-,n) &= \mN_{H}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n)
+        \vect{e_r}\pvect\vH(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
         \end{aligned}
       \right.
       \\
       &\left\lbrace\begin{aligned}
-        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n)
+        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^+,n) &= \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n)
+        \vect{e_r}\pvect\vH(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n).
         \end{aligned}
       \right.      
       \end{align*}
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
-        \mN_{E}(r_p^-,n,\mR_{p}(n)), && \mN_{H}(r_p^-,n,\hat\mR_{p}(n)),
+        \mN_{E}(r_p^-,n,\mR_{p}(n)), && \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n)),
         \\
-        \mN_{E}(r_p^+,n,\mR_{p+1}(n)), && \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n)),
+        \mN_{E}(r_p^+,n,\mR_{p+1}(n)), && \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n)),
       \end{align*}
       \begin{align*}
-        \mN_{E}(r_p^-,n,\mR_{p}(n))^{-1}\mh_{E}(r_p^+,n) - \mN_{H}(r_p^-,n,\hat\mR_{p}(n))^{-1}\mh_{H}(r_p^+,n),
+        \mN_{E}(r_p^-,n,\mR_{p}(n))^{-1}\mh_{E}(r_p^+,n) - \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))^{-1}\mh_{\cH}(r_p^+,n),
         \\
-        \mN_{E}(r_p^+,n,\mR_{p+1}(n))^{-1}\mh_{E}(r_p^-,n) - \mN_{H}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_{H}(r_p^-,n),
+        \mN_{E}(r_p^+,n,\mR_{p+1}(n))^{-1}\mh_{E}(r_p^-,n) - \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))^{-1}\mh_{\cH}(r_p^-,n),
       \end{align*}
       alors
       \begin{align*}
-        \hat\mR_{p+1}(n) &= \mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n))
+        \hat\mR_{p+1}(n) &= \mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)),
         \\
-        \hat\mR_{p}(n) &= \mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n))
+        \hat\mR_{p}(n) &= \mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)).
       \end{align*}
     \end{prop}
 
@@ -827,10 +816,10 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
 
     On trace dans la figure \ref{fig:imp_fourier:sphere:hoppe_p62:converge_rayon} les parties imaginaires des coefficients diagonaux de ces matrices.
 
-    % \begin{figure}[!hbt]
-    %   \centering
-    %   \input{tikz/plot/HOPPE_62/Z_HOPPE_62_sphere_converge.tikz}
-    %   \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
-    %   \label{fig:imp_fourier:sphere:hoppe_p62:converge_rayon}
-    % \end{figure}
+    \begin{figure}[!hbt]
+      \centering
+      \input{tikz/plot/HOPPE_62/Z_HOPPE_62_sphere_converge.tikz}
+      \caption{\(\eps = 6, \mu = 1, d=0.0225\text{m}, f=1\text{GHz}\)}
+      \label{fig:imp_fourier:sphere:hoppe_p62:converge_rayon}
+    \end{figure}
      On voit donc que l'impédance de la sphère tend vers celle du plan quand \(r\) augmente.

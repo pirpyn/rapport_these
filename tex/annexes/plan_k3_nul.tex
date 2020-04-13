@@ -89,29 +89,29 @@
     &= 0.
   \end{align*}
 
-  {
-  \begin{itshape}
-  Notes pour Olivier: si \(k_y =0\), on l'identification
+  % {
+  % \begin{itshape}
+  % Notes pour Olivier: si \(k_y =0\), on l'identification
 
-  \begin{align*}
-  \hat{E_x} &= i\frac{k_0\mu}{k_x^2} c_3 &&\equiv a_x,
-  \\
-  \hat{E_y} &= c_1 z + c_2 && \equiv c_y z + a_y,
-  \\
-  \hat{E_z} &= \frac{k_0\mu}{k_x}(c_3 z + c_4) &&\equiv -i k_x a_x z + a_z,
-  \\
-  (\vrot\hat{\vE})_x &= -c_1 && \equiv  -c_y,
-  \\
-  (\vrot\hat{\vE})_y &= -i{k_0\mu}(c_3 z + c_4) &&\equiv ik_x(ik_x a_x z - a_z),
-  \\
-  (\vrot\hat{\vE})_z &= ik_x(c_1 z + c_2) && \equiv ik_x(c_y z + a_y).
-  \end{align*}
+  % \begin{align*}
+  % \hat{E_x} &= i\frac{k_0\mu}{k_x^2} c_3 &&\equiv a_x,
+  % \\
+  % \hat{E_y} &= c_1 z + c_2 && \equiv c_y z + a_y,
+  % \\
+  % \hat{E_z} &= \frac{k_0\mu}{k_x}(c_3 z + c_4) &&\equiv -i k_x a_x z + a_z,
+  % \\
+  % (\vrot\hat{\vE})_x &= -c_1 && \equiv  -c_y,
+  % \\
+  % (\vrot\hat{\vE})_y &= -i{k_0\mu}(c_3 z + c_4) &&\equiv ik_x(ik_x a_x z - a_z),
+  % \\
+  % (\vrot\hat{\vE})_z &= ik_x(c_1 z + c_2) && \equiv ik_x(c_y z + a_y).
+  % \end{align*}
 
 
-  Mon calcul de \(\hat{E_x},\hat{\cH}_x\) est correct, mais pas ce qui suit.
+  % Mon calcul de \(\hat{E_x},\hat{\cH}_x\) est correct, mais pas ce qui suit.
 
-  \end{itshape}
-  }
+  % \end{itshape}
+  % }
 
   On définit les matrices \(\mA_{E}(k_x,k_y,z)\), \(\mB_{E}(k_x,k_y,z)\), \(\mA_{H}(k_x,k_y,z)\), \(\mB_{H}(k_x,k_y,z)\) constantes par morceaux en \(z\)
   \begin{align*}
@@ -153,394 +153,394 @@
 
   Mais les matrices \(\mB_{H}, \mB_E\) ne sont pas inversibles et donc on ne pourra pas trouver la matrice \(\hat\mZ\).
 
-  {
-  \begin{itshape}
-  Notes pour Olivier: 
+ %  {
+ %  \begin{itshape}
+ %  Notes pour Olivier: 
 
-  En fait, le cas \(k_3=0\) montre bien la limite de la simplification: on n'a pas besoin de l'inversion de toutes les matrices pour trouver \(\mZ\).
+ %  En fait, le cas \(k_3=0\) montre bien la limite de la simplification: on n'a pas besoin de l'inversion de toutes les matrices pour trouver \(\mZ\).
 
-  % Utilisons les relations de saut de la partie tangentielle des champs à une interface \(z_0\), avec \(k_y = 0\).
+ %  % Utilisons les relations de saut de la partie tangentielle des champs à une interface \(z_0\), avec \(k_y = 0\).
 
-  % \begin{align*}
-  % i\frac{k_0\mu_1}{k_x^2}c_3^1 &= i\frac{k_0\mu_2}{k_x^2}c_3^2,
-  % \\
-  % c_1^1 z_0 + c_2^1 &= c_1^2 z_0 + c_2^2,
-  % \\
-  % -i\frac{k_0\eps_1}{k_x^2}c_1^1 &= -i\frac{k_0\eps_2}{k_x^2}c_1^2,
-  % \\
-  % c_3^1 z_0 + c_4^1 &= c_3^2 z_0 + c_4^2.
-  % \end{align*}
+ %  % \begin{align*}
+ %  % i\frac{k_0\mu_1}{k_x^2}c_3^1 &= i\frac{k_0\mu_2}{k_x^2}c_3^2,
+ %  % \\
+ %  % c_1^1 z_0 + c_2^1 &= c_1^2 z_0 + c_2^2,
+ %  % \\
+ %  % -i\frac{k_0\eps_1}{k_x^2}c_1^1 &= -i\frac{k_0\eps_2}{k_x^2}c_1^2,
+ %  % \\
+ %  % c_3^1 z_0 + c_4^1 &= c_3^2 z_0 + c_4^2.
+ %  % \end{align*}
 
-  % Ce système, d'inconnus \((c_1^1,c_2^1,c_3^1,c_4^1)\), a comme déterminant 
-  % \begin{align*}
-  % \begin{vmatrix}
-  % 0 & 0 & \mu_1 & 0
-  % \\
-  % z_0 & 1 & 0 & 0
-  % \\
-  % \eps_1 & 0 & 0 & 0
-  % \\
-  % 0 & 0 & z_0 & 1 
-  % \end{vmatrix} = -\eps_1
-  % \begin{vmatrix}
-  % 0 & \mu_1 & 0
-  % \\
-  % 1 & 0 & 0
-  % \\
-  % 0 & z_0 & 1 
-  % \end{vmatrix} = \eps_1
-  % \begin{vmatrix}
-  % \mu_1 & 0
-  % \\
-  % z_0 & 1 
-  % \end{vmatrix} = \eps_1\mu_1,
-  % \end{align*}
-  % il est donc inversible.
+ %  % Ce système, d'inconnus \((c_1^1,c_2^1,c_3^1,c_4^1)\), a comme déterminant 
+ %  % \begin{align*}
+ %  % \begin{vmatrix}
+ %  % 0 & 0 & \mu_1 & 0
+ %  % \\
+ %  % z_0 & 1 & 0 & 0
+ %  % \\
+ %  % \eps_1 & 0 & 0 & 0
+ %  % \\
+ %  % 0 & 0 & z_0 & 1 
+ %  % \end{vmatrix} = -\eps_1
+ %  % \begin{vmatrix}
+ %  % 0 & \mu_1 & 0
+ %  % \\
+ %  % 1 & 0 & 0
+ %  % \\
+ %  % 0 & z_0 & 1 
+ %  % \end{vmatrix} = \eps_1
+ %  % \begin{vmatrix}
+ %  % \mu_1 & 0
+ %  % \\
+ %  % z_0 & 1 
+ %  % \end{vmatrix} = \eps_1\mu_1,
+ %  % \end{align*}
+ %  % il est donc inversible.
 
-  Utilisons les relations de saut de la partie tangentielle des champs à une interface \(z_0\), avec \(k_y\) quelconque.
+ %  Utilisons les relations de saut de la partie tangentielle des champs à une interface \(z_0\), avec \(k_y\) quelconque.
 
-  \begin{align*}
-  -\frac{k_y}{k_x}(c_1^1 z_0 + c_2^1) + i\frac{k_0\mu_1}{k_x^2}c_3^1 &= \dots,
-  \\
-  c_1^1 z_0 + c_2^1 &= \dots,
-  \\
-  -\frac{k_y}{k_x}(c_3^1 z_0 + c_4^1)-i\frac{k_0\eps_1}{k_x^2}c_1^1 &= \dots,
-  \\
-  c_3^1 z_0 + c_4^1 &= \dots.
-  \end{align*}
+ %  \begin{align*}
+ %  -\frac{k_y}{k_x}(c_1^1 z_0 + c_2^1) + i\frac{k_0\mu_1}{k_x^2}c_3^1 &= \dots,
+ %  \\
+ %  c_1^1 z_0 + c_2^1 &= \dots,
+ %  \\
+ %  -\frac{k_y}{k_x}(c_3^1 z_0 + c_4^1)-i\frac{k_0\eps_1}{k_x^2}c_1^1 &= \dots,
+ %  \\
+ %  c_3^1 z_0 + c_4^1 &= \dots.
+ %  \end{align*}
 
-  Ce système, d'inconnus \((c_1^1,c_2^1,c_3^1,c_4^1)\), a comme déterminant 
-  \begin{align*}
-  \begin{vmatrix}
-   -{k_y}z_0 &  -{k_y} & i\frac{k_0\mu_1}{k_x} & 0
-  \\
-  z_0 & 1 & 0 & 0
-  \\
- -i\frac{k_0\eps_1}{k_x} & 0 & -{k_y}z_0 & -{k_y}
-  \\
-  0 & 0 & z_0 & 1 
-  \end{vmatrix}  &= 
-  \begin{vmatrix}
-  0 &  -{k_y} & i\frac{k_0\mu_1}{k_x} & 0
-  \\
-  0 & 1 & 0 & 0
-  \\
- -i\frac{k_0\eps_1}{k_x} & 0 & -{k_y}z_0 & -{k_y}
-  \\
-  0 & 0 & z_0 & 1 
-  \end{vmatrix} = -i\frac{k_0\eps_1}{k_x}
-  \begin{vmatrix}
-  -{k_y} & i\frac{k_0\mu_1}{k_x} & 0
-  \\
-  1 & 0 & 0
-  \\
-  0 & z_0 & 1 
-  \end{vmatrix}
-  \\
-  & = i\frac{k_0\eps_1}{k_x}
-  \begin{vmatrix}
-  i\frac{k_0\mu_1}{k_x} & 0
-  \\
-  z_0 & 1 
-  \end{vmatrix} = -\frac{k_0^2\mu_1\eps_1}{k_x^2} = -\frac{k^2}{k_x^2},
-  \end{align*}
-  il est donc inversible si \(k_x\not=0\), ce qu'on a déjà supposé pour trouver l'expression des champs.
+ %  Ce système, d'inconnus \((c_1^1,c_2^1,c_3^1,c_4^1)\), a comme déterminant 
+ %  \begin{align*}
+ %  \begin{vmatrix}
+ %   -{k_y}z_0 &  -{k_y} & i\frac{k_0\mu_1}{k_x} & 0
+ %  \\
+ %  z_0 & 1 & 0 & 0
+ %  \\
+ % -i\frac{k_0\eps_1}{k_x} & 0 & -{k_y}z_0 & -{k_y}
+ %  \\
+ %  0 & 0 & z_0 & 1 
+ %  \end{vmatrix}  &= 
+ %  \begin{vmatrix}
+ %  0 &  -{k_y} & i\frac{k_0\mu_1}{k_x} & 0
+ %  \\
+ %  0 & 1 & 0 & 0
+ %  \\
+ % -i\frac{k_0\eps_1}{k_x} & 0 & -{k_y}z_0 & -{k_y}
+ %  \\
+ %  0 & 0 & z_0 & 1 
+ %  \end{vmatrix} = -i\frac{k_0\eps_1}{k_x}
+ %  \begin{vmatrix}
+ %  -{k_y} & i\frac{k_0\mu_1}{k_x} & 0
+ %  \\
+ %  1 & 0 & 0
+ %  \\
+ %  0 & z_0 & 1 
+ %  \end{vmatrix}
+ %  \\
+ %  & = i\frac{k_0\eps_1}{k_x}
+ %  \begin{vmatrix}
+ %  i\frac{k_0\mu_1}{k_x} & 0
+ %  \\
+ %  z_0 & 1 
+ %  \end{vmatrix} = -\frac{k_0^2\mu_1\eps_1}{k_x^2} = -\frac{k^2}{k_x^2},
+ %  \end{align*}
+ %  il est donc inversible si \(k_x\not=0\), ce qu'on a déjà supposé pour trouver l'expression des champs.
 
-  Dans ta note sectionsDE \& résonances, tu exprimes une condition d'unicité mais ce que je cherche dans cette annexe est la condition d'impédance.
+ %  Dans ta note sectionsDE \& résonances, tu exprimes une condition d'unicité mais ce que je cherche dans cette annexe est la condition d'impédance.
 
 
-  Point bloquant:
+ %  Point bloquant:
 
-  L'unicité des solutions pour deux couches est assurée si le déterminant suivant, d'inconnus  \(
-  c_1^1, c_2^1, c_3^1, c_4^1, c_1^2, c_2^2, c_3^2, c_4^3
-  \), est non nul ( champs \(\vE_t\) nul en \(z_0\) et \(z_2\) et saut de \(\vE_t\), \(\vH_t\) nul en \(z_1\) ).
+ %  L'unicité des solutions pour deux couches est assurée si le déterminant suivant, d'inconnus  \(
+ %  c_1^1, c_2^1, c_3^1, c_4^1, c_1^2, c_2^2, c_3^2, c_4^3
+ %  \), est non nul ( champs \(\vE_t\) nul en \(z_0\) et \(z_2\) et saut de \(\vE_t\), \(\vH_t\) nul en \(z_1\) ).
 
-  \begin{align*}
-  &{\,}
-  \begin{vmatrix}
-  -{k_y}z_0 &  -{k_y} & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
-  \\
-  z_0 & 1 & 0 & 0 & 0 & 0 & 0 & 0
-  \\
-  -{k_y} z_1 & - {k_y} & i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
-  \\
-  z_1 & 1 & 0 & 0 & -z_1 & -1 & 0 & 0
-  \\
-  -i\frac{k_0\eps_1}{k_x} & 0 & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
-  \\
-  0 & 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
-  \\
-  0 & 0 & 0 & 0 & -k_y z_2 & -k_y & i\frac{k_0\mu_2}{k_x} & 0
-  \\
-  0 & 0 & 0 & 0 & z_2 & 1 & 0 & 0
-  \end{vmatrix}
-  % \\
-  % (C_1 \leftarrow C_1 - z_0 C_2 )&=
-  % \begin{vmatrix}
-  % 0 & -{k_y} & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
-  % \\
-  % 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0
-  % \\
-  % -{k_y} (z_1-z_0) & - {k_y} & i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
-  % \\
-  % z_1-z_0 & 1 & 0 & 0 & -z_1 & -1 & 0 & 0
-  % \\
-  % -i\frac{k_0\eps_1}{k_x} & 0 & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
-  % \\
-  % 0 & 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
-  % \\
-  % 0 & 0 & 0 & 0 & -k_y z_2 & -k_y & i\frac{k_0\mu_2}{k_x} & 0
-  % \\
-  % 0 & 0 & 0 & 0 & z_2 & 1 & 0 & 0
-  % \end{vmatrix}
-  % \\
-  % ( / L_2 ) &=
-  % \begin{vmatrix}
-  % 0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
-  % \\
-  % -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
-  % \\
-  % z_1-z_0 & 0 & 0 & -z_1 & -1 & 0 & 0
-  % \\
-  % -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
-  % \\
-  % 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
-  % \\
-  % 0 &  0 & 0 & -k_y z_2 & -k_y & i\frac{k_0\mu_2}{k_x} & 0
-  % \\
-  % 0 & 0 & 0 & z_2 & 1 & 0 & 0
-  % \end{vmatrix}
-  % \\
-  % ( C_5 \leftarrow C_5 - z_2 C_6 ) &=
-  % \begin{vmatrix}
-  % 0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
-  % \\
-  % -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y (z_1-z_2) & k_y & -i\frac{k_0\mu_2}{k_x} & 0
-  % \\
-  % z_1-z_0 & 0 & 0 & -(z_1- z_2) & -1 & 0 & 0
-  % \\
-  % -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
-  % \\
-  % 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
-  % \\
-  % 0 &  0 & 0 & 0 & -k_y & i\frac{k_0\mu_2}{k_x} & 0
-  % \\
-  % 0 & 0 & 0 & 0 & 1 & 0 & 0
-  % \end{vmatrix}
-  % \\
-  % ( / L_7 ) &=
-  % \begin{vmatrix}
-  % 0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0
-  % \\
-  % -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y (z_1-z_2) & -i\frac{k_0\mu_2}{k_x} & 0
-  % \\
-  % z_1-z_0 & 0 & 0 & -(z_1- z_2) & 0 & 0
-  % \\
-  % -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & k_y z_1 & k_y
-  % \\
-  % 0 & z_1 & 1 & 0 & -z_1 & -1
-  % \\
-  % 0 &  0 & 0 & 0 & i\frac{k_0\mu_2}{k_x} & 0
-  % \end{vmatrix}
-  % \\
-  % ( / L_1 ) &= -i\frac{k_0\mu_1}{k_x}
-  % \begin{vmatrix}
-  % -{k_y} (z_1-z_0) & 0 & k_y (z_1-z_2) & -i\frac{k_0\mu_2}{k_x} & 0
-  % \\
-  % z_1-z_0 & 0 & -(z_1- z_2) & 0 & 0
-  % \\
-  % -i\frac{k_0\eps_1}{k_x} & - k_y & i\frac{k_0\eps_2}{k_x} & k_y z_1 & k_y
-  % \\
-  % 0 & 1 & 0 & -z_1 & -1
-  % \\
-  % 0 & 0 & 0 & i\frac{k_0\mu_2}{k_x} & 0
-  % \end{vmatrix}
-  % \\
-  % ( / L_5 ) &= -\frac{k_0^2\mu_1\mu_2}{k_x^2}
-  % \begin{vmatrix}
-  % -{k_y} (z_1-z_0) & 0 & k_y (z_1-z_2) & 0
-  % \\
-  % z_1-z_0 & 0 & -(z_1- z_2) & 0
-  % \\
-  % -i\frac{k_0\eps_1}{k_x} & - k_y & i\frac{k_0\eps_2}{k_x} & k_y
-  % \\
-  % 0 & 1 & 0 & -1
-  % \end{vmatrix}
-  % \\
-  % ( / C_2 \rightarrow C_2 + C_4 ) &= -\frac{k_0^2\mu_1\mu_2}{k_x^2}
-  % \begin{vmatrix}
-  % -{k_y} (z_1-z_0) & 0 & k_y (z_1-z_2) & 0
-  % \\
-  % z_1-z_0 & 0 & -(z_1- z_2) & 0
-  % \\
-  % -i\frac{k_0\eps_1}{k_x} & 0 & i\frac{k_0\eps_2}{k_x} & k_y
-  % \\
-  % 0 & 0 & 0 & -1
-  % \end{vmatrix}
-  % \\
-  % ( / L_4 ) &= -\frac{k_0^2\mu_1\mu_2}{k_x^2}
-  % \begin{vmatrix}
-  % -{k_y} (z_1-z_0) & 0 & k_y (z_1-z_2)
-  % \\
-  % z_1-z_0 & 0 & -(z_1- z_2)
-  % \\
-  % -i\frac{k_0\eps_1}{k_x} & 0 & i\frac{k_0\eps_2}{k_x}
-  % \end{vmatrix}
-  \end{align*}
+ %  \begin{align*}
+ %  &{\,}
+ %  \begin{vmatrix}
+ %  -{k_y}z_0 &  -{k_y} & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
+ %  \\
+ %  z_0 & 1 & 0 & 0 & 0 & 0 & 0 & 0
+ %  \\
+ %  -{k_y} z_1 & - {k_y} & i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
+ %  \\
+ %  z_1 & 1 & 0 & 0 & -z_1 & -1 & 0 & 0
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & 0 & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
+ %  \\
+ %  0 & 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
+ %  \\
+ %  0 & 0 & 0 & 0 & -k_y z_2 & -k_y & i\frac{k_0\mu_2}{k_x} & 0
+ %  \\
+ %  0 & 0 & 0 & 0 & z_2 & 1 & 0 & 0
+ %  \end{vmatrix}
+ %  % \\
+ %  % (C_1 \leftarrow C_1 - z_0 C_2 )&=
+ %  % \begin{vmatrix}
+ %  % 0 & -{k_y} & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
+ %  % \\
+ %  % 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0
+ %  % \\
+ %  % -{k_y} (z_1-z_0) & - {k_y} & i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
+ %  % \\
+ %  % z_1-z_0 & 1 & 0 & 0 & -z_1 & -1 & 0 & 0
+ %  % \\
+ %  % -i\frac{k_0\eps_1}{k_x} & 0 & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
+ %  % \\
+ %  % 0 & 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
+ %  % \\
+ %  % 0 & 0 & 0 & 0 & -k_y z_2 & -k_y & i\frac{k_0\mu_2}{k_x} & 0
+ %  % \\
+ %  % 0 & 0 & 0 & 0 & z_2 & 1 & 0 & 0
+ %  % \end{vmatrix}
+ %  % \\
+ %  % ( / L_2 ) &=
+ %  % \begin{vmatrix}
+ %  % 0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
+ %  % \\
+ %  % -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
+ %  % \\
+ %  % z_1-z_0 & 0 & 0 & -z_1 & -1 & 0 & 0
+ %  % \\
+ %  % -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
+ %  % \\
+ %  % 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
+ %  % \\
+ %  % 0 &  0 & 0 & -k_y z_2 & -k_y & i\frac{k_0\mu_2}{k_x} & 0
+ %  % \\
+ %  % 0 & 0 & 0 & z_2 & 1 & 0 & 0
+ %  % \end{vmatrix}
+ %  % \\
+ %  % ( C_5 \leftarrow C_5 - z_2 C_6 ) &=
+ %  % \begin{vmatrix}
+ %  % 0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
+ %  % \\
+ %  % -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y (z_1-z_2) & k_y & -i\frac{k_0\mu_2}{k_x} & 0
+ %  % \\
+ %  % z_1-z_0 & 0 & 0 & -(z_1- z_2) & -1 & 0 & 0
+ %  % \\
+ %  % -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
+ %  % \\
+ %  % 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
+ %  % \\
+ %  % 0 &  0 & 0 & 0 & -k_y & i\frac{k_0\mu_2}{k_x} & 0
+ %  % \\
+ %  % 0 & 0 & 0 & 0 & 1 & 0 & 0
+ %  % \end{vmatrix}
+ %  % \\
+ %  % ( / L_7 ) &=
+ %  % \begin{vmatrix}
+ %  % 0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0
+ %  % \\
+ %  % -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y (z_1-z_2) & -i\frac{k_0\mu_2}{k_x} & 0
+ %  % \\
+ %  % z_1-z_0 & 0 & 0 & -(z_1- z_2) & 0 & 0
+ %  % \\
+ %  % -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & k_y z_1 & k_y
+ %  % \\
+ %  % 0 & z_1 & 1 & 0 & -z_1 & -1
+ %  % \\
+ %  % 0 &  0 & 0 & 0 & i\frac{k_0\mu_2}{k_x} & 0
+ %  % \end{vmatrix}
+ %  % \\
+ %  % ( / L_1 ) &= -i\frac{k_0\mu_1}{k_x}
+ %  % \begin{vmatrix}
+ %  % -{k_y} (z_1-z_0) & 0 & k_y (z_1-z_2) & -i\frac{k_0\mu_2}{k_x} & 0
+ %  % \\
+ %  % z_1-z_0 & 0 & -(z_1- z_2) & 0 & 0
+ %  % \\
+ %  % -i\frac{k_0\eps_1}{k_x} & - k_y & i\frac{k_0\eps_2}{k_x} & k_y z_1 & k_y
+ %  % \\
+ %  % 0 & 1 & 0 & -z_1 & -1
+ %  % \\
+ %  % 0 & 0 & 0 & i\frac{k_0\mu_2}{k_x} & 0
+ %  % \end{vmatrix}
+ %  % \\
+ %  % ( / L_5 ) &= -\frac{k_0^2\mu_1\mu_2}{k_x^2}
+ %  % \begin{vmatrix}
+ %  % -{k_y} (z_1-z_0) & 0 & k_y (z_1-z_2) & 0
+ %  % \\
+ %  % z_1-z_0 & 0 & -(z_1- z_2) & 0
+ %  % \\
+ %  % -i\frac{k_0\eps_1}{k_x} & - k_y & i\frac{k_0\eps_2}{k_x} & k_y
+ %  % \\
+ %  % 0 & 1 & 0 & -1
+ %  % \end{vmatrix}
+ %  % \\
+ %  % ( / C_2 \rightarrow C_2 + C_4 ) &= -\frac{k_0^2\mu_1\mu_2}{k_x^2}
+ %  % \begin{vmatrix}
+ %  % -{k_y} (z_1-z_0) & 0 & k_y (z_1-z_2) & 0
+ %  % \\
+ %  % z_1-z_0 & 0 & -(z_1- z_2) & 0
+ %  % \\
+ %  % -i\frac{k_0\eps_1}{k_x} & 0 & i\frac{k_0\eps_2}{k_x} & k_y
+ %  % \\
+ %  % 0 & 0 & 0 & -1
+ %  % \end{vmatrix}
+ %  % \\
+ %  % ( / L_4 ) &= -\frac{k_0^2\mu_1\mu_2}{k_x^2}
+ %  % \begin{vmatrix}
+ %  % -{k_y} (z_1-z_0) & 0 & k_y (z_1-z_2)
+ %  % \\
+ %  % z_1-z_0 & 0 & -(z_1- z_2)
+ %  % \\
+ %  % -i\frac{k_0\eps_1}{k_x} & 0 & i\frac{k_0\eps_2}{k_x}
+ %  % \end{vmatrix}
+ %  \end{align*}
 
-  Or la 4\ieme et la 8\ieme colonne sont colinéaires, donc ce dernier est toujours nul. Nous n'avons pas unicité des solutions. Donc il y a redondance dans nos équations et on peut exprimer une des \(c_i^j\) en fonctions des autres.
+ %  Or la 4\ieme et la 8\ieme colonne sont colinéaires, donc ce dernier est toujours nul. Nous n'avons pas unicité des solutions. Donc il y a redondance dans nos équations et on peut exprimer une des \(c_i^j\) en fonctions des autres.
 
-  En fait, si on considère les CL champs \(\vE_t\) nul en \(z_0\), champ \(\vH_t\) nul en \(z_2\) et saut de \(\vE_t\), \(\vH_t\) nul en \(z_1\), on tombe sur une déterminant non nul, mais il faut que tu m'expliques pourquoi dans ta notes, tu considères \(\vE_t, \vH_t\).
+ %  En fait, si on considère les CL champs \(\vE_t\) nul en \(z_0\), champ \(\vH_t\) nul en \(z_2\) et saut de \(\vE_t\), \(\vH_t\) nul en \(z_1\), on tombe sur une déterminant non nul, mais il faut que tu m'expliques pourquoi dans ta notes, tu considères \(\vE_t, \vH_t\).
 
-  La preuve de ce déterminant.
-  \begin{align*}
-  &{\,}
-  \begin{vmatrix}
-  -{k_y}z_0 &  -{k_y} & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
-  \\
-  z_0 & 1 & 0 & 0 & 0 & 0 & 0 & 0
-  \\
-  -{k_y} z_1 & - {k_y} & i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
-  \\
-  z_1 & 1 & 0 & 0 & -z_1 & -1 & 0 & 0
-  \\
-  -i\frac{k_0\eps_1}{k_x} & 0 & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
-  \\
-  0 & 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
-  \\
-  0 & 0 & 0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & -k_y z_2 & -k_y
-  \\
-  0 & 0 & 0 & 0 & 0 & 0 & z_2 & 1
-  \end{vmatrix}
-  \\
-  (C_1 \leftarrow C_1 - z_0 C_2 )&=
-  \begin{vmatrix}
-  0 & -{k_y} & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
-  \\
-  0 & 1 & 0 & 0 & 0 & 0 & 0 & 0
-  \\
-  -{k_y} (z_1-z_0) & - {k_y} & i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
-  \\
-  z_1-z_0 & 1 & 0 & 0 & -z_1 & -1 & 0 & 0
-  \\
-  -i\frac{k_0\eps_1}{k_x} & 0 & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
-  \\
-  0 & 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
-  \\
-  0 & 0 & 0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & -k_y z_2 & -k_y
-  \\
-  0 & 0 & 0 & 0 & 0 & 0 & z_2 & 1
-  \end{vmatrix}
-  \\
-  ( / L_2 ) &=
-  \begin{vmatrix}
-  0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
-  \\
-  -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
-  \\
-  z_1-z_0 & 0 & 0 & -z_1 & -1 & 0 & 0
-  \\
-  -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
-  \\
-  0 & z_1 & 1 & 0 & 0 & -z_1 & -1
-  \\
-  0 & 0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & -k_y z_2 & -k_y
-  \\
-  0 & 0 & 0 & 0 & 0 & z_2 & 1
-  \end{vmatrix}
-  \\
-  ( C_6 \leftarrow C_6 - z_2 C_7 ) &=
-  \begin{vmatrix}
-  0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
-  \\
-  -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
-  \\
-  z_1-z_0 & 0 & 0 & -z_1 & -1 & 0 & 0
-  \\
-  -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y (z_1-z_2) & k_y
-  \\
-  0 & z_1 & 1 & 0 & 0 & -(z_1-z_2) & -1
-  \\
-  0 & 0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & 0 & -k_y
-  \\
-  0 & 0 & 0 & 0 & 0 & 0 & 1
-  \end{vmatrix}
-  \\
-  ( / L_7 ) &=
-  \begin{vmatrix}
-  0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0
-  \\
-  -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x}
-  \\
-  z_1-z_0 & 0 & 0 & -z_1 & -1 & 0
-  \\
-  -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y (z_1-z_2)
-  \\
-  0 & z_1 & 1 & 0 & 0 & -(z_1-z_2)
-  \\
-  0 & 0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & 0
-  \end{vmatrix}
-  \\
-  ( / L_1 ) &= -i\frac{k_0\mu_1}{k_x}
-  \begin{vmatrix} 
-  -{k_y} (z_1-z_0) & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x}
-  \\
-  z_1-z_0 & 0 & -z_1 & -1 & 0
-  \\
-  -i\frac{k_0\eps_1}{k_x} & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y (z_1-z_2)
-  \\
-  0 & 1 & 0 & 0 & -(z_1-z_2)
-  \\
-  0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & 0
-  \end{vmatrix}
-  \\
-  ( / L_5 ) &= -\frac{k_0^2\mu_1\eps_2}{k_x^2}
-  \begin{vmatrix} 
-  -{k_y} (z_1-z_0) & 0 & k_y & -i\frac{k_0\mu_2}{k_x}
-  \\
-  z_1-z_0 & 0 & -1 & 0
-  \\
-  -i\frac{k_0\eps_1}{k_x} & - k_y & 0 & k_y (z_1-z_2)
-  \\
-  0 & 1 & 0 & -(z_1-z_2)
-  \end{vmatrix}
-  \\
-  ( C_4 \leftarrow C_4 + (z_1-z_2)C_2  ) &= -\frac{k_0^2\mu_1\eps_2}{k_x^2}
-  \begin{vmatrix} 
-  -{k_y} (z_1-z_0) & 0 & k_y & -i\frac{k_0\mu_2}{k_x} + k_y(z_1-z_2)
-  \\
-  z_1-z_0 & 0 & -1 & -(z_1-z_2)
-  \\
-  -i\frac{k_0\eps_1}{k_x} & - k_y & 0 & 0
-  \\
-  0 & 1 & 0 & 0
-  \end{vmatrix}
-  \\
-  ( / L_4  ) &= -\frac{k_0^2\mu_1\eps_2}{k_x^2}
-  \begin{vmatrix} 
-  -{k_y} (z_1-z_0) & k_y & -i\frac{k_0\mu_2}{k_x} + k_y(z_1-z_2)
-  \\
-  z_1-z_0 & -1 & -(z_1-z_2)
-  \\
-  -i\frac{k_0\eps_1}{k_x} & 0 & 0
-  \end{vmatrix}
-  \\
-  ( L_1  \leftarrow L_1 + k_y L_2) &= -\frac{k_0^2\mu_1\eps_2}{k_x^2}
-  \begin{vmatrix} 
-  0 & 0 & -i\frac{k_0\mu_2}{k_x}
-  \\
-  z_1-z_0 & -1 & -(z_1-z_2)
-  \\
-  -i\frac{k_0\eps_1}{k_x} & 0 & 0
-  \end{vmatrix}
-  \\
-  ( / C_2 ) &= \frac{k_0^2\mu_1\eps_2}{k_x^2}
-  \begin{vmatrix} 
-  0 & -i\frac{k_0\mu_2}{k_x}
-  \\
-  -i\frac{k_0\eps_1}{k_x} & 0
-  \end{vmatrix}
-  = -\frac{k_1^2k_2^2}{k_x^4}
-  \end{align*}
-  \end{itshape}
-  }
+ %  La preuve de ce déterminant.
+ %  \begin{align*}
+ %  &{\,}
+ %  \begin{vmatrix}
+ %  -{k_y}z_0 &  -{k_y} & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
+ %  \\
+ %  z_0 & 1 & 0 & 0 & 0 & 0 & 0 & 0
+ %  \\
+ %  -{k_y} z_1 & - {k_y} & i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
+ %  \\
+ %  z_1 & 1 & 0 & 0 & -z_1 & -1 & 0 & 0
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & 0 & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
+ %  \\
+ %  0 & 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
+ %  \\
+ %  0 & 0 & 0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & -k_y z_2 & -k_y
+ %  \\
+ %  0 & 0 & 0 & 0 & 0 & 0 & z_2 & 1
+ %  \end{vmatrix}
+ %  \\
+ %  (C_1 \leftarrow C_1 - z_0 C_2 )&=
+ %  \begin{vmatrix}
+ %  0 & -{k_y} & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
+ %  \\
+ %  0 & 1 & 0 & 0 & 0 & 0 & 0 & 0
+ %  \\
+ %  -{k_y} (z_1-z_0) & - {k_y} & i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
+ %  \\
+ %  z_1-z_0 & 1 & 0 & 0 & -z_1 & -1 & 0 & 0
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & 0 & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
+ %  \\
+ %  0 & 0 & z_1 & 1 & 0 & 0 & -z_1 & -1
+ %  \\
+ %  0 & 0 & 0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & -k_y z_2 & -k_y
+ %  \\
+ %  0 & 0 & 0 & 0 & 0 & 0 & z_2 & 1
+ %  \end{vmatrix}
+ %  \\
+ %  ( / L_2 ) &=
+ %  \begin{vmatrix}
+ %  0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
+ %  \\
+ %  -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
+ %  \\
+ %  z_1-z_0 & 0 & 0 & -z_1 & -1 & 0 & 0
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y z_1 & k_y
+ %  \\
+ %  0 & z_1 & 1 & 0 & 0 & -z_1 & -1
+ %  \\
+ %  0 & 0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & -k_y z_2 & -k_y
+ %  \\
+ %  0 & 0 & 0 & 0 & 0 & z_2 & 1
+ %  \end{vmatrix}
+ %  \\
+ %  ( C_6 \leftarrow C_6 - z_2 C_7 ) &=
+ %  \begin{vmatrix}
+ %  0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0 & 0
+ %  \\
+ %  -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x} & 0
+ %  \\
+ %  z_1-z_0 & 0 & 0 & -z_1 & -1 & 0 & 0
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y (z_1-z_2) & k_y
+ %  \\
+ %  0 & z_1 & 1 & 0 & 0 & -(z_1-z_2) & -1
+ %  \\
+ %  0 & 0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & 0 & -k_y
+ %  \\
+ %  0 & 0 & 0 & 0 & 0 & 0 & 1
+ %  \end{vmatrix}
+ %  \\
+ %  ( / L_7 ) &=
+ %  \begin{vmatrix}
+ %  0 & i\frac{k_0\mu_1}{k_x} & 0 & 0 & 0 & 0
+ %  \\
+ %  -{k_y} (z_1-z_0) &  i\frac{k_0\mu_1}{k_x} & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x}
+ %  \\
+ %  z_1-z_0 & 0 & 0 & -z_1 & -1 & 0
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & -k_y z_1 & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y (z_1-z_2)
+ %  \\
+ %  0 & z_1 & 1 & 0 & 0 & -(z_1-z_2)
+ %  \\
+ %  0 & 0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & 0
+ %  \end{vmatrix}
+ %  \\
+ %  ( / L_1 ) &= -i\frac{k_0\mu_1}{k_x}
+ %  \begin{vmatrix} 
+ %  -{k_y} (z_1-z_0) & 0 & k_y z_1 & k_y & -i\frac{k_0\mu_2}{k_x}
+ %  \\
+ %  z_1-z_0 & 0 & -z_1 & -1 & 0
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & - k_y & i\frac{k_0\eps_2}{k_x} & 0 & k_y (z_1-z_2)
+ %  \\
+ %  0 & 1 & 0 & 0 & -(z_1-z_2)
+ %  \\
+ %  0 & 0 & -i\frac{k_0\eps_2}{k_x} & 0 & 0
+ %  \end{vmatrix}
+ %  \\
+ %  ( / L_5 ) &= -\frac{k_0^2\mu_1\eps_2}{k_x^2}
+ %  \begin{vmatrix} 
+ %  -{k_y} (z_1-z_0) & 0 & k_y & -i\frac{k_0\mu_2}{k_x}
+ %  \\
+ %  z_1-z_0 & 0 & -1 & 0
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & - k_y & 0 & k_y (z_1-z_2)
+ %  \\
+ %  0 & 1 & 0 & -(z_1-z_2)
+ %  \end{vmatrix}
+ %  \\
+ %  ( C_4 \leftarrow C_4 + (z_1-z_2)C_2  ) &= -\frac{k_0^2\mu_1\eps_2}{k_x^2}
+ %  \begin{vmatrix} 
+ %  -{k_y} (z_1-z_0) & 0 & k_y & -i\frac{k_0\mu_2}{k_x} + k_y(z_1-z_2)
+ %  \\
+ %  z_1-z_0 & 0 & -1 & -(z_1-z_2)
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & - k_y & 0 & 0
+ %  \\
+ %  0 & 1 & 0 & 0
+ %  \end{vmatrix}
+ %  \\
+ %  ( / L_4  ) &= -\frac{k_0^2\mu_1\eps_2}{k_x^2}
+ %  \begin{vmatrix} 
+ %  -{k_y} (z_1-z_0) & k_y & -i\frac{k_0\mu_2}{k_x} + k_y(z_1-z_2)
+ %  \\
+ %  z_1-z_0 & -1 & -(z_1-z_2)
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & 0 & 0
+ %  \end{vmatrix}
+ %  \\
+ %  ( L_1  \leftarrow L_1 + k_y L_2) &= -\frac{k_0^2\mu_1\eps_2}{k_x^2}
+ %  \begin{vmatrix} 
+ %  0 & 0 & -i\frac{k_0\mu_2}{k_x}
+ %  \\
+ %  z_1-z_0 & -1 & -(z_1-z_2)
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & 0 & 0
+ %  \end{vmatrix}
+ %  \\
+ %  ( / C_2 ) &= \frac{k_0^2\mu_1\eps_2}{k_x^2}
+ %  \begin{vmatrix} 
+ %  0 & -i\frac{k_0\mu_2}{k_x}
+ %  \\
+ %  -i\frac{k_0\eps_1}{k_x} & 0
+ %  \end{vmatrix}
+ %  = -\frac{k_1^2k_2^2}{k_x^4}
+ %  \end{align*}
+ %  \end{itshape}
+ %  }

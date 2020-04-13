@@ -80,7 +80,7 @@
   On se place dans le repère local au triangle, on fait donc le changement de coordonnées suivant:
   \begin{align*}
     \RR^3 &\rightarrow [0,1]^2 \\
-    (x_1,x_2,x_3) & \mapsto (\xi_1,\xi_2)
+    (x_1,x_2,x_3) & \mapsto (\xi_1,\xi_2),
   \end{align*}
     tel que \(\vx =\vect{N_1}+ \xi_1 \vect{e_1} + \xi_2 \vect{e_2}\).
 
@@ -99,7 +99,7 @@
             \end{tikzpicture}
           \end{center}
           \begin{equation*}
-            \vect{\phi_1}=\frac{\xi_1}{2|T|}\vect{e_1} + \frac{\xi_2}{{2|T|}}\vect{e_2}
+            \vect{\phi_1}=\frac{\xi_1}{2|T|}\vect{e_1} + \frac{\xi_2}{{2|T|}}\vect{e_2},
           \end{equation*}
       \end{minipage}
       \begin{minipage}{0.329\textwidth}
@@ -110,7 +110,7 @@
               \input{tikz/schema/fonbasloc_phi.tikz}
             \end{tikzpicture}
              \begin{equation*}
-              \vect{\phi_2}=\frac{\xi_1-1}{2|T|}\vect{e_1} + \frac{\xi_2}{2|T|}\vect{e_2}
+              \vect{\phi_2}=\frac{\xi_1-1}{2|T|}\vect{e_1} + \frac{\xi_2}{2|T|}\vect{e_2},
             \end{equation*}
           \end{center}
       \end{minipage}
@@ -122,7 +122,7 @@
               \input{tikz/schema/fonbasloc_phi.tikz}
             \end{tikzpicture}
             \begin{equation*}
-              \vect{\phi_3}=\frac{\xi_1}{2|T|}\vect{e_1} + \frac{\xi_2-1}{2|T|}\vect{e_2}
+              \vect{\phi_3}=\frac{\xi_1}{2|T|}\vect{e_1} + \frac{\xi_2-1}{2|T|}\vect{e_2}.
             \end{equation*}
           \end{center}
       \end{minipage}
@@ -131,7 +131,7 @@
     \end{minipage}
 
     \begin{prop}
-      Les fonctions \(\phij\) sont dans \(\Hdiv(\Gamma_h)\)
+      Les fonctions \(\phij\) sont dans \(\Hdiv(\Gamma_h)\).
     \end{prop}
     \begin{proof}
       Concernant la relation de compatibilité \(\Hdiv\), nous renvoyons à la propriété~\ref{prop:annex:hdiv_hrot:hdiv} en annexe.
@@ -140,7 +140,7 @@
     \begin{defn}
       Pour tout \(\vect{U} \in \Hdiv(\Gamma_h)\), alors
       \begin{equation*}
-        \vect{U} \in \Vect{\vect{\phi_1},\ldots,\vect{\phi_N}} \Leftrightarrow \exists \comp{u} = (u_1,\cdots,u_N)^t \in \RR^N, \vect{U}(\vx) = \sum_{j=1}^N u_j \phij(\vx)
+        \vect{U} \in \Vect{\vect{\phi_1},\ldots,\vect{\phi_N}} \Leftrightarrow \exists \comp{u} = (u_1,\cdots,u_N)^t \in \RR^N, \vect{U}(\vx) = \sum_{j=1}^N u_j \phij(\vx).
       \end{equation*}
     \end{defn}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -165,7 +165,7 @@
             \end{tikzpicture}
           \end{center}
           \begin{equation*}
-            \vect{p_1}=\frac{\xi_2}{2|T|}\vect{e_1}-\frac{\xi_1}{2|T|}\vect{e_2}
+            \vect{p_1}=\frac{\xi_2}{2|T|}\vect{e_1}-\frac{\xi_1}{2|T|}\vect{e_2},
           \end{equation*}
       \end{minipage}
       \begin{minipage}{0.329\textwidth}
@@ -176,7 +176,7 @@
               \input{tikz/schema/fonbasloc_p.tikz}
             \end{tikzpicture}
              \begin{equation*}
-              \vect{p_2}= \frac{\xi_2}{2|T|}\vect{e_1} + \frac{1-\xi_1}{2|T|}\vect{e_2}
+              \vect{p_2}= \frac{\xi_2}{2|T|}\vect{e_1} + \frac{1-\xi_1}{2|T|}\vect{e_2},
             \end{equation*}
           \end{center}
       \end{minipage}
@@ -188,7 +188,7 @@
               \input{tikz/schema/fonbasloc_p.tikz}
             \end{tikzpicture}
             \begin{equation*}
-              \vect{p_3}= \frac{\xi_2-1}{2|T|}\vect{e_1} - \frac{\xi_1}{2|T|}\vect{e_2}
+              \vect{p_3}= \frac{\xi_2-1}{2|T|}\vect{e_1} - \frac{\xi_1}{2|T|}\vect{e_2}.
             \end{equation*}
           \end{center}
       \end{minipage}
@@ -227,7 +227,7 @@
             \end{tikzpicture}
           \end{center}
           \begin{equation*}
-            \vect{q_1}=\frac{1-2(\xi_1+\xi_2)}{2|T|}(\vect{e_2}-\vect{e_1})
+            \vect{q_1}=\frac{1-2(\xi_1+\xi_2)}{2|T|}(\vect{e_2}-\vect{e_1}),
           \end{equation*}
       \end{minipage}
       \begin{minipage}{0.329\textwidth}
@@ -238,7 +238,7 @@
               \input{tikz/schema/fonbasloc_q.tikz}
             \end{tikzpicture}
              \begin{equation*}
-              \vect{q_2}=\frac{1-2\xi_1}{2|T|}\vect{e_2}
+              \vect{q_2}=\frac{1-2\xi_1}{2|T|}\vect{e_2},
             \end{equation*}
           \end{center}
       \end{minipage}
@@ -250,7 +250,7 @@
               \input{tikz/schema/fonbasloc_q.tikz}
             \end{tikzpicture}
             \begin{equation*}
-              \vect{q_3}=\frac{2\xi_2-1}{2|T|}\vect{e_1}
+              \vect{q_3}=\frac{2\xi_2-1}{2|T|}\vect{e_1}.
             \end{equation*}
           \end{center}
       \end{minipage}
@@ -325,9 +325,8 @@
     Pour toute fonction \(\vect{W} \in L^2(\Gamma_h)\cap\Vect{(\qj)_j}\),
 
     il existe \(\vect{U} \in L^2(\Gamma_h) \cap \Vect{(\phij)_j} \) telle que \(\) avec
-
     \begin{equation*}
-      \comp{u} = \mG{\phi}{q}\comp{w}
+      \comp{u} = \mG{\phi}{q}\comp{w}.
     \end{equation*}
   \end{prop}
 
@@ -371,7 +370,7 @@
   \begin{defn}On définit \(\mPP\) la matrice
   \label{def:eq_int:matrice_changment_mP}
     \begin{equation*}
-      \mPP = (\mG{q}{p})^{-1}\mG{q}{\phi}
+      \mPP = (\mG{q}{p})^{-1}\mG{q}{\phi}.
     \end{equation*}
   \end{defn}
 
@@ -419,17 +418,16 @@
 
   Soit \(g\) la fonction de Green. Étant donné \((k,\vE^{inc},\vH^{inc})\), on cherche \(\vJ = \vn \pvect \vH, \vK = \vn \pvect \vE \in \Sobolev[div]^{-1/2}{(\Gamma)}\)  tels que pour tout \(\vect{\phi} \in \Sobolev[div]^{-1/2}(\Gamma)\),
 
-  L'EFIE s'exprime telle que
+  l'EFIE s'exprime telle que
   \begin{multline}
     \label{eq:form_int:EFIE:var}
     \int_{\Gamma} \vE^{inc}_t(\vx) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx) =
       \frac{1}{2} \int_{\Gamma} \vE_t(\vx) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx) \\
         - \int_{\Gamma} \left( \int_{\Gamma} \vgrad g(\vx - \vy) \pvect \vK(\vy) \dd{\Gamma}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx) \\
       - \frac{i}{k} \int_{\Gamma} \left( \int_{\Gamma}  g(\vx - \vy)\vdivs\vJ(\vy) \dd{\Gamma}(\vy) \right)\vdivs \vect{\phi}(\vx) \dd{\Gamma}(\vx) \\
-        +  ik\int_{\Gamma} \left( \int_{\Gamma} g(\vx - \vy)\vJ(\vy) \dd{\Gamma}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx).
+        +  ik\int_{\Gamma} \left( \int_{\Gamma} g(\vx - \vy)\vJ(\vy) \dd{\Gamma}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx),
   \end{multline}
-
-  La MFIE s'exprime telle que
+  et la MFIE s'exprime telle que
   \begin{multline}
     \label{eq:form_int:MFIE:var}
     \int_{\Gamma} \vH^{inc}_t(\vx) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx) =
@@ -476,7 +474,7 @@
     \begin{defn}[Discrétisation de l'opérateur \(\LR\)]
       Soit \(\mPP\) la matrice introduite à la définition \ref{def:eq_int:matrice_changment_mP}. Alors on définit la matrice
       \begin{align*}
-        \mLR & = -\mPP^t\mLD\mPP
+        \mLR & = -\mPP^t\mLD\mPP.
       \end{align*}
     \end{defn}
     \begin{prop}
@@ -502,8 +500,8 @@
         \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)
         &= \frac{1}{2} \int_{\Gamma_h}  \left( \left(\oI + b_1 \LD - b_2 \LR\right) \vJ (\vx)\right.
         \\
-        & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx);
-        \intertext{nous rappelons de \cite[Théorème~5.4.2, p.~209]{nedelec_acoustic_2001} que \((\vE, \vH) \in \Sobolev[rot]{(\OO)}\) donc  \((\vK=\vn \pvect \vE, \vJ=\vn \pvect \vH) \in \Sobolev[div]{(\Gamma)}\) et \((\vE_t, \vH_t) \in \Sobolev[rot]{(\Gamma)}\). Cependant, nous avons choisis (voir \cite[eq.~10, p.~1660]{stupfel_implementation_2015}) d'approcher \(\vE_t\) dans \(\Sobolev[div]{(\Gamma_h)}\) pour le décomposer sur les fonctions de Raviart-Thomas. Ainsi}
+        & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx).
+        \intertext{Nous rappelons de \cite[Théorème~5.4.2, p.~209]{nedelec_acoustic_2001} que \((\vE, \vH) \in \Sobolev[rot]{(\OO)}\) donc  \((\vK=\vn \pvect \vE, \vJ=\vn \pvect \vH) \in \Sobolev[div]{(\Gamma)}\) et \((\vE_t, \vH_t) \in \Sobolev[rot]{(\Gamma)}\). Cependant, nous avons choisis (voir \cite[eq.~10, p.~1660]{stupfel_implementation_2015}) d'approcher \(\vE_t\) dans \(\Sobolev[div]{(\Gamma_h)}\) pour le décomposer sur les fonctions de Raviart-Thomas. Ainsi}
         & \simeq \frac{1}{2} \sum_{j=1}^N \int_{\Gamma_h} \left( \left(\oI + b_1 \LD - b_2 \LR\right) I_j \phij (\vx)\right.
         \\
         & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) e_j \phij (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx),
@@ -513,15 +511,15 @@
 
     Or comme \(\vK = \vn \pvect \vE\), alors
     \begin{align*}
-      \sum_{j=1}^N e_j \vn \pvect \phij & \simeq \sum_{j=1}^N k_j \phij
+      \sum_{j=1}^N e_j \vn \pvect \phij & \simeq \sum_{j=1}^N k_j \phij,
       \intertext{ et on alors la relation entre les composantes de l'approximation de ces deux vecteurs}
-      \comp{e} \simeq \mPP \comp{k}
+      \comp{e} \simeq \mPP \comp{k}.
     \end{align*}
     Donc la contribution des CIOE à l'EFIE est
     \begin{equation*}
       \begin{aligned}
         \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)
-        & \simeq \frac{1}{2} \left( \left(\mM + b_1 \mLD - b_2 \mLR\right) \comp{I}  - \left( b_1 \mLD - b_2 \mLR\right) \mPP \comp{m}\right)
+        & \simeq \frac{1}{2} \left( \left(\mM + b_1 \mLD - b_2 \mLR\right) \comp{I}  - \left( b_1 \mLD - b_2 \mLR\right) \mPP \comp{m}\right).
       \end{aligned}
     \end{equation*}
 
@@ -534,17 +532,17 @@
       \intertext{ dont on déduit à l'aide de la CIOE que }
       &= \frac{1}{2a_0}\int_{\Gamma_h} \left( \left(\oI + b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right.
       \\
-      & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx);
+      & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx).
       \\
-      \intertext{nous remplaçons \(\vE_t\) par \(-\vn \pvect \vK\) ce qui va simplifier la discrétisation}
+      \intertext{Nous remplaçons \(\vE_t\) par \(-\vn \pvect \vK\) ce qui va simplifier la discrétisation}
       &= \frac{1}{2a_0}\int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) \vn \pvect \vK (\vx) \right.
       \\
-      & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx);
+      & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx),
       \intertext{nous approchons \(\vK\) dans \(\Sobolev[div]{(\Gamma_h)}\) mais nous avons choisis d'approcher \(\vJ\) dans \(\Sobolev[rot]{(\Gamma_h)}\) au lieu de \(\Sobolev[div]{(\Gamma_h)}\)}
       & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) k_j \vn \pvect   \phij (\vx) \right.
       \\
-      & \hspace{5em} \left. - \left(a_1 \LD - a_2 \LR\right) I_j' \vn \pvect \phij (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx);
-      \intertext{en remarquant que \(\vn \pvect \phi_i \cdot \vn \pvect \phi_j = \phi_i \cdot \phi_j\) et \(\int_{\Gamma} \LR(\vn \pvect \vect{\phi})\cdot (\vn \pvect \vect{\psi}) = - \int_{\Gamma} \LD(\vect{\phi})\cdot \vect{\psi}\), on déduit}
+      & \hspace{5em} \left. - \left(a_1 \LD - a_2 \LR\right) I_j' \vn \pvect \phij (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx).
+      \intertext{En remarquant que \(\vn \pvect \phi_i \cdot \vn \pvect \phi_j = \phi_i \cdot \phi_j\) et \(\int_{\Gamma} \LR(\vn \pvect \vect{\phi})\cdot (\vn \pvect \vect{\psi}) = - \int_{\Gamma} \LD(\vect{\phi})\cdot \vect{\psi}\), on déduit}
       & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_1 \LR - b_2 \LD\right) k_j \phij (\vx) \right.
       \\
       & \hspace{5em} \left. - \left(a_1 \LR - a_2 \LD\right) I_j' \phij (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx),
@@ -557,7 +555,7 @@
     \begin{equation*}
       \begin{aligned}
         \frac{1}{2}\int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)
-        &\simeq -\frac{1}{2a_0} \left( \left(\mM + b_1 \mLR - b_2 \mLD\right) \comp{k}  + \left( a_1 \mLR - a_2 \mLD\right) \mPP \comp{I} \right)
+        &\simeq -\frac{1}{2a_0} \left( \left(\mM + b_1 \mLR - b_2 \mLD\right) \comp{k}  + \left( a_1 \mLR - a_2 \mLD\right) \mPP \comp{I} \right).
       \end{aligned}
     \end{equation*}
 
@@ -573,7 +571,8 @@
     \begin{align*}
       S_{pq}
         &= ik \int_{\Gamma_h} \left( \int_{\Gamma_h} g(\vx - \vy) \phip(\vy) \dd{\Gamma}(\vy) \right) \cdot \phiq (\vx)\dd{\Gamma}(\vx)\\
-        \notag&~+ \frac{i}{k}\int_{\Gamma_h} \left( \int_{\Gamma_h} g(\vx - \vy) \vdiv \phip (\vy) \dd{\Gamma}(\vy) \right) \vdiv \phiq(\vx) \dd{\Gamma}(\vx)\\,
+        \notag&~+ \frac{i}{k}\int_{\Gamma_h} \left( \int_{\Gamma_h} g(\vx - \vy) \vdiv \phip (\vy) \dd{\Gamma}(\vy) \right) \vdiv \phiq(\vx) \dd{\Gamma}(\vx),
+      \\
       \tilde{S}_{pq}
         &= \int_{\Gamma_h} \left( \int_{\Gamma_h} \vgrad g(\vx - \vy) \pvect \phip(\vy) \dd{\Gamma}(\vy) \right) \cdot \phiq(\vx) \dd{\Gamma}(\vx).
     \end{align*}
