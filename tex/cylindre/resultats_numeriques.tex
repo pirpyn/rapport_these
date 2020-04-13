@@ -34,11 +34,9 @@
     \caption[CIOE sur empilement de Hoppe & Rahmat-Samii p.~62]{Minimisation de \(J_R\): Partie imaginaire des termes diagonaux des matrices d'impédance pour l'empilement \(\eps = 6\), \(\mu = 1\), \(d=0.0225\text{m}\), \(f=1\text{GHz}\), \(r_0=0.03\text{m}\) en fonction de \(k_t = n / (r_0+d)\).}
     \label{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}
   \end{figure}
-
   On voit donc bien que les deux méthodes donnent des résultats différents, mais dans les deux cas, la CI3 est une mauvaise approximation tandis que le calcul des coefficients de la CI6 par la minimisation de \(J_R\) donne la meilleure approximation de l'impédance.
 
   Cependant cette CIOE ne sera pas retenue car son implémentation dans le code équation intégrale nécessite une modification de ce dernier et nous n'avons pas de CSU.
-
   \begin{table}[!hbt]
     \centering
     % On fait deux tables de même hauteur
@@ -62,8 +60,6 @@
     \caption{Coefficients associés à la figure \ref{fig:imp_fourier:cylindre:hoppe:62:hoibc:mode_2}}
     \label{tab:imp_fourier:cylindre:hoppe:62:hoibc:mode_2}
   \end{table}
-
-
   \begin{table}[!hbt]
     \centering
     % On fait deux tables de même hauteur
@@ -88,16 +84,15 @@
     \label{tab:imp_fourier:cylindre:hoppe:62:hoibc:mode_1}
   \end{table}
 
+  \pagebreak
   Les tableaux \ref{tab:cylindre:hoppe:62:erreurs_Z} contient les valeurs des erreurs relatives au carré de \(\hat\mZ\). 
   Plus précisément, l'expression de ces erreurs est 
   \begin{align*}
-    \text{TM} &= \frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}-\hat\mZ_{ap}(n_i,k_{zj})_{11}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}|^2}
-  \end{align*}
-  \begin{align*}
-    \text{TE} &= \frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{22}-\hat\mZ_{ap}(n_i,k_{zj})_{22}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{22}|^2}
-  \end{align*}
-  \begin{align*}
-    \text{complète}  &= \frac{\sum\limits_{p=1}^2\sum\limits_{q=1}^2\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{pq}-\hat\mZ_{ap}(n_i,k_{zj})_{pq}|^2}{\sum\limits_{p=1}^2\sum\limits_{q=1}^2\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{pq}|^2}
+    \text{TM} &: \frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}-\hat\mZ_{ap}(n_i,k_{zj})_{11}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{11}|^2},
+    \\
+    \text{TE} &: \frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{22}-\hat\mZ_{ap}(n_i,k_{zj})_{22}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{22}|^2},
+    \\
+    \text{complète} &: \frac{\sum\limits_{p=1}^2\sum\limits_{q=1}^2\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{pq}-\hat\mZ_{ap}(n_i,k_{zj})_{pq}|^2}{\sum\limits_{p=1}^2\sum\limits_{q=1}^2\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mZ_{ex}(n_i,k_{zj})_{pq}|^2}.
   \end{align*}
 
   \begin{table}[!hbt]
@@ -116,17 +111,13 @@
     \label{tab:cylindre:hoppe:62:erreurs_Z}
   \end{table}
 
-  Les tableaux \ref{tab:cylindre:hoppe:62:erreurs_R} contiennent les valeurs des erreurs relatives au carré sur \(\hat\mR\). 
-
-  Plus précisément, l'expression de ces erreurs est 
+  Les tableaux \ref{tab:cylindre:hoppe:62:erreurs_R} contiennent les valeurs des erreurs relatives au carré sur \(\hat\mR\) dont l'expression est 
   \begin{align*}
-    \text{TM} &= \sqrt{\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{11}-\hat\mR_{ap}(n_i,k_{zj})_{11}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{11}|^2}}
-  \end{align*}
-  \begin{align*}
-    \text{TE} &= \sqrt{\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{22}-\hat\mR_{ap}(n_i,k_{zj})_{22}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{22}|^2}}
-  \end{align*}
-  \begin{align*}
-    \text{somme}  &= \text{TE} + \text{TM}
+    \text{TM} &: \sqrt{\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{11}-\hat\mR_{ap}(n_i,k_{zj})_{11}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{11}|^2}},
+    \\
+    \text{TE} &: \sqrt{\frac{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{22}-\hat\mR_{ap}(n_i,k_{zj})_{22}|^2}{\sum\limits_{i=1}^{N_n}\sum\limits_{j=1}^{N_{k_z}}|\hat\mR_{ex}(n_i,k_{zj})_{22}|^2}},
+    \\
+    \text{somme}  &: \text{TE} + \text{TM}.
   \end{align*}
 
   \begin{table}[!hbt]

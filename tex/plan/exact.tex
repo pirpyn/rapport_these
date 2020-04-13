@@ -38,7 +38,7 @@
         \begin{align*}
             \hat{E}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_1(k_x,k_y) + e^{-ik_3(z)z}c_2(k_x,k_y)
             \\
-            \hat{\mathcal{H}}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y)
+            \hat{\cH}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y)
         \end{align*}
         Les constantes \(c_i\) ne peuvent en réalité pas être choisis arbitrairement, car les exponentiels complexes divergent quand \(k_x^2 + k_y^2 \rightarrow \infty\) et ces solutions n'ont pas de transformées de Fourier. Nous supposons que les constantes \(c_i\) satisfassent la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}, où il n'y a pas de résonances.
     \end{prop}
@@ -54,13 +54,13 @@
       \begin{align*}
           \lapl{E_y} + k(z)^2 E_y & = 0
           \\
-          \lapl{\mathcal{H}_y} + k(z)^2 \mathcal{H}_y & = 0
+          \lapl{\cH_y} + k(z)^2 \cH_y & = 0
       \end{align*}
       On applique les transformées partielles de Fourier en \((x,y)\) aux \glspl{acr-edp}, on obtient
       \begin{align*}
           \ddr[2]{z}{\hat{E_y}}(k_x,k_y,z) + \left( k(z)^2 - k_x^2 - k_y^2\right) \hat{E}_y(k_x,k_y,z) & = 0
           \\
-          \ddr[2]{z}{\hat{\mathcal{H}}_y}(k_x,k_y,z) + \left( k(z)^2 - k_x^2 - k_y^2\right) \hat{\mathcal{H}}_y(k_x,k_y,z) & = 0
+          \ddr[2]{z}{\hat{\cH}_y}(k_x,k_y,z) + \left( k(z)^2 - k_x^2 - k_y^2\right) \hat{\cH}_y(k_x,k_y,z) & = 0
       \end{align*}
 
       On suppose alors que \(k_3(z)^2\) ne s'annule pas dans la couche. S'il s'annule, les solutions sont linéaires en \(z\) et nous référons à l'annexe \ref{sec:annexe:plan:k3_nul}.
@@ -69,7 +69,7 @@
       \begin{align*}
           \hat{E}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_1(k_x,k_y) + e^{-ik_3(z)z}c_2(k_x,k_y)
           \\
-          \hat{\mathcal{H}}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y)
+          \hat{\cH}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y)
       \end{align*}
     \end{proof}
 
@@ -209,9 +209,9 @@
           &&
           \left\lbrace
           \begin{aligned}
-            -\hat{\mathcal{H}_y} &= -e^{ik_3z}c_3 - e^{-ik_3z}c_4
+            -\hat{\cH_y} &= -e^{ik_3z}c_3 - e^{-ik_3z}c_4
             \\
-            \hat{\mathcal{H}_x} &= \frac{1}{k^2 - k_y^2}\left(-ik\eta_r^{-1}\ddr{z}{\hat{E_y}} + ik_yik_x\hat{H_y}\right)
+            \hat{\cH_x} &= \frac{1}{k^2 - k_y^2}\left(-ik\eta_r^{-1}\ddr{z}{\hat{E_y}} + ik_yik_x\hat{H_y}\right)
           \end{aligned}
           \right.
         \end{align*}
