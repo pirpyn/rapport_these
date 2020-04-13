@@ -45,5 +45,5 @@ add_cus_dep('tikz', 'TE.pdf', 0, 'maketikz');
 add_cus_dep('tikz', 'TM.pdf', 0, 'maketikz');
 
 sub maketikz {
-    system("pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname '$_[0]' '\\def\\tikzexternalrealjob{$rootfile_name}\\input{$rootfile_name}'")
+    system("pdflatex -shell-escape -halt-on-error -extra-mem-top=10000000 -interaction=batchmode -jobname '$_[0]' '\\def\\tikzexternalrealjob{$rootfile_name}\\input{$rootfile_name}'")
 }

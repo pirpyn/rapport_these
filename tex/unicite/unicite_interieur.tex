@@ -3,7 +3,7 @@
 
     Pour exprimer l'opérateur d'impédance, nous devons exprimer les champs dans l'objet. Il apparaît nécessaire que ces derniers soient donc bien définis.
 
-    Nous exhibons une condition nécessaire et suffisante d'unicité des solutions du problème de Maxwell-Helmholtz  \eqref{eq:unicite:maxwell_int} dans \(\OO\) est un objet multicouche autour d'un \gls{acr-cep} c'est-a-dire tel que \(\partial \OO = \Gamma \cup \Gamma_0\) où \(\Gamma\) est la surface extérieure et \(\Gamma_0\) la surface intérieure. Le problème de Maxwell harmonique en \(e^{i\w t}\) s'exprime
+    Nous exhibons une condition nécessaire et suffisante d'unicité des solutions du problème de Maxwell-Helmholtz  \eqref{eq:unicite:maxwell_int} dans \(\OO\), objet multicouche autour d'un \gls{acr-cep}, c'est-a-dire tel que \(\partial \OO = \Gamma \cup \Gamma_0\) où \(\Gamma\) est la surface extérieure et \(\Gamma_0\) la surface intérieure. Le problème de Maxwell harmonique en \(e^{i\w t}\) s'exprime
 
     \begin{align}
     \left\lbrace
@@ -18,12 +18,16 @@
 
     Nous rappelons le résultat général de \cite[Théorème~8, p.~111]{cessenat_mathematical_1996}.
     \begin{thm}[Alternative de Fredholm]
-      Les champs \(\vE,\vH\) solutions de \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet \(\vE_{|\Gamma} = 0\), \(\vE_{|\Gamma_0} = 0\) sont soient uniques si \(\w^2\eps\mu\) n'est pas une valeur propre du Laplacien vectoriel sinon ces champs sont engendrés par les vecteurs propres.
+      Les champs \(\vE,\vH\) solutions de \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet \(\vE_{|\Gamma} = 0\), \(\vE_{|\Gamma_0} = 0\) sont soit uniques si \(\w^2\eps\mu\) n'est pas une valeur propre du Laplacien vectoriel, soit ces champs sont : engendrés par les vecteurs propres.
     \end{thm}
-    Nous renvoyons à l'ouvrage cité précédemment pour la démonstration, en dehors du cadre de cette thèse. Ce que nous tirons de ce résultat est que pour le problème intérieur, nous pouvons avoir des résonances, c'est-à-dire des solutions non nulles du problème sans sources donc non-uniques.
+    Nous renvoyons à l'ouvrage cité précédemment pour la démonstration, en dehors du cadre de cette thèse.
+    D'après ce résultat, nous pouvons avoir des résonances pour le problème intérieur, c'est-à-dire des solutions non nulles du problème sans sources donc non-uniques.
 
   \subsection{Cas particuliers de géométries particulières}
-    Cette thèse s'attache à déterminer les coefficients des \glspl{acr-cioe} des sections précédentes. Nous devons être capables d'exprimer l'opérateur d'impédance exact pour l'approcher par les CIOE. Il faut donc que les champs soient déterminés de façon unique pour exprimer cette opérateur. Nous ne pouvons nous satisfaire de l'alternative de Fredholm et devons exprimer une condition plus pratique pour déterminer s'il y a unicité. Nous allons alors approcher l'objet par une forme simple mais avec les mêmes caractéristiques pour l'empilement. Ainsi nous étudierons 3 approximations
+    Cette thèse s'attache à déterminer les coefficients des \glspl{acr-cioe} des sections précédentes.
+    Nous devons être capables d'exprimer l'opérateur d'impédance exact pour l'approcher par les CIOE.
+    Il faut donc que les champs soient déterminés de façon unique pour exprimer cet opérateur. Nous ne pouvons nous satisfaire de l'alternative de Fredholm et devons exprimer une condition plus pratique pour déterminer s'il y a unicité.
+    Nous allons alors approcher l'objet par une forme simple mais avec les mêmes caractéristiques pour l'empilement. Ainsi nous étudierons trois approximations :
     \begin{enumerate}
       \item Un objet plan infini 
       \item Un objet cylindrique
@@ -44,7 +48,7 @@
     Les constantes relatives \(\eps,\mu\) (ou \(k,\eta\)) sont constantes par morceaux en fonction de \(z\).
     \begin{prop}
       \label{prop:unicite:interieur:postulat:multi-couche}
-      Le problème Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet \(\vE_{|z=z_n} = 0\), \(\vE_{|z=z_0} = 0\) admet une unique solution si est seulement si le déterminant d'un système linéaire est non-nul.
+      Le problème Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet \(\vE_{|z=z_n} = 0\), \(\vE_{|z=z_0} = 0\) admet une unique solution si et seulement si le déterminant d'un système linéaire est non-nul.
     \end{prop}
 
     \begin{proof}
@@ -71,7 +75,7 @@
         \end{aligned}
         \right. && z_0 < z < z_1.
       \end{align*}
-      Ces relations ne sont valables que pour des constantes \(a_2,c_2,a_1,c_1,b,d\) telles que \((\hat{E}_x,\hat{E}_y)\) soient dans \(\mathcal{S}'(\RR^3)\).
+      Ces relations ne sont valables que pour des constantes \(a_2,c_2,a_1,c_1,b,d\) telles que \((\hat{E}_x,\hat{E}_y)\) sont dans \(\mathcal{S}'(\RR^3)\).
       La composante en z de \(\vE\) se déduit des deux autres car sa divergence est nulle.
 
       On déduit le champ \(\vH\) alors \(\vH(\vx) = \frac{-\vrot{\vE}(\vx)}{i k(\vx)\eta(\vx)}\). On note \(\mLR\) la matrice \(
@@ -92,18 +96,18 @@
 
       Pour que le problème soit bien posé, il faut et il suffit que les constantes complexes \(a_2,c_2,b,d,a_1,c_1\) soient déterminées de façon unique quand on exprime les conditions limites. Ce sont des conditions limites de Dirichlet en \(z=z_0\) et \(z=z_2\) pour \(\vE\) et de sauts nuls en \(z=z_1\) pour \(\vH\) (la condition de saut nul pour \(\vE\) a déjà été utilisé dans l'expression des champs).
 
-      On a unicité si dans le cas de conditions de Dirichlet homogènes, l'unique solution est \(\vE=0\). Ces conditions s'expriment
+      On a unicité si, dans le cas de conditions de Dirichlet homogènes, l'unique solution est \(\vE=0\). Ces conditions s'expriment
       \begin{equation*}
         \label{eq:unicite:interieur:2couches:cldirichlet}
         \left\lbrace
         \begin{aligned}
-          a_2\sin{(\kk_2(z_2-z_1))} + b\cos{(\kk_2(z_2-z_1))} &= 0
+          a_2\sin{(\kk_2(z_2-z_1))} + b\cos{(\kk_2(z_2-z_1))} &= 0,
           \\
-          c_2\sin{(\kk_2(z_2-z_1))} + d\cos{(\kk_2(z_2-z_1))} &= 0
+          c_2\sin{(\kk_2(z_2-z_1))} + d\cos{(\kk_2(z_2-z_1))} &= 0,
           \\
-          a_1\sin{(\kk_1(z_0-z_1))} + b\cos{(\kk_1(z_0-z_1))} &= 0
+          a_1\sin{(\kk_1(z_0-z_1))} + b\cos{(\kk_1(z_0-z_1))} &= 0,
           \\
-          c_1\sin{(\kk_1(z_0-z_1))} + d\cos{(\kk_1(z_0-z_1))} &= 0
+          c_1\sin{(\kk_1(z_0-z_1))} + d\cos{(\kk_1(z_0-z_1))} &= 0.
         \end{aligned}
         \right.
       \end{equation*}
@@ -112,27 +116,29 @@
       \begin{equation*}
         \left\lbrace
         \begin{aligned}
-        a_2 &= A\cos{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))}
+        a_2 &= A\cos{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
         \\
-        b &= -A\sin{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))}
+        b &= -A\sin{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
         \\
-        a_1 &= A\sin{(\kk_2(z_2-z_1))}\cos{(\kk_1(z_0-z_1))}
+        a_1 &= A\sin{(\kk_2(z_2-z_1))}\cos{(\kk_1(z_0-z_1))},
         \\
-        c_2 &= B\cos{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))}
+        c_2 &= B\cos{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
         \\
-        d &= -B\sin{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))}
+        d &= -B\sin{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
         \\
-        c_1 &= B\sin{(\kk_2(z_2-z_1))}\cos{(\kk_1(z_0-z_1))}
+        c_1 &= B\sin{(\kk_2(z_2-z_1))}\cos{(\kk_1(z_0-z_1))}.
+
         \end{aligned}
-        \right.
+        \right..
+
       \end{equation*}
-      soient solutions du système précédent. 
+      sont solutions du système précédent. 
 
       La dernière condition de saut nul en \(z=z_1\) pour \(\hat\vH_t\) s'exprime alors
       \begin{align*}
          \cos(\kk_2(z_2-z_1)) \sin(\kk_1(z_0-z_1))\frac{i}{k_2\kk_2\eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}B\\A\end{bmatrix}
         \\= 
-         \sin(\kk_2(z_2-z_1)) \cos(\kk_1(z_0-z_1))\frac{i}{k_1\kk_1\eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}B\\A\end{bmatrix}
+         \sin(\kk_2(z_2-z_1)) \cos(\kk_1(z_0-z_1))\frac{i}{k_1\kk_1\eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}B\\A\end{bmatrix}.
       \end{align*}
 
       On voit alors apparaître le système final dont le déterminant est
@@ -152,10 +158,10 @@
       \begin{multline*}
         =-\left(\alp \kk_2^2 - \bet \kk_1^2\right)
         \\
-        \left(\alp(\kk_2^2-k_y^2)-\bet(\kk_1^2-k_x^2)\right)
+        \left(\alp(\kk_2^2-k_y^2)-\bet(\kk_1^2-k_x^2)\right).
       \end{multline*}
 
 
-      Si le déterminant de ce système n'est pas nul, alors il existe des champs non nuls solutions du problème homogène, et alors il n'y a pas unicité des solutions.
+      Si le déterminant de ce système n'est pas nul, alors il existe des champs non nuls solutions du problème homogène, et il n'y a alors pas unicité des solutions.
 
     \end{proof}

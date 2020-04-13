@@ -1,33 +1,34 @@
 \section*{Plan de la thèse}
 
-La finalité de cette thèse est de proposer un modèle permettant de remplacer un empilement de matériaux par une condition limite de surface implémentée dans un code équations intégrales surfacique ou éléments finis volumiques. Pour cela, nous devons calculer les champs électromagnétiques sur la surface de ce dernier. Ce calcul, réalisé par une méthode numérique, nécessite d'y définir une condition limite paramétrée par des coefficients. Ces derniers peuvent être déterminés localement en résolvant un problème de minimisation sous contraintes, ces dernières permettant d'assurer l'unicité des solutions. Cette thèse présente donc chacun de ses points précédents dans l'ordre inverse.
+La finalité de cette thèse est de proposer un modèle permettant de remplacer un empilement de matériaux par une condition limite de surface implémentée dans un code équations intégrales surfacique ou éléments finis volumiques. Pour cela, nous devons calculer les champs électromagnétiques sur la surface de ce dernier. Ce calcul, réalisé par une méthode numérique, nécessite d'y définir une condition limite paramétrée par des coefficients. Ces derniers peuvent être déterminés localement en résolvant un problème de minimisation sous contraintes, ces dernières permettant d'assurer l'unicité des solutions. Cette thèse présente donc chacun de ces points précédents dans l'ordre inverse.
 
 \subsection*{Chapitre 1}
-Dans ce chapitre on présente une condition suffisante qui garantit l'unicité des solutions des équations de Maxwell à l'extérieur de l'objet.
-Cette condition s'exprime sur sa surface. Cette condition est satisfaite pour chacune des conditions limites que l'on appliquera à l'objet. Nous présentons alors des conditions suffisantes sur les coefficients pour impliquer la précédente condition, donc garantir l'unicité des solutions.
-Nous en présentons plusieurs par CIOE pour marquer le caractère suffisant de ces conditions, puis nous définirons lesquelles sont conservées et utilisées dans la suite de la thèse.
-De plus, nous rappellerons aussi l'alternative de Fredholm pour assurer l'unicité du problème intérieur. D'un point de vue pratique, nous présentons une condition simple pour s'assurer que nous pouvons faire la transformée de Fourier des champs, pour dans les chapitres suivants, exprimer l'opérateur d'impédance simplement.
+Ce chapitre présente une condition suffisante qui garantit l'unicité des solutions des équations de Maxwell à l'extérieur de l'objet.
+Cette condition s'exprime sur sa surface et est satisfaite pour chacune des conditions limites que l'on appliquera à l'objet. 
+Nous présentons alors des conditions suffisantes sur les coefficients qui impliquent la condition suffisante générale, donc qui garantissent l'unicité des solutions.
+Nous en présentons plusieurs par CIOE pour marquer le caractère suffisant de ces conditions, puis nous définirons celles conservées et utilisées dans la suite de la thèse.
+De plus, nous rappellerons aussi l'alternative de Fredholm pour assurer l'unicité du problème intérieur. D'un point de vue pratique, nous présentons une condition simple pour nous assurer que nous pouvons faire la transformée de Fourier des champs, pour dans les chapitres suivants, exprimer l'opérateur d'impédance simplement.
 
 \subsection*{Chapitre 2}
-Pour calculer les coefficients, sachant les conditions qu'ils doivent vérifier, nous supposons que l'objet est un plan infini. Ce cas d'étude classique permet de calculer exactement dans le domaine spectral la condition d’impédance. 
-Cet opérateur est alors un multiplicateur de Fourier matriciel en fonction de la pulsation \(\w\), de l'empilement des matériaux et des modes de Fourier \(k_x, k_y\) associés aux coordonnées cartésiennes tangentielles du plan infini \(x,y\).
+Pour calculer les coefficients, sachant les conditions qu'ils doivent vérifier, nous supposons que l'objet est un plan infini. Ce cas d'étude classique permet de calculer exactement la condition d’impédance dans le domaine spectral. 
+Cet opérateur est alors un multiplicateur de Fourier matriciel en fonction de la pulsation \(\w\), de l'empilement des matériaux et des modes de Fourier \(k_x,k_y\) associés aux coordonnées cartésiennes tangentielles du plan infini \(x,y\).
 L'opérateur approché est aussi un multiplicateur de Fourier matriciel dépendant de \(\w, k_x, k_y\) et de coefficients complexes.
 Le calcul de ces coefficients se fait par optimisation sous contraintes où l'on minimise l'erreur entre ces deux matrices pour plusieurs couples \(k_x,k_y\) en utilisant les CSU du premier chapitre comme contraintes.
 
 \subsection*{Chapitre 3}
 Ce chapitre introduit l'effet d'une courbure dans une direction et est fortement lié au précédent dans sa méthodologie.
 Sur cette géométrie périodique, l'opérateur d'impédance exact s'exprime dans le domaine spectral comme un multiplicateur de Fourier en fonction de \(\w\), de l'empilement et de la courbure du cylindre, ainsi que des coefficients de Fourier \(n\) et du mode de Fourier \(k_z\) associés aux coordonnées cylindriques tangentielles du cylindre infini \(\theta,z\).
-Une différence notable est que la décomposition d'une onde plane incidente fait intervenir a priori un nombre infini de coefficients de Fourier, mais on les tronque pour ne garder que les termes qui contribuent significativement.
+%Une différence notable est que la décomposition d'une onde plane incidente fait intervenir a priori un nombre infini de coefficients de Fourier, mais on les tronque pour ne garder que les termes qui contribuent significativement.
 L'opérateur approché est aussi un multiplicateur de Fourier matriciel dépendant de \(\w, n, k_z\) et de coefficients complexes.
 Le calcul de ces coefficients se fait par optimisation sous contraintes où l'on minimise l'erreur pour chaque coefficient de Fourier \(n\) entre ces deux matrices pour plusieurs \(k_z\) en utilisant les CSU du premier chapitre comme contraintes.
 
 \subsection*{Chapitre 4}
 Ce chapitre introduit l'effet d'une courbure dans deux directions (sphère) et est fortement lié aux deux précédents dans sa méthodologie.
-Sur cette géométrie périodique et finie, l'opérateur d'impédance exact s'exprime dans le domaine spectral comme un multiplicateur de Fourier en fonction de \(\w\), de l'empilement et de la courbure de la sphère, ainsi que des coefficients de Fourier \(n\), un des indices de la décomposition en série de Mie, associée à la coordonnée sphérique tangentielle de la sphère \(\theta\).
-Elle ne dépend pas du coefficient de Fourier \(m\) associé à la coordonnée sphérique \(\phi\).
-Là encore, une onde plane incidente fait intervenir a priori un nombre infini de coefficients de Fourier \(n\), que l'on tronque pour ne garder que les termes qui contribuent significativement.
+Sur cette géométrie périodique et finie, l'opérateur d'impédance exact s'exprime dans le domaine spectral comme un multiplicateur de Fourier matriciel en fonction de \(\w, r\) et \(n\). Avec \(\w\) l'empilement, \(r\) la courbure de la sphère, et \(n\) un des coefficients de Fourier, associé à la coordonnée sphérique \(\theta\).
+L'opérateur d'impédance ne dépend pas du coefficient de Fourier \(m\) associé à la coordonnée sphérique \(\phi\).
+Là encore, une onde plane incidente fait a priori intervenir un nombre infini de coefficients de Fourier \(n\), que l'on tronque pour ne garder que les termes qui sont dans le domaine spectral et qui contribuent significativement.
 L'opérateur approché est aussi un multiplicateur de Fourier matriciel dépendant de \(\w, n\) et de coefficients complexes.
-Le calcul de ces coefficients se fait par optimisation sous contraintes où l'on minimise l'erreur pour chaque coefficient de Fourier \(n\) entre ces deux matrices en utilisant les CSU du premier chapitre comme contraintes.
+Le calcul de ces coefficients se fait par optimisation sous contraintes où l'on minimise l'erreur pour chaque coefficient de Fourier \(n\) entre les opérateurs exact et approché en utilisant les CSU du premier chapitre comme contraintes.
 
 \subsection*{Chapitre 5}
 Ce chapitre reprend des résultats issus de la littérature sur l'intégration de CIOE dans la résolution des équations de Maxwell par équations intégrales.
