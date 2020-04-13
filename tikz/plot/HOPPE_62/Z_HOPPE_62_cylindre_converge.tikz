@@ -14,7 +14,7 @@
 
     \addplot [black,dotted,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-01m.csv};
 
-    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E+00m.csv};
+    %\addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E+00m.csv};
 
     \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_P.csv};
   \end{axis}
@@ -37,8 +37,8 @@
     \addplot [black,dotted,mark=*] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E-01m.csv};
     \addlegendentry{\(r_0=0.3m\)}
 
-    \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E+00m.csv};
-    \addlegendentry{\(r_0=3m\)}
+    % \addplot [black,dashed] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_C_+3.000E+00m.csv};
+    %\addlegendentry{\(r_0=3m\)}
 
     \addplot [black] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_2_TYPE_P.csv};
     \addlegendentry{plan}

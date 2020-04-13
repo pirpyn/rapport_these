@@ -7,9 +7,9 @@
 
     \begin{defn}
       \label{eq:cylindre:fourier:LD}
-      On définit \(\LD\) l’application \(V\) tel que
+      On définit \(\LD\) application
       \begin{align*}
-        \LD \vect{U}(r,\theta,z) & = \vgrads{} \vdivs{} \vect{U}(r,\theta,z)
+        \LD \vect{U}(r,\theta,z) & = \vgrads{} \vdivs{} \vect{U}(r,\theta,z).
       \end{align*}
 
       On définit \(\hat{\mLD}\) la fonction de \(\NN\times\RR \rightarrow \mathcal{M}_2(\RR)\) telle que
@@ -19,42 +19,41 @@
           \left({n}\slash{r_c}\right)^2 & k_z{n}\slash{r_c}
           \\
           k_z{n}\slash{r_c} & k_z^2
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
     \begin{prop}
-      Soit \(\vect{U} \in V\)
-      Alors
+      Soit \(\vect{U} \in V\), alors
       \begin{equation*}
-        \widehat{\LD \vect{U}} (r_c,n,k_z) = \hat{\mLD}(n,k_z) \hat{\vect{U}}(r_c,n,k_z)
+        \widehat{\LD \vect{U}} (r_c,n,k_z) = \hat{\mLD}(n,k_z) \hat{\vect{U}}(r_c,n,k_z).
       \end{equation*}
     \end{prop}
 
     \begin{proof}
       Par définition de \(\LD\), on a
       \begin{align*}
-        \LD \vect{U} & = \vgrads{} \vdivs{} \vect{U}
+        \LD \vect{U} & = \vgrads{} \vdivs{} \vect{U}.
       \end{align*}
-      On utilise les expressions en coordonnées cylindriques des opérateurs différentiels (voir annexe \ref{sec:annexe:div_grad_rot}).
+      On utilise les expressions en coordonnées cylindriques des opérateurs différentiels (voir annexe \ref{sec:annexe:div_grad_rot}):
       \begin{align*}
-        \vdivs{\vect{U}}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{U_\theta}(r,\theta,z) + \ddr{z}{U_z}(r,\theta,z)
+        \vdivs{\vect{U}}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{U_\theta}(r,\theta,z) + \ddr{z}{U_z}(r,\theta,z),
         \\
-        \vgrads{f}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_\theta} + \ddr{z}{f}(r,\theta,z)\vect{e_z}
+        \vgrads{f}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_\theta} + \ddr{z}{f}(r,\theta,z)\vect{e_z}.
       \end{align*}
       Or d’après la définition de la \(\theta\)-série \(z\)-transformée de Fourier
       \begin{align*}
-        \vect{U}(r,\theta,z) & = \frac{1}{2\pi}\sum_{n=-\infty}^\infty \int_\RR \hat{\vect{U}}(r,n,k_z)e^{in\theta + ik_zz}\dd{k_z}
+        \vect{U}(r,\theta,z) & = \frac{1}{2\pi}\sum_{n=-\infty}^\infty \int_\RR \hat{\vect{U}}(r,n,k_z)e^{in\theta + ik_zz}\dd{k_z},
       \end{align*}
       les opérateurs en Fourier sont
       \begin{align*}
-        \widehat{\vdivs{\vect{U}}}(r,n,k_z) &= \frac{in}{r}{\hat{U}_\theta}(r,n,k_z) + ik_z{\hat{U}_z}(r,n,k_z)
+        \widehat{\vdivs{\vect{U}}}(r,n,k_z) &= \frac{in}{r}{\hat{U}_\theta}(r,n,k_z) + ik_z{\hat{U}_z}(r,n,k_z),
         \\
-        \widehat{\vgrads{f}}(r,n,k_z) &= \frac{in}{r}\hat{f}(r,n,k_z)\vect{e_\theta} + ik_z\hat{f}(r,n,k_z)\vect{e_z}
+        \widehat{\vgrads{f}}(r,n,k_z) &= \frac{in}{r}\hat{f}(r,n,k_z)\vect{e_\theta} + ik_z\hat{f}(r,n,k_z)\vect{e_z},
       \end{align*}
       donc
       \begin{align*}
-        \widehat{\LD{\vect{U}}}(r,n,k_z) =  \left(-\frac{n^2}{r^2}\vect{e_\theta} - \frac{nk_z}{r}\vect{e_z}\right){\hat{U}_\theta}(r,n,k_z) + \left(-\frac{nk_z}{r}\vect{e_\theta} - {k_z^2}\vect{e_z}\right){\hat{U}_z}(r,n,k_z)
+        \widehat{\LD{\vect{U}}}(r,n,k_z) =  \left(-\frac{n^2}{r^2}\vect{e_\theta} - \frac{nk_z}{r}\vect{e_z}\right){\hat{U}_\theta}(r,n,k_z) + \left(-\frac{nk_z}{r}\vect{e_\theta} - {k_z^2}\vect{e_z}\right){\hat{U}_z}(r,n,k_z).
       \end{align*}
 
     \end{proof}
@@ -63,9 +62,9 @@
     \begin{defn}
       \label{eq:cylindre:fourier:LR}
 
-      On définit \(\LR\) l'endomorphisme de \(V\) tel que
+      On définit \(\LR\) l'application
       \begin{align*}
-        \LR \vect{U}(r,\theta,z) & = \vrots{} (\rots{} \vect{U})(r,\theta,z)
+        \LR \vect{U}(r,\theta,z) & = \vrots{} (\rots{} \vect{U})(r,\theta,z).
       \end{align*}
 
       On définit \(\hat{\mLR}\) la fonction de \(\NN\times\RR \rightarrow \mathcal{M}_2(\RR)\) telle que
@@ -75,38 +74,37 @@
           k_z^2 & -k_z{n}\slash{r_c}
           \\
           -k_z{n}\slash{r_c} & \left({n}\slash{r_c}\right)^2
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
     \begin{prop}
-      Soit \(\vect{U} \in V\).
-      Alors
+      Soit \(\vect{U} \in V\), alors
       \begin{equation*}
-        \widehat{\LR \vect{U}} (r_c,n,k_z) = \hat{\mLR}(n,k_z) \hat{\vect{U}}(r_c,n,k_z)
+        \widehat{\LR \vect{U}} (r_c,n,k_z) = \hat{\mLR}(n,k_z) \hat{\vect{U}}(r_c,n,k_z).
       \end{equation*}
     \end{prop}
 
     \begin{proof}
       Par définition de \(\LR\), on a
       \begin{align*}
-        \LR \vect{U} & = \vrots{} (\rots{} \vect{U})
+        \LR \vect{U} & = \vrots{} (\rots{} \vect{U}).
       \end{align*}
-      On utilise les expressions en coordonnées cylindriques des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot}).
+      On utilise les expressions en coordonnées cylindriques des opérateurs différentiels ( voir annexe \ref{sec:annexe:div_grad_rot})
       \begin{align*}
-        \rots{\vect{U}}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{U_z}(r,\theta,z) - \ddr{z}{U_\theta}(r,\theta,z)
+        \rots{\vect{U}}(r,\theta,z) &= \frac{1}{r}\ddr{\theta}{U_z}(r,\theta,z) - \ddr{z}{U_\theta}(r,\theta,z),
         \\
-        \vrots{f}(r,\theta,z) &= \ddr{z}{f}(r,\theta,z)\vect{e_\theta} - \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_z}
+        \vrots{f}(r,\theta,z) &= \ddr{z}{f}(r,\theta,z)\vect{e_\theta} - \frac{1}{r}\ddr{\theta}{f}(r,\theta,z)\vect{e_z},
       \end{align*}
-      donc comme pour l'opérateur \(\LD\)
+      donc comme pour l'opérateur \(\LD\),
       \begin{align*}
-        \widehat{\rots{\vect{U}}}(r,n,k_z) &= \frac{in}{r}{\hat{U}_z}(r,n,k_z) - ik_z{\hat{U}_\theta}(r,n,k_z)
+        \widehat{\rots{\vect{U}}}(r,n,k_z) &= \frac{in}{r}{\hat{U}_z}(r,n,k_z) - ik_z{\hat{U}_\theta}(r,n,k_z),
         \\
-        \widehat{\vrots{f}}(r,n,k_z) &=  ik_z\hat{f}(r,n,k_z)\vect{e_\theta} - \frac{in}{r}\hat{f}(r,n,k_z)\vect{e_z}
+        \widehat{\vrots{f}}(r,n,k_z) &=  ik_z\hat{f}(r,n,k_z)\vect{e_\theta} - \frac{in}{r}\hat{f}(r,n,k_z)\vect{e_z},
       \end{align*}
       donc
       \begin{align*}
-        \widehat{\LR{\vect{U}}}(r,n,k_z) =  \left({k_z^2}\vect{e_\theta} - \frac{nk_z}{r}\vect{e_z}\right){\hat{U}_\theta}(r,n,k_z) + \left(-\frac{nk_z}{r}\vect{e_\theta} + \frac{n^2}{r^2}\vect{e_z}\right){\hat{U}_z}(r,n,k_z)
+        \widehat{\LR{\vect{U}}}(r,n,k_z) =  \left({k_z^2}\vect{e_\theta} - \frac{nk_z}{r}\vect{e_z}\right){\hat{U}_\theta}(r,n,k_z) + \left(-\frac{nk_z}{r}\vect{e_\theta} + \frac{n^2}{r^2}\vect{e_z}\right){\hat{U}_z}(r,n,k_z).
       \end{align*}
 
     \end{proof}
@@ -117,6 +115,6 @@
 
     \begin{multline}
       \label{eq:cylindre:hoibc:ci3}
-      \hat{\mZ}_{CI3}(n,k_z) = \left(\mI + b_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - b_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2} \right)^{-1}\\\left(a_0 \mI + a_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - a_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2}\right)
+      \hat{\mZ}_{CI3}(n,k_z) = \left(\mI + b_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - b_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2} \right)^{-1}\\\left(a_0 \mI + a_1 \frac{\hat{\mLD}(n,k_z)}{k_0^2} - a_2 \frac{\hat{\mLR}(n,k_z)}{k_0^2}\right).
     \end{multline}
 
