@@ -5,26 +5,26 @@
 
   Si \(k_3 = 0\), \(k_z^2 = w^2\eps\mu\) et il existe donc des constantes \((c_1(n),c_2(n)) \in \CC(\NN)^2\) telles que
   \begin{equation*}
-    \hat{E_z}(r,n,k_z) = c_1(n) r^n + c_2(n)r^{-n}
+    \hat{E_z}(r,n,k_z) = c_1(n) r^n + c_2(n)r^{-n}.
   \end{equation*}
   Dans ce cas \(\hat{E_z}(r,n,k_z)\) est linéairement dépendant de  \(\hat{E_z}(r,-n,k_z)\) et l'on peut se restreindre à \(n\) entier naturel.
 
   Toute la méthode est aussi valable pour \(\hat H_z\), il existe des constantes \((c_3(n),c_4(n)) \in \CC(\NN)^2\) telles que
   \begin{equation*}
-    \hat{H_z}(r,n,k_z) = c_3(n) r^n + c_4(n)r^{-n}
+    \hat{H_z}(r,n,k_z) = c_3(n) r^n + c_4(n)r^{-n}.
   \end{equation*}
 
   À partir des composantes en \(\vect{e_r},\vect{e_\theta}\) des équations de Maxwell, on peut déterminer \(\hat{E_r},\hat{E_\theta},\hat{H_r},\hat{H_\theta}\).
   \begin{align*}
       &\left\lbrace
       \begin{aligned}
-          -i\w\sqrt{\mu\eps}\hat{E_\theta} + i\w\mu \hat{H_r} &= -\frac{in}{r}\hat{E_z}
+          -i\w\sqrt{\mu\eps}\hat{E_\theta} + i\w\mu \hat{H_r} &= -\frac{in}{r}\hat{E_z},
           \\
-          i\w\eps \hat{E_\theta} - i\w\sqrt{\mu\eps} \hat{H_r} &= -\ddp{r}{\hat{H_z}}            
+          i\w\eps \hat{E_\theta} - i\w\sqrt{\mu\eps} \hat{H_r} &= -\ddp{r}{\hat{H_z}},          
           \\
-          i\w\sqrt{\mu\eps}\hat{E_r} + i\w\mu \hat{H_\theta} &= \ddp{r}{\hat{E_z}}
+          i\w\sqrt{\mu\eps}\hat{E_r} + i\w\mu \hat{H_\theta} &= \ddp{r}{\hat{E_z}},
           \\
-          i\w\eps \hat{E_r} + i\w\sqrt{\mu\eps} \hat{H_\theta} &= \frac{in}{r}\hat{H_z}
+          i\w\eps \hat{E_r} + i\w\sqrt{\mu\eps} \hat{H_\theta} &= \frac{in}{r}\hat{H_z}.
       \end{aligned}
       \right.
   \end{align*}
@@ -33,13 +33,13 @@
   \begin{align*}
       &\left\lbrace
       \begin{aligned}
-          -i\w\sqrt{\mu\eps}\hat{E_\theta} + i\w\mu \hat{H_r} &= -\frac{in}{r}\left(c_1(n) r^n + c_2(n)r^{-n}\right)
+          -i\w\sqrt{\mu\eps}\hat{E_\theta} + i\w\mu \hat{H_r} &= -\frac{in}{r}\left(c_1(n) r^n + c_2(n)r^{-n}\right),
           \\
-          i\w\eps \hat{E_\theta} - i\w\sqrt{\mu\eps} \hat{H_r} &= -n\left(c_3(n)r^{n-1} - c_4(n)r^{-n-1}\right)           
+          i\w\eps \hat{E_\theta} - i\w\sqrt{\mu\eps} \hat{H_r} &= -n\left(c_3(n)r^{n-1} - c_4(n)r^{-n-1}\right),           
           \\
-          i\w\sqrt{\mu\eps}\hat{E_r} + i\w\mu \hat{H_\theta} &= n\left(c_1(n)r^{n-1} - c_2(n)r^{-n-1}\right)
+          i\w\sqrt{\mu\eps}\hat{E_r} + i\w\mu \hat{H_\theta} &= n\left(c_1(n)r^{n-1} - c_2(n)r^{-n-1}\right),
           \\
-          i\w\eps \hat{E_r} + i\w\sqrt{\mu\eps} \hat{H_\theta} &= \frac{in}{r}\left(c_3(n) r^n + c_4(n)r^{-n}\right)
+          i\w\eps \hat{E_r} + i\w\sqrt{\mu\eps} \hat{H_\theta} &= \frac{in}{r}\left(c_3(n) r^n + c_4(n)r^{-n}\right).
       \end{aligned}
       \right.
   \end{align*}
@@ -49,40 +49,40 @@
   \begin{align*}
       &\left\lbrace
       \begin{aligned}
-        -i\w\sqrt{\mu\eps}\hat{E_\theta} + i\w\mu \hat{H_r} &= -{in}\left(c_1(n) r^{n-1} + c_2(n)r^{-n-1}\right)
+        -i\w\sqrt{\mu\eps}\hat{E_\theta} + i\w\mu \hat{H_r} &= -{in}\left(c_1(n) r^{n-1} + c_2(n)r^{-n-1}\right),
         \\
-        i\w\sqrt{\mu\eps}\hat{E_r} + i\w\mu \hat{H_\theta} &= n\left(c_1(n)r^{n-1} - c_2(n)r^{-n-1}\right)
+        i\w\sqrt{\mu\eps}\hat{E_r} + i\w\mu \hat{H_\theta} &= n\left(c_1(n)r^{n-1} - c_2(n)r^{-n-1}\right),
         \\
-        \frac{1}{r}\ddr{r}{(r\hat{E_\theta})} - \frac{in}{r}{\hat{E_r}}  &= -\w\sqrt{\eps\mu} \left(c_1(n) r^n - c_2(n)r^{-n}\right)
+        \frac{1}{r}\ddr{r}{(r\hat{E_\theta})} - \frac{in}{r}{\hat{E_r}}  &= -\w\sqrt{\eps\mu} \left(c_1(n) r^n - c_2(n)r^{-n}\right),
         \\
-        \frac{1}{r}\ddr{r}{(r\hat{H_\theta})} - \frac{in}{r}{\hat{H_r}}  &=  i\w\eps \left(c_1(n) r^n + c_2(n)r^{-n}\right)
+        \frac{1}{r}\ddr{r}{(r\hat{H_\theta})} - \frac{in}{r}{\hat{H_r}}  &=  i\w\eps \left(c_1(n) r^n + c_2(n)r^{-n}\right).
       \end{aligned}
       \right.
       \intertext{On injecte les deux premières égalités dans les deux dernières.}
       &\left\lbrace
       \begin{aligned}
-        \frac{1}{r}\ddr{r}{(r\hat{E_\theta})} - \frac{n}{\w\sqrt{\mu\eps}r}\left(-i\w\mu \hat{H_\theta} + n\left(c_1(n)r^{n-1} - c_2(n)r^{-n-1}\right)\right)  &= -\w\sqrt{\eps\mu} \left(c_1(n) r^n - c_2(n)r^{-n}\right)
+        \frac{1}{r}\ddr{r}{(r\hat{E_\theta})} - \frac{n}{\w\sqrt{\mu\eps}r}\left(-i\w\mu \hat{H_\theta} + n\left(c_1(n)r^{n-1} - c_2(n)r^{-n-1}\right)\right)  &= -\w\sqrt{\eps\mu} \left(c_1(n) r^n - c_2(n)r^{-n}\right),
         \\
-        \frac{1}{r}\ddr{r}{(r\hat{H_\theta})} - \frac{n}{\w\mu r}\left(i\w\sqrt{\mu\eps}\hat{E_\theta} -{in}\left(c_1(n) r^{n-1} + c_2(n)r^{-n-1}\right)\right)  &=  i\w\eps \left(c_1(n) r^n + c_2(n)r^{-n}\right)  
+        \frac{1}{r}\ddr{r}{(r\hat{H_\theta})} - \frac{n}{\w\mu r}\left(i\w\sqrt{\mu\eps}\hat{E_\theta} -{in}\left(c_1(n) r^{n-1} + c_2(n)r^{-n-1}\right)\right)  &=  i\w\eps \left(c_1(n) r^n + c_2(n)r^{-n}\right).  
       \end{aligned}
       \right.
       \intertext{On développe}
       &\left\lbrace
       \begin{aligned}
-        \frac{1}{r}\ddr{r}{(r\hat{E_\theta})} + i\frac{n}{r}\sqrt{\frac{\mu}{\eps}}\hat{H_\theta} &= \frac{n^2}{\w\sqrt{\mu\eps}}\left(c_1(n)r^{n-2} - c_2(n)r^{-n-2}\right) -\w\sqrt{\eps\mu} \left(c_1(n) r^n - c_2(n)r^{-n}\right)
+        \frac{1}{r}\ddr{r}{(r\hat{E_\theta})} + i\frac{n}{r}\sqrt{\frac{\mu}{\eps}}\hat{H_\theta} &= \frac{n^2}{\w\sqrt{\mu\eps}}\left(c_1(n)r^{n-2} - c_2(n)r^{-n-2}\right) -\w\sqrt{\eps\mu} \left(c_1(n) r^n - c_2(n)r^{-n}\right),
         \\
-        \frac{1}{r}\ddr{r}{(r\hat{H_\theta})} - i\frac{n}{r}\sqrt{\frac{\eps}{\mu}}\hat{E_\theta} &=  \frac{-{in^2}}{\w\mu}\left( c_1(n) r^{n-2} + c_2(n)r^{-n-2}\right) + i\w\eps \left(c_1(n) r^n + c_2(n)r^{-n}\right)  
+        \frac{1}{r}\ddr{r}{(r\hat{H_\theta})} - i\frac{n}{r}\sqrt{\frac{\eps}{\mu}}\hat{E_\theta} &=  \frac{-{in^2}}{\w\mu}\left( c_1(n) r^{n-2} + c_2(n)r^{-n-2}\right) + i\w\eps \left(c_1(n) r^n + c_2(n)r^{-n}\right).  
       \end{aligned}
       \right.
       \intertext{On factorise}
       &\left\lbrace
       \begin{aligned}
-        \frac{1}{r}\ddr{r}{(r\hat{E_\theta})} + i\frac{n}{r}\sqrt{\frac{\mu}{\eps}}\hat{H_\theta} &= -c_1(n)\sqrt{\frac{\mu}{\eps}}\left(\w\eps r^n - \frac{n^2}{\w\mu}r^{n-2}\right) + c_2(n)\sqrt{\frac{\mu}{\eps}}\left(\w\eps r^{-n} - \frac{n^2}{\w\mu}r^{-n-2}\right)
+        \frac{1}{r}\ddr{r}{(r\hat{E_\theta})} + i\frac{n}{r}\sqrt{\frac{\mu}{\eps}}\hat{H_\theta} &= -c_1(n)\sqrt{\frac{\mu}{\eps}}\left(\w\eps r^n - \frac{n^2}{\w\mu}r^{n-2}\right) + c_2(n)\sqrt{\frac{\mu}{\eps}}\left(\w\eps r^{-n} - \frac{n^2}{\w\mu}r^{-n-2}\right),
         \\
-        \frac{1}{r}\ddr{r}{(r\hat{H_\theta})} - i\frac{n}{r}\sqrt{\frac{\eps}{\mu}}\hat{E_\theta} &=  c_1(n)i\left(\w\eps r^n - \frac{n^2}{\w\mu}r^{n-2}\right) + c_2(n)i\left(\w\eps r^{-n} -\frac{n^2}{\w\mu}r^{-n-2}\right) 
+        \frac{1}{r}\ddr{r}{(r\hat{H_\theta})} - i\frac{n}{r}\sqrt{\frac{\eps}{\mu}}\hat{E_\theta} &=  c_1(n)i\left(\w\eps r^n - \frac{n^2}{\w\mu}r^{n-2}\right) + c_2(n)i\left(\w\eps r^{-n} -\frac{n^2}{\w\mu}r^{-n-2}\right). 
       \end{aligned}
       \right.
   \end{align*}
 
-  On voit que si l'on injecte l'une dans l'autre, on obtiendra une EDO d'ordre deux inhomogène. L'expression de la solution de cette EDO n'est pas simple ni immédiate, nous n'avons donc pas continué l'étude dans ce cas.
+  On voit que si l'on injecte l'une dans l'autre, on obtiendra une EDO d'ordre 2 inhomogène. L'expression de la solution de cette EDO n'est pas simple ni immédiate, nous n'avons donc pas continué l'étude dans ce cas.
 

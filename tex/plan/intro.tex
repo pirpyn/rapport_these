@@ -9,33 +9,36 @@ Supposons qu'il existe des champs \((\vE,\vect H)\) qui vérifient les équation
 \begin{equation*}
     \left\lbrace
     \begin{matrix}
-    \vrot \vE(\vect{x},t) &=& -\mu(\vx) \ddr{t}{\vect H}(\vx,t) \\
-    \vrot \vect H(\vect{x},t) &=& \eps(\vx) \ddr{t}{\vE}(\vx,t)
+    \vrot \vE(\vect{x},t) &=& -\mu(\vx) \ddr{t}{\vect H}(\vx,t),
+    \\
+    \vrot \vect H(\vect{x},t) &=& \eps(\vx) \ddr{t}{\vE}(\vx,t).
     \end{matrix}
     \right.
 \end{equation*}
 
 On suppose aussi que \(\eps\) et \(\mu\) sont constants par couche: \(\eps(x_1,x_2,x_n)=\eps(x_n)\).
 
-On suppose enfin que ces champs \(\vE(\vect{x},t),\vect H(\vect{x},t)\) ont des transformées de Fourier partielles suivant les coordonnées tangentielles et le temps \(\hat{\vE}(k_1,k_2,x_n,\w), \hat{\vect H}(k_1,k_2,x_n,\w)\) (\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995}) telles que
+On suppose enfin que ces champs \(\vE(\vect{x},t),\vect H(\vect{x},t)\) ont des transformées de Fourier partielles suivant les coordonnées tangentielles et le temps
+%(\(\hat{\vE}(k_1,k_2,x_n,\w), \hat{\vect H}(k_1,k_2,x_n,\w)\))
+(\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995}) telles que
 
 \begin{align*}
-    \hat{\vE} (k_1,k_2,x_n,\w) &= \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{-i(k_1x_1+k_2x_2+\w t)}\vE(x_1,x_2,x_n,t) \dd{x_1}\dd{x_2}\dd{t}
+    \hat{\vE} (k_1,k_2,x_n,\w) &= \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{-i(k_1x_1+k_2x_2+\w t)}\vE(x_1,x_2,x_n,t) \dd{x_1}\dd{x_2}\dd{t},
     \\
-    \vE(x_1,x_2,x_n,t) &= \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{i(k_1x_1+k_2x_2+\w t)}\hat{\vE} (k_1,k_2,x_n,\w) \dd{k_1}\dd{k_2} \dd{\w}
+    \vE(x_1,x_2,x_n,t) &= \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{i(k_1x_1+k_2x_2+\w t)}\hat{\vE} (k_1,k_2,x_n,\w) \dd{k_1}\dd{k_2} \dd{\w}.
 \end{align*}
 
 Pour avoir le droit d'appliquer la transformée de Fourier, nous supposons que pour notre empilement nous n'avons pas de résonances tel que nous l'avions évoqué à la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}. 
 
-Dans cette thèse, on utilise les équations harmoniques de Maxwell ainsi on réalise au moins une transformée partielle en temps. La variable de Fourier associée est \(\w\), et donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\gls{phy-w}\).
+Dans cette thèse, on utilise les équations harmoniques de Maxwell, ainsi on réalise au moins une transformée partielle en temps. La variable de Fourier associée est \(\w\), et donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\gls{phy-w}\).
 
 On va donc utiliser le système d'équations de Maxwell harmonique:
 \begin{equation}
     \left\lbrace
     \begin{matrix}
-    \vrot \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)  &=& -i \omega \mu(x_n) \hat{\gls{phy-h}}(k_1,k_2,x_n,\w)
+    \vrot \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)  &=& -i \omega \mu(x_n) \hat{\gls{phy-h}}(k_1,k_2,x_n,\w),
     \\
-    \vrot \hat{\gls{phy-h}}(k_1,k_2,x_n,\w)  &=& i \omega \eps(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)
+    \vrot \hat{\gls{phy-h}}(k_1,k_2,x_n,\w)  &=& i \omega \eps(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w).
     \end{matrix}
     \right.
     \label{eq:imp_fourier:intro:maxwell_harmonique}
@@ -45,8 +48,8 @@ Afin d'utiliser les mêmes conventions que \cite{stupfel_implementation_2015}, o
 \begin{equation}
     \left\lbrace
     \begin{matrix}
-    \vrot \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)  &=& -i k(x_n) \eta_r(x_n) \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w)  \\
-    \vrot \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w)  &=& i k(x_n) \eta_r^{-1}(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)
+    \vrot \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)  &=& -i k(x_n) \eta_r(x_n) \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w),  \\
+    \vrot \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w)  &=& i k(x_n) \eta_r^{-1}(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w),
     \end{matrix}
     \right.
     \label{eq:imp_fourier:intro:maxwell_harmonique:form_cea}
@@ -55,7 +58,7 @@ où \(\gls{phy-h2} = \gls{phy-eta0} \gls{phy-h}\), \(\eps(x_n)=\gls{phy-eps}_r(x
 
 Notre but est de prouver l'existence d'une matrice \(\hat\mZ(k_1,k_2,\w)\) telle que
 \begin{equation*}
-    \hat{\vE}_t(k_1,k_2,0,\w) =  \hat{\mZ}(k_1,k_2,\w) \left(\vn \pvect \hat{\vH}(k_1,k_2,0,\w) \right)
+    \hat{\vE}_t(k_1,k_2,0,\w) =  \hat{\mZ}(k_1,k_2,\w) \left(\vn \pvect \hat{\vH}(k_1,k_2,0,\w) \right).
 \end{equation*}
 
 La méthode pour trouver une expression cette dernière est la suivante.

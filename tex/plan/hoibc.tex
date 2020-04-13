@@ -10,7 +10,7 @@
       \label{eq:plan:fourier:LD}
       On définit \(\LD\) l'endomorphisme de \(V\) tel que
       \begin{align*}
-        \LD \vect{U}(x,y,z) & = \vgrads{} \vdivs{} \vect{U}(x,y,z)
+        \LD \vect{U}(x,y,z) & = \vgrads{} \vdivs{} \vect{U}(x,y,z).
       \end{align*}
 
       On définit \(\hat{\mLD}\) la fonction de \(\RR\times\RR \rightarrow \mathcal{M}_2(\RR)\) telle que
@@ -20,42 +20,41 @@
           k_x^2 & k_xk_y
           \\
           k_xk_y & k_y^2
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
     \begin{prop}
-      Soit \(\vect{U} \in V\)
-      Alors
+      Soit \(\vect{U} \in V\), alors
       \begin{equation*}
-        \widehat{\LD \vect{U}} (k_x,k_y,0) = \hat{\mLD}(k_x,k_y) \hat{\vect{U}}(k_x,k_y,0)
+        \widehat{\LD \vect{U}} (k_x,k_y,0) = \hat{\mLD}(k_x,k_y) \hat{\vect{U}}(k_x,k_y,0).
       \end{equation*}
     \end{prop}
 
     \begin{proof}
       Par définition de \(\LD\), on a
       \begin{align*}
-        \LD \vect{U} & = \vgrads{} \vdivs{} \vect{U}
+        \LD \vect{U} & = \vgrads{} \vdivs{} \vect{U}.
       \end{align*}
       On utilise les expressions en coordonnées cartésiennes des opérateurs différentiels (voir annexe \ref{sec:annexe:div_grad_rot}).
       \begin{align*}
-        \vdivs{\vect{U}}(x,y,z) &= \ddr{x}{U_x}(x,y,z) + \ddr{y}{U_z}(x,y,z)
+        \vdivs{\vect{U}}(x,y,z) &= \ddr{x}{U_x}(x,y,z) + \ddr{y}{U_z}(x,y,z),
         \\
-        \vgrads{f}(x,y,z) &= \ddr{x}{f}(x,y,z)\vect{e_x} + \ddr{y}{f}(x,y,z)\vect{e_y}
+        \vgrads{f}(x,y,z) &= \ddr{x}{f}(x,y,z)\vect{e_x} + \ddr{y}{f}(x,y,z)\vect{e_y}.
       \end{align*}
       Or d’après la définition de la transformée de Fourier
       \begin{align*}
-        \vect{U}(x,y,z) & = \frac{1}{2\pi} \int\RR \int_\RR \hat{\vect{U}}(k_x,k_y,z)e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y}
+        \vect{U}(x,y,z) & = \frac{1}{2\pi} \int\RR \int_\RR \hat{\vect{U}}(k_x,k_y,z)e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y},
       \end{align*}
       les opérateurs en Fourier sont
       \begin{align*}
-        \widehat{\vdivs{\vect{U}}}(k_x,k_y,z) &= ik_x{\hat{U}_x}(k_x,k_y,z) + ik_y{\hat{U}_y}(k_x,k_y,z)
+        \widehat{\vdivs{\vect{U}}}(k_x,k_y,z) &= ik_x{\hat{U}_x}(k_x,k_y,z) + ik_y{\hat{U}_y}(k_x,k_y,z),
         \\
-        \widehat{\vgrads{f}}(k_x,k_y,z) &= ik_x\hat{f}(k_x,k_y,z)\vect{e_x} + ik_y\hat{f}(k_x,k_y,z)\vect{e_y}
+        \widehat{\vgrads{f}}(k_x,k_y,z) &= ik_x\hat{f}(k_x,k_y,z)\vect{e_x} + ik_y\hat{f}(k_x,k_y,z)\vect{e_y},
       \end{align*}
       donc
       \begin{align*}
-        \widehat{\LD{\vect{U}}}(k_x,k_y,z) =  \left(-k_x^2\vect{e_x} -k_xk_y\vect{e_y}\right){\hat{U}_x}(k_x,k_y,z) + \left(-k_xk_y\vect{e_x} - {k_y^2}\vect{e_y}\right){\hat{U}_z}(k_x,k_y,z)
+        \widehat{\LD{\vect{U}}}(k_x,k_y,z) =  \left(-k_x^2\vect{e_x} -k_xk_y\vect{e_y}\right){\hat{U}_x}(k_x,k_y,z) + \left(-k_xk_y\vect{e_x} - {k_y^2}\vect{e_y}\right){\hat{U}_z}(k_x,k_y,z).
       \end{align*}
 
     \end{proof}
@@ -66,7 +65,7 @@
 
       On définit \(\LR\) l'endomorphisme de \(V\) tel que
       \begin{align*}
-        \LR \vect{U}(x,y,z) & = \vrots{} (\rots{} \vect{U})(x,y,z)
+        \LR \vect{U}(x,y,z) & = \vrots{} (\rots{} \vect{U})(x,y,z).
       \end{align*}
 
       On définit \(\hat{\mLR}\) la fonction de \(\RR\times\RR \rightarrow \mathcal{M}_2(\RR)\) telle que
@@ -76,38 +75,37 @@
           k_y^2 & -k_xk_y
           \\
           -k_xk_y & k_x^2
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
     \begin{prop}
-      Soit \(\vect{U} \in V\).
-      Alors
+      Soit \(\vect{U} \in V\), alors
       \begin{equation*}
-        \widehat{\LR \vect{U}} (k_x,k_y,0^+) = \hat{\mLR}(k_x,k_y) \hat{\vect{U}}(k_x,k_y,0^+)
+        \widehat{\LR \vect{U}} (k_x,k_y,0^+) = \hat{\mLR}(k_x,k_y) \hat{\vect{U}}(k_x,k_y,0^+).
       \end{equation*}
     \end{prop}
 
     \begin{proof}
       Par définition de \(\LR\), on a
       \begin{align*}
-        \LR \vect{U} & = \vrots{} (\rots{} \vect{U})
+        \LR \vect{U} & = \vrots{} (\rots{} \vect{U}).
       \end{align*}
       On utilise les expressions en coordonnées cartésiennes des opérateurs différentiels (voir annexe \ref{sec:annexe:div_grad_rot}).
       \begin{align*}
-        \rots{\vect{U}}(x,y,z) &= \ddr{x}{U_y}(x,y,z) - \ddr{y}{U_x}(x,y,z)
+        \rots{\vect{U}}(x,y,z) &= \ddr{x}{U_y}(x,y,z) - \ddr{y}{U_x}(x,y,z),
         \\
-        \vrots{f}(x,y,z) &= \ddr{y}{f}(x,y,z)\vect{e_x} - \ddr{x}{f}(x,y,z)\vect{e_y}
+        \vrots{f}(x,y,z) &= \ddr{y}{f}(x,y,z)\vect{e_x} - \ddr{x}{f}(x,y,z)\vect{e_y},
       \end{align*}
       donc comme pour l'opérateur \(\LD\)
       \begin{align*}
-        \widehat{\rots{\vect{U}}}(k_x,k_y,z) &= ik_x{\hat{U}_y}(k_x,k_y,z) - ik_y{\hat{U}_x}(k_x,k_y,z)
+        \widehat{\rots{\vect{U}}}(k_x,k_y,z) &= ik_x{\hat{U}_y}(k_x,k_y,z) - ik_y{\hat{U}_x}(k_x,k_y,z),
         \\
-        \widehat{\vrots{f}}(k_x,k_y,z) &=  ik_y\hat{f}(k_x,k_y,z)\vect{e_x} - ik_x\hat{f}(k_x,k_y,z)\vect{e_y}
+        \widehat{\vrots{f}}(k_x,k_y,z) &=  ik_y\hat{f}(k_x,k_y,z)\vect{e_x} - ik_x\hat{f}(k_x,k_y,z)\vect{e_y},
       \end{align*}
       donc
       \begin{align*}
-        \widehat{\LR{\vect{U}}}(k_x,k_y,z) =  \left({k_y^2}\vect{e_x} -k_xk_y\vect{e_y}\right){\hat{U}_x}(k_x,k_y,z) + \left(-k_xk_y\vect{e_x} + k_x^2\vect{e_y}\right){\hat{U}_z}(k_x,k_y,z)
+        \widehat{\LR{\vect{U}}}(k_x,k_y,z) =  \left({k_y^2}\vect{e_x} -k_xk_y\vect{e_y}\right){\hat{U}_x}(k_x,k_y,z) + \left(-k_xk_y\vect{e_x} + k_x^2\vect{e_y}\right){\hat{U}_z}(k_x,k_y,z).
       \end{align*}
     \end{proof}
 
@@ -117,23 +115,23 @@
 
     \begin{multline}
       \label{eq:plan:hoibc:ci3}
-      \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - b_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2} \right)^{-1}\\\left(a_0 \mI + a_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - a_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2}\right)
+      \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - b_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2} \right)^{-1}\\\left(a_0 \mI + a_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - a_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2}\right).
     \end{multline}
 
 
     Les CIOE dérivées de la CI3 s'obtiennent tout aussi facilement.
 
     \begin{equation*}
-        \hat{\mZ}_{CI4}(k_x,k_y) = a_0 \mI + a_1 \frac{\hat{\mLD}}{k_0^2}(k_x,k_y) - a_2 \frac{\hat{\mLR}}{k_0^2}(k_x,k_y)
+        \hat{\mZ}_{CI4}(k_x,k_y) = a_0 \mI + a_1 \frac{\hat{\mLD}}{k_0^2}(k_x,k_y) - a_2 \frac{\hat{\mLR}}{k_0^2}(k_x,k_y),
     \end{equation*}
     \begin{equation*}
-        \hat{\mZ}_{CI1}(k_x,k_y) =  \left(\mI + b \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)^{-1}\left(a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)
+        \hat{\mZ}_{CI1}(k_x,k_y) =  \left(\mI + b \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)^{-1}\left(a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right),
     \end{equation*}
     \begin{equation*}
-        \hat{\mZ}_{CI01}(k_x,k_y) =  a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y)
+        \hat{\mZ}_{CI01}(k_x,k_y) =  a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y).
     \end{equation*}
     Pour calculer les coefficients de la CIOE, il faut minimiser la distance entre \(\hat{\mZ}(k_x,k_y)\) et \(\hat{\mZ}_{CI3}(k_x,k_y)\) \footnote{La distance est la norme de Frobenius}. Il existe une infinité de combinaisons pour un couple \((k_x,k_y)\) donné. Nous avons choisi de nous donner un grand nombre de couples et de minimiser au sens des moindres carrés.
 
   \subsection{Le cas spécial de la condition de Leontovich}
 
-    La condition de Leontovich consiste à approcher la matrice par une constante, et donc d'avoir \(a_1=a_2=b_1=b_2=0\). Cependant, cette condition rend compte exactement de l'impédance à incidence normale. Dans ce cas particulier, nous ne réaliserons pas de minimisation, mais on fixera cette constante à la valeur de la matrice quand \((k_x,k_y) = (0,0)\) donc \( \hat{\mZ}_{CI0}  = \hat{\mZ}(0,0)\). Cette dernière est diagonale.
+    La condition de Leontovich consiste à approcher la matrice par une constante, et donc à avoir \(a_1=a_2=b_1=b_2=0\). Cependant, cette condition rend compte exactement de l'impédance à incidence normale. Dans ce cas particulier, nous ne réaliserons pas de minimisation, mais on fixera cette constante à la valeur de la matrice quand \((k_x,k_y) = (0,0)\) donc \( \hat{\mZ}_{CI0}  = \hat{\mZ}(0,0)\). Cette dernière est diagonale.

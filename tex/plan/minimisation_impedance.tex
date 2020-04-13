@@ -4,11 +4,11 @@
     \begin{defn}
       Soit \(\ps{\cdot}{\cdot}\) le produit scalaire usuel de \(\CC^{N_{k}}\) et \(\norm{\cdot}\) la norme associée.
       \begin{equation*}
-        \ps{a}{b} = \sum_{i=1}^{N_k} \conj{a_i} b_i
+        \ps{a}{b} = \sum_{i=1}^{N_k} \conj{a_i} b_i.
       \end{equation*}
       Soit \(\ps{\cdot}{\cdot}_F\) le produit scalaire usuel de \(\mathcal{M}_2(\CC)\) et \(\norm{\cdot}_F\) la norme associée.
       \begin{equation*}
-        \ps{\mA}{\mB}_F = \operatorname{Tr}(\conj{\mA^t}\mB)
+        \ps{\mA}{\mB}_F = \operatorname{Tr}(\conj{\mA^t}\mB).
       \end{equation*}
     \end{defn}
 
@@ -25,7 +25,7 @@
         0 & \hat{\mLD}(k_x,k_y)_{21} & -\hat{\mLR}(k_x,k_y)_{21} & -\left(\hat{\mLD}(k_x,k_y)\mZ\right)_{21} & \left(\hat{\mLR}(k_x,k_y)\mZ\right)_{21}
         \\
         1 & \hat{\mLD}(k_x,k_y)_{22} & -\hat{\mLR}(k_x,k_y)_{22} & -\left(\hat{\mLD}(k_x,k_y)\mZ\right)_{22} & \left(\hat{\mLR}(k_x,k_y)\mZ\right)_{22}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
       On définit \(b\) la fonction de \(\mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
       \begin{equation*}
@@ -37,41 +37,41 @@
         \mZ_{21}
         \\
         \mZ_{22}
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
     \begin{prop}
       Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((k_x,k_y)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du plan, alors
       \begin{equation*}
-        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(k_x,k_y,X) - \hat\mZ_{ex}(k_x,k_y)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(k_x,k_y,\hat\mZ_{ex}(k_x,k_y))X - b(\hat\mZ_{ex}(k_x,k_y))}
+        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(k_x,k_y,X) - \hat\mZ_{ex}(k_x,k_y)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(k_x,k_y,\hat\mZ_{ex}(k_x,k_y))X - b(\hat\mZ_{ex}(k_x,k_y))}.
       \end{equation*}
     \end{prop}
 
     \begin{proof}
       On rappelle que dans la section précédente, on a introduit
       \begin{multline*}
-        \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y) \right)^{-1}\\\left(a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)}\right)
+        \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y) \right)^{-1}\\\left(a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)}\right).
       \end{multline*}
       On pose
       \begin{align*}
-        \hat\mZ_D(k_x,k_y) &= \mI + b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y)
+        \hat\mZ_D(k_x,k_y) &= \mI + b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y),
         \\
-        \hat\mZ_N(k_x,k_y) &= a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)}
+        \hat\mZ_N(k_x,k_y) &= a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)},
       \end{align*}
 
       \begin{align*}
       &{}~ \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(k_x,k_y,X) - \hat\mZ_{ex}(k_x,k_y)}
       \\
-      & = \argmin{X\in\CC^5} \norm{\hat\mZ_D(k_x,k_y)^{-1}\hat\mZ_N(k_x,k_y) - \hat\mZ_{ex}(k_x,k_y) }
+      & = \argmin{X\in\CC^5} \norm{\hat\mZ_D(k_x,k_y)^{-1}\hat\mZ_N(k_x,k_y) - \hat\mZ_{ex}(k_x,k_y) },
       \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_D(k_x,k_y)^{-1}\left(\hat\mZ_N(k_x,k_y) - \hat\mZ_D(k_x,k_y)\hat\mZ_{ex}(k_x,k_y)\right) }
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_D(k_x,k_y)^{-1}\left(\hat\mZ_N(k_x,k_y) - \hat\mZ_D(k_x,k_y)\hat\mZ_{ex}(k_x,k_y)\right) },
       \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(k_x,k_y) - \hat\mZ_D(k_x,k_y)\hat\mZ_{ex}(k_x,k_y)}
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(k_x,k_y) - \hat\mZ_D(k_x,k_y)\hat\mZ_{ex}(k_x,k_y)},
       \\
-      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(k_x,k_y) - \left(b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y)\right)\hat\mZ_{ex}(k_x,k_y) - \hat\mZ_{ex}(k_x,k_y) }
+      &= \argmin{X\in\CC^5} \norm{\hat\mZ_N(k_x,k_y) - \left(b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y)\right)\hat\mZ_{ex}(k_x,k_y) - \hat\mZ_{ex}(k_x,k_y) },
       \\
-      &= \argmin{X\in\CC^5} \norm{\mH_{CI3}(k_x,k_y,\hat\mZ_{ex}(k_x,k_y))X - b(\hat\mZ_{ex}(k_x,k_y))}
+      &= \argmin{X\in\CC^5} \norm{\mH_{CI3}(k_x,k_y,\hat\mZ_{ex}(k_x,k_y))X - b(\hat\mZ_{ex}(k_x,k_y))}.
       \end{align*}
     \end{proof}
 
@@ -89,7 +89,7 @@
           \vdots
           \\
           \mH_{CI3}(k_{xN_x},k_{yN_y},\hat\mZ_{ex}(k_{xN_x},k_{yN_y}))
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
       On définit \(g\) la matrice de \(\mathcal{M}_{4N_xN_y\times1}(\CC)\) telle que
       \begin{equation*}
@@ -104,15 +104,15 @@
           \vdots
           \\
           b(\hat\mZ_{ex}(k_{xN_x},k_{yN_y}))
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
     \end{defn}
 
-    On peut alors calculer les coefficients de la CI3
+    On peut alors calculer les coefficients de la CI3.
     \begin{defn}
       On définit la fonctionnelle \(J_Z\)
       \begin{equation*}
-        J_Z(X) = \norm{{\mA}_{CI3}X - {g}}^2
+        J_Z(X) = \norm{{\mA}_{CI3}X - {g}}^2.
       \end{equation*}
     \end{defn}
 
@@ -121,33 +121,33 @@
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CC^5}  J_Z(X)
+        X^* = \argmin{X\in \CC^5}  J_Z(X).
       \end{equation*}
     \end{thm}
 
     \begin{prop}
       \label{prop:plan:minimisation:minimum_sans_contraintes}
-      Si \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible alors
+      Si \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, alors
       \begin{equation*}
-        X^* = (\conj{\mA_{CI3}^t}\mA_{CI3})^{-1}(\conj{\mA_{CI3}^t}g)
+        X^* = (\conj{\mA_{CI3}^t}\mA_{CI3})^{-1}(\conj{\mA_{CI3}^t}g).
       \end{equation*}
     \end{prop}
 
     \begin{proof}
       \begin{align*}
-      J_Z(X) &= \norm{\mA_{CI3}X - g}^2
+      J_Z(X) &= \norm{\mA_{CI3}X - g}^2,
       \\
-      &= \ps{\mA_{CI3}X - g}{\mA_{CI3}X - g}
+      &= \ps{\mA_{CI3}X - g}{\mA_{CI3}X - g},
       \intertext{le produit scalaire est hermitien donc}
-      &=\ps{\mA_{CI3}X}{\mA_{CI3}X} - \ps{\mA_{CI3}X}{g} - \ps{g}{\mA_{CI3}X} + \ps{g}{g}
+      &=\ps{\mA_{CI3}X}{\mA_{CI3}X} - \ps{\mA_{CI3}X}{g} - \ps{g}{\mA_{CI3}X} + \ps{g}{g},
       \\
-      &=\ps{X}{\conj{\mA_{CI3}^t}\mA_{CI3}X} - \ps{X}{\conj{\mA_{CI3}^t}g} - \ps{\conj{\mA_{CI3}^t}g}{X} + \ps{g}{g}
+      &=\ps{X}{\conj{\mA_{CI3}^t}\mA_{CI3}X} - \ps{X}{\conj{\mA_{CI3}^t}g} - \ps{\conj{\mA_{CI3}^t}g}{X} + \ps{g}{g},
       \end{align*}
-      Si la matrice \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, comme elle est par définition hermitienne et positive alors la fonctionnelle est quadratique. Donc il existe un unique minimum où le gradient de cette fonctionnelle s'annule. Or
+      Si la matrice \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, comme elle est par définition hermitienne et positive, alors la fonctionnelle est quadratique. Il existe donc un unique minimum où le gradient de cette fonctionnelle s'annule. Or
       \begin{align*}
-        \nabla J_Z(X^*) &= 2\conj{\mA_{CI3}^t}\mA_{CI3}X^* - 2\conj{\mA_{CI3}^t}g
+        \nabla J_Z(X^*) &= 2\conj{\mA_{CI3}^t}\mA_{CI3}X^* - 2\conj{\mA_{CI3}^t}g,
         \\ 
-        &= 0
+        &= 0.
       \end{align*}
     \end{proof}
 
@@ -156,18 +156,18 @@
     \begin{thm}[Minimisation avec contraintes pour la CI3]
 
       Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
-      Alors les coefficients de la CIOE respectant cette CSU sont solutions du problème
+      Alors les coefficients de la CIOE respectant cette CSU sont solutions du problème.
 
       Trouver \(X^* \in \CC^5\) tel que
       \begin{equation*}
-        X^* = \argmin{X\in \CSU[3]{CI3}}  J_Z(X)
+        X^* = \argmin{X\in \CSU[3]{CI3}}  J_Z(X).
       \end{equation*}
     \end{thm}
 
   \subsection{Existence et unicité du minimum pour d'autres CIOE}
 
     \begin{prop}
-      Il existe un unique minimum si la matrice \(\mM=\conj{\mH^t}{\mH}\) est inversible
+      Il existe un unique minimum si la matrice \(\mM=\conj{\mH^t}{\mH}\) est inversible.
     \end{prop}
 
     \begin{proof}
@@ -180,7 +180,7 @@
       S'il existe un unique minimum \(X_{CI}^*\), celui-ci vaut
       \[
         X_{CI}^* = \left(\conj{\mH_{CI}^t}{\mH_{CI}}\right)^{-1}\conj{\mH_{CI}^t}b
-      \]
+      \].
     \end{prop}
 
     \begin{proof}
@@ -190,7 +190,7 @@
     \subsubsection{Existence du minimum pour la CI01}
 
       \begin{prop}
-        La matrice \({\mM}_{CI01}\) associée à la CI01 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{x},k_{y})\) différents.
+        La matrice \({\mM}_{CI01}\) associée à la CI01 est inversible, donc définie, si et seulement s'il existe au moins deux couples \((k_{x},k_{y})\) différents.
       \end{prop}
 
       \begin{proof}
@@ -201,13 +201,13 @@
           N_{k} & -\sum_{i=1}^{N_{k}} t_i
           \\
           -\sum_{i=1}^{N_{k}} t_i & \sum_{i=1}^{N_{k}} t_i^2
-          \end{bmatrix}
+          \end{bmatrix}.
         \end{equation*}
         Pour prouver son inversibilité, on exprime son déterminant 
         \begin{align*}
-          \det( {\mM}_{CI01}) &= 4\left(N_{k}\sum_{i=1}^{N_{k}} t_i^2 - \left( \sum_{i=1}^{N_{k}} t_i\right)^2\right)
+          \det( {\mM}_{CI01}) &= 4\left(N_{k}\sum_{i=1}^{N_{k}} t_i^2 - \left( \sum_{i=1}^{N_{k}} t_i\right)^2\right),
           \\
-           &= 4\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right)
+           &= 4\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right).
         \end{align*}
         Donc d'après Cauchy–Schwarz (voir \cite[\href{https://dlmf.nist.gov/1.7\#E1}{eq.~1.7.1}]{dlmf_nist_2019}), le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est-à-dire n'importe quel vecteur ayant au moins deux composantes différentes.
       \end{proof}
@@ -215,7 +215,7 @@
     \subsubsection{Existence du minimum pour la CI4}
 
       \begin{prop}
-        La matrice \({\mM}_{CI4}\) associée à la CI4 est inversible, donc définie, si et seulement s'il existe au moins 2 couples \((k_{xi},k_{yi})\) différents.
+        La matrice \({\mM}_{CI4}\) associée à la CI4 est inversible, donc définie, si et seulement s'il existe au moins deux couples \((k_{xi},k_{yi})\) différents.
       \end{prop}
 
       \begin{proof}
@@ -226,11 +226,11 @@
           -\ps{1}{t} & \ps{t}{t}  & 0
           \\
           -\ps{1}{t} & 0          & \ps{t}{t}
-          \end{bmatrix}
+          \end{bmatrix}.
         \end{equation*}
         Pour prouver son inversibilité, on exprime son déterminant 
         \begin{align*}
-          \det({\mM}_{CI4}) &= 2\ps{t}{t}\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right)
+          \det({\mM}_{CI4}) &= 2\ps{t}{t}\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right).
         \end{align*}
         Donc d'après Cauchy–Schwarz (voir \cite[\href{https://dlmf.nist.gov/1.7\#E1}{eq.~1.7.1}]{dlmf_nist_2019}), le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est-à-dire n'importe quel vecteur ayant au moins deux composantes différentes.
       \end{proof}
@@ -249,13 +249,13 @@
           -2\ps{t}{1} & 2\ps{t}{t} & -\sum_{i=1}^{N_{k}} t_i^2 s_i
           \\
           \ps{t}{\conj{s}} & -\sum_{i=1}^{N_{k}} t_i^2 \conj{s_i} & \sum_{i=1}^{N_{k}} t_i^2 z_i
-          \end{bmatrix}
+          \end{bmatrix}.
         \end{equation*}
         Pour prouver son inversibilité, on exprime son déterminant 
         \begin{multline*}
           \det( {\mM}_{CI1}) = \ps{t^2}{z}\det({\mM}_{CI01}) + 4 \ps{t}{1}\Re\left(\ps{t^2}{s}\ps{t}{\conj{s}}\right)
           \\
-          - 2\norm{t}^2|\ps{t}{s}|^2 - 2 N_k|\ps{t^2}{s}|^2
+          - 2\norm{t}^2|\ps{t}{s}|^2 - 2 N_k|\ps{t^2}{s}|^2.
         \end{multline*}
       \end{proof}
 
@@ -269,11 +269,11 @@
       \begin{itemize}
         \item CI01
           \begin{equation*}
-            \vE_t = \left(a_0\oI + a_1\frac{\LL}{k_0^2}\right)\vJ
+            \vE_t = \left(a_0\oI + a_1\frac{\LL}{k_0^2}\right)\vJ,
           \end{equation*}
         \item CI1
           \begin{equation*}
-            \left(\oI + b\frac{\LL}{k_0^2} \right)\vE_t = \left(a_0\oI + a_1\frac{\LL}{k_0^2}\right)\vJ
+            \left(\oI + b\frac{\LL}{k_0^2} \right)\vE_t = \left(a_0\oI + a_1\frac{\LL}{k_0^2}\right)\vJ.
           \end{equation*}
       \end{itemize}
 
@@ -284,7 +284,7 @@
           k_x^2 + k_y^2 & 0
           \\
           0 & k_x^2 + k_y^2
-        \end{bmatrix}
+        \end{bmatrix}.
       \end{equation*}
 
       La matrice \(\mL\) est multiple de l'identité donc la matrice \(\hat\mZ_{CI}\) associée à ces CIOE n'approchera pas bien la matrice \(\hat{\mZ}_{ex}\). La figure \ref{fig:imp_fourier:plan:stupfel:hoibc} présente donc quelques résultats où l'on voit bien la limite de ces CIOE par rapport à la CI3 et il en est de même pour les coefficients de réflexion visible à la figure \ref{fig:reflex_fourier:plan:stupfel:hoibc}.
@@ -352,11 +352,11 @@
 
       Si la matrice d'impédance exacte possède plusieurs asymptotes, il faut autant de pôles à la CIOE pour être une bonne approximation.
 
-      La figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc} montre la limite de la CI3 pour capturer 3 asymptotes. Pour cela, il faudrait utiliser une CI d'ordre au moins 6 sur l'opérateur agissant sur \(\vE_t\). La CI3 n'est donc une bonne CIOE que si le nombre d'asymptotes est inférieur à 1, ce que l'on peut calculer connaissant l'empilement (voir proposition \ref{prop:imp_plan:symb_z:1c}).
+      La figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc} montre la limite de la CI3 pour capturer trois asymptotes. Pour cela, il faudrait utiliser une CI d'ordre au moins 6 sur l'opérateur agissant sur \(\vE_t\). La CI3 n'est donc une bonne CIOE que si le nombre d'asymptotes est inférieur à 1, ce que l'on peut calculer connaissant l'empilement (voir proposition \ref{prop:imp_plan:symb_z:1c}).
 
       L'expression d'une CIOE vérifiant ce critère est la \hyperlink{ci7}{CI7}
       \begin{equation}
-        \left(\oI + \sum_{i=1}^3 \left(d_{i} \left(\frac{\LD}{k_0^2}\right)^i + e_{i} \left(-\frac{\LR}{k_0^2}\right)^i \right)\right)\vE_t = \left(a_0 \oI + \sum_{i=1}^3 \left(b_{i} \left(\frac{\LD}{k_0^2}\right)^i + c_{i} \left(-\frac{\LR}{k_0^2}^i\right) \right)\right)\vJ
+        \left(\oI + \sum_{i=1}^3 \left(d_{i} \left(\frac{\LD}{k_0^2}\right)^i + e_{i} \left(-\frac{\LR}{k_0^2}\right)^i \right)\right)\vE_t = \left(a_0 \oI + \sum_{i=1}^3 \left(b_{i} \left(\frac{\LD}{k_0^2}\right)^i + c_{i} \left(-\frac{\LR}{k_0^2}^i\right) \right)\right)\vJ.
       \end{equation}
 
       \begin{figure}[!hbt]
