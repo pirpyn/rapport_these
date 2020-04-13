@@ -9,11 +9,11 @@
 % Verifying the Sufficient Uniqueness Conditions (SUC)
 %    [OK] SUC, Negative inequality constraints, IN <=  1.000E-08
 %    IN(1) = -4.439156E-17 ! -Re(a0*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
-%    IN(2) =  1.234660E-17 !  Re(a1*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
+%    IN(2) =  1.234662E-17 !  Re(a1*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
 %    IN(3) =  8.779166E-18 !  Re(a2*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
 %    IN(4) =  3.973017E-15 ! -Re(b1.a1*)
 %    IN(5) =  9.391390E-16 ! -Re(b2.a2*)
 %    IN(6) = -4.403235E-16 !  Re(b1.(a2.a1)*.a0)
-%    IN(7) = -2.494482E-16 !  Re(b2.(a2.a1)*.a0)
-%    IN(8) = -6.983468E-15 !  Re(a1)
+%    IN(7) = -2.494490E-16 !  Re(b2.(a2.a1)*.a0)
+%    IN(8) = -6.983469E-15 !  Re(a1)
 %    IN(9) = -6.440311E-15 !  Re(a2)
