@@ -2,7 +2,7 @@
 
 This repository contains all the source file mandatory to build the thesis.
 
-It has been builded with [TeX Live](https://tug.org/texlive/) 2018 and should compile fine with future versions.
+It has been built with [TeX Live](https://tug.org/texlive/) 2018 and should compile fine with future versions.
 
 # Citing
 
