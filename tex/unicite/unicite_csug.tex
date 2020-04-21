@@ -54,7 +54,7 @@
     \end{equation*}
   \end{prop}
 
-  \begin{proof}
+  \begin{proof} Sens direct.
     Nous omettons les dépendances en \(\vx\).
     Partons de la première équation de Maxwell
     \begin{align*}
@@ -75,12 +75,13 @@
           & \qquad \qquad + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}}\dd{S_R(x)} + \int_\Gamma \left(\vn_\Gamma \pvect \vH \right) \cdot \conj{\vect \phi}\dd{\Gamma(x)},
           && \forall \vect{\phi} \in V.
       \end{align*}
+
+      Réciproque: voir \cite[p.~121, section~5, "SCATTERING PROBLEMS BY A DIELECTRIC OBSTACLE"]{cessenat_mathematical_1996}.
   \end{proof}
 
   Puisque le problème n'a pas de sources, l'unique solution du problème si ce dernier est bien posé est \(\vE=\vH=0\).
 
   On définit en tout point de \(\Gamma\) la trace tangentielle de \(\vH\) que l'on note \(\vJ = \vn_\Gamma \pvect \vH\).
-
   \begin{prop}[Une \glsentrydesc{acr-csu}]~\\
     Si l'on suppose que
     \begin{equation}
