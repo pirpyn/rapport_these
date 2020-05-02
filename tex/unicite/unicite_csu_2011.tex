@@ -1,19 +1,25 @@
 \section[Des CSU pour les CIOE de Stupfel et Poget 2011]{Des conditions suffisantes pour les CIOE de \cite{stupfel_sufficient_2011}}
 
-  Nous définissons les \glspl{acr-cioe} comme une condition limite liant \(\vE_t\) et \(\vn\pvect\vH\) sur \(\Gamma\).
+  \begin{REM}
+    Tu dois mettre ici un paragraphe sur la notion d'opérateur de Calderón, pour dire qu'une CIOE est une CL sur \(\partial\Omega\) qui remplace le compactant de \(\Omega\).
+  \end{REM}
+  \begin{REP}
+    Je ne connais pas les opérateurs de Calderón, ni la notion de compactant.
+  \end{REP}
+  Nous définissons une \glspl{acr-cioe} comme une condition limite liant \(\vE_t\) et \(\vn\pvect\vH\) sur \(\Gamma\).
   %L'existence des CIOE est en dehors du cadre de cette thèse, nous ne ferons donc qu'utiliser des CIOE existantes.
 
   Grâce à ces CIOE, nous allons établir des conditions suffisantes qui impliquent la \gls{acr-cgu} \eqref{eq:unicite:form_var:cgu}. Comme ces conditions ne sont que suffisantes, il n'y pas une unique \gls{acr-csu} pour une CIOE donnée. La difficulté est d'être capable de juger si une CIOE est satisfaisante, et si ce n'est pas le cas, d'être capable d'en proposer une autre. Par abus de langage, une CSU peut contenir une ou plusieurs expressions, il est important que ces expressions permettent de déduire la propriété \eqref{eq:unicite:form_var:cgu}.
 
-  Les CIOE de \cite{stupfel_sufficient_2011} font intervenir l'opérateur de Hodge \(\LL\) que l'on peut interpréter comme un opérateur laplacien vectoriel surfacique, commençons par rappeler son expression et quelques propriétés.
+  Les CIOE de \cite{stupfel_sufficient_2011} font intervenir l'opérateur de Hodge \(\LL\) qui est l'opérateur laplacien vectoriel surfacique, commençons par rappeler son expression et quelques propriétés.
 
   Définissons les opérateurs différentiels surfaciques (voir annexe \ref{sec:annexe:div_grad_rot}), définis sur \(\Gamma\):
   \begin{align*}
-      \vgrads{f}(\vx) &= \vgrad{f}(\vx) - \vn(\vx) (\vn(\vx) \cdot \vgrad{f}(\vx))
+      \vgrads{f}(\vx) &= \vgrad{f}(\vx) - \vn(\vx) (\vn(\vx) \cdot \vgrad{f}(\vx)),
       \\
-      \vdivs{\vu} &= \vdiv\left(\vu(\vx) - \vn(\vx) (\vn(\vx) \cdot \vu(\vx)\right)
+      \vdivs{\vu} &= \vdiv\left(\vu(\vx) - \vn(\vx) (\vn(\vx) \cdot \vu(\vx)\right),
       \\
-      \vrots{\vu}(\vx) &= \vn(\vx)\left(\vn(\vx) \cdot \vrot{\vu}(\vx)\right)
+      \vrots{\vu}(\vx) &= \vn(\vx)\left(\vn(\vx) \cdot \vrot{\vu}(\vx)\right).
   \end{align*}
 
 
@@ -41,6 +47,9 @@
     \end{align*}
   \end{proof}
 
+  \begin{REM}
+    Tu as besoin ici de \(\Gamma\) infiniment régulière ( à vérifier ) ?
+  \end{REM}
   \begin{prop}
     \label{prop:unicite:injectif:operateur:L}
     Soit \(\vu \in V=(\mathcal{C}^\infty(\Gamma))^3, a_0 \in \CC, a_1 \in \CC\).
@@ -81,8 +90,11 @@
   \end{proof}
 
 
-  On rappelle que l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu}, qui rappelons-le s'exprime \(\Re(X)\ge0\) où \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\) sachant que \gls{phy-J} est la trace tangentielle sur \(\Gamma\) de l’excitation magnétique (\(\vJ = \vn \pvect \vH\)).
+  On rappelle que l'on veut trouver des conditions permettant de garantir \eqref{eq:unicite:form_var:cgu}, c'est-à-dire \(\Re(X)\ge0\) où \(X = \int_\Gamma \vJ \cdot \conj{\vE_t}\) sachant que \gls{phy-J} est la trace tangentielle sur \(\Gamma\) de l’excitation magnétique (\(\vJ = \vn \pvect \vH\)).
 
+  \begin{REM}
+  Il faut mieux l'exprimer. "On se donne une condition au limites sur \(\Gamma\) ( qui dépend d'un nombre fini de coefficient généralisant \(a_0,a_1\) ). On veut trouver des conditions sur ces coefficients permettant de garantir  \eqref{eq:unicite:form_var:cgu}, et donc assurant que \((\vE,\vH) = (0,0)\) est ..."
+  \end{REM}
   Ces conditions garantissent que \((\vE,\vH) = (0,0)\) est l'unique solution de 
   \begin{equation}
     \label{eq:unicite:probleme_sans_ci}
@@ -124,6 +136,12 @@
         a_0 \in \CSU{CI0},
       \end{equation*}
       alors le problème \eqref{eq:unicite:probleme_sans_ci} avec la CI0 a une unique solution.
+      \begin{REM}
+        alors le problème \eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci0} a une unique solution.
+      \end{REM}
+      \begin{REP}
+      N'est-ce pas la même chose : je nomme la CIOE plutôt que d'y référer par numéro.
+      \end{REP}
     \end{prop}
     \begin{proof}
       Cela découle de \( X = \conj{a_0}\norm{\vJ}^2\) donc \(\Re(X) = \Re(a_0)\norm{\vJ}^2 \).
@@ -157,6 +175,12 @@
         (a_0,a_1) \in \CSU{CI01},
       \end{equation*}
       alors le problème \eqref{eq:unicite:probleme_sans_ci} avec la CI01 a une unique solution.
+      \begin{REM}
+        Je te propose de mettre soit le pb \eqref{eq:unicite:probleme_sans_ci}, CI01  soit  \eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci01} (le problème est le système complet).
+      \end{REM}
+      \begin{REP}
+        Sauf que justement \eqref{eq:unicite:probleme_sans_ci} est "complet", je ne spécifie pas la condition choisie dedans, mais il y en une.
+      \end{REP}
     \end{prop}
     \begin{proof}
       On a
@@ -217,6 +241,14 @@
       \end{equation*}
     \end{defn}
 
+    \begin{REM}
+      J'ai fait un petit calcul utilisant \(a_1-a_0\conj{b}=i\Im(\Delta)\) et j'en déduis que \(\Re(a_0)\ge0\) donc c'est une condition qui est contenue dans
+      les autres.
+    \end{REM}
+    \begin{REP}
+      Y a t'il équivalence ou implication entre \(\Re(\Delta) = 0\) et \(\Re(a_0)\ge0\) ? Si la première, autant s'en servir.
+    \end{REP}
+
     \begin{prop}[Une première CSU pour la CI1]
       \label{prop:csu:ci1-1}
       On a 
@@ -225,14 +257,16 @@
       \end{equation*}
       C'est-à-dire \((a_0,a_1,b) \in \CSU[1]{CI1}\) entraîne l'unicité de la solution du problème \eqref{eq:unicite:probleme_sans_ci} avec la CI1.
     \end{prop}
-
+    \begin{REM}
+      (\eqref{eq:unicite:probleme_sans_ci}, CI1) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci1}).
+    \end{REM}
     \begin{proof}
       On utilise l'identité \(\Delta\oI = (a_1(\oI +\conj{b}\LL) - \conj{b}(a_0\oI + a_1\LL))\):
       \begin{align*}
         \Delta X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \vJ\right)\cdot\conj{\vE_t} - \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}.
-        \intertext{Comme l'opérateur \(\LL\) est symétrique}
+        \intertext{Comme l'opérateur \(\LL\) est symétrique,}
         \Delta X &= \int_\Gamma \left(a_1(\oI +\conj{b}\LL) \conj{\vE_t}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(a_0\oI + a_1 \LL)\vJ\right)\cdot\conj{\vE_t}.
-        \intertext{En utilisant la CI1}
+        \intertext{En utilisant la CI1,}
         \Delta X &= \int_\Gamma \left(a_1(\conj{a_0}+\conj{a_1}\LL) \conj{\vJ}\right)\cdot\vJ - \int_\Gamma \left(\conj{b}(\oI +b \LL)\vE_t\right)\cdot\conj{\vE_t}, \\
         \Delta X &= a_1\conj{a_0} \norm{ \vJ }^2 - |a_1|^2 \left(\norm{\vdivs{\vJ}}^2 + \norm{\vrots{\vJ}}^2\right) - \conj{b} \norm{ \vE_t }^2 + |b|^2\left(\norm{\vdivs{\vE_t}}^2 + \norm{\vrots{\vE_t}}^2\right).
       \end{align*}
@@ -250,11 +284,11 @@
         \Im(\Delta X)= \Im(a_1\conj{a_0}) \norm{\vJ}^2 - \Im(\conj{b})\norm{\vE_t}^2.
       \end{equation*}
 
-      Comme \(\Re(\Delta) = 0, \Im(\Delta X) = \Im(\Delta)\Re(X)\) ce qui entraîne si \((a_0,a_1,b)\in\CSU[1]{CI1}\) alors \(\Re(\Delta)=0, \Im(\Delta)\not=0\) d'où
+      Comme \(\Re(\Delta) = 0, \Im(\Delta X) = \Im(\Delta)\Re(X)\), alors si \((a_0,a_1,b)\in\CSU[1]{CI1}\), \(\Im(\Delta)\not=0\) d'où
       \begin{equation*}
         \Im(\Delta)^2\Re(X) = \Im(\Delta)\Im(a_1\conj{a_0}) \norm{\vJ}^2 + \Im(\Delta)\Im({b})\norm{\vE_t}^2.
       \end{equation*}
-      Les deux autres conditions de la CSU imposent que les termes du membre de droite sont positifs donc \(\Re(X)\ge0\).
+      et tous les termes du membre de droite sont positifs donc \(\Re(X)\ge0\).
     \end{proof}
 
     On remarque que
@@ -264,10 +298,20 @@
       \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &\subsetneq (\CSU{CI01}\times\lbrace0\rbrace).
     \end{align}
       Comme la CIOE CI1 avec \(b=0\) est équivalente à la CI01, cela veut dire que cette CSU n'est pas idéale. 
+      \begin{REM}
+        A proscrire dans un texte mathématique: veux-tu dire que ce n'est pas la meilleure ?
+      \end{REM}
+      \begin{REP}
+        Non, qu'on voudrait retrouver les CSU de la CI01, plus une condition sur b.
+      \end{REP}
       Plus précisément, soit \(S = \lbrace (a_0,a_1) \in \CC^2; \Re(a_1)=0 \rbrace\), on a
     \begin{equation}
-      \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) = ((\CSU{CI01}\cap S) \times\lbrace0\rbrace). 
+      \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) = (\CSU{CI01}\cap S) \times\lbrace0\rbrace. 
     \end{equation}
+
+    \begin{REM}
+      Cas \(\Delta=0\) ...
+    \end{REM}
 
     % \begin{lemme}
     % \label{lem:coercivite:operateur-l}
@@ -337,6 +381,9 @@
         (a_0,a_1,b) \in \CSU[2]{CI1} \Rightarrow \Re(X)\ge 0. 
       \end{equation*}
       C'est-à-dire \((a_0,a_1,b) \in \CSU[2]{CI1}\) entraîne l'unicité de la solution du problème \eqref{eq:unicite:probleme_sans_ci} avec la CI1.
+      \begin{REM}
+        (\eqref{eq:unicite:probleme_sans_ci}, CI1) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci1}).
+      \end{REM}
     \end{prop}
 
     \begin{proof}
@@ -364,4 +411,4 @@
       \CSU[2]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &= (\CSU{CI01}\times\lbrace0\rbrace).
     \end{align}
 
-    Pour des fonctions infiniment régulières, la CIOE CI1 avec \(b=0\) est équivalente à la CI01 et la \CSU[2]{CI1} est donc meilleure que la  \CSU[1]{CI1}.
+    Si \(b=0\) la CIOE CI1 se réduit à la CI01 et la \CSU[2]{CI1} est donc meilleure que la  \CSU[1]{CI1}.

@@ -1,7 +1,15 @@
 \section[Des CSU pour la CIOE de Marceaux 2000]{Des conditions suffisantes pour la CIOE de \cite{marceaux_high-order_2000}}
 
+
   \begin{defn}
     On définit les opérateurs \gls{ope-LD} et \gls{ope-LR} tels que %sont introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\) 
+
+    \begin{REM}
+      Vivent-ils sur les vecteurs tangents ?
+    \end{REM}
+    \begin{REP}
+      En commentaire dans le \TeX : [les opérateurs] introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\).
+    \end{REP}
 
     \begin{equation*}
       \begin{aligned}
@@ -18,6 +26,13 @@
     L'opérateur \(\LD\) est hermitien symétrique négatif et \(\LR\) est hermitien symétrique positif.
   \end{prop}
 
+  \begin{REM}
+    Si j'ai bien compris, \(\vu\) peut avoir des composantes tangentes mais pas le résultat ?
+  \end{REM}
+  \begin{REP}
+    Je ne comprends pas cette remarque.
+  \end{REP}
+
   \begin{proof}
     Pour tout \(\vu \in (\mathcal C^\infty(\Gamma))^3\),
     \begin{align*}
@@ -28,6 +43,21 @@
   \end{proof}
 
   Soit \(V=(\mathcal{C}^\infty(\Gamma))^3\).
+  \begin{REM}
+    L'ensemble des champs tangents \(C^\infty\) ?
+  \end{REM}
+  \begin{REP}
+    Oui ?
+  \end{REP}
+  \begin{REM}
+    Est-ce que \(\vu\) est un vecteur tangent au bord ?
+    Si oui, c'est un vecteur de \(C^\infty(\Gamma)^2\).
+    Dis-le précisément s'il y a une composante normale ( je sais qu'on en a parlé à Montréal )
+  \end{REM}
+  \begin{REP}
+    Oui.
+    Quand je met un vecteur à 3 composantes, c'est que la dernière est nulle en pratique.
+  \end{REP}
   \begin{prop}
     \label{prop:unicite:injectif:operateur:LD}
     Soit \(\vu \in V\).
@@ -53,7 +83,7 @@
     Si \(\Re(a_0)\ge 0\), \(\Re(a_1)\le 0\) et \(\Re(a_2)\le 0\), alors l'opérateur \(\mathcal{P}\) est injectif sur \(V\).
   \end{prop}
   \begin{proof}
-    Il suffit d'appliquer la méthode de la démonstration de la propriété \ref{prop:unicite:injectif:operateur:L}.
+   Identique à la démonstration de la propriété \ref{prop:unicite:injectif:operateur:L}.
   \end{proof}
 
   \begin{prop}
@@ -158,7 +188,9 @@
     \CSU{CI4}\cap S &= (\CSU{CI01}\times\CC)\cap S. 
   \end{align}
   Pour des fonctions infiniment régulières, la CIOE CI4 avec \(a_1=a_2\) est équivalente à la CI01 et on a égalité des CSU correspondantes.
-
+  \begin{REM}
+    mal exprimé
+  \end{REM}
 
 \subsection{CSU pour la CI3}
 

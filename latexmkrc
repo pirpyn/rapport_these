@@ -8,7 +8,7 @@ $ENV{'TZ'}='Europe/France';
 $pdf_mode = "1";
 
 # Computing with pdflatex
-$pdflatex = "pdflatex -shell-escape -file-line-error -interaction=nonstopmode -extra-mem-top=10000000 --synctex=1 %O %S";
+$pdflatex = "pdflatex -shell-escape -file-line-error -interaction=nonstopmode --synctex=1 %O %S";
 
 # Lets have builing directory
 $out_dir = "build";

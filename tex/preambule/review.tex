@@ -6,13 +6,15 @@
 %    \SetWatermarkText{BROUILLON} % Ecrire Brouillon en traversdes pages
 %    \SetWatermarkScale{1}
 
-% Creation de boite TODO, qui apparaissent dans les signets
-\newcounter{TODO}
-\newenvironment{TODO}{%
-        \stepcounter{TODO}
-        \hypertarget{TODO\theTODO}{}%
+% Creation de boite REM, qui apparaissent dans les signets
+\newcounter{REM}
+\newenvironment{REM}
+    {%
+        \stepcounter{REM}
+        \hypertarget{REM\theREM}{}%
+        \pdfbookmark[0]{REM \theREM}{REM\theREM}
         \begin{tcolorbox}[%
-                title={TODO \theTODO},%
+                title={Remarque \theREM},%
                 colback=red!30!white,%
                 colframe=red!75!black,%
                 halign=flush center%
@@ -20,15 +22,17 @@
     }
     {
         \end{tcolorbox}%
-        \pdfbookmark[0]{TODO \theTODO}{TODO\theTODO}%
+        %
     }%
 
-\newcounter{REF}
-\newenvironment{REF}{%
-        \stepcounter{REF}
-        \hypertarget{REF\theREF}{}%
+% \newcounter{REP}
+\newenvironment{REP}
+    {%
+        % \stepcounter{REP}
+        \hypertarget{REP\theREM}{}%
+        \pdfbookmark[1]{REP \theREM}{REP\theREM}%
         \begin{tcolorbox}[%
-                title={REF \theREF},%
+                title={Réponse \theREM},%
                 colback=green!30!white,%
                 colframe=green!35!black,%
                 halign=flush center%
@@ -36,7 +40,6 @@
     }
     {
         \end{tcolorbox}%
-        \pdfbookmark[0]{REF \theREF}{REF\theREF}%
     }%
 
 % Affiche devant chaque ligne en mode texte, le numéro de la ligne pour le corriger plus efficacement
