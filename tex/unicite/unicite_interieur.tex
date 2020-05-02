@@ -1,7 +1,21 @@
 \section{Une condition nécessaire et suffisante pour l'unicité des solutions du problème intérieur}
   \subsection{Cas général: alternative de Fredholm}
 
-    Pour exprimer l'opérateur d'impédance, nous devons exprimer les champs dans l'objet. Il apparaît nécessaire que ces derniers soient donc bien définis.
+    \begin{REM}
+      Pourquoi cette partie ne serait-elle pas résumée au début afin d'introduire.
+    \end{REM}
+    \begin{REP}
+      Au début de la thèse, introduction, chapitre ?
+    \end{REP}
+
+    Pour exprimer l'opérateur d'impédance,
+    \begin{REM}
+      Calderon ou impédance
+    \end{REM}
+    \begin{REP}
+      Je préfère impédance, ça m'évite de parler d'une théorie que je ne connais pas.
+    \end{REP}
+    nous devons exprimer les champs dans l'objet. Il apparaît nécessaire que ces derniers soient donc bien définis.
 
     Nous exhibons une condition nécessaire et suffisante d'unicité des solutions du problème de Maxwell-Helmholtz  \eqref{eq:unicite:maxwell_int} dans \(\OO\), objet multicouche autour d'un \gls{acr-cep}, c'est-a-dire tel que \(\partial \OO = \Gamma \cup \Gamma_0\) où \(\Gamma\) est la surface extérieure et \(\Gamma_0\) la surface intérieure. Le problème de Maxwell harmonique en \(e^{i\w t}\) s'exprime
 
@@ -28,13 +42,30 @@
     Nous devons être capables d'exprimer l'opérateur d'impédance exact pour l'approcher par les CIOE.
     Il faut donc que les champs soient déterminés de façon unique pour exprimer cet opérateur. Nous ne pouvons nous satisfaire de l'alternative de Fredholm et devons exprimer une condition plus pratique pour déterminer s'il y a unicité.
     Nous allons alors approcher l'objet par une forme simple mais avec les mêmes caractéristiques pour l'empilement. Ainsi nous étudierons trois approximations :
+    \begin{REM}
+      Ce n'est pas une approximation de l'objet mais des objets modèles.
+    \end{REM}
+    \begin{REP}
+      Oui et non. 
+      On a bien des objets modèles type sphère, cône-sphère lors du calcul intégral, mais en plus, lors du calcul des coefficients des CIOE, ces objets sont localement approchés par une des 3 géométries. 
+      Ainsi, l'objet modèle sphère est localement approché par un plan. 
+      Tout dépend du contexte.
+      Dans le cadre du calcul des coefficients de CIOE, on approche l'objet modèle par un autre si besoin.
+    \end{REP}
     \begin{enumerate}
       \item Un objet plan infini 
       \item Un objet cylindrique
       \item Un objet sphérique
     \end{enumerate}
    
-    L'alternative de Fredholm n'étant pas utilisable en pratique, nous allons simplifier la géométrie du problème pour aboutir à une condition nécessaire d'unicité.
+    L'alternative de Fredholm n'étant pas utilisable en pratique,
+    \begin{REM}
+      Que veux-tu dire par là ? Que \(\eps\mu\w^2\) n'est jamais valeur propre du Laplacien ?
+    \end{REM}
+    \begin{REP}
+      Que dire qu'il y a unicité ou que les résonances sont définies par un espace vectoriel n’empêche pas le code de minimisation de planter à cause des singularités quand on tombe sur ces résonances.
+    \end{REP}
+    nous allons simplifier la géométrie du problème pour aboutir à une condition nécessaire d'unicité.
 
     L'objet est représenté schématiquement:
     \begin{figure}[h!btp]
@@ -78,7 +109,14 @@
       Ces relations ne sont valables que pour des constantes \(a_2,c_2,a_1,c_1,b,d\) telles que \((\hat{E}_x,\hat{E}_y)\) sont dans \(\mathcal{S}'(\RR^3)\).
       La composante en z de \(\vE\) se déduit des deux autres car sa divergence est nulle.
 
-      On déduit le champ \(\vH\) alors \(\vH(\vx) = \frac{-\vrot{\vE}(\vx)}{i k(\vx)\eta(\vx)}\). On note \(\mLR\) la matrice \(
+      \begin{REM}
+        écris le système total car tu as \(\ddr{z}{\hat{E_z}} + ik_x \hat{E_x} + ik_y\hat{E_y} = 0\) et il te manque une constante d'intégration
+      \end{REM}
+      \begin{REP}
+        Quelle constante ?
+      \end{REP}
+
+      On déduit le champ \(\vH(\vx) = \frac{-\vrot{\vE}(\vx)}{i k(\vx)\eta(\vx)}\). On note \(\mLR\) la matrice \(
       \begin{bmatrix}
           k_y^2 & k_xk_y
           \\
@@ -94,8 +132,10 @@
         \hat{\vH} &= \frac{\sin(\kk_1(z-z_1))}{-i k_1\kk_1 \eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}d \\ b\end{bmatrix} - \frac{\cos(\kk_1(z-z_1))}{-i k_1\kk_1 \eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}c_1 \\ a_1\end{bmatrix} && \text{pour } z_0 < z < z_1.
       \end{align*}
 
-      Pour que le problème soit bien posé, il faut et il suffit que les constantes complexes \(a_2,c_2,b,d,a_1,c_1\) soient déterminées de façon unique quand on exprime les conditions limites. Ce sont des conditions limites de Dirichlet en \(z=z_0\) et \(z=z_2\) pour \(\vE\) et de sauts nuls en \(z=z_1\) pour \(\vH\) (la condition de saut nul pour \(\vE\) a déjà été utilisé dans l'expression des champs).
-
+      Pour que le problème soit bien posé, il faut et il suffit que les constantes complexes \(a_2,c_2,b,d,a_1,c_1\) soient déterminées de façon unique quand on exprime les conditions limites. Ce sont des conditions limites de Dirichlet homogène en \(z=z_0\) et \(z=z_2\) pour \(\vE\) et de sauts nuls en \(z=z_1\) pour \(\vH\) (la condition de saut nul pour \(\vE\) a déjà été utilisée dans l'expression des champs).
+      \begin{REM}
+        Le fait que \(\hat{\vE}\) et \(\hat{\vH}\) ont un saut nul à l'interface vient du fait que pour chaque \((k_x,k_y)\), on suppose \(\vE,\vH\) dans \(\Sobup[1]{([z_0,z_2])}\).
+      \end{REM}
       On a unicité si, dans le cas de conditions de Dirichlet homogènes, l'unique solution est \(\vE=0\). Ces conditions s'expriment
       \begin{equation*}
         \label{eq:unicite:interieur:2couches:cldirichlet}
@@ -161,5 +201,12 @@
 
 
       Si le déterminant de ce système n'est pas nul, alors il existe des champs non nuls solutions du problème homogène, et il n'y a alors pas unicité des solutions.
+
+      \begin{REM}
+        Tu n'as pas repris mes calculs pour simplifier cette expression ? J'avais un résultat intéressant et cela serait dommage qu'elle ne soit pas dans ta thèse.
+      \end{REM}
+      \begin{REP}
+        Peux-tu me rappeler quand tu m'as envoyé cette note ?
+      \end{REP}
 
     \end{proof}

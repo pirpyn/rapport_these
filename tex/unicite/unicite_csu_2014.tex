@@ -143,7 +143,7 @@
 \subsection{CSU pour la CI4}
   Soit la CIOE que l'on nomme \hyperlink{ci4}{CI4} :
   \begin{equation}
-    \label{eq:unicite:ci4:ci4}
+    \label{eq:unicite:ci4}
     \vE_t = (a_0 + a_1 \LD - a_2 \LR ) \vJ.
   \end{equation}
 
@@ -173,7 +173,9 @@
     \end{equation*}
     ce qui entraîne l'unicité de la solution du problème de Maxwell extérieur avec CI4.
   \end{prop}
-
+  \begin{REM}
+    (\eqref{eq:unicite:probleme_sans_ci}, CI4) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}).
+  \end{REM}
   \begin{proof}
     Par définition de \(X\) \eqref{eq:unicite:x}, on a
     \begin{align*}
@@ -189,7 +191,8 @@
   \end{align}
   Pour des fonctions infiniment régulières, la CIOE CI4 avec \(a_1=a_2\) est équivalente à la CI01 et on a égalité des CSU correspondantes.
   \begin{REM}
-    mal exprimé
+    Mal exprimé.
+    Dans le cas \(a_1=a_2\), (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci01}) et (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}) sont le même problème, et les CSU correspondantes sont les mêmes.
   \end{REM}
 
 \subsection{CSU pour la CI3}
@@ -211,6 +214,9 @@
     \label{def:csu:ci3-1}
 
     On définit le sous-espace de \(\CC^5\)
+
+
+    \begin{minipage}{0.6\textwidth}
     \begin{equation*}
       \CSU[1]{CI3} = \left\lbrace 
       \begin{aligned}
@@ -244,6 +250,69 @@
       \end{aligned}
       \right\rbrace.
     \end{equation*}
+    \end{minipage}
+    \begin{minipage}{0.39\textwidth}
+    \begin{REM}
+    Utilise \(\Re(\Delta_i) = 0\)
+    \begin{equation*}
+    \left\lbrace 
+      \begin{aligned}
+      &(a_0,a_1,a_2,b_1,b_2) \in \CC^5,
+      \\
+      &...
+      \\
+      &...
+      \\
+      &\Im(a_0\conj{a_1})\Im(\Delta_1) \le 0
+      \\
+      &\Im(b_1)\Im(\Delta_1) \ge 0
+      \\
+      &...
+      \\
+      & 0
+      \\
+      &\Im(a_0\conj{a_2})\Im(\Delta_2) \le 0
+      \\
+      &\Im(b_2)\Im(\Delta_2) \ge 0
+      \\
+      &...
+      \\
+      & 0
+      \\
+      &...
+      \\
+      &...
+      \\
+      &\frac{\Im(b_2)}{\Im(\Delta_2)}=\frac{\Im(b_1)}{\Im(\Delta_1)}
+      \end{aligned}
+      \right\rbrace 
+    \end{equation*}
+    \end{REM}
+    \end{minipage}
+    \begin{REP}
+      Je ne suis pas d'accord pour celles qui se réduiraient à 0.
+      \begin{align*}
+        \Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right)
+        &=
+        \Re\left((b_2+\conj{b_2})\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right)
+        \\
+        &=
+        \Re\left(b_2\frac{\conj{b_1}}{\Delta_1}+\conj{b_2}\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right)\right)
+        \\
+        &=
+        \frac{\Im(b_2\conj{b_1})}{\Im(\Delta_1)} + \Im(b_2)\Im\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right)
+        \\
+        &=
+        \frac{\Im(b_2\conj{b_1})}{\Im(\Delta_1)} - \Im(b_2)\Im\left(\frac{\conj{b_1}\Im(\Delta_1)}{|\Delta_1|^2}-\frac{\conj{b_2}\Im(\Delta_2)}{|\Delta_2|^2}\right)
+        \\
+        &=
+        \frac{\Im(b_2\conj{b_1})}{\Im(\Delta_1)} - \frac{\Im(b_2)}{|\Delta_1|^2|\Delta_2|^2}\left(\Im(\conj{b_1})\Im(\Delta_1)|\Delta_2|^2-\Im(\conj{b_2})\Im(\Delta_2)|\Delta_1|^2\right)
+        \\
+        &=
+        \frac{\Im(b_2\conj{b_1})}{\Im(\Delta_1)} - \frac{\Im(b_2)}{\Im(\Delta_1)\Im(\Delta_2)}\left(\Im(\conj{b_1})\Im(\Delta_2)-\Im(\conj{b_2})\Im(\Delta_1)\right)
+      \end{align*}
+      Je ne vois pas de simplifications
+    \end{REP}
   \end{defn}
   
  \begin{prop}[Une première CSU pour la CI3]
@@ -254,7 +323,9 @@
     \end{equation*}
     ce qui entraîne l'unicité de la solution du problème de Maxwell extérieur avec CI3.
   \end{prop}
-
+  \begin{REM}
+    (\eqref{eq:unicite:probleme_sans_ci}, CI3) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci3:ci3}).
+  \end{REM}
   \begin{proof}
     Soit \(\LL_3\) l'opérateur
     \begin{equation}
@@ -264,6 +335,10 @@
     \end{equation}
 
     On utilise l'identité \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot \vJ \dd{\Gamma}(\vx) = 0\) qui découle de la CI3, et dont on déduit
+    \begin{REM}
+    Là où ça devient plus compliqué, tu pourrais dire:
+    De la CL, on déduit par produit scalaire \(L^2\) avec un certains nombre de vecteurs bien  choisis, des égalités qui sont nécessairement vérifiées. On fait cependant remarquer que ces égalités ne  permettent  pas de revenir  à la CL.
+    \end{REM}
     \begin{multline}
       \label{eq:unicite:ci3:csu3-1}
       \int_\Gamma \vJ \cdot \conj{\vE_t}\dd{\Gamma}(\vx)   + \conj{b_1} \int_\Gamma \vJ\cdot \LD\conj{\vE_t}\dd{\Gamma}(\vx)  - \conj{b_2} \int_\Gamma \vJ \LR\conj{\vE_t}\dd{\Gamma}(\vx)  \\
@@ -339,10 +414,10 @@
         \conj{a_0} \norm{\vrots \vJ}^2 - \conj{a_2} \norm{\LR \vJ}^2
         \\
         \norm{\vrots \vE_t}^2 - \conj{b_2} \norm{\LR \vE_t}^2
-      \end{bmatrix}.
+      \end{bmatrix},
     \end{align*}
     
-    Les 4 égalités \eqref{eq:unicite:ci3:csu3-1},\eqref{eq:unicite:ci3:csu3-2},\eqref{eq:unicite:ci3:csu3-5},\eqref{eq:unicite:ci3:csu3-6} sont équivalentes au système
+    et les 4 égalités \eqref{eq:unicite:ci3:csu3-1},\eqref{eq:unicite:ci3:csu3-2},\eqref{eq:unicite:ci3:csu3-5},\eqref{eq:unicite:ci3:csu3-6} sont équivalentes au système
 
     \begin{align*}
       \mM_D  X_D & =  F_D,
@@ -497,7 +572,9 @@
       \right\rbrace.
     \end{equation*}
   \end{defn}
-
+  \begin{REM}
+    Et là tu peux mettre le passage à la limite que je t'ai envoyé par mail.
+  \end{REM}
   
  \begin{prop}[Une deuxième CSU pour la CI3]
     \label{prop:csu:ci3-2}
@@ -629,7 +706,15 @@
   \end{prop}
 
   \begin{proof}
-    Supposons l'opérateur \(a_0\oI + a_1 \LD - a_2 \LR\) inversible. Alors,
+    Supposons l'opérateur \(a_0\oI + a_1 \LD - a_2 \LR\) inversible.
+    \begin{REM}
+      Sur \(\Sobolev^1\) ? Précisez les espaces. Il faut préciser les espaces, de plus il y a un autre problème. Prenons P l'opérateur
+      \(Pf=f''+af\). \(Pf=g\) a une infinité de solutions: si on en a une, alors en ajoutant  \(f_0\) telle que \(f_0''+a_f0 =0\), c'est à dire \(f_0=Ae^{\sqrt{-a}t})+Be^{-\sqrt{-a}t}\) alors comment ????????-tu \(f_0\)
+    \end{REM}
+    \begin{REP}
+      Je ne comprends.
+    \end{REP}
+   Alors,
 
     \begin{align*}
       X &= \int_\Gamma \left(a_0\oI + a_1 \LD - a_2 \LR \right)^{-1}\left( \oI + b_1 \LD - b_2 \LR \right) \vE_t\cdot \conj{\vE_t.}

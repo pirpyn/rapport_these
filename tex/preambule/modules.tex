@@ -134,9 +134,15 @@
 % Permet de tracer des figures et schémas
 \usepackage{pgfplots}
     \usepgfplotslibrary{external} % On génère un pdf par graphique qui sera inclus après => 1ere compil un peu plus lente, suivante tres rapide
-    \tikzexternalize{these_payen_2019}
-    % Le graphique triple asymptote nécesssite 20000 pts, il faut etendre la mémoire
-    \tikzset{external/system call={pdflatex --output-directory build \tikzexternalcheckshellescape -extra-mem-top=10000000 -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+    
+    \tikzexternalize{these_payen_2019} % Cette commande doit être placé dans le main.tex pour qu'Overleaf puisse fonctionner 
+    % Le graphique triple asymptote nécesssite 20000 pts, il faut etendre la mémoire (-extra-mem-top=10000000)
+    % Ne marche qu'avec MikTex
+    % externalize et output-dir ne fonctionnent pas bien ensemble
+    % il faut donc propager le output directory dans la command ci-dessus.
+    \tikzset{external/system call={pdflatex --output-directory build \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+
+    % Pour regenerer une figure, \tikset{external/remake next}
 
     % \pgfplotscreateplotcyclelist{my cycle}{%
     %     thick, solid,          every mark/.append style={solid}\\%
