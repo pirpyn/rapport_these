@@ -1,99 +1,99 @@
 {
-	"build_systems":
-	[
-		{
-			"file_regex": "^([^:\\n]*)\\:([0-9]*):()\\ *(.*)$",
-			"linux":
-			{
-				"shell_cmd": "latexmk -f"
-			},
-			"name": "Build these",
-			"variants":
-			[
-				{
-					"linux":
-					{
-						"shell_cmd": "/bin/rm -rf $project_path/build/*"
-					},
-					"name": "clean",
-					"windows":
-					{
-						"shell_cmd": "del /F /Q \"$project_path\\build\""
-					}
-				},
-				{
-					"linux":
-					{
-						"shell_cmd": "gio open $project_path/build/these_payen_2019.pdf"
-					},
-					"name": "show",
-					"windows":
-					{
-						"shell_cmd": "\"C:\\Program Files\\SumatraPDF\\SumatraPDF.exe\" \"$project_path\\build\\these_payen_2019.pdf\""
-					}
-				}
-			],
-			"windows":
-			{
-				"shell_cmd": "latexmk.exe"
-			},
-			"working_dir": "$project_path"
-		}
-	],
-	"folders":
-	[
-		{
-			"file_exclude_patterns":
-			[
-				"*.sublime-workspace",
-				"*.mtc",
-				"*.aux",
-				"*.acr*",
-				"*.ope*",
-				"*.phy*",
-				"*.mat*",
-				"*.ist",
-				"*.md5",
-				"*.mtc*",
-				"*.maf",
-				"*.run.xml",
-				"*.dep",
-				"*.dpth",
-				"*.bbl",
-				"*.blg",
-				"*.fls",
-				"*.out",
-				"*.toc",
-				"*.glg",
-				"*.fdb_latexmk",
-				"*.synctex.gz",
-				"*.pdf",
-				//"*.log"
-			],
-			"path": "."
-		}
-	],
-	"settings":
-	{
-		"TEXroot": "these_payen_2019.tex",
-		"auto_complete_commit_on_tab": true,
-		"auto_indent": true,
-		"detect_indentation": true,
-		"dictionary": "Packages/Dictionnaries/French.dic",
-		"env_auto_trigger": false,
-		"output_directory": "build",
-		"preview_math_mode": "none",
-		"show_encoding": true,
-		"show_line_endings": true,
-		"spell_check": true,
-		"tab_size": 2,
-		"tex_directive_auto_trigger": false,
-		"tex_file_exts":
-		[
-			".tex",
-			".tikz",
-			".bib"
-		],
-		"word_wrap": true
-	}
+    "build_systems":
+    [
+        {
+            "file_regex": "^([^:\\n]*)\\:([0-9]*):()\\ *(.*)$",
+            "linux":
+            {
+                "shell_cmd": "latexmk -f"
+            },
+            "name": "Build these",
+            "variants":
+            [
+                {
+                    "linux":
+                    {
+                        "shell_cmd": "/bin/rm -rf $project_path/build/*"
+                    },
+                    "name": "clean",
+                    "windows":
+                    {
+                        "shell_cmd": "del /F /Q \"$project_path\\build\""
+                    }
+                },
+                {
+                    "linux":
+                    {
+                        "shell_cmd": "gio open $project_path/build/these_payen_2019.pdf"
+                    },
+                    "name": "show",
+                    "windows":
+                    {
+                        "shell_cmd": "\"C:\\Program Files\\SumatraPDF\\SumatraPDF.exe\" \"$project_path\\build\\these_payen_2019.pdf\""
+                    }
+                }
+            ],
+            "windows":
+            {
+                "shell_cmd": "latexmk.exe"
+            },
+            "working_dir": "$project_path"
+        }
+    ],
+    "folders":
+    [
+        {
+            "file_exclude_patterns":
+            [
+                "*.sublime-workspace",
+                "*.mtc",
+                "*.aux",
+                "*.acr*",
+                "*.ope*",
+                "*.phy*",
+                "*.mat*",
+                "*.ist",
+                "*.md5",
+                "*.mtc*",
+                "*.maf",
+                "*.run.xml",
+                "*.dep",
+                "*.dpth",
+                "*.bbl",
+                "*.blg",
+                "*.fls",
+                "*.out",
+                "*.toc",
+                "*.glg",
+                "*.fdb_latexmk",
+                "*.synctex.gz",
+                "*.pdf",
+                //"*.log"
+            ],
+            "path": "."
+        }
+    ],
+    "settings":
+    {
+        "TEXroot": "these_payen_2019.tex",
+        "auto_complete_commit_on_tab": true,
+        "auto_indent": true,
+        "detect_indentation": true,
+        "dictionary": "Packages/Dictionnaries/French.dic",
+        "env_auto_trigger": false,
+        "output_directory": "build",
+        "preview_math_mode": "none",
+        "show_encoding": true,
+        "show_line_endings": true,
+        "spell_check": true,
+        "tab_size": 4,
+        "tex_directive_auto_trigger": false,
+        "tex_file_exts":
+        [
+            ".tex",
+            ".tikz",
+            ".bib"
+        ],
+        "word_wrap": true
+    }
 }

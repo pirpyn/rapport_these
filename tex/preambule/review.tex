@@ -8,11 +8,11 @@
 
 % Creation de boite REM, qui apparaissent dans les signets
 \newcounter{REM}
-\newenvironment{REM}
+\newenvironment{REM}[1][\theREM]
     {%
         \stepcounter{REM}
-        \hypertarget{REM\theREM}{}%
-        \pdfbookmark[0]{REM \theREM}{REM\theREM}
+        \hypertarget{REM#1}{}%
+        \pdfbookmark[0]{REM \theREM}{REM#1}
         \begin{tcolorbox}[%
                 title={Remarque \theREM},%
                 colback=red!30!white,%
@@ -26,11 +26,11 @@
     }%
 
 % \newcounter{REP}
-\newenvironment{REP}
+\newenvironment{REP}[1][\theREM]
     {%
         % \stepcounter{REP}
-        \hypertarget{REP\theREM}{}%
-        \pdfbookmark[1]{REP \theREM}{REP\theREM}%
+        \hypertarget{REP#1}{}%
+        \pdfbookmark[1]{REP \theREM}{REP#1}%
         \begin{tcolorbox}[%
                 title={Réponse \theREM},%
                 colback=green!30!white,%

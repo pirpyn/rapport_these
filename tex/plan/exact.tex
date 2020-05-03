@@ -35,6 +35,14 @@
           \fonction{k_3}{[-d,0[\cup[0,\infty[}{\CC}
           {z}{\sqrt{k(z)^2 - k_x^2 - k_y^2}.}
         \end{equation*}
+        \begin{REM}
+          Quel choix de racines fais-tu ?
+        \end{REM}
+        \begin{REP}
+          Par convention d'écriture, partie imaginaire positive
+          A l’extérieur partie imaginaire négative.
+          Car dans le matériau l'onde est de la forme \(A e^{ik_3z} + B e^{-ik_3z}\) donc peu importe tandis que la seule onde acceptable à l’extérieur est celle en \(e^{-ik_3 z}\) car si \(k_3\) à une partie imaginaire, alors cela donne une décroissance à l'infini.
+        \end{REP}
     \end{defn}
 
     \begin{prop}
@@ -46,6 +54,9 @@
             \hat{\cH}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y).
         \end{align*}
         Les constantes \(c_i\) ne peuvent en réalité pas être choisies arbitrairement car les exponentielles complexes divergent quand \(k_x^2 + k_y^2 \rightarrow \infty\) et ces solutions n'ont pas de transformées de Fourier. Nous supposons que les constantes \(c_i\) satisfassent la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}, où il n'y a pas de résonances.
+        \begin{REM}
+          Faux: Il faut que je te réexplique par Skype. Ce n'est pas la condition de résonance mais \(z \in [z_0,z_2]\) par exemple + une estimations sur les coefficients.
+        \end{REM}
     \end{prop}
 
     \begin{proof}
@@ -130,6 +141,10 @@
       \begin{proof}
         On se place dans une couche, les constantes de matériaux sont donc fixées.
         On reprend les équations de Maxwell appliquées sur les transformées de Fourier. À partir des composantes \(\vect{e_x},\vect{e_y}\) des équations de Maxwell, on peut déterminer \(\hat{E_x},\hat{E_z},\hat{H_x},\hat{H_z}\).
+        \begin{REM}
+          Je te suggère d'ajouter comme on en a discuté le fait qu'il y a y un système d'EDO sur \(E_y,E_x,H_y,H_x\) en remplaçant \(E_z,H_z\).
+          Dans ta présentation les calculs sont corrects presque tout le temps.
+        \end{REM}
         \begin{align*}
             \left\lbrace
             \begin{matrix}
@@ -282,6 +297,12 @@
           \hat \mZ^+(k_x,k_y) = \hat \mZ^-(k_x,k_y).
           \end{equation*}
         \end{lemme}
+
+        \begin{REM}
+          Tu peux utiliser  cette notation mais cela ne s'appelle pas, une fois sur \(Z\) une matrice d'impédance.
+          Comme je t'ai dit d'un coté (en \(z_m^-\)) c'est bien une matrice d'impédance qui a donc été déterminé par le pb en \([z_0,z_m^+]\).
+        \end{REM}
+
         \begin{proof}
           La démonstration est extrêmement rapide grâce à la continuité tangentielle des champs.
           \begin{align*}
@@ -299,7 +320,7 @@
             \intertext{On utilise la continuité des champs}
             \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right).
             \\
-            \intertext{Ce qui par définition de l'impédance vaut}
+            \intertext{Ceci par définition de l'impédance vaut}
             \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right).
           \end{align*}
         \end{proof}
@@ -316,7 +337,9 @@
             \end{bmatrix}.
           \end{align*}
         \end{defn}
-
+        \begin{REM}
+           C'est une fonction de \(\RR^2\) dans \(\mathcal{M}_{2\times2}(\CC^2)\) et si \(k_3\in\CC\) tu as des formes alternatives avec tanh.
+        \end{REM}
         \begin{prop}
             \label{prop:imp_plan:symb_z:1c}
             On suppose que
@@ -324,6 +347,9 @@
                 k_3     & \not = 0, \\
                 k_3d    & \not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN.
             \end{align*}
+            \begin{REM}
+              Remarquons que ces conditions sont toujours vérifiées si \(\eps\mu\not\in\RR_+\).
+            \end{REM}
             Alors
             \begin{align*}
               \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \vH(k_x,k_y,0^-)\right).
@@ -347,6 +373,9 @@
             \begin{align*}
                 \vect{C_2}(k_x,k_y) &= -\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y).
             \end{align*}
+            \begin{REM}
+              La tu peux ajouter: Il existe une répartition des constantes \(c_1,c_2,c_3,c_4\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\), Ici, nous en avons choisis une particulière.
+            \end{REM}
             % On part de l'expression de l'impédance, exprimée à l'intérieur
             % \begin{align*}
             %     \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0^-)\right)
@@ -434,7 +463,11 @@
              \vn \pvect \hat{\vE} = \hat{\mathfrak{Z}} \hat{\vH_t}, && \hat{\mathfrak{Z}} = -i\eta_r\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right).
         \end{align*}
         C'est une forme équivalente à la nôtre où \(\hat{\mZ} = \mT\hat{\mathfrak{Z}}\mT\) avec \(\mT = \begin{bmatrix}0&-1\\1&0\end{bmatrix}\).
-        Si on fixe \(k_y\) à \(0\) alors \(\hat \mZ\) est une matrice diagonale. Dans la littérature (\cite{stupfel_implementation_2015,aubakirov_electromagnetic_2014,hoppe_impedance_1995}), on nomme les termes diagonaux \(\hat Z_{TM}, \hat Z_{TE}\) tels que
+        Si on fixe \(k_y\) à \(0\) alors \(\hat \mZ\) est une matrice diagonale.
+        \begin{REM}
+          Ca ce n'est pas math. Mets Notons que \(\mZ(k_x,0)\) est une matrice diagonale.
+        \end{REM}
+        Dans la littérature (\cite{stupfel_implementation_2015,aubakirov_electromagnetic_2014,hoppe_impedance_1995}), on nomme les termes diagonaux \(\hat Z_{TM}, \hat Z_{TE}\) tels que
          % le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x} + {E_z} \vect{e_z} \), tandis que le champ \(\vH\)-TE correspond à \({H_x} \vect{e_x} + {H_z} \vect{e_z}\) et le champ \(\vH\)-TM correspond à \({H_y} \vect{e_y}\).
         
         % Alors la matrice \(\hat \mZ\) peut se réécrire comme
@@ -456,7 +489,10 @@
             \input{tikz/schema/plan_n_couches.tikz}
         \end{tikzpicture}
     \end{figure}
-
+    \begin{REM}
+      Rappelle au départ le problème bien posé avec conditions de Dirichlet homogène a une unique solution si \(\w^2\eps\mu\) n'est pas une résonance.
+      Il faut quand même que tu mentionnes que d'après la théorie, les composantes qui permettent de calculer la solution sont deux des quatre constantes \(c_i\) que tu as choisis \((c_2,c_4)=f(c_1,c_3)\).
+    \end{REM}
     Soit \(z_p\) la hauteur de l'interface \(p\), \(z_p = -\sum_{i=p+1}^{n} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(z_{p-1} \le z < z_p \).
 
     \begin{defn}
@@ -606,6 +642,12 @@
       \end{multline*}
 
       Comme on a supposé l'inversibilité des deux matrices \(\mM_{A}\), \(\mM_{B}\), on factorise à droite le numérateur et le dénominateur afin d'obtenir la propriété.
+      \begin{REM}[factorise]
+        Horreur
+      \end{REM}
+      \begin{REP}
+       on factorise par \(\mM_{A}\) afin ...
+      \end{REP}
     \end{proof}
 
     \begin{prop}%[Théorème de relèvement]~
@@ -626,6 +668,21 @@
       Une condition d'impédance sur le bord inférieur d'une couche détermine la condition limite sur le bord supérieur.
     \end{prop}
 
+    \begin{REM}
+      Il faudrait le formuler plus précisément.
+      En effet, prend les 3 pbs suivants: \(\OO_j=\OO_0\cap C_1 \dots \cap C_j\) ( \(\OO\) recouvert de \(j\) couches ).
+      
+      Le premier problème est \(u_{|\partial \OO_0} = 0\), \(u_{|\partial C_j^+} = u_0\) donné. Si \(\w^2\eps\mu\) n'est pas une résonance alors il existe un unique \(u\) solution et donc le Calderon est déterminé \(\partial_{nj}u=C_j(u_{|\partial ????? })\).
+
+      Le deuxième problème est \(v_{|\partial \OO_0} = 0\), \(v_{|\partial C_{j+1}^+} = v_0\)  donné. Si \(\w^2\eps\mu\) n'est pas une résonance alors il existe un unique \(v\) solution et donc le Calderon est déterminé.
+
+      Enfin tu regardes le 3\ieme problème, \(u_{|\partial C_j^+}\) et \(\partial_{n} u_{|\partial C_j^+}\) sont liés par le Calderón \(C_j\). \(u_{|\partial C_{j+1}^+}=v_0\) donné, et tu dis que ce 3\ieme problème donne exactement \(v\) dans  la couche \(j+1\). C'est à démontrer aussi.
+
+      Tu as le pb des résonances et de la solution du 3\ieme pb.
+    \end{REM}
+    \begin{REP}
+      Ce n'est pas du tout clair ce que tu demandes. Quel est le but ?
+    \end{REP}
     \begin{proof}
       Même méthodologie que pour la proposition \ref{prop:plan:transfert:impedance}.
     \end{proof}
@@ -732,7 +789,7 @@
         \\
         \vect{e_r}\pvect\vH(k_x,k_y,z_p^-) &= \mA_H(k_x,k_y,z_p^-)\vect{C}_{1}^-(k_x,k_y) + \mB_H(k_x,k_y,z_p^-)\vect{C}_{2}^-(k_x,k_y).
       \end{align*}
-      Il y a continuité des champs au travers de l'interface donc
+      Il y a continuité des champs à l'interface donc
       \begin{align*}
         \mA_E(k_x,k_y,z_p^-)\vect{C}_{1}^-(k_x,k_y) + \mB_E(k_x,k_y,z_p^-)\vect{C}_{2}^-(k_x,k_y) &= \mN_{E}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{1}^+(k_x,k_y),
         \\
@@ -746,6 +803,9 @@
       \end{multline*}
 
       On factorise les termes
+      \begin{REM}
+        Même remarque que \hyperlink{REMfactorise}{précédemment}
+      \end{REM}
       \begin{multline*}
         \left(
         \mN_{E}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))^{-1}\mA_E(k_x,k_y,z_p^-)
@@ -796,7 +856,7 @@
     \end{prop}
 
     \begin{proof}
-      Même méthodologie que pour la proposition \ref{prop:plan:transfert:reflexion}.
+     Preuve identique à la proposition \ref{prop:plan:transfert:reflexion}.
     \end{proof}
 
     \begin{prop}%[Théorème de relévement]~
@@ -838,7 +898,11 @@
       \end{align*}
     \end{prop}
 
-    On peut donc déterminer itérativement les matrices de réflexion. Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(z=z_0^+\) implique \(\mR_{1}(k_x,k_y) = -\mB_E(k_x,k_y,z_0^+)^{-1}\mA_E(k_x,k_y,z_0^+)\).
+    On peut donc déterminer itérativement les matrices de réflexion.
+    \begin{REM}
+      Il faut savoir quel nom tu donnes.
+    \end{REM}
+    Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(z=z_0^+\) implique \(\mR_{1}(k_x,k_y) = -\mB_E(k_x,k_y,z_0^+)^{-1}\mA_E(k_x,k_y,z_0^+)\).
 
 \subsection{Applications numériques}
 
