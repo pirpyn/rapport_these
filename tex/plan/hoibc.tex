@@ -9,6 +9,11 @@
     \begin{defn}
       \label{eq:plan:fourier:LD}
       On définit \(\LD\) l'endomorphisme de \(V\) tel que
+      \begin{REM}
+        Ce n'est pas un endomorphisme, je te l'ai dit car tu n'es pas \(L^2\) pour les composantes et c'est \((L^2(\RR^2))^2\).
+        C'est plutôt un symbole de Fourier ou un multiplicateur de Fourier matriciel.
+        Et la LD agit sur les champs tangents du plan.
+      \end{REM}
       \begin{align*}
         \LD \vect{U}(x,y,z) & = \vgrads{} \vdivs{} \vect{U}(x,y,z).
       \end{align*}
@@ -26,6 +31,9 @@
 
     \begin{prop}
       Soit \(\vect{U} \in V\), alors
+      \begin{REM}
+        Si tu en as besoin, il faut prendre \(\vect{U}\in (\mathcal{S}(\RR^2))^2\)
+      \end{REM}
       \begin{equation*}
         \widehat{\LD \vect{U}} (k_x,k_y,0) = \hat{\mLD}(k_x,k_y) \hat{\vect{U}}(k_x,k_y,0).
       \end{equation*}
@@ -36,7 +44,7 @@
       \begin{align*}
         \LD \vect{U} & = \vgrads{} \vdivs{} \vect{U}.
       \end{align*}
-      On utilise les expressions en coordonnées cartésiennes des opérateurs différentiels (voir annexe \ref{sec:annexe:div_grad_rot}).
+      On utilise les expressions en coordonnées cartésiennes des opérateurs aux dérivées partielles (voir annexe \ref{sec:annexe:div_grad_rot}).
       \begin{align*}
         \vdivs{\vect{U}}(x,y,z) &= \ddr{x}{U_x}(x,y,z) + \ddr{y}{U_z}(x,y,z),
         \\
@@ -47,6 +55,9 @@
         \vect{U}(x,y,z) & = \frac{1}{2\pi} \int\RR \int_\RR \hat{\vect{U}}(k_x,k_y,z)e^{ik_xx + ik_yy}\dd{k_x}\dd{k_y},
       \end{align*}
       les opérateurs en Fourier sont
+      \begin{REM}
+        mal dit
+      \end{REM}
       \begin{align*}
         \widehat{\vdivs{\vect{U}}}(k_x,k_y,z) &= ik_x{\hat{U}_x}(k_x,k_y,z) + ik_y{\hat{U}_y}(k_x,k_y,z),
         \\
@@ -91,7 +102,7 @@
       \begin{align*}
         \LR \vect{U} & = \vrots{} (\rots{} \vect{U}).
       \end{align*}
-      On utilise les expressions en coordonnées cartésiennes des opérateurs différentiels (voir annexe \ref{sec:annexe:div_grad_rot}).
+      On utilise les expressions en coordonnées cartésiennes des opérateurs aux dérivées partielles (voir annexe \ref{sec:annexe:div_grad_rot}).
       \begin{align*}
         \rots{\vect{U}}(x,y,z) &= \ddr{x}{U_y}(x,y,z) - \ddr{y}{U_x}(x,y,z),
         \\
@@ -130,7 +141,11 @@
     \begin{equation*}
         \hat{\mZ}_{CI01}(k_x,k_y) =  a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y).
     \end{equation*}
-    Pour calculer les coefficients de la CIOE, il faut minimiser la distance entre \(\hat{\mZ}(k_x,k_y)\) et \(\hat{\mZ}_{CI3}(k_x,k_y)\) \footnote{La distance est la norme de Frobenius}. Il existe une infinité de combinaisons pour un couple \((k_x,k_y)\) donné. Nous avons choisi de nous donner un grand nombre de couples et de minimiser au sens des moindres carrés.
+    Pour calculer les coefficients de la CIOE, il faut minimiser la distance entre \(\hat{\mZ}(k_x,k_y)\) et \(\hat{\mZ}_{CI3}(k_x,k_y)\) \footnote{La distance est la norme de Frobenius}.
+    \begin{REM}
+      Cette phrase ne veut pas dire ce que tu crois. Pour trouver les coefficients de la CIOE que l'on prendra dans le calcul, on choisit de minimiser. ( Pourquoi "il faut", pourquoi ce choix et le calcul. )
+    \end{REM}
+    Il existe une infinité de combinaisons pour un couple \((k_x,k_y)\) donné. Nous avons choisi de nous donner un grand nombre de couples et de minimiser au sens des moindres carrés.
 
   \subsection{Le cas spécial de la condition de Leontovich}
 
