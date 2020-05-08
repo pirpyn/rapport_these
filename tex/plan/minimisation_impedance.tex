@@ -242,7 +242,27 @@
         sauf erreur de calcul.
         Obtenue en utilisant \(2t_1 = t_1 + t_2 + t_1 - t_2\), \(2t_2 = t_1 + t_2 - (t_1 - t_2)\)
       \end{REM}
+      \begin{REP}
+        EN COURS; BASE DAPRES LA CI3; IDEE METTRE Ti dans Si et Zi.
 
+        Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\mI}{t_i\hat{\mZ}(k_{x},k_{y})_i}_F\) et \(z\) le vecteur de \(\RR^{N_{k}}\) tel que \(z_i = \norm{t_i\hat{\mZ}(k_{x},k_{y})_i}_F\).
+        On a l'expression suivante de \({\mM_{CI1}}\)
+
+        \begin{equation*}
+          {\mM}_{CI1} = \begin{bmatrix}
+          2\ps{1}{1}        & -2\ps{t}{1}       & \ps{1}{s}
+          \\
+          -2\ps{t}{1}       & 2\ps{t}{t}        & -\ps{t}{s}
+          \\
+          \ps{1}{\conj{s}}  & -\ps{t}{\conj{s}} & \ps{z}{z}
+          \end{bmatrix}.
+        \end{equation*}
+      
+        Alors 
+        \begin{multline*}
+          \det( {\mM}_{CI1}) = 
+        \end{multline*}
+      \end{REP}
     \subsubsection{Pour la CI3}
 
       Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et toute incidence.
@@ -260,15 +280,15 @@
         Nous pouvons néanmoins exprimer la matrice \(\mM_{CI3}\) et son déterminant et l'inversibilité reste une perspective.
 
         Nous renvoyons aux définitions des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant.
-        Soit \(s_D,s_R,z_D,z_R\) les vecteurs de \(\CC^{N_{k}}\) et tels que
+        Soit \(s_D,s_R\) les vecteurs de \(\CC^{N_{k}}\) et \(z_D,z_R\) les vecteurs de \(\RR_+^{N_{k}}\) tels que
         \begin{align*}
           s_{Di} &= \ps{\mLD}{\hat{\mZ}(k_{x},k_{y})_i}_F
           \\
           s_{Ri} &= \ps{\mLR}{\hat{\mZ}(k_{x},k_{y})_i}_F
           \\
-          z_{Di} &=
+          z_{Di} &= \norm{\mLD\hat{\mZ}(k_{x},k_{y})_i}_F
           \\
-          z_{Ri} &=
+          z_{Ri} &= \norm{\mLR\hat{\mZ}(k_{x},k_{y})_i}_F
         \end{align*}
         On a l'expression suivante de \({\mM_{CI3}}\)
 
@@ -280,9 +300,9 @@
           \\
           -\ps{t}{1}          & 0                   & \ps{t}{t}            & 0            & - \ps{t}{s_R}
           \\
-          -\ps{1}{\conj{s_D}} & \ps{t}{\conj{s_D}}  & 0                    &
+          -\ps{1}{\conj{s_D}} & \ps{t}{\conj{s_D}}  & 0                    & \ps{z_D}{z_D} & 
           \\
-          \ps{1}{\conj{s_R}}  & 0                   & -\ps{t}{\conj{s_R}}  & 
+          \ps{1}{\conj{s_R}}  & 0                   & -\ps{t}{\conj{s_R}}  &             & \ps{z_R}{z_R}
           \end{bmatrix}.
         \end{equation*}
         
