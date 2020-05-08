@@ -83,15 +83,15 @@
  
     Pour compléter, voici \(\mH_{CI1}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times3}(\CC)\) telle que
     \begin{equation*}
-      \mH_{CI3}(k_x,k_y,\mZ) = 
+      \mH_{CI1}(k_x,k_y,\mZ) = 
       \begin{bmatrix}
-        1 & -(k_x^2+k_y^2)  & -\left(k_x^2+k_y^2\right)\mZ_{11}
+        1 & -(k_x^2+k_y^2)  & \left(k_x^2+k_y^2\right)\mZ_{11}
         \\
-        0 & 0               & -\left(k_x^2+k_y^2\right)\mZ_{12}
+        0 & 0               & \left(k_x^2+k_y^2\right)\mZ_{12}
         \\
-        0 & 0               & -\left(k_x^2+k_y^2\right)\mZ_{21}
+        0 & 0               & \left(k_x^2+k_y^2\right)\mZ_{21}
         \\
-        1 & -(k_x^2+k_y^2)  & -\left(k_x^2+k_y^2\right)\mZ_{22}
+        1 & -(k_x^2+k_y^2)  & \left(k_x^2+k_y^2\right)\mZ_{22}
       \end{bmatrix}.
     \end{equation*}
 
@@ -185,7 +185,7 @@
       \end{prop}
 
       \begin{proof}
-        En reprenant la définition des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduit ci-avant, on a
+        En reprenant la définition des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant, on a
         \begin{equation*}
           {\mM}_{CI4} = \begin{bmatrix}
           2\ps{1}{1} & -\ps{1}{t} & -\ps{1}{t}
@@ -205,40 +205,43 @@
       \subsubsection{Pour la CI1}
 
       L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière. 
-      Nous n'avons pas réussi à prouver que \(\det({\mM}_{CI1})\) étai définie. 
+      Nous n'avons pas réussi à prouver que \(\det({\mM}_{CI1})\) est inversible.
+
       Cependant nous avons vérifié numériquement qu'elles l'étaient pour tous les empilements que nous avons testés.
 
-      \begin{tcolorbox}
-        Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\mI}{\hat{\mZ}(k_{xi},k_{yi})}_F\) et \(z\) le vecteur de \(\RR^{N_{k}}\) tel que \(z_i = \norm{\hat{\mZ}(k_{xi},k_{yi})}_F^2\). On a l'expression suivante de \({\mM}\)
+      Nous pouvons néanmoins exprimer la matrice et le déterminant et l'inversibilité reste une perspective.
 
-        \begin{equation*}
-          {\mM}_{CI1} = \begin{bmatrix}
-          2\ps{1}{1}  & -2\ps{t}{1} & \ps{t}{s}
-          \\
-          -2\ps{t}{1} & 2\ps{t}{t} & -\sum_{i=1}^{N_{k}} t_i^2 s_i
-          \\
-          \ps{t}{\conj{s}} & -\sum_{i=1}^{N_{k}} t_i^2 \conj{s_i} & \sum_{i=1}^{N_{k}} t_i^2 z_i
-          \end{bmatrix}.
-        \end{equation*}
-        Pour prouver son inversibilité, on exprime son déterminant 
+      Nous renvoyons aux définitions des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant.
+      Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\mI}{\hat{\mZ}(k_{x},k_{y})_i}_F\) et \(z\) le vecteur de \(\RR^{N_{k}}\) tel que \(z_i = \norm{\hat{\mZ}(k_{x},k_{y})_i}_F\). On a l'expression suivante de \({\mM_{CI1}}\)
+
+      \begin{equation*}
+        {\mM}_{CI1} = \begin{bmatrix}
+        2\ps{1}{1}  & -2\ps{t}{1} & \ps{t}{s}
+        \\
+        -2\ps{t}{1} & 2\ps{t}{t} & -\sum_{i=1}^{N_{k}} t_i^2 s_i
+        \\
+        \ps{t}{\conj{s}} & -\sum_{i=1}^{N_{k}} t_i^2 \conj{s_i} & \sum_{i=1}^{N_{k}} t_i^2 z_i^2 
+        \end{bmatrix}.
+      \end{equation*}
+      
+      Alors 
+      \begin{multline*}
+        \det( {\mM}_{CI1}) = \ps{t^2}{z^2}\det({\mM}_{CI01}) + 4 \ps{t}{1}\Re\left(\ps{t^2}{s}\ps{t^2}{\conj{s}}\right)
+        \\
+        - 2\norm{t}^2|\ps{t}{s}|^2 - 2 N_k|\ps{t^2}{s}|^2.
+      \end{multline*}
+      \begin{REM}
+        J'ai fais le cas \(N_k=2\).
         \begin{multline*}
-          \det( {\mM}_{CI1}) = \ps{t^2}{z}\det({\mM}_{CI01}) + 4 \ps{t}{1}\Re\left(\ps{t^2}{s}\ps{t^2}{\conj{s}}\right)
+          det = 4(t_1-t_2)^2(t_1^2z_1+t_2^2z_2)
           \\
-          - 2\norm{t}^2|\ps{t}{s}|^2 - 2 N_k|\ps{t^2}{s}|^2.
+          + 2t_1t_2(t_1-t_2)(\conj{s_1}-\conj{s_2})(t_1s_1+t_2s_2)
+          \\
+          +2(t_1-t_2)(t_1^2s_1+t_2^2s_2)(\conj{s_2}t_2-\conj{s_1}t_1)
         \end{multline*}
-        \begin{REM}
-          J'ai fais le cas \(N_k=2\).
-          \begin{multline*}
-            det = 4(t_1-t_2)^2(t_1^2z_1+t_2^2z_2)
-            \\
-            + 2t_1t_2(t_1-t_2)(\conj{s_1}-\conj{s_2})(t_1s_1+t_2s_2)
-            \\
-            +2(t_1-t_2)(t_1^2s_1+t_2^2s_2)(\conj{s_2}t_2-\conj{s_1}t_1)
-          \end{multline*}
-          sauf erreur de calcul.
-          Obtenue en utilisant \(2t_1 = t_1 + t_2 + t_1 - t_2\), \(2t_2 = t_1 + t_2 - (t_1 - t_2)\)
-        \end{REM}
-      \end{tcolorbox}
+        sauf erreur de calcul.
+        Obtenue en utilisant \(2t_1 = t_1 + t_2 + t_1 - t_2\), \(2t_2 = t_1 + t_2 - (t_1 - t_2)\)
+      \end{REM}
 
     \subsubsection{Pour la CI3}
 
@@ -252,6 +255,43 @@
         Le nombre d'incidences a plus d'impact je pense, mais je pense qu'il faut en prendre au moins 3 (intuition).
         C'est une calcul que j'ai tenté plusieurs fois durant ces 3 ans, sans succès.
       \end{REP}
+
+      \begin{REP}
+        Nous pouvons néanmoins exprimer la matrice \(\mM_{CI3}\) et son déterminant et l'inversibilité reste une perspective.
+
+        Nous renvoyons aux définitions des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant.
+        Soit \(s_D,s_R,z_D,z_R\) les vecteurs de \(\CC^{N_{k}}\) et tels que
+        \begin{align*}
+          s_{Di} &= \ps{\mLD}{\hat{\mZ}(k_{x},k_{y})_i}_F
+          \\
+          s_{Ri} &= \ps{\mLR}{\hat{\mZ}(k_{x},k_{y})_i}_F
+          \\
+          z_{Di} &=
+          \\
+          z_{Ri} &=
+        \end{align*}
+        On a l'expression suivante de \({\mM_{CI3}}\)
+
+        \begin{equation*}
+          {\mM}_{CI3} = \begin{bmatrix}
+          2\ps{1}{1}          & -\ps{t}{1}          & -\ps{t}{1}           & -\ps{1}{s_D} & \ps{1}{s_R}
+          \\
+          -\ps{t}{1}          & \ps{t}{t}           & 0                    & \ps{t}{s_D}  & 0
+          \\
+          -\ps{t}{1}          & 0                   & \ps{t}{t}            & 0            & - \ps{t}{s_R}
+          \\
+          -\ps{1}{\conj{s_D}} & \ps{t}{\conj{s_D}}  & 0                    &
+          \\
+          \ps{1}{\conj{s_R}}  & 0                   & -\ps{t}{\conj{s_R}}  & 
+          \end{bmatrix}.
+        \end{equation*}
+        
+        Alors 
+        \begin{multline*}
+          \det( {\mM}_{CI3}) =
+        \end{multline*}
+      \end{REP}
+
   \subsection{Calcul des coefficients des CIOE par moindre carrés}
 
     \subsubsection[Expression de la fonction JZ]{Expression de la fonction \(J_Z\)}
