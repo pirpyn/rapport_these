@@ -12,7 +12,7 @@
       \end{equation*}
     \end{defn}
 
-  \subsection[Expression de la fonctionnelle JZ]{Expression de la fonctionnelle \(J_Z\)}
+  \subsection{Calcul des coefficients pour une incidence}
 
     \begin{defn}
       On définit \(\mH_{CI3}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
@@ -43,9 +43,11 @@
 
     \begin{prop}
       Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((k_x,k_y)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du plan, alors
-      \begin{equation*}
-        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(k_x,k_y,X) - \hat\mZ_{ex}(k_x,k_y)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(k_x,k_y,\hat\mZ_{ex}(k_x,k_y))X - b(\hat\mZ_{ex}(k_x,k_y))}.
-      \end{equation*}
+      \begin{multline*}
+        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(k_x,k_y,X) - \hat\mZ_{ex}(k_x,k_y)} =
+        \\
+        \argmin{X\in\CC^5} \norm{\mH_{CI3}(k_x,k_y,\hat\mZ_{ex}(k_x,k_y))X - b(\hat\mZ_{ex}(k_x,k_y))}.
+      \end{multline*}
     \end{prop}
 
     \begin{proof}
@@ -57,9 +59,10 @@
       \begin{align*}
         \hat\mZ_D(k_x,k_y) &= \mI + b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y),
         \\
-        \hat\mZ_N(k_x,k_y) &= a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)},
+        \hat\mZ_N(k_x,k_y) &= a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)}.
       \end{align*}
 
+      Et ainsi, on développe
       \begin{align*}
       &{}~ \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(k_x,k_y,X) - \hat\mZ_{ex}(k_x,k_y)}
       \\
@@ -74,6 +77,31 @@
       &= \argmin{X\in\CC^5} \norm{\mH_{CI3}(k_x,k_y,\hat\mZ_{ex}(k_x,k_y))X - b(\hat\mZ_{ex}(k_x,k_y))}.
       \end{align*}
     \end{proof}
+
+    Pour un couple \((k_x,k_y)\), les coefficients d'une CIOE (ici la CI3) sont solutions d'un problème d'optimisation. 
+    Cependant, ces coefficients deviennent donc fonction de cette "incidence". 
+ 
+    Pour compléter, voici \(\mH_{CI1}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times3}(\CC)\) telle que
+    \begin{equation*}
+      \mH_{CI3}(k_x,k_y,\mZ) = 
+      \begin{bmatrix}
+        1 & -(k_x^2+k_y^2)  & -\left(k_x^2+k_y^2\right)\mZ_{11}
+        \\
+        0 & 0               & -\left(k_x^2+k_y^2\right)\mZ_{12}
+        \\
+        0 & 0               & -\left(k_x^2+k_y^2\right)\mZ_{21}
+        \\
+        1 & -(k_x^2+k_y^2)  & -\left(k_x^2+k_y^2\right)\mZ_{22}
+      \end{bmatrix}.
+    \end{equation*}
+
+    Les fonctions associées aux CIOE CI0, CI01, CI4 se déduisent aisément.
+
+
+  \subsection{Balayage en incidences et moindres carrés}
+
+    Nous allons donc réaliser une balayage sur les variables de Fourier et exhiber un calcul permettant d'obtenir ces coefficients.
+    Par abus de langage, nous ne parlerons de moindres carrés que lorsqu'il y a plusieurs couples \((k_x,k_y)\), alors que par définition, le problème pour une incidence est aussi un problème des moindres carrés.
 
     \begin{defn}
       On définit \(\mA_{CI3}\) la matrice de \(\mathcal{M}_{4N_xN_y\times5}(\CC)\) telle que
@@ -108,114 +136,21 @@
       \end{equation*}
     \end{defn}
 
-    On peut alors calculer les coefficients de la CI3.
     \begin{defn}
-      On définit la fonctionnelle \(J_Z\)
-      \begin{REM}[fonctionnelle]
-        Ce n'est pas une fonctionnelle car ce n'est pas une fonction de fonction. C'est une fonction. A corriger partout
-      \end{REM}
-      \begin{equation*}
-        J_Z(X) = \norm{{\mA}_{CI3}X - {g}}^2.
-      \end{equation*}
+      On pose \(\mM_{CI}=\conj{\mA_{CI}^t}{\mA_{CI}}\).
     \end{defn}
 
-    \begin{thm}[Minimisation sans contraintes pour la CI3]
-      Les coefficients de la CIOE sont solutions du problème
+    Cette matrice est importante car comme nous le montrerons plus tard, elle apparaît dans la forme quadratique associée à la minimisation.
+    Nous allons donc démontrer immédiatement que la matrice associée à une des CIOE est inversible.
+    Cela nous permettra de démontrer l’existence et l'unicité de la solution du problème de minimisation vérifié par les coefficients de la CIOE.
 
-      Trouver \(X^* \in \CC^5\) tel que
-      \begin{equation*}
-        X^* = \argmin{X\in \CC^5}  J_Z(X).
-      \end{equation*}
-    \end{thm}
-    \begin{REM}
-    Même remarque qu'à \hyperlink{REMminimum}{droite}
-    \end{REM}
-    \begin{prop}
-      \label{prop:plan:minimisation:minimum_sans_contraintes}
-      Si \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, alors
-      \begin{equation*}
-        X^* = (\conj{\mA_{CI3}^t}\mA_{CI3})^{-1}(\conj{\mA_{CI3}^t}g).
-      \end{equation*}
-    \end{prop}
+  \subsection[Inversibilité des matrices Mci]{Inversibilité des matrices \(\mM_{CI}\)}
 
-    \begin{proof}
-      \begin{align*}
-      J_Z(X) &= \norm{\mA_{CI3}X - g}^2,
-      \\
-      &= \ps{\mA_{CI3}X - g}{\mA_{CI3}X - g},
-      \intertext{le produit scalaire est hermitien donc}
-      &=\ps{\mA_{CI3}X}{\mA_{CI3}X} - \ps{\mA_{CI3}X}{g} - \ps{g}{\mA_{CI3}X} + \ps{g}{g},
-      \\
-      &=\ps{X}{\conj{\mA_{CI3}^t}\mA_{CI3}X} - \ps{X}{\conj{\mA_{CI3}^t}g} - \ps{\conj{\mA_{CI3}^t}g}{X} + \ps{g}{g},
-      \end{align*}
-      Si la matrice \(\conj{\mA_{CI3}^t}\mA_{CI3}\) est inversible, comme elle est par définition hermitienne et positive, alors la fonctionnelle est quadratique. Il existe donc un unique minimum où le gradient de cette fonctionnelle s'annule. Or
-      \begin{align*}
-        \nabla J_Z(X^*) &= 2\conj{\mA_{CI3}^t}\mA_{CI3}X^* - 2\conj{\mA_{CI3}^t}g,
-        \\ 
-        &= 0.
-      \end{align*}
-    \end{proof}
-
-    Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et toute incidence.
-    \begin{REM}
-      Il faut que tu en dises plus. As-tu trouvé des cas où elle n'est pas inversible ? As-tu fais l'essai avec deux couches ? Est-ce que pour certaines valeurs de \(k_x,k_y\) il y  des cas si \(\eps,\mu\) complexes.
-    \end{REM}
-    \begin{thm}[Minimisation avec contraintes pour la CI3]
-
-      Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
-      Alors les coefficients de la CIOE respectant cette CSU sont solutions du problème.
-
-      Trouver \(X^* \in \CC^5\) tel que
-      \begin{equation*}
-        X^* = \argmin{X\in \CSU[3]{CI3}}  J_Z(X).
-      \end{equation*}
-    \end{thm}
-    \begin{REM}[minimum]
-      Si tu n'as pas de résultats d'existence et unicité, je ne comprends pas ce théorème.
-    \end{REM}
-  \subsection{Existence et unicité du minimum pour d'autres CIOE}
-
-    \begin{prop}
-      Il existe un unique minimum si la matrice \(\mM=\conj{\mH^t}{\mH}\) est inversible.
-    \end{prop}
-    \begin{REM}
-      Est-ce que \(\mH\) est la même chose que \(\mA\) ?
-    \end{REM}
-    \begin{REP}
-      Oui. Je dois corriger ça.
-    \end{REP}
-    \begin{proof}
-      On remarque que la fonctionnelle \(F\)
-      \begin{REM}
-        Que vaut F ici ? JZ ?
-      \end{REM}
-      est quadratique si la matrice \(\conj{\mH^t}{\mH}\) est hermitienne définie positive. Une matrice \(\mA\) est hermitienne si \(\forall x, \conj{x^t}\mA x \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}\mA x \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}\mA x \in \RR^{+*}\).
-
-      On remarque que par construction, notre matrice \(\mM\) est hermitienne positive. Il reste à montrer qu'elle est définie.
-    \end{proof}
-
-    \begin{prop}
-      S'il existe un unique minimum \(X_{CI}^*\), celui-ci vaut
-      \begin{REM}
-        mal dit. Si M est définie, l'unique minimum vaut
-      \end{REM}
-      \[
-        X_{CI}^* = \left(\conj{\mH_{CI}^t}{\mH_{CI}}\right)^{-1}\conj{\mH_{CI}^t}b
-      \].
-    \end{prop}
-
-    \begin{proof}
-      C'est une application directe de \(\tgrad{} F(CI) = 0 \), avec la propriété précédente.
-    \end{proof}
-
-    \subsubsection{Existence du minimum pour la CI01}
+    \subsubsection{Pour la CI01}
 
       \begin{prop}
         La matrice \({\mM}_{CI01}\)
-        \begin{REM}[matM]
-          Mauvaise matrice
-        \end{REM}
-        associée à la CI01 est inversible, donc définie, si et seulement s'il existe au moins deux couples \((k_{x},k_{y})\) différents.
+        associée à la CI01 est inversible, si et seulement s'il existe au moins deux couples \((k_{x},k_{y})\) différents.
       \end{prop}
 
       \begin{proof}
@@ -226,57 +161,54 @@
           N_{k} & -\sum_{i=1}^{N_{k}} t_i
           \\
           -\sum_{i=1}^{N_{k}} t_i & \sum_{i=1}^{N_{k}} t_i^2
+          \end{bmatrix}
+          = 2\begin{bmatrix}
+          \ps{1}{1} & -\ps{1}{t}
+          \\
+          -\ps{t}{1} & \ps{t}{t}
           \end{bmatrix}.
         \end{equation*}
         Pour prouver son inversibilité, on exprime son déterminant 
         \begin{align*}
-          \det( {\mM}_{CI01}) &= 4\left(N_{k}\sum_{i=1}^{N_{k}} t_i^2 - \left( \sum_{i=1}^{N_{k}} t_i\right)^2\right),
-          \\
+          %\det( {\mM}_{CI01}) &= 4\left(N_{k}\sum_{i=1}^{N_{k}} t_i^2 - \left( \sum_{i=1}^{N_{k}} t_i\right)^2\right),
+          %\\
            &= 4\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right).
         \end{align*}
         Donc d'après Cauchy–Schwarz (voir \cite[\href{https://dlmf.nist.gov/1.7\#E1}{eq.~1.7.1}]{dlmf_nist_2019}), le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est-à-dire n'importe quel vecteur ayant au moins deux composantes différentes.
       \end{proof}
 
-    \subsubsection{Existence du minimum pour la CI4}
+    \subsubsection{Pour la CI4}
 
       \begin{prop}
         La matrice \({\mM}_{CI4}\)
-        \begin{REM}[matM]
-          Mauvaise matrice
-        \end{REM}
-        associée à la CI4 est inversible, donc définie, si et seulement s'il existe au moins deux couples \((k_{xi},k_{yi})\) différents.
+        associée à la CI4 est inversible, si et seulement s'il existe au moins deux couples \((k_{xi},k_{yi})\) différents.
       \end{prop}
 
       \begin{proof}
+        En reprenant la définition des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduit ci-avant, on a
         \begin{equation*}
           {\mM}_{CI4} = \begin{bmatrix}
           2\ps{1}{1} & -\ps{1}{t} & -\ps{1}{t}
           \\
-          -\ps{1}{t} & \ps{t}{t}  & 0
+          -\ps{t}{1} & \ps{t}{t}  & 0
           \\
-          -\ps{1}{t} & 0          & \ps{t}{t}
+          -\ps{t}{1} & 0          & \ps{t}{t}
           \end{bmatrix}.
         \end{equation*}
-        Pour prouver son inversibilité, on exprime son déterminant 
+        Donc immédiatement
         \begin{align*}
           \det({\mM}_{CI4}) &= 2\ps{t}{t}\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right).
         \end{align*}
-        Donc d'après Cauchy–Schwarz (voir \cite[\href{https://dlmf.nist.gov/1.7\#E1}{eq.~1.7.1}]{dlmf_nist_2019}), le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est-à-dire n'importe quel vecteur ayant au moins deux composantes différentes.
+        On conclu ici-aussi grâce à Cauchy–Schwarz.
       \end{proof}
 
-      \subsubsection{Cas de la CI1}
+      \subsubsection{Pour la CI1}
 
-      L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière. Nous n'avons pas réussi à prouver que ces matrices étaient définies. Cependant nous avons vérifié numériquement qu'elles l'étaient pour tous les empilements que nous avons testés.
+      L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière. 
+      Nous n'avons pas réussi à prouver que \(\det({\mM}_{CI1})\) étai définie. 
+      Cependant nous avons vérifié numériquement qu'elles l'étaient pour tous les empilements que nous avons testés.
 
-
-      \begin{proof}~{}
-
-      \begin{REM}
-        De quoi ceci est la démo ?
-      \end{REM}
-      \begin{REP}
-        les même prop que précédent avec CI1
-      \end{REP}
+      \begin{tcolorbox}
         Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\mI}{\hat{\mZ}(k_{xi},k_{yi})}_F\) et \(z\) le vecteur de \(\RR^{N_{k}}\) tel que \(z_i = \norm{\hat{\mZ}(k_{xi},k_{yi})}_F^2\). On a l'expression suivante de \({\mM}\)
 
         \begin{equation*}
@@ -306,8 +238,95 @@
           sauf erreur de calcul.
           Obtenue en utilisant \(2t_1 = t_1 + t_2 + t_1 - t_2\), \(2t_2 = t_1 + t_2 - (t_1 - t_2)\)
         \end{REM}
+      \end{tcolorbox}
+
+    \subsubsection{Pour la CI3}
+
+      Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et toute incidence.
+      \begin{REM}
+        Il faut que tu en dises plus. As-tu trouvé des cas où elle n'est pas inversible ? As-tu fais l'essai avec deux couches ? Est-ce que pour certaines valeurs de \(k_x,k_y\) il y  des cas si \(\eps,\mu\) complexes.
+      \end{REM}
+      \begin{REP}
+        Je n'ai pas trouvé des cas où elle n'est pas inversible et cela n'est pas vérifié fait dans le code mais serait possible.
+        Le nombre de couches importe peu : cela n'influe que sur l'expression de \(Z_{ex}\), qui est déjà assez complexe avec une.
+        Le nombre d'incidences a plus d'impact je pense, mais je pense qu'il faut en prendre au moins 3 (intuition).
+        C'est une calcul que j'ai tenté plusieurs fois durant ces 3 ans, sans succès.
+      \end{REP}
+  \subsection{Calcul des coefficients des CIOE par moindre carrés}
+
+    \subsubsection[Expression de la fonction JZ]{Expression de la fonction \(J_Z\)}
+      On peut alors calculer les coefficients d'une CIOE \(CI\) particulière.
+      \begin{defn}
+        On définit la fonction \(J_Z\)
+        \begin{equation*}
+          J_Z(X) = \norm{{\mA}_{CI}X - {g}}^2.
+        \end{equation*}
+      \end{defn}
+
+    \subsubsection{Minimisation sans contraintes}
+
+      \begin{thm}[Minimisation sans contraintes pour la CI3]
+        Les coefficients de la CIOE sont solutions du problème
+
+        Trouver \(X^* \in \CC^N\) tel que
+        \begin{equation*}
+          X^* = \argmin{X\in \CC^N} J_Z(X).
+        \end{equation*}
+      \end{thm}
+
+      \begin{proof}
+        On remarque que la fonction \(J_Z\) est quadratique si la matrice \(\conj{\mA^t}{\mA}\) est hermitienne définie positive. Une matrice \(\mM\) est hermitienne si \(\forall x, \conj{x^t}\mM x \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}\mM x \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}\mM x \in \RR^{+*}\).
+
+        On remarque que par construction, notre matrice \(\mM\) est hermitienne positive. 
+        Dans la section précédente, nous avons démontré l'inversibilité de ces matrices pour des CIOE particulières.
+
+        Dans ce cadre, l'unique minimum est alors solution de \(\vgrads{}J_Z = 0\).
       \end{proof}
 
+      \begin{prop}
+        \label{prop:plan:minimisation:minimum_sans_contraintes}
+        Si \(\conj{\mA_{CI}^t}\mA_{CI}\) est inversible, alors
+        \begin{equation*}
+          X^* = (\conj{\mA_{CI}^t}\mA_{CI})^{-1}(\conj{\mA_{CI}^t}g).
+        \end{equation*}
+      \end{prop}
+
+      \begin{proof}
+        \begin{align*}
+        J_Z(X) &= \norm{\mA_{CI}X - g}^2,
+        \\
+        &= \ps{\mA_{CI}X - g}{\mA_{CI}X - g},
+        \intertext{le produit scalaire est hermitien donc}
+        &=\ps{\mA_{CI}X}{\mA_{CI}X} - \ps{\mA_{CI}X}{g} - \ps{g}{\mA_{CI}X} + \ps{g}{g},
+        \\
+        &=\ps{X}{\conj{\mA_{CI}^t}\mA_{CI}X} - \ps{X}{\conj{\mA_{CI}^t}g} - \ps{\conj{\mA_{CI}^t}g}{X} + \ps{g}{g},
+        \end{align*}
+        Si la matrice \(\conj{\mA_{CI}^t}\mA_{CI}\) est inversible, comme elle est par définition hermitienne et positive, alors la fonction est quadratique. Il existe donc un unique minimum où le gradient de cette fonction s'annule. Or
+        \begin{align*}
+          \nabla J_Z(X^*) &= 2\conj{\mA_{CI}^t}\mA_{CI}X^* - 2\conj{\mA_{CI}^t}g,
+          \\ 
+          &= 0.
+        \end{align*}
+      \end{proof}
+
+    \subsubsection{Minimisation avec contraintes}
+
+      \begin{thm}[Minimisation avec contraintes pour la CI3]
+        Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
+        Alors les coefficients de la CIOE respectant cette CSU sont solutions du problème.
+
+        Trouver \(X^* \in \CC^5\) tel que
+        \begin{equation*}
+          X^* = \argmin{X\in \CSU[3]{CI3}}  J_Z(X).
+        \end{equation*}
+      \end{thm}
+
+      \begin{REM}[minimum]
+        Si tu n'as pas de résultats d'existence et unicité, je ne comprends pas ce théorème.
+      \end{REM}
+      \begin{REP}
+        Si l'ensemble des contraintes est convexes, alors il y a existences et unicité. Je n'ai pas sur le montrer pour CI1 et CI3
+      \end{REP}
 
   \subsection{Résultats numériques sans contraintes}
 
