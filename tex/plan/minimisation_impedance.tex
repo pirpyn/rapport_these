@@ -231,6 +231,11 @@
         \\
         - 2\norm{t}^2|\ps{t}{s}|^2 - 2 N_k|\ps{t^2}{s}|^2.
       \end{multline*}
+
+    \begin{REM}
+      Sois positif : "numériquement, nous avons toujours eu l'inversibilité, mais nous savons que cette dernière n'est pas inconditionnelle, ex 2 angles."...
+    \end{REM}
+
       \begin{REM}
         J'ai fais le cas \(N_k=2\).
         \begin{multline*}
@@ -289,6 +294,8 @@
         \end{align*}
 
         Si l'on peut prouver que les noyaux ne s'intersectent qu'en 0, alors la matrice totale est inversible.
+
+        En effet s'il existe \(\mA\),\(\mB\), et \(x\not=0\) tels que \(\mA x  + \mB x = 0 \), alors soit \(\mA\) est inversible et alors \(x=-\mA^{-1}\mB x\) donc \(\mB= - \mA\) donc \(\mB\) est inversible aussi ( et \(\mA+\mB\equiv 0\) ), soit \(\mA\) n'est pas inversible, donc \(\mA x= 0\), donc \( 0 + \mB x = 0 \), donc \(x\) appartient aussi au noyau de \(\mB\).
 
 
         On a alors les cas selon si \(|s_i|^2=2z_i^2\), c'est à dire si \(|\hat\mZ((k_x,k_y)_i)_{11} + \hat\mZ((k_x,k_y)_i)_{22}|^2 = 2 (|\hat\mZ((k_x,k_y)_i)_{11})|^2 + |\hat\mZ((k_x,k_y)_i)_{12})|^2 + |\hat\mZ((k_x,k_y)_i)_{21})|^2 + |\hat\mZ((k_x,k_y)_i)_{22})|^2)\).
@@ -369,7 +376,42 @@
         % \end{equation*}
 
       \end{REP}
+      \begin{REP}
+        Par les noyaux.
 
+        Pour alleger les notations, \(\mA((k_x,k_y)_i) = \mA_t\).
+
+        \begin{equation*}
+          {\mM}_{CI3} = \sum_{i=1}^{N_k}
+          \begin{bmatrix}
+          \ps{\mI}{\mI}_F         & \ps{\mI}{\mLD_i}_F       & \ps{\mI}{-\mLR_i}_F          & \ps{\mI}{-\mLD\hat\mZ_i}_F           & \ps{\mI}{\mLR\hat\mZ_i}_F
+          \\
+          \ps{\mI}{\mLD_i}_F      & \ps{\mLD_i}{\mLD_i}_F    & 0                            & \ps{\mLD}{-\mLD\hat\mZ_i}_F          & 0
+          \\
+          \ps{\mI}{-\mLR_i}_F     & 0                        & \ps{\mLR_i}{\mLR_i}_F        & 0                                    & \ps{-\mLR}{\mLR\hat\mZ_i}_F
+          \\
+          \ps{-\mLD\mZ_i}{\mI}_F  & \ps{-\mLD\mZ_i}{\mLD}_F  & 0                            & \ps{\mLD\hat\mZ_i}{\mLD\hat\mZ_i}_F  & 0
+          \\
+          \ps{\mLR\mZ_i}{\mI}_F   & 0                        & \ps{\mLR\hat\mZ_i}{\mLR}_F   & 0                                    & \ps{\mLR\hat\mZ_i}{\mLR\hat\mZ_i}_F
+          \end{bmatrix}.
+        \end{equation*}
+        
+        % Alors 
+        % \begin{multline*}
+        %   \det( {\mM}_{CI3}) =
+        % \end{multline*}
+
+        % A noter que si on pose
+
+        % \begin{align*}
+        %   m_{Di} &= \norm{\mLD\hat{\mZ}(k_{x},k_{y})_i}_F^2
+        % \end{align*}
+        % alors
+        % \begin{equation*}
+        %   \ps{l_D}{l_D} = \ps{1}{m_D}
+        % \end{equation*}
+
+      \end{REP}
   \subsection{Calcul des coefficients des CIOE par moindre carrés}
 
     \subsubsection[Expression de la fonction JZ]{Expression de la fonction \(J_Z\)}
