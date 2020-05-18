@@ -17,7 +17,6 @@
                 title={Remarque \theREM},%
                 colback=red!30!white,%
                 colframe=red!75!black,%
-                halign=flush center%
             ]
     }
     {
@@ -25,17 +24,16 @@
         %
     }%
 
-% \newcounter{REP}
+\newcounter{REP}
 \newenvironment{REP}[1][\theREM]
     {%
-        % \stepcounter{REP}
-        \hypertarget{REP#1}{}%
-        \pdfbookmark[1]{REP \theREM}{REP#1}%
+        \stepcounter{REP}
+        \hypertarget{REP\theREP}{}%
+        \pdfbookmark[1]{REP #1}{REP\theREP}%
         \begin{tcolorbox}[%
-                title={Réponse \theREM},%
+                title={Réponse #1},%
                 colback=green!30!white,%
                 colframe=green!35!black,%
-                halign=flush center%
             ]
     }
     {

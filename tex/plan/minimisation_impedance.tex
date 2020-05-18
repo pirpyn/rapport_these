@@ -212,7 +212,8 @@
       Nous pouvons néanmoins exprimer la matrice et le déterminant et l'inversibilité reste une perspective.
 
       Nous renvoyons aux définitions des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant.
-      Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\mI}{\hat{\mZ}(k_{x},k_{y})_i}_F\) et \(z\) le vecteur de \(\RR^{N_{k}}\) tel que \(z_i = \norm{\hat{\mZ}(k_{x},k_{y})_i}_F\). On a l'expression suivante de \({\mM_{CI1}}\)
+
+      Soient \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\mI}{\hat{\mZ}(k_{x},k_{y})_i}_F\) et \(z\) le vecteur de \(\RR^{N_{k}}\) tel que \(z_i = \norm{\hat{\mZ}(k_{x},k_{y})_i}_F\). On a l'expression suivante de \({\mM_{CI1}}\)
 
       \begin{equation*}
         {\mM}_{CI1} = \begin{bmatrix}
@@ -243,9 +244,20 @@
         Obtenue en utilisant \(2t_1 = t_1 + t_2 + t_1 - t_2\), \(2t_2 = t_1 + t_2 - (t_1 - t_2)\)
       \end{REM}
       \begin{REP}
-        EN COURS; BASE DAPRES LA CI3; IDEE METTRE Ti dans Si et Zi.
+        En effet tu montres que si \(t_1=t_2\), alors det = 0, mais on le sait pour Nk quelconque:
 
-        Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\mI}{t_i\hat{\mZ}(k_{x},k_{y})_i}_F\) et \(z\) le vecteur de \(\RR^{N_{k}}\) tel que \(z_i = \norm{t_i\hat{\mZ}(k_{x},k_{y})_i}_F\).
+        Supposons t et 1 colinéaires . donc la deuxième colonne est multiple de la première par la valeur d'une des composantes de t.
+        Donc il faut nécessairement aux moins 2 ti differents.
+        Intuition: au moins 3 pour la CI1
+      \end{REP}
+
+      \begin{REP}
+        Nouvelle idée, voir CI3.
+
+        On rappelle que  \(\hat\mL(k_x,k_y)=-(k_x^2+k_y^2)\mI\). On remarque que \(t_i = \ps{\mI}{\hat\mL}_F/\ps{\mI}{\mI}_F\).
+
+        Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\hat\mL(k_{x},k_{y})_i}{\hat{\mZ}(k_{x},k_{y})_i}_F\) et \(l\) le vecteur de \(\RR^{N_{k}}\) tel que \(l_i = \norm{\hat\mL(k_{x},k_{y})_i\hat{\mZ}(k_{x},k_{y})_i}_F\).
+        
         On a l'expression suivante de \({\mM_{CI1}}\)
 
         \begin{equation*}
@@ -254,15 +266,50 @@
           \\
           -2\ps{t}{1}       & 2\ps{t}{t}        & -\ps{t}{s}
           \\
-          \ps{1}{\conj{s}}  & -\ps{t}{\conj{s}} & \ps{z}{z}
+          \ps{1}{\conj{s}}  & -\ps{t}{\conj{s}} & \ps{l}{l}
           \end{bmatrix}.
         \end{equation*}
-      
-        Alors 
-        \begin{multline*}
-          \det( {\mM}_{CI1}) = 
-        \end{multline*}
+        Finalement pas mieux.
+
       \end{REP}
+
+      \begin{REP}
+        Nouveau: Passons par les noyaux. 
+
+        La matrice M est une somme de matrices de det = 0:
+        \begin{align*}
+          \mM_{CI1} = \sum_{i=1}^{N_k}
+          \begin{bmatrix}
+          2  & -2t_i & t_is_i
+          \\
+          -2t_i & 2t_i^2 & - t_i^2 s_i
+          \\
+          t_i\conj{s_i} & -t_i^2 \conj{s_i} & t_i^2 z_i^2 
+          \end{bmatrix}.
+        \end{align*}
+
+        Si l'on peut prouver que les noyaux ne s'intersectent qu'en 0, alors la matrice totale est inversible.
+
+
+        On a alors les cas selon si \(|s_i|^2=2z_i^2\), c'est à dire si \(|\hat\mZ((k_x,k_y)_i)_{11} + \hat\mZ((k_x,k_y)_i)_{22}|^2 = 2 (|\hat\mZ((k_x,k_y)_i)_{11})|^2 + |\hat\mZ((k_x,k_y)_i)_{12})|^2 + |\hat\mZ((k_x,k_y)_i)_{21})|^2 + |\hat\mZ((k_x,k_y)_i)_{22})|^2)\).
+
+        \begin{enumerate}
+          \item \(|s_i|^2\not=2z_i^2 \)
+
+          Le noyau est de dim 1 de vecteur \((-t_i,1,0)\) alors il faut que le nombre de \(t_i\) différents soit supérieur à la dimension de la matrice donc 3.
+          \item \(|s_i|^2=2z_i^2 \)
+
+          Cela arrive si \(\hat\mZ((k_x,k_y)_i)\) est multiple de l'identité, par exemple \((k_x,k_y)=(0,0)\) car \(\hat\mZ(0,0)=i\eta_r\tan(kd)\mI\).
+
+          Le noyau est de dimension 2, \((-t_i,1,0)\),\((1/2t_i\conj{s_i},0,1)\). 
+
+          En cours ...
+
+        \end{enumerate}
+
+
+      \end{REP}
+
     \subsubsection{Pour la CI3}
 
       Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et toute incidence.
@@ -271,7 +318,7 @@
       \end{REM}
       \begin{REP}
         Je n'ai pas trouvé des cas où elle n'est pas inversible et cela n'est pas vérifié fait dans le code mais serait possible.
-        Le nombre de couches importe peu : cela n'influe que sur l'expression de \(Z_{ex}\), qui est déjà assez complexe avec une.
+        Le nombre de couches importe peu : cela n'influe que sur l'expression de \(Z_{ex}\), qui est déjà assez complexe pour une seule couche.
         Le nombre d'incidences a plus d'impact je pense, mais je pense qu'il faut en prendre au moins 3 (intuition).
         C'est une calcul que j'ai tenté plusieurs fois durant ces 3 ans, sans succès.
       \end{REP}
@@ -280,36 +327,47 @@
         Nous pouvons néanmoins exprimer la matrice \(\mM_{CI3}\) et son déterminant et l'inversibilité reste une perspective.
 
         Nous renvoyons aux définitions des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant.
-        Soit \(s_D,s_R\) les vecteurs de \(\CC^{N_{k}}\) et \(z_D,z_R\) les vecteurs de \(\RR_+^{N_{k}}\) tels que
+        Soient \(s_D,s_R\) les vecteurs de \(\CC^{N_{k}}\) et \(l_D,l_R\) les vecteurs de \(\RR_+^{N_{k}}\) tels que
         \begin{align*}
-          s_{Di} &= \ps{\mLD}{\hat{\mZ}(k_{x},k_{y})_i}_F
+          s_{Di} &= \ps{\mLD(k_{x},k_{y})_i}{\hat{\mZ}(k_{x},k_{y})_i}_F,
           \\
-          s_{Ri} &= \ps{\mLR}{\hat{\mZ}(k_{x},k_{y})_i}_F
+          s_{Ri} &= \ps{\mLR(k_{x},k_{y})_i}{\hat{\mZ}(k_{x},k_{y})_i}_F,
           \\
-          z_{Di} &= \norm{\mLD\hat{\mZ}(k_{x},k_{y})_i}_F
+          l_{Di} &= \norm{\mLD(k_{x},k_{y})_i\hat{\mZ}(k_{x},k_{y})_i}_F,
           \\
-          z_{Ri} &= \norm{\mLR\hat{\mZ}(k_{x},k_{y})_i}_F
+          l_{Ri} &= \norm{\mLR(k_{x},k_{y})_i\hat{\mZ}(k_{x},k_{y})_i}_F.
         \end{align*}
         On a l'expression suivante de \({\mM_{CI3}}\)
 
         \begin{equation*}
           {\mM}_{CI3} = \begin{bmatrix}
-          2\ps{1}{1}          & -\ps{t}{1}          & -\ps{t}{1}           & -\ps{1}{s_D} & \ps{1}{s_R}
+          2\ps{1}{1}          & -\ps{t}{1}          & -\ps{t}{1}           & -\ps{1}{s_D}   & \ps{1}{s_R}
           \\
-          -\ps{t}{1}          & \ps{t}{t}           & 0                    & \ps{t}{s_D}  & 0
+          -\ps{t}{1}          & \ps{t}{t}           & 0                    & \ps{t}{s_D}    & 0
           \\
-          -\ps{t}{1}          & 0                   & \ps{t}{t}            & 0            & - \ps{t}{s_R}
+          -\ps{t}{1}          & 0                   & \ps{t}{t}            & 0              & - \ps{t}{s_R}
           \\
-          -\ps{1}{\conj{s_D}} & \ps{t}{\conj{s_D}}  & 0                    & \ps{z_D}{z_D} & 
+          -\ps{1}{\conj{s_D}} & \ps{t}{\conj{s_D}}  & 0                    & \ps{l_D}{l_D}  & 0
           \\
-          \ps{1}{\conj{s_R}}  & 0                   & -\ps{t}{\conj{s_R}}  &             & \ps{z_R}{z_R}
+          \ps{1}{\conj{s_R}}  & 0                   & -\ps{t}{\conj{s_R}}  & 0              & \ps{l_R}{l_R}
           \end{bmatrix}.
         \end{equation*}
         
-        Alors 
-        \begin{multline*}
-          \det( {\mM}_{CI3}) =
-        \end{multline*}
+        % Alors 
+        % \begin{multline*}
+        %   \det( {\mM}_{CI3}) =
+        % \end{multline*}
+
+        % A noter que si on pose
+
+        % \begin{align*}
+        %   m_{Di} &= \norm{\mLD\hat{\mZ}(k_{x},k_{y})_i}_F^2
+        % \end{align*}
+        % alors
+        % \begin{equation*}
+        %   \ps{l_D}{l_D} = \ps{1}{m_D}
+        % \end{equation*}
+
       \end{REP}
 
   \subsection{Calcul des coefficients des CIOE par moindre carrés}
