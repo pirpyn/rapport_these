@@ -153,14 +153,17 @@
     On définit le sous-espace fermé de \(\CC^3\)
     \begin{equation*}
       \CSU{CI4} = \left\lbrace 
-      (a_0,a_1,a_2) \in \CC^3,
-      \begin{matrix}
-      \Re(a_0) \ge 0
+      \begin{aligned}
+      &(a_0,a_1,a_2) \in \CC^3,
       \\
-      \Re(a_1) \le 0
-      \\
-      \Re(a_2) \le 0
-      \end{matrix}
+      & \begin{aligned}
+        \Re(a_0) &\ge 0,
+        \\
+        \Re(a_1) &\le 0,
+        \\
+        \Re(a_2) &\le 0,
+        \end{aligned}
+      \end{aligned}
       \right\rbrace.
     \end{equation*}
   \end{defn}
@@ -171,7 +174,7 @@
     \begin{equation*}
       (a_0,a_1,a_2) \in \CSU{CI4} \Rightarrow \Re(X)\ge 0,
     \end{equation*}
-    ce qui entraîne l'unicité de la solution du problème de Maxwell extérieur avec CI4.
+    ce qui entraîne l'unicité de la solution du problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}\}.
   \end{prop}
   \begin{REM}
     (\eqref{eq:unicite:probleme_sans_ci}, CI4) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}).
@@ -189,12 +192,14 @@
   \begin{align}
     \CSU{CI4}\cap S &= (\CSU{CI01}\times\CC)\cap S. 
   \end{align}
-  Pour des fonctions infiniment régulières, la CIOE CI4 avec \(a_1=a_2\) est équivalente à la CI01 et on a égalité des CSU correspondantes.
+  Dans le cas \(a_1=a_2\), (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci01}) et (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}) sont le même problème, et les CSU correspondantes sont les mêmes.
   \begin{REM}
     Mal exprimé.
     Dans le cas \(a_1=a_2\), (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci01}) et (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}) sont le même problème, et les CSU correspondantes sont les mêmes.
   \end{REM}
-
+  \begin{REP}
+    Fait
+  \end{REP}
 \subsection{CSU pour la CI3}
 
   Soit la CIOE énoncée dans \cite{marceaux_high-order_2000} que l'on nomme \hyperlink{ci3}{CI3} :
@@ -211,121 +216,61 @@
   \end{align*}
 
   \begin{defn}
-    \label{def:csu:ci3-1}
+    \label{def:csu:ci3-0}
 
     On définit le sous-espace de \(\CC^5\)
 
-
-    \begin{minipage}{0.6\textwidth}
     \begin{equation*}
-      \CSU[1]{CI3} = \left\lbrace 
+      \CSU[0]{CI3} = \left\lbrace 
       \begin{aligned}
       &(a_0,a_1,a_2,b_1,b_2) \in \CC^5,
       \\
-      &\Delta_1 \not = 0
-      \\
-      &\Delta_2 \not = 0
-      \\
-      &\Re\left(a_0\conj{a_1}\Delta_1\right) \ge 0
-      \\
-      &\Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0
-      \\
-      &\Re\left(\conj{a_0}a_2\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_2}a_1}{\Delta_1} \right)\le 0
-      \\
-      &\Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right) \ge 0
-      \\
-      &\Re\left(a_0\conj{a_2}\Delta_2\right) \ge 0
-      \\
-      &\Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0
-      \\
-      &\Re\left(\conj{a_0}a_1\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_1}a_2}{\Delta_2} \right)\le 0
-      \\
-      &\Re\left(2\Re(b_1)\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}^2}{\Delta_1}\right) \ge 0
-      \\
-      &\Re\left(\Delta_1\right) = 0
-      \\
-      &\Re\left(\Delta_2\right) = 0
-      \\
-      &\Re\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}}{\Delta_1}\right) = 0
+      &\begin{aligned}
+        &\Delta_1 &\not = 0,
+        \\
+        &\Delta_2 &\not = 0,
+        \\
+        &\Re\left(a_0\conj{a_1}\Delta_1\right) &\ge 0,
+        \\
+        &\Re\left(\frac{\conj{b_1}}{\Delta_1}\right) &\le 0,
+        \\
+        &\Re\left(\conj{a_0}a_2\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_2}a_1}{\Delta_1} \right)&\le 0,
+        \\
+        &\Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right) &\ge 0,
+        \\
+        &\Re\left(a_0\conj{a_2}\Delta_2\right) &\ge 0,
+        \\
+        &\Re\left(\frac{\conj{b_2}}{\Delta_2}\right) &\le 0,
+        \\
+        &\Re\left(\conj{a_0}a_1\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right) + \frac{\conj{a_1}a_2}{\Delta_2} \right)&\le 0,
+        \\
+        &\Re\left(2\Re(b_1)\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}^2}{\Delta_1}\right) &\ge 0,
+        \\
+        &\Re\left(\Delta_1\right) &= 0,
+        \\
+        &\Re\left(\Delta_2\right) &= 0,
+        \\
+        &\Re\left(\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}}{\Delta_1}\right) &= 0,
+        \end{aligned}
       \end{aligned}
       \right\rbrace.
     \end{equation*}
-    \end{minipage}
-    \begin{minipage}{0.39\textwidth}
-    \begin{REM}
-    Utilise \(\Re(\Delta_i) = 0\)
-    \begin{equation*}
-    \left\lbrace 
-      \begin{aligned}
-      &(a_0,a_1,a_2,b_1,b_2) \in \CC^5,
-      \\
-      &...
-      \\
-      &...
-      \\
-      &\Im(a_0\conj{a_1})\Im(\Delta_1) \le 0
-      \\
-      &\Im(b_1)\Im(\Delta_1) \ge 0
-      \\
-      &...
-      \\
-      & 0
-      \\
-      &\Im(a_0\conj{a_2})\Im(\Delta_2) \le 0
-      \\
-      &\Im(b_2)\Im(\Delta_2) \ge 0
-      \\
-      &...
-      \\
-      & 0
-      \\
-      &...
-      \\
-      &...
-      \\
-      &\frac{\Im(b_2)}{\Im(\Delta_2)}=\frac{\Im(b_1)}{\Im(\Delta_1)}
-      \end{aligned}
-      \right\rbrace 
-    \end{equation*}
-    \end{REM}
-    \end{minipage}
-    \begin{REP}
-      Je ne suis pas d'accord pour celles qui se réduiraient à 0.
-      \begin{align*}
-        \Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right)
-        &=
-        \Re\left((b_2+\conj{b_2})\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right)
-        \\
-        &=
-        \Re\left(b_2\frac{\conj{b_1}}{\Delta_1}+\conj{b_2}\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right)\right)
-        \\
-        &=
-        \frac{\Im(b_2\conj{b_1})}{\Im(\Delta_1)} + \Im(b_2)\Im\left(\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}}{\Delta_2}\right)
-        \\
-        &=
-        \frac{\Im(b_2\conj{b_1})}{\Im(\Delta_1)} - \Im(b_2)\Im\left(\frac{\conj{b_1}\Im(\Delta_1)}{|\Delta_1|^2}-\frac{\conj{b_2}\Im(\Delta_2)}{|\Delta_2|^2}\right)
-        \\
-        &=
-        \frac{\Im(b_2\conj{b_1})}{\Im(\Delta_1)} - \frac{\Im(b_2)}{|\Delta_1|^2|\Delta_2|^2}\left(\Im(\conj{b_1})\Im(\Delta_1)|\Delta_2|^2-\Im(\conj{b_2})\Im(\Delta_2)|\Delta_1|^2\right)
-        \\
-        &=
-        \frac{\Im(b_2\conj{b_1})}{\Im(\Delta_1)} - \frac{\Im(b_2)}{\Im(\Delta_1)\Im(\Delta_2)}\left(\Im(\conj{b_1})\Im(\Delta_2)-\Im(\conj{b_2})\Im(\Delta_1)\right)
-      \end{align*}
-      Je ne vois pas de simplifications
-    \end{REP}
   \end{defn}
   
  \begin{prop}[Une première CSU pour la CI3]
-    \label{prop:csu:ci3-1}
+    \label{prop:csu:ci3-0}
     On a 
     \begin{equation*}
-      (a_0,a_1,a_2,b_1,b_2) \in \CSU[1]{CI3} \Rightarrow \Re(X)\ge 0,
+      (a_0,a_1,a_2,b_1,b_2) \in \CSU[0]{CI3} \Rightarrow \Re(X)\ge 0,
     \end{equation*}
-    ce qui entraîne l'unicité de la solution du problème de Maxwell extérieur avec CI3.
+    ce qui entraîne l'unicité de la solution du problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci3:ci3}\}.
   \end{prop}
   \begin{REM}
     (\eqref{eq:unicite:probleme_sans_ci}, CI3) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci3:ci3}).
   \end{REM}
+  \begin{REP}
+    Fait
+  \end{REP}
   \begin{proof}
     Soit \(\LL_3\) l'opérateur
     \begin{equation}
@@ -337,7 +282,7 @@
     On utilise l'identité \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot \vJ \dd{\Gamma}(\vx) = 0\) qui découle de la CI3, et dont on déduit
     \begin{REM}
     Là où ça devient plus compliqué, tu pourrais dire:
-    De la CL, on déduit par produit scalaire \(L^2\) avec un certains nombre de vecteurs bien  choisis, des égalités qui sont nécessairement vérifiées. On fait cependant remarquer que ces égalités ne  permettent  pas de revenir  à la CL.
+    De la CL, on déduit par produit scalaire \(L^2\) avec un certain nombre de vecteurs bien choisis, des égalités qui sont nécessairement vérifiées. On fait cependant remarquer que ces égalités ne  permettent  pas de revenir  à la CL.
     \end{REM}
     \begin{multline}
       \label{eq:unicite:ci3:csu3-1}
@@ -359,7 +304,7 @@
     On utilise \(\int_\Gamma {\LL_3(\vE_t,\vJ)}\cdot\LR\conj{\vE_t}\dd{\Gamma}(\vx)=0\),
     \begin{equation}
       \label{eq:unicite:ci3:csu3-4}
-      \norm{ \vrots \vE_t }^2   - \conj{b_2} \norm{ \LR \vE_t}^2 
+      \norm{ \vrots \vE_t }^2   - {b_2} \norm{ \LR \vE_t}^2 
       = a_0 \int_\Gamma \conj{\vE_t} \cdot \LR \vJ \dd{\Gamma}(\vx) - a_2 \int_\Gamma \LR \conj{\vE_t} \cdot \LR \vJ \dd{\Gamma}(\vx).
     \end{equation}
     On utilise \(\int_\Gamma \conj{\LL_3(\vE_t,\vJ)}\cdot\LD\vJ\dd{\Gamma}(\vx)=0\),
@@ -371,7 +316,7 @@
     On utilise \(\int_\Gamma {\LL_3(\vE_t,\vJ)}\cdot\LD\conj{\vE_t}\dd{\Gamma}(\vx)=0\),
     \begin{equation}
       \label{eq:unicite:ci3:csu3-6}
-      -\norm{ \vdivs \vE_t }^2   + \conj{b_1} \norm{ \LD \vE_t}^2
+      -\norm{ \vdivs \vE_t }^2   + {b_1} \norm{ \LD \vE_t}^2
       = a_0 \int_\Gamma \conj{\vE_t} \cdot \LD \vJ\dd{\Gamma}(\vx)  + a_1 \int_\Gamma \LD \conj{\vE_t} \cdot \LD \vJ \dd{\Gamma}(\vx).
     \end{equation}
 
@@ -413,7 +358,7 @@
         \\
         \conj{a_0} \norm{\vrots \vJ}^2 - \conj{a_2} \norm{\LR \vJ}^2
         \\
-        \norm{\vrots \vE_t}^2 - \conj{b_2} \norm{\LR \vE_t}^2
+        \norm{\vrots \vE_t}^2 - {b_2} \norm{\LR \vE_t}^2
       \end{bmatrix},
     \end{align*}
     
@@ -448,24 +393,24 @@
         \\
         -\conj{a_0} \norm{\vdivs \vJ}^2ds + \conj{a_1} \norm{\LR \vJ}^2
         \\
-        -\norm{\vdivs \vE_t}^2   + \conj{b_1} \norm{\LR \vE_t}^2 
+        -\norm{\vdivs \vE_t}^2   + {b_1} \norm{\LR \vE_t}^2 
       \end{bmatrix}.
     \end{align*}
 
     Le déterminant de ces matrices triangulaires par blocs est \(\Delta_1\Delta_2\). Dans le cas où
-    \begin{equation*}
+    \begin{equation}
       \label{eq:unicite:ci3:csu3-cn-det}
       \Delta_1\Delta_2 \not = 0,
-    \end{equation*}
+    \end{equation}
     elles sont inversibles et on a alors leurs inverses
-    \begin{REM}
-      Verification Mathematica ?
-    \end{REM}
-    \begin{REP}
-    \(\mM_R^{-1}\) \href{https://www.wolframalpha.com/input/?i=Simplify%5B%28a1-a0*Conjugate%5Bb1%5D%29*%28a2-a0*Conjugate%5Bb2%5D%29*Inverse+%7B++%7B1%2C+Conjugate%5Bb1%5D%2C+-Conjugate%5Bb2%5D%2C+0%7D%2C++%7Ba0%2C+a1%2C+-a2%2C+0%7D%2C++%7B0%2C+0%2C+1%2C+-Conjugate%5Bb2%5D%7D%2C++%7B0%2C+0%2C+a0%2C+-a2%7D++%7D%5D}{lien web}.
+    % \begin{REM}
+    %   Verification Mathematica ?
+    % \end{REM}
+    % \begin{REP}
+    % \(\mM_R^{-1}\) \href{https://www.wolframalpha.com/input/?i=Simplify%5B%28a1-a0*Conjugate%5Bb1%5D%29*%28a2-a0*Conjugate%5Bb2%5D%29*Inverse+%7B++%7B1%2C+Conjugate%5Bb1%5D%2C+-Conjugate%5Bb2%5D%2C+0%7D%2C++%7Ba0%2C+a1%2C+-a2%2C+0%7D%2C++%7B0%2C+0%2C+1%2C+-Conjugate%5Bb2%5D%7D%2C++%7B0%2C+0%2C+a0%2C+-a2%7D++%7D%5D}{lien web}.
 
-    \(\mM_D^{-1}\) \href{https://www.wolframalpha.com/input/?i=Simplify%5B%28a1-a0*Conjugate%5Bb1%5D%29*%28a2-a0*Conjugate%5Bb2%5D%29*Inverse+%7B++%7B1%2C-Conjugate%5Bb2%5D%2C+Conjugate%5Bb1%5D%2C+0%7D%2C++%7Ba0%2C+-a2%2C+a1%2C+0%7D%2C++%7B0%2C+0%2C+1%2C+Conjugate%5Bb1%5D%7D%2C++%7B0%2C+0%2C+a0%2C+a1%7D++%7D%5D}{lien web}
-    \end{REP}
+    % \(\mM_D^{-1}\) \href{https://www.wolframalpha.com/input/?i=Simplify%5B%28a1-a0*Conjugate%5Bb1%5D%29*%28a2-a0*Conjugate%5Bb2%5D%29*Inverse+%7B++%7B1%2C-Conjugate%5Bb2%5D%2C+Conjugate%5Bb1%5D%2C+0%7D%2C++%7Ba0%2C+-a2%2C+a1%2C+0%7D%2C++%7B0%2C+0%2C+1%2C+Conjugate%5Bb1%5D%7D%2C++%7B0%2C+0%2C+a0%2C+a1%7D++%7D%5D}{lien web}
+    % \end{REP}
     \begin{align*}
       \mM_R^{-1} & =\frac{1}{\Delta_1\Delta_2}
       \begin{bmatrix}
@@ -520,25 +465,37 @@
         \\
         -\conj{b_2}\frac{(a_1\conj{b_2}-a_2\conj{b_1})}{\Delta_1\Delta_2}
         \left(
-          \norm{\vrots \vE_t}^2 - \conj{b_2} \norm{\LR \vE_t}^2
+          \norm{\vrots \vE_t}^2 - {b_2} \norm{\LR \vE_t}^2
         \right).
       \end{multline*}
       
       Les conditions suivantes garantissent que \(\Re(X)\ge 0\).
       \begin{align}
-        \label{eq:unicite:ci3:csu3d-j2}&\Re\left(a_0\conj{a_1}\Delta_1\right) \ge 0, \\
-        \label{eq:unicite:ci3:csu3d-e2}&\Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0, \\
-        \label{eq:unicite:ci3:csu3d-jrj}&\Re\left(\conj{a_0}a_2\Theta + \frac{\conj{a_2}a_1}{\Delta_1} \right)\le 0,\\
-        \label{eq:unicite:ci3:csu3d-ere}&\Re\left(2\Re(b_2)\frac{\conj{b_1}}{\Delta_1}-\frac{\conj{b_2}^2}{\Delta_2}\right) \ge 0,\\
-        \label{eq:unicite:ci3:csu3d-jdj}&\Re\left(|a_1|^2\Delta_1\right) \le 0, \\
-        \label{eq:unicite:ci3:csu3d-ede}&\Re\left(|b_1|^2\Delta_1\right) \ge 0, \\
-        \label{eq:unicite:ci3:csu3d-dj2}&\Re\left(|a_2|^2\Theta\right)\ge 0,\\
-        \label{eq:unicite:ci3:csu3d-de2}&\Re\left(|b_2|^2\Theta\right)\le 0,
+        \label{eq:unicite:ci3:csu3d-j2}&\Re\left(\frac{\conj{a_0}{a_1}}{\Delta_1}\right) \ge 0,
+        \\
+        \label{eq:unicite:ci3:csu3d-e2}&\Re\left(\frac{\conj{b_1}}{\Delta_1}\right) \le 0,
+        \\
+        \label{eq:unicite:ci3:csu3d-jrj}&\Re\left(\conj{a_0}a_2\Theta + \frac{\conj{a_2}a_1}{\Delta_1} \right)\le 0,
+        \\
+        \label{eq:unicite:ci3:csu3d-ere}&\Re\left(\conj{b_2}\Theta + \frac{\conj{b_1}b_2}{\Delta_1}\right) \ge 0,
+        \\
+        \label{eq:unicite:ci3:csu3d-jdj}&\Re\left(|a_1|^2\Delta_1\right) \le 0,
+        \\
+        \label{eq:unicite:ci3:csu3d-ede}&\Re\left(|b_1|^2\Delta_1\right) \ge 0,
+        \\
+        \label{eq:unicite:ci3:csu3d-dj2}&\Re\left(|a_2|^2\Theta\right)\ge 0,
+        \\
+        \label{eq:unicite:ci3:csu3d-de2}&\Re\left(|b_2|^2\Theta\right)\le 0.
       \end{align}
-      \eqref{eq:unicite:ci3:csu3d-jdj} et \eqref{eq:unicite:ci3:csu3d-ede} impliquent :
+      L'on remarque \eqref{eq:unicite:ci3:csu3d-jdj} \& \eqref{eq:unicite:ci3:csu3d-ede} impliquent
       \begin{equation}
         \label{eq:unicite:ci3:csu3d-jde}
         \Re\left(\Delta_1\right) = 0,
+      \end{equation}
+      et \eqref{eq:unicite:ci3:csu3r-rj2} \& \eqref{eq:unicite:ci3:csu3r-re2} impliquent
+      \begin{equation}
+        \label{eq:unicite:ci3:csu3-rje2}
+        \Re\left(\Theta\right) = 0.
       \end{equation}
     % \end{minipage}
 
@@ -548,7 +505,9 @@
       \begin{multline*}
         X =
         \frac{a_2}{\Delta_2}
+        \left(
         \conj{a_0} \norm{\vJ}^2 - \conj{a_1} \norm{\vdivs \vJ}^2 - \conj{a_2} \norm{\vrots \vJ}^2 
+        \right)
         \\
         -\frac{\conj{b_2}}{\Delta_2}
         \left(
@@ -557,46 +516,166 @@
         \\
         + a_1\frac{(a_1\conj{b_2}-a_2\conj{b_1})}{\Delta_1\Delta_2}
         \left(
-        -\conj{a_0} \norm{\vdivs \vJ}^2ds + \conj{a_1} \norm{\LR \vJ}^2
+        -\conj{a_0} \norm{\vdivs \vJ}^2 + \conj{a_1} \norm{\LR \vJ}^2
         \right)
         \\
         -\conj{b_1}\frac{(a_1\conj{b_2}-a_2\conj{b_1})}{\Delta_1\Delta_2}
         \left(
-        -\norm{\vdivs \vE_t}^2   + \conj{b_1} \norm{\LR \vE_t}^2
+        -\norm{\vdivs \vE_t}^2   + {b_1} \norm{\LR \vE_t}^2
         \right).
       \end{multline*}
  
       Les conditions suivantes garantissent que \(\Re(X)\ge 0\).
 
       \begin{align}
-        \label{eq:unicite:ci3:csu3r-j2}&\Re\left(a_0\conj{a_2}\Delta_2\right) \ge 0, \\
-        \label{eq:unicite:ci3:csu3r-e2}&\Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0, \\
-        \label{eq:unicite:ci3:csu3r-jdj}&\Re\left(\conj{a_0}a_1\Theta + \frac{\conj{a_1}a_2}{\Delta_2} \right)\le 0,\\
-        \label{eq:unicite:ci3:csu3r-ede}&\Re\left(2\Re(b_1)\frac{\conj{b_2}}{\Delta_2}-\frac{\conj{b_1}^2}{\Delta_1}\right) \ge 0,\\
-        \label{eq:unicite:ci3:csu3r-jrj}&\Re\left(|a_2|^2\Delta_2\right) \le 0, \\
-        \label{eq:unicite:ci3:csu3r-ere}&\Re\left(|b_2|^2\Delta_2\right) \ge 0, \\
-        \label{eq:unicite:ci3:csu3r-rj2}&\Re\left(|a_1|^2\Theta\right)\ge 0,\\
+        \label{eq:unicite:ci3:csu3r-j2}&\Re\left(\frac{\conj{a_0}{a_2}}{\Delta_2}\right) \ge 0,
+        \\
+        \label{eq:unicite:ci3:csu3r-e2}&\Re\left(\frac{\conj{b_2}}{\Delta_2}\right) \le 0,
+        \\
+        \label{eq:unicite:ci3:csu3r-jdj}&\Re\left(\conj{a_0}a_1\Theta - \frac{\conj{a_1}a_2}{\Delta_2} \right)\le 0,
+        \\
+        \label{eq:unicite:ci3:csu3r-ede}&\Re\left(-\conj{b_1}\Theta + \frac{\conj{b_2}b_1}{\Delta_2} \right) \ge 0,
+        \\
+        \label{eq:unicite:ci3:csu3r-jrj}&\Re\left(|a_2|^2\Delta_2\right) \le 0,
+        \\
+        \label{eq:unicite:ci3:csu3r-ere}&\Re\left(|b_2|^2\Delta_2\right) \ge 0,
+        \\
+        \label{eq:unicite:ci3:csu3r-rj2}&\Re\left(|a_1|^2\Theta\right)\ge 0,
+        \\
         \label{eq:unicite:ci3:csu3r-re2}&\Re\left(|b_1|^2\Theta\right)\le 0,
       \end{align}
-      \eqref{eq:unicite:ci3:csu3r-jrj} et \eqref{eq:unicite:ci3:csu3r-ere} impliquent :
+      L'on remarque \eqref{eq:unicite:ci3:csu3r-jrj} \& \eqref{eq:unicite:ci3:csu3r-ere} impliquent
       \begin{equation}
         \label{eq:unicite:ci3:csu3r-jre}
         \Re\left(\Delta_2\right) = 0,
       \end{equation}
+      et \eqref{eq:unicite:ci3:csu3d-dj2} \& \eqref{eq:unicite:ci3:csu3d-de2} impliquent
+      \begin{equation}
+        \label{eq:unicite:ci3:csu3-dje2}
+        \Re\left(\Theta\right) = 0.
+      \end{equation}
     % \end{minipage}
 
-    Enfin \eqref{eq:unicite:ci3:csu3r-rj2} \& \eqref{eq:unicite:ci3:csu3r-re2} et \eqref{eq:unicite:ci3:csu3d-dj2} \& \eqref{eq:unicite:ci3:csu3d-de2} impliquent
-    \begin{equation}
-      \label{eq:unicite:ci3:csu3-rdje2}
-      \Re\left(\Theta\right) = 0.
-    \end{equation}
     Pour conclure, on remarque que l'on peut utiliser 3 CSU
     \begin{itemize}
-      \item les conditions \eqref{eq:unicite:ci3:csu3r-j2} à \eqref{eq:unicite:ci3:csu3r-ede}, \eqref{eq:unicite:ci3:csu3r-jre} et \eqref{eq:unicite:ci3:csu3-rdje2},
-      \item les conditions \eqref{eq:unicite:ci3:csu3d-j2} à \eqref{eq:unicite:ci3:csu3d-ere}, \eqref{eq:unicite:ci3:csu3d-jde} et \eqref{eq:unicite:ci3:csu3-rdje2}, 
-      \item l'union de ces deux ensembles, qui est la CSU de la proposition.
+      \item les relations \eqref{eq:unicite:ci3:csu3-cn-det}, \eqref{eq:unicite:ci3:csu3d-j2} à \eqref{eq:unicite:ci3:csu3d-ere}, \eqref{eq:unicite:ci3:csu3d-jde}, \eqref{eq:unicite:ci3:csu3-dje2}
+      \item les relations \eqref{eq:unicite:ci3:csu3-cn-det}, \eqref{eq:unicite:ci3:csu3r-j2} à \eqref{eq:unicite:ci3:csu3r-ede}, \eqref{eq:unicite:ci3:csu3r-jre}, \eqref{eq:unicite:ci3:csu3-rje2}
+      \item l'union de ces deux ensembles qui est la CSU de la proposition.
     \end{itemize}
-  \end{proof}
+
+    \end{proof}
+  \begin{defn}
+    \label{def:csu:ci3-0}
+
+    On définit le sous-espace de \(\CC^5\)
+
+    \begin{equation*}
+      \CSU[1]{CI3} = \left\lbrace 
+      \begin{aligned}
+      &(a_0,a_1,a_2,b_1,b_2) \in \CC^5,
+      \\
+      &\begin{aligned}
+        &\Delta_1 & \not= 0,
+        \\
+        &\Delta_2 & \not= 0,
+        \\
+        &\Re\left(a_0\conj{a_1}\Delta_1\right) &\ge 0,
+        \\
+        &\Re\left(a_0\conj{a_2}\Delta_2\right) &\ge 0,
+        \\
+        &\Re(\Delta_1) &= 0,
+        \\
+        &\Re(\Delta_2) &= 0,
+        \\
+        &\Im(b_1)\Im(\Delta_2) - \Im(b_2)\Im(\Delta_1) &= 0,
+        \\
+        &\Re(b_1\Delta_1) &\le 0.
+        \end{aligned}
+      \end{aligned}
+      \right\rbrace.
+    \end{equation*}
+  \end{defn}
+  
+ \begin{prop}[CSU de Lafitte : réduction du nombre de relations dans la CSU précédente]
+    \label{prop:csu:ci3-1}
+    On a 
+    \begin{equation*}
+      (a_0,a_1,a_2,b_1,b_2) \in \CSU[1]{CI3} \Rightarrow \Re(X)\ge 0,
+    \end{equation*}
+    ce qui entraîne l'unicité de la solution du problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci3:ci3}\}.
+  \end{prop}
+  \begin{REM}
+    (\eqref{eq:unicite:probleme_sans_ci}, CI3) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci3:ci3}).
+  \end{REM}
+  \begin{REP}
+    Fait
+  \end{REP}
+  \begin{proof}
+    Utilisant cette dernière CSU, O.~Lafitte a éliminé les redondances et a obtenu une forme plus compacte.
+    \begin{align}
+    \label{eq:unicite:ci3:csu3rd-D1}\Re(\Delta_1) &= 0 & &\Leftrightarrow & \Re(a_1) - \Re(a_0\conj{b_1}) &= 0,
+    \\
+    \label{eq:unicite:ci3:csu3rd-D2}\Re(\Delta_2) &= 0 & &\Leftrightarrow & \Re(a_2) - \Re(a_0\conj{b_2}) &= 0,
+    \\
+    \label{eq:unicite:ci3:csu3rd-T}\Re(\Theta) &= 0 & &\Leftrightarrow & \Im(b_1)\Im(\Delta_2) - \Im(b_2)\Im(\Delta_1) &= 0.
+    \intertext{Les conditions \eqref{eq:unicite:ci3:csu3d-e2} et \eqref{eq:unicite:ci3:csu3r-e2} sont alors redondantes et deviennent}
+    \label{eq:unicite:ci3:csu3rd-bD} \Im(b_1)\Im(\Delta_1) &\ge 0 & &\Leftrightarrow & \Im(b_2)\Im(\Delta_2) &\ge 0.
+    \end{align}
+    Utilisant \eqref{eq:unicite:ci3:csu3rd-T}, l'inégalité \eqref{eq:unicite:ci3:csu3d-ere} se simplifie trivialement car
+    \begin{align*}
+      \conj{b_2}\Theta + \frac{\conj{b_1}b_2}{\Delta_1} & = \conj{b_2}\Theta + \frac{\conj{b_1}b_2}{\Delta_1} + \frac{\conj{b_2}b_2}{\Delta_2} - \frac{\conj{b_2}b_2}{\Delta_2},
+      \\
+      &=\left(\conj{b_2} + b_2\right)\Theta + \frac{b_2\conj{b_2}}{\Delta_2},
+      \\
+      &=2\Re(b_2)\Theta + \frac{|b_2|^2}{\Delta_2},
+    \end{align*}
+    et ce dernier est imaginaire pur d'après \eqref{eq:unicite:ci3:csu3rd-D2} \& \eqref{eq:unicite:ci3:csu3rd-T}.
+    De même, pour l'inégalité \eqref{eq:unicite:ci3:csu3r-ede}.
+    % \begin{align*}
+    %   -\conj{b_1}\Theta + \frac{\conj{b_2}b_1}{\Delta_2} & = -\conj{b_1}\Theta + \frac{\conj{b_2}b_1}{\Delta_2} - \frac{\conj{b_1}b_1}{\Delta_1} + \frac{\conj{b_1}b_1}{\Delta_1},
+    %   \\
+    %   &=-\left(\conj{b_1} + b_1\right)\Theta + \frac{b_1\conj{b_1}}{\Delta_1},
+    %   \\
+    %   &=-2\Re(b_1)\Theta + \frac{|b_1|^2}{\Delta_1},
+    % \end{align*}
+    % qui est aussi imaginaire pur d'après \eqref{eq:unicite:ci3:csu3rd-D2} \& \eqref{eq:unicite:ci3:csu3rd-T}.
+
+    Enfin l'inégalité \eqref{eq:unicite:ci3:csu3d-jrj} se simplifie aussi trivialement si l'on injecte la définition de \(\Delta_1\) et \(\Delta_2\) car
+    \begin{align*}
+    \conj{a_0}a_2\Theta + \frac{\conj{a_2}a_1}{\Delta_1} & = \conj{a_0}a_2\Theta + \conj{a_2}\frac{\Delta_1 + a_0\conj{b_1}}{\Delta_1},
+    \\
+    &=\conj{a_0}a_2\Theta + \conj{a_2} + a_0\conj{a_2}\frac{\conj{b_1}}{\Delta_1} - a_0\conj{a_2}\frac{\conj{b_2}}{\Delta_2} + a_0\conj{a_2}\frac{\conj{b_2}}{\Delta_2},
+    \\
+    &=\left(\conj{a_0}a_2 + a_0\conj{a_2}\right)\Theta + \conj{a_2} + a_0\conj{a_2}\frac{\conj{b_2}}{\Delta_2},
+    \\
+    &=\left(\conj{a_0}a_2 + a_0\conj{a_2}\right)\Theta + \conj{a_2}\frac{\Delta_2 + a_0\conj{b_2}}{\Delta_2},
+    \\
+    &=2\Re(\conj{a_0}a_2)\Theta + \frac{|a_2|^2}{\Delta_2},
+    \end{align*}
+    qui est imaginaire pur.
+    De même pour l'inégalité \eqref{eq:unicite:ci3:csu3r-jdj}.
+
+    Ainsi des 13 relations initiales, seules 8 sont conservées
+    \begin{align*}
+      \eqref{eq:unicite:ci3:csu3-cn-det} && \Delta_1 & \not= 0 && \Leftrightarrow & \Im(\Delta_1) &\not = 0,
+      \\
+      \eqref{eq:unicite:ci3:csu3-cn-det} && \Delta_2 & \not= 0 && \Leftrightarrow & \Im(\Delta_2) &\not = 0,
+      \\
+      \eqref{eq:unicite:ci3:csu3d-j2} && \Re\left(a_0\conj{a_1}\Delta_1\right) &\ge 0 & &\Leftrightarrow & \Im(a_0\conj{a_1})\Im(\Delta_1) &\le 0 ,
+      \\
+      \eqref{eq:unicite:ci3:csu3r-j2} && \Re\left(a_0\conj{a_2}\Delta_2\right) &\ge 0 & &\Leftrightarrow & \Im(a_0\conj{a_2})\Im(\Delta_2) &\le 0,
+      \\
+      \eqref{eq:unicite:ci3:csu3rd-D1} && \Re(\Delta_1) &= 0 & &\Leftrightarrow & \Re(a_1) - \Re(a_0\conj{b_1}) &= 0,
+      \\
+      \eqref{eq:unicite:ci3:csu3rd-D2} && \Re(\Delta_2) &= 0 & &\Leftrightarrow & \Re(a_2) - \Re(a_0\conj{b_2}) &= 0,
+      \\
+      \eqref{eq:unicite:ci3:csu3rd-T} && \Re(\Theta) &= 0 & &\Leftrightarrow & \Im(b_1)\Im(\Delta_2) - \Im(b_2)\Im(\Delta_1) &= 0,
+      \\
+      \eqref{eq:unicite:ci3:csu3rd-bD} && \Re(b_1\Delta_1) &\le 0 & &\Leftrightarrow & \Im(b_2)\Im(\Delta_2) &\ge 0.
+    \end{align*}
+
+\end{proof}
+
 
   Soit \(S = \left\lbrace (a_0,a_1,a_2,b_1,b_2) \in \CC^5 ; a_1 = a_2 ; b_1 = b_2 = 0 \right\rbrace \). On remarque que
   \begin{align}
@@ -611,26 +690,29 @@
     On définit le sous-espace de \(\CC^5\)
     \begin{equation*}
       \CSU[2]{CI3} = \left\lbrace 
-      (a_0,a_1,a_2,b_1,b_2) \in \CC^5,
-      \begin{matrix}
-      \Delta_1 \not = 0
+      \begin{aligned}
+      &(a_0,a_1,a_2,b_1,b_2) \in \CC^5,
       \\
-      \Delta_2 \not = 0
-      \\
-      \Re\left(a_0\right)\ge 0
-      \\
-      \Re\left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) \le 0
-      \\
-      \Re\left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) \le 0
-      \\
-      \Re\left(b_1\Delta_1\right) = 0
-      \\
-      \Re\left(b_2\Delta_2\right) = 0
-      \\
-      \Im\left(b_1\Delta_1\right)\Im(b_1)\ge 0
-      \\
-      \Im\left(b_2\Delta_2\right)\Im(b_2)\ge 0
-      \end{matrix}
+      &\begin{aligned}
+        \Delta_1 &\not = 0,
+        \\
+        \Delta_2 &\not = 0,
+        \\
+        \Re\left(a_0\right)&\ge 0,
+        \\
+        \Re\left(a_1 - \frac{\conj{b_1a_0}a_1}{\Delta_1}\right) &\le 0,
+        \\
+        \Re\left(a_2 - \frac{\conj{b_2a_0}a_2}{\Delta_2}\right) &\le 0,
+        \\
+        \Re\left(b_1\Delta_1\right) &= 0,
+        \\
+        \Re\left(b_2\Delta_2\right) &= 0,
+        \\
+        \Im\left(b_1\Delta_1\right)\Im(b_1)&\ge 0,
+        \\
+        \Im\left(b_2\Delta_2\right)\Im(b_2)&\ge 0,
+        \end{aligned}
+      \end{aligned}
       \right\rbrace.
     \end{equation*}
   \end{defn}
@@ -731,32 +813,35 @@
     On définit le sous-espace  de \(\CC^5\)
     \begin{equation*}
       \CSU[3]{CI3} = \left\lbrace
-      (a_0,a_1,a_2,b_1,b_2) \in \CC^5,
-      \begin{matrix}
-        a_1 \not = 0
+      \begin{aligned}
+        &(a_0,a_1,a_2,b_1,b_2) \in \CC^5,
         \\
-        a_2 \not = 0
-        \\
-        \Re\left(\conj{a_0}z\right) \ge 0
-        \\
-        \Re\left(\conj{a_1}z\right) \le 0
-        \\
-        \Re\left(\conj{a_2}z\right) \le 0
-        \\
-        \Re\left(\frac{b_1}{a_1}\right) \ge 0
-        \\
-        \Re\left(\frac{b_2}{a_2}\right) \ge 0
-        \\
-        \Re\left(a_0\right) \ge 0
-        \\
-        \Re\left(a_1\right) \le 0
-        \\
-        \Re\left(a_2\right) \le 0
-        \\
-        \Re\left(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}\right) \le 0
-        \\
-        \Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) \le 0
-      \end{matrix}
+        &\begin{aligned}
+          &a_1 &\not = 0,
+          \\
+          &a_2 &\not = 0,
+          \\
+          &\Re\left(\conj{a_0}z\right) &\ge 0,
+          \\
+          &\Re\left(\conj{a_1}z\right) &\le 0,
+          \\
+          &\Re\left(\conj{a_2}z\right) &\le 0,
+          \\
+          &\Re\left(\frac{b_1}{a_1}\right) &\ge 0,
+          \\
+          &\Re\left(\frac{b_2}{a_2}\right) &\ge 0,
+          \\
+          &\Re\left(a_0\right) &\ge 0,
+          \\
+          &\Re\left(a_1\right) &\le 0,
+          \\
+          &\Re\left(a_2\right) &\le 0,
+          \\
+          &\Re\left(\frac{b_1\conj{a_2}}{a_1\conj{a_0}}\right) &\le 0,
+          \\
+          &\Re\left(\frac{b_2\conj{a_1}}{a_2\conj{a_0}}\right) &\le 0,
+        \end{aligned}
+      \end{aligned}
       \right\rbrace.
     \end{equation*}
   \end{defn}
@@ -767,7 +852,7 @@
     \begin{equation*}
       (a_0,a_1,a_2,b_1,b_2) \in \CSU[3]{CI3} \Rightarrow \Re(X) \ge 0,
     \end{equation*}
-    ce qui entraîne l'unicité.
+    ce qui entraîne l'unicité du problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci3:ci3}\}.
   \end{prop}
 
   \begin{proof}
