@@ -1,0 +1,17 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/build": true,
+        "**/csv/**/*.csv" : true,
+        "**/csv/**/*.coeff.txt" : true,
+    },
+    "latex-workshop.latex.search.rootFiles.include": [
+        "these_payen_2019.tex",
+    ],
+    "latex-workshop.latex.outDir": "%DIR%/build",
+    "latex-workshop.latex.external.build.command": "latexmk",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "\"$(wslpath -aw %PDF%)\"",
+    ],
+    "latex-workshop.view.pdf.external.viewer.command": "\"$(wslpath -au \"C:\\Program Files\\SumatraPDF\\SumatraPDF.exe\")\"",
+}
