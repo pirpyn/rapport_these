@@ -1,7 +1,8 @@
 {
     "files.exclude": {
         "**/.git": true,
-        "**/build": true,
+        "**/build/*.[^p]*": true,
+        "**/build/*.ph*": true,
         "**/csv/**/*.csv" : true,
         "**/csv/**/*.coeff.txt" : true,
     },
