@@ -83,25 +83,25 @@
     Nous omettons les dépendances en \(\vx\).
     Partons de la première équation de Maxwell
     \begin{align*}
-          0 & = \frac{\trot \vE}{ik_0} + \vH.
-          \intertext{En appliquant cette égalité à \(\trot\vect{\phi}\) pour \(\vect{\phi} \in V\), on déduit la forme variationnelle }
-          0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot \conj{\vect{\phi}}\dd{x} + \int_{\OO^c_R} \vH \cdot \trot\conj{\vect{\phi}}\dd{x}, && \forall \vect{\phi} \in V.
-          \intertext{Utilisons la formule de Green du rotationnel (voir \cite[eq.~(A1.32)]{bladel_electromagnetic_2007}).
-          \[
-            \int_V \vect{u}\cdot \trot{\vect{v}}\dd{x} = \int_V \trot\vect{u}\cdot \vect{v}\dd{x} + \int_{\partial V} \left( \vect{v}\pvect\vect{u} \right)\cdot \vn_V \dd{\Gamma(x)},
-          \]
-          où \(\vn_V\) est la normale unitaire sortante de \(V\). On rappelle que \(\vn_\Gamma\) est la normale sortante de  \(\OO\) et \(\vn_{B_R}\) la normale sortante de \(B_R\).}
-          0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot\vect{\phi}\dd{x} +\int_{\OO^c_R} \trot\vH \cdot \conj{\vect{\phi}}\dd{x}
-          \\
-          & \qquad \qquad+ \int_{S_R} \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_{B_R}\dd{S_R(x)} - \int_\Gamma \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_\Gamma \dd{\Gamma(x)}, && \forall \vect{\phi} \in V.
-          \intertext{On utilise  la deuxième équation de Maxwell, la condition de rayonnement et on permute les termes de l'intégrale sur \(\Gamma\)}
-          0 & =\int_{\OO^c_R} \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}\dd{x}  +  \int_{\OO^c_R} ik_0 \vE \cdot \conj{\vect{\phi}}\dd{x}
-          \\
-          & \qquad \qquad + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}}\dd{S_R(x)} + \int_\Gamma \left(\vn_\Gamma \pvect \vH \right) \cdot \conj{\vect \phi}\dd{\Gamma(x)},
-          && \forall \vect{\phi} \in V.
-      \end{align*}
+      0 & = \frac{\trot \vE}{ik_0} + \vH.
+      \intertext{En appliquant cette égalité à \(\trot\vect{\phi}\) pour \(\vect{\phi} \in V\), on déduit la forme variationnelle }
+      0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot \conj{\vect{\phi}}\dd{x} + \int_{\OO^c_R} \vH \cdot \trot\conj{\vect{\phi}}\dd{x}, && \forall \vect{\phi} \in V.
+      \intertext{Utilisons la formule de Green du rotationnel (voir \cite[eq.~(A1.32)]{bladel_electromagnetic_2007}).
+      \[
+        \int_V \vect{u}\cdot \trot{\vect{v}}\dd{x} = \int_V \trot\vect{u}\cdot \vect{v}\dd{x} + \int_{\partial V} \left( \vect{v}\pvect\vect{u} \right)\cdot \vn_V \dd{\Gamma(x)},
+      \]
+      où \(\vn_V\) est la normale unitaire sortante de \(V\). On rappelle que \(\vn_\Gamma\) est la normale sortante de  \(\OO\) et \(\vn_{B_R}\) la normale sortante de \(B_R\).}
+      0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot\vect{\phi}\dd{x} +\int_{\OO^c_R} \trot\vH \cdot \conj{\vect{\phi}}\dd{x}
+      \\
+      & \qquad \qquad+ \int_{S_R} \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_{B_R}\dd{S_R(x)} - \int_\Gamma \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_\Gamma \dd{\Gamma(x)}, && \forall \vect{\phi} \in V.
+      \intertext{On utilise  la deuxième équation de Maxwell, la condition de rayonnement et on permute les termes de l'intégrale sur \(\Gamma\)}
+      0 & =\int_{\OO^c_R} \frac{\trot \vE}{ik_0}\cdot \trot \conj{\vect{\phi}}\dd{x}  +  \int_{\OO^c_R} ik_0 \vE \cdot \conj{\vect{\phi}}\dd{x}
+      \\
+      & \qquad \qquad + \int_{S_R} \Tr(\vE_t)  \cdot \conj{\vect{\phi}}\dd{S_R(x)} + \int_\Gamma \left(\vn_\Gamma \pvect \vH \right) \cdot \conj{\vect \phi}\dd{\Gamma(x)},
+      && \forall \vect{\phi} \in V.
+    \end{align*}
 
-      Réciproque: voir \cite[p.~121, section~5, "SCATTERING PROBLEMS BY A DIELECTRIC OBSTACLE"]{cessenat_mathematical_1996}.
+    Réciproque: voir \cite[p.~121, section~5, "SCATTERING PROBLEMS BY A DIELECTRIC OBSTACLE"]{cessenat_mathematical_1996}.
   \end{proof}
 
   Puisque le problème n'a pas de sources, l'unique solution du problème si ce dernier est bien posé est \(\vE=\vH=0\).
