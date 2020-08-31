@@ -381,25 +381,25 @@
   \end{prop}
 
   \begin{proof}
-      Soit \(\vect{W}(\vx) = \sum_{i=1}^N w_j \qj \in L^2(\Gamma_h)\).
+    Soit \(\vect{W}(\vx) = \sum_{i=1}^N w_j \qj \in L^2(\Gamma_h)\).
 
-      On définit
-      \begin{align*}
-        \vect{U}= \sum_{i=1}^N u_j \phij(\vx) && \text{où~} u_i = \int_{\Gamma_h} \vect{W}(\vx)\cdot\phii(\vx),
-        \\
-        \vect{V} = \sum_{i=1}^N v_j \pj(\vx) && \text{où~} v_i = \int_{\Gamma_h} \vect{W}(\vx)\cdot\pii(\vx).
-      \end{align*}
+    On définit
+    \begin{align*}
+      \vect{U}= \sum_{i=1}^N u_j \phij(\vx) && \text{où~} u_i = \int_{\Gamma_h} \vect{W}(\vx)\cdot\phii(\vx),
+      \\
+      \vect{V} = \sum_{i=1}^N v_j \pj(\vx) && \text{où~} v_i = \int_{\Gamma_h} \vect{W}(\vx)\cdot\pii(\vx).
+    \end{align*}
 
-      On a donc
-      \begin{align*}
-        \comp{u}=\mG{\phi}{q}\comp{w},
-        &&
-        \comp{v}=\mG{p}{q}\comp{w}.
-      \end{align*}
+    On a donc
+    \begin{align*}
+      \comp{u}=\mG{\phi}{q}\comp{w},
+      &&
+      \comp{v}=\mG{p}{q}\comp{w}.
+    \end{align*}
 
-      D'après \cite[annexe B]{stupfel_implementation_2015} la matrice \(\mG{p}{q}=1/3\mI\) donc elle est inversible et \(\comp{u} = \mG{\phi}{q} (\mG{p}{q})^{-1} \comp{v}\). On peut identifier \(\comp{u}= \left(\mG{\phi}{q}(\mG{p}{q})^{-1}\right)^{t}\comp{v}\).
+    D'après \cite[annexe B]{stupfel_implementation_2015} la matrice \(\mG{p}{q}=1/3\mI\) donc elle est inversible et \(\comp{u} = \mG{\phi}{q} (\mG{p}{q})^{-1} \comp{v}\). On peut identifier \(\comp{u}= \mPP^{t}\comp{v}\).
 
-    \end{proof}
+  \end{proof}
 
     %On retrouve le résultat de \cite[annexe B]{stupfel_implementation_2015}.%, à la différence que dans cet article, un élément de \(\Hdiv\) et un élément de \(\Hrot\) sont projetés dans \(L^2\) et cet article conclu que si les projetés sont identiques alors les deux éléments initiaux représentent le même objet.
 
