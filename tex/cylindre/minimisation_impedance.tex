@@ -1,7 +1,10 @@
-\section{Calcul des coefficients de la CI3 par moindres carrés sur l'impédance}
+\section{CHoix des coefficients de la CI3 par moindres carrés sur l'impédance}
 
-  \subsection[Expression de la fonctionnelle JZ]{Expression de la fonctionnelle \(J_Z\)}
+  Dans la section précédente, nous avons exprimé les matrices \(\hat\mZ\) et la matrice \(\hat\mR\) en fonction de l'empilement.
+  Nous allons montrer que nous pouvons choisir deux manières de calculer les coefficients de la CIOE CI3 (ce qui s'etend facilement au CIOE dérivées de cette dernière). 
 
+  \subsection[Choix de la fonction Jz]{Choix de la fonction \(J_Z\)}
+    Ce premier choix consiste à minimiser l'erreur entre la matrice d'impededance exact et celle approchée par la CIOE.
     \begin{defn}
       On définit \(\mH_{CI3}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
       \begin{equation*}
@@ -56,7 +59,7 @@
       \end{align*}
     \end{proof}
 
-    On tronque la série de Fourier à \(N_{n}\) termes et l’on se dote de \(N_{k_z}\) \(k_z\). Il existe donc \(N_{n}N_{k_z}\) couples tels que \((n_i,k_{zj}) = (n,k_z)_{(j-1)N_{n}+i}\).
+    Afin de calculer numériquement les coefficients, on tronque la série de Fourier à \(N_{n}\) termes et l'on considère que \(k_z\) appartient à un domaine discret de taille \(N_{k_z}\). Il existe donc \(N_{n}N_{k_z}\) couples tels que \((n_i,k_{zj}) = (n,k_z)_{(j-1)N_{n}+i}\).
     \begin{defn}
       On définit \(\mA_{CI3}\) la matrice de \(\mathcal{M}_{4N_{n}N_{k_z}\times5}(\CC)\) telle que
       \begin{equation*}
@@ -92,9 +95,9 @@
 
     On peut alors calculer les coefficients de la CI3.
     \begin{defn}
-      On définit la fonctionnelle \(J_Z\)
+      On définit
       \begin{equation*}
-        J_Z(X) = \norm{{\mA}_{CI3}X - {g}}^2.
+        fonction{J_Z}{\CC^5}{\RR}{X}{\norm{{\mA}_{CI3}X - {g}}^2}.
       \end{equation*}
     \end{defn}
     \begin{thm}[Minimisation sans contraintes pour la CI3]

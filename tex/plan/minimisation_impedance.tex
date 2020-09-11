@@ -1,16 +1,20 @@
-\section{Calcul des coefficients de la CI3 par moindres carrés sur l'impédance}
+\section{Choix des coefficients de la CI3 par moindres carrés sur l'impédance}
 
-    On se donne \(N_x\) \(k_x\) et \(N_y\) \(k_y\). Il existe donc \(N_k=N_xN_y\) couples tels que \((k_{xi},k_{yj}) = (k_x,k_y)_{(j-1)N_x+i}\).
-    \begin{defn}
-      Soit \(\ps{\cdot}{\cdot}\) le produit scalaire usuel de \(\CC^{N_{k}}\) et \(\norm{\cdot}\) la norme associée.
-      \begin{equation*}
-        \ps{a}{b} = \sum_{i=1}^{N_k} \conj{a_i} b_i.
-      \end{equation*}
-      Soit \(\ps{\cdot}{\cdot}_F\) le produit scalaire usuel de \(\mathcal{M}_2(\CC)\) et \(\norm{\cdot}_F\) la norme associée.
-      \begin{equation*}
-        \ps{\mA}{\mB}_F = \operatorname{Tr}(\conj{\mA^t}\mB).
-      \end{equation*}
-    \end{defn}
+  Dans la section précédente, nous avons exprimé les matrices \(\hat\mZ\) et la matrice \(\hat\mR\) en fonction de l'empilement.
+  Nous allons montrer que nous pouvons choisir deux manières de calculer les coefficients de la CIOE CI3 (ce qui s'etend facilement au CIOE dérivées de cette dernière). 
+
+  % On se donne \(N_x\) \(k_x\) et \(N_y\) \(k_y\).
+  % Il existe donc \(N_k=N_xN_y\) couples tels que \((k_{xi},k_{yj}) = (k_x,k_y)_{(j-1)N_x+i}\).
+  \begin{defn}
+    Soit \(\ps{\cdot}{\cdot}\) le produit scalaire usuel de \(\CC^{N_{k}}\) et \(\norm{\cdot}\) la norme associée.
+    \begin{equation*}
+      \ps{a}{b} = \sum_{i=1}^{N_k} \conj{a_i} b_i.
+    \end{equation*}
+    Soit \(\ps{\cdot}{\cdot}_F\) le produit scalaire usuel de \(\mathcal{M}_2(\CC)\) et \(\norm{\cdot}_F\) la norme associée.
+    \begin{equation*}
+      \ps{\mA}{\mB}_F = \operatorname{Tr}(\conj{\mA^t}\mB).
+    \end{equation*}
+  \end{defn}
 
   \subsection{Calcul des coefficients pour une incidence}
 
@@ -27,7 +31,7 @@
         1 & \hat{\mLD}(k_x,k_y)_{22} & -\hat{\mLR}(k_x,k_y)_{22} & -\left(\hat{\mLD}(k_x,k_y)\mZ\right)_{22} & \left(\hat{\mLR}(k_x,k_y)\mZ\right)_{22}
         \end{bmatrix}.
       \end{equation*}
-      On définit \(b\) la fonction de \(\mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
+      On définit \(b\) la fonction de \(\mathcal{M}_2(\CC) \rightarrow \CC^4\) telle que
       \begin{equation*}
         b(\mZ) = \begin{bmatrix}
         \mZ_{11}
@@ -78,30 +82,30 @@
       \end{align*}
     \end{proof}
 
-    Pour un couple \((k_x,k_y)\), les coefficients d'une CIOE (ici la CI3) sont solutions d'un problème d'optimisation. 
-    Cependant, ces coefficients deviennent donc fonction de cette "incidence". 
- 
-    Pour compléter, voici \(\mH_{CI1}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times3}(\CC)\) telle que
-    \begin{equation*}
-      \mH_{CI1}(k_x,k_y,\mZ) = 
-      \begin{bmatrix}
-        1 & -(k_x^2+k_y^2)  & \left(k_x^2+k_y^2\right)\mZ_{11}
-        \\
-        0 & 0               & \left(k_x^2+k_y^2\right)\mZ_{12}
-        \\
-        0 & 0               & \left(k_x^2+k_y^2\right)\mZ_{21}
-        \\
-        1 & -(k_x^2+k_y^2)  & \left(k_x^2+k_y^2\right)\mZ_{22}
-      \end{bmatrix}.
-    \end{equation*}
+    Les fonctions associées aux CIOE CI0, CI01, CI1, CI4 se déduisent aisément.
 
-    Les fonctions associées aux CIOE CI0, CI01, CI4 se déduisent aisément.
+    Pour un couple \((k_x,k_y)\), les coefficients d'une CIOE (ici la CI3) sont solutions d'un problème d'optimisation.
+    Cependant, comme sans pertes de généralités, nous pouvons nous ramener à des matrices diagonales quand \(k_y\) est nul, alors il existera une infinité de solution possible.
+    % Cependant, ces coefficients deviennent donc fonction de cette "incidence". 
+ 
+    % Pour compléter, voici \(\mH_{CI1}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times3}(\CC)\) telle que
+    % \begin{equation*}
+    %   \mH_{CI1}(k_x,k_y,\mZ) = 
+    %   \begin{bmatrix}
+    %     1 & -(k_x^2+k_y^2)  & \left(k_x^2+k_y^2\right)\mZ_{11}
+    %     \\
+    %     0 & 0               & \left(k_x^2+k_y^2\right)\mZ_{12}
+    %     \\
+    %     0 & 0               & \left(k_x^2+k_y^2\right)\mZ_{21}
+    %     \\
+    %     1 & -(k_x^2+k_y^2)  & \left(k_x^2+k_y^2\right)\mZ_{22}
+    %   \end{bmatrix}.
+    % \end{equation*}
 
 
   \subsection{Balayage en incidences et moindres carrés}
 
-    Nous allons donc réaliser une balayage sur les variables de Fourier et exhiber un calcul permettant d'obtenir ces coefficients.
-    Par abus de langage, nous ne parlerons de moindres carrés que lorsqu'il y a plusieurs couples \((k_x,k_y)\), alors que par définition, le problème pour une incidence est aussi un problème des moindres carrés.
+    Pour déterminer numériquement les coefficients de la CIOE, nous allons considérer que \(k_x,k_y\) appartient respectivement à un domaine discret réel de taille respectivement \(N_{k_x}, N_{k_y}\).
 
     \begin{defn}
       On définit \(\mA_{CI3}\) la matrice de \(\mathcal{M}_{4N_xN_y\times5}(\CC)\) telle que
@@ -119,7 +123,7 @@
           \mH_{CI3}(k_{xN_x},k_{yN_y},\hat\mZ_{ex}(k_{xN_x},k_{yN_y}))
         \end{bmatrix}.
       \end{equation*}
-      On définit \(g\) la matrice de \(\mathcal{M}_{4N_xN_y\times1}(\CC)\) telle que
+      On définit \(g\) la vecteur colonne complex tel que
       \begin{equation*}
         g = 
         \begin{bmatrix}
