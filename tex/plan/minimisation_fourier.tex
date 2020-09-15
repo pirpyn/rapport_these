@@ -1,6 +1,4 @@
-\section{Calcul des coefficients de la CI3 par moindres carrés sur les coefficients de la série de Fourier}
-
-  On peut aussi calculer les coefficients en minimisant l'erreur entre les coefficients de Fourier.
+\section{Choix des coefficients de la CI3 par moindres carrés sur les coefficients de la série de Fourier}
 
   Soit \(\mM_A\) et \(\mM_B\) les fonctions introduites à la définition \ref{def:plan:matrices_MA-MB} et \(\hat\mR\) la fonction définie en \ref{def:plan:reflexion:impedance}.
 
@@ -17,7 +15,7 @@
 
   \subsection[Expression de la fonction JR]{Expression de la fonction \(J_R\)}
 
-    On utilise les fonctions \(\mN_E, \mN_H\) introduites à la définition \ref{def:plan:matrices_NE-NH} et \(\hat\mLD,\hat\mLR\) définies aux définitions \ref{eq:plan:fourier:LD}-\ref{eq:plan:fourier:LR}.
+    On utilise les fonctions \(\mN_E, \mN_H\) introduites à la définition \ref{def:plan:matrices_NE-NH} et \(\hat\mLD,\hat\mLR\) définies à \ref{eq:plan:fourier:LD}-\ref{eq:plan:fourier:LR}.
 
     \begin{defn}
       On définit \(\mA_0,\mA_1,\mA_2,\mA_2,\mB_1,\mB_2\) les fonctions de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \ \mathcal{M}_2(\CC)\) telles que        
@@ -47,7 +45,7 @@
         \end{bmatrix}.
       \end{align*}
 
-      On définit \(\tilde{b}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times1}(\CC)\) telle que
+      On définit \(\tilde{b}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \CC^4\) telle que
       \begin{equation*}
         \tilde{b}(k_x,k_y,\mR) = -
         \begin{bmatrix}
@@ -143,17 +141,12 @@
     On peut alors calculer les coefficients de la CI3
 
     \begin{defn}
-      On définit la fonction \(J_R\)
+      On introduit la fonction
       \begin{equation*}
-        J_R(X) = \norm{\tilde{\mA}_{CI3}X - \tilde{g}}.
+        \fonction{J_R}{\CC^5}{\RR}{X}{\norm{\tilde{\mA}_{CI3}X - \tilde{g}}}.
       \end{equation*}
     \end{defn}
-    \begin{REM}
-      Je mettrai on introduit, et pas une définition
-    \end{REM}
-    \begin{REP}
-      Ok, mais je peux qu'on puisse bien la voir, pour ne pas confondre avec JZ
-    \end{REP}
+
     \begin{thm}[Minimisation sans contraintes pour la CI3]
 
       Les coefficients de la CIOE sont solutions du problème

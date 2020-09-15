@@ -641,13 +641,7 @@
         \vect{e_r}\times\hat{\vH}_t(k_x,k_y,z_{p-1}).
       \end{multline*}
 
-      Comme on a supposé l'inversibilité des deux matrices \(\mM_{A}\), \(\mM_{B}\), on factorise à droite le numérateur et le dénominateur afin d'obtenir la propriété.
-      \begin{REM}[factorise]
-        Horreur
-      \end{REM}
-      \begin{REP}
-       on factorise par \(\mM_{A}\) afin ...
-      \end{REP}
+      Comme on a supposé l'inversibilité des deux matrices \(\mM_{A}\), \(\mM_{B}\), on simplifie afin d'obtenir la propriété.
     \end{proof}
 
     \begin{prop}%[Théorème de relèvement]~
@@ -802,10 +796,7 @@
         \mN_{H}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))^{-1}\left(\mA_H(k_x,k_y,z_p^-)\vect{C}_{1}^-(k_x,k_y) + \mB_H(k_x,k_y,z_p^-)\vect{C}_{2}^-(k_x,k_y)\right).
       \end{multline*}
 
-      On factorise les termes
-      \begin{REM}
-        Même remarque que \hyperlink{REMfactorise}{précédemment}
-      \end{REM}
+      On regroupe les termes pour obtenir une relation entre les deux vecteurs,
       \begin{multline*}
         \left(
         \mN_{E}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))^{-1}\mA_E(k_x,k_y,z_p^-)
@@ -824,7 +815,7 @@
         \right)\vect{C}_{2}^-(k_x,k_y).
       \end{multline*}
 
-      On suppose l'inversion de cette dernière, et alors
+      On suppose l'inversibilité de la matrice devant \(\vect{C}_{1}^-(k_x,k_y)\), et alors
       \begin{equation*}
         \vect{C}_{2}^-(k_x,k_y) = \mathfrak{T}_p(k_x,k_y,z_p^-,z_p^+,\hat\mR_{p+1}(k_x,k_y)) \vect{C}_{1}^-(k_x,k_y).
       \end{equation*}

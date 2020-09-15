@@ -108,13 +108,13 @@ On développe donc la fonction
 \end{REM}
 suivant cette décomposition :
 \begin{align*}
-\argmin{X}\left\rVert {\mH} X - {b} \right \rVert &= \argmin{X_r}\left\rVert \left({\mH}_\infty + {\mH}_r\right)\left( X_\infty + X_r \right) - {b}_\infty - {b}_r \right \rVert.
+\argmin{X}\left\rVert {\mH} X - {b} \right \rVert^2 &= \argmin{X_r}\left\rVert \left({\mH}_\infty + {\mH}_r\right)\left( X_\infty + X_r \right) - {b}_\infty - {b}_r \right \rVert^2.
 \\
 \intertext{On utilise la relation entre \({\mH}_\infty X_\infty\) et \({b}_\infty\)}
-&=  \argmin {X_r}\left\rVert {\mH}_\infty X_r + {\mH}_r X_\infty + {\mH}_r X_r - {b}_r \right \rVert.
+&=  \argmin {X_r}\left\rVert {\mH}_\infty X_r + {\mH}_r X_\infty + {\mH}_r X_r - {b}_r \right \rVert^2.
 \\
 \intertext{Enfin par définition de \({\mH}_\infty\) et \(X_r\), leur produit est nul}
-&= \argmin{X_r} \left\rVert {\mH}_r ( X_r + X_\infty)- {b}_r \right \rVert.
+&= \argmin{X_r} \left\rVert {\mH}_r ( X_r + X_\infty)- {b}_r \right \rVert^2.
 \end{align*}
 
 On voit alors que l'on peut résoudre le problème

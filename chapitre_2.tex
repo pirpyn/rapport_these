@@ -1,11 +1,10 @@
-\begin{REM}
-  Definitions Calderon, impedance, CIOE à mettre dans l'ordre
-\end{REM}
-
 \chapter{Calcul des coefficients pour un plan infini}
 \label{sec:plan}
 \minitoc
 \newpage
+\begin{REM}
+    Definitions Calderon, impedance, CIOE à mettre dans l'ordre
+  \end{REM}
 \begin{REM}
   Il faut qu'au début de cette partie tu définisse l’opérateur de Calderon pour dire que l’impédance en est un approximation.
 \end{REM}
@@ -13,13 +12,18 @@
     Il me faut le B.A.BA de Calderon.
 \end{REP}
 \sectionstar{Introduction}
-Pour calculer les coefficients, nous commençons par la méthode de l'approximation du plan tangent tel que \cite{hoppe_impedance_1995,marceaux_high-order_2000,aubakirov_electromagnetic_2014}. Cette méthode consiste à regarder localement l'objet comme un plan infini, ce qui reste valable dans le cadre de cette thèse, car nos objets d'études sont parfaitement réguliers.
+Pour déterminer des coefficients complexes satisfaisants aux conditions introduites dans la partie précèdente, nous commençons par la méthode de l'approximation du plan tangent, bien documenté \cite{hoppe_impedance_1995,marceaux_high-order_2000,aubakirov_electromagnetic_2014}. Cette méthode consiste à considérer localement l'objet comme un plan infini, ce qui reste valable dans le cadre de cette thèse, car nos objets d'études sont parfaitement réguliers.
 \begin{REM}
     On ne calcule donc pas des coefficients exacts. Il n'y a que dans quelques cas que tu as des coefficients exacts pour chaque mode de Fourier.
 \end{REM}
 \begin{REP}
     Quels coefficients exacts ? Des cioes ? Dans ce cas, en effet, jamais de coeff exact.
 \end{REP}
+
+Dans le cadre du plan, nous rappelerons l'opérateur de Calderon exact qui lie les champs electromagnetiques à la surface extérieur de l'object, ainsi que la condition nécessaire et pour l'obtenir.
+Pour des considération de mise en oeuvre numérique, nous présenterons une méthode itérative pour exprimer cet opérateur.
+Cette méthode va ajouter des conditions, dont nous rapellerons qu'elles ne sont à considérer que dans le cadre de cette méthode itérative.
+
 \input{tex/plan/intro}
 \input{tex/plan/exact}
 \input{tex/plan/hoibc}
@@ -28,18 +32,15 @@ Pour calculer les coefficients, nous commençons par la méthode de l'approximat
 \input{tex/plan/minimisation_fourier}
 
 \sectionstar{Conclusion}
-Nous avons montré comment calculer les coefficients dans le cas d'un objet plan infini en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées.
+Nous avons proposé une méthode pour calculer des coefficients complexes vérifiant une des CSU choisies, et qui permettent d'approcher l'opérateur de Calderon dans le cas d'un objet plan infini en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées.
 \begin{REM}
     Ce n'est pas montré, c'est proposer une méthode pour calculer des coefficients.
 \end{REM}
+\begin{REP}
+    Fait.
+\end{REP}
 Nous avons montré que minimiser l'erreur entre les matrices de réflexion aboutit aux mêmes coefficients de CIOE.
 
 Pour cela, nous avons réalisé une analyse spectrale des équations de Maxwell et montré que la condition d'impédance s'exprime comme un multiplicateur de Fourier matriciel, tout comme la matrice de réflexion. Grâce à cette analyse spectrale, nous avons aussi exprimé les CIOE comme des multiplicateurs de Fourier matriciels dont on a déduit la matrice de réflexion associée. Nous avons alors exprimé le problème de minimisation sous contraintes et montré que celui-ci a besoin d'être réduit dans le cas d'une couche de matériau sans pertes.
 
 Nous avons montré sur cette géométrie que la CIOE choisie, la \hyperlink{ci3}{CI3}, était largement plus précise que les précédentes \hyperlink{ci01}{CI01} et \hyperlink{ci1}{CI1}. Ce gain en précision est tel que l'on peut introduire des contraintes lors du calcul et avoir une solution finale convenable, relativement à l'opérateur exact.
-
-Dans la partie équation intégrale, nous verrons que cette approximation locale de la géométrie est souvent suffisante.
-
-\begin{REM}
-    On a du mal à savoir ce qui est le résultat d'approximation principal
-\end{REM}
