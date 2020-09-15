@@ -28,10 +28,10 @@ On suppose enfin que ces champs \(\vE(\vect{x},t),\vect H(\vect{x},t)\) ont des 
     \vE(x_1,x_2,x_n,t) &= \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{i(k_1x_1+k_2x_2+\w t)}\hat{\vE} (k_1,k_2,x_n,\w) \dd{k_1}\dd{k_2} \dd{\w}.
 \end{align*}
 
-Pour avoir le droit d'appliquer la transformée de Fourier, nous supposons que pour notre empilement nous n'avons pas de résonances tel que nous l'avions évoqué à la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}. 
-\begin{REM}
-    Non. Ce n'est pas l'absence de résonances qui empêche le calcul en Fourier, c'est le fait qu'en général par Fourier une EDP n'a pas forcement de solution.
-\end{REM}
+% Pour avoir le droit d'appliquer la transformée de Fourier, nous supposons que pour notre empilement nous n'avons pas de résonances tel que nous l'avions évoqué à la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}. 
+% \begin{REM}
+%     Non. Ce n'est pas l'absence de résonances qui empêche le calcul en Fourier, c'est le fait qu'en général par Fourier une EDP n'a pas forcement de solution.
+% \end{REM}
 Dans cette thèse, on utilise les équations harmoniques de Maxwell, ainsi on réalise au moins une transformée partielle en temps. La variable de Fourier associée est \(\w\), et donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\gls{phy-w}\).
 
 On va donc utiliser le système d'équations de Maxwell harmonique:
@@ -46,42 +46,47 @@ On va donc utiliser le système d'équations de Maxwell harmonique:
     \label{eq:imp_fourier:intro:maxwell_harmonique}
 \end{equation}
 
-Afin d'utiliser les mêmes conventions que \cite{stupfel_implementation_2015}, on substitue au champ magnétique \gls{phy-h} l’excitation magnétique \gls{phy-h2}. Les équations de Maxwell harmoniques sont en définitive
+Afin d'utiliser les mêmes conventions que \cite{stupfel_implementation_2015}, on substitue au champ magnétique \gls{phy-h} l’excitation magnétique \(\gls{phy-h2} = \gls{phy-eta0} \gls{phy-h}\). Les équations de Maxwell harmoniques sont en définitive
 \begin{equation}
     \left\lbrace
     \begin{matrix}
     \vrot \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)  &=& -i k(x_n) \eta_r(x_n) \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w),  \\
-    \vrot \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w)  &=& i k(x_n) \eta_r^{-1}(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w),
+    \vrot \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w)  &=& i k(x_n) \eta_r^{-1}(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w).
     \end{matrix}
     \right.
     \label{eq:imp_fourier:intro:maxwell_harmonique:form_cea}
 \end{equation}
-où \(\gls{phy-h2} = \gls{phy-eta0} \gls{phy-h}\),
 \begin{REM}
-Tu aurais du le mettre page précédente
+    Tu aurais du le mettre page précédente
 \end{REM}
+\begin{REP}
+    Je ne vois pas de manière de le faire plus efficacement. Ici on part du sytème bien connus, puis on présente notre système.
+\end{REP}
 \(\eps(x_n)=\gls{phy-eps}_r(x_n)\gls{phy-eps0}\), \(\mu(x_n)=\gls{phy-mu}_r(x_n)\gls{phy-mu0}\), \(\eta_r(x_n)=\sqrt{\mu_r(x_n)/\eps_r(x_n)}\), \(\gls{phy-k}=\gls{phy-k0}\sqrt{\gls{phy-mu}_r(x_n)\gls{phy-eps}_r(x_n)}\), \(\gls{phy-k0} = \w\sqrt{\mu_0\eps_0}\) tel qu'en tout point extérieur de \(\OO\), \(\gls{phy-eps}_r(x_n) = \gls{phy-mu}_r(x_n)= 1\).
 
-Notre but est de prouver l'existence d'une matrice \(\hat\mZ(k_1,k_2,\w)\) telle que
-\begin{equation*}
-    \hat{\vE}_t(k_1,k_2,0,\w) =  \hat{\mZ}(k_1,k_2,\w) \left(\vn \pvect \hat{\vH}(k_1,k_2,0,\w) \right).
-\end{equation*}
+\hypertarget{calderon}{}
+\begin{defn}
+    La quantité cléf de cette thèse, et dont les CIOE vont permettre une approximation, est l'opérateur de Caldéron \cite[Def~4, p.~108]{cessenat_mathematical_1996}.
 
-La méthode pour trouver une expression de cette dernière est la suivante.
-\begin{REM}
-    Tu as commencé la méthode avant de l'introduire.
-\end{REM}
-\begin{itemize}
-    \item Faire une transformée de Fourier partielle des champs, dépendante de la géométrie.
-    \item Réécrire le système d'équations de Maxwell simplifié.
-    \item Obtenir des EDO simples à résoudre sur les composantes des champs.
-    \item En déduire l'expression générale des transformées partielles de Fourier.
-    \item Utiliser les conditions limites pour obtenir les solutions particulières.
-    \item En déduire la matrice d'impédance en Fourier.
-\end{itemize}
-\begin{REM}
-    Ce ne sont pas des EDO, mais un système d'EDO.
-    Ce ne sont pas à proprement parler des solutions particulières mais un sous-espace de solutions. On réserve solutions particulières aux équations inhomogènes.
-\end{REM}
+    Ce dernier est défini comme l'opérateur qui lie les traces tangetielles des champs solutions du problème harmoniques.
+\end{defn}
+
+
+%La méthode pour trouver une expression de cette dernière est la suivante.
+% \begin{REM}
+%     Tu as commencé la méthode avant de l'introduire.
+% \end{REM}
+% \begin{itemize}
+%     \item Faire une transformée de Fourier partielle des champs, dépendante de la géométrie.
+%     \item Réécrire le système d'équations de Maxwell simplifié.
+%     \item Obtenir des EDO simples à résoudre sur les composantes des champs.
+%     \item En déduire l'expression générale des transformées partielles de Fourier.
+%     \item Utiliser les conditions limites pour obtenir les solutions particulières.
+%     \item En déduire la matrice d'impédance en Fourier.
+% \end{itemize}
+% \begin{REM}
+%     Ce ne sont pas des EDO, mais un système d'EDO.
+%     Ce ne sont pas à proprement parler des solutions particulières mais un sous-espace de solutions. On réserve solutions particulières aux équations inhomogènes.
+% \end{REM}
 À partir de maintenant, la dépendance en \(\w\) sera implicite.
 
