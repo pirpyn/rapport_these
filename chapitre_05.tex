@@ -1,5 +1,13 @@
-% % @Olivier Décommente les 1237 prochaines lignes, puis les 4 dernieres
+% % @Olivier Décommente les ~1240 prochaines lignes, puis les 4 dernieres
 % % La balise @Olivier t'aidera
+
+% % Pour compiler (les options -output-directory=build sont importantes pour les packages)
+% % Les 6 commandes suivantes sont à faire dans un terminal
+% % pdflatex -shell-escape -file-line-error -interaction=nonstopmode --synctex=1 --output-directory=build chapitre_05
+% % biber --output-directory=build chapitre_05
+% % makeglossaries -d build chapitre_05
+% % pdflatex -shell-escape -file-line-error -interaction=nonstopmode --synctex=1 --output-directory=build chapitre_05
+% % pdflatex -shell-escape -file-line-error -interaction=nonstopmode --synctex=1 --output-directory=build chapitre_05
 
 % \documentclass[12pt,%
 %     twoside,% twoside si document final
@@ -1235,7 +1243,7 @@
 %     \thispagestyle{empty}
 %     \mainmatter
 
-% % @Olivier: Décommente les 1237 lignes ci dessus
+% @Olivier: Décommente les 1237 lignes ci dessus
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
