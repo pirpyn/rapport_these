@@ -2,7 +2,8 @@
 % % La balise @Olivier t'aidera
 
 % % Pour compiler (les options -output-directory=build sont importantes pour les packages)
-% % Les 6 commandes suivantes sont à faire dans un terminal
+% % Les 6 commandes suivantes sont à faire dans un terminal la première fois
+% % puis seul pdflatex suffira si tu ne modifie pas les glossaires et la biblio
 % % pdflatex -shell-escape -file-line-error -interaction=nonstopmode --synctex=1 --output-directory=build chapitre_05
 % % biber --output-directory=build chapitre_05
 % % makeglossaries -d build chapitre_05
@@ -421,12 +422,12 @@
 % \newcommand{\ddr}[3][{}]{\dfrac{\partial^{#1} #3}{{\partial #2}^{#1}}}
 
 % %Operator
-% \newcommand{\Sobolev}[1][{}]{\Sobdw{#1}}
 % \newcommand{\Sobup}[1][{}]{\mathrm{H}^\mathrm{#1}}
 % \newcommand{\Sobdw}[1][{}]{\mathrm{H}_\mathrm{#1}}
-% \newcommand{\Hgrad}{\Sobolev[grad]}
-% \newcommand{\Hrot}{\Sobolev[rot]}
-% \newcommand{\Hdiv}{\Sobolev[div]}
+% \newcommand{\Sobolev}[1][{}]{\Sobup{#1}}
+% \newcommand{\Hgrad}{\Sobdw[grad]}
+% \newcommand{\Hrot}{\Sobdw[rot]}
+% \newcommand{\Hdiv}{\Sobdw[div]}
 % \newcommand{\Hess}{\operatorname{Hess}}
 % \renewcommand{\Re}{\operatorname{Re}}
 % \renewcommand{\Im}{\operatorname{Im}}
@@ -1256,7 +1257,34 @@
 \minitoc
 \newpage
 
-Cette thèse s'inscrit dans le cadre de la diffraction d'ondes électromagnétiques.
+On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné et convexe et régulier, sans sources. 
+Les champs associés sont solutions des équations de Maxwell harmoniques, la convention dans toute la thèse étant en \(e^{i\w t}\). 
+
+Soit \(\gls{mat-ga}=\partial\overline{\gls{mat-om}}\) la frontière de \(\OO\), on décompose donc tout l'espace entre l'intérieur et l'extérieur, soit 
+\[
+\RR^3 = \overline{\OO}\cup{\OO}^c.
+\]
+On définit en tout point de \(\Gamma\), supposée régulière, \(\gls{mat-vn}\) la normale unitaire sortante à \(\OO\).
+Dans \(\OO^c\) on définit \(\gls{phy-k0}=\gls{phy-w} / \gls{phy-c} \in \RR_+^*\), le nombre d'onde dans le vide, où \gls{phy-c} 
+est la célérité d'une onde dans le vide.
+
+% Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
+
+Nous utilisons les équations de Maxwell-Helmholtz où les inconnues sont le champ électrique \gls{phy-e} et l'induction magnétique \gls{phy-h2} dans le vide, elles se déduisent du système d'équations de Maxwell (voir annexe \ref{sec:annex:maxwell_equation}). 
+
+Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}^\infty(\RR^3)\cap\Sobolev[rot](\RR^3))^3\) tels que
+\begin{align}
+\left\lbrace
+\begin{matrix}
+    \vrot \vE + i k_0 \vH &= 0
+    \\
+    \vrot \vH - i k_0 \vE &= 0
+\end{matrix}
+\right. && \text{dans \(\OO\cup\OO^c\).}
+\label{eq:unicite:maxwell_ext}
+\end{align}
+
+De plus, les conditions limites considérés sont celle de Silver-Müller à l'infini \cite[eq (43), p.~78]{cessenat_mathematical_1996}, et de saut à l'interface de \(\Gamma\).
 
 \section{Equations de Maxwell à l'intérieur et à l'extérieur de l'objet}
 
@@ -1331,11 +1359,23 @@ Cette thèse s'inscrit dans le cadre de la diffraction d'ondes électromagnétiq
       \end{proof}      
 
 \section{Equations de Maxwell à l'extérieur de l'objet avec un opérateur de Calderon sur son bord}
-    \cite{cessenat_mathematical_1996}
+    L'opérateur de Caldéron \cite[Def~4, p.~108]{cessenat_mathematical_1996}, lie les traces tangetielles à la surface extérieur de l'objet des champs solutions du problème intérieur et extérieur.
+    
+    Ainsi à un couple de solution \((\vE,\vH)\) est associé un unique opérateur de Calderon.
 
-    \subsection{Etude de l'unicité des solutions: Lemme de Rellich}
+    En imposant sur le bord extérieur de l'objet une condition limite utilisant cet opérateur, alors les solutions \((\vE,\vH)\) de ce nouveau problème posé uniquement à l'extérieur sont les même que celles du problème intérieur et extérieur.
+
+    \begin{REM}
+        Je cherche la ref dans le Cessenat, mais si tu l'as, je prend.
+    \end{REM}
+
+    L'unicité des solutions est aussi assuré par le lemme de Rellich, avec la même condition suffisante d'unicité.
 
     \subsection{Expression de l'opérateur de Calderon pour un plan infini en tant que multiplicateur de Fourier}
+
+        \begin{REM}
+            Introduire Fourier. Recopier Chap plan. Introduire les termes.
+        \end{REM}
 
         \begin{figure}[!h]
             \begin{center}
@@ -1345,6 +1385,17 @@ Cette thèse s'inscrit dans le cadre de la diffraction d'ondes électromagnétiq
                 \end{tikzpicture}
             \end{center}
         \end{figure}
+
+        Pour une couche de matériau diélectrique, (voir chap \ref{sec:plan} pour plusieurs couches ainsi que le détail des calculs), l'opérateur de Calderon s'exprime en Fourier comme un multiplicateur
+
+        \begin{align*}
+          \hat \mZ(k_x,k_y) &= i\eta_r\frac{\tan\left(\sqrt{k^2-k_x^2-k_y^2}d\right)}{k k_3}
+          \begin{bmatrix}
+            k^2-k_x^2  & -k_xk_y
+            \\
+            -k_xk_y & k^2-k_y^2
+          \end{bmatrix}.
+        \end{align*}
 
     \subsection{Expression de l'opérateur de Calderon pour un cylindre infini}
 

@@ -77,12 +77,12 @@
 \newcommand{\ddr}[3][{}]{\dfrac{\partial^{#1} #3}{{\partial #2}^{#1}}}
 
 %Operator
-\newcommand{\Sobolev}[1][{}]{\Sobdw{#1}}
 \newcommand{\Sobup}[1][{}]{\mathrm{H}^\mathrm{#1}}
 \newcommand{\Sobdw}[1][{}]{\mathrm{H}_\mathrm{#1}}
-\newcommand{\Hgrad}{\Sobolev[grad]}
-\newcommand{\Hrot}{\Sobolev[rot]}
-\newcommand{\Hdiv}{\Sobolev[div]}
+\newcommand{\Sobolev}[1][{}]{\Sobup{#1}}
+\newcommand{\Hgrad}{\Sobdw[\text{grad}]}
+\newcommand{\Hrot}{\Sobdw[\text{rot}]}
+\newcommand{\Hdiv}{\Sobdw[\text{div}]}
 \newcommand{\Hess}{\operatorname{Hess}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
