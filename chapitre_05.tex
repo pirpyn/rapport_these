@@ -1260,7 +1260,75 @@ Cette thèse s'inscrit dans le cadre de la diffraction d'ondes électromagnétiq
 
 \section{Equations de Maxwell à l'intérieur et à l'extérieur de l'objet}
 
-    \subsection{Etude de l'unicité des solutions: Alternative de Fredholm}
+    \subsection{Etude de l'unicité des solutions du problème intérieur: Alternative de Fredholm}
+
+        Nous rappelons le résultat général de \cite[Théorème~8, p.~111]{cessenat_mathematical_1996}.
+        \begin{thm}[Alternative de Fredholm]
+            Les champs \(\vE,\vH\) solutions de \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet \(\vE_{|\Gamma} = 0\), \(\vE_{|\Gamma_0} = 0\) sont soit uniques si \(\w^2\eps\mu\) n'est pas une valeur propre du Laplacien vectoriel, soit ces champs sont engendrés par les vecteurs propres.
+        \end{thm}
+
+    \subsection{Etude de l'unicité des solutions du problème extérieur: Lemme de Rellich}
+
+        On définit en tout point de \(\Gamma\) la trace tangentielle de \(\vH\) que l'on note \(\vJ = \vn_\Gamma \pvect \vH\).
+        \begin{prop}[Une \glsentrydesc{acr-csu}]~\\
+        Si l'on suppose que
+        \begin{equation}
+            \label{eq:unicite:form_var:cgu}
+            \Re\left(\int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx) \dd{\Gamma(\vx)}\right) \ge 0,
+        \end{equation}
+        alors le système \eqref{eq:unicite:maxwell_ext} muni de la condition aux limites \eqref{eq:unicite:TR} admet \(\vE=\vH=0\) comme unique solution.
+        \end{prop}
+    
+    \begin{proof}
+        Pour démontrer cela, on utilise le lemme de Rellich, énoncé dans \cite[p.~74]{cessenat_mathematical_1996}:
+        \begin{lemme}[Lemme de Rellich]
+        Soit \(\OO^c\) un domaine connexe, complément d'un domaine borné, et soit \(u\) satisfaisant
+        \begin{subequations}
+            \begin{align}
+            \Delta u + k^2 u = 0 & &\text{dans \(\OO^c\)},
+            \\
+            \lim_{R\rightarrow\infty}\int_{S_R} |u(\vx)|^2 \dd{S_R}(\vx) = 0,
+            \end{align}
+        \end{subequations}
+        alors \(u=0\) dans \(\OO^c\).
+        \end{lemme}
+        \begin{proof}
+        Voir \cite[p.~74]{cessenat_mathematical_1996}.
+        \end{proof}
+
+
+        On définit les quantités suivantes
+        \begin{align}
+          X &= \int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx)\dd{\Gamma(\vx)},
+          \label{eq:unicite:x}
+          \\
+          C &= \int_{S_R} \Tr(\vE_t)(\vx)  \cdot \conj{\vE_t}(\vx)\dd{S_R(\vx)}.
+        \end{align}
+      
+        \begin{align*}
+          \intertext{De}
+          a(\vE,\vE) &= \frac{1}{ik_0} \int_{\OO^c_R} \norm{\trot \vE(\vx)}^2 \dd{x} + ik_0\int_{\OO^c_R}\norm{\vE(\vx)}^2 \dd{x}
+           + X + C,
+          \intertext{on déduit}
+          \Re(a(\vE,\vE)) & = 0,
+          \intertext{ce qui se réecrit}
+          \Re(C) + \Re(X) & = 0.
+          \intertext{Comme d'après \cite[Théorème~5.3.5, p.~200]{nedelec_acoustic_2001} \(\Re(C) \ge 0\), on en déduit} 
+          \Re(X) & \le 0.
+        \end{align*}
+        L'hypothèse \eqref{eq:unicite:form_var:cgu} \(\Re(X) \ge 0\) impose alors \(\Re(X)=0\) et donc
+        \begin{align*} 
+          \Re(C) &= 0,
+          \intertext{donc d'après le théorème 5.3.5 de Nédélec}
+          \vE_t &= 0 && \text{sur \(S_R\)},
+          \intertext{et d'après le lemme de Rellich}
+          \vE &= 0 && \text{dans \(\OO^c_R\)}.
+        \end{align*}
+      
+        On en déduit \(\vH = 0 \).
+      
+        On conclut donc que si on suppose \eqref{eq:unicite:form_var:cgu}, alors en l'absence de sources le couple \((\vE,\vH)=(0,0)\) est l'unique solution, ce qui démontre l'unicité par linéarité.
+      \end{proof}      
 
 \section{Equations de Maxwell à l'extérieur de l'objet avec un opérateur de Calderon sur son bord}
     \cite{cessenat_mathematical_1996}
