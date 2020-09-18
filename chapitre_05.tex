@@ -1386,10 +1386,10 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
             \end{center}
         \end{figure}
 
-        Pour une couche de matériau diélectrique, (voir chap \ref{sec:plan} pour plusieurs couches ainsi que le détail des calculs), l'opérateur de Calderon s'exprime en Fourier comme un multiplicateur
+        Pour une couche de matériau diélectrique, (voir chap \ref{sec:plan} pour plusieurs couches ainsi que le détail des calculs), l'opérateur de Calderon s'exprime en Fourier comme un multiplicateur matriciel,
 
         \begin{align*}
-          \hat \mZ(k_x,k_y) &= i\eta_r\frac{\tan\left(\sqrt{k^2-k_x^2-k_y^2}d\right)}{k k_3}
+          \hat \mZ(k_x,k_y) &= i\eta_r\frac{\tan\left(d\sqrt{k^2-k_x^2-k_y^2}\right)}{k \sqrt{k^2-k_x^2-k_y^2}}
           \begin{bmatrix}
             k^2-k_x^2  & -k_xk_y
             \\
@@ -1399,12 +1399,25 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
 
     \subsection{Expression de l'opérateur de Calderon pour un cylindre infini}
 
+        \begin{REM}
+            TODO: Je n'ai jamais le calcul pour une couche. A faire.
+        \end{REM}
+
     \subsection{Expression de l'opérateur de Calderon pour une sphère infini}
+
+        \begin{REM}
+            TODO: Je n'ai jamais le calcul pour une couche. A faire.
+        \end{REM}
 
 \section{Equations de Maxwell à l'extérieur de l'objet avec une approximation de l'opérateur de Calderon sur son bord}
 
     \subsection{Approximation constante de l'operateur de Calderon: la condition de Leontovich}
-        \cite{leontovich_investigations_1948}
+        
+        Définie par \cite{leontovich_investigations_1948}, cette CIE consiste à approcher l'opérateur par une constante. Très facile à mettre en oeuvre, elle est néamnoins une bonne approximation pour des incidences proche de l'oblique (\((k_x,k_y)=(0,0)\)).
+
+        \begin{REM}
+            Et je crois pour des matériaux fort indice (\(kd>>\lambda\) ? ).
+        \end{REM}
 
     \subsection{Approximation de Taylor et Padé: les CIOE}
 
