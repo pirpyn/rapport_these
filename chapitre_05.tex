@@ -1267,6 +1267,7 @@ Soit \(\gls{mat-ga}=\partial\overline{\gls{mat-om}}\) la frontière de \(\OO\), 
 On définit en tout point de \(\Gamma\), supposée régulière, \(\gls{mat-vn}\) la normale unitaire sortante à \(\OO\).
 Dans \(\OO^c\) on définit \(\gls{phy-k0}=\gls{phy-w} / \gls{phy-c} \in \RR_+^*\), le nombre d'onde dans le vide, où \gls{phy-c} 
 est la célérité d'une onde dans le vide.
+Dans \(\OO\), on a \(k(\vx)=k_0\sqrt{\gls{phy-eps}(\vx)\gls{phy-mu}(\vx)}\).
 
 % Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
 
@@ -1276,15 +1277,15 @@ Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}^\infty(\RR^3)\cap\Sobole
 \begin{align}
 \left\lbrace
 \begin{matrix}
-    \vrot \vE + i k_0 \vH &= 0
+    \vrot \vE(\vx) + i k(\vx) \vH(\vx) &= 0
     \\
-    \vrot \vH - i k_0 \vE &= 0
+    \vrot \vH(\vx) - i k(\vx) \vE(\vx) &= 0
 \end{matrix}
 \right. && \text{dans \(\OO\cup\OO^c\).}
 \label{eq:unicite:maxwell_ext}
 \end{align}
 
-De plus, les conditions limites considérés sont celle de Silver-Müller à l'infini \cite[eq (43), p.~78]{cessenat_mathematical_1996}, et de saut à l'interface de \(\Gamma\).
+De plus, les conditions limites considérés sont celle de Silver-Müller à l'infini (voir \cite[eq (5.2.24), p.~183]{nedelec_acoustic_2001}), et de saut à l'interface de \(\Gamma\).
 
 \section{Equations de Maxwell à l'intérieur et à l'extérieur de l'objet}
 
