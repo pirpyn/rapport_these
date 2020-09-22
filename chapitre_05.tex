@@ -1295,6 +1295,16 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
         \begin{thm}[Alternative de Fredholm]
             Les champs \(\vE,\vH\) solutions de \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet \(\vE_{|\Gamma} = 0\), \(\vE_{|\Gamma_0} = 0\) sont soit uniques si \(\w^2\eps\mu\) n'est pas une valeur propre du Laplacien vectoriel, soit ces champs sont engendrés par les vecteurs propres.
         \end{thm}
+        \begin{REM}
+        Qu'est ce d'ailleurs que $\Gamma$ et $\Gamma_0$ ici? Il n'y a qu'un bord? Et de toute facon c'est pas avec $E$ mais avec $n\wedge E$ seulement.
+        
+        Il faut que tu reprennes exactement la formulation du théorème 8. Je te mets ma proposition ci-dessous
+        \begin{thm}
+        Si \(\w^2\eps\mu\) n'est pas une valeur propre du Laplacien vectoriel, l'unique solution \(\vE,\vH\) de \eqref{eq:unicite:maxwell_int} avec condition aux limites de Dirichlet \(n\wedge \vE_{|\Gamma} = 0\),  est $(0,0)$. Si \(\w^2\eps\mu\) est une valeur propre du Laplacien vectoriel, \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet \(\vE_{|\Gamma} = 0\), \(\vE_{|\Gamma_0} = 0\) a pour solution tous les vecteurs propres de  l'opérateur $A$ introduit en (134) chap.2 de   \cite[Théorème~8, p.~111]{cessenat_mathematical_1996}.   \end{thm}
+        
+        
+        Et au lieu de mettre Alternative de Fredholm dans le titre du théorème, je préfèrerais rappeler après le théorème: La preuve s'appuie sur l'alternative de Fredholm.
+        \end{REM}
 
     \subsection{Etude de l'unicité des solutions du problème extérieur: Lemme de Rellich}
 
@@ -1360,14 +1370,31 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
       \end{proof}      
 
 \section{Equations de Maxwell à l'extérieur de l'objet avec un opérateur de Calderon sur son bord}
-    L'opérateur de Caldéron \cite[Def~4, p.~108]{cessenat_mathematical_1996}, lie les traces tangetielles à la surface extérieur de l'objet des champs solutions du problème intérieur et extérieur.
+    L'opérateur de Caldéron \cite[Def~4, p.~108]{cessenat_mathematical_1996}, lie les traces tangentielles à la surface extérieur de l'objet des champs solutions du problème intérieur et extérieur.
     
     Ainsi à un couple de solution \((\vE,\vH)\) est associé un unique opérateur de Calderon.
+    \begin{REM}
+    Très mal formulé. Il FAUT mettre: à un couple $(\Omega, \Omega^c)$ et à deux problèmes de type Maxwell dans chacun des ouverts, est associé un unique opérateur de Calderon. C'est une propriété des SYSTEMES, pas des SOLUTIONS.
+    \end{REM}
 
     En imposant sur le bord extérieur de l'objet une condition limite utilisant cet opérateur, alors les solutions \((\vE,\vH)\) de ce nouveau problème posé uniquement à l'extérieur sont les même que celles du problème intérieur et extérieur.
 
     \begin{REM}
         Je cherche la ref dans le Cessenat, mais si tu l'as, je prend.
+        
+        Il me semble que tu peux t'appuyer pour Helmholtz sur le Théorème 5 page 106: unicité de la solution du problème extérieur lorsque $u_0$ est donné dans $H^{\frac12}(\Gamma)$. ou le théorème 6 page 107 pour Maxwell avec $m_0$ donné dans $H^{-\frac12}(\Gamma)$. L'opérateur de Calderon extérieur est alors donné dans la définition 4 page 109.
+        
+        Il s'agit alors de comparer les solutions des problèmes (P) et (P'), l'un est le problème de Maxwell dans $R^3$ avec condition de radiation à l'infini et l'appartenance à H(rot) des champs, l'autre est le problème de Maxwell dans $\Omega$ avec opérateur de Calderon extérieur sur le bord. J'impose dans (P) et dans (P') la donnée de $n\wedge E=m_0$ sur $\Gamma$. (si c'est la restriction à $\Gamma$, saut nul).
+         Le problème (P)  a une unique solution. La restriction de cette solution à $\Omega^c$ peut donc être étudiée.
+         
+         
+         Le problème de Maxwell extérieur admet une unique solution avec $m_0$ comme donnée. On appelle $(E^*, H^*)$ cette solution , et on déduit $n\wedge H\vert_{\Gamma_+}= C_e(n\wedge E)_{\Gamma_+})$.
+        Traitons maintenant le problème (P') et imposons maintenant dans $\Omega$ Maxwell avec $(m_0, m_1=C_e(m_0))$ sur $\Gamma_-$. Ce problème a une unique solution $(E_*, H_*)$. Si on étudie maintenant $E=E^*$ dans $\Omega^c$, $E=E_*$ dans $\Omega$, et même chose pour $H$, les champs ainsi construits sont des élément de $H(rot)$ (par condition de saut sur $n\wedge E$ et sur $n\wedge H$). Ces éléments vérifient Maxwell dans chaque ouvert, satisfont à la condition de rayonnement à l'infini, et par la formule des sauts au sens des distributions vérifient Maxwell partout (exactement comme $\vert x\vert$ vérifie $(u')^2=1$ partout). De plus la trace de $n\wedge E$ sur $\Gamma$ est $m_0$. C'est donc l'unique solution de (P).
+        
+        
+    \end{REM}
+    \begin{REM}
+    Une autre remarque est que le Théorème 3 page 86 de Cessenat te permet de résoudre séparément le problème intérieur et le problème extérieur, en considérant chaque fois $(E,H)=(0,0)$ à l'intérieur et en mettant la masse de Dirac surfacique comme terme source, et réciproquement.
     \end{REM}
 
     L'unicité des solutions est aussi assuré par le lemme de Rellich, avec la même condition suffisante d'unicité.
@@ -1375,7 +1402,9 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
     \subsection{Expression de l'opérateur de Calderon pour un plan infini en tant que multiplicateur de Fourier}
 
         \begin{REM}
-            Introduire Fourier. Recopier Chap plan. Introduire les termes.
+            Introduire Fourier. Recopier Chap plan. Introduire les termes. 
+            
+            Ma suggestion: tu ne fais que DONNER le résultat final, et tu ne mets pas la preuve ici, tu la réserves au chapitre où tu fais la preuve pour 1 et plusieurs couches. PS j'ai commenté les lignes suivantes car je n'ai pas la figure
         \end{REM}
 
         \begin{figure}[!h]
@@ -1403,6 +1432,17 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
         \begin{REM}
             TODO: Je n'ai jamais le calcul pour une couche. A faire.
         \end{REM}
+        \begin{REM}
+        Pour Helmholtz, tu démontres que toutes les solutions qui vérifient la condition de Dirichlet en $r_0$ sur le conducteur parfait sont $\sum_p a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))e^{ip\theta}$ où $k_3$ est la racine de partie réelle positive de $\epsilon \mu :omega^2-k_z^2$, et l'opérateur de Dirichlet to Neumann, pour le mode de Fourier $p$ sur le bord $r=R$, est alors (en prenant la dérivée normale)
+        $$k_3\frac{J'_p(k_3R)Y_p(k_3r_0)-Y'_p(k_3R)J_p(k_3r_0)}{J_p(k_3R)Y_p(k_3r_0)-Y_p(k_3R)J_p(k_3r_0)}.$$
+        Tu peux prendre n'importe quel couple de solutions linéairement indépendantes de l'équation de Bessel.
+        
+        Pour Maxwell, c'est le calcul que tu as fait en partie, en exprimant $E$ et $H$ sur les Bessel, en commencant par $E_z,H_z$ et en en déduisant $E_{\theta}, H_{\theta}$. Tu écris $(E_z, H_z)$ avec quatre coefficients de Fourier sur le mode $e^{ip\theta}$, tu en élimines 1 déjà en mettant
+        $$E_z=\sum_p e^{ip\theta}a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))$$
+        et tu conserves
+        $$H_z=\sum_p (c_pJ_p(k_3r)+d_pY_p(k_3r))e^{ip\theta}.$$
+        Tu déduis alors $E_{\theta}, H_{\theta}$. En particulier $E_{\theta}$ dépend de $c_p, d_p, p\geq 0$, et tu obtiendras une relation sur les coefficients à partir de $E_{\theta}(r=r_0)=0$. 
+        \end{REM}
 
     \subsection{Expression de l'opérateur de Calderon pour une sphère infini}
 
@@ -1417,11 +1457,14 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
         Définie par \cite{leontovich_investigations_1948}, cette CIE consiste à approcher l'opérateur par une constante. Très facile à mettre en oeuvre, elle est néamnoins une bonne approximation pour des incidences proche de l'oblique (\((k_x,k_y)=(0,0)\)).
 
         \begin{REM}
-            Référence de cette affirmation.
+            Référence de cette affirmation. Probablement M. A. Leontovich, On a method of solving the problem of propagation of electromagnetic
+waves near the surface of the earth, Isvestia Akad. Nauk. SSSR, Ser. Phys., 8 (1944),
+pp. 16-22.
         \end{REM}
 
         \begin{REM}
-            Et je crois pour des matériaux fort indice (\(kd>>\lambda\) ? ).
+            Et je crois pour des matériaux fort indice (\(kd>>\lambda\) ? ). A vérifier dans tes formules. Sinon, tu peux cite Senior formules (30-33) (je te le mets en retour).
+       
         \end{REM}
 
     \subsection{Approximation de Taylor et Padé: les CIOE}
@@ -1437,11 +1480,13 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
         \begin{REM}
             Note de Lundi soir
 
-            "Il est bien entendue que pour chaque \gls{acr-cioe}, le problème avec une incidente, conduit s'il y a une unicté a une unique solution differente, et donc donc des solutions differentes, dont on espere qu'elles sont une approximation du probleme complet / calderon"
+            "Il est bien entendue que pour chaque \gls{acr-cioe}, le problème avec une onde incidente, conduit s'il y a unicité à une unique solution diffractée, et donc à des solutions diffractées differentes, dont on espère qu'elles sont une approximation de la solution exacte du probleme diffracté avec opérateur de calderon"
 
             Tout le pb est de choisir les coeffs complexes, obtenues grâce à des approximations issues de critères physiques mais non issus de cette derniere. 
 
-            Il est inutile de considerer des coefficients qui ne donnerait pas d'unique solution des champs
+            Il est inutile de considerer des coefficients qui ne permettraient pas d'obtenir une unique solution. Plus exactement, comme on ne connait pas de condition nécessaire et suffisante d'existence et d'unicité, on se contentera de {\bf garantir} l'unicité de la solution dans des cas plus restreints, ceux de conditions {\bf suffisantes} d'unicité. 
+            
+            Si on n'a pas unicité, il est aussi clair que, pour un problème avec source, on peut ne pas avoir existence. L'existence, en revanche, est assurée si la source est nulle puisque la solution nulle vérifie toutes les conditions du problème.
         \end{REM}
 
     \subsection{Etude de l'unicité des solutions: conditions suffisantes d'unicité}
