@@ -21,7 +21,7 @@
 
 \fill [lightgray] (A) rectangle (C);
 \draw ($(A)!0.5!(C)$) node {$\eps,\mu,d$};
-\draw (B) -- (C) node [right] {$e_z = 0$};
+\draw (B) -- (C) node [right] {$z = 0$};
 
 %% Le repère
 \tikzmath{
