@@ -7,7 +7,7 @@
         "**/csv/**/*.coeff.txt" : true,
     },
     "latex-workshop.latex.outDir": "%DIR%/build",
-    "latex-workshop.latex.external.build.command": "latexmk",
     "latex-workshop.latex.autoBuild.run": "never",
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "latex-workshop.view.pdf.viewer": "tab"
 }
