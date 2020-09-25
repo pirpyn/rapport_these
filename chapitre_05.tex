@@ -1441,6 +1441,54 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
         Tu déduis alors \(E_{\theta}, H_{\theta}\). En particulier \(E_{\theta}\) dépend de \(c_p, d_p, p\geq 0\), et tu obtiendras une relation sur les coefficients à partir de \(E_{\theta}(r=r_0)=0\). 
         \end{REM}
 
+        \begin{REM}
+            Vérif calcul matriciel qui suit
+        \end{REM}
+
+        \begin{align*}
+            \hat\mZ_n(k_z) &= 
+                \left(\mH_{E}(r_1,n,k_z)\mH_{E}(r_0,n,k_z)^{-1} - \mJ_{E}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\right)
+                \\
+                &\left(\mH_{\cH}(r_1,n,k_z)\mH_{E}(r_0,n,k_z)^{-1} - \mJ_{\cH}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\right)^{-1},
+        \end{align*}
+        \begin{align*}
+        \mH_{E}(r_0,n,k_z)^{-1} &= -\frac{k_3}{ik\eta}\frac{1}{H_n^{(2)}{}'(k_3r_0)H_n^{(2)}(k_3r_0)}
+            \begin{bmatrix}
+                0 & -\frac{ik\eta}{k_3}H_n^{(2)}{}'(k_3r_0)
+                \\
+                -H_n^{(2)}(k_3r_0) & -\frac{nk_z}{r_0k_3^2}H_n^{(2)}(k_3r_0)
+            \end{bmatrix},
+            \\
+            &= 
+            \begin{bmatrix}
+                0 & \frac{1}{H_n^{(2)}{}(k_3r_0)}
+                \\
+                \frac{k_3}{ik\eta}\frac{1}{H_n^{(2)}{}'(k_3r_0)} & \frac{nk_z}{r_0k_3ik\eta}\frac{1}{H_n^{(2)}{}'(k_3r_0)}
+            \end{bmatrix},
+        \end{align*}
+
+        \begin{align*}
+        \mH_{E}(r_1,n,k_z)\mH_{E}(r_0,n,k_z)^{-1} &=
+            \\
+            &\begin{bmatrix}
+                -\frac{nk_z}{r_1k_3^2}H_n^{(2)}(k_3r_1) & \frac{ik\eta}{k_3}H_n^{(2)}{}'(k_3r_1)
+                \\
+                H_n^{(2)}(k_3r_1) & 0
+            \end{bmatrix}
+            \begin{bmatrix}
+                0 & \frac{1}{H_n^{(2)}{}(k_3r_0)}
+                \\
+                \frac{k_3}{ik\eta}\frac{1}{H_n^{(2)}{}'(k_3r_0)} & \frac{nk_z}{r_0k_3ik\eta}\frac{1}{H_n^{(2)}{}'(k_3r_0)}
+            \end{bmatrix},
+            \\
+            &=
+            \begin{bmatrix}
+                \frac{H_n^{(2)}{}'(k_3r_0)}{H_n^{(2)}{}'(k_3r_0)} & -\frac{nk_z}{r_1k_3^2}\frac{H_n^{(2)}(k_3r_1)}{H_n^{(2)}{}(k_3r_0)} + \frac{nk_z}{r_0k_3^2}\frac{H_n^{(2)}{}'(k_3r_1)}{H_n^{(2)}{}'(k_3r_0)}
+                \\
+                0 & \frac{H_n^{(2)}{}(k_3r_0)}{H_n^{(2)}{}(k_3r_0)}
+            \end{bmatrix}
+        \end{align*}
+
     \subsection{Expression de l'opérateur de Calderon pour une sphère infini}
 
         \begin{REM}
