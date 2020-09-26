@@ -1681,6 +1681,36 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
                 Verification avec le calcul matriciel:
             \end{REM}
 
+            Soit \(J_n\) la fonction de Bessel de première espèce et \(H_n^{(2)}\) la fonction de Hankel de deuxième type.
+    
+            Pour un cylindre de rayon \(r_0 [m]\) recouvert d'une couche d'épaisseur \(d [m]\) (on pose \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime tant que coefficient de série de Bessel et multiplicateur de Fourier (en \(k_z\)) matriciel.
+
+            \subsubsection{Expression de l'opérateur de Calderon quand \(k_z=0\)}
+              Le cas de l'incidence perpendiculaire à l'axe du cylindre simplifie grandement les calculs.
+
+              \begin{multline*}
+                \hat \mZ_n(0) = \\
+                \begin{bmatrix}
+                  \frac{i}{\eta}\frac{
+                    H^{(2)}_n{}'(kr_1)J_n{}'(kr_0)-J_n{}'(kr_1)H^{(2)}_n{}'(kr_0)
+                  }{
+                    H^{(2)}_n(kr_1)J_n{}'(kr_0)-J_n(kr_1)H^{(2)}_n{}'(kr_0)
+                  } & 0
+                  \\
+                  0 &  -i\eta\frac{
+                    H^{(2)}_n(kr_1)J_n(kr_0)-J_n(kr_1)H^{(2)}_n(kr_0)
+                  }{
+                    H^{(2)}_n{}'(kr_1)J_n(kr_0)-J_n({}'kr_1)H^{(2)}_n(kr_0)
+                  }
+                \end{bmatrix}.
+              \end{multline*}
+
+            \subsubsection{Expression de l'opérateur de Calderon général}
+
+              \begin{align*}
+                \hat \mZ_n(k_z) &= 
+              \end{align*}
+
     \subsection{Expression de l'opérateur de Calderon pour une sphère infini}
 
         Soit \(j_n\) la fonction de Bessel sphérique de première espèce et \(h_n^{(2)}\) la fonction de Hankel sphérique de deuxième type.
@@ -1689,9 +1719,9 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
 
         Pour une sphère de rayon \(r_0 [m]\) recouverte d'une couche d'épaisseur \(d [m]\) (on pose \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime tant que coefficient de série de Mie matriciel,
 
-        \begin{align*}
-        \hat \mZ_n &= i\eta
-        \begin{bmatrix}
+        \begin{multline*}
+          \hat \mZ_n = \\
+          i\eta \begin{bmatrix}
             kr_1 
              \frac{
                  h^{(2)}_n(kr_1)j_n(kr_0)-j_n(kr_1)h^{(2)}_n(kr_0)
@@ -1706,8 +1736,8 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
                }{
                  {h^{(2)}_n}(kr_1)\tilde{j_n}(kr_0)-{j_n}(kr_1)\tilde{h^{(2)}_n}(kr_0)
                }
-        \end{bmatrix}.
-        \end{align*}
+          \end{bmatrix}.
+        \end{multline*}
 
 \section[Problème extérieur et condition limite de Calderon]{Equations de Maxwell à l'extérieur de l'objet avec une approximation de l'opérateur de Calderon sur son bord}
 
