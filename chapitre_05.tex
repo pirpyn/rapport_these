@@ -1681,10 +1681,12 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
                 Verification avec le calcul matriciel:
             \end{REM}
 
-            Soit \(J_n\) la fonction de Bessel de première espèce et \(H_n^{(2)}\) la fonction de Hankel de deuxième type.
+            Soit \(J_n\) la fonction de Bessel de première espèce et \(H_n^{(2)}\) la fonction de Hankel de deuxième espèce.
     
-            Pour un cylindre de rayon \(r_0 [m]\) recouvert d'une couche d'épaisseur \(d [m]\) (on pose \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime tant que coefficient de série de Bessel et multiplicateur de Fourier (en \(k_z\)) matriciel.
-
+            Pour un cylindre de rayon \(r_0 [m]\) recouvert d'une couche d'épaisseur \(d [m]\) (on note \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime tant que coefficient de série de Bessel et multiplicateur de Fourier (en \(k_z\)) matriciel. {\it en tant que multiplicateur de Fourier en  \(k_z\), n}: 
+            \begin{REM}
+            en effet $n$ est aussi un indice de Fourier car la transformée de Fourier discrète est aussi une vraie transformé de Fourier. Mets le
+\end{REM}
             \subsubsection{Expression de l'opérateur de Calderon quand \(k_z=0\)}
               Le cas de l'incidence perpendiculaire à l'axe du cylindre simplifie grandement les calculs.
 
@@ -1692,7 +1694,7 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
                 \hat \mZ_n(0) = \\
                 \begin{bmatrix}
                   \frac{i}{\eta}\frac{
-                    H^{(2)}_n{}'(kr_1)J_n{}'(kr_0)-J_n{}'(kr_1)H^{(2)}_n{}'(kr_0)
+                    (H^{(2)}_n{})'(kr_1)J_n{}'(kr_0)-J_n{}'(kr_1)(H^{(2)}_n{})'(kr_0)
                   }{
                     H^{(2)}_n(kr_1)J_n{}'(kr_0)-J_n(kr_1)H^{(2)}_n{}'(kr_0)
                   } & 0
@@ -1700,7 +1702,7 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
                   0 &  -i\eta\frac{
                     H^{(2)}_n(kr_1)J_n(kr_0)-J_n(kr_1)H^{(2)}_n(kr_0)
                   }{
-                    H^{(2)}_n{}'(kr_1)J_n(kr_0)-J_n({}'kr_1)H^{(2)}_n(kr_0)
+                    (H^{(2)}_n{})'(kr_1)J_n(kr_0)-J_n{}'(kr_1)H^{(2)}_n(kr_0)
                   }
                 \end{bmatrix}.
               \end{multline*}
