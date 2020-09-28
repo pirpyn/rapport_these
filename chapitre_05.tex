@@ -79,6 +79,8 @@
     \newtheorem{prop}[thm]{Proposition}
     \newtheorem{defn}[thm]{Définition}
     \newtheorem{hyp}[thm]{Hypothèse}
+    \newtheorem{remark}[thm]{Remark}
+    \newtheorem{lemma}[thm]{Lemma}
 % \usepackage{thmbox}
 % \newtheorem[style=M,bodystyle={\noindent}]{thm}{Théorème}[chapter]
 % \newtheorem[style=M,bodystyle={\noindent}]{lemme}{Lemme}[chapter]
@@ -1723,11 +1725,68 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
             which yields the Calder\`on operator.
             \end{proof}
 
+            \begin{REM}
+                Verification avec le calcul matriciel:
+            \end{REM}
+
+            Soit \(J_n\) la fonction de Bessel de première espèce et \(H_n^{(2)}\) la fonction de Hankel de deuxième espèce.
+    
+            Pour un cylindre de rayon \(r_0 [m]\) recouvert d'une couche d'épaisseur \(d [m]\) (on note \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime en tant que multiplicateur de Fourier matriciel en \((n,k_z)\) où \(n\) est l'indice d'un coefficient de série de Bessel ( qui est une série de Fourier sur \(\theta\) ) et \(k_z\) est la variable de Fourier associée à la transformée de Fourier partielle en \(z\):
+
+            \subsubsection{Expression de l'opérateur de Calderon quand \(k_z=0\)}
+              Le cas de l'incidence perpendiculaire à l'axe du cylindre simplifie grandement les calculs, car cette matrice est alors diagonale:
+
+              \begin{align*}
+                (\hat\mZ_n(0))_{11} &= \frac{i}{\eta}\frac{
+                  (H^{(2)}_n)'(kr_1)(J_n)'(kr_0)-(J_n{})'(kr_1)(H^{(2)}_n)'(kr_0)
+                }{
+                  H^{(2)}_n(kr_1)(J_n)'(kr_0)-J_n(kr_1)(H^{(2)}_n)'(kr_0)
+                },
+                \\
+                (\hat\mZ_n(0))_{12} &= 0,
+                \\
+                (\hat\mZ_n(0))_{21} &= 0,
+                \\
+                (\hat\mZ_n(0))_{22} &=-i\eta\frac{
+                    H^{(2)}_n(kr_1)J_n(kr_0)-J_n(kr_1)H^{(2)}_n(kr_0)
+                  }{
+                    (H^{(2)}_n)'(kr_1)J_n(kr_0)-(J_n)'(kr_1)H^{(2)}_n(kr_0)
+                  }.
+              \end{align*}
+
+            \subsubsection{Expression de l'opérateur de Calderon général}
+
+              \begin{align*}
+                \hat \mZ_n(k_z) &= 
+              \end{align*}
+
     \subsection{Expression de l'opérateur de Calderon pour une sphère infini}
 
-        \begin{REM}
-            TODO: Je n'ai jamais le calcul pour une couche. A faire.
-        \end{REM}
+        Soit \(j_n\) la fonction de Bessel sphérique de première espèce et \(h_n^{(2)}\) la fonction de Hankel sphérique de deuxième type.
+
+        On utilise la notation \gls{mat-tild} pour désigner les dérivées de ces fonctions telles que \(\tilde{f}(z) = \ddp{z}{(zf(z))}\).
+
+        Pour une sphère de rayon \(r_0 [m]\) recouverte d'une couche d'épaisseur \(d [m]\) (on pose \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime tant que coefficient de série de Mie matriciel,
+
+        \begin{multline*}
+          \hat \mZ_n = \\
+          i\eta \begin{bmatrix}
+            kr_1 
+             \frac{
+                 h^{(2)}_n(kr_1)j_n(kr_0)-j_n(kr_1)h^{(2)}_n(kr_0)
+               }{
+                 \tilde{h^{(2)}_n}(kr_1)j_n(kr_0)-\tilde{j_n}(kr_1)h^{(2)}_n(kr_0)
+               }
+               & 0
+            \\
+            0 & \frac{1}{kr_1}
+               \frac{
+                 \tilde{h^{(2)}_n}(kr_1)\tilde{j_n}(kr_0)-\tilde{j_n}(kr_1)\tilde{h^{(2)}_n}(kr_0)
+               }{
+                 {h^{(2)}_n}(kr_1)\tilde{j_n}(kr_0)-{j_n}(kr_1)\tilde{h^{(2)}_n}(kr_0)
+               }
+          \end{bmatrix}.
+        \end{multline*}
 
 \section[Problème extérieur et condition limite de Calderon]{Equations de Maxwell à l'extérieur de l'objet avec une approximation de l'opérateur de Calderon sur son bord}
 
