@@ -426,7 +426,7 @@
 %Operator
 \newcommand{\Sobup}[1][{}]{\mathrm{H}^\mathrm{#1}}
 \newcommand{\Sobdw}[1][{}]{\mathrm{H}_\mathrm{#1}}
-\newcommand{\Sobolev}[1][{}]{\Sobup{#1}}
+\newcommand{\Sobolev}[1][{}]{\Sobup[#1]}
 \newcommand{\Hgrad}{\Sobdw[grad]}
 \newcommand{\Hrot}{\Sobdw[rot]}
 \newcommand{\Hdiv}{\Sobdw[div]}
@@ -1013,6 +1013,15 @@
     first={\glsentrydesc{acr-pml} (\glsentrytext{acr-pml})},
     firstplural={\glsentrydescplural{acr-pml} (\glsentryplural{acr-pml})},
   }
+  \newglossaryentry{acr-cl}{
+    type={acr},
+    name={CL},
+    plural={CL},
+    description={condition limite},
+    descriptionplural={conditions limite},
+    first={\glsentrydesc{acr-cl} (\glsentrytext{acr-cl})},
+    firstplural={\glsentrydescplural{acr-cl} (\glsentryplural{acr-cl})},
+  }
   \newglossaryentry{acr-cla}{
     type={acr},
     name={CLA},
@@ -1408,7 +1417,7 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
     %        \end{center}
     %    \end{figure}
 
-        Pour une couche d'épaisseur \(d (m)\) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime en Fourier comme un multiplicateur matriciel,
+        Pour une couche d'épaisseur \(d (m)\) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime en Fourier comme un multiplicateur matriciel en \((k_x,k_y)\), supposant \(\sqrt{k^2-k_x^2-k_y^2}\not=0\),
 
         \begin{align*}
           \hat \mZ(k_x,k_y) &= i\eta\frac{\tan\left(d\sqrt{k^2-k_x^2-k_y^2}\right)}{k \sqrt{k^2-k_x^2-k_y^2}}
@@ -1419,344 +1428,471 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
           \end{bmatrix}.
         \end{align*}
 
-        La démonstration de ce calcul, ainsi que son extention à nombre arbitraire de couches est l'objet du chapitre \ref{sec:plan}.
+        Notons ici que nous généralisons l'emploi du nom 'opérateur de Caldéron' dans ce cas, même si la couche de matériau diélectrique n'est pas un ouvert borné. Nous adopterons cette convention dans toute cette thèse. 
+        
+        La démonstration de ce calcul, ainsi que son extension à un nombre arbitraire de couches est l'objet du chapitre \ref{sec:plan}.
 
-        On remarque que l'opérateur de Calderon ne peut pas être un opérateur différentiel, puisque son multiplicateur de Fourier fait intervenir la racine carré \(\sqrt{k_x^2 + k_y^2}\) ce qui en temporel ne peut s'exprimer avec les opérateurs \(\partial/\partial x, \partial / \partial y\).
-        Par contre, on peut approcher cette dernière par un polynôme en \((k_x,k_y)\), voir par une fraction de polynôme, et les CIOE sont issues de cet approximation.
-        Cependant cette thèse de ne fera qu'utiliser des CIOE déjà établies.
+        On remarque que l'opérateur de Calderon n'est pas un opérateur aux dérivées partielles puisque son multiplicateur de Fourier fait intervenir la racine carré \(\sqrt{k^2-k_x^2 - k_y^2}\), qui n'est pas un polynôme en $(k_x,k_Y)$ et donc, par transformée inverse de Fourier ne peut s'exprimer avec les opérateurs \(\partial/\partial x, \partial / \partial y\).
+        Par contre, on peut approcher cette dernière par un polynôme en \((k_x,k_y)\), voire par une fraction de polynômes, et les CIOE sont issues de cette approximation. Par exemple si on approche ce multiplicateur de Fourier par le quotient $\frac{Q(k_x,k_y)}{R(k_x,k_y)}$, écrire ${\hat v}(k_x,k_y)=\frac{Q(k_x,k_y)}{R(k_x,k_y)}{\hat u}{k_x,k_y)$ se réécrit (même si il faut des résultats supplémentaires pour que la formulation qui suit lui soit équivalente) $R(k_x,k_y){\hat v}(k_x,k_y)=Q(k_x,k_y){\hat u}{k_x,k_y)$, qui se transforme en opérateurs différentiels.
+        
+        Cette thèse ne fera cependant qu'utiliser des CIOE déjà écrites.
         Nous renvoyons par exemple à \cite{senior_approximate_1995} pour ce problème.
 
     \subsection{Expression de l'opérateur de Calderon pour un cylindre infini}
 
-        \begin{REM}
-            TODO: Je n'ai jamais le calcul pour une couche. A faire.
-        \end{REM}
-        \begin{REM}
-        Pour Helmholtz, tu démontres que toutes les solutions qui vérifient la condition de Dirichlet en \(r_0\) sur le conducteur parfait sont \(\sum_p a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))e^{ip\theta}\) où \(k_3\) est la racine de partie réelle positive de \(\epsilon \mu :\omega^2-k_z^2\), et l'opérateur de Dirichlet to Neumann, pour le mode de Fourier \(p\) sur le bord \(r=R\), est alors (en prenant la dérivée normale)
-        \[k_3\frac{J'_p(k_3R)Y_p(k_3r_0)-Y'_p(k_3R)J_p(k_3r_0)}{J_p(k_3R)Y_p(k_3r_0)-Y_p(k_3R)J_p(k_3r_0)}.\]
-        Tu peux prendre n'importe quel couple de solutions linéairement indépendantes de l'équation de Bessel.
+        % \begin{REM}
+        % Pour Helmholtz, tu démontres que toutes les solutions qui vérifient la condition de Dirichlet en \(r_0\) sur le conducteur parfait sont \(\sum_p a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))e^{ip\theta}\) où \(k_3\) est la racine de partie réelle positive de \(\epsilon \mu :\omega^2-k_z^2\), et l'opérateur de Dirichlet to Neumann, pour le mode de Fourier \(p\) sur le bord \(r=R\), est alors (en prenant la dérivée normale)
+        % \[k_3\frac{J'_p(k_3R)Y_p(k_3r_0)-Y'_p(k_3R)J_p(k_3r_0)}{J_p(k_3R)Y_p(k_3r_0)-Y_p(k_3R)J_p(k_3r_0)}.\]
+        % Tu peux prendre n'importe quel couple de solutions linéairement indépendantes de l'équation de Bessel.
         
-        Pour Maxwell, c'est le calcul que tu as fait en partie, en exprimant \(E\) et \(H\) sur les Bessel, en commencant par \(E_z,H_z\) et en en déduisant \(E_{\theta}, H_{\theta}\). Tu écris \((E_z, H_z)\) avec quatre coefficients de Fourier sur le mode \(e^{ip\theta}\), tu en élimines 1 déjà en mettant
-        \[E_z=\sum_p e^{ip\theta}a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))\]
-        et tu conserves
-        \[H_z=\sum_p (c_pJ_p(k_3r)+d_pY_p(k_3r))e^{ip\theta}.\]
-        Tu déduis alors \(E_{\theta}, H_{\theta}\). En particulier \(E_{\theta}\) dépend de \(c_p, d_p, p\geq 0\), et tu obtiendras une relation sur les coefficients à partir de \(E_{\theta}(r=r_0)=0\). 
-        \end{REM}
+        % Pour Maxwell, c'est le calcul que tu as fait en partie, en exprimant \(E\) et \(H\) sur les Bessel, en commencant par \(E_z,H_z\) et en en déduisant \(E_{\theta}, H_{\theta}\). Tu écris \((E_z, H_z)\) avec quatre coefficients de Fourier sur le mode \(e^{ip\theta}\), tu en élimines 1 déjà en mettant
+        % \[E_z=\sum_p e^{ip\theta}a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))\]
+        % et tu conserves
+        % \[H_z=\sum_p (c_pJ_p(k_3r)+d_pY_p(k_3r))e^{ip\theta}.\]
+        % Tu déduis alors \(E_{\theta}, H_{\theta}\). En particulier \(E_{\theta}\) dépend de \(c_p, d_p, p\geq 0\), et tu obtiendras une relation sur les coefficients à partir de \(E_{\theta}(r=r_0)=0\). 
+        % \end{REM}
 
-        \begin{REM}
-            Ce qui suit est issu de ton TEX.
-        \end{REM}
-            \begin{align*}
-                S_n(k_3r)&=\frac{J'_n(k_3r_0)Y_n(k_3r)-Y'_n(k_3r_0)J_n(k_3r)}{J'_n(k_3r_0)Y'_n(k_3R)-Y'_n(k_3r_0)J'_n(k_3R)},
-                \\
-                T_n(k_3r)&=\frac{J_n(k_3r_0)Y'_n(k_3r)-Y_n(k_3r_0)J'_n(k_3r)}{J_n(k_3r_0)Y_n(k_3R)-Y_n(k_3r_0)J_n(k_3R)},
-                \\
-                Q_n(k_3r)&=\frac{J_n(k_3r_0)Y_n(k_3r)-Y_n(k_3r_0)J_n(k_3r)}{J_n(k_3r_0)Y_n(k_3R)-Y_n(k_3r_0)J_n(k_3R)},
-                \\
-                R_n(k_3r)&=\frac{J'_n(k_3r_0)Y'_n(k_3r)-Y'_n(k_3r_0)J'_n(k_3r)}{J'_n(k_3r_0)Y'_n(k_3R)-Y'_n(k_3r_0)J'_n(k_3R)}.
-            \end{align*}
-            We notice that these functions do not depend on the choice of the pair of fundamental solutions of the Bessel equation considered. 
+        % \begin{REM}
+        %   Ce qui suit est issu de ton TEX.
+        % \end{REM}
+        %     \begin{align*}
+        %         S_n(k_3r)&=\frac{J'_n(k_3r_0)Y_n(k_3r)-Y'_n(k_3r_0)J_n(k_3r)}{J'_n(k_3r_0)Y'_n(k_3R)-Y'_n(k_3r_0)J'_n(k_3R)},
+        %         \\
+        %         T_n(k_3r)&=\frac{J_n(k_3r_0)Y'_n(k_3r)-Y_n(k_3r_0)J'_n(k_3r)}{J_n(k_3r_0)Y_n(k_3R)-Y_n(k_3r_0)J_n(k_3R)},
+        %         \\
+        %         Q_n(k_3r)&=\frac{J_n(k_3r_0)Y_n(k_3r)-Y_n(k_3r_0)J_n(k_3r)}{J_n(k_3r_0)Y_n(k_3R)-Y_n(k_3r_0)J_n(k_3R)},
+        %         \\
+        %         R_n(k_3r)&=\frac{J'_n(k_3r_0)Y'_n(k_3r)-Y'_n(k_3r_0)J'_n(k_3r)}{J'_n(k_3r_0)Y'_n(k_3R)-Y'_n(k_3r_0)J'_n(k_3R)}.
+        %     \end{align*}
+        %     We notice that these functions do not depend on the choice of the pair of fundamental solutions of the Bessel equation considered. 
 
-            \begin{lemma} The Calderon operator for the cylindrical annulus is given by
-            $$
-                \begin{pmatrix}
-                    -H_{\theta}
-                    \cr
-                    H_z
-                \end{pmatrix}
-                =
-                    \begin{pmatrix}
-                        \frac{i\omega \epsilon}{k_3}T_n(k_3R)-\frac{ik_z^2n^2}{k_3^3R^2\omega \mu}S_n(k_3R) & -\frac{ik_zn}{k_3R\omega \mu}S_n(k_3R)
-                        \cr
-                        \frac{ik_zn}{k_3R\omega \mu}S_n(k_3R) & \frac{ik_3}{\omega \mu}S_n(k_3R)
-                    \end{pmatrix}
-                    \begin{pmatrix}
-                        E_z
-                        \cr
-                        E_{\theta}
-                    \end{pmatrix}.
-            $$
-            \end{lemma}
+        %     \begin{lemma} The Calderon operator for the cylindrical annulus is given by
+        %     $$
+        %         \begin{pmatrix}
+        %             -H_{\theta}
+        %             \cr
+        %             H_z
+        %         \end{pmatrix}
+        %         =
+        %             \begin{pmatrix}
+        %                 \frac{i\omega \epsilon}{k_3}T_n(k_3R)-\frac{ik_z^2n^2}{k_3^3R^2\omega \mu}S_n(k_3R) & -\frac{ik_zn}{k_3R\omega \mu}S_n(k_3R)
+        %                 \cr
+        %                 \frac{ik_zn}{k_3R\omega \mu}S_n(k_3R) & \frac{ik_3}{\omega \mu}S_n(k_3R)
+        %             \end{pmatrix}
+        %             \begin{pmatrix}
+        %                 E_z
+        %                 \cr
+        %                 E_{\theta}
+        %             \end{pmatrix}.
+        %     $$
+        %     \end{lemma}
 
-            \begin{lemma}
-                \begin{enumerate}
-                \item If the domain is $C(r_0,R)\times R$ and if $\varepsilon \mu \notin \mathbb R^*_+$, there is no resonance.
-                \item If the domain is $C(r_0, R)\times [0,L]$, and $d_n(k_3R)(dd_n)'(k_3R)\not=0$, there is no resonance.
-                \end{enumerate}
-            \end{lemma}
-            Introduce now, in the case $d_n(R)dd_n(R)\not=0$, the functions
-            \begin{align*}
-                S_n(rk_3) &= \frac{J'_n(k_3r_0)Y_n(k_3r)-Y'_n(k_3r_0)J_n(k_3r)}{J'_n(k_3r_0)Y'_n(k_3R)-Y'_n(k_3r_0)J'_n(k_3R)},
-                \\
-                T_n(k_3r) &= \frac{J_n(k_3r_0)Y'_n(k_3r)-Y_n(k_3r_0)J'_n(k_3r)}{J_n(k_3r_0)Y_n(k_3R)-Y_n(k_3r_0)J_n(k_3R)}.
-            \end{align*}
-            We notice that these functions do not depend on the choice of the pair of fundamental solutions of the Bessel equation considered. 
+        %     \begin{lemma}
+        %         \begin{enumerate}
+        %         \item If the domain is $C(r_0,R)\times R$ and if $\varepsilon \mu \notin \mathbb R^*_+$, there is no resonance.
+        %         \item If the domain is $C(r_0, R)\times [0,L]$, and $d_n(k_3R)(dd_n)'(k_3R)\not=0$, there is no resonance.
+        %         \end{enumerate}
+        %     \end{lemma}
+        %     Introduce now, in the case $d_n(R)dd_n(R)\not=0$, the functions
+        %     \begin{align*}
+        %         S_n(rk_3) &= \frac{J'_n(k_3r_0)Y_n(k_3r)-Y'_n(k_3r_0)J_n(k_3r)}{J'_n(k_3r_0)Y'_n(k_3R)-Y'_n(k_3r_0)J'_n(k_3R)},
+        %         \\
+        %         T_n(k_3r) &= \frac{J_n(k_3r_0)Y'_n(k_3r)-Y_n(k_3r_0)J'_n(k_3r)}{J_n(k_3r_0)Y_n(k_3R)-Y_n(k_3r_0)J_n(k_3R)}.
+        %     \end{align*}
+        %     We notice that these functions do not depend on the choice of the pair of fundamental solutions of the Bessel equation considered. 
 
-            Introduce for simplicity $D_n(k_3r)=k_3^{-1}(dd_n)'(k_3r)= J'_n(k_3r_0)Y'_n(k_3r)-Y'_n(k_3r_0)J'_n(k_3r)$.
+        %     Introduce for simplicity $D_n(k_3r)=k_3^{-1}(dd_n)'(k_3r)= J'_n(k_3r_0)Y'_n(k_3r)-Y'_n(k_3r_0)J'_n(k_3r)$.
 
-            \begin{lemma}
-            \label{Z-lemme}
-            For the cylindrical annulus, the Calderon operator is characterized, under the conditions $d_n(R)(dd_n)'(R)\not=0$ for all $n$, and $k_3\not=0$, by
-            $$
-            \begin{pmatrix}
-                H_{\theta}
-                \\
-                -H_z
-            \end{pmatrix}
-            =
-            \begin{pmatrix}
-                \frac{i\omega \epsilon}{k_3^2}T_n(k_3R)+\frac{k_z^2n^2}{i\omega \mu R^2k_3^2}S_n(k_3R)\frac{d_n(R)}{D_n(k_3R)} & \frac{k_zn}{i\omega \mu R}
-                \\
-                \frac{kn}{i\omega \mu R}S_n(k_3R)\frac{d_n(k_3R)}{D_n(k_3k_3R)} & \frac{k_3^2}{i\omega \mu}S_n(k_3R)\frac{d_n(k_3R)}{D_n(k_3R)}
-            \end{pmatrix}
-            \begin{pmatrix}
-                E_z
-                \\
-                E_{\theta}
-            \end{pmatrix}.$$
-            \end{lemma}
+        %     \begin{lemma}
+        %     \label{Z-lemme}
+        %     For the cylindrical annulus, the Calderon operator is characterized, under the conditions $d_n(R)(dd_n)'(R)\not=0$ for all $n$, and $k_3\not=0$, by
+        %     $$
+        %     \begin{pmatrix}
+        %         H_{\theta}
+        %         \\
+        %         -H_z
+        %     \end{pmatrix}
+        %     =
+        %     \begin{pmatrix}
+        %         \frac{i\omega \epsilon}{k_3^2}T_n(k_3R)+\frac{k_z^2n^2}{i\omega \mu R^2k_3^2}S_n(k_3R)\frac{d_n(R)}{D_n(k_3R)} & \frac{k_zn}{i\omega \mu R}
+        %         \\
+        %         \frac{kn}{i\omega \mu R}S_n(k_3R)\frac{d_n(k_3R)}{D_n(k_3k_3R)} & \frac{k_3^2}{i\omega \mu}S_n(k_3R)\frac{d_n(k_3R)}{D_n(k_3R)}
+        %     \end{pmatrix}
+        %     \begin{pmatrix}
+        %         E_z
+        %         \\
+        %         E_{\theta}
+        %     \end{pmatrix}.$$
+        %     \end{lemma}
 
-            \begin{remark}
-                The conditions for existence and uniqueness of a solution for a multi-layer annulus is not the intersection of the conditions for each layer. For example, for two layers of dielectric materials, of dielectric constants $(\epsilon, \mu), r_0<r<r_1$ and $(\epsilon_1, \mu_1), r_1<r<R$, the conditions induced by $E_z$ are
-                \begin{multline*}
-                    (k_3^1)^{-1}(J_n(k_3r_0)Y_n(k_3r_1)-J_n(k_3r_1)Y_n(k_3r_0))[J_n(k_3^1R)Y'_n(k_3^1r_1)-Y_n(k_3^1R)J'_n(k_3^1r_1)]
-                    \cr
-                    \not=
-                    \\
-                    (k_3)^{-1}(J_n(k_3r_0)Y'_n(k_3r_1)-J'_n(k_3r_1)Y_n(k_3r_0))[J_n(k_3^1R)Y_n(k_3^1r_1)-Y_n(k_3^1R)'_n(k_3^1r_1)].
-                \end{multline*}
+        %     \begin{remark}
+        %         The conditions for existence and uniqueness of a solution for a multi-layer annulus is not the intersection of the conditions for each layer. For example, for two layers of dielectric materials, of dielectric constants $(\epsilon, \mu), r_0<r<r_1$ and $(\epsilon_1, \mu_1), r_1<r<R$, the conditions induced by $E_z$ are
+        %         \begin{multline*}
+        %             (k_3^1)^{-1}(J_n(k_3r_0)Y_n(k_3r_1)-J_n(k_3r_1)Y_n(k_3r_0))[J_n(k_3^1R)Y'_n(k_3^1r_1)-Y_n(k_3^1R)J'_n(k_3^1r_1)]
+        %             \cr
+        %             \not=
+        %             \\
+        %             (k_3)^{-1}(J_n(k_3r_0)Y'_n(k_3r_1)-J'_n(k_3r_1)Y_n(k_3r_0))[J_n(k_3^1R)Y_n(k_3^1r_1)-Y_n(k_3^1R)'_n(k_3^1r_1)].
+        %         \end{multline*}
 
-                This condition does not depend, again, on the choice of the pair of independent solutions of the Bessel equation chosen in each layer.
-            \end{remark}
+        %         This condition does not depend, again, on the choice of the pair of independent solutions of the Bessel equation chosen in each layer.
+        %     \end{remark}
 
-            \begin{proof}
-                Consider for the moment formal solutions of the Helmholtz equations obtained on $E_z,H_z$.
-                After Fourier transform in $z$ and expanding in Fourier series in $\theta$, one has, for $k_3\not=0$
-                \begin{align*}
-                    E_z&=aJ_n(k_3r)+bY_n(k_3r)\cr
-                    H_z&=cJ_n(k_3r)+dY_n(k_3r).
-                \end{align*}
-                We now deduce $H_{\theta}$ and $E_{\theta}$ through the equalities 3 and 5 of (\ref{systeme-Fourier-cyl}), after replacing $E_r, H_r$ using the equalities 1 and 2 of (\ref{systeme-Fourier-cyl}) for $k_3\not=0$:
-                \begin{align*}
-                    H_{\theta}&=\frac{i\omega \epsilon}{k_3^2}[\frac{dE_z}{dr}+\frac{ik_zn}{\omega \epsilon r}H_z]&=& \frac{i\omega \epsilon}{k_3^2}\frac{dE_z}{dr}-\frac{k_zn}{k_3^2 r}H_z
-                    \\
-                    E_{\theta}&=-\frac{i\omega \mu}{k_3^2}[\frac{dH_z}{dr}-\frac{ink_z}{\omega \mu r}E_z]&=&-\frac{i\omega \mu}{k_3^2}\frac{dH_z}{dr}-\frac{nk_z}{k_3^2 r}E_z
-                \end{align*}
+        %     \begin{proof}
+        %         Consider for the moment formal solutions of the Helmholtz equations obtained on $E_z,H_z$.
+        %         After Fourier transform in $z$ and expanding in Fourier series in $\theta$, one has, for $k_3\not=0$
+        %         \begin{align*}
+        %             E_z&=aJ_n(k_3r)+bY_n(k_3r)\cr
+        %             H_z&=cJ_n(k_3r)+dY_n(k_3r).
+        %         \end{align*}
+        %         We now deduce $H_{\theta}$ and $E_{\theta}$ through the equalities 3 and 5 of (\ref{systeme-Fourier-cyl}), after replacing $E_r, H_r$ using the equalities 1 and 2 of (\ref{systeme-Fourier-cyl}) for $k_3\not=0$:
+        %         \begin{align*}
+        %             H_{\theta}&=\frac{i\omega \epsilon}{k_3^2}[\frac{dE_z}{dr}+\frac{ik_zn}{\omega \epsilon r}H_z]&=& \frac{i\omega \epsilon}{k_3^2}\frac{dE_z}{dr}-\frac{k_zn}{k_3^2 r}H_z
+        %             \\
+        %             E_{\theta}&=-\frac{i\omega \mu}{k_3^2}[\frac{dH_z}{dr}-\frac{ink_z}{\omega \mu r}E_z]&=&-\frac{i\omega \mu}{k_3^2}\frac{dH_z}{dr}-\frac{nk_z}{k_3^2 r}E_z
+        %         \end{align*}
 
-            that is
-            \begin{equation}
-                \label{HthetaEtheta}
-                \begin{aligned}
-                H_{\theta}&=\frac{i\omega \epsilon}{k_3}(aJ'_n+bY'_n)-\frac{k_zn}{k_3^2r}( cJ_n+dY_n)
-                \\
-                 E_{\theta}&=-\frac{i\omega \mu}{k_3} (cJ'_n+dY'_n)-\frac{k_zn}{k_3^2r}( aJ_n+bY_n).
-                \end{aligned}
-            \end{equation}
-            Any solution of the Cauchy problem on $ (E_z,E_{\theta},H_z,H_{\theta})$ stated in lemma \ref{maxwell-cylinder}, in the case $k_3\not=0$ can be written
-            \begin{multline*}
-                \begin{pmatrix}
-                    E_z
-                    \cr
-                    E_{\theta}
-                    \cr
-                    H_z=\frac{ik_3}{\omega \mu}(E_{\theta}^0+\frac{k_zn}{k_3^2R}E_z^0)S_n(R)\frac{d_n(r)}{d_n(R)}
-                    \cr
-                    H_{\theta}
-                \end{pmatrix}
-                \\
-                =
-                a\begin{pmatrix}
-                    J_n(k_3r)
-                    \cr
-                    -\frac{nk_z}{k_3^2r}J_n(k_3r)
-                    \cr
-                    0
-                    \cr
-                    \frac{i\omega \epsilon}{k_3}J'_n(k_3r)
-                \end{pmatrix}
-                +b\begin{pmatrix}
-                    Y_n(k_3r)
-                    \cr
-                    -\frac{nk_z}{k_3^2r}Y_n(k_3r)
-                    \cr
-                    0
-                    \cr
-                    \frac{i\omega \epsilon}{k_3}Y'_n(k_3r)
-                \end{pmatrix}
-                +c\begin{pmatrix}
-                    0
-                    \cr
-                    -\frac{i\omega \mu}{k_3}J'_n(k_3r)
-                    \cr
-                    J_n(k_3r)
-                    \cr
-                    -\frac{k_zn}{k_3^2r}J_n(k_3r)
-                \end{pmatrix}
-                +d
-                \begin{pmatrix}
-                    0
-                    \cr
-                    -\frac{i\omega \mu}{k_3}Y'_n(k_3r)
-                    \cr
-                    Y_n(k_3r)
-                    \cr
-                    -\frac{k_zn}{k_3^2r}Y_n(k_3r)
-                \end{pmatrix}
-            \end{multline*}
-            which defines a fundamental basis of the Cauchy problem.
+        %     that is
+        %     \begin{equation}
+        %         \label{HthetaEtheta}
+        %         \begin{aligned}
+        %         H_{\theta}&=\frac{i\omega \epsilon}{k_3}(aJ'_n+bY'_n)-\frac{k_zn}{k_3^2r}( cJ_n+dY_n)
+        %         \\
+        %          E_{\theta}&=-\frac{i\omega \mu}{k_3} (cJ'_n+dY'_n)-\frac{k_zn}{k_3^2r}( aJ_n+bY_n).
+        %         \end{aligned}
+        %     \end{equation}
+        %     Any solution of the Cauchy problem on $ (E_z,E_{\theta},H_z,H_{\theta})$ stated in lemma \ref{maxwell-cylinder}, in the case $k_3\not=0$ can be written
+        %     \begin{multline*}
+        %         \begin{pmatrix}
+        %             E_z
+        %             \cr
+        %             E_{\theta}
+        %             \cr
+        %             H_z=\frac{ik_3}{\omega \mu}(E_{\theta}^0+\frac{k_zn}{k_3^2R}E_z^0)S_n(R)\frac{d_n(r)}{d_n(R)}
+        %             \cr
+        %             H_{\theta}
+        %         \end{pmatrix}
+        %         \\
+        %         =
+        %         a\begin{pmatrix}
+        %             J_n(k_3r)
+        %             \cr
+        %             -\frac{nk_z}{k_3^2r}J_n(k_3r)
+        %             \cr
+        %             0
+        %             \cr
+        %             \frac{i\omega \epsilon}{k_3}J'_n(k_3r)
+        %         \end{pmatrix}
+        %         +b\begin{pmatrix}
+        %             Y_n(k_3r)
+        %             \cr
+        %             -\frac{nk_z}{k_3^2r}Y_n(k_3r)
+        %             \cr
+        %             0
+        %             \cr
+        %             \frac{i\omega \epsilon}{k_3}Y'_n(k_3r)
+        %         \end{pmatrix}
+        %         +c\begin{pmatrix}
+        %             0
+        %             \cr
+        %             -\frac{i\omega \mu}{k_3}J'_n(k_3r)
+        %             \cr
+        %             J_n(k_3r)
+        %             \cr
+        %             -\frac{k_zn}{k_3^2r}J_n(k_3r)
+        %         \end{pmatrix}
+        %         +d
+        %         \begin{pmatrix}
+        %             0
+        %             \cr
+        %             -\frac{i\omega \mu}{k_3}Y'_n(k_3r)
+        %             \cr
+        %             Y_n(k_3r)
+        %             \cr
+        %             -\frac{k_zn}{k_3^2r}Y_n(k_3r)
+        %         \end{pmatrix}
+        %     \end{multline*}
+        %     which defines a fundamental basis of the Cauchy problem.
 
-            For one annulus, the boundary conditions  $E_{\theta}(r_0)=0$, $E_z(r_0)=0$ yield
-            \begin{align*}
-                a J_n(k_3r_0)+bY_n(k_3r_0)&=0
-                \\
-                cJ'_n(k_3r_0)+dY'_n(k_3r_0)&=0.
-            \end{align*}
-            The boundary conditions at $r=R$ yield
-            \begin{align*}
-                aJ_n(k_3R)+bY_n(k_3R) &= E_z^0
-                \cr
-                cJ'_n(k_3R)+dY'_n(k_3R) &= \frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0.
-            \end{align*}
+        %     For one annulus, the boundary conditions  $E_{\theta}(r_0)=0$, $E_z(r_0)=0$ yield
+        %     \begin{align*}
+        %         a J_n(k_3r_0)+bY_n(k_3r_0)&=0
+        %         \\
+        %         cJ'_n(k_3r_0)+dY'_n(k_3r_0)&=0.
+        %     \end{align*}
+        %     The boundary conditions at $r=R$ yield
+        %     \begin{align*}
+        %         aJ_n(k_3R)+bY_n(k_3R) &= E_z^0
+        %         \cr
+        %         cJ'_n(k_3R)+dY'_n(k_3R) &= \frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0.
+        %     \end{align*}
 
-            Collecting, we have
-            \begin{align*}
-                a J_n(k_3r_0)+bY_n(k_3r_0)&=0
-                \cr
-                aJ_n(k_3R)+bY_n(k_3R)&= E_z^0
-                \cr
-                cJ'_n(k_3r_0)+dY'_n(k_3r_0)&=0
-                \cr
-                cJ'_n(k_3R)+dY'_n(k_3R)&= \frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0,
-            \end{align*}
-            which gives two decoupled systems.
-            Hence, under $d_n(k_3R)(dd_n)'(k_3R)\not=0$ there is existence and uniqueness of a solution of this system.
-            Note that the condition $d_n(k_3R)(dd_n)'(k_3R)\not=0$ do not depend on the pair of independent solutions of the Bessel equation chosen because there exists, for any pair $\{f,g\}$ of independent solutions of Equation (\ref{eq-bessel}), a constant $C(f,g)$ such that $f(r_0)g(R)-f(R)g(r_0)=C(f,g)d_n$.
-            The condition $d_n(R)(dd_n)'(R)=0$ was obtained in Pierre Payen's thesis but the operator was not expressed in a simple form, which is the aim of the end of this proof.
+        %     Collecting, we have
+        %     \begin{align*}
+        %         a J_n(k_3r_0)+bY_n(k_3r_0)&=0
+        %         \cr
+        %         aJ_n(k_3R)+bY_n(k_3R)&= E_z^0
+        %         \cr
+        %         cJ'_n(k_3r_0)+dY'_n(k_3r_0)&=0
+        %         \cr
+        %         cJ'_n(k_3R)+dY'_n(k_3R)&= \frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0,
+        %     \end{align*}
+        %     which gives two decoupled systems.
+        %     Hence, under $d_n(k_3R)(dd_n)'(k_3R)\not=0$ there is existence and uniqueness of a solution of this system.
+        %     Note that the condition $d_n(k_3R)(dd_n)'(k_3R)\not=0$ do not depend on the pair of independent solutions of the Bessel equation chosen because there exists, for any pair $\{f,g\}$ of independent solutions of Equation (\ref{eq-bessel}), a constant $C(f,g)$ such that $f(r_0)g(R)-f(R)g(r_0)=C(f,g)d_n$.
+        %     The condition $d_n(R)(dd_n)'(R)=0$ was obtained in Pierre Payen's thesis but the operator was not expressed in a simple form, which is the aim of the end of this proof.
 
 
-            The solution of the system on $(a,b,c,d)$ is:
+        %     The solution of the system on $(a,b,c,d)$ is:
 
-            \begin{align*}
-                a&=-\frac{Y_n(k_3R)}{d_n(k_3R)}E_z^0
-                \cr
-                b&=\frac{J_n(k_3R)}{d_n(k_3R)}E_z^0
-                \cr
-                c&=-\frac{Y'_n(k_3R)}{D_n(k_3R)}[\frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0]
-                \cr
-                d&=\frac{J'_n(k_3R)}{D_n(k_3R)}[\frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0],
-            \end{align*}
-            One deduces
-            $$E_z(r)=E_z^0\frac{d_n(k_3r)}{d_n(k_3R)}, H_z(r)=[\frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0]\frac{dd_n(k_3r)}{D_n(k_3R)}=\frac{ik_3}{\omega \mu}[\frac{k_zn}{k_3^2R}E^0_z+E_{\theta}^0]S_n(r).$$
-            We use then (\ref{HthetaEtheta}) to deduce the two other components. In particular
-            $$\frac{dE_z}{dr}(r)=k_3E_z^0\frac{d'_n(k_3r)}{d_n(k_3R)}=E_z^0k_3T_n(k_3r),\frac{dH_z}{dr}(r)=\frac{ik_3^2}{\omega \mu}[E_{\theta}^0+\frac{ik_zn}{k_3^2R}E^0_z]\frac{D_n(r)}{D_n(R)},$$
-            which yields
-            \begin{align*}
-                H_{\theta}&=\frac{i\omega \epsilon}{k_3}E_z^0T_n(k_3r)-\frac{ik_zn}{k_3r\omega \mu}[E_{\theta}^0+\frac{ik_zn}{k_3^2R}E^0_z]S_n(k_3r),
-                \cr
-                E_{\theta}&=[E_{\theta}^0+\frac{ik_zn}{k_3^2R}E^0_z]\frac{D_n(k_3r)}{D_n(k_3R)}-\frac{k_zn}{k_3^2r}E_z^0\frac{d_n(k_3r)}{d_n(k_3R)}.
-            \end{align*}
-            Collection, the electromagnetic fields that were obtained here are 
-            \begin{align}
-                E_z(r)&=\frac{d_n(k_3r)}{d_n(k_3R)}E_z^0,
-                \cr
-                E_{\theta}(r)&=[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]\frac{D_n(k_3r)}{D_n(k_3R)}-\frac{nk_z}{k_3^2 r}\frac{d_n(k_3r)}{d_n(k_3R)}E_z^0
-                \cr
-                H_z(r)&=\frac{ik_3}{\omega \mu}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(k_3r)
-                \cr
-                H_{\theta}(r)&=-\frac{ik_zn}{k_3\omega \mu r}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(k_3r)+\frac{i\omega \epsilon}{k_3}E_z^0T_n(k_3r)
-            \label{formal-solutions}
-            \end{align}
-            As before, these expressions do not depend on the pair of independent solutions of the Bessel equation chosen.
+        %     \begin{align*}
+        %         a&=-\frac{Y_n(k_3R)}{d_n(k_3R)}E_z^0
+        %         \cr
+        %         b&=\frac{J_n(k_3R)}{d_n(k_3R)}E_z^0
+        %         \cr
+        %         c&=-\frac{Y'_n(k_3R)}{D_n(k_3R)}[\frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0]
+        %         \cr
+        %         d&=\frac{J'_n(k_3R)}{D_n(k_3R)}[\frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0],
+        %     \end{align*}
+        %     One deduces
+        %     $$E_z(r)=E_z^0\frac{d_n(k_3r)}{d_n(k_3R)}, H_z(r)=[\frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0]\frac{dd_n(k_3r)}{D_n(k_3R)}=\frac{ik_3}{\omega \mu}[\frac{k_zn}{k_3^2R}E^0_z+E_{\theta}^0]S_n(r).$$
+        %     We use then (\ref{HthetaEtheta}) to deduce the two other components. In particular
+        %     $$\frac{dE_z}{dr}(r)=k_3E_z^0\frac{d'_n(k_3r)}{d_n(k_3R)}=E_z^0k_3T_n(k_3r),\frac{dH_z}{dr}(r)=\frac{ik_3^2}{\omega \mu}[E_{\theta}^0+\frac{ik_zn}{k_3^2R}E^0_z]\frac{D_n(r)}{D_n(R)},$$
+        %     which yields
+        %     \begin{align*}
+        %         H_{\theta}&=\frac{i\omega \epsilon}{k_3}E_z^0T_n(k_3r)-\frac{ik_zn}{k_3r\omega \mu}[E_{\theta}^0+\frac{ik_zn}{k_3^2R}E^0_z]S_n(k_3r),
+        %         \cr
+        %         E_{\theta}&=[E_{\theta}^0+\frac{ik_zn}{k_3^2R}E^0_z]\frac{D_n(k_3r)}{D_n(k_3R)}-\frac{k_zn}{k_3^2r}E_z^0\frac{d_n(k_3r)}{d_n(k_3R)}.
+        %     \end{align*}
+        %     Collection, the electromagnetic fields that were obtained here are 
+        %     \begin{align}
+        %         E_z(r)&=\frac{d_n(k_3r)}{d_n(k_3R)}E_z^0,
+        %         \cr
+        %         E_{\theta}(r)&=[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]\frac{D_n(k_3r)}{D_n(k_3R)}-\frac{nk_z}{k_3^2 r}\frac{d_n(k_3r)}{d_n(k_3R)}E_z^0
+        %         \cr
+        %         H_z(r)&=\frac{ik_3}{\omega \mu}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(k_3r)
+        %         \cr
+        %         H_{\theta}(r)&=-\frac{ik_zn}{k_3\omega \mu r}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(k_3r)+\frac{i\omega \epsilon}{k_3}E_z^0T_n(k_3r)
+        %     \label{formal-solutions}
+        %     \end{align}
+        %     As before, these expressions do not depend on the pair of independent solutions of the Bessel equation chosen.
 
-            Note that 
-            \begin{align*}
-                H_z(R)&=\frac{ik_3}{\omega \mu}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(R)
-                \cr
-                H_{\theta}(R)&=-\frac{ik_zn}{k_3\omega \mu R}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(R)+\frac{i\omega \epsilon}{k_3}E_z^0T_n(R),
-            \end{align*}
-            which yields the Calder\`on operator.
-            \end{proof}
+        %     Note that 
+        %     \begin{align*}
+        %         H_z(R)&=\frac{ik_3}{\omega \mu}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(R)
+        %         \cr
+        %         H_{\theta}(R)&=-\frac{ik_zn}{k_3\omega \mu R}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(R)+\frac{i\omega \epsilon}{k_3}E_z^0T_n(R),
+        %     \end{align*}
+        %     which yields the Calder\`on operator.
+        %     \end{proof}
 
-            \begin{REM}
-                Verification avec le calcul matriciel:
-            \end{REM}
+        %     \begin{REM}
+        %         Verification avec le calcul matriciel:
+        %     \end{REM}
 
-            Soit \(J_n\) la fonction de Bessel de première espèce et \(H_n^{(2)}\) la fonction de Hankel de deuxième espèce.
+            Soit \(J_n\) la fonction de Bessel de première espèce et \(H_n^{[2]}\) la fonction de Hankel de deuxième espèce, et \(J_n', H_n^{[2]}{}'\) leur dérivée.
     
-            Pour un cylindre de rayon \(r_0 [m]\) recouvert d'une couche d'épaisseur \(d [m]\) (on note \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime tant que coefficient de série de Bessel et multiplicateur de Fourier (en \(k_z\)) matriciel. {\it en tant que multiplicateur de Fourier en  \(k_z\), n}: 
-            \begin{REM}
-            en effet $n$ est aussi un indice de Fourier car la transformée de Fourier discrète est aussi une vraie transformé de Fourier. Mets le
-\end{REM}
+            Pour un cylindre de rayon \(r_0 [m]\) recouvert d'une couche d'épaisseur \(d [m]\) (on note \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime en tant que multiplicateur de Fourier matriciel en \((n,k_z)\) où \(n\) est l'indice d'un coefficient de série de Bessel ( qui est une série de Fourier sur \(\theta\) ) et \(k_z\) est la variable de Fourier associée à la transformée de Fourier partielle en \(z\):
+
             \subsubsection{Expression de l'opérateur de Calderon quand \(k_z=0\)}
-              Le cas de l'incidence perpendiculaire à l'axe du cylindre simplifie grandement les calculs.
-
-              \begin{multline*}
-                \hat \mZ_n(0) = \\
-                \begin{bmatrix}
-                  \frac{i}{\eta}\frac{
-                    (H^{(2)}_n{})'(kr_1)J_n{}'(kr_0)-J_n{}'(kr_1)(H^{(2)}_n{})'(kr_0)
-                  }{
-                    H^{(2)}_n(kr_1)J_n{}'(kr_0)-J_n(kr_1)H^{(2)}_n{}'(kr_0)
-                  } & 0
-                  \\
-                  0 &  -i\eta\frac{
-                    H^{(2)}_n(kr_1)J_n(kr_0)-J_n(kr_1)H^{(2)}_n(kr_0)
-                  }{
-                    (H^{(2)}_n{})'(kr_1)J_n(kr_0)-J_n{}'(kr_1)H^{(2)}_n(kr_0)
-                  }
-                \end{bmatrix}.
-              \end{multline*}
-
-            \subsubsection{Expression de l'opérateur de Calderon général}
+              Le cas de l'incidence perpendiculaire à l'axe du cylindre simplifie grandement les calculs, car cette matrice est alors diagonale:
 
               \begin{align*}
-                \hat \mZ_n(k_z) &= 
+                (\hat\mZ_n(0))_{11} &= -i\eta\frac{
+                  (H^{[2]}_n{}')(kr_1)J_n'(kr_0)-J_n{}'(kr_1)(H^{[2]}_n{})'(kr_0)
+                }{
+                  H^{[2]}_n(kr_1)J_n'(kr_0)-J_n(kr_1)(H^{[2]}_n{})'(kr_0)
+                },
+                \\
+                (\hat\mZ_n(0))_{12} &= 0,
+                \\
+                (\hat\mZ_n(0))_{21} &= 0,
+                \\
+                (\hat\mZ_n(0))_{22} &=i\eta\frac{
+                    H^{[2]}_n(kr_1)J_n(kr_0)-J_n(kr_1)H^{[2]}_n(kr_0)
+                  }{
+                    (H^{[2]}_n{})'(kr_1)J_n(kr_0)-J_n'(kr_1)H^{[2]}_n(kr_0)
+                  }.
               \end{align*}
 
-    \subsection{Expression de l'opérateur de Calderon pour une sphère infini}
+            \subsubsection{Expression de l'opérateur de Calderon pour \(k_z\) quelconque}
 
-        Soit \(j_n\) la fonction de Bessel sphérique de première espèce et \(h_n^{(2)}\) la fonction de Hankel sphérique de deuxième type.
+              On pose \(k_3 = \sqrt{k^2 - k_z^2}\) que l'on suppose non nul.
+
+              % La condition de conducteur parfait s'exprime sur \(\vE\), donc l'opérateur \(\hat\vJ = (\hat\mZ_n(k_z))^{-1}\hat\vE_t\) est plus simple à exprimer.
+
+              % \newcommand{\Sn}{\frac{
+              %   H^{[2]}_n(k_3r_1)J_n'(k_3r_0)-J_n(k_3r_1)H^{[2]}_n{}'(k_3r_0)
+              % }{
+              %   H^{[2]}_n{}'(k_3r_1)J_n'(k_3r_0)-J_n{}'(k_3r_1)H^{[2]}_n{}'(k_3r_0)
+              % }}
+
+              % \newcommand{\Tn}{\frac{
+              %   H^{[2]}_n{}'(k_3r_1)J_n(k_3r_0)-J_n'(k_3r_1)H^{[2]}_n(k_3r_0)
+              % }{
+              %   H^{[2]}_n(k_3r_1)J_n(k_3r_0)-J_n(k_3r_1)H^{[2]}_n(k_3r_0)
+              % }}
+
+              % \begin{align*}
+              %   (\hat\mZ_n(k_z))^{-1}_{11} ={}& i\frac{k_3}{k\eta}\Sn,
+              %   \\
+              %   (\hat\mZ_n(k_z))^{-1}_{12} ={}& i\frac{nk_z}{kk_3r_1\eta}\Sn,
+              %   \\
+              %   (\hat\mZ_n(k_z))^{-1}_{21} ={}& i\frac{nk_z}{kk_3r_1\eta}\Sn,
+              %   \\
+              %   \begin{split}
+              %   (\hat\mZ_n(k_z))^{-1}_{22} ={}& - i\frac{k}{k_3\eta}\Tn
+              %   \\
+              %   {}& + i\frac{n^2k_z^2}{kk_3r_1^2\eta}\Sn.
+              %   \end{split}
+              % \end{align*}
+
+              L'opérateur \(\hat\mZ_n(k_z)\) est alors
+
+              \newcommand{\Sni}{\frac{
+                (H^{[2]}_n{})'(k_3r_1)J_n'(k_3r_0)-J_n{}'(k_3r_1)(H^{[2]}_n{})'(k_3r_0)
+              }{
+                H^{[2]}_n(k_3r_1)J_n'(k_3r_0)-J_n(k_3r_1)H^{[2]}_n{}'(k_3r_0)
+              }}
+
+              \newcommand{\Tni}{\frac{
+                H^{[2]}_n(k_3r_1)J_n(k_3r_0)-J_n(k_3r_1)H^{[2]}_n(k_3r_0)
+              }{
+                H^{[2]}_n{}'(k_3r_1)J_n(k_3r_0)-J_n'(k_3r_1)H^{[2]}_n(k_3r_0)
+              }}
+
+              \begin{align*}
+                \begin{split}
+                  \hat\mZ_n(k_z)_{11} ={}& - i\eta\frac{k}{k_3}\Sni
+                  \\
+                  {}& + i\eta\frac{n^2k_z^2}{k^2k_3^2r_1^2}\Tni,
+                \end{split}
+                \\
+                \hat\mZ_n(k_z)_{12} ={}& -i\eta\frac{nk_z}{kk_3r_1}\Tni,
+                \\
+                \hat\mZ_n(k_z)_{21} ={}& -i\eta\frac{nk_z}{kk_3r_1}\Tni,
+                \\
+                \hat\mZ_n(k_z)_{22} ={}& i\eta\frac{k_3}{k}\Tni.
+              \end{align*}
+
+On remarque que ces valeurs ne changent pas si on prend n'importe quel couple de solutions linéairement indépendantes de l'équation de Bessel.
+
+Notons aussi que nous avons parlé d'opérateur de Calderòn, même si le cylindre infini n'est pas borné.
+
+    \subsection{Expression de l'opérateur de Calderon pour une sphère infinie}
+
+        Soit \(j_n\) la fonction de Bessel sphérique de première espèce et \(h_n^{[2]}\) la fonction de Hankel sphérique de deuxième type.
 
         On utilise la notation \gls{mat-tild} pour désigner les dérivées de ces fonctions telles que \(\tilde{f}(z) = \ddp{z}{(zf(z))}\).
 
-        Pour une sphère de rayon \(r_0 [m]\) recouverte d'une couche d'épaisseur \(d [m]\) (on pose \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime tant que coefficient de série de Mie matriciel,
+        Pour une sphère de rayon \(r_0 [m]\) recouverte d'une couche d'épaisseur \(d [m]\) (on pose \(r_1=r_0 + d\)) de matériau diélectrique de constantes relatives \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime en tant que multiplicateur  matriciel de Fourier sur les termes en série de Mie,
 
-        \begin{multline*}
-          \hat \mZ_n = \\
-          i\eta \begin{bmatrix}
-            kr_1 
-             \frac{
-                 h^{(2)}_n(kr_1)j_n(kr_0)-j_n(kr_1)h^{(2)}_n(kr_0)
-               }{
-                 \tilde{h^{(2)}_n}(kr_1)j_n(kr_0)-\tilde{j_n}(kr_1)h^{(2)}_n(kr_0)
-               }
-               & 0
-            \\
-            0 & \frac{1}{kr_1}
+        \begin{align*}
+          (\hat \mZ_n)_{11} &=  i\eta kr_1 
+            \frac{
+                h^{[2]}_n(kr_1)j_n(kr_0)-j_n(kr_1)h^{[2]}_n(kr_0)
+              }{
+                \tilde{h^{[2]}_n}(kr_1)j_n(kr_0)-\tilde{j_n}(kr_1)h^{[2]}_n(kr_0)
+              },
+          \\
+          (\hat \mZ_n)_{12} &= 0,
+          \\
+          (\hat \mZ_n)_{21} &= 0,
+          \\
+          (\hat \mZ_n)_{22} &= i \frac{\eta}{kr_1}
                \frac{
-                 \tilde{h^{(2)}_n}(kr_1)\tilde{j_n}(kr_0)-\tilde{j_n}(kr_1)\tilde{h^{(2)}_n}(kr_0)
+                 \tilde{h^{[2]}_n}(kr_1)\tilde{j_n}(kr_0)-\tilde{j_n}(kr_1)\tilde{h^{[2]}_n}(kr_0)
                }{
-                 {h^{(2)}_n}(kr_1)\tilde{j_n}(kr_0)-{j_n}(kr_1)\tilde{h^{(2)}_n}(kr_0)
-               }
-          \end{bmatrix}.
-        \end{multline*}
+                 {h^{[2]}_n}(kr_1)\tilde{j_n}(kr_0)-{j_n}(kr_1)\tilde{h^{[2]}_n}(kr_0)
+               }.
+        \end{align*}
 
 \section[Problème extérieur et condition limite de Calderon]{Equations de Maxwell à l'extérieur de l'objet avec une approximation de l'opérateur de Calderon sur son bord}
 
+    Nous cherchons à résoudre le problème de Maxwell extérieur avec condition de Silver-Müller à l'infini et une \gls{acr-cl} condition limite sur le bord de l'objet que nous choisirons.
+    Cette CL est alors à choisir judicieusement si l'on espère que les solutions de ce nouveau problème approchent bien celui du problème extérieur avec opérateur de Calderon.
+
     \subsection{Approximation constante de l'operateur de Calderon: la condition de Leontovich}
         
-        Définie par \cite{leontovich_investigations_1948}, cette condition d'impédance consiste à approcher l'opérateur de Calderon par une constante.
-        Très facile à mettre en oeuvre, elle est néamnoins une bonne approximation pour des incidences proche de l'oblique (\((k_x,k_y)=(0,0)\)) (\cite{leontovich_investigations_1948}) et dont l'indice relatif \(|\sqrt{\eps\mu}|\) est grand devant l'unité (\cite[par.~3, p.421-422]{senior_impedance_1960}).
+        Définie par \cite{leontovich_investigations_1948}, cette condition d'impédance consiste à approcher l'opérateur de Calderon par un opérateur constant.
+        \[
+          \hat\vE_t = a_0 \hat \vJ
+        \]
+        Très facile à mettre en oeuvre numériquement, elle est néamnoins une bonne approximation pour des incidences proche de l'incidence oblique (\((k_x,k_y)=(0,0)\)) (\cite{leontovich_investigations_1948}) et dont l'indice relatif \(|\sqrt{\eps\mu}|\) est grand devant l'unité (\cite[par.~3, p.421-422]{senior_impedance_1960}).
+
+        Des choix possibles pour \(a_0\) sont alors
+        \begin{itemize}
+          \item plan: \(a_0 = \hat\mZ(0,0)_{11}\), pour ce couple \((k_x,k_y)\), l'opérateur est toujours multiple de l'identité.
+          \item cylindre: \(a_0 = \hat\mZ_0(0)_{11}\), \(a_0 = \hat\mZ_0(0)_{22}\) ou une combinaison linéaire des deux. A noter que la courbure est prise en compte.
+          \item sphère: \(a_0 = \hat\mZ_0,{}_{11}\), pour le 1\ier coefficient de la série de Mie, l'opérateur est toujours multiple de l'identité. Là aussi, on prend en compte les courbures.
+        \end{itemize}
 
     \subsection{Approximation de Taylor et Padé: les CIOE}
 
-        \subsubsection{Taylor à l'ordre 1: la CI01}
+      Comme dit précedemment, les CIOE approchent l'opérateur de Calderon par des opérateurs différentiels surfaciques.
+      Dans le cadre de cette thèse, les opérateurs considérés sont
 
-        \subsubsection{Padé à l'ordre 1:1: la CI1}
+      \begin{align*}
+        \gls{ope-LD} &= \tgrads \tdivs,
+        \\
+        \gls{ope-LR} &= \tvrots \trots,
+        \\
+        \gls{ope-L} &= \gls{ope-LD} - \gls{ope-LR}.
+      \end{align*}
 
-        \subsubsection{Padé à l'ordre 1:1, découplé: la CI3}
+      Leurs multiplicateurs de Fourier matriciels associés pour le plan infini sont
+      \begin{align*}
+        \hat\mLD(k_x,k_y) &= \begin{bmatrix}-k_x^2 & -k_xk_y \\ -k_xk_y & -k_y^2\end{bmatrix}, &
+        \hat\mLR(k_x,k_y) &= \begin{bmatrix}k_y^2 & -k_xk_y \\ -k_xk_y & k_x^2\end{bmatrix}.
+      \end{align*}
+      Soit \(r_e\) le rayon de la surface extérieur de l'objet.
+      
+      Les multiplicateurs de Fourier matriciels associés au cylindre infini sont, 
+      \begin{align*}
+        \hat\mLD_n(k_z) &= \begin{bmatrix}-(n/r_e)^2 & -k_zn/r_e \\ -k_zn/r_e &-k_z^2\end{bmatrix},
+        &
+        \hat\mLR_n(k_z) &= \begin{bmatrix}k_z^2 & -k_zn/r_e \\ -k_zn/r_e & (n/r_e)^2\end{bmatrix},
+      \end{align*}
 
-        \subsubsection{Taylor à l'ordre 1, découplé: la CI4}
+      et ceux de la sphère sont
+      \begin{align*}
+          \hat\mLD_n &= \begin{bmatrix}0 & 0 \\ 0 &-n(n+1)/ r_e^2\end{bmatrix},
+        &
+        \hat\mLR_n &= \begin{bmatrix}n(n+1)/ r_e^2 &0 \\ 0 & 0\end{bmatrix}.
+      \end{align*}
+
+      Le nom des CIOE est local à cette thèse et ne reflète que l'ordre dans lequel elles ont été utilisées, notamment par \cite{stupfel_sufficient_2011}, puis ici.
+      D'autres ouvrages les désignent autrement, voir \cite{hoppe_higher_1994,senior_approximate_1995,aubakirov_electromagnetic_2014}.
+      
+      Nous désignons la condition de Leontovich par CI0.
+
+      \subsubsection{Taylor à l'ordre 1: la CI01}
+
+        On approche l'opérateur de Calderon par
+        \[
+          \hat\vE_t = ( a_0 + a_1 \LL ) \hat \vJ
+        \]
+
+      \subsubsection{Padé à l'ordre 1:1: la CI1}
+
+        On approche l'opérateur de Calderon par
+        \[
+          ( 1 + b_1 \LL )\hat\vE_t = ( a_0 + a_1 \LL ) \hat \vJ
+        \]
+
+      \subsubsection{Padé à l'ordre 1:1, découplé: la CI3}
+
+        On approche l'opérateur de Calderon par
+        \[
+          ( 1 + b_1 \LD -b_2 \LR )\hat\vE_t = ( a_0 + a_1 \LD -a_2 \LR) \hat \vJ
+        \]
+
+      \subsubsection{Taylor à l'ordre 1, découplé: la CI4}
+
+        On approche l'opérateur de Calderon par
+        \[
+          \hat\vE_t = ( a_0 + a_1 \LD - a_2 \LR ) \hat \vJ
+        \]
 
         \begin{REM}
             Note de Lundi soir
