@@ -426,7 +426,7 @@
 %Operator
 \newcommand{\Sobup}[1][{}]{\mathrm{H}^\mathrm{#1}}
 \newcommand{\Sobdw}[1][{}]{\mathrm{H}_\mathrm{#1}}
-\newcommand{\Sobolev}[1][{}]{\Sobup{#1}}
+\newcommand{\Sobolev}[1][{}]{\Sobup[#1]}
 \newcommand{\Hgrad}{\Sobdw[grad]}
 \newcommand{\Hrot}{\Sobdw[rot]}
 \newcommand{\Hdiv}{\Sobdw[div]}
@@ -1013,6 +1013,15 @@
     first={\glsentrydesc{acr-pml} (\glsentrytext{acr-pml})},
     firstplural={\glsentrydescplural{acr-pml} (\glsentryplural{acr-pml})},
   }
+  \newglossaryentry{acr-cl}{
+    type={acr},
+    name={CL},
+    plural={CL},
+    description={condition limite},
+    descriptionplural={conditions limite},
+    first={\glsentrydesc{acr-cl} (\glsentrytext{acr-cl})},
+    firstplural={\glsentrydescplural{acr-cl} (\glsentryplural{acr-cl})},
+  }
   \newglossaryentry{acr-cla}{
     type={acr},
     name={CLA},
@@ -1421,27 +1430,24 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
 
         La démonstration de ce calcul, ainsi que son extention à nombre arbitraire de couches est l'objet du chapitre \ref{sec:plan}.
 
-        On remarque que l'opérateur de Calderon ne peut pas être un opérateur différentiel, puisque son multiplicateur de Fourier fait intervenir la racine carré \(\sqrt{k_x^2 + k_y^2}\) ce qui en temporel ne peut s'exprimer avec les opérateurs \(\partial/\partial x, \partial / \partial y\).
+        On remarque que l'opérateur de Calderon ne peut pas être un opérateur différentiel, puisque son multiplicateur de Fourier fait intervenir la racine carré \(\sqrt{k_x^2 + k_y^2}\) ce qui par transformée inverse de Fourier ne peut s'exprimer avec les opérateurs \(\partial/\partial x, \partial / \partial y\).
         Par contre, on peut approcher cette dernière par un polynôme en \((k_x,k_y)\), voir par une fraction de polynôme, et les CIOE sont issues de cet approximation.
-        Cependant cette thèse de ne fera qu'utiliser des CIOE déjà établies.
+        Cependant cette thèse ne fera qu'utiliser des CIOE déjà établies.
         Nous renvoyons par exemple à \cite{senior_approximate_1995} pour ce problème.
 
     \subsection{Expression de l'opérateur de Calderon pour un cylindre infini}
 
-        \begin{REM}
-            TODO: Je n'ai jamais le calcul pour une couche. A faire.
-        \end{REM}
-        \begin{REM}
-        Pour Helmholtz, tu démontres que toutes les solutions qui vérifient la condition de Dirichlet en \(r_0\) sur le conducteur parfait sont \(\sum_p a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))e^{ip\theta}\) où \(k_3\) est la racine de partie réelle positive de \(\epsilon \mu :\omega^2-k_z^2\), et l'opérateur de Dirichlet to Neumann, pour le mode de Fourier \(p\) sur le bord \(r=R\), est alors (en prenant la dérivée normale)
-        \[k_3\frac{J'_p(k_3R)Y_p(k_3r_0)-Y'_p(k_3R)J_p(k_3r_0)}{J_p(k_3R)Y_p(k_3r_0)-Y_p(k_3R)J_p(k_3r_0)}.\]
-        Tu peux prendre n'importe quel couple de solutions linéairement indépendantes de l'équation de Bessel.
+        % \begin{REM}
+        % Pour Helmholtz, tu démontres que toutes les solutions qui vérifient la condition de Dirichlet en \(r_0\) sur le conducteur parfait sont \(\sum_p a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))e^{ip\theta}\) où \(k_3\) est la racine de partie réelle positive de \(\epsilon \mu :\omega^2-k_z^2\), et l'opérateur de Dirichlet to Neumann, pour le mode de Fourier \(p\) sur le bord \(r=R\), est alors (en prenant la dérivée normale)
+        % \[k_3\frac{J'_p(k_3R)Y_p(k_3r_0)-Y'_p(k_3R)J_p(k_3r_0)}{J_p(k_3R)Y_p(k_3r_0)-Y_p(k_3R)J_p(k_3r_0)}.\]
+        % Tu peux prendre n'importe quel couple de solutions linéairement indépendantes de l'équation de Bessel.
         
-        Pour Maxwell, c'est le calcul que tu as fait en partie, en exprimant \(E\) et \(H\) sur les Bessel, en commencant par \(E_z,H_z\) et en en déduisant \(E_{\theta}, H_{\theta}\). Tu écris \((E_z, H_z)\) avec quatre coefficients de Fourier sur le mode \(e^{ip\theta}\), tu en élimines 1 déjà en mettant
-        \[E_z=\sum_p e^{ip\theta}a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))\]
-        et tu conserves
-        \[H_z=\sum_p (c_pJ_p(k_3r)+d_pY_p(k_3r))e^{ip\theta}.\]
-        Tu déduis alors \(E_{\theta}, H_{\theta}\). En particulier \(E_{\theta}\) dépend de \(c_p, d_p, p\geq 0\), et tu obtiendras une relation sur les coefficients à partir de \(E_{\theta}(r=r_0)=0\). 
-        \end{REM}
+        % Pour Maxwell, c'est le calcul que tu as fait en partie, en exprimant \(E\) et \(H\) sur les Bessel, en commencant par \(E_z,H_z\) et en en déduisant \(E_{\theta}, H_{\theta}\). Tu écris \((E_z, H_z)\) avec quatre coefficients de Fourier sur le mode \(e^{ip\theta}\), tu en élimines 1 déjà en mettant
+        % \[E_z=\sum_p e^{ip\theta}a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))\]
+        % et tu conserves
+        % \[H_z=\sum_p (c_pJ_p(k_3r)+d_pY_p(k_3r))e^{ip\theta}.\]
+        % Tu déduis alors \(E_{\theta}, H_{\theta}\). En particulier \(E_{\theta}\) dépend de \(c_p, d_p, p\geq 0\), et tu obtiendras une relation sur les coefficients à partir de \(E_{\theta}(r=r_0)=0\). 
+        % \end{REM}
 
         % \begin{REM}
         %   Ce qui suit est issu de ton TEX.
@@ -1774,7 +1780,7 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
 
         On utilise la notation \gls{mat-tild} pour désigner les dérivées de ces fonctions telles que \(\tilde{f}(z) = \ddp{z}{(zf(z))}\).
 
-        Pour une sphère de rayon \(r_0 [m]\) recouverte d'une couche d'épaisseur \(d [m]\) (on pose \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime tant que coefficient de série de Mie matriciel,
+        Pour une sphère de rayon \(r_0 [m]\) recouverte d'une couche d'épaisseur \(d [m]\) (on pose \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderon s'exprime en tant que coefficient de série de Mie matriciel,
 
         \begin{align*}
           (\hat \mZ_n)_{11} &=  i\eta kr_1 
@@ -1798,20 +1804,90 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
 
 \section[Problème extérieur et condition limite de Calderon]{Equations de Maxwell à l'extérieur de l'objet avec une approximation de l'opérateur de Calderon sur son bord}
 
+    Nous cherchons à résoudre le problème de Maxwell extérieur avec condition de Silver-Müller à l'infini et une \gls{acr-cl} condition limite sur le bord de l'objet que nous choisirons.
+    Cette CL est alors à choisir judicieusement si l'on espère que les solutions de ce nouveau problème approchent bien celui du problème extérieur avec opérateur de Calderon.
+
     \subsection{Approximation constante de l'operateur de Calderon: la condition de Leontovich}
         
         Définie par \cite{leontovich_investigations_1948}, cette condition d'impédance consiste à approcher l'opérateur de Calderon par une constante.
-        Très facile à mettre en oeuvre, elle est néamnoins une bonne approximation pour des incidences proche de l'oblique (\((k_x,k_y)=(0,0)\)) (\cite{leontovich_investigations_1948}) et dont l'indice relatif \(|\sqrt{\eps\mu}|\) est grand devant l'unité (\cite[par.~3, p.421-422]{senior_impedance_1960}).
+        \[
+          \hat\vE_t = a_0 \hat \vJ
+        \]
+        Très facile à mettre en oeuvre numériquement, elle est néamnoins une bonne approximation pour des incidences proche de l'oblique (\((k_x,k_y)=(0,0)\)) (\cite{leontovich_investigations_1948}) et dont l'indice relatif \(|\sqrt{\eps\mu}|\) est grand devant l'unité (\cite[par.~3, p.421-422]{senior_impedance_1960}).
+
+        Des choix possibles pour \(a_0\) sont alors
+        \begin{itemize}
+          \item plan: \(a_0 = \hat\mZ(0,0)_{11}\), pour ce couple \((k_x,k_y)\), l'opérateur est toujours multiple de l'identité.
+          \item cylindre: \(a_0 = \hat\mZ_0(0)_{11}\), \(a_0 = \hat\mZ_0(0)_{22}\) ou une combinaison linéaire des deux. A noter que la courbure est prise en compte.
+          \item sphère: \(a_0 = \hat\mZ_0,{}_{11}\), pour le 1\ier coefficient de la série de Mie, l'opérateur est toujours multiple de l'identité. Là aussi, on prend en compte les courbures.
+        \end{itemize}
 
     \subsection{Approximation de Taylor et Padé: les CIOE}
 
-        \subsubsection{Taylor à l'ordre 1: la CI01}
+      Comme dit précedement, les CIOE approchent l'opérateur de Calderon par des opérateurs différentiels surfaciques.
+      Dans le cadre de cette thèse, les opérateurs considérés sont
 
-        \subsubsection{Padé à l'ordre 1:1: la CI1}
+      \begin{align*}
+        \gls{ope-LD} &= \tgrads \tdivs,
+        \\
+        \gls{ope-LR} &= \tvrots \trots,
+        \\
+        \gls{ope-L} &= \gls{ope-LD} - \gls{ope-LR}.
+      \end{align*}
 
-        \subsubsection{Padé à l'ordre 1:1, découplé: la CI3}
+      Leurs multiplicateurs de Fourier matriciels associés pour le plan infini sont
+      \begin{align*}
+        \hat\mLD(k_x,k_y) &= \begin{bmatrix}-k_x^2 & -k_xk_y \\ -k_xk_y & -k_y^2\end{bmatrix}, &
+        \hat\mLR(k_x,k_y) &= \begin{bmatrix}k_y^2 & -k_xk_y \\ -k_xk_y & k_x^2\end{bmatrix}.
+      \end{align*}
+      Soit \(r_e\) le rayon de la surface extérieur de l'objet.
+      
+      Les multiplicateurs de Fourier matriciels associés au cylindre infini sont, 
+      \begin{align*}
+        \hat\mLD_n(k_z) &= \begin{bmatrix}-(n/r_e)^2 & -k_zn/r_e \\ -k_zn/r_e &-k_z^2\end{bmatrix},
+        &
+        \hat\mLR_n(k_z) &= \begin{bmatrix}k_z^2 & -k_zn/r_e \\ -k_zn/r_e & (n/r_e)^2\end{bmatrix},
+      \end{align*}
 
-        \subsubsection{Taylor à l'ordre 1, découplé: la CI4}
+      et ceux de la sphère sont
+      \begin{align*}
+          \hat\mLD_n &= \begin{bmatrix}0 & 0 \\ 0 &-n(n+1)/ r_e^2\end{bmatrix},
+        &
+        \hat\mLR_n &= \begin{bmatrix}n(n+1)/ r_e^2 &0 \\ 0 & 0\end{bmatrix}.
+      \end{align*}
+
+      Le nom des CIOE est local à cette thèse et ne reflète que l'ordre dans lequel elles ont été utilisées, notamment par \cite{stupfel_sufficient_2011}, puis ici.
+      D'autres ouvrages les désignent autrement, voir \cite{hoppe_higher_1994,senior_approximate_1995,aubakirov_electromagnetic_2014}.
+      
+      Nous désignons la condition de Leontovich par CI0.
+
+      \subsubsection{Taylor à l'ordre 1: la CI01}
+
+        On approche l'opérateur de Calderon par
+        \[
+          \hat\vE_t = ( a_0 + a_1 \LL ) \hat \vJ
+        \]
+
+      \subsubsection{Padé à l'ordre 1:1: la CI1}
+
+        On approche l'opérateur de Calderon par
+        \[
+          ( 1 + b_1 \LL )\hat\vE_t = ( a_0 + a_1 \LL ) \hat \vJ
+        \]
+
+      \subsubsection{Padé à l'ordre 1:1, découplé: la CI3}
+
+        On approche l'opérateur de Calderon par
+        \[
+          ( 1 + b_1 \LD -b_2 \LR )\hat\vE_t = ( a_0 + a_1 \LD -a_2 \LR) \hat \vJ
+        \]
+
+      \subsubsection{Taylor à l'ordre 1, découplé: la CI4}
+
+        On approche l'opérateur de Calderon par
+        \[
+          \hat\vE_t = ( a_0 + a_1 \LD - a_2 \LR ) \hat \vJ
+        \]
 
         \begin{REM}
             Note de Lundi soir
