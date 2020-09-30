@@ -22,6 +22,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Set up Git repository
         uses: actions/checkout@v2
+        with:
+          ref: pierre
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@master
       - name: Upload Latex PDF
