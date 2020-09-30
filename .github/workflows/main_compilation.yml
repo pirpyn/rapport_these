@@ -25,7 +25,7 @@ jobs:
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@master
       - name: Upload Latex PDF
-      - uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: payen_thesis_2019.pdf
           path: build/these_payen_2019.pdf
