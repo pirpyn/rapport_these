@@ -1,1252 +1,1252 @@
-% @Olivier Décommente les ~1240 prochaines lignes, puis les 4 dernieres
-% La balise @Olivier t'aidera
+% % @Olivier Décommente les ~1240 prochaines lignes, puis les 4 dernieres
+% % La balise @Olivier t'aidera
 
-% Pour compiler (les options -output-directory=build sont importantes pour les packages)
-% Les 6 commandes suivantes sont à faire dans un terminal la première fois
-% puis seul pdflatex suffira si tu ne modifie pas les glossaires et la biblio
-% pdflatex -shell-escape -file-line-error --synctex=1 --output-directory=build chapitre_05
-% biber --output-directory=build chapitre_05
-% makeglossaries -d build chapitre_05
-% pdflatex -shell-escape -file-line-error --synctex=1 --output-directory=build chapitre_05
-% pdflatex -shell-escape -file-line-error --synctex=1 --output-directory=build chapitre_05
+% % Pour compiler (les options -output-directory=build sont importantes pour les packages)
+% % Les 6 commandes suivantes sont à faire dans un terminal la première fois
+% % puis seul pdflatex suffira si tu ne modifie pas les glossaires et la biblio
+% % pdflatex -shell-escape -file-line-error --synctex=1 --output-directory=build chapitre_05
+% % biber --output-directory=build chapitre_05
+% % makeglossaries -d build chapitre_05
+% % pdflatex -shell-escape -file-line-error --synctex=1 --output-directory=build chapitre_05
+% % pdflatex -shell-escape -file-line-error --synctex=1 --output-directory=build chapitre_05
 
-\documentclass[12pt,%
-    twoside,% twoside si document final
-    a4paper,%
-    openright, % openright si document final
-    ]{book}
+% \documentclass[12pt,%
+%     twoside,% twoside si document final
+%     a4paper,%
+%     openright, % openright si document final
+%     ]{book}
 
-%\usepackage{cmbright} % fichier + lisible sur ordi, - lisible sur papier
-\usepackage[utf8]{inputenc} %gestion des accents par le compilateurs
-\usepackage[T1]{fontenc}
+% %\usepackage{cmbright} % fichier + lisible sur ordi, - lisible sur papier
+% \usepackage[utf8]{inputenc} %gestion des accents par le compilateurs
+% \usepackage[T1]{fontenc}
 
-%%% LES POLICES
+% %%% LES POLICES
 
-% Fonte Latin Modern
-\usepackage{lmodern} % fontes tailles variables
-    % substitution des petites capitales grasses manquantes
-    % \rmfamily
-    % \DeclareFontShape{T1}{lmr}{b}{sc}{<->ssub*cmr/bx/sc}{}
-    % \DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*cmr/bx/sc}{}
+% % Fonte Latin Modern
+% \usepackage{lmodern} % fontes tailles variables
+%     % substitution des petites capitales grasses manquantes
+%     % \rmfamily
+%     % \DeclareFontShape{T1}{lmr}{b}{sc}{<->ssub*cmr/bx/sc}{}
+%     % \DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*cmr/bx/sc}{}
 
-%% Fonte Fourier + Utopia
-% \usepackage{fourier}
-%     \usepackage[scaled=0.875]{helvet} % completement empatemment
-%     \usepackage{courier} % completement chasse fixe
+% %% Fonte Fourier + Utopia
+% % \usepackage{fourier}
+% %     \usepackage[scaled=0.875]{helvet} % completement empatemment
+% %     \usepackage{courier} % completement chasse fixe
 
-%% Fonte MathDesign + Utopia
-% \usepackage[utopia]{mathdesign}
+% %% Fonte MathDesign + Utopia
+% % \usepackage[utopia]{mathdesign}
 
-% % Fonte KP
-% \usepackage{kpfonts}
+% % % Fonte KP
+% % \usepackage{kpfonts}
 
-% % Fonte Computer Modern Bright
-% \usepackage{cmbright}
+% % % Fonte Computer Modern Bright
+% % \usepackage{cmbright}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[french]{babel} % traduction des packages
+% \usepackage[french]{babel} % traduction des packages
 
-\usepackage{microtype}
+% \usepackage{microtype}
 
-\usepackage{tabularx} % Permet d'utiliser l'environnement tabularx
-\usepackage{graphicx} % gestion de figure, dessins
-\usepackage[dvipsnames]{xcolor} % charge des couleurs
+% \usepackage{tabularx} % Permet d'utiliser l'environnement tabularx
+% \usepackage{graphicx} % gestion de figure, dessins
+% \usepackage[dvipsnames]{xcolor} % charge des couleurs
 
-\usepackage{xspace}
-\usepackage[%
-    % paperwidth=270.0mm,%  A supprimer si plus besoin de todonotes
-    headheight=14pt,%
-    top    = 2.5cm,%
-    bottom = 2.5cm,%
-    inner  = 3.5cm,%
-    outer  = 2.5cm,%
-    a4paper]{geometry} % feuille a4 de taille 21.0 x 29.7
+% \usepackage{xspace}
+% \usepackage[%
+%     % paperwidth=270.0mm,%  A supprimer si plus besoin de todonotes
+%     headheight=14pt,%
+%     top    = 2.5cm,%
+%     bottom = 2.5cm,%
+%     inner  = 3.5cm,%
+%     outer  = 2.5cm,%
+%     a4paper]{geometry} % feuille a4 de taille 21.0 x 29.7
 
-% suite de paquets mathematiques
-\usepackage{amsfonts} % gestions des polices mathématques
-\usepackage{amssymb} % plus de symbole
-\usepackage[leqno]{amsmath} % legno : numéro des équations à gauche
-    \everymath{\displaystyle} % Tout en grand !
-    \numberwithin{equation}{section} % (x.y.z) x: chapitre, y: section, z: numéro equation
-    \allowdisplaybreaks % Equations sur plusieurs pages et lignes si besoins
+% % suite de paquets mathematiques
+% \usepackage{amsfonts} % gestions des polices mathématques
+% \usepackage{amssymb} % plus de symbole
+% \usepackage[leqno]{amsmath} % legno : numéro des équations à gauche
+%     \everymath{\displaystyle} % Tout en grand !
+%     \numberwithin{equation}{section} % (x.y.z) x: chapitre, y: section, z: numéro equation
+%     \allowdisplaybreaks % Equations sur plusieurs pages et lignes si besoins
 
-\usepackage{amsthm} % gestion des théoremes
-    %\newtheorem{env_name}{Titre environement}[chapter/section/subsection/...]
-    %\newtheorem{env_name}[reference_env_name]{Titre environement}
-    \newtheorem{thm}{Théorème}[chapter] % Environnment thm numéroté sur chaptre : x.z
-    \newtheorem{lemme}[thm]{Lemme}
-    \newtheorem{prop}[thm]{Proposition}
-    \newtheorem{defn}[thm]{Définition}
-    \newtheorem{hyp}[thm]{Hypothèse}
-    \newtheorem{remark}[thm]{Remark}
-    \newtheorem{lemma}[thm]{Lemma}
-% \usepackage{thmbox}
-% \newtheorem[style=M,bodystyle={\noindent}]{thm}{Théorème}[chapter]
-% \newtheorem[style=M,bodystyle={\noindent}]{lemme}{Lemme}[chapter]
-% \newtheorem[style=S,underline=false,bodystyle={\noindent}]{prop}{Propriété}[chapter]
-% \newtheorem[style=S,underline=false,bodystyle={\noindent}]{defn}{Définition}[chapter]
-% \newtheorem[style=S,underline=false,bodystyle={\noindent}]{hyp}{Hypothèse}[chapter]
+% \usepackage{amsthm} % gestion des théoremes
+%     %\newtheorem{env_name}{Titre environement}[chapter/section/subsection/...]
+%     %\newtheorem{env_name}[reference_env_name]{Titre environement}
+%     \newtheorem{thm}{Théorème}[chapter] % Environnment thm numéroté sur chaptre : x.z
+%     \newtheorem{lemme}[thm]{Lemme}
+%     \newtheorem{prop}[thm]{Proposition}
+%     \newtheorem{defn}[thm]{Définition}
+%     \newtheorem{hyp}[thm]{Hypothèse}
+%     \newtheorem{remark}[thm]{Remark}
+%     \newtheorem{lemma}[thm]{Lemma}
+% % \usepackage{thmbox}
+% % \newtheorem[style=M,bodystyle={\noindent}]{thm}{Théorème}[chapter]
+% % \newtheorem[style=M,bodystyle={\noindent}]{lemme}{Lemme}[chapter]
+% % \newtheorem[style=S,underline=false,bodystyle={\noindent}]{prop}{Propriété}[chapter]
+% % \newtheorem[style=S,underline=false,bodystyle={\noindent}]{defn}{Définition}[chapter]
+% % \newtheorem[style=S,underline=false,bodystyle={\noindent}]{hyp}{Hypothèse}[chapter]
 
-\usepackage{stmaryrd}
+% \usepackage{stmaryrd}
 
-\usepackage[autostyle=true]{csquotes}
+% \usepackage[autostyle=true]{csquotes}
 
-\usepackage[%
-    language=english,%
-    sorting=nyt,%
-    backend=biber,%
-    style=authoryear,%
-    hyperref=true,%
-    giveninits=true, % initialles pour prénoms
-    isbn=true,%
-    url=false,%
-    maxcitenames=1,% Dans le texte, un seul auteur puis et al
-    doi=true,%
-    backref=true,% affiche les pages où l'auteur est cité
-    backrefstyle=three% si cité en page 1,2,3, ecrire 1-3,
-    ]{biblatex}
+% \usepackage[%
+%     language=english,%
+%     sorting=nyt,%
+%     backend=biber,%
+%     style=authoryear,%
+%     hyperref=true,%
+%     giveninits=true, % initialles pour prénoms
+%     isbn=true,%
+%     url=false,%
+%     maxcitenames=1,% Dans le texte, un seul auteur puis et al
+%     doi=true,%
+%     backref=true,% affiche les pages où l'auteur est cité
+%     backrefstyle=three% si cité en page 1,2,3, ecrire 1-3,
+%     ]{biblatex}
 
-    \renewbibmacro{in:}{}
-    \DeclareFieldFormat[book,report]{title}{\mkbibquote{#1\isdot}}
-    \DefineBibliographyStrings{french}{%
-    bibliography = {Références},
-    }
-    \bibliography{bib/from_zotero}
-    \setlength\bibitemsep{0.5\baselineskip} % more space between bib entries
-    \setlength\bibinitsep{1.5\baselineskip} % more space between bib entries with different letters
+%     \renewbibmacro{in:}{}
+%     \DeclareFieldFormat[book,report]{title}{\mkbibquote{#1\isdot}}
+%     \DefineBibliographyStrings{french}{%
+%     bibliography = {Références},
+%     }
+%     \bibliography{bib/from_zotero}
+%     \setlength\bibitemsep{0.5\baselineskip} % more space between bib entries
+%     \setlength\bibinitsep{1.5\baselineskip} % more space between bib entries with different letters
 
-\usepackage[%
-    linkcolor=blue!70!black,%
-    colorlinks=true,%
-    citecolor=purple,%
-    bookmarksopen=true,% à l'ouverture du document, affiche les signets
-    bookmarksnumbered=true,% Numérotes les signets
-    bookmarksopenlevel=5, % Affiche dans les signets jusqu'au niveau 5 ( sub sub section )
-    ]{hyperref} % gestion des liens hypertexts et reférences
+% \usepackage[%
+%     linkcolor=blue!70!black,%
+%     colorlinks=true,%
+%     citecolor=purple,%
+%     bookmarksopen=true,% à l'ouverture du document, affiche les signets
+%     bookmarksnumbered=true,% Numérotes les signets
+%     bookmarksopenlevel=5, % Affiche dans les signets jusqu'au niveau 5 ( sub sub section )
+%     ]{hyperref} % gestion des liens hypertexts et reférences
 
-\usepackage[section]{placeins} % Place un FloatBarrier à chaque nouvelle section, les figures s'y arreterons
+% \usepackage[section]{placeins} % Place un FloatBarrier à chaque nouvelle section, les figures s'y arreterons
 
-\usepackage{epigraph} % Pour faire de jolie citations
-    \newcommand{\citationChap}[2]{\epigraph{\og \textit{#1} \fg{}}{#2}}
+% \usepackage{epigraph} % Pour faire de jolie citations
+%     \newcommand{\citationChap}[2]{\epigraph{\og \textit{#1} \fg{}}{#2}}
 
-% Jolie en tete de chapitre
-\usepackage[Lenny]{fncychap}
-    \makeatletter
-        \ChNameVar{\huge} % On modifie la taille du môt ``Chapitre''
-    \makeatother
+% % Jolie en tete de chapitre
+% \usepackage[Lenny]{fncychap}
+%     \makeatletter
+%         \ChNameVar{\huge} % On modifie la taille du môt ``Chapitre''
+%     \makeatother
 
-\usepackage{caption} % Faire des caption en dehors de figure
+% \usepackage{caption} % Faire des caption en dehors de figure
 
-\usepackage[francais]{minitoc}   % Mini table des matières, en français
-    \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections & sous-sections)
+% \usepackage[francais]{minitoc}   % Mini table des matières, en français
+%     \setcounter{minitocdepth}{2} % Mini-toc détaillées (sections & sous-sections)
 
 
 
-%\usepackage{multicol} % texte sur plusieurs colonnes
-%\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
-\usepackage[%
-    nomain,%
-    sanitizesort=false,%
-    style=super4col%
-    ]{glossaries} %voir preambule_glossaire.tex
+% %\usepackage{multicol} % texte sur plusieurs colonnes
+% %\usepackage{wrapfig} % permet de gérer les flotants dans les multiples colonnes
+% \usepackage[%
+%     nomain,%
+%     sanitizesort=false,%
+%     style=super4col%
+%     ]{glossaries} %voir preambule_glossaire.tex
 
-% Permet de tracer des figures et schémas
-\usepackage{pgfplots}
-    \usepgfplotslibrary{external} % On génère un pdf par graphique qui sera inclus après => 1ere compil un peu plus lente, suivante tres rapide
+% % Permet de tracer des figures et schémas
+% \usepackage{pgfplots}
+%     \usepgfplotslibrary{external} % On génère un pdf par graphique qui sera inclus après => 1ere compil un peu plus lente, suivante tres rapide
     
-    \tikzexternalize{chapitre_05} % Cette commande doit être placé dans le main.tex pour qu'Overleaf puisse fonctionner 
-    % Le graphique triple asymptote nécesssite 20000 pts, il faut etendre la mémoire (-extra-mem-top=10000000)
-    % Ne marche qu'avec MikTex
-    % externalize et output-dir ne fonctionnent pas bien ensemble
-    % il faut donc propager le output directory dans la command ci-dessus.
-    \tikzset{external/system call={pdflatex --output-directory build \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+%     \tikzexternalize{chapitre_05} % Cette commande doit être placé dans le main.tex pour qu'Overleaf puisse fonctionner 
+%     % Le graphique triple asymptote nécesssite 20000 pts, il faut etendre la mémoire (-extra-mem-top=10000000)
+%     % Ne marche qu'avec MikTex
+%     % externalize et output-dir ne fonctionnent pas bien ensemble
+%     % il faut donc propager le output directory dans la command ci-dessus.
+%     \tikzset{external/system call={pdflatex --output-directory build \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 
-    % Pour regenerer une figure, \tikset{external/remake next}
+%     % Pour regenerer une figure, \tikset{external/remake next}
 
-    % \pgfplotscreateplotcyclelist{my cycle}{%
-    %     thick, solid,          every mark/.append style={solid}\\%
-    % }
-    \pgfplotsset{%
-        compat=newest,
-        height=6.5cm,
-        % cycle list name=my cycle,
-        every axis legend/.style={
-            cells={anchor=west},
-            draw=black,
-        },
-        every axis plot/.append style={
-            mark options=solid,
-            line width=1pt
-        },
-    }
+%     % \pgfplotscreateplotcyclelist{my cycle}{%
+%     %     thick, solid,          every mark/.append style={solid}\\%
+%     % }
+%     \pgfplotsset{%
+%         compat=newest,
+%         height=6.5cm,
+%         % cycle list name=my cycle,
+%         every axis legend/.style={
+%             cells={anchor=west},
+%             draw=black,
+%         },
+%         every axis plot/.append style={
+%             mark options=solid,
+%             line width=1pt
+%         },
+%     }
 
-    \usepackage{tikz}
-    \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
-    \usetikzlibrary{patterns} % permet de faire des patterns
-    \usetikzlibrary{math} % permet de definir des variables
-    \usetikzlibrary{arrows.meta} % permet de spécifier les tailles des pointes de fleches
-    \tikzset{every picture/.style={execute at begin picture={
-        \shorthandoff{:;!?};} % permet de prendre en compte la ponctuation française dans tikz
-    }}
+%     \usepackage{tikz}
+%     \usetikzlibrary{calc} % permet de réaliser des calculs dans tikz
+%     \usetikzlibrary{patterns} % permet de faire des patterns
+%     \usetikzlibrary{math} % permet de definir des variables
+%     \usetikzlibrary{arrows.meta} % permet de spécifier les tailles des pointes de fleches
+%     \tikzset{every picture/.style={execute at begin picture={
+%         \shorthandoff{:;!?};} % permet de prendre en compte la ponctuation française dans tikz
+%     }}
 
-% % permet d'ajouter des notes en marges
-% \setlength{\oddsidemargin}{25mm}
-% \setlength{\evensidemargin}{25mm}
-% \setlength{\textwidth}{170mm}
-% \reversemarginpar
-% \usepackage{todonotes}
+% % % permet d'ajouter des notes en marges
+% % \setlength{\oddsidemargin}{25mm}
+% % \setlength{\evensidemargin}{25mm}
+% % \setlength{\textwidth}{170mm}
+% % \reversemarginpar
+% % \usepackage{todonotes}
 
-\usepackage{fancyhdr}      % Entête et pieds de page. Doit être placé APRES geometry
-    \pagestyle{fancy}    % Indique que le style de la page sera justement fancy
-    \fancyfoot{} % bas de page, rien
-    \fancyfoot[RO,LE]{\thepage} % tête de page, droite paire, gauche impaire, rien
-    \fancyhead{}
-    \fancyhead[RO]{\nouppercase{\rightmark}} % tête de page droite impaire, le titre de la section
-    \fancyhead[LE]{\nouppercase{\leftmark}} %tête de page gauche paire, le titre du chapitre
+% \usepackage{fancyhdr}      % Entête et pieds de page. Doit être placé APRES geometry
+%     \pagestyle{fancy}    % Indique que le style de la page sera justement fancy
+%     \fancyfoot{} % bas de page, rien
+%     \fancyfoot[RO,LE]{\thepage} % tête de page, droite paire, gauche impaire, rien
+%     \fancyhead{}
+%     \fancyhead[RO]{\nouppercase{\rightmark}} % tête de page droite impaire, le titre de la section
+%     \fancyhead[LE]{\nouppercase{\leftmark}} %tête de page gauche paire, le titre du chapitre
 
-    \fancypagestyle{annexe}{
-    \fancyfoot{} % bas de page, rien
-    \fancyfoot[RO,LE]{\thepage} % tête de page, droite paire, gauche impaire, rien
-    \fancyhead[RO]{\nouppercase{\rightmark}} % tête de page droite impaire, le titre de l'annexe
-    \fancyhead[LE]{Annexe} %tête de page gauche paire, rien
-    }
+%     \fancypagestyle{annexe}{
+%     \fancyfoot{} % bas de page, rien
+%     \fancyfoot[RO,LE]{\thepage} % tête de page, droite paire, gauche impaire, rien
+%     \fancyhead[RO]{\nouppercase{\rightmark}} % tête de page droite impaire, le titre de l'annexe
+%     \fancyhead[LE]{Annexe} %tête de page gauche paire, rien
+%     }
 
-\usepackage{multirow}
-\usepackage{array}   % for \newcolumntype macro
-    \newcolumntype{L}{>{\(}l<{\)}} % math-mode version of column type
-    \newcolumntype{C}{>{\(}c<{\)}}
-    \newcolumntype{R}{>{\(}r<{\)}}
+% \usepackage{multirow}
+% \usepackage{array}   % for \newcolumntype macro
+%     \newcolumntype{L}{>{\(}l<{\)}} % math-mode version of column type
+%     \newcolumntype{C}{>{\(}c<{\)}}
+%     \newcolumntype{R}{>{\(}r<{\)}}
 
-\usepackage{tcolorbox} % Pour faire de jolie boite, un peu visible
-\usepackage{lettrine} % Pour faire de jolie lettrine 
-    % voir http://ctan.tetaneutral.net/macros/latex/contrib/lettrine/doc/demo.pdf
+% \usepackage{tcolorbox} % Pour faire de jolie boite, un peu visible
+% \usepackage{lettrine} % Pour faire de jolie lettrine 
+%     % voir http://ctan.tetaneutral.net/macros/latex/contrib/lettrine/doc/demo.pdf
 
-\usepackage{makecell} % Permet de mettre des \\ dans tableau grâce à un \makecell{un \\ text} et
+% \usepackage{makecell} % Permet de mettre des \\ dans tableau grâce à un \makecell{un \\ text} et
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{pdflscape} % Pour pouvoir changer l'orientation des pages
-    % avec \begin{landscape} ... 
-    %%% Solution pour avoir un paysage qui pointe vers l'intérieur du livre
-    \makeatletter
-    \global\let\orig@begin@landscape=\landscape%
-    \global\let\orig@end@landscape=\endlandscape%
-    \gdef\@true{1}
-    \gdef\@false{0}
-    \gdef\landscape{%
-        \global\let\within@landscape=\@true%
-        \orig@begin@landscape%
-    }%
-    \gdef\endlandscape{%
-        \orig@end@landscape%
-        \global\let\within@landscape=\@false%
-    }%
-    \@ifpackageloaded{pdflscape}{%
-        \gdef\pdf@landscape@rotate{\PLS@Rotate}%
-    }{
-        \gdef\pdf@landscape@rotate#1{}%
-    }
-    \let\latex@outputpage\@outputpage
-    \def\@outputpage{
-        \ifx\within@landscape\@true%
-            \if@twoside%
-                \ifodd\c@page%
-                    \gdef\LS@rot{\setbox\@outputbox\vbox{%
-                        \pdf@landscape@rotate{-90}%
-                        \hbox{\rotatebox{90}{\hbox{\rotatebox{180}{\box\@outputbox}}}}}%
-                    }%
-                \else%
-                    \gdef\LS@rot{\setbox\@outputbox\vbox{%
-                        \pdf@landscape@rotate{+90}%
-                        \hbox{\rotatebox{90}{\hbox{\rotatebox{0}{\box\@outputbox}}}}}%
-                    }%
-                \fi%
-            \else%
-                \gdef\LS@rot{\setbox\@outputbox\vbox{%
-                    \pdf@landscape@rotate{+90}%
-                    \hbox{\rotatebox{90}{\hbox{\rotatebox{0}{\box\@outputbox}}}}}%
-                }%
-            \fi%
-        \fi%
-        \latex@outputpage%
-    }
-    \makeatother
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage{pdflscape} % Pour pouvoir changer l'orientation des pages
+%     % avec \begin{landscape} ... 
+%     %%% Solution pour avoir un paysage qui pointe vers l'intérieur du livre
+%     \makeatletter
+%     \global\let\orig@begin@landscape=\landscape%
+%     \global\let\orig@end@landscape=\endlandscape%
+%     \gdef\@true{1}
+%     \gdef\@false{0}
+%     \gdef\landscape{%
+%         \global\let\within@landscape=\@true%
+%         \orig@begin@landscape%
+%     }%
+%     \gdef\endlandscape{%
+%         \orig@end@landscape%
+%         \global\let\within@landscape=\@false%
+%     }%
+%     \@ifpackageloaded{pdflscape}{%
+%         \gdef\pdf@landscape@rotate{\PLS@Rotate}%
+%     }{
+%         \gdef\pdf@landscape@rotate#1{}%
+%     }
+%     \let\latex@outputpage\@outputpage
+%     \def\@outputpage{
+%         \ifx\within@landscape\@true%
+%             \if@twoside%
+%                 \ifodd\c@page%
+%                     \gdef\LS@rot{\setbox\@outputbox\vbox{%
+%                         \pdf@landscape@rotate{-90}%
+%                         \hbox{\rotatebox{90}{\hbox{\rotatebox{180}{\box\@outputbox}}}}}%
+%                     }%
+%                 \else%
+%                     \gdef\LS@rot{\setbox\@outputbox\vbox{%
+%                         \pdf@landscape@rotate{+90}%
+%                         \hbox{\rotatebox{90}{\hbox{\rotatebox{0}{\box\@outputbox}}}}}%
+%                     }%
+%                 \fi%
+%             \else%
+%                 \gdef\LS@rot{\setbox\@outputbox\vbox{%
+%                     \pdf@landscape@rotate{+90}%
+%                     \hbox{\rotatebox{90}{\hbox{\rotatebox{0}{\box\@outputbox}}}}}%
+%                 }%
+%             \fi%
+%         \fi%
+%         \latex@outputpage%
+%     }
+%     \makeatother
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%% Pas de numéro de page sur la première page des chapitres
-\makeatletter
-\let\ps@plain=\ps@empty
-\makeatother
+% %%% Pas de numéro de page sur la première page des chapitres
+% \makeatletter
+% \let\ps@plain=\ps@empty
+% \makeatother
 
-% Réglage fin des notes de bas de page
-\FrenchFootnotes % pour les notes de bas de page à la française
-\AddThinSpaceBeforeFootnotes % pour avoir une espace fine entre le mot et l'appel de note
+% % Réglage fin des notes de bas de page
+% \FrenchFootnotes % pour les notes de bas de page à la française
+% \AddThinSpaceBeforeFootnotes % pour avoir une espace fine entre le mot et l'appel de note
 
-% Pour que les pages paires sans texte (par exemple, à la fin d'un chapitre et
-% avant un autre), ne contiennent ni en-tête ni pied de page (source :
-% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank)
-\let\origdoublepage\cleardoublepage
-\newcommand{\clearemptydoublepage}{%
-  \clearpage
-  {\pagestyle{empty}\origdoublepage}%
-}
-\let\cleardoublepage\clearemptydoublepage
-
-\setcounter{tocdepth}{1} % Sommaire n'inclus que les niveau 1 à 2 : section, sous-section
-
-\setlength{\parindent}{0pt} % pas d'alinéa à chaque paragraphe
-
-% Module pour formater du code
-\usepackage{listings}
-    \lstdefinelanguage{modern-fortran}{ % Creation d'un nouveau language
-        language=[08]Fortran,
-        otherkeywords={\%}, % pour les types dérivés
-        deletekeywords=[1]{ IN, OUT, INOUT}, % On enlève ces mots clefs de la catégorie 1
-        deletekeywords=[2]{ SIZE, TYPE, NAME, UNIT}, % de la catégorie 2
-        morekeywords=[1]{}, % On ajoute ces mots clefs à la catégrories 1
-        morekeywords=[2]{in,out,inout},
-    }
-    \lstdefinestyle{fortran}{ % Un nouveau style
-        numbers=none, % pas de numéros de lignes
-        language=modern-fortran, % Le language par défaut
-        basicstyle={\small\ttfamily}, % Style du texte
-        keywordstyle=[1]{\color{purple}}, % style des mots clefs 1
-        keywordstyle=[2]{\color{red}},
-        keywordstyle=[3]{\color{blue}},
-        commentstyle={\color{gray}}, % style des comentaires
-        stringstyle={\color{orange}}, % style des chaines de caratères
-        columns=fixed, % rendue du texte en monospace, espaces compris
-        basewidth={.48em}, % largeur d'un caractère
-        showstringspaces=false, % Ne pas accentuer les espaces dans les chaines de caractères
-    }
-    \lstdefinestyle{shell}{ % Un nouveau style
-        numbers=none, % pas de numéros de lignes
-        language=bash, % Le language par défaut
-        keywords=,
-        basicstyle={\small\ttfamily}, % Style du texte
-        columns=fixed, % rendue du texte en monospace, espaces compris
-        basewidth={.48em}, % largeur d'un caractère
-        showstringspaces=false, % Ne pas accentuer les espaces dans les chaines de caractères
-    }
-    \lstset{ % paramètres par défaut
-        style=fortran, % style
-        literate=% lstlistings ne comprend pas les accents utf8 é à ...
-        {é}{{\'e}}1% Il faut donc les convertir en macros tex et indiquer la taille en caractères du rendu
-        {è}{{\`e}}1%
-        {ê}{{\^e}}1%
-        {à}{{\`a}}1%
-        {à }{{\`a{ }}}2%
-        {â}{{\^a}}1%
-        {ô}{{\^o}}1%
-        {î}{{\^i}}1%
-    }
-
-%redefinition
-\renewcommand{\frac}[2]{\dfrac{#1}{#2}} % Toujours de grandes fractions
-\renewcommand{\tilde}[1]{\overset{\thicksim}{#1}} % Toujours un grand tilde
-\newcommand{\tagit}{\addtocounter{equation}{1}\tag{\theequation}}
-\newcommand{\ds}{\displaystyle}
-
-\newcommand{\secref}[1]{(\S \ref{#1})}
-
-\newcommand{\CSU}[2][{}]{\ensuremath{\operatorname{CSU}_{\operatorname{#2}}^{#1}}}
-
-% Notation produit vectoriel
-\newcommand{\pvect}{\wedge}
-
-% Notation vectorielle
-\newcommand{\comp}[1]{{\underline{#1}}} % {\overset{\rightarrow{}}{#1}}
-
-%\newcommand{\vect}[1]{\vec{#1}}
-\newcommand{\vect}[1]{{\overset{\rightarrow}{#1}}}
-
-% Notation matricielle
-\newcommand{\mat}[1]{\mathbf{#1}}
-
-% Le conjugé
-% \newcommand{\conj}[1]{{{#1}^*}}
-\newcommand{\conj}[1]{{\overline{#1}}}
-
-\newcommand{\ps}[2]{\left<{#1},{#2}\right>}
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
-
-% Quelques matrices qui reviennent
-\newcommand{\mI}{\mat{I}}
-\newcommand{\mZ}{\mat{Z}}
-\newcommand{\mA}{\mat{A}}
-\newcommand{\mB}{\mat{B}}
-\newcommand{\mPP}{\mat{P}}
-\newcommand{\mC}{\mat{C}}
-\newcommand{\mM}{\mat{M}}
-\newcommand{\mJ}{\mat{J}}
-\newcommand{\mj}{\mat{j}}
-\newcommand{\mH}{\mat{H}}
-\newcommand{\mh}{\mat{h}}
-\newcommand{\mN}{\mat{N}}
-\newcommand{\mMt}{\mat{\tilde{M}}}
-\newcommand{\mNt}{\mat{\tilde{N}}}
-\newcommand{\mLD}{\mat{L_D}}
-\newcommand{\mLR}{\mat{L_R}}
-\newcommand{\mL}{\mat{L}}
-\newcommand{\mR}{\mat{R}}
-\newcommand{\mT}{\mat{T}}
-\newcommand{\mF}{\mat{F}}
-%\newcommand{\mPt}{\mat{\tilde{P}}}
-%\newcommand{\mP}{\mat{P}}
-\newcommand{\mS}{\mat{S}}
-\newcommand{\mSt}{\mat{\tilde{S}}}
-
-% Matrices de Gramm de la base #1 vers #2
-\newcommand{\mG}[2]{\mat{G}^{#1#2}}
-
-% Matrices de passage de la base #1 vers #2 projeté sur #3
-\newcommand{\mP}[3]{{\overset{#3}{\underset{#1 \rightarrow #2}{\mat{P}}}}}
-
-% Opérateur pseudo diff
-\newcommand{\Op}[2]{{\operatorname{Op}\left(#1\right)\left(#2\right)}}
-
-\newcommand{\w}{\omega}
-
-%mathematical symbol
-\newcommand{\RR}{\mathbb R}
-\newcommand{\CC}{\mathbb C}
-\newcommand{\NN}{\mathbb N}
-\newcommand{\ZZ}{\mathbb Z}
-\newcommand{\eps}{\epsilon}
-\newcommand{\dd}{\mathrm{d}}
-\newcommand{\OO}{\Omega}
-
-\newcommand{\ddp}[3][{}]{\dfrac{\mathrm{d}^{#1}#3}{{\mathrm{d}#2}^{#1}}}
-\newcommand{\ddr}[3][{}]{\dfrac{\partial^{#1} #3}{{\partial #2}^{#1}}}
-
-%Operator
-\newcommand{\Sobup}[1][{}]{\mathrm{H}^\mathrm{#1}}
-\newcommand{\Sobdw}[1][{}]{\mathrm{H}_\mathrm{#1}}
-\newcommand{\Sobolev}[1][{}]{\Sobup{#1}}
-\newcommand{\Hgrad}{\Sobdw[grad]}
-\newcommand{\Hrot}{\Sobdw[rot]}
-\newcommand{\Hdiv}{\Sobdw[div]}
-\newcommand{\Hess}{\operatorname{Hess}}
-\renewcommand{\Re}{\operatorname{Re}}
-\renewcommand{\Im}{\operatorname{Im}}
-
-\newcommand{\diag}[2]{\operatorname{diag}\left(#1,#2\right)}
-
-\newcommand{\sign}[1]{{\operatorname{sign}\left(#1\right)}}
-\newcommand{\argmin}[1]{{\underset{#1}{\operatorname{argmin}}}}
-\newcommand{\Ker}{\operatorname{Ker}}
-\newcommand{\Img}{\operatorname{Img}}
-\newcommand{\Vect}[1]{\operatorname{Vect}\left\lbrace#1\right\rbrace}
-
-\newcommand{\Tr}{\operatorname{T_R}}
-\newcommand{\oI}{{\mathcal{I}}}
-\newcommand{\LD}{{\mathcal{L}_D}}
-\newcommand{\LL}{\mathcal{L}}
-\newcommand{\LR}{{\mathcal{L}_R}}
-
-\newcommand{\EFIE}{\operatorname{EFIE}}
-\newcommand{\MFIE}{\operatorname{MFIE}}
-\newcommand{\CFIE}{\operatorname{CFIE}}
-
-%Maxwell notations
-\newcommand{\vE}{\vect{E}}
-\newcommand{\cH}{\mathcal{H}}
-\newcommand{\vH}{\vect{\cH}}
-\newcommand{\vn}{\vect{n}}
-\newcommand{\vx}{\vect{x}}
-\newcommand{\vz}{\vect{z}}
-\newcommand{\vy}{\vect{y}}
-\newcommand{\vk}{\vect{k}}
-\newcommand{\vJ}{\vect{J}}
-\newcommand{\vK}{\vect{K}}
-\newcommand{\vM}{\vect{M}}
-\newcommand{\vA}{\vect{A}}
-\newcommand{\vu}{\vect{u}}
-\newcommand{\vv}{\vect{v}}
-\newcommand{\vw}{\vect{w}}
-
-%differential operator
-\newcommand{\vgrad}{\vect{\nabla}}
-\newcommand{\vdiv}{\vect{\nabla}\cdot}
-\newcommand{\vrot}{\vect{\nabla}\pvect}
-\newcommand{\vhess}{\vect{\Hess}}
-
-\newcommand{\tgrad}{{\vect{\operatorname{grad}}}}
-\newcommand{\trot}{{\vect{\operatorname{rot}}}}
-\newcommand{\tdiv}{{\operatorname{div}}}
-
-\newcommand{\vgrads}{\vect{\nabla_s}}
-\newcommand{\vdivs}{\vect{\nabla_s} \cdot}
-\newcommand{\vrots}{\vect{\nabla_s} \pvect}
-\newcommand{\rots}{{\nabla_s} \pvect}
-\newcommand{\vhesss}{\vect{\Hess_s}}
-
-\newcommand{\mhess}{\mat{\Hess}}
-\newcommand{\mhesss}{\mat{\Hess}_s}
-
-\newcommand{\tgrads}{{\vect{\operatorname{grad}}_s}}
-\newcommand{\trots}{{{\operatorname{rot}}_s}}
-\newcommand{\tvrots}{{\vect{\operatorname{rot}}_s}}
-\newcommand{\tdivs}{{\operatorname{div}_s}}
-
-\newcommand{\lapl}{\Delta}
-\newcommand{\lapls}{\Delta_s}
-\newcommand{\vlapl}{\vect{\Delta}}
-\newcommand{\vlapls}{\vect{\Delta_s}}
-
-% helmotlz
-\newcommand{\rtp}{r,\theta,\phi}
-\newcommand{\tp}{\theta,\phi}
-
-\newcommand{\PP}{\mathbb{P}}
-\newcommand{\Pmn}{\PP^m_n}
-
-% cioe
-\newcommand{\ov}[1]{\overline{#1}}
-
-\newcommand{\x}{{x}}
-\newcommand{\y}{{y}}
-\newcommand{\z}{{z}}
-
-\newcommand{\kO}{\mathbf{k_0}}
-\newcommand{\etaO}{\boldsymbol{\eta_0}}
-\newcommand{\muO}{\boldsymbol{\mu_0}}
-\newcommand{\epsO}{\boldsymbol{\eps_0}}
-\newcommand{\nuO}{\boldsymbol{\nu_0}}
-
-%
-\newcommand{\peps}{{\epsilon}}
-\newcommand{\pmu}{{\mu}}
-
-\newcommand{\phii}{\vect{\phi_i}}
-\newcommand{\pii}{\vect{p_i}}
-\newcommand{\phin}{\vect{\phi_n}}
-\newcommand{\phim}{\vect{\phi_m}}
-\newcommand{\pn}{\vect{p_n}}
-\newcommand{\ppm}{\vect{p_m}}
-\newcommand{\phip}{\vect{\phi_p}}
-\newcommand{\phiq}{\vect{\phi_q}}
-\newcommand{\pj}{\vect{p_j}}
-\newcommand{\qj}{\vect{q_j}}
-\newcommand{\qi}{\vect{q_i}}
-\newcommand{\nuj}{\vect{\nu_j}}
-\newcommand{\uj}{\vect{u_j}}
-\newcommand{\phij}{\vect{\phi_j}}
-
-%% avec référence dans la table des matières et les bons en-têtes
-%% il sert pour l'introduction, la page de notations, etc
-\newcommand{\chapterstar}[1]{%
-  \chapter*{#1}%
-  \addcontentsline{toc}{chapter}{#1}%
-  %\markboth{#1}{#1}
-  }
-\newcommand{\sectionstar}[1]{%
-  \section*{#1}%
-  \addcontentsline{toc}{section}{#1}%
-  %\markboth{#1}{#1}
-  }
-
-\newcommand{\Mmn}[1][{}]{\vect{M_{m,n}^{#1}}}
-\newcommand{\Nmn}[1][{}]{\vect{N_{m,n}^{#1}}}
-\newcommand{\Umn}[1][{}]{\vect{U_{m,n}^{#1}}}
-
-\newcommand{\NaN}{\operatorname{NaN}}
-\newcommand{\e}[1]{\mathrm{e}{#1}}
-
-\newcommand{\fonction}[5]{
-  \begin{aligned}
-  &#1: & #2 &\rightarrow #3
-  \\
-  & & #4 & \mapsto #5
-  \end{aligned}
-}
-
-\newenvironment{coefftable}[1]{%
-  \begin{tabular}{lc}
-  \multicolumn{2}{c}{#1}\\
-  \hline
-  \hline
-}{
-   \end{tabular}
-}
-
-% macro with argument filename
-% \newcommand{\coefftable}[1]{%
-%   \def\icoefffile{#1}\icoefftable
+% % Pour que les pages paires sans texte (par exemple, à la fin d'un chapitre et
+% % avant un autre), ne contiennent ni en-tête ni pied de page (source :
+% % http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank)
+% \let\origdoublepage\cleardoublepage
+% \newcommand{\clearemptydoublepage}{%
+%   \clearpage
+%   {\pagestyle{empty}\origdoublepage}%
 % }
-\newcommand{\tablecoeff}[3][1]{%
- \begin{minipage}[t]{#1\textwidth}
-    \centering
-    \vspace{0pt}
-    \begin{coefftable}{#2}
-      \input{#3}
-    \end{coefftable}
-  \end{minipage}
-}
+% \let\cleardoublepage\clearemptydoublepage
 
-  \renewcommand{\glstextformat}[1]{\textcolor{black}{#1}}
-  \renewcommand{\glossarysection}[2][1]{%
-    \def\theglstoctitle{#2}%
-    \par\noindent
-    {\section*{\theglstoctitle}}
-    %{\addcontentsline{toc}{section}{\theglstoctitle}}%
-  }
-  
-  % create :
-  % \newglossary{glossary}{glossaryls}{glossarylo}{text}
-  
-  \newglossary{acr}{acrls}{acrlo}{Acronymes}
-  \newglossary{mat}{matls}{matlo}{Notations Mathématiques}
-  \newglossary{phy}{phyls}{phylo}{Notations Physiques}
-  \newglossary{ope}{opels}{opelo}{Opérateurs}
-  
-  \makeglossaries
-  
-  % create :
-  % \newglossaryentry{glossary-shortlabel}{
-  %  type={glossary},
-  %  sort={sort},
-  %  name={\ensuremath{text}},
-  %  description={description},
-  % }
-  % use :
-  % \gls{glossary-shortlabel}
-  
-  \newglossaryentry{mat-om}{
-    type={mat},
-    sort={om},
-    name={\ensuremath{\OO}},
-    description={domaine, objet},
-  }
-  \newglossaryentry{mat-q}{
-    type={mat},
-    sort={q},
-    name={\ensuremath{Q}},
-    description={Flux du vecteur de Poynting a travers la surface \(\Gamma\)\\& \(Q = \int_\Gamma \vn \pvect \vH \cdot \conj{\vE}\)},
-  }
-  \newglossaryentry{mat-ga}{
-    type={mat},
-    sort={ga},
-    name={\ensuremath{\Gamma}},
-    description={frontière de \(\OO\)},
-  }
-  \newglossaryentry{mat-vx}{
-    type={mat},
-    sort={vx},
-    name={\(\vec{x}\)},
-    description={point de \(\OO\)},
-  }
-  \newglossaryentry{mat-vn}{
-    type={mat},
-    sort={vn},
-    name={\ensuremath{\vec{n}}},
-    description={normale unitaire sortante de \(\OO\)},
-  }
-  \newglossaryentry{mat-boulexr}{
-    type={mat},
-    sort={boulexr},
-    name={\ensuremath{B(\vec x,R)}},
-    description={boule de centre \( x\) et de rayon R},
-  }
-  \newglossaryentry{mat-spherexr}{
-    type={mat},
-    sort={spherexr},
-    name={\ensuremath{S(\vec x,R)}},
-    description={sphère de centre \( x\) et de rayon R},
-  }
-  \newglossaryentry{mat-hi}{
-    type={mat},
-    sort={hi},
-    name={\ensuremath{H^i(\OO)}},
-    description={espace de Sobolev d'ordre \(i\)},
-  }
-  \newglossaryentry{mat-xcart}{
-    type={mat},
-    sort={xcart},
-    name={\ensuremath{(x_1,x_2,x_3)}},
-    description={coordonnées cartésiennes de \(x\)},
-  }
-  \newglossaryentry{mat-xsphe}{
-    type={mat},
-    sort={xsphe},
-    name={\ensuremath{(\rtp)}},
-    description={coordonnées sphérique de \(x\)},
-  }
-  \newglossaryentry{mat-pn}{
-    type={mat},
-    sort={pn},
-    name={\ensuremath{P_n(x)}},
-    description={polynôme de Legendre de degré \(n\)},
-  }
-  \newglossaryentry{mat-pmn}{
-    type={mat},
-    sort={pmn},
-    name={\ensuremath{P^m_n(x)}},
-    description={fonction de Legendre d'ordre \(m\) et de degré \(n\)},
-  }
-  \newglossaryentry{mat-jn}{
-    type={mat},
-    sort={bjn},
-    name={\ensuremath{j_n(z)}},
-    description={fonction de Bessel du 1er ordre de degré \(n\)},
-  }
-  \newglossaryentry{mat-hn}{
-    type={mat},
-    sort={bhn},
-    name={\ensuremath{h_n(z)}},
-    description={fonction de Hankel du 2eme type de degré \(n\)},
-  }
-  \newglossaryentry{mat-ymn}{
-    type={mat},
-    sort={bymn},
-    name={\ensuremath{Y_{m,n}}},
-    description={harmonique sphérique d'ordre \(m\) et de degré \(n\)},
-  }
-  \newglossaryentry{mat-tild}{
-    type={mat},
-    sort={tild},
-    name={tilde},
-    description={\(\tilde{f}(z) = \ddp{z}{(zf(z))}\)},
-  }
-  \newglossaryentry{mat-four}{
-    type={mat},
-    sort={four},
-    name={\ensuremath{\hat u}},
-    description={transformée de Fourrier de \(u\)},
-  }
-  \newglossaryentry{mat-matimp}{
-    type={mat},
-    sort={matimp},
-    name={\ensuremath{\mZ}},
-    description={Symbole de l'opérateur d'impédance, matrice d'impédance},
-  }
-  \newglossaryentry{mat-conj}{
-    type={mat},
-    sort={cconj},
-    name={\ensuremath{\conj{z}}},
-    description={complexe conjugué de \(z\)},
-  }
-  \newglossaryentry{mat-real}{
-    type={mat},
-    sort={creal},
-    name={\ensuremath{z'}},
-    description={partie réelle},
-  }
-  \newglossaryentry{mat-imag}{
-    type={mat},
-    sort={cimag},
-    name={\ensuremath{z''}},
-    description={partie imaginaire},
-  }
-  \newglossaryentry{mat-sum}{
-    type={mat},
-    sort={sum},
-    name={\ensuremath{\ov x}},
-    description={\(:= \sum_n x_n\). Somme des termes d'une suite.},
-  }
-  \newglossaryentry{mat-gmn}{
-    type={mat},
-    sort={gmn},
-    name={\ensuremath{\gamma_{m,n}}},
-    description={\(:=\frac{4\pi}{2n+1}n(n+1)\frac{(n+m)!}{(n-m)!}\)},
-  }
-  \newglossaryentry{mat-vec-comp}{
-    type={mat},
-    sort={vec-comp},
-    name={\ensuremath{[x,y,z]^t}},
-    description={Un veceur de composante \(x,y,z\).},
-  }
-  \newglossaryentry{mat-vec-abstract}{
-    type={mat},
-    sort={vec-abstract},
-    name={\ensuremath{\vec{x}}},
-    description={Un veceur.},
-  }
-  \newglossaryentry{mat-mat-abstract}{
-    type={mat},
-    sort={mat-abstract},
-    name={\ensuremath{\mat{M}}},
-    description={Une matrice. \(\begin{bmatrix} a & b \\ c & d \end{bmatrix}\)},
-  }
-  
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  
-  
-  \newglossaryentry{ope-pv}{
-    type={ope},
-    sort={pv},
-    name={\ensuremath{\pvect}},
-    description={produit vecoriel},
-  }
-  \newglossaryentry{ope-grad}{
-    type={ope},
-    sort={grad},
-    name={\ensuremath{\vec{\nabla}}},
-    description={gradient},
-  }
-  \newglossaryentry{ope-grads}{
-    type={ope},
-    sort={grads},
-    name={\ensuremath{\vec{\nabla}_s}},
-    description={gradient surfacique : \(\vec{\nabla}_s u:= \vec{\nabla} u - \vec{n} ( \vec{n} \cdot \vec{\nabla} u )\)},
-  }
-  \newglossaryentry{ope-div}{
-    type={ope},
-    sort={div},
-    name={\ensuremath{\vec{\nabla}\cdot}},
-    description={divergent},
-  }
-  \newglossaryentry{ope-divs}{
-    type={ope},
-    sort={divs},
-    name={\ensuremath{\vec{\nabla}_s\cdot}},
-    description={divergent surfacique},
-  }
-  \newglossaryentry{ope-rot}{
-    type={ope},
-    sort={rot},
-    name={\ensuremath{\vec{\nabla}\pvect}},
-    description={rotationnel},
-  }
-  \newglossaryentry{ope-rots}{
-    type={ope},
-    sort={rots},
-    name={\ensuremath{\vec{\nabla}_s\pvect}},
-    description={rotationnel surfacique},
-  }
-  \newglossaryentry{ope-laps}{
-    type={ope},
-    sort={laps},
-    name={\ensuremath{\Delta}},
-    description={laplacien},
-  }
-  \newglossaryentry{ope-hess}{
-    type={ope},
-    sort={hess},
-    name={\ensuremath{\Hess}},
-    description={hessienne},
-  }
-  \newglossaryentry{ope-LD}{
-    type={ope},
-    sort={hodge-LD},
-    name={\ensuremath{\LD}},
-    description={\( \int_\Gamma \LD( \vec{u})(x)\cdot\vec{v}(x)\dd{\Gamma}(x) := - \int_\Gamma \vdivs  \vec{u}(x) \vdivs  \vec{v}(x) \dd{\Gamma}(x)\)},
-  }
-  \newglossaryentry{ope-LR}{
-    type={ope},
-    sort={hodge-LR},
-    name={\ensuremath{\LR}},
-    description={\( \int_\Gamma \LR( \vec{u})(x)\cdot\vec{v}(x)\dd{\Gamma}(x) :=  \int_\Gamma \left( \vn \cdot \vrots  \vec{u}(x) \right)\left(\vn \cdot \vrots  \vec{v}(x) \right)\dd{\Gamma}(x)\)},
-  }
-  \newglossaryentry{ope-L}{
-    type={ope},
-    sort={hodge-L},
-    name={\ensuremath{\LL}},
-    description={\( = \LD - \LR\)},
-  }
-  \newglossaryentry{ope-real}{
-    type={ope},
-    sort={creal},
-    name={\ensuremath{\Re(z)}},
-    description={partie réelle de \(z\)},
-  }
-  \newglossaryentry{ope-imag}{
-    type={ope},
-    sort={cimag},
-    name={\ensuremath{\Im(z)}},
-    description={partie imaginaire de \(z\)},
-  }
-  \newglossaryentry{ope-trans}{
-    type={ope},
-    sort={trans},
-    name={\ensuremath{{\mA}^t}},
-    description={transposée de A},
-  }
-  \newglossaryentry{ope-imp}{
-    type={ope},
-    sort={imp},
-    name={\ensuremath{\Op{\sigma}{f}}},
-    description={Opérateur pseudo-différentiel associé au symbole \(\sigma\) appliqué à \(f\)},
-  }
-  \newglossaryentry{ope-saut}{
-    type=ope,
-    sort=saut,
-    name={\ensuremath{[\hat U]_{s}}},
-    description={Saut de U à travers la surface \(s\): \(U(s+) - U(s-)\).},
-  }
-  
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  
-  
-  \newglossaryentry{phy-e}{
-    type={phy},
-    sort={E},
-    name={\ensuremath{\vec{E}}},
-    description={champ électrique \([V.m^{-1}]\)},
-  }
-  \newglossaryentry{phy-h}{
-    type={phy},
-    sort={Ha},
-    name={\ensuremath{\vec{H}}},
-    description={champ magnétique \([A.m^{-1}]\)},
-  }
-  \newglossaryentry{phy-h2}{
-    type={phy},
-    sort={Hb},
-    name={\ensuremath{\vec{\mathcal{H}}}},
-    description={excitation magnétique \(\vec{\mathcal{H}} = \gls{phy-eta}_0 \gls{phy-h}\) \([V.m^{-1}]\)},
-  }
-  \newglossaryentry{phy-f}{
-    type={phy},
-    sort={f},
-    name={\ensuremath{f}},
-    description={fréquence [Hz]},
-  }
-  \newglossaryentry{phy-c}{
-    type={phy},
-    sort={c},
-    name={\ensuremath{c}},
-    description={célérité de la lumière \(c=2.99792458\,10^{8}\) \([m.s^{-1}]\)},
-  }
-  \newglossaryentry{phy-d}{
-    type={phy},
-    sort={d},
-    name={\ensuremath{d}},
-    description={épaisseur d'une couche de matériau \([m]\)},
-  }
-  \newglossaryentry{phy-w}{
-    type={phy},
-    sort={omega},
-    name={\ensuremath{\w}},
-    description={pulsation d'une onde \([s^{-1}]\)},
-  }
-  \newglossaryentry{phy-mu0}{
-    type={phy},
-    sort={mu_zero},
-    name={\ensuremath{\mu_0}},
-    description={perméabilité du vide \([H.m^{-1}]\)},
-  }
-  \newglossaryentry{phy-eps0}{
-    type={phy},
-    sort={eps_zero},
-    name={\ensuremath{\eps_0}},
-    description={permittivité du vide \([F.m^{-1}]\)},
-  }
-  \newglossaryentry{phy-mu}{
-    type={phy},
-    sort={mu},
-    name={\ensuremath{\mu}},
-    description={perméabilité relative complexe [1]},
-  }
-  \newglossaryentry{phy-eps}{
-    type={phy},
-    sort={eps},
-    name={\ensuremath{\eps}},
-    description={permittivité relative complexe [1]},
-  }
-  \newglossaryentry{phy-eta}{
-    type={phy},
-    sort={eta},
-    name={\ensuremath{\eta}},
-    description={impédance \(\eta=\sqrt{\gls{phy-mu}\slash\gls{phy-eps}}\)  [Ohm]},
-  }
-  \newglossaryentry{phy-eta0}{
-    type={phy},
-    sort={eta_zero},
-    name={\ensuremath{\eta_0}},
-    description={impédance du vide \(\eta_0=120 \pi\) [Ohm]},
-  }
-  \newglossaryentry{phy-nu}{
-    type={phy},
-    sort={nu},
-    name={\ensuremath{\nu}},
-    description={indice relatif du matériau \(\nu = \sqrt{\mu_r\eps_r}\) [1]},
-  }
-  \newglossaryentry{phy-k0}{
-    type={phy},
-    sort={kzero},
-    name={\ensuremath{k_0}},
-    description={nombre d'onde dans le vide \(k_0=\frac{2\pi \gls{phy-f}}{\gls{phy-c}}\) \([m^{-1}]\)},
-  }
-  \newglossaryentry{phy-k}{
-    type={phy},
-    sort={k},
-    name={\ensuremath{k}},
-    description={nombre d'onde dans le matériau \(k=\gls{phy-k0}\gls{phy-nu}\) \([m^{-1}]\)},
-  }
-  \newglossaryentry{phy-Mmn}{
-    type={phy},
-    sort={Mmn},
-    name={\ensuremath{\vec{M_{m,n}}}},
-    description={vecteur harmonique sphérique d'ordre \(m\) \\ & et de degré \(n\)},
-  }
-  \newglossaryentry{phy-Nmn}{
-    type={phy},
-    sort={Nmn},
-    name={\ensuremath{\vec{N_{m,n}}}},
-    description={vecteur harmonique sphérique d'ordre \(m\) \\ & et de degré \(n\)},
-  }
-  \newglossaryentry{phy-J}{
-    type={phy},
-    sort={J},
-    name={\ensuremath{\vec{J}}},
-    description={trace tangentielle sur \gls{mat-ga} de l'excitation \\ & magnétique \(\gls{phy-J} = \gls{mat-vn} \times \gls{phy-h2}\) \([A.m^{-2}]\)},
-  }
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  
-  \newglossaryentry{acr-pml}{
-    type={acr},
-    name={PML},
-    plural={PML},
-    description={perfectly matched layer},
-    descriptionplural={perfectly matched layers},
-    first={\glsentrydesc{acr-pml} (\glsentrytext{acr-pml})},
-    firstplural={\glsentrydescplural{acr-pml} (\glsentryplural{acr-pml})},
-  }
-  \newglossaryentry{acr-cla}{
-    type={acr},
-    name={CLA},
-    plural={CLA},
-    description={condition limite absorbante},
-    descriptionplural={conditions limite absorbantes},
-    first={\glsentrydesc{acr-cla} (\glsentrytext{acr-cla})},
-    firstplural={\glsentrydescplural{acr-cla} (\glsentryplural{acr-cla})},
-  }
-  \newglossaryentry{acr-csu}{
-    type={acr},
-    name={CSU},
-    description={condition suffisante d'unicité},
-    plural={CSU},
-    descriptionplural={conditions suffisantes d'unicité},
-    first={\glsentrydesc{acr-csu} (\glsentrytext{acr-csu})},
-    firstplural={\glsentrydescplural{acr-csu} (\glsentryplural{acr-csu})},
-  }
-  \newglossaryentry{acr-cgu}{
-    type={acr},
-    name={CSUG},
-    description={condition suffisante d'unicité générale},
-    first={\glsentrydesc{acr-cgu} (\glsentrytext{acr-cgu})},
-  }
-  \newglossaryentry{acr-ser}{
-    type={acr},
-    name={SER},
-    description={surface équivalente radar},
-    first={\glsentrydesc{acr-ser} (\glsentrytext{acr-ser})},
-  }
-  \newglossaryentry{acr-ci}{
-    type={acr},
-    name={CI},
-    description={condition d'impédance},
-    plural={CI},
-    descriptionplural={conditions d'impédance},
-    first={\glsentrydesc{acr-ci} (\glsentrytext{acr-ci})},
-    firstplural={\glsentrydescplural{acr-ci} (\glsentryplural{acr-ci})},
-  }
-  \newglossaryentry{acr-cioe}{
-    type={acr},
-    name={CIOE},
-    description={condition d'impédance d'ordre élevé},
-    first={\glsentrydesc{acr-cioe} (\glsentrytext{acr-cioe})},
-    plural={CIOE},
-    descriptionplural={conditions d'impédance d'ordre élevé},
-    firstplural={\glsentrydescplural{acr-cioe} (\glsentryplural{acr-cioe})},
-  }
-  \newglossaryentry{acr-pec}{
-    type={acr},
-    name={PEC},
-    description={perfect electric conductor},
-    plural={PEC},
-    descriptionplural={perfect electric conductors},
-    first={\glsentrydesc{acr-pec} (\glsentrytext{acr-pec})},
-    firstplural={\glsentrydescplural{acr-pec} (\glsentryplural{acr-pec})},
-  }
-  \newglossaryentry{acr-cp}{
-    type={acr},
-    name={CP},
-    description={conducteur parfait},
-    plural={CP},
-    descriptionplural={conducteurs parfait},
-    first={\glsentrydesc{acr-cp} (\glsentrytext{acr-cp})},
-    firstplural={\glsentrydescplural{acr-cp} (\glsentryplural{acr-cp})},
-  }
-  \newglossaryentry{acr-cep}{
-    type={acr},
-    name={CEP},
-    description={conducteur électriquement parfait},
-    plural={CEP},
-    descriptionplural={conducteurs électriquement parfait},
-    first={\glsentrydesc{acr-cep} (\glsentrytext{acr-cep})},
-    firstplural={\glsentrydescplural{acr-cep} (\glsentryplural{acr-cep})},
-  }
-  \newglossaryentry{acr-cmp}{
-    type={acr},
-    name={CMP},
-    description={conducteur magnétiquement parfait},
-    plural={CMP},
-    descriptionplural={conducteurs magnétiquement parfait},
-    first={\glsentrydesc{acr-cmp} (\glsentrytext{acr-cmp})},
-    firstplural={\glsentrydescplural{acr-cmp} (\glsentryplural{acr-cmp})},
-  }
-  \newglossaryentry{acr-edo}{
-    type={acr},
-    name={EDO},
-    description={équation différentielle ordinaire},
-    plural={EDO},
-    descriptionplural={équations différentielles ordinaire},
-    first={\glsentrydesc{acr-edo} (\glsentrytext{acr-edo})},
-    firstplural={\glsentrydescplural{acr-edo} (\glsentryplural{acr-edo})},
-  }
-  \newglossaryentry{acr-edp}{
-    type={acr},
-    name={EDP},
-    description={équation aux dérivées partielles},
-    plural={EDP},
-    descriptionplural={équations aux dérivées partielles},
-    first={\glsentrydesc{acr-edp} (\glsentrytext{acr-edp})},
-    firstplural={\glsentrydescplural{acr-edp} (\glsentryplural{acr-edp})},
-  }
-  \newglossaryentry{acr-te}{
-    type={acr},
-    name={TE},
-    description={transverse électrique},
-    plural={TE},
-    descriptionplural={transverse électrique},
-    first={\glsentrydesc{acr-te} (\glsentrytext{acr-te})},
-    firstplural={\glsentrydescplural{acr-te} (\glsentryplural{acr-te})},
-  }
-  \newglossaryentry{acr-tm}{
-    type={acr},
-    name={TM},
-    description={transverse magnétique},
-    plural={TM},
-    descriptionplural={transverse électrique},
-    first={\glsentrydesc{acr-tm} (\glsentrytext{acr-tm})},
-    firstplural={\glsentrydescplural{acr-tm} (\glsentryplural{acr-tm})},
-  }
-  \newglossaryentry{acr-cr}{
-    type={acr},
-    name={CR},
-    description={coefficient de réflexion},
-    plural={CR},
-    descriptionplural={coefficients de réflexion},
-    first={\glsentrydesc{acr-cr} (\glsentrytext{acr-cr})},
-    firstplural={\glsentrydescplural{acr-cr} (\glsentryplural{acr-cr})},
-  }
-  \newglossaryentry{acr-ei}{
-    type={acr},
-    name={EI},
-    plural={EI},
-    description={équation intégrale},
-    descriptionplural={équations intégrales},
-    first={\glsentrydesc{acr-ei} (\glsentrytext{acr-ei})},
-    firstplural={\glsentrydescplural{acr-ei} (\glsentryplural{acr-ei})},
-  }
-  \newglossaryentry{acr-efie}{
-    type={acr},
-    name={EFIE},
-    description={electric field integral equation},
-    first={\glsentrydesc{acr-efie} (\glsentrytext{acr-efie})},
-  }
-  \newglossaryentry{acr-mfie}{
-    type={acr},
-    name={MFIE},
-    description={magnetic field integral equation},
-    first={\glsentrydesc{acr-mfie} (\glsentrytext{acr-mfie})},
-  }
-  \newglossaryentry{acr-sqp}{
-    type={acr},
-    name={SQP},
-    description={sequential quadratic programming},
-    first={\glsentrydesc{acr-sqp} (\glsentrytext{acr-sqp})},
-  }
+% \setcounter{tocdepth}{1} % Sommaire n'inclus que les niveau 1 à 2 : section, sous-section
 
-% Ensemble de commande et de module pour ecrire/corriger plus facilement la these
+% \setlength{\parindent}{0pt} % pas d'alinéa à chaque paragraphe
 
-% Pour chaque \newcommand{cmd} présent ici, un \newcommand{cmd}{} doit être present dans final
+% % Module pour formater du code
+% \usepackage{listings}
+%     \lstdefinelanguage{modern-fortran}{ % Creation d'un nouveau language
+%         language=[08]Fortran,
+%         otherkeywords={\%}, % pour les types dérivés
+%         deletekeywords=[1]{ IN, OUT, INOUT}, % On enlève ces mots clefs de la catégorie 1
+%         deletekeywords=[2]{ SIZE, TYPE, NAME, UNIT}, % de la catégorie 2
+%         morekeywords=[1]{}, % On ajoute ces mots clefs à la catégrories 1
+%         morekeywords=[2]{in,out,inout},
+%     }
+%     \lstdefinestyle{fortran}{ % Un nouveau style
+%         numbers=none, % pas de numéros de lignes
+%         language=modern-fortran, % Le language par défaut
+%         basicstyle={\small\ttfamily}, % Style du texte
+%         keywordstyle=[1]{\color{purple}}, % style des mots clefs 1
+%         keywordstyle=[2]{\color{red}},
+%         keywordstyle=[3]{\color{blue}},
+%         commentstyle={\color{gray}}, % style des comentaires
+%         stringstyle={\color{orange}}, % style des chaines de caratères
+%         columns=fixed, % rendue du texte en monospace, espaces compris
+%         basewidth={.48em}, % largeur d'un caractère
+%         showstringspaces=false, % Ne pas accentuer les espaces dans les chaines de caractères
+%     }
+%     \lstdefinestyle{shell}{ % Un nouveau style
+%         numbers=none, % pas de numéros de lignes
+%         language=bash, % Le language par défaut
+%         keywords=,
+%         basicstyle={\small\ttfamily}, % Style du texte
+%         columns=fixed, % rendue du texte en monospace, espaces compris
+%         basewidth={.48em}, % largeur d'un caractère
+%         showstringspaces=false, % Ne pas accentuer les espaces dans les chaines de caractères
+%     }
+%     \lstset{ % paramètres par défaut
+%         style=fortran, % style
+%         literate=% lstlistings ne comprend pas les accents utf8 é à ...
+%         {é}{{\'e}}1% Il faut donc les convertir en macros tex et indiquer la taille en caractères du rendu
+%         {è}{{\`e}}1%
+%         {ê}{{\^e}}1%
+%         {à}{{\`a}}1%
+%         {à }{{\`a{ }}}2%
+%         {â}{{\^a}}1%
+%         {ô}{{\^o}}1%
+%         {î}{{\^i}}1%
+%     }
 
-%\usepackage{draftwatermark}
-%    \SetWatermarkText{BROUILLON} % Ecrire Brouillon en traversdes pages
-%    \SetWatermarkScale{1}
+% %redefinition
+% \renewcommand{\frac}[2]{\dfrac{#1}{#2}} % Toujours de grandes fractions
+% \renewcommand{\tilde}[1]{\overset{\thicksim}{#1}} % Toujours un grand tilde
+% \newcommand{\tagit}{\addtocounter{equation}{1}\tag{\theequation}}
+% \newcommand{\ds}{\displaystyle}
 
-% Creation de boite REM, qui apparaissent dans les signets
-\newcounter{REM}
-\newenvironment{REM}[1][\theREM]
-    {%
-        \stepcounter{REM}
-        \hypertarget{REM#1}{}%
-        \pdfbookmark[0]{REM \theREM}{REM#1}
-        \begin{tcolorbox}[%
-                title={Remarque \theREM},%
-                colback=red!30!white,%
-                colframe=red!75!black,%
-            ]
-    }
-    {
-        \end{tcolorbox}%
-        %
-    }%
+% \newcommand{\secref}[1]{(\S \ref{#1})}
 
-\newcounter{REP}
-\newenvironment{REP}[1][\theREM]
-    {%
-        \stepcounter{REP}
-        \hypertarget{REP\theREP}{}%
-        \pdfbookmark[1]{REP #1}{REP\theREP}%
-        \begin{tcolorbox}[%
-                title={Réponse #1},%
-                colback=green!30!white,%
-                colframe=green!35!black,%
-            ]
-    }
-    {
-        \end{tcolorbox}%
-    }%
+% \newcommand{\CSU}[2][{}]{\ensuremath{\operatorname{CSU}_{\operatorname{#2}}^{#1}}}
 
-% Affiche devant chaque ligne en mode texte, le numéro de la ligne pour le corriger plus efficacement
-\usepackage{lineno}
-    \linenumbers
+% % Notation produit vectoriel
+% \newcommand{\pvect}{\wedge}
 
-\geometry{
-    top    = 2.5cm,%
-    bottom = 2.5cm,%
-    inner  = 1.5cm,% On décale pour avoir une marge plus grande pour annoter
-    outer  = 4.5cm%
-    }
-% No show frame when using externalisation for plots
-\ifcsname tikzexternalrealjob\endcsname
-\else
-\geometry{
-   showframe, % Afficher les marges pour voir ce qui dépasse
-}
-\fi
+% % Notation vectorielle
+% \newcommand{\comp}[1]{{\underline{#1}}} % {\overset{\rightarrow{}}{#1}}
+
+% %\newcommand{\vect}[1]{\vec{#1}}
+% \newcommand{\vect}[1]{{\overset{\rightarrow}{#1}}}
+
+% % Notation matricielle
+% \newcommand{\mat}[1]{\mathbf{#1}}
+
+% % Le conjugé
+% % \newcommand{\conj}[1]{{{#1}^*}}
+% \newcommand{\conj}[1]{{\overline{#1}}}
+
+% \newcommand{\ps}[2]{\left<{#1},{#2}\right>}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+% % Quelques matrices qui reviennent
+% \newcommand{\mI}{\mat{I}}
+% \newcommand{\mZ}{\mat{Z}}
+% \newcommand{\mA}{\mat{A}}
+% \newcommand{\mB}{\mat{B}}
+% \newcommand{\mPP}{\mat{P}}
+% \newcommand{\mC}{\mat{C}}
+% \newcommand{\mM}{\mat{M}}
+% \newcommand{\mJ}{\mat{J}}
+% \newcommand{\mj}{\mat{j}}
+% \newcommand{\mH}{\mat{H}}
+% \newcommand{\mh}{\mat{h}}
+% \newcommand{\mN}{\mat{N}}
+% \newcommand{\mMt}{\mat{\tilde{M}}}
+% \newcommand{\mNt}{\mat{\tilde{N}}}
+% \newcommand{\mLD}{\mat{L_D}}
+% \newcommand{\mLR}{\mat{L_R}}
+% \newcommand{\mL}{\mat{L}}
+% \newcommand{\mR}{\mat{R}}
+% \newcommand{\mT}{\mat{T}}
+% \newcommand{\mF}{\mat{F}}
+% %\newcommand{\mPt}{\mat{\tilde{P}}}
+% %\newcommand{\mP}{\mat{P}}
+% \newcommand{\mS}{\mat{S}}
+% \newcommand{\mSt}{\mat{\tilde{S}}}
+
+% % Matrices de Gramm de la base #1 vers #2
+% \newcommand{\mG}[2]{\mat{G}^{#1#2}}
+
+% % Matrices de passage de la base #1 vers #2 projeté sur #3
+% \newcommand{\mP}[3]{{\overset{#3}{\underset{#1 \rightarrow #2}{\mat{P}}}}}
+
+% % Opérateur pseudo diff
+% \newcommand{\Op}[2]{{\operatorname{Op}\left(#1\right)\left(#2\right)}}
+
+% \newcommand{\w}{\omega}
+
+% %mathematical symbol
+% \newcommand{\RR}{\mathbb R}
+% \newcommand{\CC}{\mathbb C}
+% \newcommand{\NN}{\mathbb N}
+% \newcommand{\ZZ}{\mathbb Z}
+% \newcommand{\eps}{\epsilon}
+% \newcommand{\dd}{\mathrm{d}}
+% \newcommand{\OO}{\Omega}
+
+% \newcommand{\ddp}[3][{}]{\dfrac{\mathrm{d}^{#1}#3}{{\mathrm{d}#2}^{#1}}}
+% \newcommand{\ddr}[3][{}]{\dfrac{\partial^{#1} #3}{{\partial #2}^{#1}}}
+
+% %Operator
+% \newcommand{\Sobup}[1][{}]{\mathrm{H}^\mathrm{#1}}
+% \newcommand{\Sobdw}[1][{}]{\mathrm{H}_\mathrm{#1}}
+% \newcommand{\Sobolev}[1][{}]{\Sobup{#1}}
+% \newcommand{\Hgrad}{\Sobdw[grad]}
+% \newcommand{\Hrot}{\Sobdw[rot]}
+% \newcommand{\Hdiv}{\Sobdw[div]}
+% \newcommand{\Hess}{\operatorname{Hess}}
+% \renewcommand{\Re}{\operatorname{Re}}
+% \renewcommand{\Im}{\operatorname{Im}}
+
+% \newcommand{\diag}[2]{\operatorname{diag}\left(#1,#2\right)}
+
+% \newcommand{\sign}[1]{{\operatorname{sign}\left(#1\right)}}
+% \newcommand{\argmin}[1]{{\underset{#1}{\operatorname{argmin}}}}
+% \newcommand{\Ker}{\operatorname{Ker}}
+% \newcommand{\Img}{\operatorname{Img}}
+% \newcommand{\Vect}[1]{\operatorname{Vect}\left\lbrace#1\right\rbrace}
+
+% \newcommand{\Tr}{\operatorname{T_R}}
+% \newcommand{\oI}{{\mathcal{I}}}
+% \newcommand{\LD}{{\mathcal{L}_D}}
+% \newcommand{\LL}{\mathcal{L}}
+% \newcommand{\LR}{{\mathcal{L}_R}}
+
+% \newcommand{\EFIE}{\operatorname{EFIE}}
+% \newcommand{\MFIE}{\operatorname{MFIE}}
+% \newcommand{\CFIE}{\operatorname{CFIE}}
+
+% %Maxwell notations
+% \newcommand{\vE}{\vect{E}}
+% \newcommand{\cH}{\mathcal{H}}
+% \newcommand{\vH}{\vect{\cH}}
+% \newcommand{\vn}{\vect{n}}
+% \newcommand{\vx}{\vect{x}}
+% \newcommand{\vz}{\vect{z}}
+% \newcommand{\vy}{\vect{y}}
+% \newcommand{\vk}{\vect{k}}
+% \newcommand{\vJ}{\vect{J}}
+% \newcommand{\vK}{\vect{K}}
+% \newcommand{\vM}{\vect{M}}
+% \newcommand{\vA}{\vect{A}}
+% \newcommand{\vu}{\vect{u}}
+% \newcommand{\vv}{\vect{v}}
+% \newcommand{\vw}{\vect{w}}
+
+% %differential operator
+% \newcommand{\vgrad}{\vect{\nabla}}
+% \newcommand{\vdiv}{\vect{\nabla}\cdot}
+% \newcommand{\vrot}{\vect{\nabla}\pvect}
+% \newcommand{\vhess}{\vect{\Hess}}
+
+% \newcommand{\tgrad}{{\vect{\operatorname{grad}}}}
+% \newcommand{\trot}{{\vect{\operatorname{rot}}}}
+% \newcommand{\tdiv}{{\operatorname{div}}}
+
+% \newcommand{\vgrads}{\vect{\nabla_s}}
+% \newcommand{\vdivs}{\vect{\nabla_s} \cdot}
+% \newcommand{\vrots}{\vect{\nabla_s} \pvect}
+% \newcommand{\rots}{{\nabla_s} \pvect}
+% \newcommand{\vhesss}{\vect{\Hess_s}}
+
+% \newcommand{\mhess}{\mat{\Hess}}
+% \newcommand{\mhesss}{\mat{\Hess}_s}
+
+% \newcommand{\tgrads}{{\vect{\operatorname{grad}}_s}}
+% \newcommand{\trots}{{{\operatorname{rot}}_s}}
+% \newcommand{\tvrots}{{\vect{\operatorname{rot}}_s}}
+% \newcommand{\tdivs}{{\operatorname{div}_s}}
+
+% \newcommand{\lapl}{\Delta}
+% \newcommand{\lapls}{\Delta_s}
+% \newcommand{\vlapl}{\vect{\Delta}}
+% \newcommand{\vlapls}{\vect{\Delta_s}}
+
+% % helmotlz
+% \newcommand{\rtp}{r,\theta,\phi}
+% \newcommand{\tp}{\theta,\phi}
+
+% \newcommand{\PP}{\mathbb{P}}
+% \newcommand{\Pmn}{\PP^m_n}
+
+% % cioe
+% \newcommand{\ov}[1]{\overline{#1}}
+
+% \newcommand{\x}{{x}}
+% \newcommand{\y}{{y}}
+% \newcommand{\z}{{z}}
+
+% \newcommand{\kO}{\mathbf{k_0}}
+% \newcommand{\etaO}{\boldsymbol{\eta_0}}
+% \newcommand{\muO}{\boldsymbol{\mu_0}}
+% \newcommand{\epsO}{\boldsymbol{\eps_0}}
+% \newcommand{\nuO}{\boldsymbol{\nu_0}}
+
+% %
+% \newcommand{\peps}{{\epsilon}}
+% \newcommand{\pmu}{{\mu}}
+
+% \newcommand{\phii}{\vect{\phi_i}}
+% \newcommand{\pii}{\vect{p_i}}
+% \newcommand{\phin}{\vect{\phi_n}}
+% \newcommand{\phim}{\vect{\phi_m}}
+% \newcommand{\pn}{\vect{p_n}}
+% \newcommand{\ppm}{\vect{p_m}}
+% \newcommand{\phip}{\vect{\phi_p}}
+% \newcommand{\phiq}{\vect{\phi_q}}
+% \newcommand{\pj}{\vect{p_j}}
+% \newcommand{\qj}{\vect{q_j}}
+% \newcommand{\qi}{\vect{q_i}}
+% \newcommand{\nuj}{\vect{\nu_j}}
+% \newcommand{\uj}{\vect{u_j}}
+% \newcommand{\phij}{\vect{\phi_j}}
+
+% %% avec référence dans la table des matières et les bons en-têtes
+% %% il sert pour l'introduction, la page de notations, etc
+% \newcommand{\chapterstar}[1]{%
+%   \chapter*{#1}%
+%   \addcontentsline{toc}{chapter}{#1}%
+%   %\markboth{#1}{#1}
+%   }
+% \newcommand{\sectionstar}[1]{%
+%   \section*{#1}%
+%   \addcontentsline{toc}{section}{#1}%
+%   %\markboth{#1}{#1}
+%   }
+
+% \newcommand{\Mmn}[1][{}]{\vect{M_{m,n}^{#1}}}
+% \newcommand{\Nmn}[1][{}]{\vect{N_{m,n}^{#1}}}
+% \newcommand{\Umn}[1][{}]{\vect{U_{m,n}^{#1}}}
+
+% \newcommand{\NaN}{\operatorname{NaN}}
+% \newcommand{\e}[1]{\mathrm{e}{#1}}
+
+% \newcommand{\fonction}[5]{
+%   \begin{aligned}
+%   &#1: & #2 &\rightarrow #3
+%   \\
+%   & & #4 & \mapsto #5
+%   \end{aligned}
+% }
+
+% \newenvironment{coefftable}[1]{%
+%   \begin{tabular}{lc}
+%   \multicolumn{2}{c}{#1}\\
+%   \hline
+%   \hline
+% }{
+%    \end{tabular}
+% }
+
+% % macro with argument filename
+% % \newcommand{\coefftable}[1]{%
+% %   \def\icoefffile{#1}\icoefftable
+% % }
+% \newcommand{\tablecoeff}[3][1]{%
+%  \begin{minipage}[t]{#1\textwidth}
+%     \centering
+%     \vspace{0pt}
+%     \begin{coefftable}{#2}
+%       \input{#3}
+%     \end{coefftable}
+%   \end{minipage}
+% }
+
+%   \renewcommand{\glstextformat}[1]{\textcolor{black}{#1}}
+%   \renewcommand{\glossarysection}[2][1]{%
+%     \def\theglstoctitle{#2}%
+%     \par\noindent
+%     {\section*{\theglstoctitle}}
+%     %{\addcontentsline{toc}{section}{\theglstoctitle}}%
+%   }
+  
+%   % create :
+%   % \newglossary{glossary}{glossaryls}{glossarylo}{text}
+  
+%   \newglossary{acr}{acrls}{acrlo}{Acronymes}
+%   \newglossary{mat}{matls}{matlo}{Notations Mathématiques}
+%   \newglossary{phy}{phyls}{phylo}{Notations Physiques}
+%   \newglossary{ope}{opels}{opelo}{Opérateurs}
+  
+%   \makeglossaries
+  
+%   % create :
+%   % \newglossaryentry{glossary-shortlabel}{
+%   %  type={glossary},
+%   %  sort={sort},
+%   %  name={\ensuremath{text}},
+%   %  description={description},
+%   % }
+%   % use :
+%   % \gls{glossary-shortlabel}
+  
+%   \newglossaryentry{mat-om}{
+%     type={mat},
+%     sort={om},
+%     name={\ensuremath{\OO}},
+%     description={domaine, objet},
+%   }
+%   \newglossaryentry{mat-q}{
+%     type={mat},
+%     sort={q},
+%     name={\ensuremath{Q}},
+%     description={Flux du vecteur de Poynting a travers la surface \(\Gamma\)\\& \(Q = \int_\Gamma \vn \pvect \vH \cdot \conj{\vE}\)},
+%   }
+%   \newglossaryentry{mat-ga}{
+%     type={mat},
+%     sort={ga},
+%     name={\ensuremath{\Gamma}},
+%     description={frontière de \(\OO\)},
+%   }
+%   \newglossaryentry{mat-vx}{
+%     type={mat},
+%     sort={vx},
+%     name={\(\vec{x}\)},
+%     description={point de \(\OO\)},
+%   }
+%   \newglossaryentry{mat-vn}{
+%     type={mat},
+%     sort={vn},
+%     name={\ensuremath{\vec{n}}},
+%     description={normale unitaire sortante de \(\OO\)},
+%   }
+%   \newglossaryentry{mat-boulexr}{
+%     type={mat},
+%     sort={boulexr},
+%     name={\ensuremath{B(\vec x,R)}},
+%     description={boule de centre \( x\) et de rayon R},
+%   }
+%   \newglossaryentry{mat-spherexr}{
+%     type={mat},
+%     sort={spherexr},
+%     name={\ensuremath{S(\vec x,R)}},
+%     description={sphère de centre \( x\) et de rayon R},
+%   }
+%   \newglossaryentry{mat-hi}{
+%     type={mat},
+%     sort={hi},
+%     name={\ensuremath{H^i(\OO)}},
+%     description={espace de Sobolev d'ordre \(i\)},
+%   }
+%   \newglossaryentry{mat-xcart}{
+%     type={mat},
+%     sort={xcart},
+%     name={\ensuremath{(x_1,x_2,x_3)}},
+%     description={coordonnées cartésiennes de \(x\)},
+%   }
+%   \newglossaryentry{mat-xsphe}{
+%     type={mat},
+%     sort={xsphe},
+%     name={\ensuremath{(\rtp)}},
+%     description={coordonnées sphérique de \(x\)},
+%   }
+%   \newglossaryentry{mat-pn}{
+%     type={mat},
+%     sort={pn},
+%     name={\ensuremath{P_n(x)}},
+%     description={polynôme de Legendre de degré \(n\)},
+%   }
+%   \newglossaryentry{mat-pmn}{
+%     type={mat},
+%     sort={pmn},
+%     name={\ensuremath{P^m_n(x)}},
+%     description={fonction de Legendre d'ordre \(m\) et de degré \(n\)},
+%   }
+%   \newglossaryentry{mat-jn}{
+%     type={mat},
+%     sort={bjn},
+%     name={\ensuremath{j_n(z)}},
+%     description={fonction de Bessel du 1er ordre de degré \(n\)},
+%   }
+%   \newglossaryentry{mat-hn}{
+%     type={mat},
+%     sort={bhn},
+%     name={\ensuremath{h_n(z)}},
+%     description={fonction de Hankel du 2eme type de degré \(n\)},
+%   }
+%   \newglossaryentry{mat-ymn}{
+%     type={mat},
+%     sort={bymn},
+%     name={\ensuremath{Y_{m,n}}},
+%     description={harmonique sphérique d'ordre \(m\) et de degré \(n\)},
+%   }
+%   \newglossaryentry{mat-tild}{
+%     type={mat},
+%     sort={tild},
+%     name={tilde},
+%     description={\(\tilde{f}(z) = \ddp{z}{(zf(z))}\)},
+%   }
+%   \newglossaryentry{mat-four}{
+%     type={mat},
+%     sort={four},
+%     name={\ensuremath{\hat u}},
+%     description={transformée de Fourrier de \(u\)},
+%   }
+%   \newglossaryentry{mat-matimp}{
+%     type={mat},
+%     sort={matimp},
+%     name={\ensuremath{\mZ}},
+%     description={Symbole de l'opérateur d'impédance, matrice d'impédance},
+%   }
+%   \newglossaryentry{mat-conj}{
+%     type={mat},
+%     sort={cconj},
+%     name={\ensuremath{\conj{z}}},
+%     description={complexe conjugué de \(z\)},
+%   }
+%   \newglossaryentry{mat-real}{
+%     type={mat},
+%     sort={creal},
+%     name={\ensuremath{z'}},
+%     description={partie réelle},
+%   }
+%   \newglossaryentry{mat-imag}{
+%     type={mat},
+%     sort={cimag},
+%     name={\ensuremath{z''}},
+%     description={partie imaginaire},
+%   }
+%   \newglossaryentry{mat-sum}{
+%     type={mat},
+%     sort={sum},
+%     name={\ensuremath{\ov x}},
+%     description={\(:= \sum_n x_n\). Somme des termes d'une suite.},
+%   }
+%   \newglossaryentry{mat-gmn}{
+%     type={mat},
+%     sort={gmn},
+%     name={\ensuremath{\gamma_{m,n}}},
+%     description={\(:=\frac{4\pi}{2n+1}n(n+1)\frac{(n+m)!}{(n-m)!}\)},
+%   }
+%   \newglossaryentry{mat-vec-comp}{
+%     type={mat},
+%     sort={vec-comp},
+%     name={\ensuremath{[x,y,z]^t}},
+%     description={Un veceur de composante \(x,y,z\).},
+%   }
+%   \newglossaryentry{mat-vec-abstract}{
+%     type={mat},
+%     sort={vec-abstract},
+%     name={\ensuremath{\vec{x}}},
+%     description={Un veceur.},
+%   }
+%   \newglossaryentry{mat-mat-abstract}{
+%     type={mat},
+%     sort={mat-abstract},
+%     name={\ensuremath{\mat{M}}},
+%     description={Une matrice. \(\begin{bmatrix} a & b \\ c & d \end{bmatrix}\)},
+%   }
+  
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  
+%   \newglossaryentry{ope-pv}{
+%     type={ope},
+%     sort={pv},
+%     name={\ensuremath{\pvect}},
+%     description={produit vecoriel},
+%   }
+%   \newglossaryentry{ope-grad}{
+%     type={ope},
+%     sort={grad},
+%     name={\ensuremath{\vec{\nabla}}},
+%     description={gradient},
+%   }
+%   \newglossaryentry{ope-grads}{
+%     type={ope},
+%     sort={grads},
+%     name={\ensuremath{\vec{\nabla}_s}},
+%     description={gradient surfacique : \(\vec{\nabla}_s u:= \vec{\nabla} u - \vec{n} ( \vec{n} \cdot \vec{\nabla} u )\)},
+%   }
+%   \newglossaryentry{ope-div}{
+%     type={ope},
+%     sort={div},
+%     name={\ensuremath{\vec{\nabla}\cdot}},
+%     description={divergent},
+%   }
+%   \newglossaryentry{ope-divs}{
+%     type={ope},
+%     sort={divs},
+%     name={\ensuremath{\vec{\nabla}_s\cdot}},
+%     description={divergent surfacique},
+%   }
+%   \newglossaryentry{ope-rot}{
+%     type={ope},
+%     sort={rot},
+%     name={\ensuremath{\vec{\nabla}\pvect}},
+%     description={rotationnel},
+%   }
+%   \newglossaryentry{ope-rots}{
+%     type={ope},
+%     sort={rots},
+%     name={\ensuremath{\vec{\nabla}_s\pvect}},
+%     description={rotationnel surfacique},
+%   }
+%   \newglossaryentry{ope-laps}{
+%     type={ope},
+%     sort={laps},
+%     name={\ensuremath{\Delta}},
+%     description={laplacien},
+%   }
+%   \newglossaryentry{ope-hess}{
+%     type={ope},
+%     sort={hess},
+%     name={\ensuremath{\Hess}},
+%     description={hessienne},
+%   }
+%   \newglossaryentry{ope-LD}{
+%     type={ope},
+%     sort={hodge-LD},
+%     name={\ensuremath{\LD}},
+%     description={\( \int_\Gamma \LD( \vec{u})(x)\cdot\vec{v}(x)\dd{\Gamma}(x) := - \int_\Gamma \vdivs  \vec{u}(x) \vdivs  \vec{v}(x) \dd{\Gamma}(x)\)},
+%   }
+%   \newglossaryentry{ope-LR}{
+%     type={ope},
+%     sort={hodge-LR},
+%     name={\ensuremath{\LR}},
+%     description={\( \int_\Gamma \LR( \vec{u})(x)\cdot\vec{v}(x)\dd{\Gamma}(x) :=  \int_\Gamma \left( \vn \cdot \vrots  \vec{u}(x) \right)\left(\vn \cdot \vrots  \vec{v}(x) \right)\dd{\Gamma}(x)\)},
+%   }
+%   \newglossaryentry{ope-L}{
+%     type={ope},
+%     sort={hodge-L},
+%     name={\ensuremath{\LL}},
+%     description={\( = \LD - \LR\)},
+%   }
+%   \newglossaryentry{ope-real}{
+%     type={ope},
+%     sort={creal},
+%     name={\ensuremath{\Re(z)}},
+%     description={partie réelle de \(z\)},
+%   }
+%   \newglossaryentry{ope-imag}{
+%     type={ope},
+%     sort={cimag},
+%     name={\ensuremath{\Im(z)}},
+%     description={partie imaginaire de \(z\)},
+%   }
+%   \newglossaryentry{ope-trans}{
+%     type={ope},
+%     sort={trans},
+%     name={\ensuremath{{\mA}^t}},
+%     description={transposée de A},
+%   }
+%   \newglossaryentry{ope-imp}{
+%     type={ope},
+%     sort={imp},
+%     name={\ensuremath{\Op{\sigma}{f}}},
+%     description={Opérateur pseudo-différentiel associé au symbole \(\sigma\) appliqué à \(f\)},
+%   }
+%   \newglossaryentry{ope-saut}{
+%     type=ope,
+%     sort=saut,
+%     name={\ensuremath{[\hat U]_{s}}},
+%     description={Saut de U à travers la surface \(s\): \(U(s+) - U(s-)\).},
+%   }
+  
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  
+%   \newglossaryentry{phy-e}{
+%     type={phy},
+%     sort={E},
+%     name={\ensuremath{\vec{E}}},
+%     description={champ électrique \([V.m^{-1}]\)},
+%   }
+%   \newglossaryentry{phy-h}{
+%     type={phy},
+%     sort={Ha},
+%     name={\ensuremath{\vec{H}}},
+%     description={champ magnétique \([A.m^{-1}]\)},
+%   }
+%   \newglossaryentry{phy-h2}{
+%     type={phy},
+%     sort={Hb},
+%     name={\ensuremath{\vec{\mathcal{H}}}},
+%     description={excitation magnétique \(\vec{\mathcal{H}} = \gls{phy-eta}_0 \gls{phy-h}\) \([V.m^{-1}]\)},
+%   }
+%   \newglossaryentry{phy-f}{
+%     type={phy},
+%     sort={f},
+%     name={\ensuremath{f}},
+%     description={fréquence [Hz]},
+%   }
+%   \newglossaryentry{phy-c}{
+%     type={phy},
+%     sort={c},
+%     name={\ensuremath{c}},
+%     description={célérité de la lumière \(c=2.99792458\,10^{8}\) \([m.s^{-1}]\)},
+%   }
+%   \newglossaryentry{phy-d}{
+%     type={phy},
+%     sort={d},
+%     name={\ensuremath{d}},
+%     description={épaisseur d'une couche de matériau \([m]\)},
+%   }
+%   \newglossaryentry{phy-w}{
+%     type={phy},
+%     sort={omega},
+%     name={\ensuremath{\w}},
+%     description={pulsation d'une onde \([s^{-1}]\)},
+%   }
+%   \newglossaryentry{phy-mu0}{
+%     type={phy},
+%     sort={mu_zero},
+%     name={\ensuremath{\mu_0}},
+%     description={perméabilité du vide \([H.m^{-1}]\)},
+%   }
+%   \newglossaryentry{phy-eps0}{
+%     type={phy},
+%     sort={eps_zero},
+%     name={\ensuremath{\eps_0}},
+%     description={permittivité du vide \([F.m^{-1}]\)},
+%   }
+%   \newglossaryentry{phy-mu}{
+%     type={phy},
+%     sort={mu},
+%     name={\ensuremath{\mu}},
+%     description={perméabilité relative complexe [1]},
+%   }
+%   \newglossaryentry{phy-eps}{
+%     type={phy},
+%     sort={eps},
+%     name={\ensuremath{\eps}},
+%     description={permittivité relative complexe [1]},
+%   }
+%   \newglossaryentry{phy-eta}{
+%     type={phy},
+%     sort={eta},
+%     name={\ensuremath{\eta}},
+%     description={impédance \(\eta=\sqrt{\gls{phy-mu}\slash\gls{phy-eps}}\)  [Ohm]},
+%   }
+%   \newglossaryentry{phy-eta0}{
+%     type={phy},
+%     sort={eta_zero},
+%     name={\ensuremath{\eta_0}},
+%     description={impédance du vide \(\eta_0=120 \pi\) [Ohm]},
+%   }
+%   \newglossaryentry{phy-nu}{
+%     type={phy},
+%     sort={nu},
+%     name={\ensuremath{\nu}},
+%     description={indice relatif du matériau \(\nu = \sqrt{\mu_r\eps_r}\) [1]},
+%   }
+%   \newglossaryentry{phy-k0}{
+%     type={phy},
+%     sort={kzero},
+%     name={\ensuremath{k_0}},
+%     description={nombre d'onde dans le vide \(k_0=\frac{2\pi \gls{phy-f}}{\gls{phy-c}}\) \([m^{-1}]\)},
+%   }
+%   \newglossaryentry{phy-k}{
+%     type={phy},
+%     sort={k},
+%     name={\ensuremath{k}},
+%     description={nombre d'onde dans le matériau \(k=\gls{phy-k0}\gls{phy-nu}\) \([m^{-1}]\)},
+%   }
+%   \newglossaryentry{phy-Mmn}{
+%     type={phy},
+%     sort={Mmn},
+%     name={\ensuremath{\vec{M_{m,n}}}},
+%     description={vecteur harmonique sphérique d'ordre \(m\) \\ & et de degré \(n\)},
+%   }
+%   \newglossaryentry{phy-Nmn}{
+%     type={phy},
+%     sort={Nmn},
+%     name={\ensuremath{\vec{N_{m,n}}}},
+%     description={vecteur harmonique sphérique d'ordre \(m\) \\ & et de degré \(n\)},
+%   }
+%   \newglossaryentry{phy-J}{
+%     type={phy},
+%     sort={J},
+%     name={\ensuremath{\vec{J}}},
+%     description={trace tangentielle sur \gls{mat-ga} de l'excitation \\ & magnétique \(\gls{phy-J} = \gls{mat-vn} \times \gls{phy-h2}\) \([A.m^{-2}]\)},
+%   }
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+%   \newglossaryentry{acr-pml}{
+%     type={acr},
+%     name={PML},
+%     plural={PML},
+%     description={perfectly matched layer},
+%     descriptionplural={perfectly matched layers},
+%     first={\glsentrydesc{acr-pml} (\glsentrytext{acr-pml})},
+%     firstplural={\glsentrydescplural{acr-pml} (\glsentryplural{acr-pml})},
+%   }
+%   \newglossaryentry{acr-cla}{
+%     type={acr},
+%     name={CLA},
+%     plural={CLA},
+%     description={condition limite absorbante},
+%     descriptionplural={conditions limite absorbantes},
+%     first={\glsentrydesc{acr-cla} (\glsentrytext{acr-cla})},
+%     firstplural={\glsentrydescplural{acr-cla} (\glsentryplural{acr-cla})},
+%   }
+%   \newglossaryentry{acr-csu}{
+%     type={acr},
+%     name={CSU},
+%     description={condition suffisante d'unicité},
+%     plural={CSU},
+%     descriptionplural={conditions suffisantes d'unicité},
+%     first={\glsentrydesc{acr-csu} (\glsentrytext{acr-csu})},
+%     firstplural={\glsentrydescplural{acr-csu} (\glsentryplural{acr-csu})},
+%   }
+%   \newglossaryentry{acr-cgu}{
+%     type={acr},
+%     name={CSUG},
+%     description={condition suffisante d'unicité générale},
+%     first={\glsentrydesc{acr-cgu} (\glsentrytext{acr-cgu})},
+%   }
+%   \newglossaryentry{acr-ser}{
+%     type={acr},
+%     name={SER},
+%     description={surface équivalente radar},
+%     first={\glsentrydesc{acr-ser} (\glsentrytext{acr-ser})},
+%   }
+%   \newglossaryentry{acr-ci}{
+%     type={acr},
+%     name={CI},
+%     description={condition d'impédance},
+%     plural={CI},
+%     descriptionplural={conditions d'impédance},
+%     first={\glsentrydesc{acr-ci} (\glsentrytext{acr-ci})},
+%     firstplural={\glsentrydescplural{acr-ci} (\glsentryplural{acr-ci})},
+%   }
+%   \newglossaryentry{acr-cioe}{
+%     type={acr},
+%     name={CIOE},
+%     description={condition d'impédance d'ordre élevé},
+%     first={\glsentrydesc{acr-cioe} (\glsentrytext{acr-cioe})},
+%     plural={CIOE},
+%     descriptionplural={conditions d'impédance d'ordre élevé},
+%     firstplural={\glsentrydescplural{acr-cioe} (\glsentryplural{acr-cioe})},
+%   }
+%   \newglossaryentry{acr-pec}{
+%     type={acr},
+%     name={PEC},
+%     description={perfect electric conductor},
+%     plural={PEC},
+%     descriptionplural={perfect electric conductors},
+%     first={\glsentrydesc{acr-pec} (\glsentrytext{acr-pec})},
+%     firstplural={\glsentrydescplural{acr-pec} (\glsentryplural{acr-pec})},
+%   }
+%   \newglossaryentry{acr-cp}{
+%     type={acr},
+%     name={CP},
+%     description={conducteur parfait},
+%     plural={CP},
+%     descriptionplural={conducteurs parfait},
+%     first={\glsentrydesc{acr-cp} (\glsentrytext{acr-cp})},
+%     firstplural={\glsentrydescplural{acr-cp} (\glsentryplural{acr-cp})},
+%   }
+%   \newglossaryentry{acr-cep}{
+%     type={acr},
+%     name={CEP},
+%     description={conducteur électriquement parfait},
+%     plural={CEP},
+%     descriptionplural={conducteurs électriquement parfait},
+%     first={\glsentrydesc{acr-cep} (\glsentrytext{acr-cep})},
+%     firstplural={\glsentrydescplural{acr-cep} (\glsentryplural{acr-cep})},
+%   }
+%   \newglossaryentry{acr-cmp}{
+%     type={acr},
+%     name={CMP},
+%     description={conducteur magnétiquement parfait},
+%     plural={CMP},
+%     descriptionplural={conducteurs magnétiquement parfait},
+%     first={\glsentrydesc{acr-cmp} (\glsentrytext{acr-cmp})},
+%     firstplural={\glsentrydescplural{acr-cmp} (\glsentryplural{acr-cmp})},
+%   }
+%   \newglossaryentry{acr-edo}{
+%     type={acr},
+%     name={EDO},
+%     description={équation différentielle ordinaire},
+%     plural={EDO},
+%     descriptionplural={équations différentielles ordinaire},
+%     first={\glsentrydesc{acr-edo} (\glsentrytext{acr-edo})},
+%     firstplural={\glsentrydescplural{acr-edo} (\glsentryplural{acr-edo})},
+%   }
+%   \newglossaryentry{acr-edp}{
+%     type={acr},
+%     name={EDP},
+%     description={équation aux dérivées partielles},
+%     plural={EDP},
+%     descriptionplural={équations aux dérivées partielles},
+%     first={\glsentrydesc{acr-edp} (\glsentrytext{acr-edp})},
+%     firstplural={\glsentrydescplural{acr-edp} (\glsentryplural{acr-edp})},
+%   }
+%   \newglossaryentry{acr-te}{
+%     type={acr},
+%     name={TE},
+%     description={transverse électrique},
+%     plural={TE},
+%     descriptionplural={transverse électrique},
+%     first={\glsentrydesc{acr-te} (\glsentrytext{acr-te})},
+%     firstplural={\glsentrydescplural{acr-te} (\glsentryplural{acr-te})},
+%   }
+%   \newglossaryentry{acr-tm}{
+%     type={acr},
+%     name={TM},
+%     description={transverse magnétique},
+%     plural={TM},
+%     descriptionplural={transverse électrique},
+%     first={\glsentrydesc{acr-tm} (\glsentrytext{acr-tm})},
+%     firstplural={\glsentrydescplural{acr-tm} (\glsentryplural{acr-tm})},
+%   }
+%   \newglossaryentry{acr-cr}{
+%     type={acr},
+%     name={CR},
+%     description={coefficient de réflexion},
+%     plural={CR},
+%     descriptionplural={coefficients de réflexion},
+%     first={\glsentrydesc{acr-cr} (\glsentrytext{acr-cr})},
+%     firstplural={\glsentrydescplural{acr-cr} (\glsentryplural{acr-cr})},
+%   }
+%   \newglossaryentry{acr-ei}{
+%     type={acr},
+%     name={EI},
+%     plural={EI},
+%     description={équation intégrale},
+%     descriptionplural={équations intégrales},
+%     first={\glsentrydesc{acr-ei} (\glsentrytext{acr-ei})},
+%     firstplural={\glsentrydescplural{acr-ei} (\glsentryplural{acr-ei})},
+%   }
+%   \newglossaryentry{acr-efie}{
+%     type={acr},
+%     name={EFIE},
+%     description={electric field integral equation},
+%     first={\glsentrydesc{acr-efie} (\glsentrytext{acr-efie})},
+%   }
+%   \newglossaryentry{acr-mfie}{
+%     type={acr},
+%     name={MFIE},
+%     description={magnetic field integral equation},
+%     first={\glsentrydesc{acr-mfie} (\glsentrytext{acr-mfie})},
+%   }
+%   \newglossaryentry{acr-sqp}{
+%     type={acr},
+%     name={SQP},
+%     description={sequential quadratic programming},
+%     first={\glsentrydesc{acr-sqp} (\glsentrytext{acr-sqp})},
+%   }
+
+% % Ensemble de commande et de module pour ecrire/corriger plus facilement la these
+
+% % Pour chaque \newcommand{cmd} présent ici, un \newcommand{cmd}{} doit être present dans final
+
+% %\usepackage{draftwatermark}
+% %    \SetWatermarkText{BROUILLON} % Ecrire Brouillon en traversdes pages
+% %    \SetWatermarkScale{1}
+
+% % Creation de boite REM, qui apparaissent dans les signets
+% \newcounter{REM}
+% \newenvironment{REM}[1][\theREM]
+%     {%
+%         \stepcounter{REM}
+%         \hypertarget{REM#1}{}%
+%         \pdfbookmark[0]{REM \theREM}{REM#1}
+%         \begin{tcolorbox}[%
+%                 title={Remarque \theREM},%
+%                 colback=red!30!white,%
+%                 colframe=red!75!black,%
+%             ]
+%     }
+%     {
+%         \end{tcolorbox}%
+%         %
+%     }%
+
+% \newcounter{REP}
+% \newenvironment{REP}[1][\theREM]
+%     {%
+%         \stepcounter{REP}
+%         \hypertarget{REP\theREP}{}%
+%         \pdfbookmark[1]{REP #1}{REP\theREP}%
+%         \begin{tcolorbox}[%
+%                 title={Réponse #1},%
+%                 colback=green!30!white,%
+%                 colframe=green!35!black,%
+%             ]
+%     }
+%     {
+%         \end{tcolorbox}%
+%     }%
+
+% % Affiche devant chaque ligne en mode texte, le numéro de la ligne pour le corriger plus efficacement
+% \usepackage{lineno}
+%     \linenumbers
+
+% \geometry{
+%     top    = 2.5cm,%
+%     bottom = 2.5cm,%
+%     inner  = 1.5cm,% On décale pour avoir une marge plus grande pour annoter
+%     outer  = 4.5cm%
+%     }
+% % No show frame when using externalisation for plots
+% \ifcsname tikzexternalrealjob\endcsname
+% \else
+% \geometry{
+%    showframe, % Afficher les marges pour voir ce qui dépasse
+% }
+% \fi
 
 
-    \begin{document}
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \frontmatter
-    \newpage
-    \chapterstar{Acronymes et notations}
-    % \begin{REM}
-    %     Remplir l'index lorsque le manuscrit sera bien avancé
-    % \end{REM}
-    \setlength{\glsdescwidth}{\textwidth}
-    \thispagestyle{empty}
-    % \glsaddallunused
-    \printglossaries
-    \thispagestyle{empty}
-    \mainmatter
+%     \begin{document}
+%     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     \frontmatter
+%     \newpage
+%     \chapterstar{Acronymes et notations}
+%     % \begin{REM}
+%     %     Remplir l'index lorsque le manuscrit sera bien avancé
+%     % \end{REM}
+%     \setlength{\glsdescwidth}{\textwidth}
+%     \thispagestyle{empty}
+%     % \glsaddallunused
+%     \printglossaries
+%     \thispagestyle{empty}
+%     \mainmatter
 
-% @Olivier: Décommente les 1237 lignes ci dessus
+% % @Olivier: Décommente les 1237 lignes ci dessus
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1843,9 +1843,9 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% @Olivier: Décommente les lignes ci dessous
+% % @Olivier: Décommente les lignes ci dessous
 
-\backmatter
-\appendix
-\printbibliography
-\end{document}
+% \backmatter
+% \appendix
+% \printbibliography
+% \end{document}
