@@ -1314,60 +1314,61 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
     \begin{prop}[Une \glsentrydesc{acr-csu}]~\\
       Si l'on suppose que
       \begin{equation}
-        \label{eq:unicite:form_var:cgu}
+        \label{prop:cgu}
         \Re\left(\int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx) \dd{\Gamma(\vx)}\right) \ge 0,
       \end{equation}
-      alors le système \eqref{eq:unicite:maxwell_ext} muni de la condition aux limites \eqref{eq:unicite:TR} admet \(\vE=\vH=0\) comme unique solution.
+      alors le système \eqref{eq:unicite:maxwell_ext} (sans source) muni de la condition aux limites \eqref{eq:unicite:TR} admet \(\vE=\vH=0\) comme unique solution.
     \end{prop}
     
     \begin{proof}
-      Pour démontrer cela, on utilise le lemme de Rellich, énoncé dans \cite[p.~74]{cessenat_mathematical_1996}:
-      \begin{lemme}[Lemme de Rellich]
-        Soit \(\OO^c\) un domaine connexe, complément d'un domaine borné, et soit \(u\) satisfaisant
-        \begin{subequations}
-          \begin{align}
-            \Delta u + k^2 u = 0 & &\text{dans \(\OO^c\)},
-            \\
-            \lim_{R\rightarrow\infty}\int_{S_R} |u(\vx)|^2 \dd{S_R}(\vx) = 0,
-          \end{align}
-        \end{subequations}
-        alors \(u=0\) dans \(\OO^c\).
-      \end{lemme}
-      \begin{proof}
-        Voir \cite[p.~74]{cessenat_mathematical_1996}.
-      \end{proof}
+      La démonstration s'appuie sur le lemme de Rellich, énoncé dans \cite[p.~74]{cessenat_mathematical_1996} et nous renvoyons à la proposition \ref{eq:unicite:form_var:cgu} du prochain chapitre pour le détail des opérations.
 
-      On définit les quantités suivantes
-      \begin{align}
-        X &= \int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx)\dd{\Gamma(\vx)},
-        \label{eq:unicite:x}
-        \\
-        C &= \int_{S_R} \Tr(\vE_t)(\vx)  \cdot \conj{\vE_t}(\vx)\dd{S_R(\vx)}.
-      \end{align}
+      % \begin{lemme}[Lemme de Rellich]
+      %   Soit \(\OO^c\) un domaine connexe, complément d'un domaine borné, et soit \(u\) satisfaisant
+      %   \begin{subequations}
+      %     \begin{align}
+      %       \Delta u + k^2 u = 0 & &\text{dans \(\OO^c\)},
+      %       \\
+      %       \lim_{R\rightarrow\infty}\int_{S_R} |u(\vx)|^2 \dd{S_R}(\vx) = 0,
+      %     \end{align}
+      %   \end{subequations}
+      %   alors \(u=0\) dans \(\OO^c\).
+      % \end{lemme}
+      % \begin{proof}
+      %   Voir \cite[p.~74]{cessenat_mathematical_1996}.
+      % \end{proof}
+
+      % On définit les quantités suivantes
+      % \begin{align}
+      %   X &= \int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx)\dd{\Gamma(\vx)},
+      %   \label{eq:unicite:x}
+      %   \\
+      %   C &= \int_{S_R} \Tr(\vE_t)(\vx)  \cdot \conj{\vE_t}(\vx)\dd{S_R(\vx)}.
+      % \end{align}
       
-      \begin{align*}
-        \intertext{De}
-        a(\vE,\vE) &= \frac{1}{ik_0} \int_{\OO^c_R} \norm{\trot \vE(\vx)}^2 \dd{x} + ik_0\int_{\OO^c_R}\norm{\vE(\vx)}^2 \dd{x}
-          + X + C,
-        \intertext{on déduit}
-        \Re(a(\vE,\vE)) & = 0,
-        \intertext{ce qui se réecrit}
-        \Re(C) + \Re(X) & = 0.
-        \intertext{Comme d'après \cite[Théorème~5.3.5, p.~200]{nedelec_acoustic_2001} \(\Re(C) \ge 0\), on en déduit} 
-        \Re(X) & \le 0.
-      \end{align*}
-      L'hypothèse \eqref{eq:unicite:form_var:cgu} \(\Re(X) \ge 0\) impose alors \(\Re(X)=0\) et donc
-      \begin{align*} 
-        \Re(C) &= 0,
-        \intertext{donc d'après le théorème 5.3.5 de Nédélec}
-        \vE_t &= 0 && \text{sur \(S_R\)},
-        \intertext{et d'après le lemme de Rellich}
-        \vE &= 0 && \text{dans \(\OO^c_R\)}.
-      \end{align*}
+      % \begin{align*}
+      %   \intertext{De}
+      %   a(\vE,\vE) &= \frac{1}{ik_0} \int_{\OO^c_R} \norm{\trot \vE(\vx)}^2 \dd{x} + ik_0\int_{\OO^c_R}\norm{\vE(\vx)}^2 \dd{x}
+      %     + X + C,
+      %   \intertext{on déduit}
+      %   \Re(a(\vE,\vE)) & = 0,
+      %   \intertext{ce qui se réecrit}
+      %   \Re(C) + \Re(X) & = 0.
+      %   \intertext{Comme d'après \cite[Théorème~5.3.5, p.~200]{nedelec_acoustic_2001} \(\Re(C) \ge 0\), on en déduit} 
+      %   \Re(X) & \le 0.
+      % \end{align*}
+      % L'hypothèse \eqref{eq:unicite:form_var:cgu} \(\Re(X) \ge 0\) impose alors \(\Re(X)=0\) et donc
+      % \begin{align*} 
+      %   \Re(C) &= 0,
+      %   \intertext{donc d'après le théorème 5.3.5 de Nédélec}
+      %   \vE_t &= 0 && \text{sur \(S_R\)},
+      %   \intertext{et d'après le lemme de Rellich}
+      %   \vE &= 0 && \text{dans \(\OO^c_R\)}.
+      % \end{align*}
       
-      On en déduit \(\vH = 0 \).
+      % On en déduit \(\vH = 0 \).
     
-      On conclut donc que si on suppose \eqref{eq:unicite:form_var:cgu}, alors en l'absence de sources le couple \((\vE,\vH)=(0,0)\) est l'unique solution, ce qui démontre l'unicité par linéarité.
+      % On conclut donc que si on suppose \eqref{eq:unicite:form_var:cgu}, alors en l'absence de sources le couple \((\vE,\vH)=(0,0)\) est l'unique solution, ce qui démontre l'unicité par linéarité.
     \end{proof}      
 
 \section{Equations de Maxwell à l'extérieur avec condition limite de Calderòn}
@@ -1401,7 +1402,7 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
     Une autre remarque est que le Théorème 3 page 86 de Cessenat te permet de résoudre séparément le problème intérieur et le problème extérieur, en considérant chaque fois \((E,H)=(0,0)\) à l'intérieur et en mettant la masse de Dirac surfacique comme terme source, et réciproquement.
   \end{REM}
 
-  L'unicité des solutions est aussi assuré par le lemme de Rellich, avec la même condition suffisante d'unicité.
+  L'unicité des solutions est aussi assuré par le lemme de Rellich, avec la même condition suffisante d'unicité de la proposition \ref{prop:cgu}, que l'on peut aussi exprimer à l'aide de l'opérateur de Calderòn.
 
   \subsection{Expression de l'opérateur de Calderòn pour un plan infini en tant que multiplicateur de Fourier}
 
@@ -1690,7 +1691,9 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
 
     Soit \(J_n\) la fonction de Bessel de première espèce et \(H_n^{(2)}\) la fonction de Hankel de deuxième espèce, et \(J_n', H_n^{(2)}{}'\) leur dérivée.
 
-    Pour un cylindre de rayon \(r_0 [m]\) recouvert d'une couche d'épaisseur \(d [m]\) (on note \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderòn s'exprime en tant que multiplicateur de Fourier matriciel en \((n,k_z)\) où \(n\) est l'indice d'un coefficient de série de Bessel ( qui est une série de Fourier sur \(\theta\) ) et \(k_z\) est la variable de Fourier associée à la transformée de Fourier partielle en \(z\):
+    Pour un cylindre de rayon \(r_0 [m]\) recouvert d'une couche d'épaisseur \(d [m]\) (on note \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderòn s'exprime en tant que multiplicateur de Fourier matriciel en \((n,k_z)\) où \(n\) est l'indice d'un coefficient de série de Bessel ( qui est une série de Fourier sur \(\theta\) ) et \(k_z\) est la variable de Fourier associée à la transformée de Fourier partielle en \(z\).
+
+    La démonstration des formules qui suivent, ainsi que leur extension à un nombre arbitraire de couches est l'objet du chapitre \ref{sec:cylindre}.
 
     \subsubsection{Expression de l'opérateur de Calderòn quand \(k_z=0\)}
       Le cas de l'incidence perpendiculaire à l'axe du cylindre simplifie grandement les calculs, car cette matrice est alors diagonale:
@@ -1783,7 +1786,7 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
 
     On utilise la notation \gls{mat-tild} pour désigner les dérivées de ces fonctions telles que \(\tilde{f}(z) = \ddp{z}{(zf(z))}\).
 
-    Pour une sphère de rayon \(r_0 [m]\) recouverte d'une couche d'épaisseur \(d [m]\) (on pose \(r_1=r_0 + d\)) de matériau diélectrique de constantes relatives \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderòn s'exprime en tant que multiplicateur  matriciel de Fourier sur les termes en série de Mie,
+    Pour une sphère de rayon \(r_0 [m]\) recouverte d'une couche d'épaisseur \(d [m]\) (on pose \(r_1=r_0 + d\)) de matériau diélectrique de constantes relatives \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderòn s'exprime en tant que multiplicateur  matriciel de Fourier sur les termes en série de Mie.
 
     \begin{align*}
       (\hat \mZ_n)_{11} &=  i\eta kr_1 
@@ -1804,6 +1807,8 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
           {h^{(2)}_n}(kr_1)\tilde{j_n}(kr_0)-{j_n}(kr_1)\tilde{h^{(2)}_n}(kr_0)
         }.
     \end{align*}
+
+    La démonstration de ce calcul, ainsi que son extension à un nombre arbitraire de couches est l'objet du chapitre \ref{sec:sphere}.
 
 \section[Problème extérieur et condition limite de Calderòn]{Equations de Maxwell à l'extérieur de l'objet avec une approximation de l'opérateur de Calderòn sur son bord}
 
@@ -1864,60 +1869,69 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
       
     Nous désignons la condition de Leontovich par CI0.
 
-    \subsubsection{Taylor à l'ordre 1: la CI01}
+  \subsection{Taylor à l'ordre 1: la CI01}
 
-      On approche l'opérateur de Calderòn par
-      \[
-        \hat\vE_t = ( a_0 + a_1 \LL ) \hat \vJ
-      \]
+    On approche l'opérateur de Calderòn par
+    \[
+      \hat\vE_t = ( a_0 + a_1 \LL ) \hat \vJ
+    \]
 
-    \subsubsection{Padé à l'ordre 1:1: la CI1}
+  \subsection{Padé à l'ordre 1:1: la CI1}
 
-      On approche l'opérateur de Calderòn par
-      \[
-        ( 1 + b_1 \LL )\hat\vE_t = ( a_0 + a_1 \LL ) \hat \vJ
-      \]
+    On approche l'opérateur de Calderòn par
+    \[
+      ( 1 + b_1 \LL )\hat\vE_t = ( a_0 + a_1 \LL ) \hat \vJ
+    \]
 
-    \subsubsection{Padé à l'ordre 1:1, découplé: la CI3}
+  \subsection{Padé à l'ordre 1:1, découplé: la CI3}
 
-      On approche l'opérateur de Calderòn par
-      \[
-        ( 1 + b_1 \LD -b_2 \LR )\hat\vE_t = ( a_0 + a_1 \LD -a_2 \LR) \hat \vJ
-      \]
+    On approche l'opérateur de Calderòn par
+    \[
+      ( 1 + b_1 \LD -b_2 \LR )\hat\vE_t = ( a_0 + a_1 \LD -a_2 \LR) \hat \vJ
+    \]
 
-    \subsubsection{Taylor à l'ordre 1, découplé: la CI4}
+  \subsection{Taylor à l'ordre 1, découplé: la CI4}
 
-      On approche l'opérateur de Calderòn par
-      \[
-        \hat\vE_t = ( a_0 + a_1 \LD - a_2 \LR ) \hat \vJ
-      \]
+    On approche l'opérateur de Calderòn par
+    \[
+      \hat\vE_t = ( a_0 + a_1 \LD - a_2 \LR ) \hat \vJ
+    \]
 
-      \begin{REM}
-        Note de Lundi soir
+\section{Etude de l'unicité des solutions du problème extérieur avec CIOE sur le bord}
 
-        "Il est bien entendue que pour chaque \gls{acr-cioe}, le problème avec une onde incidente, conduit s'il y a unicité à une unique solution diffractée, et donc à des solutions diffractées differentes, dont on espère qu'elles sont une approximation de la solution exacte du probleme diffracté avec opérateur de calderon"
+  Il est bien entendue que pour chaque \gls{acr-cioe}, le problème avec une onde incidente, conduit \emph{s'il y a unicité}, à une unique solution diffractée dont on espère qu'elle est une approximation de la solution exacte du problème diffracté avec opérateur de Calderòn.
 
-        Tout le pb est de choisir les coeffs complexes, obtenues grâce à des approximations issues de critères physiques mais non issus de cette derniere. 
+  {~}\\{~}
+  Tout le problème est de choisir les paramètres complexes des CIOE, obtenues grâce à des approximations issues de critères physiques (matériaux, courbure et fréquence) mais non issus de la solution du problème diffracté avec opérateur de Calderòn. 
 
-        Il est inutile de considerer des coefficients qui ne permettraient pas d'obtenir une unique solution.
-        Plus exactement, comme on ne connait pas de condition nécessaire et suffisante d'existence et d'unicité, on se contentera de {\bf garantir} l'unicité de la solution dans des cas plus restreints, ceux de conditions {\bf suffisantes} d'unicité. 
-        
-        Si on n'a pas unicité, il est aussi clair que, pour un problème avec source, on peut ne pas avoir existence.
-        L'existence, en revanche, est assurée si la source est nulle puisque la solution nulle vérifie toutes les conditions du problème.
-      \end{REM}
+  Il est inutile de considerer des paramètres qui ne permettraient pas d'obtenir une unique solution.
+  Plus exactement, comme on ne connait pas de condition nécessaire et suffisante d'existence et d'unicité, on se contentera de \emph{garantir} l'unicité de la solution dans des cas plus restreints, ceux de conditions \emph{suffisantes} d'unicité.
 
-  \subsection{Etude de l'unicité des solutions: conditions suffisantes d'unicité}
+  S'il n'y a pas unicité, il est aussi clair que pour un problème avec source, on peut ne pas avoir existence.
+  L'existence, en revanche, est assurée si la source est nulle puisque la solution nulle vérifie toutes les conditions du problème.
 
-  \begin{REM}
-    Note de Lundi soir
-    CSU <= RE(X)>=0 (1.1.3). CIOE + CSU
+  {~}\\{~}
+  Nous allons donc assurer de l'unicité de la solution du problème sans source pour déterminer des \glspl{acr-csu} qui piloterons le choix des paramètres, mais il est extrèmement important de comprendre que grâce à cela, nous pourrons \emph{garantir} l'unicité de la solution du problème avec source.
 
-    5.1 1.1.3 => 1.1.1 1.1.2 a  unique solution = 0
+  {~}\\{~}
+  Les démonstrations des résultats de cette partie sont l'objet du chapitre \ref{sec:csu}, ainsi les \glspl{acr-csu} des autres CIOE.
+  Afin de garantir la propositon \ref{prop:cgu}, les conditions suivantes permettent de choisir les paramètres des CIOE correspondantes.
 
-    5.2 CSU J => 1.1.3 => PJ (1.1.1 1.1.2 + CIOE) a unique solution 0
+  \subsection{Condition suffisante d'unicité (CSU) de la CI0}
+    \begin{align*}
+      \Re(a_0) \ge 0.
+    \end{align*}
+  
+  \subsection{CSU de la CI1}
+    \begin{align*}
+      \Re(a_0) \ge 0,&& \Re(a_1) \le 0.
+    \end{align*}
 
-    /!\textbackslash  Un operateur / Des CIOE
-  \end{REM}
+  \subsection{CSU de la CI4}
+    \begin{align*}
+      \Re(a_0) \ge 0,&& \Re(a_1) \le 0,&& \Re(a_2) \le 0.
+    \end{align*}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
