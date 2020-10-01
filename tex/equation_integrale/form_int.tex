@@ -412,11 +412,11 @@
 
   Nous ne redémontrerons pas l'obtention des équations intégrales. Nous renvoyons à \cite[Section~5.5, p.~234]{nedelec_acoustic_2001}.
 
-  Nous rappelons notamment le théorème de trace (Theorem~5.4.2, p.~209) qui est déterminant dans les choix de discrétisations. Ce dernier stipule que si \(\vE,\vH \in \Sobolev[rot]{(\Omega)}\) alors \(\vn \pvect \vH,\vn \pvect \vE \in \Sobolev[div]^{-1/2}{(\Gamma)}\). 
+  Nous rappelons notamment le théorème de trace (Theorem~5.4.2, p.~209) qui est déterminant dans les choix de discrétisations. Ce dernier stipule que si \(\vE,\vH \in \Hrot{(\Omega)}\) alors \(\vn \pvect \vH,\vn \pvect \vE \in \Hdiv^{-1/2}{(\Gamma)}\). 
 
   Les équations intégrales s'énoncent alors:
 
-  Soit \(g\) la fonction de Green. Étant donné \((k,\vE^{inc},\vH^{inc})\), on cherche \(\vJ = \vn \pvect \vH, \vK = \vn \pvect \vE \in \Sobolev[div]^{-1/2}{(\Gamma)}\)  tels que pour tout \(\vect{\phi} \in \Sobolev[div]^{-1/2}(\Gamma)\),
+  Soit \(g\) la fonction de Green. Étant donné \((k,\vE^{inc},\vH^{inc})\), on cherche \(\vJ = \vn \pvect \vH, \vK = \vn \pvect \vE \in \Hdiv^{-1/2}{(\Gamma)}\)  tels que pour tout \(\vect{\phi} \in \Hdiv^{-1/2}(\Gamma)\),
 
   l'EFIE s'exprime telle que
   \begin{multline}
@@ -437,7 +437,7 @@
         -  ik\int_{\Gamma} \left( \int_{\Gamma} g(\vx - \vy)\vK(\vy) \dd{\Gamma}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx).
   \end{multline}
 
-  Ceci est l'expression continue de la formulation variationnelle des équations intégrales. Dans la suite nous approcherons cette forme variationnelle à l'aide des familles de fonction présentées précédemment. De plus, dans un abus de notation, nous omettrons le \(-1/2\) dans l'espace \(\Sobolev[div]^{-1/2}(\Gamma)\equiv\Sobolev[div](\Gamma)\).
+  Ceci est l'expression continue de la formulation variationnelle des équations intégrales. Dans la suite nous approcherons cette forme variationnelle à l'aide des familles de fonction présentées précédemment. De plus, dans un abus de notation, nous omettrons le \(-1/2\) dans l'espace \(\Hdiv^{-1/2}(\Gamma)\equiv\Hdiv(\Gamma)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -501,7 +501,7 @@
         &= \frac{1}{2} \int_{\Gamma_h}  \left( \left(\oI + b_1 \LD - b_2 \LR\right) \vJ (\vx)\right.
         \\
         & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx).
-        \intertext{Nous rappelons de \cite[Théorème~5.4.2, p.~209]{nedelec_acoustic_2001} que \((\vE, \vH) \in \Sobolev[rot]{(\OO)}\) donc  \((\vK=\vn \pvect \vE, \vJ=\vn \pvect \vH) \in \Sobolev[div]{(\Gamma)}\) et \((\vE_t, \vH_t) \in \Sobolev[rot]{(\Gamma)}\). Cependant, nous avons choisis (voir \cite[eq.~10, p.~1660]{stupfel_implementation_2015}) d'approcher \(\vE_t\) dans \(\Sobolev[div]{(\Gamma_h)}\) pour le décomposer sur les fonctions de Raviart-Thomas. Ainsi}
+        \intertext{Nous rappelons de \cite[Théorème~5.4.2, p.~209]{nedelec_acoustic_2001} que \((\vE, \vH) \in \Hrot{(\OO)}\) donc  \((\vK=\vn \pvect \vE, \vJ=\vn \pvect \vH) \in \Hdiv{(\Gamma)}\) et \((\vE_t, \vH_t) \in \Hrot{(\Gamma)}\). Cependant, nous avons choisis (voir \cite[eq.~10, p.~1660]{stupfel_implementation_2015}) d'approcher \(\vE_t\) dans \(\Hdiv{(\Gamma_h)}\) pour le décomposer sur les fonctions de Raviart-Thomas. Ainsi}
         & \simeq \frac{1}{2} \sum_{j=1}^N \int_{\Gamma_h} \left( \left(\oI + b_1 \LD - b_2 \LR\right) I_j \phij (\vx)\right.
         \\
         & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) e_j \phij (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx),
@@ -538,7 +538,7 @@
       &= \frac{1}{2a_0}\int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) \vn \pvect \vK (\vx) \right.
       \\
       & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx),
-      \intertext{nous approchons \(\vK\) dans \(\Sobolev[div]{(\Gamma_h)}\) mais nous avons choisis d'approcher \(\vJ\) dans \(\Sobolev[rot]{(\Gamma_h)}\) au lieu de \(\Sobolev[div]{(\Gamma_h)}\)}
+      \intertext{nous approchons \(\vK\) dans \(\Hdiv{(\Gamma_h)}\) mais nous avons choisis d'approcher \(\vJ\) dans \(\Hrot{(\Gamma_h)}\) au lieu de \(\Hdiv{(\Gamma_h)}\)}
       & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) k_j \vn \pvect   \phij (\vx) \right.
       \\
       & \hspace{5em} \left. - \left(a_1 \LD - a_2 \LR\right) I_j' \vn \pvect \phij (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx).
