@@ -42,14 +42,15 @@
             \end{cases}
           }
         \end{equation*}
-        \begin{REM}
-          Quel choix de racines fais-tu ?
-        \end{REM}
-        \begin{REP}
-          Par convention d'écriture, partie imaginaire positive
-          A l’extérieur partie imaginaire négative.
-          Car dans le matériau l'onde est de la forme \(A e^{ik_3z} + B e^{-ik_3z}\) donc peu importe tandis que la seule onde acceptable à l’extérieur est celle en \(e^{-ik_3 z}\) car si \(k_3\) à une partie imaginaire, alors cela donne une décroissance à l'infini.
-        \end{REP}
+        Le choix du signe de la partie imaginaire se déduit de la décroissance à l'infini des champs diffractés définis ci-dessous.
+        % \begin{REM}
+        %   Quel choix de racines fais-tu ?
+        % \end{REM}
+        % \begin{REP}
+        %   Par convention d'écriture, partie imaginaire positive
+        %   A l’extérieur partie imaginaire négative.
+        %   Car dans le matériau l'onde est de la forme \(A e^{ik_3z} + B e^{-ik_3z}\) donc peu importe tandis que la seule onde acceptable à l’extérieur est celle en \(e^{-ik_3 z}\) car si \(k_3\) à une partie imaginaire, alors cela donne une décroissance à l'infini.
+        % \end{REP}
     \end{defn}
 
     \begin{prop}
@@ -61,9 +62,11 @@
             \hat{\cH}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y).
         \end{align*}
         Les constantes \(c_i\) ne peuvent en réalité pas être choisies arbitrairement car les exponentielles complexes divergent quand \(k_x^2 + k_y^2 \rightarrow \infty\) et ces solutions n'ont pas de transformées de Fourier. Nous supposons que les constantes \(c_i\) satisfassent la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}, où il n'y a pas de résonances.
-        \begin{REM}
-          Faux: Il faut que je te réexplique par Skype. Ce n'est pas la condition de résonance mais \(z \in [z_0,z_2]\) par exemple + une estimations sur les coefficients.
-        \end{REM}
+        % \begin{REM}
+        %   Faux: Il faut que je te réexplique par Skype. Ce n'est pas la condition de résonance mais \(z \in [z_0,z_2]\) par exemple + une estimations sur les coefficients.
+        % \end{REM}
+        Nous supposons que les constantes \(c_i\) satisfassent la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}.
+
     \end{prop}
 
     \begin{proof}
@@ -147,25 +150,25 @@
 
       \begin{proof}
         On se place dans une couche, les constantes de matériaux sont donc fixées.
-        On reprend les équations de Maxwell appliquées sur les transformées de Fourier. À partir des composantes \(\vect{e_x},\vect{e_y}\) des équations de Maxwell, on peut déterminer \(\hat{E_x},\hat{E_z},\hat{H_x},\hat{H_z}\).
-        \begin{REM}
-          Je te suggère d'ajouter comme on en a discuté le fait qu'il y a y un système d'EDO sur \(E_y,E_x,H_y,H_x\) en remplaçant \(E_z,H_z\).
-          Dans ta présentation les calculs sont corrects presque tout le temps.
-        \end{REM}
+        On reprend les équations de Maxwell appliquées sur les transformées de Fourier. À partir des composantes \(\vect{e_x},\vect{e_y}\) des équations de Maxwell, on  détermine un système d'\glspl{acr-edo} sur \(\hat{E_x},\hat{E_z},\hat{\mathcal{H}_x},\hat{\mathcal{H}_z}\) à partir de \(\hat{E_z}, \hat{\mathcal{H}_z}\).
+        % \begin{REM}
+        %   Je te suggère d'ajouter comme on en a discuté le fait qu'il y a y un système d'EDO sur \(E_y,E_x,H_y,H_x\) en remplaçant \(E_z,H_z\).
+        %   Dans ta présentation les calculs sont corrects presque tout le temps.
+        % \end{REM}
         \begin{align*}
             \left\lbrace
             \begin{matrix}
-                ik_y \hat{E_z}  - \ddr{z}{\hat{E_y}} = -i k \eta_r  \hat{H_x},
+                ik_y \hat{E_z}  - \ddr{z}{\hat{E_y}} = -i k \eta_r  \hat{\mathcal{H}_x},
                 \\
-                ik_x \hat{E_y} - ik_y \hat{E_x} = -i k \eta_r  \hat{H_z},
+                ik_x \hat{E_y} - ik_y \hat{E_x} = -i k \eta_r  \hat{\mathcal{H}_z},
             \end{matrix}
             \right. 
             &&
             \left\lbrace
             \begin{matrix}
-                ik_y \hat{H_z}  - \ddr{z}{\hat{H_y}} = i k \eta_r^{-1} \hat{E_x},
+                ik_y \hat{\mathcal{H}_z}  - \ddr{z}{\hat{\mathcal{H}_y}} = i k \eta_r^{-1} \hat{E_x},
                 \\
-                ik_x \hat{H_y} - ik_y \hat{H_x} = i k \eta_r^{-1} \hat{E_z}.
+                ik_x \hat{\mathcal{H}_y} - ik_y \hat{\mathcal{H}_x} = i k \eta_r^{-1} \hat{E_z}.
             \end{matrix}
             \right.
         \end{align*}
@@ -186,16 +189,16 @@
           \begin{bmatrix}
             \hat{E_x}\\
             \hat{E_z}\\
-            \hat{H_x}\\
-            \hat{H_z}
+            \hat{\mathcal{H}_x}\\
+            \hat{\mathcal{H}_z}
           \end{bmatrix},
           &&
           Y =
           \begin{bmatrix}
             -\ddr{z}{\hat{E_y}}\\
             ik_x\hat{E_y}\\
-            -\ddr{z}{\hat{H_y}}\\
-            ik_x\hat{H_y}
+            -\ddr{z}{\hat{\mathcal{H}_y}}\\
+            ik_x\hat{\mathcal{H}_y}
           \end{bmatrix}.
         \end{align*}
         Cette matrice est inversible si \(\det(\mM) = (k^2 - k_y^2)^2 \) est non nul.
@@ -204,8 +207,8 @@
           \begin{bmatrix}
             \hat{E_x}\\
             \hat{E_z}\\
-            \hat{H_x}\\
-            \hat{H_z}
+            \hat{\mathcal{H}_x}\\
+            \hat{\mathcal{H}_z}
           \end{bmatrix} =
           \frac{1}{k^2 - k_y^2}
           \begin{bmatrix}
@@ -220,15 +223,15 @@
           \begin{bmatrix}
             -\ddr{z}{\hat{E_y}}\\
             ik_x\hat{E_y}\\
-            -\ddr{z}{\hat{H_y}}\\
-            ik_x\hat{H_y}
+            -\ddr{z}{\hat{\mathcal{H}_y}}\\
+            ik_x\hat{\mathcal{H}_y}
           \end{bmatrix}.
         \end{equation*}
         On extrait alors uniquement les composantes tangentielles
         \begin{align*}
           \left\lbrace
           \begin{aligned}
-            \hat{E_x} &= \frac{1}{k^2 - k_y^2}\left(ik_yik_x\hat{E_y} + ik\eta_r\ddr{z}{\hat{H_y}}\right),
+            \hat{E_x} &= \frac{1}{k^2 - k_y^2}\left(ik_yik_x\hat{E_y} + ik\eta_r\ddr{z}{\hat{\mathcal{H}_y}}\right),
             \\
             \hat{E_y} &= e^{ik_3z}c_1 + e^{-ik_3z}c_2,
           \end{aligned}
@@ -238,7 +241,7 @@
           \begin{aligned}
             -\hat{\cH_y} &= -e^{ik_3z}c_3 - e^{-ik_3z}c_4,
             \\
-            \hat{\cH_x} &= \frac{1}{k^2 - k_y^2}\left(-ik\eta_r^{-1}\ddr{z}{\hat{E_y}} + ik_yik_x\hat{H_y}\right).
+            \hat{\cH_x} &= \frac{1}{k^2 - k_y^2}\left(-ik\eta_r^{-1}\ddr{z}{\hat{E_y}} + ik_yik_x\hat{\mathcal{H}_y}\right).
           \end{aligned}
           \right.
         \end{align*}
@@ -254,9 +257,9 @@
           \\
           &\left\lbrace
           \begin{aligned}
-            -\hat{H_y} &= -e^{ik_3z}c_3 - e^{-ik_3z}c_4,
+            -\hat{\mathcal{H}_y} &= -e^{ik_3z}c_3 - e^{-ik_3z}c_4,
             \\
-            \hat{H_x} &= \frac{1}{k^2 - k_y^2}\left(\left(k\eta_r^{-1} k_3c_1 - k_y k_x c_3\right)e^{ik_3z} + \left(-k\eta_r^{-1} k_3c_2 - k_y k_x c_4\right)e^{-ik_3z}\right).
+            \hat{\mathcal{H}_x} &= \frac{1}{k^2 - k_y^2}\left(\left(k\eta_r^{-1} k_3c_1 - k_y k_x c_3\right)e^{ik_3z} + \left(-k\eta_r^{-1} k_3c_2 - k_y k_x c_4\right)e^{-ik_3z}\right).
           \end{aligned}
           \right.
         \end{align*}
