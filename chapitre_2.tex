@@ -2,24 +2,13 @@
 \label{sec:plan}
 \minitoc
 \newpage
-\begin{REM}
-  Il faut qu'au début de cette partie tu définisse l’opérateur de Calderon pour dire que l’impédance en est un approximation.
-\end{REM}
-\begin{REP}
-    L'opérateur de Caldéron sera introduit \hyperlink{calderon}{ici}, en temps voulu.
-\end{REP}
+
 \sectionstar{Introduction}
 Pour déterminer des coefficients complexes satisfaisants aux conditions introduites dans la partie précèdente, nous commençons par la méthode de l'approximation du plan tangent, bien documenté \cite{hoppe_impedance_1995,marceaux_high-order_2000,aubakirov_electromagnetic_2014}. Cette méthode consiste à considérer localement l'objet comme un plan infini, ce qui reste valable dans le cadre de cette thèse, car nos objets d'études sont parfaitement réguliers.
-\begin{REM}
-    On ne calcule donc pas des coefficients exacts. Il n'y a que dans quelques cas que tu as des coefficients exacts pour chaque mode de Fourier.
-\end{REM}
-\begin{REP}
-    Les coeffs calculés deviennent "des coeff, parmis un choix qui satisfait à une des CSU"
-\end{REP}
 
-Dans le cadre du plan, nous rappelerons l'opérateur de Calderon exact qui lie les champs electromagnetiques à la surface extérieur de l'object, ainsi que la condition nécessaire et pour l'obtenir.
+Dans le cadre du plan, nous rappelerons l'opérateur de Calderon exact qui lie les champs electromagnetiques à la surface extérieur de l'object, ainsi que la condition nécessaire pour l'obtenir.
 Pour des considération de mise en oeuvre numérique, nous présenterons une méthode itérative pour exprimer cet opérateur.
-Cette méthode va ajouter des conditions, dont nous rapellerons qu'elles ne sont à considérer que dans le cadre de cette méthode itérative.
+Cette dernière va ajouter des conditions, dont nous rapellerons qu'elles ne sont à considérer que dans le cadre de cette méthode itérative.
 
 \input{tex/plan/intro}
 \input{tex/plan/exact}
@@ -30,12 +19,7 @@ Cette méthode va ajouter des conditions, dont nous rapellerons qu'elles ne sont
 
 \sectionstar{Conclusion}
 Nous avons proposé une méthode pour calculer des coefficients complexes vérifiant une des CSU choisies, et qui permettent d'approcher l'opérateur de Calderon dans le cas d'un objet plan infini en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées.
-\begin{REM}
-    Ce n'est pas montré, c'est proposer une méthode pour calculer des coefficients.
-\end{REM}
-\begin{REP}
-    Fait.
-\end{REP}
+
 Nous avons montré que minimiser l'erreur entre les matrices de réflexion aboutit aux mêmes coefficients de CIOE.
 
 Pour cela, nous avons réalisé une analyse spectrale des équations de Maxwell et montré que la condition d'impédance s'exprime comme un multiplicateur de Fourier matriciel, tout comme la matrice de réflexion. Grâce à cette analyse spectrale, nous avons aussi exprimé les CIOE comme des multiplicateurs de Fourier matriciels dont on a déduit la matrice de réflexion associée. Nous avons alors exprimé le problème de minimisation sous contraintes et montré que celui-ci a besoin d'être réduit dans le cas d'une couche de matériau sans pertes.

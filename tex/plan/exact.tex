@@ -33,7 +33,14 @@
         Soit \(k_3\) la fonction constante par morceaux en \(z\) telle que
         \begin{equation*}
           \fonction{k_3}{[-d,0[\cup[0,\infty[}{\CC}
-          {z}{\sqrt{k(z)^2 - k_x^2 - k_y^2}.}
+          {z}{
+            k_3(z); k_3(z)^2 =
+            \begin{cases}
+            k^2 - k_x^2 - k_y^2, \Im(k_3(z)) \ge 0 & -d \le z < 0
+            \\
+            k_0^2 - k_x^2 - k_y^2, \Im(k_3(z)) < 0 & 0 \le z
+            \end{cases}
+          }
         \end{equation*}
         \begin{REM}
           Quel choix de racines fais-tu ?
