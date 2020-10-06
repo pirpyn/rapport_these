@@ -1376,44 +1376,35 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
   
   À un couple de domaines ouvert \((\Omega, \Omega^c)\) et à deux problèmes de type Maxwell \eqref{eq:unicite:maxwell_ext} dans chacun des ouverts, est associé un unique opérateur de Caldéron.
 
-  En imposant sur le bord extérieur de l'objet une condition limite utilisant cet opérateur, alors les solutions \((\vE,\vH)\) de ce nouveau problème posé uniquement à l'extérieur sont les même que celles du problème intérieur et extérieur.
+  En imposant sur le bord extérieur de l'objet une condition limite utilisant cet opérateur, alors les solutions \((\vE,\vH)\) de ce nouveau problème posé uniquement à l'extérieur sont les mêmes que celles du problème intérieur et extérieur.
 
-  \begin{REM}
-    % Je cherche la ref dans le Cessenat, mais si tu l'as, je prend.
+  % \begin{REM}
+  %   % Je cherche la ref dans le Cessenat, mais si tu l'as, je prend.
     
-    Il me semble que tu peux t'appuyer pour Helmholtz sur le Théorème 5 page 106: unicité de la solution du problème extérieur lorsque \(u_0\) est donné dans \(\Sobolev[1/2](\Gamma)\).
-    Ou le théorème 6 page 107 pour Maxwell avec \(m_0\) donné dans \(\Sobolev[-1/2](\Gamma)\).
-    L'opérateur de Calderòn extérieur est alors donné dans la définition 4 page 109.
+  %   Il me semble que tu peux t'appuyer pour Helmholtz sur le Théorème 5 page 106: unicité de la solution du problème extérieur lorsque \(u_0\) est donné dans \(\Sobolev[1/2](\Gamma)\).
+  %   Ou le théorème 6 page 107 pour Maxwell avec \(m_0\) donné dans \(\Sobolev[-1/2](\Gamma)\).
+  %   L'opérateur de Calderòn extérieur est alors donné dans la définition 4 page 109.
     
-    Il s'agit alors de comparer les solutions des problèmes (P) et (P'), l'un est le problème de Maxwell dans \(\RR^3\) avec condition de radiation à l'infini et l'appartenance à H(rot) des champs, l'autre est le problème de Maxwell dans \(\Omega\) avec opérateur de Calderòn extérieur sur le bord.
-    J'impose dans (P) et dans (P') la donnée de \(n\wedge E=m_0\) sur \(\Gamma\). (si c'est la restriction à \(\Gamma\), saut nul).
-    Le problème (P)  a une unique solution.
-    La restriction de cette solution à \(\Omega^c\) peut donc être étudiée.
+  %   Il s'agit alors de comparer les solutions des problèmes (P) et (P'), l'un est le problème de Maxwell dans \(\RR^3\) avec condition de radiation à l'infini et l'appartenance à H(rot) des champs, l'autre est le problème de Maxwell dans \(\Omega\) avec opérateur de Calderòn extérieur sur le bord.
+  %   J'impose dans (P) et dans (P') la donnée de \(n\wedge E=m_0\) sur \(\Gamma\). (si c'est la restriction à \(\Gamma\), saut nul).
+  %   Le problème (P)  a une unique solution.
+  %   La restriction de cette solution à \(\Omega^c\) peut donc être étudiée.
     
     
-    Le problème de Maxwell extérieur admet une unique solution avec \(m_0\) comme donnée. On appelle \((E^*, H^*)\) cette solution , et on déduit \(n\wedge H\vert_{\Gamma_+}= C_e(n\wedge E)_{\Gamma_+})\).
-    Traitons maintenant le problème (P') et imposons maintenant dans \(\Omega\) Maxwell avec \((m_0, m_1=C_e(m_0))\) sur \(\Gamma_-\).
-    Ce problème a une unique solution \((E_*, H_*)\).
-    Si on étudie maintenant \(E=E^*\) dans \(\Omega^c\), \(E=E_*\) dans \(\Omega\), et même chose pour \(H\), les champs ainsi construits sont des élément de \(\Hrot\) (par condition de saut sur \(n\wedge E\) et sur \(n\wedge H\)).
-    Ces éléments vérifient Maxwell dans chaque ouvert, satisfont à la condition de rayonnement à l'infini, et par la formule des sauts au sens des distributions vérifient Maxwell partout (exactement comme \(\vert x\vert\) vérifie \((u')^2=1\) partout).
-    De plus la trace de \(n\wedge E\) sur \(\Gamma\) est \(m_0\). C'est donc l'unique solution de (P).  
-  \end{REM}
-  \begin{REM}
-    Une autre remarque est que le Théorème 3 page 86 de Cessenat te permet de résoudre séparément le problème intérieur et le problème extérieur, en considérant chaque fois \((E,H)=(0,0)\) à l'intérieur et en mettant la masse de Dirac surfacique comme terme source, et réciproquement.
-  \end{REM}
+  %   Le problème de Maxwell extérieur admet une unique solution avec \(m_0\) comme donnée. On appelle \((E^*, H^*)\) cette solution , et on déduit \(n\wedge H\vert_{\Gamma_+}= C_e(n\wedge E)_{\Gamma_+})\).
+  %   Traitons maintenant le problème (P') et imposons maintenant dans \(\Omega\) Maxwell avec \((m_0, m_1=C_e(m_0))\) sur \(\Gamma_-\).
+  %   Ce problème a une unique solution \((E_*, H_*)\).
+  %   Si on étudie maintenant \(E=E^*\) dans \(\Omega^c\), \(E=E_*\) dans \(\Omega\), et même chose pour \(H\), les champs ainsi construits sont des élément de \(\Hrot\) (par condition de saut sur \(n\wedge E\) et sur \(n\wedge H\)).
+  %   Ces éléments vérifient Maxwell dans chaque ouvert, satisfont à la condition de rayonnement à l'infini, et par la formule des sauts au sens des distributions vérifient Maxwell partout (exactement comme \(\vert x\vert\) vérifie \((u')^2=1\) partout).
+  %   De plus la trace de \(n\wedge E\) sur \(\Gamma\) est \(m_0\). C'est donc l'unique solution de (P).  
+  % \end{REM}
+  % \begin{REM}
+  %   Une autre remarque est que le Théorème 3 page 86 de Cessenat te permet de résoudre séparément le problème intérieur et le problème extérieur, en considérant chaque fois \((E,H)=(0,0)\) à l'intérieur et en mettant la masse de Dirac surfacique comme terme source, et réciproquement.
+  % \end{REM}
 
   L'unicité des solutions est aussi assuré par le lemme de Rellich, avec la même condition suffisante d'unicité de la proposition \ref{prop:cgu}, que l'on peut aussi exprimer à l'aide de l'opérateur de Calderòn.
 
   \subsection{Expression de l'opérateur de Calderòn pour un plan infini en tant que multiplicateur de Fourier}
-
-    %    \begin{figure}[!h]
-    %        \begin{center}
-    %            \tikzsetnextfilename{plan_1_couche}
-    %            \begin{tikzpicture}
-    %                \input{tikz/schema/plan_1_couche.tikz}
-    %            \end{tikzpicture}
-    %        \end{center}
-    %    \end{figure}
 
     Pour une couche d'épaisseur \(d (m)\) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderòn s'exprime en Fourier comme un multiplicateur matriciel en \((k_x,k_y)\), supposant \(\sqrt{k^2-k_x^2-k_y^2}\not=0\),
 
@@ -1438,256 +1429,6 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
     Nous renvoyons par exemple à \cite{senior_approximate_1995} pour ce problème.
 
   \subsection{Expression de l'opérateur de Calderòn pour un cylindre infini}
-
-    % \begin{REM}
-    % Pour Helmholtz, tu démontres que toutes les solutions qui vérifient la condition de Dirichlet en \(r_0\) sur le conducteur parfait sont \(\sum_p a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))e^{ip\theta}\) où \(k_3\) est la racine de partie réelle positive de \(\epsilon \mu :\omega^2-k_z^2\), et l'opérateur de Dirichlet to Neumann, pour le mode de Fourier \(p\) sur le bord \(r=R\), est alors (en prenant la dérivée normale)
-    % \[k_3\frac{J'_p(k_3R)Y_p(k_3r_0)-Y'_p(k_3R)J_p(k_3r_0)}{J_p(k_3R)Y_p(k_3r_0)-Y_p(k_3R)J_p(k_3r_0)}.\]
-    % Tu peux prendre n'importe quel couple de solutions linéairement indépendantes de l'équation de Bessel.
-    
-    % Pour Maxwell, c'est le calcul que tu as fait en partie, en exprimant \(E\) et \(H\) sur les Bessel, en commencant par \(E_z,H_z\) et en en déduisant \(E_{\theta}, H_{\theta}\). Tu écris \((E_z, H_z)\) avec quatre coefficients de Fourier sur le mode \(e^{ip\theta}\), tu en élimines 1 déjà en mettant
-    % \[E_z=\sum_p e^{ip\theta}a_p(J_p(k_3r)Y_p(k_3r_0)-Y_p(k_3r)J_p(k_3r_0))\]
-    % et tu conserves
-    % \[H_z=\sum_p (c_pJ_p(k_3r)+d_pY_p(k_3r))e^{ip\theta}.\]
-    % Tu déduis alors \(E_{\theta}, H_{\theta}\). En particulier \(E_{\theta}\) dépend de \(c_p, d_p, p\geq 0\), et tu obtiendras une relation sur les coefficients à partir de \(E_{\theta}(r=r_0)=0\). 
-    % \end{REM}
-
-    % \begin{REM}
-    %   Ce qui suit est issu de ton TEX.
-    % \end{REM}
-    %     \begin{align*}
-    %         S_n(k_3r)&=\frac{J'_n(k_3r_0)Y_n(k_3r)-Y'_n(k_3r_0)J_n(k_3r)}{J'_n(k_3r_0)Y'_n(k_3R)-Y'_n(k_3r_0)J'_n(k_3R)},
-    %         \\
-    %         T_n(k_3r)&=\frac{J_n(k_3r_0)Y'_n(k_3r)-Y_n(k_3r_0)J'_n(k_3r)}{J_n(k_3r_0)Y_n(k_3R)-Y_n(k_3r_0)J_n(k_3R)},
-    %         \\
-    %         Q_n(k_3r)&=\frac{J_n(k_3r_0)Y_n(k_3r)-Y_n(k_3r_0)J_n(k_3r)}{J_n(k_3r_0)Y_n(k_3R)-Y_n(k_3r_0)J_n(k_3R)},
-    %         \\
-    %         R_n(k_3r)&=\frac{J'_n(k_3r_0)Y'_n(k_3r)-Y'_n(k_3r_0)J'_n(k_3r)}{J'_n(k_3r_0)Y'_n(k_3R)-Y'_n(k_3r_0)J'_n(k_3R)}.
-    %     \end{align*}
-    %     We notice that these functions do not depend on the choice of the pair of fundamental solutions of the Bessel equation considered. 
-
-    %     \begin{lemma} The Calderòn operator for the cylindrical annulus is given by
-    %     $$
-    %         \begin{pmatrix}
-    %             -H_{\theta}
-    %             \cr
-    %             H_z
-    %         \end{pmatrix}
-    %         =
-    %             \begin{pmatrix}
-    %                 \frac{i\omega \epsilon}{k_3}T_n(k_3R)-\frac{ik_z^2n^2}{k_3^3R^2\omega \mu}S_n(k_3R) & -\frac{ik_zn}{k_3R\omega \mu}S_n(k_3R)
-    %                 \cr
-    %                 \frac{ik_zn}{k_3R\omega \mu}S_n(k_3R) & \frac{ik_3}{\omega \mu}S_n(k_3R)
-    %             \end{pmatrix}
-    %             \begin{pmatrix}
-    %                 E_z
-    %                 \cr
-    %                 E_{\theta}
-    %             \end{pmatrix}.
-    %     $$
-    %     \end{lemma}
-
-    %     \begin{lemma}
-    %         \begin{enumerate}
-    %         \item If the domain is $C(r_0,R)\times R$ and if $\varepsilon \mu \notin \mathbb R^*_+$, there is no resonance.
-    %         \item If the domain is $C(r_0, R)\times [0,L]$, and $d_n(k_3R)(dd_n)'(k_3R)\not=0$, there is no resonance.
-    %         \end{enumerate}
-    %     \end{lemma}
-    %     Introduce now, in the case $d_n(R)dd_n(R)\not=0$, the functions
-    %     \begin{align*}
-    %         S_n(rk_3) &= \frac{J'_n(k_3r_0)Y_n(k_3r)-Y'_n(k_3r_0)J_n(k_3r)}{J'_n(k_3r_0)Y'_n(k_3R)-Y'_n(k_3r_0)J'_n(k_3R)},
-    %         \\
-    %         T_n(k_3r) &= \frac{J_n(k_3r_0)Y'_n(k_3r)-Y_n(k_3r_0)J'_n(k_3r)}{J_n(k_3r_0)Y_n(k_3R)-Y_n(k_3r_0)J_n(k_3R)}.
-    %     \end{align*}
-    %     We notice that these functions do not depend on the choice of the pair of fundamental solutions of the Bessel equation considered. 
-
-    %     Introduce for simplicity $D_n(k_3r)=k_3^{-1}(dd_n)'(k_3r)= J'_n(k_3r_0)Y'_n(k_3r)-Y'_n(k_3r_0)J'_n(k_3r)$.
-
-    %     \begin{lemma}
-    %     \label{Z-lemme}
-    %     For the cylindrical annulus, the Calderòn operator is characterized, under the conditions $d_n(R)(dd_n)'(R)\not=0$ for all $n$, and $k_3\not=0$, by
-    %     $$
-    %     \begin{pmatrix}
-    %         H_{\theta}
-    %         \\
-    %         -H_z
-    %     \end{pmatrix}
-    %     =
-    %     \begin{pmatrix}
-    %         \frac{i\omega \epsilon}{k_3^2}T_n(k_3R)+\frac{k_z^2n^2}{i\omega \mu R^2k_3^2}S_n(k_3R)\frac{d_n(R)}{D_n(k_3R)} & \frac{k_zn}{i\omega \mu R}
-    %         \\
-    %         \frac{kn}{i\omega \mu R}S_n(k_3R)\frac{d_n(k_3R)}{D_n(k_3k_3R)} & \frac{k_3^2}{i\omega \mu}S_n(k_3R)\frac{d_n(k_3R)}{D_n(k_3R)}
-    %     \end{pmatrix}
-    %     \begin{pmatrix}
-    %         E_z
-    %         \\
-    %         E_{\theta}
-    %     \end{pmatrix}.$$
-    %     \end{lemma}
-
-    %     \begin{remark}
-    %         The conditions for existence and uniqueness of a solution for a multi-layer annulus is not the intersection of the conditions for each layer. For example, for two layers of dielectric materials, of dielectric constants $(\epsilon, \mu), r_0<r<r_1$ and $(\epsilon_1, \mu_1), r_1<r<R$, the conditions induced by $E_z$ are
-    %         \begin{multline*}
-    %             (k_3^1)^{-1}(J_n(k_3r_0)Y_n(k_3r_1)-J_n(k_3r_1)Y_n(k_3r_0))[J_n(k_3^1R)Y'_n(k_3^1r_1)-Y_n(k_3^1R)J'_n(k_3^1r_1)]
-    %             \cr
-    %             \not=
-    %             \\
-    %             (k_3)^{-1}(J_n(k_3r_0)Y'_n(k_3r_1)-J'_n(k_3r_1)Y_n(k_3r_0))[J_n(k_3^1R)Y_n(k_3^1r_1)-Y_n(k_3^1R)'_n(k_3^1r_1)].
-    %         \end{multline*}
-
-    %         This condition does not depend, again, on the choice of the pair of independent solutions of the Bessel equation chosen in each layer.
-    %     \end{remark}
-
-    %     \begin{proof}
-    %         Consider for the moment formal solutions of the Helmholtz equations obtained on $E_z,H_z$.
-    %         After Fourier transform in $z$ and expanding in Fourier series in $\theta$, one has, for $k_3\not=0$
-    %         \begin{align*}
-    %             E_z&=aJ_n(k_3r)+bY_n(k_3r)\cr
-    %             H_z&=cJ_n(k_3r)+dY_n(k_3r).
-    %         \end{align*}
-    %         We now deduce $H_{\theta}$ and $E_{\theta}$ through the equalities 3 and 5 of (\ref{systeme-Fourier-cyl}), after replacing $E_r, H_r$ using the equalities 1 and 2 of (\ref{systeme-Fourier-cyl}) for $k_3\not=0$:
-    %         \begin{align*}
-    %             H_{\theta}&=\frac{i\omega \epsilon}{k_3^2}[\frac{dE_z}{dr}+\frac{ik_zn}{\omega \epsilon r}H_z]&=& \frac{i\omega \epsilon}{k_3^2}\frac{dE_z}{dr}-\frac{k_zn}{k_3^2 r}H_z
-    %             \\
-    %             E_{\theta}&=-\frac{i\omega \mu}{k_3^2}[\frac{dH_z}{dr}-\frac{ink_z}{\omega \mu r}E_z]&=&-\frac{i\omega \mu}{k_3^2}\frac{dH_z}{dr}-\frac{nk_z}{k_3^2 r}E_z
-    %         \end{align*}
-
-    %     that is
-    %     \begin{equation}
-    %         \label{HthetaEtheta}
-    %         \begin{aligned}
-    %         H_{\theta}&=\frac{i\omega \epsilon}{k_3}(aJ'_n+bY'_n)-\frac{k_zn}{k_3^2r}( cJ_n+dY_n)
-    %         \\
-    %          E_{\theta}&=-\frac{i\omega \mu}{k_3} (cJ'_n+dY'_n)-\frac{k_zn}{k_3^2r}( aJ_n+bY_n).
-    %         \end{aligned}
-    %     \end{equation}
-    %     Any solution of the Cauchy problem on $ (E_z,E_{\theta},H_z,H_{\theta})$ stated in lemma \ref{maxwell-cylinder}, in the case $k_3\not=0$ can be written
-    %     \begin{multline*}
-    %         \begin{pmatrix}
-    %             E_z
-    %             \cr
-    %             E_{\theta}
-    %             \cr
-    %             H_z=\frac{ik_3}{\omega \mu}(E_{\theta}^0+\frac{k_zn}{k_3^2R}E_z^0)S_n(R)\frac{d_n(r)}{d_n(R)}
-    %             \cr
-    %             H_{\theta}
-    %         \end{pmatrix}
-    %         \\
-    %         =
-    %         a\begin{pmatrix}
-    %             J_n(k_3r)
-    %             \cr
-    %             -\frac{nk_z}{k_3^2r}J_n(k_3r)
-    %             \cr
-    %             0
-    %             \cr
-    %             \frac{i\omega \epsilon}{k_3}J'_n(k_3r)
-    %         \end{pmatrix}
-    %         +b\begin{pmatrix}
-    %             Y_n(k_3r)
-    %             \cr
-    %             -\frac{nk_z}{k_3^2r}Y_n(k_3r)
-    %             \cr
-    %             0
-    %             \cr
-    %             \frac{i\omega \epsilon}{k_3}Y'_n(k_3r)
-    %         \end{pmatrix}
-    %         +c\begin{pmatrix}
-    %             0
-    %             \cr
-    %             -\frac{i\omega \mu}{k_3}J'_n(k_3r)
-    %             \cr
-    %             J_n(k_3r)
-    %             \cr
-    %             -\frac{k_zn}{k_3^2r}J_n(k_3r)
-    %         \end{pmatrix}
-    %         +d
-    %         \begin{pmatrix}
-    %             0
-    %             \cr
-    %             -\frac{i\omega \mu}{k_3}Y'_n(k_3r)
-    %             \cr
-    %             Y_n(k_3r)
-    %             \cr
-    %             -\frac{k_zn}{k_3^2r}Y_n(k_3r)
-    %         \end{pmatrix}
-    %     \end{multline*}
-    %     which defines a fundamental basis of the Cauchy problem.
-
-    %     For one annulus, the boundary conditions  $E_{\theta}(r_0)=0$, $E_z(r_0)=0$ yield
-    %     \begin{align*}
-    %         a J_n(k_3r_0)+bY_n(k_3r_0)&=0
-    %         \\
-    %         cJ'_n(k_3r_0)+dY'_n(k_3r_0)&=0.
-    %     \end{align*}
-    %     The boundary conditions at $r=R$ yield
-    %     \begin{align*}
-    %         aJ_n(k_3R)+bY_n(k_3R) &= E_z^0
-    %         \cr
-    %         cJ'_n(k_3R)+dY'_n(k_3R) &= \frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0.
-    %     \end{align*}
-
-    %     Collecting, we have
-    %     \begin{align*}
-    %         a J_n(k_3r_0)+bY_n(k_3r_0)&=0
-    %         \cr
-    %         aJ_n(k_3R)+bY_n(k_3R)&= E_z^0
-    %         \cr
-    %         cJ'_n(k_3r_0)+dY'_n(k_3r_0)&=0
-    %         \cr
-    %         cJ'_n(k_3R)+dY'_n(k_3R)&= \frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0,
-    %     \end{align*}
-    %     which gives two decoupled systems.
-    %     Hence, under $d_n(k_3R)(dd_n)'(k_3R)\not=0$ there is existence and uniqueness of a solution of this system.
-    %     Note that the condition $d_n(k_3R)(dd_n)'(k_3R)\not=0$ do not depend on the pair of independent solutions of the Bessel equation chosen because there exists, for any pair $\{f,g\}$ of independent solutions of Equation (\ref{eq-bessel}), a constant $C(f,g)$ such that $f(r_0)g(R)-f(R)g(r_0)=C(f,g)d_n$.
-    %     The condition $d_n(R)(dd_n)'(R)=0$ was obtained in Pierre Payen's thesis but the operator was not expressed in a simple form, which is the aim of the end of this proof.
-
-
-    %     The solution of the system on $(a,b,c,d)$ is:
-
-    %     \begin{align*}
-    %         a&=-\frac{Y_n(k_3R)}{d_n(k_3R)}E_z^0
-    %         \cr
-    %         b&=\frac{J_n(k_3R)}{d_n(k_3R)}E_z^0
-    %         \cr
-    %         c&=-\frac{Y'_n(k_3R)}{D_n(k_3R)}[\frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0]
-    %         \cr
-    %         d&=\frac{J'_n(k_3R)}{D_n(k_3R)}[\frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0],
-    %     \end{align*}
-    %     One deduces
-    %     $$E_z(r)=E_z^0\frac{d_n(k_3r)}{d_n(k_3R)}, H_z(r)=[\frac{ik_zn}{k_3R\omega \mu}E^0_z+\frac{ik_3}{\omega \mu}E_{\theta}^0]\frac{dd_n(k_3r)}{D_n(k_3R)}=\frac{ik_3}{\omega \mu}[\frac{k_zn}{k_3^2R}E^0_z+E_{\theta}^0]S_n(r).$$
-    %     We use then (\ref{HthetaEtheta}) to deduce the two other components. In particular
-    %     $$\frac{dE_z}{dr}(r)=k_3E_z^0\frac{d'_n(k_3r)}{d_n(k_3R)}=E_z^0k_3T_n(k_3r),\frac{dH_z}{dr}(r)=\frac{ik_3^2}{\omega \mu}[E_{\theta}^0+\frac{ik_zn}{k_3^2R}E^0_z]\frac{D_n(r)}{D_n(R)},$$
-    %     which yields
-    %     \begin{align*}
-    %         H_{\theta}&=\frac{i\omega \epsilon}{k_3}E_z^0T_n(k_3r)-\frac{ik_zn}{k_3r\omega \mu}[E_{\theta}^0+\frac{ik_zn}{k_3^2R}E^0_z]S_n(k_3r),
-    %         \cr
-    %         E_{\theta}&=[E_{\theta}^0+\frac{ik_zn}{k_3^2R}E^0_z]\frac{D_n(k_3r)}{D_n(k_3R)}-\frac{k_zn}{k_3^2r}E_z^0\frac{d_n(k_3r)}{d_n(k_3R)}.
-    %     \end{align*}
-    %     Collection, the electromagnetic fields that were obtained here are 
-    %     \begin{align}
-    %         E_z(r)&=\frac{d_n(k_3r)}{d_n(k_3R)}E_z^0,
-    %         \cr
-    %         E_{\theta}(r)&=[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]\frac{D_n(k_3r)}{D_n(k_3R)}-\frac{nk_z}{k_3^2 r}\frac{d_n(k_3r)}{d_n(k_3R)}E_z^0
-    %         \cr
-    %         H_z(r)&=\frac{ik_3}{\omega \mu}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(k_3r)
-    %         \cr
-    %         H_{\theta}(r)&=-\frac{ik_zn}{k_3\omega \mu r}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(k_3r)+\frac{i\omega \epsilon}{k_3}E_z^0T_n(k_3r)
-    %     \label{formal-solutions}
-    %     \end{align}
-    %     As before, these expressions do not depend on the pair of independent solutions of the Bessel equation chosen.
-
-    %     Note that 
-    %     \begin{align*}
-    %         H_z(R)&=\frac{ik_3}{\omega \mu}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(R)
-    %         \cr
-    %         H_{\theta}(R)&=-\frac{ik_zn}{k_3\omega \mu R}[E_{\theta}^0+\frac{k_zn}{k_3^2R}E^0_z]S_n(R)+\frac{i\omega \epsilon}{k_3}E_z^0T_n(R),
-    %     \end{align*}
-    %     which yields the Calder\`on operator.
-    %     \end{proof}
-
-    %     \begin{REM}
-    %         Verification avec le calcul matriciel:
-    %     \end{REM}
 
     Soit \(J_n\) la fonction de Bessel de première espèce et \(H_n^{(2)}\) la fonction de Hankel de deuxième espèce, et \(J_n', H_n^{(2)}{}'\) leur dérivée.
 
@@ -1719,34 +1460,6 @@ De plus, les conditions limites considérés sont celle de Silver-Müller à l'i
     \subsubsection{Expression de l'opérateur de Calderòn pour \(k_z\) quelconque}
 
       On pose \(k_3 = \sqrt{k^2 - k_z^2}\) que l'on suppose non nul.
-
-      % La condition de conducteur parfait s'exprime sur \(\vE\), donc l'opérateur \(\hat\vJ = (\hat\mZ_n(k_z))^{-1}\hat\vE_t\) est plus simple à exprimer.
-
-      % \newcommand{\Sn}{\frac{
-      %   H^{(2)}_n(k_3r_1)J_n'(k_3r_0)-J_n(k_3r_1)H^{(2)}_n{}'(k_3r_0)
-      % }{
-      %   H^{(2)}_n{}'(k_3r_1)J_n'(k_3r_0)-J_n{}'(k_3r_1)H^{(2)}_n{}'(k_3r_0)
-      % }}
-
-      % \newcommand{\Tn}{\frac{
-      %   H^{(2)}_n{}'(k_3r_1)J_n(k_3r_0)-J_n'(k_3r_1)H^{(2)}_n(k_3r_0)
-      % }{
-      %   H^{(2)}_n(k_3r_1)J_n(k_3r_0)-J_n(k_3r_1)H^{(2)}_n(k_3r_0)
-      % }}
-
-      % \begin{align*}
-      %   (\hat\mZ_n(k_z))^{-1}_{11} ={}& i\frac{k_3}{k\eta}\Sn,
-      %   \\
-      %   (\hat\mZ_n(k_z))^{-1}_{12} ={}& i\frac{nk_z}{kk_3r_1\eta}\Sn,
-      %   \\
-      %   (\hat\mZ_n(k_z))^{-1}_{21} ={}& i\frac{nk_z}{kk_3r_1\eta}\Sn,
-      %   \\
-      %   \begin{split}
-      %   (\hat\mZ_n(k_z))^{-1}_{22} ={}& - i\frac{k}{k_3\eta}\Tn
-      %   \\
-      %   {}& + i\frac{n^2k_z^2}{kk_3r_1^2\eta}\Sn.
-      %   \end{split}
-      % \end{align*}
 
       L'opérateur \(\hat\mZ_n(k_z)\) est alors
 
