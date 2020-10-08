@@ -429,23 +429,23 @@
 
     \subsubsection{Minimisation sans contraintes}
 
-      \begin{thm}[Minimisation sans contraintes pour la CI3]
-        Les coefficients de la CIOE sont solutions du problème
+      \begin{defn}[Minimisation sans contraintes pour la CI3]
+        Soit \(X^* \in \CC^N\) une solution du problème 
 
-        Trouver \(X^* \in \CC^N\) tel que
+        Trouver \(X \in \CC^N\) tel que
         \begin{equation*}
-          X^* = \argmin{X\in \CC^N} J_Z(X).
+          X = \argmin{X\in \CC^N} J_Z(X).
         \end{equation*}
-      \end{thm}
+      \end{defn}
 
-      \begin{proof}
-        On remarque que la fonction \(J_Z\) est quadratique si la matrice \(\conj{\mA^t}{\mA}\) est hermitienne définie positive. Une matrice \(\mM\) est hermitienne si \(\forall x, \conj{x^t}\mM x \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}\mM x \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}\mM x \in \RR^{+*}\).
+      % \begin{proof}
+      %   On remarque que la fonction \(J_Z\) est quadratique si la matrice \(\conj{\mA^t}{\mA}\) est hermitienne définie positive. Une matrice \(\mM\) est hermitienne si \(\forall x, \conj{x^t}\mM x \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}\mM x \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}\mM x \in \RR^{+*}\).
 
-        On remarque que par construction, notre matrice \(\mM\) est hermitienne positive. 
-        Dans la section précédente, nous avons démontré l'inversibilité de ces matrices pour des CIOE particulières.
+      %   On remarque que par construction, notre matrice \(\mM\) est hermitienne positive. 
+      %   Dans la section précédente, nous avons démontré l'inversibilité de ces matrices pour des CIOE particulières.
 
-        Dans ce cadre, l'unique minimum est alors solution de \(\vgrads{}J_Z = 0\).
-      \end{proof}
+      %   Dans ce cadre, l'unique minimum est alors solution de \(\vgrads{}J_Z = 0\).
+      % \end{proof}
 
       \begin{prop}
         \label{prop:plan:minimisation:minimum_sans_contraintes}
@@ -475,22 +475,27 @@
 
     \subsubsection{Minimisation avec contraintes}
 
-      \begin{thm}[Minimisation avec contraintes pour la CI3]
+      \begin{defn}[Minimisation avec contraintes pour la CI3]
         Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
         Alors les coefficients de la CIOE respectant cette CSU sont solutions du problème.
 
         Trouver \(X^* \in \CC^5\) tel que
         \begin{equation*}
-          X^* = \argmin{X\in \CSU[3]{CI3}}  J_Z(X).
+         J_Z(X^*) = \min{X\in \CSU[3]{CI3}}  J_Z(X).
         \end{equation*}
-      \end{thm}
+      \end{defn}
 
-      \begin{REM}[minimum]
-        Si tu n'as pas de résultats d'existence et unicité, je ne comprends pas ce théorème.
-      \end{REM}
-      \begin{REP}
-        Si l'ensemble des contraintes est convexes, alors il y a existences et unicité. Je n'ai pas sur le montrer pour CI1 et CI3
-      \end{REP}
+      Si la fonction \(J_Z\) est quadratique et continue, alors il y a existence.
+      Nous savons que pour certaines CIOE (CI0, CI01, CI4), elle l'est inconditionnellement.
+
+      L'unicité dépend en plus de la convexité de l'espace des contraintes, qui l'est aussi pour les même CIOE.
+
+      % \begin{REM}[minimum]
+      %   Si tu n'as pas de résultats d'existence et unicité, je ne comprends pas ce théorème.
+      % \end{REM}
+      % \begin{REP}
+      %   Si l'ensemble des contraintes est convexes, alors il y a existences et unicité. Je n'ai pas sur le montrer pour CI1 et CI3
+      % \end{REP}
 
   \subsection{Résultats numériques sans contraintes}
 
