@@ -26,6 +26,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Merge all Tex file into one
         run: |
+              cat > merge.bash << EOF
+              #!/bin/bash
               parse()
               {
                   awk -v script="$0" '
@@ -37,26 +39,26 @@ jobs:
                       print $0;
                   }' $1
               }
-              main()
-              {
-                if [[ $# -ne 1 ]]; then
-                    echo "usage: $0 input.tex" > /dev/stderr
-                    exit 1
-                else
-                    if [[ ! -f "$1" ]]; then
-                        if [[ ! -f "$1.tex" ]]; then
-                            echo "error: $1 not a file" > /dev/stderr
-                            exit 2
-                        else
-                            parse "$1.tex"
-                        fi
-                    else
-                        parse "$1"
-                    fi
-                fi
-              }
-              main these_payen_2019.tex > mono.tex
+
+              if [[ $# -ne 1 ]]; then
+                  echo "usage: $0 input.tex" > /dev/stderr
+                  exit 1
+              else
+                  if [[ ! -f "$1" ]]; then
+                      if [[ ! -f "$1.tex" ]]; then
+                          echo "error: $1 not a file" > /dev/stderr
+                          exit 2
+                      else
+                          parse "$1.tex"
+                      fi
+                  else
+                      parse "$1"
+                  fi
+              fi
+
               exit 0
+              EOF
+              bash merge.bash these_payen_2019.tex > mono.tex
       - name: Upload Mono TeX File PDF
         uses: actions/upload-artifact@v2
         with:
