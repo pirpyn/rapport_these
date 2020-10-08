@@ -1,0 +1,66 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build Mono Tex file
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+
+      # Runs a set of commands using the runners shell
+      - name: Merge all Tex file into one
+        run: |
+              parse()
+              {
+                  awk -v script="$0" '
+                  /^\ *(\\input|\\include)\{/ {
+                      system(script " " gensub(/^.*\{([^}]+)\}.*$/,"\\1","g"))
+                      next
+                  }
+                  {
+                      print $0;
+                  }' $1
+              }
+              main()
+              {
+                if [[ $# -ne 1 ]]; then
+                    cat << end_usage
+                usage: $0 input.tex
+                end_usage
+                    exit 1
+                else
+                    if [[ ! -f "$1" ]]; then
+                        if [[ ! -f "$1.tex" ]]; then
+                            echo "error: $1 not a file" > /dev/stderr
+                            exit 2
+                        else
+                            parse "$1.tex"
+                        fi
+                    else
+                        parse "$1"
+                    fi
+                fi
+              }
+              main these_payen_2019.tex > ./build/mono.tex
+              exit 0
+      - name: Upload Mono TeX File PDF
+        uses: actions/upload-artifact@v2
+        with:
+          name: mono.tex
+          path: build/mono.tex
