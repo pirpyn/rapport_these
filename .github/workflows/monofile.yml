@@ -40,9 +40,7 @@ jobs:
               main()
               {
                 if [[ $# -ne 1 ]]; then
-                    cat << end_usage
-                usage: $0 input.tex
-                end_usage
+                    echo "usage: $0 input.tex" > /dev/stderr
                     exit 1
                 else
                     if [[ ! -f "$1" ]]; then
