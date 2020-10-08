@@ -55,10 +55,10 @@ jobs:
                     fi
                 fi
               }
-              main these_payen_2019.tex > ./build/mono.tex
+              main these_payen_2019.tex > mono.tex
               exit 0
       - name: Upload Mono TeX File PDF
         uses: actions/upload-artifact@v2
         with:
           name: mono.tex
-          path: build/mono.tex
+          path: mono.tex
