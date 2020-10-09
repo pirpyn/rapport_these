@@ -1,15 +1,22 @@
 \section[Des CSU pour les CIOE de Stupfel et Poget 2011]{Des conditions suffisantes pour les CIOE de \cite{stupfel_sufficient_2011}}
 
-  \begin{REM}
-    Tu dois mettre ici un paragraphe sur la notion d'opérateur de Calderón, pour dire qu'une CIOE est une CL sur \(\partial\Omega\) qui remplace le compactant de \(\Omega\).
-  \end{REM}
-  \begin{REP}
-    Je ne connais pas les opérateurs de Calderón, ni la notion de compactant.
-  \end{REP}
-  Nous définissons une \glspl{acr-cioe} comme une condition limite liant \(\vE_t\) et \(\vn\pvect\vH\) sur \(\Gamma\).
+  Nous rappelons que nous avons introduits dans le chapitre \ref{sec:context_math} l'opérateur de Calderón liant les champs sur la surface extérieur de l'objet. 
+
+  % \begin{REM}
+  %   Tu dois mettre ici un paragraphe sur la notion d'opérateur de Calderón, pour dire qu'une CIOE est une CL sur \(\partial\Omega\) qui remplace le compactant de \(\Omega\).
+  % \end{REM}
+  % \begin{REP}
+  %   Je ne connais pas les opérateurs de Calderón, ni la notion de compactant.
+  % \end{REP}
+
+  Nous définissons une \glspl{acr-cioe} une condition limite liant \(\vE_t\) et \(\vn\pvect\vH\) sur \(\Gamma\) comme une approximation de cet opérateur de Calderón.
   %L'existence des CIOE est en dehors du cadre de cette thèse, nous ne ferons donc qu'utiliser des CIOE existantes.
 
-  Grâce à ces CIOE, nous allons établir des conditions suffisantes qui impliquent la \gls{acr-cgu} \eqref{eq:unicite:form_var:cgu}. Comme ces conditions ne sont que suffisantes, il n'y pas une unique \gls{acr-csu} pour une CIOE donnée. La difficulté est d'être capable de juger si une CIOE est satisfaisante, et si ce n'est pas le cas, d'être capable d'en proposer une autre. Par abus de langage, une CSU peut contenir une ou plusieurs expressions, il est important que ces expressions permettent de déduire la propriété \eqref{eq:unicite:form_var:cgu}.
+  Grâce à ces CIOE, nous allons établir des conditions suffisantes qui impliquent la \gls{acr-cgu} \eqref{eq:unicite:form_var:cgu}.
+  Comme ces conditions ne sont que suffisantes, il n'y pas une unique \gls{acr-csu} pour une CIOE donnée.
+  La difficulté est d'être capable de juger si une CIOE est satisfaisante, et si ce n'est pas le cas, d'être capable d'en proposer une autre.
+
+  Par abus de langage, une CSU peut contenir une ou plusieurs expressions, il est important que ces expressions permettent de déduire la propriété \eqref{eq:unicite:form_var:cgu}.
 
   Les CIOE de \cite{stupfel_sufficient_2011} font intervenir l'opérateur de Hodge \(\LL\) qui est l'opérateur laplacien vectoriel surfacique, commençons par rappeler son expression et quelques propriétés.
 
@@ -47,12 +54,13 @@
     \end{align*}
   \end{proof}
 
-  \begin{REM}
-    Tu as besoin ici de \(\Gamma\) infiniment régulière ( à vérifier ) ?
-  \end{REM}
-  \begin{REP}
-    On a toujours considéré la surface infiniment régulière pour calculer les coeffs.
-  \end{REP}
+  % \begin{REM}
+  %   Tu as besoin ici de \(\Gamma\) infiniment régulière ( à vérifier ) ?
+  % \end{REM}
+  % \begin{REP}
+  %   On a toujours considéré la surface infiniment régulière pour calculer les coeffs.
+  % \end{REP}
+
   \begin{prop}
     \label{prop:unicite:injectif:operateur:L}
     Soit \(\vu \in V=(\mathcal{C}^\infty(\Gamma))^3, a_0 \in \CC, a_1 \in \CC\).
@@ -139,15 +147,15 @@
         a_0 \in \CSU{CI0},
       \end{equation*}
       alors le problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci0}\} a une unique solution.
-      \begin{REM}
-        alors le problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci0}\} a une unique solution.
-      \end{REM}
-      \begin{REP}
-      N'est-ce pas la même chose : je nomme la CIOE plutôt que d'y référer par numéro.
-      \end{REP}
-      \begin{REP}
-      Fait
-      \end{REP}
+      % \begin{REM}
+      %   alors le problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci0}\} a une unique solution.
+      % \end{REM}
+      % \begin{REP}
+      % N'est-ce pas la même chose : je nomme la CIOE plutôt que d'y référer par numéro.
+      % \end{REP}
+      % \begin{REP}
+      % Fait
+      % \end{REP}
     \end{prop}
     \begin{proof}
       Cela découle de \( X = \conj{a_0}\norm{\vJ}^2\) donc \(\Re(X) = \Re(a_0)\norm{\vJ}^2 \).
@@ -181,15 +189,15 @@
         (a_0,a_1) \in \CSU{CI01},
       \end{equation*}
       alors le problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci01}\} a une unique solution.
-      \begin{REM}
-        Je te propose de mettre soit le pb \eqref{eq:unicite:probleme_sans_ci}, CI01  soit  \eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci01} (le problème est le système complet).
-      \end{REM}
-      \begin{REP}
-        Sauf que justement \eqref{eq:unicite:probleme_sans_ci} est "complet", je ne spécifie pas la condition choisie dedans, mais il y en une.
-      \end{REP}
-      \begin{REP}
-      Fait
-      \end{REP}
+      % \begin{REM}
+      %   Je te propose de mettre soit le pb \eqref{eq:unicite:probleme_sans_ci}, CI01  soit  \eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci01} (le problème est le système complet).
+      % \end{REM}
+      % \begin{REP}
+      %   Sauf que justement \eqref{eq:unicite:probleme_sans_ci} est "complet", je ne spécifie pas la condition choisie dedans, mais il y en une.
+      % \end{REP}
+      % \begin{REP}
+      % Fait
+      % \end{REP}
     \end{prop}
     \begin{proof}
       On a
@@ -309,14 +317,14 @@
       \\
       \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) &\subsetneq (\CSU{CI01}\times\lbrace0\rbrace).
     \end{align}
-      Comme la CIOE CI1 avec \(b=0\) est équivalente à la CI01, cela veut dire que cette CSU n'est pas idéale. 
-      \begin{REM}
-        A proscrire dans un texte mathématique: veux-tu dire que ce n'est pas la meilleure ?
-      \end{REM}
-      \begin{REP}
-        Non, qu'on voudrait retrouver les CSU de la CI01, plus une condition sur b.
-      \end{REP}
-      Plus précisément, soit \(S = \lbrace (a_0,a_1) \in \CC^2; \Re(a_1)=0 \rbrace\), on a
+     Autrement dit cette CSU de la CIOE CI1 avec \(b=0\) n'est pas équivalente à la CSU de la CI01. 
+    % \begin{REM}
+    %   A proscrire dans un texte mathématique: veux-tu dire que ce n'est pas la meilleure ?
+    % \end{REM}
+    % \begin{REP}
+    %   Non, qu'on voudrait retrouver les CSU de la CI01, plus une condition sur b.
+    % \end{REP}
+    Plus précisément, soit \(S = \lbrace (a_0,a_1) \in \CC^2; \Re(a_1)=0 \rbrace\), on a
     \begin{equation}
       \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) = (\CSU{CI01}\cap S) \times\lbrace0\rbrace. 
     \end{equation}
@@ -393,12 +401,12 @@
         (a_0,a_1,b) \in \CSU[2]{CI1} \Rightarrow \Re(X)\ge 0. 
       \end{equation*}
       C'est-à-dire \((a_0,a_1,b) \in \CSU[2]{CI1}\) entraîne l'unicité de la solution du problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci1}\}.
-      \begin{REM}
-        (\eqref{eq:unicite:probleme_sans_ci}, CI1) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci1}).
-      \end{REM}
-      \begin{REP}
-        Fait
-      \end{REP}
+      % \begin{REM}
+      %   (\eqref{eq:unicite:probleme_sans_ci}, CI1) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci1}).
+      % \end{REM}
+      % \begin{REP}
+      %   Fait
+      % \end{REP}
     \end{prop}
 
     \begin{proof}

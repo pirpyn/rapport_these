@@ -1,30 +1,31 @@
 \section[Une CSU des solutions du problème de Maxwell extérieur]{Une condition suffisante assurant l'unicité des solutions du problème de Maxwell extérieur}
 
-  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, sans sources. Les champs associés sont solutions des équations de Maxwell harmoniques, la convention dans toute la thèse étant en \(e^{i\w t}\). 
+  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, sans sources.
+  Les champs associés sont solutions des équations de Maxwell harmoniques, la convention dans toute la thèse étant en \(e^{i\w t}\). 
 
-  \begin{REM}
-    Remplacer partout "l'unicité de solutions" par "l'unique solution est 0".
-  \end{REM}
+  % \begin{REM}
+  %   Remplacer partout "l'unicité des solutions" par "l'unique solution est 0".
+  % \end{REM}
 
-  \begin{REM}
-      Régularité de \(\Gamma\) ? Attention, comment définir l'extérieur sans convexité ( bouteille de Klein ) ?
-  \end{REM}
-  \begin{REP}
-      Je n'ai étudié que des objets convexes, mais la régularité était au pire \(C^1\) : cône-sphère.
-  \end{REP}
-  Soit \(\gls{mat-ga}=\partial\overline{\gls{mat-om}}\) la frontière de \(\OO\), on décompose donc tout l'espace entre l'intérieur et l'extérieur, soit 
+  Puisque le problème est sans sources, nous allons déterminer une condition suffisante qui assure que seuls les champs nuls sont solutions de ce problème.
+
+  % \begin{REM}
+  %     Régularité de \(\Gamma\) ? Attention, comment définir l'extérieur sans convexité ( bouteille de Klein ) ?
+  % \end{REM}
+  % \begin{REP}
+  %     Je n'ai étudié que des objets convexes, mais la régularité était au pire \(C^1\) : cône-sphère.
+  % \end{REP}
+
+  Soit \(\gls{mat-ga}=\partial\overline{\gls{mat-om}}\) la frontière de \(\OO\) que l'on suppose régulière (au moins \(\mathcal{C}^2\)), on décompose donc tout l'espace entre l'intérieur et l'extérieur, soit 
   \[
     \RR^3 = \overline{\OO}\cup{\OO}^c.
   \]
   On définit en tout point de \(\Gamma\), supposée régulière, \(\gls{mat-vn}\) la normale unitaire sortante à \(\OO\).
   Dans \(\OO^c\) on définit \(\gls{phy-k0}=\gls{phy-w} / \gls{phy-c} \in \RR_+^*\), le nombre d'onde dans le vide, où \gls{phy-c} 
-  \begin{REM} 
-      \(c=\frac{1}{\sqrt{\eps_0\mu_0}}\)
-  \end{REM}
-  \begin{REP}
-    définie dans le glossaire 
-  \end{REP}
   est la célérité d'une onde dans le vide.
+  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, sans sources.
+  Les champs associés sont solutions des équations de Maxwell harmoniques, la convention dans toute la thèse étant en \(e^{i\w t}\). 
+
   % Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
   Nous utilisons les équations de Maxwell-Helmholtz où les inconnues sont le champ électrique \gls{phy-e} et l'induction magnétique \gls{phy-h2} dans le vide, elles se déduisent du système d'équations de Maxwell (voir annexe \ref{sec:annex:maxwell_equation}). 
 
@@ -40,24 +41,24 @@
     \label{eq:unicite:maxwell_ext}
   \end{align}
 
-%  En l'absence de source, le rotationnel d'un des champs a la même régularité que le champs lui-même, donc ces champs sont \(\mathcal{C}^\infty\).
+  %  En l'absence de source, le rotationnel d'un des champs a la même régularité que le champs lui-même, donc ces champs sont \(\mathcal{C}^\infty\).
 
   Pour étudier ce problème numériquement, on se ramène à un ouvert borné de la manière suivante : soit \(R\in\RR_+^*\) tel que le domaine \(\overline{\Omega}\) soit inclus dans \(B_R\), la boule de rayon \(R\).
   On cherche alors les solutions de \eqref{eq:unicite:maxwell_ext} dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\), \(S_R\) étant la sphère de rayon \(R\) où l'on écrit la condition de rayonnement à l'infini
   \begin{equation}
     \label{eq:unicite:TR}
     \begin{aligned}
-    \Tr(\vE_t) = - \vn_{B_R} \pvect \vH && \text{sur \(S_R\).}
+      \Tr(\vE_t) = - \vn_{B_R} \pvect \vH && \text{sur \(S_R\).}
     \end{aligned}
   \end{equation}
   \(\Tr\) est l'opérateur de capacité défini par \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{B_R}=\frac{1}{R}\vect{OM}\) la normale unitaire sortante à \(B_R\).
 
   Soit \(V = \lbrace \vect{u} \in (\mathcal{C}^\infty(\OO^c_R)\cap\Hrot(\OO^c_R) \rbrace\).
 
-  Le problème \eqref{eq:unicite:maxwell_ext} sans sources muni de la condition \eqref{eq:unicite:TR} est équivalent à
-  \begin{REM}
-  Quand le problème est bien posé
-  \end{REM}
+  Quand il est bien posé, le problème \eqref{eq:unicite:maxwell_ext} sans sources muni de la condition \eqref{eq:unicite:TR} est équivalent à
+  % \begin{REM}
+  % Quand le problème est bien posé
+  % \end{REM}
   \begin{prop}[Formulation variationnelle du problème de Maxwell extérieur sans sources]
     Trouver \(\vE \in V\),
     \begin{align*}
@@ -73,12 +74,12 @@
       \end{aligned}
     \end{equation*}
   \end{prop}
-  \begin{REM}
-      Ici, tu viens seulement de démontrer \(\Rightarrow\). Tu n'as pas démontré l'équivalence. A faire ? Ou supprimer l'équivalence.
-  \end{REM}
-  \begin{REP}
-    Mis une ref vers Cessenat pour la réciproque.
-  \end{REP}
+  % \begin{REM}
+  %     Ici, tu viens seulement de démontrer \(\Rightarrow\). Tu n'as pas démontré l'équivalence. A faire ? Ou supprimer l'équivalence.
+  % \end{REM}
+  % \begin{REP}
+  %   Mis une ref vers Cessenat pour la réciproque.
+  % \end{REP}
   \begin{proof} Sens direct.
     Nous omettons les dépendances en \(\vx\).
     Partons de la première équation de Maxwell

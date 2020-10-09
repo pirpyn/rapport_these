@@ -1,22 +1,24 @@
 \section[Des CSU pour la CIOE de Marceaux et Stupfel 2000]{Des conditions suffisantes pour la CIOE de \cite{marceaux_high-order_2000}}
 
+  Soit \(V=(\mathcal{C}^\infty(\Gamma))^3\) l'ensemble des champs tangents à \(\Gamma\) exprimé dans le repère cartésien.
+  Exprimé dans le repère local à la surface, les éléments de cette ensemble n'ont pas de composantes normale.
 
   \begin{defn}
     On définit les opérateurs \gls{ope-LD} et \gls{ope-LR} tels que %sont introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\) 
 
-    \begin{REM}
-      Vivent-ils sur les vecteurs tangents ?
-    \end{REM}
-    \begin{REP}
-      En commentaire dans le \TeX : [les opérateurs] introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\).
-    \end{REP}
+    % \begin{REM}
+    %   Vivent-ils sur les vecteurs tangents ?
+    % \end{REM}
+    % \begin{REP}
+    %   En commentaire dans le \TeX : [les opérateurs] introduits par \cite[eq.~4]{stupfel_implementation_2015} et s'expriment pour tous vecteurs complexes régulier tangents à \(\Gamma\).
+    % \end{REP}
 
     \begin{equation*}
       \begin{aligned}
-        &\fonction{\LD}{(\mathcal{C}^\infty(\Gamma))^3}{(\mathcal{C}^\infty(\Gamma))^3}%
+        &\fonction{\LD}{V}{V}%
           {\vu}{\vgrads{\vdivs \vu},}
         \\
-        &\fonction{\LR}{(\mathcal{C}^\infty(\Gamma))^3}{(\mathcal{C}^\infty(\Gamma))^3}%
+        &\fonction{\LR}{V}{V}%
           {\vu}{\vrots{\vrots \vu}.}
       \end{aligned}
     \end{equation*}
@@ -26,15 +28,15 @@
     L'opérateur \(\LD\) est hermitien symétrique négatif et \(\LR\) est hermitien symétrique positif.
   \end{prop}
 
-  \begin{REM}
-    Si j'ai bien compris, \(\vu\) peut avoir des composantes tangentes mais pas le résultat ?
-  \end{REM}
-  \begin{REP}
-    Je ne comprends pas cette remarque.
-  \end{REP}
+  % \begin{REM}
+  %   Si j'ai bien compris, \(\vu\) peut avoir des composantes tangentes mais pas le résultat ?
+  % \end{REM}
+  % \begin{REP}
+  %   Je ne comprends pas cette remarque.
+  % \end{REP}
 
   \begin{proof}
-    Pour tout \(\vu \in (\mathcal C^\infty(\Gamma))^3\),
+    Pour tout \(\vu \in V\),
     \begin{align*}
       \int_\Gamma \LD(\vu)\cdot \conj{\vu} &= -\norm{\vdivs \vu}^2,
       \\
@@ -42,22 +44,21 @@
     \end{align*}
   \end{proof}
 
-  Soit \(V=(\mathcal{C}^\infty(\Gamma))^3\).
-  \begin{REM}
-    L'ensemble des champs tangents \(C^\infty\) ?
-  \end{REM}
-  \begin{REP}
-    Oui ?
-  \end{REP}
-  \begin{REM}
-    Est-ce que \(\vu\) est un vecteur tangent au bord ?
-    Si oui, c'est un vecteur de \(C^\infty(\Gamma)^2\).
-    Dis-le précisément s'il y a une composante normale ( je sais qu'on en a parlé à Montréal )
-  \end{REM}
-  \begin{REP}
-    Oui.
-    Quand je met un vecteur à 3 composantes, c'est que la dernière est nulle en pratique.
-  \end{REP}
+  % \begin{REM}
+  %   L'ensemble des champs tangents \(C^\infty\) ?
+  % \end{REM}
+  % \begin{REP}
+  %   Oui ?
+  % \end{REP}
+  % \begin{REM}
+  %   Est-ce que \(\vu\) est un vecteur tangent au bord ?
+  %   Si oui, c'est un vecteur de \(C^\infty(\Gamma)^2\).
+  %   Dis-le précisément s'il y a une composante normale ( je sais qu'on en a parlé à Montréal )
+  % \end{REM}
+  % \begin{REP}
+  %   Oui.
+  %   Quand je met un vecteur à 3 composantes, c'est que la dernière est nulle en pratique.
+  % \end{REP}
   \begin{prop}
     \label{prop:unicite:injectif:operateur:LD}
     Soit \(\vu \in V\).
@@ -176,9 +177,9 @@
     \end{equation*}
     ce qui entraîne l'unicité de la solution du problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}\}.
   \end{prop}
-  \begin{REM}
-    (\eqref{eq:unicite:probleme_sans_ci}, CI4) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}).
-  \end{REM}
+  % \begin{REM}
+  %   (\eqref{eq:unicite:probleme_sans_ci}, CI4) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}).
+  % \end{REM}
   \begin{proof}
     Par définition de \(X\) \eqref{eq:unicite:x}, on a
     \begin{align*}
@@ -193,13 +194,13 @@
     \CSU{CI4}\cap S &= (\CSU{CI01}\times\CC)\cap S. 
   \end{align}
   Dans le cas \(a_1=a_2\), (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci01}) et (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}) sont le même problème, et les CSU correspondantes sont les mêmes.
-  \begin{REM}
-    Mal exprimé.
-    Dans le cas \(a_1=a_2\), (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci01}) et (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}) sont le même problème, et les CSU correspondantes sont les mêmes.
-  \end{REM}
-  \begin{REP}
-    Fait
-  \end{REP}
+  % \begin{REM}
+  %   Mal exprimé.
+  %   Dans le cas \(a_1=a_2\), (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci01}) et (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci4}) sont le même problème, et les CSU correspondantes sont les mêmes.
+  % \end{REM}
+  % \begin{REP}
+  %   Fait
+  % \end{REP}
 \subsection{CSU pour la CI3}
 
   Soit la CIOE énoncée dans \cite{marceaux_high-order_2000} que l'on nomme \hyperlink{ci3}{CI3} :
@@ -265,12 +266,12 @@
     \end{equation*}
     ce qui entraîne l'unicité de la solution du problème \{\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci3:ci3}\}.
   \end{prop}
-  \begin{REM}
-    (\eqref{eq:unicite:probleme_sans_ci}, CI3) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci3:ci3}).
-  \end{REM}
-  \begin{REP}
-    Fait
-  \end{REP}
+  % \begin{REM}
+  %   (\eqref{eq:unicite:probleme_sans_ci}, CI3) ou (\eqref{eq:unicite:probleme_sans_ci},\eqref{eq:unicite:ci3:ci3}).
+  % \end{REM}
+  % \begin{REP}
+  %   Fait
+  % \end{REP}
   \begin{proof}
     Soit \(\LL_3\) l'opérateur
     \begin{equation}
