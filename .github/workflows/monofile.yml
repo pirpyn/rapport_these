@@ -67,10 +67,11 @@ jobs:
       - name: Upload Mono TeX File PDF
         uses: actions/upload-artifact@v2
         with:
-          name: mono.tex
+          name: Monotex
           path: |
             mono.tex
             bib/
             images/
             csv/
-            
+            latexmkrc
+
