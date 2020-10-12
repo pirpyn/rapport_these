@@ -1,20 +1,23 @@
 \section[Une CNS pour l'unicité des solutions de Maxwell intérieur]{Une condition nécessaire et suffisante pour l'unicité des solutions du problème intérieur}
   \subsection{Cas général: alternative de Fredholm}
 
-    \begin{REM}
-      Pourquoi cette partie ne serait-elle pas résumée au début afin d'introduire.
-    \end{REM}
-    \begin{REP}
-      Au début de la thèse, introduction, chapitre ?
-    \end{REP}
+    Cette partie détaille l'introduction à l'opérateur de Calderón du chapitre \ref{sec:context_math}.
 
-    Pour exprimer l'opérateur d'impédance,
-    \begin{REM}
-      Calderon ou impédance
-    \end{REM}
-    \begin{REP}
-      Je préfère impédance, ça m'évite de parler d'une théorie que je ne connais pas.
-    \end{REP}
+    % \begin{REM}
+    %   Pourquoi cette partie ne serait-elle pas résumée au début afin d'introduire.
+    % \end{REM}
+    % \begin{REP}
+    %   Au début de la thèse, introduction, chapitre ?
+    % \end{REP}
+
+    Pour exprimer l'opérateur de Calderón,
+    % \begin{REM}
+    %   Calderon ou impédance
+    % \end{REM}
+    % \begin{REP}
+    %   Je préfère impédance, ça m'évite de parler d'une théorie que je ne connais pas.
+    % \end{REP}
+
     nous devons exprimer les champs dans l'objet. Il apparaît nécessaire que ces derniers soient donc bien définis.
 
     Nous exhibons une condition nécessaire et suffisante d'unicité des solutions du problème de Maxwell-Helmholtz  \eqref{eq:unicite:maxwell_int} dans \(\OO\), objet multicouche autour d'un \gls{acr-cep}, c'est-a-dire tel que \(\partial \OO = \Gamma \cup \Gamma_0\) où \(\Gamma\) est la surface extérieure et \(\Gamma_0\) la surface intérieure. Le problème de Maxwell harmonique en \(e^{i\w t}\) s'exprime
@@ -37,38 +40,42 @@
     Nous renvoyons à l'ouvrage cité précédemment pour la démonstration, en dehors du cadre de cette thèse.
     D'après ce résultat, nous pouvons avoir des résonances pour le problème intérieur, c'est-à-dire des solutions non nulles du problème sans sources donc non-uniques.
 
-    \begin{REM}
-      Parler de Calderon générale page 111 112.
-    \end{REM}
+    % \begin{REM}
+    %   Parler de Calderon générale page 111 112.
+    % \end{REM}
 
-  \subsection{Cas particuliers de géométries particulières}
+  \subsection{Simplification de la géométrie  pour déduire l'opérateur de Calderón.}
     Cette thèse s'attache à déterminer les coefficients des \glspl{acr-cioe} des sections précédentes.
     Nous devons être capables d'exprimer l'opérateur d'impédance exact pour l'approcher par les CIOE.
-    Il faut donc que les champs soient déterminés de façon unique pour exprimer cet opérateur. Nous ne pouvons nous satisfaire de l'alternative de Fredholm et devons exprimer une condition plus pratique pour déterminer s'il y a unicité.
-    Nous allons alors approcher l'objet par une forme simple mais avec les mêmes caractéristiques pour l'empilement. Ainsi nous étudierons trois approximations :
-    \begin{REM}
-      Ce n'est pas une approximation de l'objet mais des objets modèles.
-    \end{REM}
-    \begin{REP}
-      Oui et non. 
-      On a bien des objets modèles type sphère, cône-sphère lors du calcul intégral, mais en plus, lors du calcul des coefficients des CIOE, ces objets sont localement approchés par une des 3 géométries. 
-      Ainsi, l'objet modèle sphère est localement approché par un plan. 
-      Tout dépend du contexte.
-      Dans le cadre du calcul des coefficients de CIOE, on approche l'objet modèle par un autre si besoin.
-    \end{REP}
+    Il faut donc que les champs soient déterminés de façon unique pour exprimer cet opérateur.
+    Nous ne pouvons nous satisfaire de l'alternative de Fredholm et devons exprimer une condition plus pratique pour déterminer s'il y a unicité.
+    Nous allons alors approcher l'objet par une forme simple mais avec les mêmes caractéristiques pour l'empilement.
+    Ainsi nous étudierons trois objets modèles pour le calcul de l'opérateur de Calderón ainsi que pour le calcul des coefficients des CIOE.
+    % \begin{REM}
+    %   Ce n'est pas une approximation de l'objet mais des objets modèles.
+    % \end{REM}
+    % \begin{REP}
+    %   Oui et non. 
+    %   On a bien des objets modèles type sphère, cône-sphère lors du calcul intégral, mais en plus, lors du calcul des coefficients des CIOE, ces objets sont localement approchés par une des 3 géométries. 
+    %   Ainsi, l'objet modèle sphère est localement approché par un plan. 
+    %   Tout dépend du contexte.
+    %   Dans le cadre du calcul des coefficients de CIOE, on approche l'objet modèle par un autre si besoin.
+    % \end{REP}
     \begin{enumerate}
       \item Un objet plan infini 
       \item Un objet cylindrique
       \item Un objet sphérique
     \end{enumerate}
    
-    L'alternative de Fredholm n'étant pas utilisable en pratique,
-    \begin{REM}
-      Que veux-tu dire par là ? Que \(\eps\mu\w^2\) n'est jamais valeur propre du Laplacien ?
-    \end{REM}
-    \begin{REP}
-      Que dire qu'il y a unicité ou que les résonances sont définies par un espace vectoriel n’empêche pas le code de minimisation de planter à cause des singularités quand on tombe sur ces résonances.
-    \end{REP}
+    Cependant, nous utiliserons des objets différents (cylindre à bouts arrondis, sphère-cône) lors du calcul par équation intégrales, utilisant les coefficients calculés sur ces objets modèles.
+
+    Nous désirons une condition ne dépendant pas de la géométrie pour garantir l'unicité et l'alternative de Fredholm n'étant donc pas utilisable,
+    % \begin{REM}
+    %   Que veux-tu dire par là ? Que \(\eps\mu\w^2\) n'est jamais valeur propre du Laplacien ?
+    % \end{REM}
+    % \begin{REP}
+    %   Que dire qu'il y a unicité ou que les résonances sont définies par un espace vectoriel n’empêche pas le code de minimisation de planter à cause des singularités quand on tombe sur ces résonances.
+    % \end{REP}
     nous allons simplifier la géométrie du problème pour aboutir à une condition nécessaire d'unicité.
 
     L'objet est représenté schématiquement:
