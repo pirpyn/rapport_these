@@ -28,7 +28,7 @@ jobs:
         run: |
             export date="$(date +%Y_%m_%d-%Hh%Mm%Ss)";
             export file="these_payen.${date}.pdf";
-            mv build/these_payen_2019.pdf ${file};
+            mv ./build/these_payen_2019.pdf ${file};
       - name: Upload Latex PDF
         uses: actions/upload-artifact@v2
         with:
