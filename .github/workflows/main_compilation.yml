@@ -22,10 +22,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Set up Git repository
         uses: actions/checkout@v2
-      - name: Compile LaTeX document
-        uses: dante-ev/latex-action@master
+      #- name: Compile LaTeX document
+      #  uses: dante-ev/latex-action@master
+      - name: Append date to pdf
+        run: |
+            touch build/these_payen_2019.pdf;
+            export date="\$(date +%Y_%m_%d-%Hh%Mm%Ss)";
+            export file="these_payen_2019.\${date}.pdf";
+            mv build/these_payen_2019.pdf \${file};
       - name: Upload Latex PDF
         uses: actions/upload-artifact@v2
         with:
-          name: payen_thesis_2019.pdf
-          path: build/these_payen_2019.pdf
+          name: payen_thesis_2019
+          path: ${{ env.file }}
