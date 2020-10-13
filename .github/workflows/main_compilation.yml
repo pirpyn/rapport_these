@@ -26,9 +26,9 @@ jobs:
         uses: dante-ev/latex-action@master
       - name: Append date to pdf
         run: |
-            export date="$(date +%Y_%m_%d-%Hh%Mm%Ss)";
-            export file="these_payen.${date}.pdf";
-            mv ./build/these_payen_2019.pdf ${file};
+            date="$(date +%Y_%m_%d-%Hh%Mm%Ss)";
+            file="these_payen.${date}.pdf";
+            cp build/these_payen_2019.pdf ${file};
       - name: Upload Latex PDF
         uses: actions/upload-artifact@v2
         with:
