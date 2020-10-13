@@ -34,7 +34,9 @@ On suppose enfin que ces champs \(\vE(\vect{x},t),\vect H(\vect{x},t)\) ont des 
 % \end{REM}
 Dans cette thèse, on utilise les équations harmoniques de Maxwell, ainsi on réalise au moins une transformée partielle en temps. La variable de Fourier associée est \(\w\), et donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\gls{phy-w}\).
 
-On va donc utiliser le système d'équations de Maxwell harmonique:
+Afin d'utiliser les mêmes conventions que \cite{stupfel_implementation_2015}, on substitue au champ magnétique \gls{phy-h} l’excitation magnétique \(\gls{phy-h2} = \gls{phy-eta0} \gls{phy-h}\).
+
+Le système d'équations de Maxwell harmonique usuel est
 \begin{equation}
     \left\lbrace
     \begin{matrix}
@@ -42,26 +44,26 @@ On va donc utiliser le système d'équations de Maxwell harmonique:
     \\
     \vrot \hat{\gls{phy-h}}(k_1,k_2,x_n,\w)  &=& i \omega \eps(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w).
     \end{matrix}
-    \right.
+    \right.,
     \label{eq:imp_fourier:intro:maxwell_harmonique}
 \end{equation}
 
-Afin d'utiliser les mêmes conventions que \cite{stupfel_implementation_2015}, on substitue au champ magnétique \gls{phy-h} l’excitation magnétique \(\gls{phy-h2} = \gls{phy-eta0} \gls{phy-h}\). Les équations de Maxwell harmoniques sont en définitive
+mais le système considérés dans cette thèse est
 \begin{equation}
     \left\lbrace
     \begin{matrix}
     \vrot \hat{\gls{phy-e}}(k_1,k_2,x_n,\w)  &=& -i k(x_n) \eta_r(x_n) \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w),  \\
     \vrot \hat{\gls{phy-h2}}(k_1,k_2,x_n,\w)  &=& i k(x_n) \eta_r^{-1}(x_n) \hat{\gls{phy-e}}(k_1,k_2,x_n,\w).
     \end{matrix}
-    \right.
+    \right..
     \label{eq:imp_fourier:intro:maxwell_harmonique:form_cea}
 \end{equation}
-\begin{REM}
-    Tu aurais du le mettre page précédente
-\end{REM}
-\begin{REP}
-    Je ne vois pas de manière de le faire plus efficacement. Ici on part du sytème bien connus, puis on présente notre système.
-\end{REP}
+% \begin{REM}
+%     Tu aurais du le mettre page précédente
+% \end{REM}
+% \begin{REP}
+%     Je ne vois pas de manière de le faire plus efficacement. Ici on part du sytème bien connus, puis on présente notre système.
+% \end{REP}
 \(\eps(x_n)=\gls{phy-eps}_r(x_n)\gls{phy-eps0}\), \(\mu(x_n)=\gls{phy-mu}_r(x_n)\gls{phy-mu0}\), \(\eta_r(x_n)=\sqrt{\mu_r(x_n)/\eps_r(x_n)}\), \(\gls{phy-k}=\gls{phy-k0}\sqrt{\gls{phy-mu}_r(x_n)\gls{phy-eps}_r(x_n)}\), \(\gls{phy-k0} = \w\sqrt{\mu_0\eps_0}\) tel qu'en tout point extérieur de \(\OO\), \(\gls{phy-eps}_r(x_n) = \gls{phy-mu}_r(x_n)= 1\).
 
 \hypertarget{calderon}{}

@@ -296,22 +296,23 @@
         On commence par montrer un lemme très utile pour trouver l'expression de \(\hat \mZ(k_x,k_y)\).
         \begin{lemme}[Continuité des impédances]
           \label{lem:plan:continuite_impedance}
-          Soit \(z_m\) une interface entre deux matériaux. On suppose qu'il existe les matrices d'impédance de part et d'autre de l'interface.
+          Soit \(z_m\) une interface entre deux matériaux.
+          On suppose qu'il existe des matrices de part et d'autre de l'interface telles que
           \begin{align*}
               \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right),
               \\
-              \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right),
+              \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right).
           \end{align*}
-          alors il y a continuité de l'impédance au travers de l'interface
+          Alors
           \begin{equation*}
           \hat \mZ^+(k_x,k_y) = \hat \mZ^-(k_x,k_y).
           \end{equation*}
         \end{lemme}
 
-        \begin{REM}
-          Tu peux utiliser  cette notation mais cela ne s'appelle pas, une fois sur \(Z\) une matrice d'impédance.
-          Comme je t'ai dit d'un coté (en \(z_m^-\)) c'est bien une matrice d'impédance qui a donc été déterminé par le pb en \([z_0,z_m^+]\).
-        \end{REM}
+        % \begin{REM}
+        %   Tu peux utiliser  cette notation mais cela ne s'appelle pas, une fois sur \(Z\) une matrice d'impédance.
+        %   Comme je t'ai dit d'un coté (en \(z_m^-\)) c'est bien une matrice d'impédance qui a donc été déterminé par le pb en \([z_0,z_m^+]\).
+        % \end{REM}
 
         \begin{proof}
           La démonstration est extrêmement rapide grâce à la continuité tangentielle des champs.
@@ -324,21 +325,22 @@
           \begin{align*}                
             \vn \pvect \hat{\vH}_t(k_x,k_y,z_m^+) &= \vn \pvect \hat{\vH}_t(k_x,k_y,z_m^-).
             \\
-            \intertext{On repart de l'expression de l'impédance}
+            \intertext{On repart de la propriété de la matrice \(\hat{\mZ}^+(k_x,k_y)\),}
             \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right).
             \\
             \intertext{On utilise la continuité des champs}
             \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right).
             \\
-            \intertext{Ceci par définition de l'impédance vaut}
+            \intertext{Ce qui s'identifie à \(\hat{\mZ}^-(k_x,k_y)\)}
             \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right).
           \end{align*}
         \end{proof}
 
         \begin{defn}
           \label{def:plan:impedance:1c}
-          On définit \(\hat \mZ(k_x,k_y)\) la fonction de \(\RR \times \RR\) telle que
+          On définit \(\hat \mZ(k_x,k_y)\) la fonction de \(\RR \times \RR\) dans \(\mathcal{M}_{2\times2}(\CC^2)\) telle que
           \begin{align*}
+            k_3 &= \sqrt{k^2 - k_x^2 -k_y^2} \not = 0,
             \hat \mZ(k_x,k_y) &= i\eta_r\frac{\tan\left(k_3d\right)}{k k_3}
             \begin{bmatrix}
               k^2-k_x^2  & -k_xk_y
@@ -347,9 +349,9 @@
             \end{bmatrix}.
           \end{align*}
         \end{defn}
-        \begin{REM}
-           C'est une fonction de \(\RR^2\) dans \(\mathcal{M}_{2\times2}(\CC^2)\) et si \(k_3\in\CC\) tu as des formes alternatives avec tanh.
-        \end{REM}
+        % \begin{REM}
+        %    C'est une fonction de \(\RR^2\) dans \(\mathcal{M}_{2\times2}(\CC^2)\) et si \(k_3\in\CC\) tu as des formes alternatives avec tanh.
+        % \end{REM}
         \begin{prop}
             \label{prop:imp_plan:symb_z:1c}
             On suppose que
@@ -367,7 +369,11 @@
         \end{prop}
 
         \begin{proof}
-            Grâce au lemme \eqref{lem:plan:continuite_impedance}, on sait donc que l'on peut uniquement se placer dans la couche. Nous n'avons donc pas besoin de distinguer les vecteurs indépendants de \(z\) mais qui sont différents dans chaque couche, dans l'expression des champs tangentiels. Nous posons donc
+            Grâce au lemme \eqref{lem:plan:continuite_impedance}, on sait donc que l'on peut uniquement se placer dans la couche.
+
+            Il existe une répartition des constantes \((c_1,c_2,c_3c,_4)\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\).
+            Ici nous choisissons
+            %Nous n'avons donc pas besoin de distinguer les vecteurs indépendants de \(z\) mais qui sont différents dans chaque couche, dans l'expression des champs tangentiels. Nous posons donc
             \begin{align*}
                 \vect{C_1}(k_x,k_y) = \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix}, 
                 && 
@@ -383,9 +389,9 @@
             \begin{align*}
                 \vect{C_2}(k_x,k_y) &= -\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y).
             \end{align*}
-            \begin{REM}
-              La tu peux ajouter: Il existe une répartition des constantes \(c_1,c_2,c_3,c_4\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\), Ici, nous en avons choisis une particulière.
-            \end{REM}
+            % \begin{REM}
+            %   La tu peux ajouter: Il existe une répartition des constantes \(c_1,c_2,c_3,c_4\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\), Ici, nous en avons choisis une particulière.
+            % \end{REM}
             % On part de l'expression de l'impédance, exprimée à l'intérieur
             % \begin{align*}
             %     \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0^-)\right)

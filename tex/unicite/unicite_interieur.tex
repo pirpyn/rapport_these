@@ -95,11 +95,16 @@
 
     \begin{proof}
       Nous ne traiterons dans cette thèse que l'exemple de deux couches de matériaux.
-      Nous supposons qu'il existe un champ \(\vE\) solution du problème de Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions limite de Dirichlet sur les bords du domaine. La démonstration de l'existence de ces champs est l'objet de la partie suivante.
+      Nous supposons qu'il existe un champ \(\vE\) solution du problème de Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions limite de Dirichlet sur les bords du domaine.
+      La démonstration de l'existence de ces champs est l'objet de la partie suivante.
 
       \newcommand{\kk}{\tilde{k}}
 
-      On pose \(\kk_1 = \sqrt{k_1^2 - k_x^2 - k_y^2}\),  \(\kk_2 = \sqrt{k_2^2 - k_x^2 - k_y^2}\). On a formellement,
+      On pose \(\kk_1 = \sqrt{k_1^2 - k_x^2 - k_y^2}\),  \(\kk_2 = \sqrt{k_2^2 - k_x^2 - k_y^2}\).
+
+      On couple les équations pour obtenir l'équation \(\ddr{z}{\hat{E_z}} + ik_x \hat{E_x} + ik_y\hat{E_y} = 0\) ( idem pour \(\mathcal{H}_z\) ), dont les solutions sont données par la famille \((\sin(\kk_i z),\cos(\kk_i z))\) selon la couche.
+      En utilisant les relations de saut, on obtient formellement,
+
       \begin{align*}
         \left\lbrace
         \begin{aligned}
@@ -120,12 +125,12 @@
       Ces relations ne sont valables que pour des constantes \(a_2,c_2,a_1,c_1,b,d\) telles que \((\hat{E}_x,\hat{E}_y)\) sont dans \(\mathcal{S}'(\RR^3)\).
       La composante en z de \(\vE\) se déduit des deux autres car sa divergence est nulle.
 
-      \begin{REM}
-        écris le système total car tu as \(\ddr{z}{\hat{E_z}} + ik_x \hat{E_x} + ik_y\hat{E_y} = 0\) et il te manque une constante d'intégration
-      \end{REM}
-      \begin{REP}
-        Quelle constante ?
-      \end{REP}
+      % \begin{REM}
+      %   écris le système total car tu as \(\ddr{z}{\hat{E_z}} + ik_x \hat{E_x} + ik_y\hat{E_y} = 0\) et il te manque une constante d'intégration
+      % \end{REM}
+      % \begin{REP}
+      %   Quelle constante ?
+      % \end{REP}
 
       On déduit le champ \(\vH(\vx) = \frac{-\vrot{\vE}(\vx)}{i k(\vx)\eta(\vx)}\). On note \(\mLR\) la matrice \(
       \begin{bmatrix}
