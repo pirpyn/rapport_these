@@ -28,11 +28,12 @@ jobs:
         run: |
             mkdir -p build;
             echo "yes" > build/these_payen_2019.pdf;
-            export date="\$(date +%Y_%m_%d-%Hh%Mm%Ss)";
-            export file="these_payen_2019.\${date}.pdf";
-            mv build/these_payen_2019.pdf \${file};
+            export date="$(date +%Y_%m_%d-%Hh%Mm%Ss)";
+            export file="these_payen_2019.${date}.pdf";
+            mv build/these_payen_2019.pdf ${file};
+            cat ${file};
       - name: Upload Latex PDF
         uses: actions/upload-artifact@v2
         with:
           name: payen_thesis_2019
-          path: ${{ env.file }}
+          path: these_payen_2019.*.pdf
