@@ -20,13 +20,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Set up Git repository
-        uses: actions/checkout@v2
+      #- name: Set up Git repository
+      #  uses: actions/checkout@v2
       #- name: Compile LaTeX document
       #  uses: dante-ev/latex-action@master
       - name: Append date to pdf
         run: |
-            touch build/these_payen_2019.pdf;
+            mkdir -p build;
+            echo "yes" > build/these_payen_2019.pdf;
             export date="\$(date +%Y_%m_%d-%Hh%Mm%Ss)";
             export file="these_payen_2019.\${date}.pdf";
             mv build/these_payen_2019.pdf \${file};
