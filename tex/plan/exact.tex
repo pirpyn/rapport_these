@@ -1,4 +1,4 @@
-\section[Opérateur de Calderon pour un plan]{Expressions exactes des matrices d'impédance et des matrices de réflexion pour un plan infini}
+\section[Opérateur de Calderón pour un plan]{Expressions exactes des matrices d'impédance et des matrices de réflexion pour un plan infini}
     % Ce cas est très bien documenté (\cite{senior_approximate_x995},\cite{hoppe_impedance_x995}) et pose la méthodologie à adopter pour les objets courbes.
 
     Dans un premier temps, on peut sans perte de généralités faire une rotation du repère pour avoir le plan orthogonal à \(\vect{z}\).
@@ -479,10 +479,12 @@
              \vn \pvect \hat{\vE} = \hat{\mathfrak{Z}} \hat{\vH_t}, && \hat{\mathfrak{Z}} = -i\eta_r\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right).
         \end{align*}
         C'est une forme équivalente à la nôtre où \(\hat{\mZ} = \mT\hat{\mathfrak{Z}}\mT\) avec \(\mT = \begin{bmatrix}0&-1\\1&0\end{bmatrix}\).
-        Si on fixe \(k_y\) à \(0\) alors \(\hat \mZ\) est une matrice diagonale.
-        \begin{REM}
-          Ca ce n'est pas math. Mets Notons que \(\mZ(k_x,0)\) est une matrice diagonale.
-        \end{REM}
+
+        Notons que \(\hat\mZ(k_x,0)\) est une matrice diagonale.
+        
+        % \begin{REM}
+        %   Ca ce n'est pas math. Mets Notons que \(\mZ(k_x,0)\) est une matrice diagonale.
+        % \end{REM}
         Dans la littérature (\cite{stupfel_implementation_2015,aubakirov_electromagnetic_2014,hoppe_impedance_1995}), on nomme les termes diagonaux \(\hat Z_{TM}, \hat Z_{TE}\) tels que
          % le champ \(\vE\)-TE correspond à \({E_y} \vect{e_y}\), le champ \(\vE\)-TM à \({E_x} \vect{e_x} + {E_z} \vect{e_z} \), tandis que le champ \(\vH\)-TE correspond à \({H_x} \vect{e_x} + {H_z} \vect{e_z}\) et le champ \(\vH\)-TM correspond à \({H_y} \vect{e_y}\).
         
@@ -560,7 +562,7 @@
 
       alors \(\hat\vE_t(k_x,k_y,z_{p-1}) = \mT_p(k_x,k_y,z_{p-1},z_p^-,\hat\mZ_{p}(k_x,k_y))(\vn \pvect \hat\vH(k_x,k_y,z_{p-1}))\).
 
-      Une condition d'impédance sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
+      Une condition limite sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
     \end{prop}
 
 
@@ -905,14 +907,17 @@
       \end{align*}
     \end{prop}
 
-    On peut donc déterminer itérativement les matrices de réflexion.
-    \begin{REM}
-      Il faut savoir quel nom tu donnes.
-    \end{REM}
+    On peut donc déterminer itérativement les matrices \(\hat\mR\) que l'on nomme matrice de réflexion.
+    % \begin{REM}
+    %   Il faut savoir quel nom tu donnes.
+    % \end{REM}
     Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(z=z_0^+\) implique \(\mR_{1}(k_x,k_y) = -\mB_E(k_x,k_y,z_0^+)^{-1}\mA_E(k_x,k_y,z_0^+)\).
     \begin{REM}
       Il faut absolument que tu fasses la différence entre les calcul formels et les objets définis par les théorèmes.
     \end{REM}
+    \begin{REP}
+      Que veux-tu dire ?
+    \end{REP}
 
 \subsection{Applications numériques}
 
