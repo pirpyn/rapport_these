@@ -89,18 +89,19 @@ J'étais parti, en notant \(\kk_1\) et \(\kk_2\) associées aux couches \(1\) et
 \[E_y=c_1\sin(\kk_1(z-z_1))+d\cos(\kk_1(z-z_1)), z_0<z<z_1\]
 où j'ai déjà utilisé la condition de continuité tangentielle du champ électrique à l'interface \(z=z_1\).
 
-Je définis \(A_2,C_2, A_1, C_1, B, D\) par
-% \[
-% \left\{
-% \begin{array}{ll}
-% (a_2,c_2)&=A_2(k_x,k_y)+C_2(-k_y,k_x)
-% \cr
-% (a_1,c_1)&=A_1(k_x,k_y)+C_1(-k_y,k_x)
-% \cr
-% (b,d)&=B(k_x,k_y)+D(-k_y,k_x)
-% \end{array}
-% \right.
-% \]
+En supposant \(k_x^2 + k_y^2\) non nul, je définis \(A_2,C_2, A_1, C_1, B, D\) par
+\[
+\left\{
+\begin{array}{ll}
+(a_2,c_2)&=A_2(k_x,k_y)+C_2(-k_y,k_x)
+\cr
+(a_1,c_1)&=A_1(k_x,k_y)+C_1(-k_y,k_x)
+\cr
+(b,d)&=B(k_x,k_y)+D(-k_y,k_x)
+\end{array}
+\right.
+\]
+équivalent à
 \begin{align*}
 a_2 ={}& A_2k_x - C_2k_y, & c_2 ={}& A_2k_y + C_2 k_x,
 \\
@@ -108,6 +109,7 @@ a_1 ={}& A_1k_x - C_1k_y, & c_1 ={}& A_1k_y + C_1 k_x,
 \\
 b ={}& Bk_x - Dk_y, & d ={}& Bk_y + D k_x,
 \end{align*}
+et réciproquement
 \begin{align*}
 A_2 ={}& \frac{a_2 k_x + c_2 k_y}{k_x^2 + k_y^2}, & C_2 ={}& \frac{c_2 k_y - a_2 k_x}{k_x^2 + k_y^2},
 \\
@@ -240,19 +242,26 @@ k_x\frac{k_1^2}{\kk_1}    &   -\kk_1k_y
 \]
 \(M_2\) s'en déduit.
 
-En calculant directement le déterminant de \(K_1M_1+K_2M_2\), on remarque que \(k_x^2+k_y^2\) est en facteur. Si ce coefficient est non nul, j'obtiens l'équation
+En calculant directement le déterminant de \(K_1M_1-K_2M_2\), on obtient
 \[
-\epsilon_1\mu_1K_1^2+(\epsilon_1\mu_1\frac{\kk_2}{\kk_1}+\epsilon_2\mu_2\frac{\kk_1}{\kk_2})K_1K_2+\epsilon_2\mu_2K_2^2=0.
+\left(k_x^2+k_y^2\right)
+\left(K_1\frac{k_1^2}{\kk_1} - K_2\frac{k_2^2}{\kk_2}\right)
+\left(K_1\kk_1+K_2\kk_2\right) = 0
 \]
-J'avais alors noté \(X=\sqrt{\epsilon_1\mu_1}\kk_1\), \(Y=\sqrt{\epsilon_2\mu_2}\kk_2\), et je trouve
-\[
-X^2+[\sqrt{\frac{\epsilon_2\mu_2}{\epsilon_1\mu_1}\frac{\kk_1}{\kk_2}}+\sqrt{\frac{\epsilon_1\mu_1}{\epsilon_2\mu_2}\frac{\kk_2}{\kk_1}}]XY+Y^2
-=
-0
-=
-(X+[\sqrt{\frac{\epsilon_2\mu_2}{\epsilon_1\mu_1}\frac{\kk_1}{\kk_2}}Y)(X+\sqrt{\frac{\epsilon_1\mu_1}{\epsilon_2\mu_2}\frac{\kk_2}{\kk_1}}Y).
-\]
-J'ai donc obtenu les deux égalités totalement factorisées résumées ci-dessus.
+
+% on remarque que \(k_x^2+k_y^2\) est en facteur. Si ce coefficient est non nul, j'obtiens l'équation
+% \[
+% \epsilon_1\mu_1K_1^2+(\epsilon_1\mu_1\frac{\kk_2}{\kk_1}+\epsilon_2\mu_2\frac{\kk_1}{\kk_2})K_1K_2+\epsilon_2\mu_2K_2^2=0.
+% \]
+% J'avais alors noté \(X=\sqrt{\epsilon_1\mu_1}K_1\), \(Y=\sqrt{\epsilon_2\mu_2}K_2\), et je trouve
+% \[
+% X^2+[\sqrt{\frac{\epsilon_2\mu_2}{\epsilon_1\mu_1}\frac{\kk_1}{\kk_2}}+\sqrt{\frac{\epsilon_1\mu_1}{\epsilon_2\mu_2}\frac{\kk_2}{\kk_1}}]XY+Y^2
+% =
+% 0
+% =
+% (X+[\sqrt{\frac{\epsilon_2\mu_2}{\epsilon_1\mu_1}\frac{\kk_1}{\kk_2}}Y)(X+\sqrt{\frac{\epsilon_1\mu_1}{\epsilon_2\mu_2}\frac{\kk_2}{\kk_1}}Y).
+% \]
+% J'ai donc obtenu les deux égalités totalement factorisées résumées ci-dessus.
 
 \end{document}
 
