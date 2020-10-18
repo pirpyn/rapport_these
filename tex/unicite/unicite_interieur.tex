@@ -108,21 +108,21 @@
       \begin{align*}
         \left\lbrace
         \begin{aligned}
-          \hat{E}_x &= \sin(\kk_2(z-z_1))a_2 +  \cos(\kk_2(z-z_1))b
+          \hat{E}_x &= a_2\sin(\kk_2(z-z_1)) +  b\cos(\kk_2(z-z_1))
           \\
-          \hat{E}_y &= \sin(\kk_2(z-z_1))c_2 +  \cos(\kk_2(z-z_1))d
+          \hat{E}_y &= c_2\sin(\kk_2(z-z_1)) +  d\cos(\kk_2(z-z_1))
         \end{aligned}
         \right. && z_1 < z < z_2,
         \\
         \left\lbrace
         \begin{aligned}
-          \hat{E}_x &= \sin(\kk_1(z-z_1))a_1 +  \cos(\kk_1(z-z_1))b
+          \hat{E}_x &= a_1\sin(\kk_1(z-z_1)) +  b\cos(\kk_1(z-z_1))
           \\
-          \hat{E}_y &= \sin(\kk_1(z-z_1))c_1 +  \cos(\kk_2(z-z_1))d
+          \hat{E}_y &= c_1\sin(\kk_1(z-z_1)) +  d\cos(\kk_2(z-z_1))
         \end{aligned}
         \right. && z_0 < z < z_1.
       \end{align*}
-      Ces relations ne sont valables que pour des constantes \(a_2,c_2,a_1,c_1,b,d\) telles que \((\hat{E}_x,\hat{E}_y)\) sont dans \(\mathcal{S}'(\RR^3)\).
+      Ces relations ne sont valables que pour des paramètres \(a_2,c_2,a_1,c_1,b,d\) (constants par rapport à \(z\) mais dépendant de \((k_x,k_y)\)) telles que \((\hat{E}_x,\hat{E}_y)\) sont dans \(\mathcal{S}'(\RR^3)\).
       La composante en z de \(\vE\) se déduit des deux autres car sa divergence est nulle.
 
       % \begin{REM}
@@ -132,7 +132,8 @@
       %   Quelle constante ?
       % \end{REP}
 
-      On déduit le champ \(\vH(\vx) = \frac{-\vrot{\vE}(\vx)}{i k(\vx)\eta(\vx)}\). On note \(\mLR\) la matrice \(
+      On déduit le champ \(\vH(\vx) = \frac{-\vrot{\vE}(\vx)}{i k(\vx)\eta(\vx)}\). 
+      On note \(\mLR\) la matrice \(
       \begin{bmatrix}
           k_y^2 & k_xk_y
           \\
@@ -141,11 +142,11 @@
       \).
 
 
-      Le champ s'exprime matriciellement
+      Ses composantes tangentielles sont
       \begin{align*}
-        \hat{\vH} &= \frac{\sin(\kk_2(z-z_1))}{-i k_2\kk_2 \eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}d \\ b\end{bmatrix} - \frac{\cos(\kk_2(z-z_1))}{-i k_2\kk_2 \eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}c_2 \\ a_2\end{bmatrix} && \text{pour } z_1 < z < z_2,
+        \hat{\vH}_t &= \frac{\sin(\kk_2(z-z_1))}{-i k_2\kk_2 \eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}d \\ b\end{bmatrix} - \frac{\cos(\kk_2(z-z_1))}{-i k_2\kk_2 \eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}c_2 \\ a_2\end{bmatrix} && \text{pour } z_1 < z < z_2,
         \\
-        \hat{\vH} &= \frac{\sin(\kk_1(z-z_1))}{-i k_1\kk_1 \eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}d \\ b\end{bmatrix} - \frac{\cos(\kk_1(z-z_1))}{-i k_1\kk_1 \eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}c_1 \\ a_1\end{bmatrix} && \text{pour } z_0 < z < z_1.
+        \hat{\vH}_t &= \frac{\sin(\kk_1(z-z_1))}{-i k_1\kk_1 \eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}d \\ b\end{bmatrix} - \frac{\cos(\kk_1(z-z_1))}{-i k_1\kk_1 \eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}c_1 \\ a_1\end{bmatrix} && \text{pour } z_0 < z < z_1.
       \end{align*}
 
       Pour que le problème soit bien posé, il faut et il suffit que les constantes complexes \(a_2,c_2,b,d,a_1,c_1\) soient déterminées de façon unique quand on exprime les conditions limites. Ce sont des conditions limites de Dirichlet homogène en \(z=z_0\) et \(z=z_2\) pour \(\vE\) et de sauts nuls en \(z=z_1\) pour \(\vH\) (la condition de saut nul pour \(\vE\) a déjà été utilisée dans l'expression des champs).

@@ -1,0 +1,267 @@
+\documentclass{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{ amssymb, nccmath}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\let\proof\relax 
+\let\endproof\relax
+%\usepackage{amsthm} %theorem environment option
+\usepackage{enumerate}
+\usepackage{latexsym,amscd,amsfonts}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{tikz,tkz-tab}
+\usepackage{float}
+
+%-------------------------------------------------------------%
+\def \Z {\mathbb Z}
+\def \R {\mathbb R}
+\def \C {\mathbb C}
+\def \Q {\mathbb Q}
+\def \N {\mathbb N}
+\def \T {\mathbb T}
+\def \P {\mathbb P}
+\def \E {\mathbb E}
+
+\newcommand{\ex}{\mathrm{e}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\eps}{\varepsilon}
+%--------------------------------------------------------------%
+
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{defi}{Definition}[section]
+\newtheorem{theo}{Theorem}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rmk}{Remark}[section]
+%\newtheorem{cor}{Corollary}[section]
+%\newtheorem{rem}{Remark}[section]
+%\newenvironment{demo}{\noindent \textit{Proof:}}{\begin{flushright} \(\Box\) \end{flushright}}
+%--------------------------------------------------------------%
+%%%% debut macro %%%%
+\makeatletter
+\renewcommand\theequation{\thesection.\arabic{equation}}
+\@addtoreset{equation}{section}
+\makeatother
+%%%% fin macro %%%%
+
+
+\begin{document}
+
+
+%% Title of the article. 
+% The optional argument [] is the short version of the title,
+% and the mandatory argument {} the title itself
+\title{Factorisation du déterminant dans le cas de deux couches de diélectrique}
+
+
+%% Authors, addresses and supports.
+% The optional argument is for shortened appearing in the headings. Please
+% distinguish between first, middle and last names with the appropriate commands.
+\author{Olivier Lafitte}
+\address{LAGA, Institut Galil\'ee\\
+Universit\'e Paris 13\\
+Sorbonne Paris Cit\'e
+99, avenue J.B. Cl\'ement\\
+93430 Villetaneuse \\
+France}
+% No support for the second author
+%\thanks{This work was completed while the author was invited professor at IU Mathematics Department, Bloomington (Spring 2017)}
+%\thanks{The author wants to thank the anonymous referee for all his comments for improving the present paper}
+%% Keywords
+%\keywords{Example, Applied mathematics, Journal}
+ 
+%% Mathematical classification   (2000)
+%\subjclass{00X99}
+% Abstract.
+
+Tu as raison, je ne t'ai pas transmis mes notes où j'avais réussi à factoriser. Je te les écris ci-dessous que tu puisse recopier directement si tu veux.
+
+\newcommand{\kk}{\tilde{k}}
+\renewcommand{\frac}{\dfrac}
+
+J'étais parti, en notant \(\kk_1\) et \(\kk_2\) associées aux couches \(1\) et \(2\), \(z_0<z_1<z_2\):
+
+\[E_x=a_2\sin(\kk_2(z-z_1))+b\cos(\kk_2(z-z_1)), z_1<z<z_2\]
+\[E_x=a_1\sin(\kk_1(z-z_1))+b\cos(\kk_1(z-z_1)), z_0<z<z_1\]
+\[E_y=c_2\sin(\kk_2(z-z_1))+d\cos(\kk_2(z-z_1)), z_1<z<z_2\]
+\[E_y=c_1\sin(\kk_1(z-z_1))+d\cos(\kk_1(z-z_1)), z_0<z<z_1\]
+où j'ai déjà utilisé la condition de continuité tangentielle du champ électrique à l'interface \(z=z_1\).
+
+Je définis \(A_2,C_2, A_1, C_1, B, D\) par
+% \[
+% \left\{
+% \begin{array}{ll}
+% (a_2,c_2)&=A_2(k_x,k_y)+C_2(-k_y,k_x)
+% \cr
+% (a_1,c_1)&=A_1(k_x,k_y)+C_1(-k_y,k_x)
+% \cr
+% (b,d)&=B(k_x,k_y)+D(-k_y,k_x)
+% \end{array}
+% \right.
+% \]
+\begin{align*}
+a_2 ={}& A_2k_x - C_2k_y, & c_2 ={}& A_2k_y + C_2 k_x,
+\\
+a_1 ={}& A_1k_x - C_1k_y, & c_1 ={}& A_1k_y + C_1 k_x,
+\\
+b ={}& Bk_x - Dk_y, & d ={}& Bk_y + D k_x,
+\end{align*}
+\begin{align*}
+A_2 ={}& \frac{a_2 k_x + c_2 k_y}{k_x^2 + k_y^2}, & C_2 ={}& \frac{c_2 k_y - a_2 k_x}{k_x^2 + k_y^2},
+\\
+A_1 ={}& \frac{a_1 k_x + c_1 k_y}{k_x^2 + k_y^2}, & C_1 ={}& \frac{c_1 k_y - a_1 k_x}{k_x^2 + k_y^2},
+\\
+B ={}& \frac{b k_x + d k_y}{k_x^2 + k_y^2}, & D ={}& \frac{d k_y - b k_x}{k_x^2 + k_y^2}.
+\end{align*}
+
+Les divergences nulle des champs permettent de déduire de \(a_2,c_2,a_1,c_1,b,d\) la décomposition sur \((\sin(\kk_i(z-z_i)),\cos(\kk_i(z-z_i)))\) de \(E_z\):
+
+\[
+E_z=i\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-i\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1)), z_1<z<z_2,
+\]
+Dans \(z_0<z<z_1\), il faut remplacer \(A_2\) par \(A_1\), \(C_2\) par \(C_1\) et \(\kk_2\) par \(\kk_1\).
+
+Lorsque je cherche les résonances, il suffit que j'écrive toutes les conditions de champ nul sur les bord \(z=z_0\), \(z=z_2\).
+Je note \(\alpha_1=\kk_1(z_0-z_1)\), \(\alpha_2=\kk_2(z_2-z_1)\).
+
+Les conditions sur \(E_x\) et sur \(E_y\) donnent, après décomposition sur \((k_x,k_y)\) et sur \((-k_y,k_x)\), en \(z=z_0\) et en \(z=z_2\)
+\[
+\left\{
+\begin{aligned}
+B\cos \alpha_1={}& A_1\sin \alpha_1,
+\\
+D\cos \alpha_1={}& C_1\sin \alpha_1,
+\\
+B\cos \alpha_2={}& A_2\sin \alpha_2,
+\\
+D\cos \alpha_2={}& C_2\sin \alpha_2.
+\end{aligned}
+\right.
+\]
+
+D'autre part, on écrit la condition de saut du champ magnétique à l'interface \(z=z_1\).
+
+Je calcule les coordonnées tangentielles de \(F = rot E\) dans \(z_1<z<z_2\):
+\begin{multline*}
+F_x = -k_y\left(\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1))\right)
+\\
+-\kk_2\left((k_yA_2+k_xC_2)\cos(\kk_2(z-z_1))-(Bk_y+Dk_x)\sin(\kk_2(z-z_1))\right)
+\end{multline*}
+\begin{multline*}
+F_y = \kk_1\left((k_xA_2-k_yC_2)\cos(\kk_2(z-z_1))-(k_xB-k_yD)\sin(\kk_2(z-z_1))\right)
+\\
++k_x\left(\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1))\right)
+\end{multline*}
+
+D'où l'on déduit les coordonnées tangentielles du champ magnétique dans \(z_1<z<z_2\):
+\begin{multline*}
+H_x = -\frac{k_y}{-i\omega\mu_2}\left(\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1))\right)
+\\
+-\frac{\kk_2}{-i\omega\mu_2}\left((k_yA_2+k_xC_2)\cos(\kk_2(z-z_1))-(Bk_y+Dk_x)\sin(\kk_2(z-z_1))\right)
+\end{multline*}
+\begin{multline*}
+H_y = \frac{\kk_2}{-i\omega\mu_2}\left((k_xA_2-k_yC_2)\cos(\kk_2(z-z_1))-(k_xB-k_yD)\sin(\kk_2(z-z_1))\right)
+\\
++\frac{k_x}{-i\omega\mu_2}\left(\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1))\right)
+\end{multline*}
+Dans \(z_0<z<z_1\), il faut remplacer \(A_2\) par \(A_1\), \(C_2\) par \(C_1\), \(\mu_2\) par \(\mu_1\) et \(\kk_2\) par \(\kk_1\).
+
+
+J'en déduis les conditions à vérifier pour satisfaire à la continuité tangentielle du champ magnétique
+\[
+\left\{
+\begin{aligned}
+-\frac{k_y}{\mu_1}\frac{k_x^2+k_y^2}{\kk_1}A_1-\frac{\kk_1}{\mu_1}(k_yA_1+k_xC_1)={}&-\frac{k_y}{\mu_2}\frac{k_x^2+k_y^2}{\kk_2}A_2-\frac{\kk_2}{\mu_2}(k_yA_2+k_xC_2),
+\\
+-\frac{\kk_1}{\mu_1}(k_xA_1-k_yC_1)+\frac{k_x}{\mu_1}\frac{k_x^2+k_y^2}{\kk_1}A_1={}&-\frac{\kk_2}{\mu_2}(k_xA_2-k_yC_2)+\frac{k_x}{\mu_2}\frac{k_x^2+k_y^2}{\kk_2^2}A_2.
+\end{aligned}
+\right.
+\]
+
+On a un système de 6 équations à 6 inconnues.
+
+On introduit
+\begin{align*}
+M_1={}&
+\begin{pmatrix}
+-\kk_1k_y-k_y\frac{k_x^2+k_y^2}{\kk_1}  &   -\kk_1k_x
+\cr
+\kk_1k_x+k_x\frac{k_x^2+k_y^2}{\kk_1}   &   -\kk_1k_y
+\end{pmatrix},
+&
+M_2={}&
+\begin{pmatrix}
+-\kk_2k_y-k_y\frac{k_x^2+k_y^2}{\kk_2}  &   -\kk_2k_x
+\cr
+\kk_2k_x+k_x\frac{k_x^2+k_y^2}{\kk_2}   &   -\kk_2k_y
+\end{pmatrix}.
+\end{align*}
+
+La continuité tangentielle du champ magnétique se résume à 
+\[
+\frac{1}{\mu_1}M_1\begin{pmatrix}A_1\\C_1\end{pmatrix}=\frac{1}{\mu_2}M_2\begin{pmatrix}A_2\\C_2\end{pmatrix}.
+\]
+J'aboutis, en multipliant par \(\sin \alpha_1\sin \alpha_2\) puis en utilisant les relations en fonction de \(B\) et \(D\) :
+
+\[
+\mu_2\sin\alpha_2M_1\begin{pmatrix}A_1\sin \alpha_1\\C_1\sin \alpha_1\end{pmatrix}
+=
+\mu_1\sin \alpha_1M_2\begin{pmatrix}A_2\sin \alpha_2\\C_2\sin \alpha_2\end{pmatrix},
+\]
+
+\[
+\mu_2\sin \alpha_2\cos \alpha_1 M_1\begin{pmatrix}B\\D\end{pmatrix}
+=
+\mu_1\sin \alpha_1\cos \alpha_2M_2\begin{pmatrix}B\\D\end{pmatrix},
+\]
+et le problème de résonance se ramène à 
+
+\[
+\operatorname{det}(K_1M_1-K_2M_2)=0
+\]
+avec \(K_1=\mu_2\cos \alpha_1\sin \alpha_2\), \(K_2=\mu_1\cos \alpha_2\sin \alpha_1\).
+
+J'observe alors que
+\[
+M_1=
+\begin{pmatrix}
+-\kk_1k_y-k_y\frac{k_x^2+k_y^2}{\kk_1}  &   -\kk_1k_x
+\\
+\kk_1k_x+k_x\frac{k_x^2+k_y^2}{\kk_1}   &   -\kk_1k_y
+\end{pmatrix}
+=
+\begin{pmatrix}
+-k_y\frac{k_1^2}{\kk_1}   &   -\kk_1k_x
+\\
+k_x\frac{k_1^2}{\kk_1}    &   -\kk_1k_y
+\end{pmatrix},
+\]
+\(M_2\) s'en déduit.
+
+En calculant directement le déterminant de \(K_1M_1+K_2M_2\), on remarque que \(k_x^2+k_y^2\) est en facteur. Si ce coefficient est non nul, j'obtiens l'équation
+\[
+\epsilon_1\mu_1K_1^2+(\epsilon_1\mu_1\frac{\kk_2}{\kk_1}+\epsilon_2\mu_2\frac{\kk_1}{\kk_2})K_1K_2+\epsilon_2\mu_2K_2^2=0.
+\]
+J'avais alors noté \(X=\sqrt{\epsilon_1\mu_1}\kk_1\), \(Y=\sqrt{\epsilon_2\mu_2}\kk_2\), et je trouve
+\[
+X^2+[\sqrt{\frac{\epsilon_2\mu_2}{\epsilon_1\mu_1}\frac{\kk_1}{\kk_2}}+\sqrt{\frac{\epsilon_1\mu_1}{\epsilon_2\mu_2}\frac{\kk_2}{\kk_1}}]XY+Y^2
+=
+0
+=
+(X+[\sqrt{\frac{\epsilon_2\mu_2}{\epsilon_1\mu_1}\frac{\kk_1}{\kk_2}}Y)(X+\sqrt{\frac{\epsilon_1\mu_1}{\epsilon_2\mu_2}\frac{\kk_2}{\kk_1}}Y).
+\]
+J'ai donc obtenu les deux égalités totalement factorisées résumées ci-dessus.
+
+\end{document}
+
+
+
+
+
+
+
+
+
+

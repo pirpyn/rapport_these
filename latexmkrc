@@ -2,7 +2,7 @@
 $ENV{'TZ'}='Europe/France';
 
 # Main file to compile
-@default_files = ('these_payen_2019.tex');
+@default_files = ('factorisation-determinant-2couches.tex','these_payen_2019.tex');
 
 # We want a pdf, dvi is so old school
 $pdf_mode = "1";
