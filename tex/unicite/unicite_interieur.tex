@@ -25,9 +25,9 @@
     \begin{align}
     \left\lbrace
       \begin{matrix}
-        \vrot \vE(\vx) + i \w\mu(\vx) \vH(\vx) &= 0
+        \vrot \vE(\vx) + i k(\vx)\eta(\vx) \vH(\vx) &= 0
         \\
-        \vrot \vH(\vx) - i \w\eps(\vx) \vE(\vx) &= 0
+        \vrot \vH(\vx) - i k(\vx)\eta(\vx)^{-1} \vE(\vx) &= 0
       \end{matrix}
       \right. && \text{dans \(\OO\).}
       \label{eq:unicite:maxwell_int}
@@ -90,140 +90,327 @@
     Les constantes relatives \(\eps,\mu\) (ou \(k,\eta\)) sont constantes par morceaux en fonction de \(z\).
     \begin{prop}
       \label{prop:unicite:interieur:postulat:multi-couche}
-      Le problème Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet \(\vE_{|z=z_n} = 0\), \(\vE_{|z=z_0} = 0\) admet une unique solution si et seulement si le déterminant d'un système linéaire est non-nul.
+      Le problème Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet homogènes \(\vE_{|z=z_n} = 0\), \(\vE_{|z=z_0} = 0\) admet une unique solution si et seulement si le déterminant d'un système linéaire est non-nul.
     \end{prop}
 
     \begin{proof}
       Nous ne traiterons dans cette thèse que l'exemple de deux couches de matériaux.
-      Nous supposons qu'il existe un champ \(\vE\) solution du problème de Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions limite de Dirichlet sur les bords du domaine.
-      La démonstration de l'existence de ces champs est l'objet de la partie suivante.
+      % Nous supposons qu'il existe un champ \(\vE\) solution du problème de Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions limite de Dirichlet homogènes sur les bords du domaine.
+      % La démonstration de l'existence de ces champs est l'objet de la partie suivante.
 
       \newcommand{\kk}{\tilde{k}}
 
       On pose \(\kk_1 = \sqrt{k_1^2 - k_x^2 - k_y^2}\),  \(\kk_2 = \sqrt{k_2^2 - k_x^2 - k_y^2}\).
 
-      On couple les équations pour obtenir l'équation \(\ddr{z}{\hat{E_z}} + ik_x \hat{E_x} + ik_y\hat{E_y} = 0\) ( idem pour \(\mathcal{H}_z\) ), dont les solutions sont données par la famille \((\sin(\kk_i z),\cos(\kk_i z))\) selon la couche.
-      En utilisant les relations de saut, on obtient formellement,
+      On remarques que toutes les composantes du champs \(\vE\) ( idem pour \(\vH\) ) sont solutions de \(\ddr[2]{u}{z} + (k_i^2 k_x^2 + k_y^2) u = 0 \), dont les solutions sont données par la famille \((\sin(\kk_i z),\cos(\kk_i z))\) selon la couche.
+      % En utilisant les relations de saut, on obtient formellement,
 
-      \begin{align*}
-        \left\lbrace
-        \begin{aligned}
-          \hat{E}_x &= a_2\sin(\kk_2(z-z_1)) +  b\cos(\kk_2(z-z_1))
-          \\
-          \hat{E}_y &= c_2\sin(\kk_2(z-z_1)) +  d\cos(\kk_2(z-z_1))
-        \end{aligned}
-        \right. && z_1 < z < z_2,
-        \\
-        \left\lbrace
-        \begin{aligned}
-          \hat{E}_x &= a_1\sin(\kk_1(z-z_1)) +  b\cos(\kk_1(z-z_1))
-          \\
-          \hat{E}_y &= c_1\sin(\kk_1(z-z_1)) +  d\cos(\kk_2(z-z_1))
-        \end{aligned}
-        \right. && z_0 < z < z_1.
-      \end{align*}
-      Ces relations ne sont valables que pour des paramètres \(a_2,c_2,a_1,c_1,b,d\) (constants par rapport à \(z\) mais dépendant de \((k_x,k_y)\)) telles que \((\hat{E}_x,\hat{E}_y)\) sont dans \(\mathcal{S}'(\RR^3)\).
-      La composante en z de \(\vE\) se déduit des deux autres car sa divergence est nulle.
+      % \begin{align*}
+      %   \left\lbrace
+      %   \begin{aligned}
+      %     \hat{E}_x &= a_2\sin(\kk_2(z-z_1)) +  b\cos(\kk_2(z-z_1))
+      %     \\
+      %     \hat{E}_y &= c_2\sin(\kk_2(z-z_1)) +  d\cos(\kk_2(z-z_1))
+      %   \end{aligned}
+      %   \right. && z_1 < z < z_2,
+      %   \\
+      %   \left\lbrace
+      %   \begin{aligned}
+      %     \hat{E}_x &= a_1\sin(\kk_1(z-z_1)) +  b\cos(\kk_1(z-z_1))
+      %     \\
+      %     \hat{E}_y &= c_1\sin(\kk_1(z-z_1)) +  d\cos(\kk_2(z-z_1))
+      %   \end{aligned}
+      %   \right. && z_0 < z < z_1.
+      % \end{align*}
+      % Ces relations ne sont valables que pour des paramètres \(a_2,c_2,a_1,c_1,b,d\) (constants par rapport à \(z\) mais dépendant de \((k_x,k_y)\)) telles que \((\hat{E}_x,\hat{E}_y)\) sont dans \(\mathcal{S}'(\RR^3)\).
+      % La composante en z de \(\vE\) se déduit des deux autres car sa divergence est nulle.
+
+      % % \begin{REM}
+      % %   écris le système total car tu as \(\ddr{z}{\hat{E_z}} + ik_x \hat{E_x} + ik_y\hat{E_y} = 0\) et il te manque une constante d'intégration
+      % % \end{REM}
+      % % \begin{REP}
+      % %   Quelle constante ?
+      % % \end{REP}
+
+      % On déduit le champ \(\vH(\vx) = \frac{-\vrot{\vE}(\vx)}{i k(\vx)\eta(\vx)}\). 
+      % On note \(\mLR\) la matrice \(
+      % \begin{bmatrix}
+      %     k_y^2 & k_xk_y
+      %     \\
+      %     k_xk_y & k_x^2
+      % \end{bmatrix}
+      % \).
+
+
+      % Ses composantes tangentielles sont
+      % \begin{align*}
+      %   \hat{\vH}_t &= \frac{\sin(\kk_2(z-z_1))}{-i k_2\kk_2 \eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}d \\ b\end{bmatrix} - \frac{\cos(\kk_2(z-z_1))}{-i k_2\kk_2 \eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}c_2 \\ a_2\end{bmatrix} && \text{pour } z_1 < z < z_2,
+      %   \\
+      %   \hat{\vH}_t &= \frac{\sin(\kk_1(z-z_1))}{-i k_1\kk_1 \eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}d \\ b\end{bmatrix} - \frac{\cos(\kk_1(z-z_1))}{-i k_1\kk_1 \eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}c_1 \\ a_1\end{bmatrix} && \text{pour } z_0 < z < z_1.
+      % \end{align*}
+
+      % Pour que le problème soit bien posé, il faut et il suffit que les constantes complexes \(a_2,c_2,b,d,a_1,c_1\) soient déterminées de façon unique quand on exprime les conditions limites. Ce sont des conditions limites de Dirichlet homogène en \(z=z_0\) et \(z=z_2\) pour \(\vE\) et de sauts nuls en \(z=z_1\) pour \(\vH\) (la condition de saut nul pour \(\vE\) a déjà été utilisée dans l'expression des champs).
+      % \begin{REM}
+      %   Le fait que \(\hat{\vE}\) et \(\hat{\vH}\) ont un saut nul à l'interface vient du fait que pour chaque \((k_x,k_y)\), on suppose \(\vE,\vH\) dans \(\Sobup[1]{([z_0,z_2])}\).
+      % \end{REM}
+      % On a unicité si, dans le cas de conditions de Dirichlet homogènes, l'unique solution est \(\vE=0\). Ces conditions s'expriment
+      % \begin{equation*}
+      %   \label{eq:unicite:interieur:2couches:cldirichlet}
+      %   \left\lbrace
+      %   \begin{aligned}
+      %     a_2\sin{(\kk_2(z_2-z_1))} + b\cos{(\kk_2(z_2-z_1))} &= 0,
+      %     \\
+      %     c_2\sin{(\kk_2(z_2-z_1))} + d\cos{(\kk_2(z_2-z_1))} &= 0,
+      %     \\
+      %     a_1\sin{(\kk_1(z_0-z_1))} + b\cos{(\kk_1(z_0-z_1))} &= 0,
+      %     \\
+      %     c_1\sin{(\kk_1(z_0-z_1))} + d\cos{(\kk_1(z_0-z_1))} &= 0.
+      %   \end{aligned}
+      %   \right.
+      % \end{equation*}
+
+      % C'est un système à 4 équations pour 6 inconnues, donc à deux degrés de liberté. Il existe donc \(A,B\) tels que
+      % \begin{equation*}
+      %   \left\lbrace
+      %   \begin{aligned}
+      %   a_2 &= A\cos{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
+      %   \\
+      %   b &= -A\sin{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
+      %   \\
+      %   a_1 &= A\sin{(\kk_2(z_2-z_1))}\cos{(\kk_1(z_0-z_1))},
+      %   \\
+      %   c_2 &= B\cos{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
+      %   \\
+      %   d &= -B\sin{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
+      %   \\
+      %   c_1 &= B\sin{(\kk_2(z_2-z_1))}\cos{(\kk_1(z_0-z_1))}.
+      %   \end{aligned}
+      %   \right.
+      % \end{equation*}
+      % sont solutions du système précédent. 
+
+      % La dernière condition de saut nul en \(z=z_1\) pour \(\hat\vH_t\) s'exprime alors
+      % \begin{align*}
+      %    \cos(\kk_2(z_2-z_1)) \sin(\kk_1(z_0-z_1))\frac{i}{k_2\kk_2\eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}B\\A\end{bmatrix}
+      %   \\= 
+      %    \sin(\kk_2(z_2-z_1)) \cos(\kk_1(z_0-z_1))\frac{i}{k_1\kk_1\eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}B\\A\end{bmatrix}.
+      % \end{align*}
+
+      % On voit alors apparaître le système final dont le déterminant est
+      % \begin{multline*}
+      %   -\det{}\left(
+      %   \frac{\cos(\kk_2(z_2-z_1)) \sin(\kk_1(z_0-z_1))}{k_2\kk_2\eta_2}(\kk_2^2 \mI - \mLR)
+      %   \right.
+      %   \\
+      %   \left.-
+      %    \frac{\sin(\kk_2(z_2-z_1)) \cos(\kk_1(z_0-z_1))}{k_1\kk_1\eta_1}(\kk_1^2 \mI - \mLR)
+      %    \right)
+      % \end{multline*}
+
+      % \newcommand{\alp}{\frac{\cos(\kk_2(z_2-z_1)) \sin(\kk_1(z_0-z_1))}{k_2\kk_2\eta_2}}
+      % \newcommand{\bet}{\frac{\sin(\kk_2(z_2-z_1)) \cos(\kk_1(z_0-z_1))}{k_1\kk_1\eta_1}}
+
+      % \begin{multline*}
+      %   =-\left(\alp \kk_2^2 - \bet \kk_1^2\right)
+      %   \\
+      %   \left(\alp(\kk_2^2-k_y^2)-\bet(\kk_1^2-k_x^2)\right).
+      % \end{multline*}
+
+
+      % Si le déterminant de ce système n'est pas nul, alors il existe des champs non nuls solutions du problème homogène, et il n'y a alors pas unicité des solutions.
 
       % \begin{REM}
-      %   écris le système total car tu as \(\ddr{z}{\hat{E_z}} + ik_x \hat{E_x} + ik_y\hat{E_y} = 0\) et il te manque une constante d'intégration
+      %   Tu n'as pas repris mes calculs pour simplifier cette expression ? J'avais un résultat intéressant et cela serait dommage qu'elle ne soit pas dans ta thèse.
       % \end{REM}
       % \begin{REP}
-      %   Quelle constante ?
+      %   Peux-tu me rappeler quand tu m'as envoyé cette note ?
       % \end{REP}
 
-      On déduit le champ \(\vH(\vx) = \frac{-\vrot{\vE}(\vx)}{i k(\vx)\eta(\vx)}\). 
-      On note \(\mLR\) la matrice \(
-      \begin{bmatrix}
-          k_y^2 & k_xk_y
-          \\
-          k_xk_y & k_x^2
-      \end{bmatrix}
-      \).
+    On peut donc exprimer le champ électrique tangentiel grâce à des paramètres \(a_1,c_1,a_2,c_2,b,d\) dépendant de \((k_x,k_y)\) mais pas de \(z\)
+    \begin{align*}
+    \hat{E}_x={}& 
+    \begin{cases}
+    a_2\sin(\kk_2(z-z_1))+b\cos(\kk_2(z-z_1)),&  z_1<z<z_2
+    \\
+    a_1\sin(\kk_1(z-z_1))+b\cos(\kk_1(z-z_1)),&  z_0<z<z_1
+    \end{cases}
+    \\
+    \hat{E}_y={}&
+    \begin{cases}
+    c_2\sin(\kk_2(z-z_1))+d\cos(\kk_2(z-z_1)),&   z_1<z<z_2
+    \\
+    c_1\sin(\kk_1(z-z_1))+d\cos(\kk_1(z-z_1)),&   z_0<z<z_1
+    \end{cases}
+    \end{align*}
+    Ces expressions prenant compte de condition de continuité tangentielle du champ électrique à l'interface \(z=z_1\).
+
+    En supposant \(k_x^2 + k_y^2\) non nul, nous définissons d'autres paramètres \(A_2,C_2, A_1, C_1, B, D\) tels que
+    % \[
+    % \left\{
+    % \begin{array}{ll}
+    % (a_2,c_2)&=A_2(k_x,k_y)+C_2(-k_y,k_x)
+    % \cr
+    % (a_1,c_1)&=A_1(k_x,k_y)+C_1(-k_y,k_x)
+    % \cr
+    % (b,d)&=B(k_x,k_y)+D(-k_y,k_x)
+    % \end{array}
+    % \right.
+    % \]
+    % équivalent à
+    \begin{align*}
+    a_2 ={}& A_2k_x - C_2k_y, & c_2 ={}& A_2k_y + C_2 k_x,
+    \\
+    a_1 ={}& A_1k_x - C_1k_y, & c_1 ={}& A_1k_y + C_1 k_x,
+    \\
+    b ={}& Bk_x - Dk_y, & d ={}& Bk_y + D k_x,
+    \end{align*}
+    et réciproquement
+    \begin{align*}
+    A_2 ={}& \frac{a_2 k_x + c_2 k_y}{k_x^2 + k_y^2}, & C_2 ={}& \frac{c_2 k_y - a_2 k_x}{k_x^2 + k_y^2},
+    \\
+    A_1 ={}& \frac{a_1 k_x + c_1 k_y}{k_x^2 + k_y^2}, & C_1 ={}& \frac{c_1 k_y - a_1 k_x}{k_x^2 + k_y^2},
+    \\
+    B ={}& \frac{b k_x + d k_y}{k_x^2 + k_y^2}, & D ={}& \frac{d k_y - b k_x}{k_x^2 + k_y^2}.
+    \end{align*}
+
+    Les divergences nulle des champs nous permettent de déduire de \(a_2,c_2,a_1,c_1,b,d\) la décomposition sur \((\sin(\kk_i(z-z_i)),\cos(\kk_i(z-z_i)))\) de \(E_z\):
+
+    \[
+    E_z=i\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-i\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1)), z_1<z<z_2,
+    \]
+    Dans \(z_0<z<z_1\), il faut remplacer \(A_2\) par \(A_1\), \(C_2\) par \(C_1\) et \(\kk_2\) par \(\kk_1\).
+
+    Nous cherchons des résonances, c'est à dire des solutions non nulles du problème de Maxwell harmonique avec conditions de Dirichlet homogènes sur les bords \(z=z_0\) et \(z=z_2\).
+
+    Notons \(\alpha_1=\kk_1(z_0-z_1)\), \(\alpha_2=\kk_2(z_2-z_1)\).
+
+    Les conditions sur \(E_x\) et sur \(E_y\) donnent, après décomposition sur \((k_x,k_y)\) et sur \((-k_y,k_x)\), en \(z=z_0\) et en \(z=z_2\)
+    \[
+    \left\{
+    \begin{aligned}
+    B\cos \alpha_1={}& A_1\sin \alpha_1,
+    \\
+    D\cos \alpha_1={}& C_1\sin \alpha_1,
+    \\
+    B\cos \alpha_2={}& A_2\sin \alpha_2,
+    \\
+    D\cos \alpha_2={}& C_2\sin \alpha_2.
+    \end{aligned}
+    \right.
+    \]
+
+    D'autre part, on écrit la condition de saut tangentielle du champ magnétique à l'interface \(z=z_1\).
+
+    Je calcule les coordonnées tangentielles de \(\vect F = \vrot \hat\vE\) dans \(z_1<z<z_2\):
+    \begin{multline*}
+    F_x = -k_y\left(\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1))\right)
+    \\
+    -\kk_2\left((k_yA_2+k_xC_2)\cos(\kk_2(z-z_1))-(Bk_y+Dk_x)\sin(\kk_2(z-z_1))\right)
+    \end{multline*}
+    \begin{multline*}
+    F_y = \kk_1\left((k_xA_2-k_yC_2)\cos(\kk_2(z-z_1))-(k_xB-k_yD)\sin(\kk_2(z-z_1))\right)
+    \\
+    +k_x\left(\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1))\right)
+    \end{multline*}
+
+    D'où l'on déduit les coordonnées tangentielles du champ magnétique dans \(z_1<z<z_2\):
+    \begin{multline*}
+    \hat{\mathcal{H}}_x = -\frac{k_y}{-ik_2\eta_2}\left(\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1))\right)
+    \\
+    -\frac{\kk_2}{-ik_2\eta_2}\left((k_yA_2+k_xC_2)\cos(\kk_2(z-z_1))-(Bk_y+Dk_x)\sin(\kk_2(z-z_1))\right)
+    \end{multline*}
+    \begin{multline*}
+    \hat{\mathcal{H_y}} = \frac{\kk_2}{-ik_2\eta_2}\left((k_xA_2-k_yC_2)\cos(\kk_2(z-z_1))-(k_xB-k_yD)\sin(\kk_2(z-z_1))\right)
+    \\
+    +\frac{k_x}{-ik_2\eta_2}\left(\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1))\right)
+    \end{multline*}
+    Dans \(z_0<z<z_1\), il faut remplacer \(A_2\) par \(A_1\), \(C_2\) par \(C_1\), \(k_2\eta_2\) par \(k_1\eta_1\) et \(\kk_2\) par \(\kk_1\).
 
 
-      Ses composantes tangentielles sont
-      \begin{align*}
-        \hat{\vH}_t &= \frac{\sin(\kk_2(z-z_1))}{-i k_2\kk_2 \eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}d \\ b\end{bmatrix} - \frac{\cos(\kk_2(z-z_1))}{-i k_2\kk_2 \eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}c_2 \\ a_2\end{bmatrix} && \text{pour } z_1 < z < z_2,
-        \\
-        \hat{\vH}_t &= \frac{\sin(\kk_1(z-z_1))}{-i k_1\kk_1 \eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}d \\ b\end{bmatrix} - \frac{\cos(\kk_1(z-z_1))}{-i k_1\kk_1 \eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}c_1 \\ a_1\end{bmatrix} && \text{pour } z_0 < z < z_1.
-      \end{align*}
+    Pour satisfaire à la continuité tangentielle du champ magnétique, il faut que
+    \[
+    \left\{
+    \begin{aligned}
+    -\frac{k_y}{k_1\eta_1}\frac{k_x^2+k_y^2}{\kk_1}A_1-\frac{\kk_1}{k_1\eta_1}(k_yA_1+k_xC_1)={}&-\frac{k_y}{k_2\eta_2}\frac{k_x^2+k_y^2}{\kk_2}A_2-\frac{\kk_2}{k_2\eta_2}(k_yA_2+k_xC_2),
+    \\
+    -\frac{\kk_1}{k_1\eta_1}(k_xA_1-k_yC_1)+\frac{k_x}{k_1\eta_1}\frac{k_x^2+k_y^2}{\kk_1}A_1={}&-\frac{\kk_2}{k_2\eta_2}(k_xA_2-k_yC_2)+\frac{k_x}{k_2\eta_2}\frac{k_x^2+k_y^2}{\kk_2^2}A_2.
+    \end{aligned}
+    \right.
+    \]
 
-      Pour que le problème soit bien posé, il faut et il suffit que les constantes complexes \(a_2,c_2,b,d,a_1,c_1\) soient déterminées de façon unique quand on exprime les conditions limites. Ce sont des conditions limites de Dirichlet homogène en \(z=z_0\) et \(z=z_2\) pour \(\vE\) et de sauts nuls en \(z=z_1\) pour \(\vH\) (la condition de saut nul pour \(\vE\) a déjà été utilisée dans l'expression des champs).
-      \begin{REM}
-        Le fait que \(\hat{\vE}\) et \(\hat{\vH}\) ont un saut nul à l'interface vient du fait que pour chaque \((k_x,k_y)\), on suppose \(\vE,\vH\) dans \(\Sobup[1]{([z_0,z_2])}\).
-      \end{REM}
-      On a unicité si, dans le cas de conditions de Dirichlet homogènes, l'unique solution est \(\vE=0\). Ces conditions s'expriment
-      \begin{equation*}
-        \label{eq:unicite:interieur:2couches:cldirichlet}
-        \left\lbrace
-        \begin{aligned}
-          a_2\sin{(\kk_2(z_2-z_1))} + b\cos{(\kk_2(z_2-z_1))} &= 0,
-          \\
-          c_2\sin{(\kk_2(z_2-z_1))} + d\cos{(\kk_2(z_2-z_1))} &= 0,
-          \\
-          a_1\sin{(\kk_1(z_0-z_1))} + b\cos{(\kk_1(z_0-z_1))} &= 0,
-          \\
-          c_1\sin{(\kk_1(z_0-z_1))} + d\cos{(\kk_1(z_0-z_1))} &= 0.
-        \end{aligned}
-        \right.
-      \end{equation*}
+    On a ainsi un système de 6 équations à 6 inconnues \(A_1,C_1,A_2,C_2,B,D\).
 
-      C'est un système à 4 équations pour 6 inconnues, donc à deux degrés de liberté. Il existe donc \(A,B\) tels que
-      \begin{equation*}
-        \left\lbrace
-        \begin{aligned}
-        a_2 &= A\cos{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
-        \\
-        b &= -A\sin{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
-        \\
-        a_1 &= A\sin{(\kk_2(z_2-z_1))}\cos{(\kk_1(z_0-z_1))},
-        \\
-        c_2 &= B\cos{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
-        \\
-        d &= -B\sin{(\kk_2(z_2-z_1))}\sin{(\kk_1(z_0-z_1))},
-        \\
-        c_1 &= B\sin{(\kk_2(z_2-z_1))}\cos{(\kk_1(z_0-z_1))}.
-        \end{aligned}
-        \right.
-      \end{equation*}
-      sont solutions du système précédent. 
+    On introduit les deux matrices
+    \begin{align*}
+    \mM_1={}&
+    \begin{bmatrix}
+    -\kk_1k_y-k_y\frac{k_x^2+k_y^2}{\kk_1}  &   -\kk_1k_x
+    \cr
+    \kk_1k_x+k_x\frac{k_x^2+k_y^2}{\kk_1}   &   -\kk_1k_y
+    \end{bmatrix},
+    &
+    \mM_2={}&
+    \begin{bmatrix}
+    -\kk_2k_y-k_y\frac{k_x^2+k_y^2}{\kk_2}  &   -\kk_2k_x
+    \cr
+    \kk_2k_x+k_x\frac{k_x^2+k_y^2}{\kk_2}   &   -\kk_2k_y
+    \end{bmatrix}.
+    \end{align*}
 
-      La dernière condition de saut nul en \(z=z_1\) pour \(\hat\vH_t\) s'exprime alors
-      \begin{align*}
-         \cos(\kk_2(z_2-z_1)) \sin(\kk_1(z_0-z_1))\frac{i}{k_2\kk_2\eta_2}(\kk_2^2 \mI - \mLR)\begin{bmatrix}B\\A\end{bmatrix}
-        \\= 
-         \sin(\kk_2(z_2-z_1)) \cos(\kk_1(z_0-z_1))\frac{i}{k_1\kk_1\eta_1}(\kk_1^2 \mI - \mLR)\begin{bmatrix}B\\A\end{bmatrix}.
-      \end{align*}
+    La continuité tangentielle du champ magnétique se résume à 
+    \[
+    \frac{1}{k_1\eta_1}\mM_1\begin{bmatrix}A_1\\C_1\end{bmatrix}=\frac{1}{k_2\eta_2}\mM_2\begin{bmatrix}A_2\\C_2\end{bmatrix}.
+    \]
 
-      On voit alors apparaître le système final dont le déterminant est
-      \begin{multline*}
-        -\det{}\left(
-        \frac{\cos(\kk_2(z_2-z_1)) \sin(\kk_1(z_0-z_1))}{k_2\kk_2\eta_2}(\kk_2^2 \mI - \mLR)
-        \right.
-        \\
-        \left.-
-         \frac{\sin(\kk_2(z_2-z_1)) \cos(\kk_1(z_0-z_1))}{k_1\kk_1\eta_1}(\kk_1^2 \mI - \mLR)
-         \right)
-      \end{multline*}
+    Nous aboutissons en multipliant par \(\sin(\alpha_1)\sin(\alpha_2)\) puis en utilisant les relations en fonction de \(B\) et \(D\) :
 
-      \newcommand{\alp}{\frac{\cos(\kk_2(z_2-z_1)) \sin(\kk_1(z_0-z_1))}{k_2\kk_2\eta_2}}
-      \newcommand{\bet}{\frac{\sin(\kk_2(z_2-z_1)) \cos(\kk_1(z_0-z_1))}{k_1\kk_1\eta_1}}
+    \[
+    k_2\eta_2\sin(\alpha_2)\mM_1\begin{bmatrix}A_1\sin(\alpha_1)\\C_1\sin(\alpha_1)\end{bmatrix}
+    =
+    k_1\eta_1\sin(\alpha_1)\mM_2\begin{bmatrix}A_2\sin(\alpha_2)\\C_2\sin(\alpha_2)\end{bmatrix},
+    \]
 
-      \begin{multline*}
-        =-\left(\alp \kk_2^2 - \bet \kk_1^2\right)
-        \\
-        \left(\alp(\kk_2^2-k_y^2)-\bet(\kk_1^2-k_x^2)\right).
-      \end{multline*}
+    \[
+    k_2\eta_2\sin(\alpha_2)\cos(\alpha_1)\mM_1\begin{bmatrix}B\\D\end{bmatrix}
+    =
+    k_1\eta_1\sin(\alpha_1)\cos(\alpha_2)\mM_2\begin{bmatrix}B\\D\end{bmatrix},
+    \]
+    et le problème de résonance se ramène à 
 
+    \[
+    \operatorname{det}(K_1\mM_1-K_2\mM_2)=0
+    \]
+    avec \(K_1=k_2\eta_2\cos \alpha_1\sin \alpha_2\), \(K_2=k_1\eta_1\cos \alpha_2\sin \alpha_1\).
 
-      Si le déterminant de ce système n'est pas nul, alors il existe des champs non nuls solutions du problème homogène, et il n'y a alors pas unicité des solutions.
+    Nous remarquons alors que
+    \[
+    \mM_1=
+    \begin{bmatrix}
+    -\kk_1k_y-k_y\frac{k_x^2+k_y^2}{\kk_1}  &   -\kk_1k_x
+    \\
+    \kk_1k_x+k_x\frac{k_x^2+k_y^2}{\kk_1}   &   -\kk_1k_y
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    -k_y\frac{k_1^2}{\kk_1}   &   -\kk_1k_x
+    \\
+    k_x\frac{k_1^2}{\kk_1}    &   -\kk_1k_y
+    \end{bmatrix},
+    \]
+    de même pour \(\mM_2\).
 
-      \begin{REM}
-        Tu n'as pas repris mes calculs pour simplifier cette expression ? J'avais un résultat intéressant et cela serait dommage qu'elle ne soit pas dans ta thèse.
-      \end{REM}
-      \begin{REP}
-        Peux-tu me rappeler quand tu m'as envoyé cette note ?
-      \end{REP}
-
+    En calculant directement le déterminant de \(K_1\mM_1-K_2\mM_2\), on trouve
+    \[
+    \left(k_x^2+k_y^2\right)
+    \left(K_1\frac{k_1^2}{\kk_1} - K_2\frac{k_2^2}{\kk_2}\right)
+    \left(K_1\kk_1+K_2\kk_2\right) = 0
+    \]
+    On obtient donc 3 conditions de résonances.
+    La première a déjà été supposée, les deux suivantes s'expriment respectivement en fonction de \((k_x,k_y)\)
+    \begin{align*}
+    \kk_2k_1\eta_2\tan\left(\kk_2(z_2-z_1)\right) &= \kk_1k_2\eta_1\tan\left(\kk_1(z_0-z_1)\right),
+    \\
+    \kk_1k_2\eta_2\tan\left(\kk_2(z_2-z_1)\right) &= \kk_2k_1\eta_1\tan\left(\kk_1(z_0-z_1)\right).
+    \end{align*}
+    Les constantes de matériaux étant complexes, il n'est pas possible d'en déduire des conditions sur \((k_x,k_y)\).
     \end{proof}
