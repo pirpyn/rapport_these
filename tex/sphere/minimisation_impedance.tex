@@ -30,7 +30,9 @@
     \end{defn}
 
     \begin{prop}
-      Soit \(X = (a_0,a_1,a_2,b_1,b_2)^t\), \(n\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre, alors
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)^t\), \(n\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre.
+
+      On suppose qu'il existe un unique \(X\) qui minimise la distance entre ces deux matrices, alors
       \begin{equation*}
         \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,X) - \hat\mZ_{ex}(n)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,\hat\mZ_{ex}(n))X - b(\hat\mZ_{ex}(n))}^2.
       \end{equation*}
@@ -97,7 +99,7 @@
         J_Z(X) = \norm{{\mA}_{CI3}X - {g}}^2.
       \end{equation*}
     \end{defn}
-    \begin{thm}[Minimisation sans contraintes pour la CI3]
+    \begin{defn}[Minimisation sans contraintes pour la CI3]
 
       Les coefficients de la CIOE sont solutions du problème
 
@@ -105,7 +107,7 @@
       \begin{equation*}
         X^* = \argmin{X\in \CC^5}  J_Z(X).
       \end{equation*}
-    \end{thm}
+    \end{defn}
 
     \begin{prop}
       \label{prop:sphere:minimisation:minimum_sans_contraintes}
@@ -121,7 +123,7 @@
 
     Nous n'avons pas réussi à démontrer que cette matrice était définie pour tout empilement et toute incidence.
 
-    \begin{thm}[Minimisation avec contraintes pour la CI3]
+    \begin{defn}[Minimisation avec contraintes pour la CI3]
 
       Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}, alors les coefficients de la CIOE respectant les CSU sont solutions du problème
 
@@ -129,5 +131,5 @@
       \begin{equation*}
         X^* = \argmin{X\in \CSU[3]{CI3}}  J_Z(X).
       \end{equation*}
-    \end{thm}
+    \end{defn}
 

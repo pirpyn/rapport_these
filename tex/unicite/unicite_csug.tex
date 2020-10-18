@@ -38,13 +38,13 @@
       \vrot \vH - i k_0 \vE &= 0
     \end{matrix}
     \right. && \text{dans \(\OO^c\).}
-    \label{eq:unicite:maxwell_ext}
+    \label{eq:unicite:maxwell_ext_2}
   \end{align}
 
   %  En l'absence de source, le rotationnel d'un des champs a la même régularité que le champs lui-même, donc ces champs sont \(\mathcal{C}^\infty\).
 
   Pour étudier ce problème numériquement, on se ramène à un ouvert borné de la manière suivante : soit \(R\in\RR_+^*\) tel que le domaine \(\overline{\Omega}\) soit inclus dans \(B_R\), la boule de rayon \(R\).
-  On cherche alors les solutions de \eqref{eq:unicite:maxwell_ext} dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\), \(S_R\) étant la sphère de rayon \(R\) où l'on écrit la condition de rayonnement à l'infini
+  On cherche alors les solutions de \eqref{eq:unicite:maxwell_ext_2} dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\), \(S_R\) étant la sphère de rayon \(R\) où l'on écrit la condition de rayonnement à l'infini
   \begin{equation}
     \label{eq:unicite:TR}
     \begin{aligned}
@@ -55,7 +55,7 @@
 
   Soit \(V = \lbrace \vect{u} \in (\mathcal{C}^\infty(\OO^c_R)\cap\Hrot(\OO^c_R) \rbrace\).
 
-  Quand il est bien posé, le problème \eqref{eq:unicite:maxwell_ext} sans sources muni de la condition \eqref{eq:unicite:TR} est équivalent à
+  Quand il est bien posé, le problème \eqref{eq:unicite:maxwell_ext_2} sans sources muni de la condition \eqref{eq:unicite:TR} est équivalent à
   % \begin{REM}
   % Quand le problème est bien posé
   % \end{REM}
@@ -114,7 +114,7 @@
       \label{eq:unicite:form_var:cgu}
       \Re\left(\int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx) \dd{\Gamma(\vx)}\right) \ge 0,
     \end{equation}
-    alors le système \eqref{eq:unicite:maxwell_ext} muni de la condition aux limites \eqref{eq:unicite:TR} admet \(\vE=\vH=0\) comme unique solution.
+    alors le système \eqref{eq:unicite:maxwell_ext_2} muni de la condition aux limites \eqref{eq:unicite:TR} admet \(\vE=\vH=0\) comme unique solution.
   \end{prop}
 
 \begin{proof}
@@ -137,7 +137,7 @@
   On définit les quantités suivantes
   \begin{align}
     X &= \int_\Gamma \vJ(\vx) \cdot \conj{\vE_t}(\vx)\dd{\Gamma(\vx)},
-    %\label{eq:unicite:x}
+    \label{eq:unicite:x}
     \\
     C &= \int_{S_R} \Tr(\vE_t)(\vx)  \cdot \conj{\vE_t}(\vx)\dd{S_R(\vx)}.
   \end{align}

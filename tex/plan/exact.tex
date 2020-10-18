@@ -24,7 +24,7 @@
           \begin{cases} 
             w^2\sqrt{\eps\mu} & -d \le z < 0,
             \\
-            w^2\sqrt{\eps_0\mu_0} & 0\le z < \infty.
+            w^2\sqrt{\eps_0\mu_0} & 0 \le z < \infty.
           \end{cases}}
     \end{equation*}
 
@@ -54,8 +54,8 @@
     \end{defn}
 
     \begin{prop}
-        On se place dans le matériau et l’on suppose que \(\forall z \in [-d,0], k_3(z) \not = 0\).
-        Alors existe \((c_i(k_x,k_y))_{1\le i \le4}, \in \CC(\RR^2)^4\) tels que les champs solutions de \ref{eq:imp_fourier:intro:maxwell_harmonique:form_cea} sont de la forme
+        On se place dans le matériau et l’on suppose tel que \(\forall z \in [-d,0], k_3(z) \not = 0\).
+        Alors existe \((c_i(k_x,k_y))_{1\le i \le4}, \in (\CC(\RR^2))^4\) tels que les champs solutions de \ref{eq:imp_fourier:intro:maxwell_harmonique:form_cea} sont de la forme
         \begin{align*}
             \hat{E}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_1(k_x,k_y) + e^{-ik_3(z)z}c_2(k_x,k_y),
             \\
@@ -359,9 +359,9 @@
                 k_3     & \not = 0, \\
                 k_3d    & \not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN.
             \end{align*}
-            \begin{REM}
-              Remarquons que ces conditions sont toujours vérifiées si \(\eps\mu\not\in\RR_+\).
-            \end{REM}
+            % \begin{REM}
+            %   Remarquons que ces conditions sont toujours vérifiées si \(\eps\mu\not\in\RR_+\).
+            % \end{REM}
             Alors
             \begin{align*}
               \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \vH(k_x,k_y,0^-)\right).
@@ -507,10 +507,13 @@
             \input{tikz/schema/plan_n_couches.tikz}
         \end{tikzpicture}
     \end{figure}
-    \begin{REM}
-      Rappelle au départ le problème bien posé avec conditions de Dirichlet homogène a une unique solution si \(\w^2\eps\mu\) n'est pas une résonance.
-      Il faut quand même que tu mentionnes que d'après la théorie, les composantes qui permettent de calculer la solution sont deux des quatre constantes \(c_i\) que tu as choisis \((c_2,c_4)=f(c_1,c_3)\).
-    \end{REM}
+
+    On suppose qu'il n'y pas de résonances, et nous renvoyons à la proposition \ref{prop:unicite:interieur:postulat:multi-couche} l’expression de ces dernières.
+
+    % \begin{REM}
+    %   Rappelle au départ le problème bien posé avec conditions de Dirichlet homogène a une unique solution si \(\w^2\eps\mu\) n'est pas une résonance.
+    %   Il faut quand même que tu mentionnes que d'après la théorie, les composantes qui permettent de calculer la solution sont deux des quatre constantes \(c_i\) que tu as choisis \((c_2,c_4)=f(c_1,c_3)\).
+    % \end{REM}
     Soit \(z_p\) la hauteur de l'interface \(p\), \(z_p = -\sum_{i=p+1}^{n} d_{i}\). On dit que l'on se trouve dans la couche \(p\) si \(z_{p-1} \le z < z_p \).
 
     \begin{defn}
@@ -680,21 +683,21 @@
       Une condition d'impédance sur le bord inférieur d'une couche détermine la condition limite sur le bord supérieur.
     \end{prop}
 
-    \begin{REM}
-      Il faudrait le formuler plus précisément.
-      En effet, prend les 3 pbs suivants: \(\OO_j=\OO_0\cap C_1 \dots \cap C_j\) ( \(\OO\) recouvert de \(j\) couches ).
+    % \begin{REM}
+    %   Il faudrait le formuler plus précisément.
+    %   En effet, prend les 3 pbs suivants: \(\OO_j=\OO_0\cap C_1 \dots \cap C_j\) ( \(\OO\) recouvert de \(j\) couches ).
       
-      Le premier problème est \(u_{|\partial \OO_0} = 0\), \(u_{|\partial C_j^+} = u_0\) donné. Si \(\w^2\eps\mu\) n'est pas une résonance alors il existe un unique \(u\) solution et donc le Calderon est déterminé \(\partial_{nj}u=C_j(u_{|\partial ????? })\).
+    %   Le premier problème est \(u_{|\partial \OO_0} = 0\), \(u_{|\partial C_j^+} = u_0\) donné. Si \(\w^2\eps\mu\) n'est pas une résonance alors il existe un unique \(u\) solution et donc le Calderón est déterminé \(\partial_{nj}u=C_j(u_{|\partial ????? })\).
 
-      Le deuxième problème est \(v_{|\partial \OO_0} = 0\), \(v_{|\partial C_{j+1}^+} = v_0\)  donné. Si \(\w^2\eps\mu\) n'est pas une résonance alors il existe un unique \(v\) solution et donc le Calderon est déterminé.
+    %   Le deuxième problème est \(v_{|\partial \OO_0} = 0\), \(v_{|\partial C_{j+1}^+} = v_0\)  donné. Si \(\w^2\eps\mu\) n'est pas une résonance alors il existe un unique \(v\) solution et donc le Calderón est déterminé.
 
-      Enfin tu regardes le 3\ieme problème, \(u_{|\partial C_j^+}\) et \(\partial_{n} u_{|\partial C_j^+}\) sont liés par le Calderón \(C_j\). \(u_{|\partial C_{j+1}^+}=v_0\) donné, et tu dis que ce 3\ieme problème donne exactement \(v\) dans  la couche \(j+1\). C'est à démontrer aussi.
+    %   Enfin tu regardes le 3\ieme problème, \(u_{|\partial C_j^+}\) et \(\partial_{n} u_{|\partial C_j^+}\) sont liés par le Calderón \(C_j\). \(u_{|\partial C_{j+1}^+}=v_0\) donné, et tu dis que ce 3\ieme problème donne exactement \(v\) dans  la couche \(j+1\). C'est à démontrer aussi.
 
-      Tu as le pb des résonances et de la solution du 3\ieme pb.
-    \end{REM}
-    \begin{REP}
-      Ce n'est pas du tout clair ce que tu demandes. Quel est le but ?
-    \end{REP}
+    %   Tu as le pb des résonances et de la solution du 3\ieme pb.
+    % \end{REM}
+    % \begin{REP}
+    %   Ce n'est pas du tout clair ce que tu demandes. Quel est le but ?
+    % \end{REP}
     \begin{proof}
       Même méthodologie que pour la proposition \ref{prop:plan:transfert:impedance}.
     \end{proof}
@@ -731,7 +734,8 @@
 
     \end{prop}
 
-    On peut donc déterminer itérativement les matrices d'impédance. Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(z= z_0\) implique \(\hat\mZ_{0}(k_x,k_y) = 0\).
+    On peut donc déterminer itérativement les matrices \(\hat\mZ_{p}\) pour obtenir la matrice associée à l'opérateur de Calderón.
+    Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(z= z_0\) implique \(\hat\mZ_{0}(k_x,k_y) = 0\).
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -912,18 +916,20 @@
     %   Il faut savoir quel nom tu donnes.
     % \end{REM}
     Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(z=z_0^+\) implique \(\mR_{1}(k_x,k_y) = -\mB_E(k_x,k_y,z_0^+)^{-1}\mA_E(k_x,k_y,z_0^+)\).
-    \begin{REM}
-      Il faut absolument que tu fasses la différence entre les calcul formels et les objets définis par les théorèmes.
-    \end{REM}
-    \begin{REP}
-      Que veux-tu dire ?
-    \end{REP}
+    % \begin{REM}
+    %   Il faut absolument que tu fasses la différence entre les calcul formels et les objets définis par les théorèmes.
+    % \end{REM}
+    % \begin{REP}
+    %   Que veux-tu dire ?
+    % \end{REP}
 
 \subsection{Applications numériques}
 
-  La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte. Dans cet ouvrage, la matrice n’est pas exactement la même ( voir annexe \ref{sec:annexe:hoppe} ) et on pose \(\hat{\mathfrak{Z}} = \hat{\mZ}\begin{bmatrix}0&1\\-1&0\end{bmatrix}\) la matrice d'impédance utilisée par Hoppe.
+  La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte.
+  Dans cet ouvrage, l'opérateur de Calderón considéré n'est pas le même ( voir annexe \ref{sec:annexe:hoppe} ) et on pose \(\hat{\mathfrak{Z}} = \hat{\mZ}\begin{bmatrix}0&1\\-1&0\end{bmatrix}\) la matrice d'impédance utilisée par Hoppe.
 
-  On applique les hypothèses précédentes, donc \(k_y=0\). On remarque que pour \(k_x\slash k_0=2\), \(k_3(k_x,k_y,0^-)\) est nul et l'impédance n'est pas définie en ce point. 
+  On applique les hypothèses précédentes d'invariance par rotation, donc \(k_y=0\).
+  On remarque que pour \(k_x\slash k_0=2\), \(k_3(k_x,0)\) est nul et l'impédance n'est pas définie en ce point. 
 
   Comme le matériau n'a pas de perte, la partie réelle de \(\hat{\mathfrak{\mZ}}\) est nulle et n'est donc pas tracée.
   \begin{figure}[!hbt]
@@ -933,7 +939,8 @@
       \label{fig:imp_fourier:plan:hoppe}
   \end{figure}
 
-  La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où \(k_3d = \frac{\pi}{2}\) pour \(k_x \simeq 0.94 k_0\). On a donc une asymptote bien visible sur le module des coefficients diagonaux de \(\hat\mZ\) pour \(k_x\slash k_0 \simeq 0.94\).
+  La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où \(k_3d = \frac{\pi}{2}\) pour \(k_x \simeq 0.94 k_0\).
+  On a donc une asymptote bien visible sur le module des coefficients diagonaux de \(\hat\mZ\) pour \(k_x\slash k_0 \simeq 0.94\).
   \begin{figure}[!hbt]
       \centering
       \input{tikz/plot/Z_SOUDAIS_plan.tikz}

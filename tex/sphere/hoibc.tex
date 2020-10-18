@@ -1,4 +1,4 @@
-\section[Approximation par une CIOE de l'opérateur de Calderon de la sphère]{Approximation de la matrice d'impédance pour une sphère par une CIOE}
+\section[Approximation par une CIOE de l'opérateur de Calderón de la sphère]{Approximation de la matrice d'impédance pour une sphère par une CIOE}
 
   \subsection[Expression des opérateurs LD,LR en Fourier]{Expression des opérateurs \(\LD,\LR\) en Fourier}
 
@@ -9,7 +9,7 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
 
     \begin{defn}
       \label{eq:sphere:fourier:LD}
-      On définit \(\LD\) l'endomorphisme de \(V\) tel que
+      On définit \(\LD\) l'opérateur de \(V\) tel que
       \begin{align*}
         \LD \vect{U}(r_s,\theta,\phi) & = \vgrads{} \vdivs{} \vect{U}(r_s,\theta,\phi).
       \end{align*}
@@ -27,8 +27,10 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
 
     \begin{prop}
       Soit \(\vE_t\) dans \(V\) donc il existe \(a_{nm},b_{nm},c_{nm},d_{nm}\) tels que
-      \begin{align*}
-      \vE_t(r_s,\theta,\phi) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+      \begin{multline*}
+      \vE_t(r_s,\theta,\phi) =
+      \\
+        \sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
               \Umn(\tp) & \Umn^\perp(\tp)
             \end{bmatrix}
@@ -47,8 +49,12 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
                   d_{mn}
               \end{bmatrix}
             \right),
-      \intertext{alors}
-        \LD\vE_t(r_s,\theta,\phi) &=  \sum_{n\in\ZZ}\sum_{m\in\ZZ}
+      \end{multline*}
+      alors
+      \begin{multline*}
+        \LD\vE_t(r_s,\theta,\phi) =
+        \\
+          \sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
               \Umn(\tp) & \Umn^\perp(\tp)
             \end{bmatrix}
@@ -68,7 +74,7 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
                   d_{mn}
               \end{bmatrix}
             \right).
-      \end{align*}
+      \end{multline*}
     \end{prop}
 
     \begin{proof}
@@ -82,7 +88,7 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
         \right.
         \\
         \left.
-        + (b_{mn} \tilde{j_n}(kr_s)+d_{mn} \tilde{h_n}(kr_s)) \Umn^\perp(\tp)\right.
+        + (b_{mn} \tilde{j_n}(kr_s)+d_{mn} \tilde{h_n}(kr_s)) \Umn^\perp(\tp)\right)
         %\intertext{donc}
         %\LD\vE_t(r_s,\theta,\phi) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ} (a_{mn} j_n + c_{mn}h_n) \LD\Umn(r_s,\theta,\phi) + (b_{mn} \tilde{j_n}+d_{mn} \tilde{h_n}) \LD\Umn^\perp(r_s,\theta,\phi)
         .
@@ -151,7 +157,7 @@ Soit \(S(0,r_s)\) une sphère de centre 0, de rayon \(r_s\) et \((r,\theta,\phi)
 
     \begin{defn}
       \label{eq:sphere:fourier:LR}
-      On définit \(\LR\) l'endomorphisme de \(V\) tel que
+      On définit \(\LR\) l'opérateur de \(V\) tel que
       \begin{align*}
         \LR \vect{U}(r_s,\theta,\phi) & = \vrots{} \vrots{} \vect{U}(r_s,\theta,\phi).
       \end{align*}

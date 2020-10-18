@@ -1,20 +1,20 @@
 \chapterstar{Conclusion}
 
-Avant thèse, pour résoudre le problème de la diffraction électromagnétique par équations intégrales en assurant l'unicité des solutions a priori, nous avions la CIOE CI1 et ses CSU.
+Avant thèse, pour résoudre le problème de la diffraction électromagnétique par équations intégrales en assurant l'unicité des solutions a priori, nous avions la CIOE CI1 et une CSU.
 Les coefficients de la CIOE n'étaient calculables que grâce à une approximation locale de l'objet par un plan.
 Cependant, cette CIOE n'était pas du tout performante même si l’on ne vérifiait pas les CSU et les outils numériques en place ne permettaient pas une utilisation de cette méthode dans un code industriel.
 \\
 
 Il existait dans la littérature une CIOE proche de cette dernière, qui donnait d'excellents résultats sans CSU.
-Nous avons alors réussi à trouver plusieurs CSU, moins contraignantes.
-La résolution par couplage équation intégrale avec CIOE donne alors des SER plus proches des résultats de référence, même quand les coefficients sont calculés dans l'approximation plan tangent.
+Nous avons alors réussi à trouver plusieurs CSU pour cette CIOE.
+La résolution par couplage équation intégrale avec CIOE donne alors des SER plus proches des résultats de référence, même quand les coefficients sont calculés dans l'approximation localement plane.
 \\
 
 Nous avons voulu intégrer des courbures locales en approchant l'objet localement par un cylindre ou une sphère.
 Nous avons déterminé que les outils mathématiques en place étaient bons, car les opérateurs associés à ces géométries convergent vers ceux du plan quand le rayon augmente.
 Nous avons remarqué que les CIOE considérées étaient performantes pour la sphère, mais pas pour le cylindre à cause de son anisotropie.
-Numériquement, nous avons conclu qu'il était alors plus judicieux de garder l’approximation plan infini local.
+Numériquement, nous avons conclu qu'il était alors plus judicieux de garder l’approximation plan infini local pour nos empilements.
 \\
 
 Nous avons trouvé une CIOE plus adaptée au cylindre et l'établissement de CSU ainsi que l'intégration de cette CIOE dans les équations intégrales est une perspective possible.
-Enfin, aucune analyse n'a été faite concernant la précision des CIOE quand l'ordre de ces dernières augmente.
+Enfin, aucune analyse n'a été faite concernant la précision des CIOE quand l'ordre de ces dernières augmente, un point soulevé lors de la conférence WAVES 2019, à Vienne (Autriche).

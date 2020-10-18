@@ -1,4 +1,4 @@
-\section[Opérateur de Calderon pour un cylindre infini]{Expressions exactes des matrices d'impédance et des matrices de réflexion pour un cylindre infini}
+\section[Opérateur de Calderón pour un cylindre infini]{Expressions exactes des matrices d'impédance et des matrices de réflexion pour un cylindre infini}
 
   % On rappelle les formules des opérateurs \(\vdiv, \vrot\) en coordonnée cylindrique \((r,\theta,z)\).
   % \begin{align}
@@ -204,7 +204,7 @@
     Sur une interface d'équation \(r=r_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mJ_E(r_p+ \delta,n,k_z) - \mJ_E(r_p - \delta,n,k_z) \not = 0\) .
 
     \begin{prop}
-      Dans chaque couche \(r_{m-1}\le r < r_m\), il existe \((c_i(n,k_z))_{1\le i\le 4}\) telles que les composantes en \(\vect{e_\theta},\vect{e_z}\) des champs, dites composantes tangentielles par abus de langage, sont
+      Dans chaque couche \(r_{m-1}\le r < r_m\), il existe \((c_i(n,k_z))_{1\le i\le 4}\) telles que les composantes en \(\vect{e_\theta},\vect{e_z}\) des champs (\(\vE,\vJ=\vect{e_r}\pvect\vH\)), dites composantes tangentielles par abus de langage, sont
       \begin{subequations}
         \begin{align}
           \hat \vE_t(r,n,k_z) &= \mJ_{E}(r,n,k_z)
@@ -220,7 +220,7 @@
           \end{bmatrix},
           \label{eq:imp_fourier:cylindre:Et}
           \\
-          \vect{e_r}\pvect\hat \vH_t(r,n,k_z) &=
+          \hat\vJ_t(r,n,k_z) &=
           \mJ_{\cH}(r,n,k_z)
           \begin{bmatrix}
             c_1(n,k_z) \\
@@ -390,7 +390,7 @@
       \newline
       \(\mH_{\cH}(r_1^-,n,k_z) - \mJ_{\cH}(r_1^-,n,k_z)\mJ_{E}(r_0^+,n,k_z)^{-1}\mH_{E}(r_0^+,n,k_z)\) est inversible pour tout \((n,k_z)\), alors on a 
       \begin{equation*}
-        \hat \vE_t(r_1^-,n,k_z) = \hat \mZ(n,k_z) \left(\vect{e_r}\pvect \hat \vH_t(r_1^-,n,k_z)\right)
+        \hat \vE_t(r_1^-,n,k_z) = \hat \mZ(n,k_z) \left(\hat\vJ_t(r_1^-,n,k_z)\right)
       \end{equation*}
       où
       \begin{multline*}
@@ -426,7 +426,7 @@
           c_4(n,k_z)
         \end{bmatrix},
         \\
-        \vect{e_r}\pvect \hat \vH_t(r_1,n,k_z) &=
+        \hat \vJ_t(r_1,n,k_z) &=
         \left(\mH_{\cH}(r_1,n,k_z) - \mJ_{\cH}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z) \right)
         \begin{bmatrix}
           c_2(n,k_z) \\
@@ -505,7 +505,7 @@
     \begin{prop}%[Théorème de transfert]~
       \label{prop:cylindre:transfert:impedance}
 
-      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p}^-,n,k_z) = \hat\mZ_{p}(n,k_z)(\vn \pvect \hat\vH(r_{p}^-,n,k_z)\).
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p}^-,n,k_z) = \hat\mZ_{p}(n,k_z)(\hat\vJ_t(r_{p}^-,n,k_z)\).
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
@@ -515,7 +515,7 @@
         \mJ_{\cH}(r_{p-1}^+,n,k_z)\mM_{\mJ}(r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))^{-1} - \mH_{\cH}(r_{p-1}^+,n,k_z)\mM_{\mH}(r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))^{-1},
       \end{align*}
 
-      alors \(\hat\vE_t(r_{p-1}^+,n,k_z) = \mT_p(r_{p-1}^+,r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))(\vn \pvect \hat\vH(r_{p-1}^+,n,k_z))\).
+      alors \(\hat\vE_t(r_{p-1}^+,n,k_z) = \mT_p(r_{p-1}^+,r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))(\hat\vJ_t(r_{p-1}^+,n,k_z))\).
 
       Une condition d'impédance sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
     \end{prop}
@@ -620,7 +620,7 @@
     \begin{prop}%[Théorème de relèvement]~
       \label{prop:cylindre:relevement:impedance}
 
-      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p-1}^+,n,k_z) = \hat\mZ_{p-1}(n,k_z)(\vn \pvect \hat\vH(r_{p-1}^+,n,k_z)\).
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p-1}^+,n,k_z) = \hat\mZ_{p-1}(n,k_z)(\hat\vJ_t(r_{p-1}^+,n,k_z)\).
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
@@ -630,7 +630,7 @@
         \mH_{\cH}(r_{p}^-,n,k_z)\mM_{\mH}(r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z))^{-1} - \mJ_{\cH}(r_{p}^-,n,k_z)\mM_{\mJ}(r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z))^{-1},
       \end{align*}
 
-      alors \(\hat\vE_t(r_{p}^-,n,k_z) = \mT_p(r_p^-,r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z))(\vn \pvect \hat\vH(r_{p}^-,n,k_z))\).
+      alors \(\hat\vE_t(r_{p}^-,n,k_z) = \mT_p(r_p^-,r_{p-1}^+,n,k_z,\hat\mZ_{p-1}(n,k_z))(\hat\vJ_t(r_{p}^-,n,k_z))\).
 
       Une condition d'impédance sur le bord inférieur d'une couche détermine la condition limite sur le bord supérieur.
     \end{prop}
@@ -643,9 +643,9 @@
       \label{prop:cylindre:synthese:impedance}
       Soient \(\hat\vE_t,\hat\vH_t\) tels que 
       \begin{align*}
-      \vE_t(r_{p-1}^+,n,k_z) &= \hat\mZ_{p-1}(n,k_z)(\vn \pvect \hat\vH(r_{p-1}^+,n,k_z)),
+      \hat{\vE}_t(r_{p-1}^+,n,k_z) &= \hat\mZ_{p-1}(n,k_z)(\hat\vJ_t(r_{p-1}^+,n,k_z)),
       \\
-      \vE_t(r_{p}^-,n,k_z) &= \hat\mZ_{p}(n,k_z)(\vn \pvect \hat\vH(r_{p}^-,n,k_z)).
+      \hat{\vE}_t(r_{p}^-,n,k_z) &= \hat\mZ_{p}(n,k_z)(\hat\vJ_t(r_{p}^-,n,k_z)).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -706,7 +706,7 @@
 
       On suppose qu'il existe \(\hat\mR_{p+1}(n,k_z)\) telle que 
       \begin{align*}
-        \vE_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z),
+        \hat{\vE}_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z),
         \\
         \vect{e_r}\pvect\vH(r_{p}^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z).
       \end{align*}
@@ -720,18 +720,18 @@
       \end{align*}
       alors
       \begin{align*}
-        \vE_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\mathfrak{T}_p(r_p^-,r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z)))\vect{C}_{p}(n,k_z),
+        \hat\vE_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\mathfrak{T}_p(r_p^-,r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z)))\vect{C}_{p}(n,k_z),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^-,n,k_z) &= \mN_{\cH}(r_p^-,n,k_z,\mathfrak{T}_p(r_p^-,r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z)))\vect{C}_{p}(n,k_z).
+        \hat\vJ_t(r_{p}^-,n,k_z) &= \mN_{\cH}(r_p^-,n,k_z,\mathfrak{T}_p(r_p^-,r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z)))\vect{C}_{p}(n,k_z).
       \end{align*}
     \end{prop}
 
     \begin{proof}
       De part et d'autre de \(r=r_p\), on a 
       \begin{align*}
-        \vE_t(r_p^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z),
+        \hat{\vE}_t(r_p^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z),
         \\
-        \vE_t(r_p^-,n,k_z) &= \mJ_E(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_E(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z),
+        \hat{\vE}_t(r_p^-,n,k_z) &= \mJ_E(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_E(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z),
       \end{align*}
       \begin{align*}
         \vect{e_r}\pvect\vH(r_p^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z),
@@ -777,9 +777,9 @@
 
       On suppose qu'il existe \(\hat\mR_{p}(n,k_z)\) telle que 
       \begin{align*}
-        \vE_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
+        \hat{\vE}_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^-,n,k_z) &= \mN_{\cH}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z).
+        \hat\vJ_t(r_{p}^-,n,k_z) &= \mN_{\cH}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -791,9 +791,9 @@
       \end{align*}
       alors
       \begin{align*}
-        \vE_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z),
+        \hat{\vE}_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z),
         \\
-        \vE_t(r_{p}^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z).
+        \hat{\vE}_t(r_{p}^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z).
       \end{align*}
     \end{prop}
 
@@ -807,16 +807,16 @@
       On suppose qu'il existe \(\hat\mR_{p}(n,k_z)\) et \(\hat\mR_{p+1}(n,k_z)\) telles que 
       \begin{align*}
       &\left\lbrace\begin{aligned}
-        \vE_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
+        \hat{\vE}_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^-,n,k_z) &= \mN_{\cH}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
+        \hat\vJ_t(r_{p}^-,n,k_z) &= \mN_{\cH}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
         \end{aligned}
       \right.
       \\
       &\left\lbrace\begin{aligned}
         \vE_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z).
+        \hat\vJ_t(r_{p}^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z).
         \end{aligned}
       \right.      
       \end{align*}

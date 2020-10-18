@@ -158,7 +158,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \end{align*}
     \end{prop}
 
-\section[Opérateur de Calderon pour une sphère]{Expressions exactes des matrices d'impédance et des matrices de réflexion pour une sphère}
+\section[Opérateur de Calderón pour une sphère]{Expressions exactes des matrices d'impédance et des matrices de réflexion pour une sphère}
 
     \begin{figure}[!hbt]
         \centering
@@ -225,7 +225,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
       \end{align*}
     \end{defn}
 
-    En utilisant les fonctions définies précédemment, on a les expressions des coordonnées tangentielles de \(\vE,\vJ = \vect{e_r}\times\vH\).
+    En utilisant les fonctions définies précédemment, on a les expressions des coordonnées tangentielles de \(\vE,\vJ = \vect{e_r}\pvect\vH\).
     \begin{prop}
         \label{prop:imp_fourier:sphere:Et}
      \begin{align*}
@@ -388,7 +388,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
     \begin{prop}
      Supposons que la matrice \(\mh_{\cH}(r_1^-,n) - \mj_{\cH}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\mh_{E}(r_0^+,n)\) est inversible pour tout \(n\), alors
       \begin{equation*}
-        \hat \vE_t(r_1^-,n) = \hat \mZ(n) \left(\vect{e_r}\pvect \hat \vH_t(r_1^-,n)\right)
+        \hat \vE_t(r_1^-,n) = \hat \mZ(n) \hat \vJ_t(r_1^-,n)
       \end{equation*}
       où
       \begin{multline*}
@@ -430,7 +430,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \end{bmatrix}.
       \end{align*}
 
-      On suppose donc \(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\) inversible, la matrice \(\hat\mZ(n)\) telle que \(\hat\vE_t(r_1,n) = \hat\mZ(n) (\vect{e_r}\pvect\vH(r_1,n))\) est alors
+      On suppose donc \(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\) inversible, la matrice \(\hat\mZ(n)\) telle que \(\hat\vE_t(r_1,n) = \hat\mZ(n) \vJ(r_1,n)\) est alors
 
       \begin{multline*}
         \hat \mZ =
@@ -492,7 +492,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
     \begin{prop}%[Théorème de transfert]~
       \label{prop:sphere:transfert:impedance}
 
-      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p}^-,n) = \hat\mZ_{p}(n)(\vn \pvect \hat\vH(r_{p}^-,n)\).
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p}^-,n) = \hat\mZ_{p}(n)\hat\vJ_t(r_{p}^-,n)\).
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
@@ -502,7 +502,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \mj_{\cH}(r_{p-1}^+,n)\mM_{\mj}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1} - \mh_{\cH}(r_{p-1}^+,n)\mM_{\mh}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1},
       \end{align*}
 
-      alors \(\hat\vE_t(r_{p-1}^+,n) = \mT_p(r_{p-1}^+,r_{p}^-,n,\hat\mZ_{p}(n))(\vn \pvect \hat\vH(r_{p-1}^+,n))\).
+      alors \(\hat\vE_t(r_{p-1}^+,n) = \mT_p(r_{p-1}^+,r_{p}^-,n,\hat\mZ_{p}(n))\hat\vJ_t(r_{p-1}^+,n)\).
 
       Une condition d'impédance sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
     \end{prop}
@@ -578,7 +578,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
           b_{nm}
         \end{bmatrix}
         \\
-        \vect{e_r}\times\hat{\vH}_t(r_{p-1}^+,n) &=
+        \hat{\vJ}_t(r_{p-1}^+,n) &=
         \left(\mh_{\cH}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n)) + \mj_{\cH}(r_{p-1}^+,n))\right)
         \begin{bmatrix}
           a_{nm} \\
@@ -591,7 +591,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
         \hat{\vE}_t(r_{p-1}^+,n) =
         \left(\mj_{E}(r_{p-1}^+,n) + \mh_{E}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n))\right) \\
         \left(\mj_{\cH}(r_{p-1}^+,n) + \mh_{\cH}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n))\right)^{-1}
-        \vect{e_r}\times\hat{\vH}_t(r_{p-1}^+,n).
+        \hat{\vJ}_t(r_{p-1}^+,n).
       \end{multline*}
 
       Comme on a supposé l'inversibilité des deux matrices \(\mM_j\), \(\mM_h\) alors on a la propriété.
@@ -600,7 +600,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
     \begin{prop}%[Théorème de relèvement]~
       \label{prop:sphere:relevement:impedance}
 
-      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p-1}^+,n) = \hat\mZ_{p-1}(n)(\vn \pvect \hat\vH(r_{p-1}^+,n)\).
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p-1}^+,n) = \hat\mZ_{p-1}(n)\hat\vJ_t(r_{p-1}^+,n)\).
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
@@ -623,9 +623,9 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
       \label{prop:sphere:synthese:impedance}
       Soient \(\hat\vE_t,\hat\vH_t\) tels que 
       \begin{align*}
-      \vE_t(r_{p-1}^+,n) &= \hat\mZ_{p-1}(n)(\vn \pvect \hat\vH(r_{p-1}^+,n)),
+      \hat\vE_t(r_{p-1}^+,n) &= \hat\mZ_{p-1}(n)\hat\vJ_t(r_{p-1}^+,n),
       \\
-      \vE_t(r_{p}^-,n) &= \hat\mZ_{p}(n)(\vn \pvect \hat\vH(r_{p}^-,n)).
+      \hat\vE_t(r_{p}^-,n) &= \hat\mZ_{p}(n)\hat\vJ_t(r_{p}^-,n).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -684,9 +684,9 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
       \label{prop:sphere:transfert:reflexion}
       On suppose qu'il existe \(\hat\mR_{p+1}(n)\) telle que 
       \begin{align*}
-        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n),
+        \hat\vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n).
+        \hat\vJ_t(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -698,22 +698,22 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
       \end{align*}
       alors
       \begin{align*}
-        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n),
+        \hat\vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n).
+        \hat\vJ_t(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n).
       \end{align*}
     \end{prop}
 
     \begin{proof}
       De part et d'autre de \(r=r_p\), on a 
       \begin{align*}
-        \vE_t(r_p^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
+        \hat\vE_t(r_p^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
         \\
-        \vE_t(r_p^-,n) &= \mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n),
+        \hat\vE_t(r_p^-,n) &= \mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n),
         \\
-        \vect{e_r}\pvect\vH(r_p^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
+        \hat\vJ_t(r_p^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
         \\
-        \vect{e_r}\pvect\vH(r_p^-,n) &= \mj_\cH(r_p^-,n)\vect{C}_{1}^-(n) + \mh_\cH(r_p^-,n)\vect{C}_{2}^-(n).
+        \hat\vJ_t(r_p^-,n) &= \mj_\cH(r_p^-,n)\vect{C}_{1}^-(n) + \mh_\cH(r_p^-,n)\vect{C}_{2}^-(n).
       \end{align*}
       Il y a continuité des champs au travers de l'interface donc
       \begin{align*}
@@ -745,9 +745,9 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
       \label{prop:sphere:relevement:reflexion}
       On suppose qu'il existe \(\hat\mR_{p}(n)\) telle que 
       \begin{align*}
-        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
+        \hat\vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n).
+        \hat\vJ_t(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -759,9 +759,9 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
       \end{align*}
       alors
       \begin{align*}
-        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n),
+        \hat\vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n).
+        \hat\vJ_t(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n).
       \end{align*}
     \end{prop}
 
@@ -774,16 +774,16 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
       On suppose qu'il existe \(\hat\mR_{p}(n)\) et \(\hat\mR_{p+1}(n)\) telles que 
       \begin{align*}
       &\left\lbrace\begin{aligned}
-        \vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
+        \hat\vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
+        \hat\vJ_t(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
         \end{aligned}
       \right.
       \\
       &\left\lbrace\begin{aligned}
-        \vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n),
+        \hat\vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n).
+        \hat\vJ_t(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n).
         \end{aligned}
       \right.      
       \end{align*}

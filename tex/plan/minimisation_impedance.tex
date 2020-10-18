@@ -1,7 +1,7 @@
 \section[Choix 1 des coefficients de la CI3]{Choix des coefficients de la CI3 par moindres carrés sur l'impédance}
 
-  Dans la section précédente, nous avons exprimé les matrices \(\hat\mZ\) et la matrice \(\hat\mR\) en fonction de l'empilement.
-  Nous allons montrer que nous pouvons choisir deux manières de calculer les coefficients de la CIOE CI3 (ce qui s'etend facilement au CIOE dérivées de cette dernière). 
+  Dans la section précédente, nous avons exprimé les matrices \(\hat\mZ\) (dite d'impédance) et la matrice \(\hat\mR\) (dite de réflexion) en fonction de l'empilement.
+  Nous allons montrer que nous pouvons choisir deux manières de trouver les coefficients de la CIOE CI3 (ce qui s’étend facilement au CIOE dérivées de cette dernière). 
 
   % On se donne \(N_x\) \(k_x\) et \(N_y\) \(k_y\).
   % Il existe donc \(N_k=N_xN_y\) couples tels que \((k_{xi},k_{yj}) = (k_x,k_y)_{(j-1)N_x+i}\).
@@ -46,7 +46,9 @@
     \end{defn}
 
     \begin{prop}
-      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((k_x,k_y)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du plan, alors
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((k_x,k_y)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du plan.
+
+      S'il existe un unique \(X\) minimisant la distance entre ces deux matrices alors
       \begin{multline*}
         \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(k_x,k_y,X) - \hat\mZ_{ex}(k_x,k_y)} =
         \\
@@ -55,7 +57,7 @@
     \end{prop}
 
     \begin{proof}
-      On rappelle que dans la section précédente, on a introduit
+      On rappelle que dans la section précédente, on a introduit ( au coefficient \(k_0\) près)
       \begin{multline*}
         \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \hat{\mLD}(k_x,k_y) - b_2 \hat{\mLR}(k_x,k_y) \right)^{-1}\\\left(a_0 \mI + a_1 {\hat{\mLD}(k_x,k_y)} - a_2 {\hat{\mLR}(k_x,k_y)}\right).
       \end{multline*}
@@ -112,11 +114,11 @@
       \begin{equation*}
         \mA_{CI3} = 
         \begin{bmatrix}
-          \mH_{CI3}(k_{x1},k_{y1},\hat\mZ_{ex}(k_{x1},k_{y1}))
+          \mH_{CI3}(k_{x_1},k_{y_1},\hat\mZ_{ex}(k_{x_1},k_{y_1}))
           \\
           \vdots
           \\
-          \mH_{CI3}(k_{xi},k_{yj},\hat\mZ_{ex}(k_{xi},k_{yj}))
+          \mH_{CI3}(k_{x_i},k_{y_j},\hat\mZ_{ex}(k_{x_i},k_{y_j}))
           \\
           \vdots
           \\
@@ -127,11 +129,11 @@
       \begin{equation*}
         g = 
         \begin{bmatrix}
-          b(\hat\mZ_{ex}(k_{x1},k_{y1}))
+          b(\hat\mZ_{ex}(k_{x_1},k_{y_1}))
           \\
           \vdots
           \\
-          b(\hat\mZ_{ex}(k_{xi},k_{yj}))
+          b(\hat\mZ_{ex}(k_{x_i},k_{y_j}))
           \\
           \vdots
           \\
@@ -158,7 +160,7 @@
       \end{prop}
 
       \begin{proof}
-        Soit \(t\) le vecteur de \(\RR_+^{N_{k}}\) tel que \(t_{(j-1)N_x+i} = k_{xi}^2 + k_{yj}^2\) et \(1\) le vecteur de \(\RR^{N_{k}}\) dont tous les éléments sont \(1\). On a l'expression suivante de \({\mM}\)
+        Soit \(t\) le vecteur de \(\RR_+^{N_{k}}\) tel que \(t_{(j-1)N_x+i} = k_{xi}^2 + k_{yj}^2\) et \(1\) le vecteur de \(\RR^{N_{k}}\) dont tous les éléments sont \(1\). On a
 
         \begin{equation*}
           {\mM}_{CI01} = 2\begin{bmatrix}
@@ -208,13 +210,6 @@
 
       \subsubsection{Pour la CI1}
 
-      L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière. 
-      Nous n'avons pas réussi à prouver que \(\det({\mM}_{CI1})\) est inversible.
-
-      Cependant nous avons vérifié numériquement qu'elles l'étaient pour tous les empilements que nous avons testés.
-
-      Nous pouvons néanmoins exprimer la matrice et le déterminant et l'inversibilité reste une perspective.
-
       Nous renvoyons aux définitions des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant.
 
       Soient \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\mI}{\hat{\mZ}(k_{x},k_{y})_i}_F\) et \(z\) le vecteur de \(\RR^{N_{k}}\) tel que \(z_i = \norm{\hat{\mZ}(k_{x},k_{y})_i}_F\). On a l'expression suivante de \({\mM_{CI1}}\)
@@ -236,106 +231,126 @@
         - 2\norm{t}^2|\ps{t}{s}|^2 - 2 N_k|\ps{t^2}{s}|^2.
       \end{multline*}
 
-    \begin{REM}
-      Sois positif : "numériquement, nous avons toujours eu l'inversibilité, mais nous savons que cette dernière n'est pas inconditionnelle, ex 2 angles."...
-    \end{REM}
 
-      \begin{REM}
-        J'ai fais le cas \(N_k=2\).
-        \begin{multline*}
-          det = 4(t_1-t_2)^2(t_1^2z_1+t_2^2z_2)
-          \\
-          + 2t_1t_2(t_1-t_2)(\conj{s_1}-\conj{s_2})(t_1s_1+t_2s_2)
-          \\
-          +2(t_1-t_2)(t_1^2s_1+t_2^2s_2)(\conj{s_2}t_2-\conj{s_1}t_1)
-        \end{multline*}
-        sauf erreur de calcul.
-        Obtenue en utilisant \(2t_1 = t_1 + t_2 + t_1 - t_2\), \(2t_2 = t_1 + t_2 - (t_1 - t_2)\)
-      \end{REM}
-      \begin{REP}
-        En effet tu montres que si \(t_1=t_2\), alors det = 0, mais on le sait pour Nk quelconque:
+      Supposons \(t\) et 1 colinéaires, c'est qui revient à ne prendre qu'un seul couple \(k_x,k_y\).
+      Alors la deuxième colonne est multiple de la première.
+      Donc son déterminant est nul.
 
-        Supposons t et 1 colinéaires . donc la deuxième colonne est multiple de la première par la valeur d'une des composantes de t.
-        Donc il faut nécessairement aux moins 2 ti differents.
-        Intuition: au moins 3 pour la CI1
-      \end{REP}
+      L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière.
 
-      \begin{REP}
-        Nouvelle idée, voir CI3.
+      Nous l'avons vérifiés numériquement et pour nous nos empilements, nous n'avons jamais constaté que ce déterminant s'annulait.
 
-        On rappelle que  \(\hat\mL(k_x,k_y)=-(k_x^2+k_y^2)\mI\). On remarque que \(t_i = \ps{\mI}{\hat\mL}_F/\ps{\mI}{\mI}_F\).
+      % Intuition: au moins 3 pour la CI1
 
-        Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\hat\mL(k_{x},k_{y})_i}{\hat{\mZ}(k_{x},k_{y})_i}_F\) et \(l\) le vecteur de \(\RR^{N_{k}}\) tel que \(l_i = \norm{\hat\mL(k_{x},k_{y})_i\hat{\mZ}(k_{x},k_{y})_i}_F\).
+
+      % Nous n'avons pas réussi à prouver que \(\det({\mM}_{CI1})\) est inversible.
+
+      % Cependant nous avons vérifié numériquement qu'elles l'étaient pour tous les empilements que nous avons testés.
+
+      % Nous pouvons néanmoins exprimer la matrice et le déterminant et l'inversibilité reste une perspective.
+
+    % \begin{REM}
+    %   Sois positif : "numériquement, nous avons toujours eu l'inversibilité, mais nous savons que cette dernière n'est pas inconditionnelle, ex 2 angles."...
+    % \end{REM}
+
+    %   \begin{REM}
+    %     J'ai fais le cas \(N_k=2\).
+    %     \begin{multline*}
+    %       det = 4(t_1-t_2)^2(t_1^2z_1+t_2^2z_2)
+    %       \\
+    %       + 2t_1t_2(t_1-t_2)(\conj{s_1}-\conj{s_2})(t_1s_1+t_2s_2)
+    %       \\
+    %       +2(t_1-t_2)(t_1^2s_1+t_2^2s_2)(\conj{s_2}t_2-\conj{s_1}t_1)
+    %     \end{multline*}
+    %     sauf erreur de calcul.
+    %     Obtenue en utilisant \(2t_1 = t_1 + t_2 + t_1 - t_2\), \(2t_2 = t_1 + t_2 - (t_1 - t_2)\)
+    %   \end{REM}
+    %   \begin{REP}
+    %     En effet tu montres que si \(t_1=t_2\), alors det = 0, mais on le sait pour Nk quelconque:
+
+    %     Supposons t et 1 colinéaires . donc la deuxième colonne est multiple de la première par la valeur d'une des composantes de t.
+    %     Donc il faut nécessairement aux moins 2 ti differents.
+    %     Intuition: au moins 3 pour la CI1
+    %   \end{REP}
+
+    %   \begin{REP}
+    %     Nouvelle idée, voir CI3.
+
+    %     On rappelle que  \(\hat\mL(k_x,k_y)=-(k_x^2+k_y^2)\mI\). On remarque que \(t_i = \ps{\mI}{\hat\mL}_F/\ps{\mI}{\mI}_F\).
+
+    %     Soit \(s\) le vecteur de \(\CC^{N_{k}}\) tel que \(s_i = \ps{\hat\mL(k_{x},k_{y})_i}{\hat{\mZ}(k_{x},k_{y})_i}_F\) et \(l\) le vecteur de \(\RR^{N_{k}}\) tel que \(l_i = \norm{\hat\mL(k_{x},k_{y})_i\hat{\mZ}(k_{x},k_{y})_i}_F\).
         
-        On a l'expression suivante de \({\mM_{CI1}}\)
+    %     On a l'expression suivante de \({\mM_{CI1}}\)
 
-        \begin{equation*}
-          {\mM}_{CI1} = \begin{bmatrix}
-          2\ps{1}{1}        & -2\ps{t}{1}       & \ps{1}{s}
-          \\
-          -2\ps{t}{1}       & 2\ps{t}{t}        & -\ps{t}{s}
-          \\
-          \ps{1}{\conj{s}}  & -\ps{t}{\conj{s}} & \ps{l}{l}
-          \end{bmatrix}.
-        \end{equation*}
-        Finalement pas mieux.
+    %     \begin{equation*}
+    %       {\mM}_{CI1} = \begin{bmatrix}
+    %       2\ps{1}{1}        & -2\ps{t}{1}       & \ps{1}{s}
+    %       \\
+    %       -2\ps{t}{1}       & 2\ps{t}{t}        & -\ps{t}{s}
+    %       \\
+    %       \ps{1}{\conj{s}}  & -\ps{t}{\conj{s}} & \ps{l}{l}
+    %       \end{bmatrix}.
+    %     \end{equation*}
+    %     Finalement pas mieux.
 
-      \end{REP}
+    %   \end{REP}
 
-      \begin{REP}
-        Nouveau: Passons par les noyaux. 
+      % \begin{REP}
+      %   Nouveau: Passons par les noyaux. 
 
-        La matrice M est une somme de matrices de det = 0:
-        \begin{align*}
-          \mM_{CI1} = \sum_{i=1}^{N_k}
-          \begin{bmatrix}
-          2  & -2t_i & t_is_i
-          \\
-          -2t_i & 2t_i^2 & - t_i^2 s_i
-          \\
-          t_i\conj{s_i} & -t_i^2 \conj{s_i} & t_i^2 z_i^2 
-          \end{bmatrix}.
-        \end{align*}
+      %   La matrice M est une somme de matrices de det = 0:
+      %   \begin{align*}
+      %     \mM_{CI1} = \sum_{i=1}^{N_k}
+      %     \begin{bmatrix}
+      %     2  & -2t_i & t_is_i
+      %     \\
+      %     -2t_i & 2t_i^2 & - t_i^2 s_i
+      %     \\
+      %     t_i\conj{s_i} & -t_i^2 \conj{s_i} & t_i^2 z_i^2 
+      %     \end{bmatrix}.
+      %   \end{align*}
 
-        Si l'on peut prouver que les noyaux ne s'intersectent qu'en 0, alors la matrice totale est inversible.
+      %   Si l'on peut prouver que les noyaux ne s'intersectent qu'en 0, alors la matrice totale est inversible.
 
-        En effet s'il existe \(\mA\),\(\mB\), et \(x\not=0\) tels que \(\mA x  + \mB x = 0 \), alors soit \(\mA\) est inversible et alors \(x=-\mA^{-1}\mB x\) donc \(\mB= - \mA\) donc \(\mB\) est inversible aussi ( et \(\mA+\mB\equiv 0\) ), soit \(\mA\) n'est pas inversible, donc \(\mA x= 0\), donc \( 0 + \mB x = 0 \), donc \(x\) appartient aussi au noyau de \(\mB\).
-
-
-        On a alors les cas selon si \(|s_i|^2=2z_i^2\), c'est à dire si \(|\hat\mZ((k_x,k_y)_i)_{11} + \hat\mZ((k_x,k_y)_i)_{22}|^2 = 2 (|\hat\mZ((k_x,k_y)_i)_{11})|^2 + |\hat\mZ((k_x,k_y)_i)_{12})|^2 + |\hat\mZ((k_x,k_y)_i)_{21})|^2 + |\hat\mZ((k_x,k_y)_i)_{22})|^2)\).
-
-        \begin{enumerate}
-          \item \(|s_i|^2\not=2z_i^2 \)
-
-          Le noyau est de dim 1 de vecteur \((-t_i,1,0)\) alors il faut que le nombre de \(t_i\) différents soit supérieur à la dimension de la matrice donc 3.
-          \item \(|s_i|^2=2z_i^2 \)
-
-          Cela arrive si \(\hat\mZ((k_x,k_y)_i)\) est multiple de l'identité, par exemple \((k_x,k_y)=(0,0)\) car \(\hat\mZ(0,0)=i\eta_r\tan(kd)\mI\).
-
-          Le noyau est de dimension 2, \((-t_i,1,0)\),\((1/2t_i\conj{s_i},0,1)\). 
-
-          En cours ...
-
-        \end{enumerate}
+      %   En effet s'il existe \(\mA\),\(\mB\), et \(x\not=0\) tels que \(\mA x  + \mB x = 0 \), alors soit \(\mA\) est inversible et alors \(x=-\mA^{-1}\mB x\) donc \(\mB= - \mA\) donc \(\mB\) est inversible aussi ( et \(\mA+\mB\equiv 0\) ), soit \(\mA\) n'est pas inversible, donc \(\mA x= 0\), donc \( 0 + \mB x = 0 \), donc \(x\) appartient aussi au noyau de \(\mB\).
 
 
-      \end{REP}
+      %   On a alors les cas selon si \(|s_i|^2=2z_i^2\), c'est à dire si \(|\hat\mZ((k_x,k_y)_i)_{11} + \hat\mZ((k_x,k_y)_i)_{22}|^2 = 2 (|\hat\mZ((k_x,k_y)_i)_{11})|^2 + |\hat\mZ((k_x,k_y)_i)_{12})|^2 + |\hat\mZ((k_x,k_y)_i)_{21})|^2 + |\hat\mZ((k_x,k_y)_i)_{22})|^2)\).
+
+      %   \begin{enumerate}
+      %     \item \(|s_i|^2\not=2z_i^2 \)
+
+      %     Le noyau est de dim 1 de vecteur \((-t_i,1,0)\) alors il faut que le nombre de \(t_i\) différents soit supérieur à la dimension de la matrice donc 3.
+      %     \item \(|s_i|^2=2z_i^2 \)
+
+      %     Cela arrive si \(\hat\mZ((k_x,k_y)_i)\) est multiple de l'identité, par exemple \((k_x,k_y)=(0,0)\) car \(\hat\mZ(0,0)=i\eta_r\tan(kd)\mI\).
+
+      %     Le noyau est de dimension 2, \((-t_i,1,0)\),\((1/2t_i\conj{s_i},0,1)\). 
+
+      %     En cours ...
+
+      %   \end{enumerate}
+
+
+      % \end{REP}
 
     \subsubsection{Pour la CI3}
 
-      Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et toute incidence.
-      \begin{REM}
-        Il faut que tu en dises plus. As-tu trouvé des cas où elle n'est pas inversible ? As-tu fais l'essai avec deux couches ? Est-ce que pour certaines valeurs de \(k_x,k_y\) il y  des cas si \(\eps,\mu\) complexes.
-      \end{REM}
-      \begin{REP}
-        Je n'ai pas trouvé des cas où elle n'est pas inversible et cela n'est pas vérifié fait dans le code mais serait possible.
-        Le nombre de couches importe peu : cela n'influe que sur l'expression de \(Z_{ex}\), qui est déjà assez complexe pour une seule couche.
-        Le nombre d'incidences a plus d'impact je pense, mais je pense qu'il faut en prendre au moins 3 (intuition).
-        C'est une calcul que j'ai tenté plusieurs fois durant ces 3 ans, sans succès.
-      \end{REP}
+      % Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et toute incidence.
+      % \begin{REM}
+      %   Il faut que tu en dises plus. As-tu trouvé des cas où elle n'est pas inversible ? As-tu fais l'essai avec deux couches ? Est-ce que pour certaines valeurs de \(k_x,k_y\) il y  des cas si \(\eps,\mu\) complexes.
+      % \end{REM}
+      % \begin{REP}
+      %   Je n'ai pas trouvé des cas où elle n'est pas inversible et cela n'est pas vérifié fait dans le code mais serait possible.
+      %   Le nombre de couches importe peu : cela n'influe que sur l'expression de \(Z_{ex}\), qui est déjà assez complexe pour une seule couche.
+      %   Le nombre d'incidences a plus d'impact je pense, mais je pense qu'il faut en prendre au moins 3 (intuition).
+      %   C'est une calcul que j'ai tenté plusieurs fois durant ces 3 ans, sans succès.
+      % \end{REP}
 
-      \begin{REP}
-        Nous pouvons néanmoins exprimer la matrice \(\mM_{CI3}\) et son déterminant et l'inversibilité reste une perspective.
+      % \begin{REP}
+        Cette CIOE complexifie les expressions.
+
+        % Nous pouvons exprimer la matrice \(\mM_{CI3}\) et son déterminant et l'inversibilité reste une perspective.
 
         Nous renvoyons aux définitions des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant.
         Soient \(s_D,s_R\) les vecteurs de \(\CC^{N_{k}}\) et \(l_D,l_R\) les vecteurs de \(\RR_+^{N_{k}}\) tels que
@@ -364,12 +379,15 @@
           \end{bmatrix}.
         \end{equation*}
         
+        Nous n'exprimons pas le déterminant dont nous n'avons pas de simplification.
+        Tout comme pour la CI1, nous avons vérifiés numériquement que sur un certain nombre d'empilements et d’incidences qu'il ne s'annule pas.
+
         % Alors 
         % \begin{multline*}
         %   \det( {\mM}_{CI3}) =
         % \end{multline*}
 
-        % A noter que si on pose
+        % À noter que si on pose
 
         % \begin{align*}
         %   m_{Di} &= \norm{\mLD\hat{\mZ}(k_{x},k_{y})_i}_F^2
@@ -379,43 +397,43 @@
         %   \ps{l_D}{l_D} = \ps{1}{m_D}
         % \end{equation*}
 
-      \end{REP}
-      \begin{REP}
-        Par les noyaux.
+      % \end{REP}
+      % \begin{REP}
+      %   Par les noyaux.
 
-        Pour alleger les notations, \(\mA((k_x,k_y)_i) = \mA_t\).
+      %   Pour alleger les notations, \(\mA((k_x,k_y)_i) = \mA_t\).
 
-        \begin{equation*}
-          {\mM}_{CI3} = \sum_{i=1}^{N_k}
-          \begin{bmatrix}
-          \ps{\mI}{\mI}_F         & \ps{\mI}{\mLD_i}_F       & \ps{\mI}{-\mLR_i}_F          & \ps{\mI}{-\mLD\hat\mZ_i}_F           & \ps{\mI}{\mLR\hat\mZ_i}_F
-          \\
-          \ps{\mI}{\mLD_i}_F      & \ps{\mLD_i}{\mLD_i}_F    & 0                            & \ps{\mLD}{-\mLD\hat\mZ_i}_F          & 0
-          \\
-          \ps{\mI}{-\mLR_i}_F     & 0                        & \ps{\mLR_i}{\mLR_i}_F        & 0                                    & \ps{-\mLR}{\mLR\hat\mZ_i}_F
-          \\
-          \ps{-\mLD\mZ_i}{\mI}_F  & \ps{-\mLD\mZ_i}{\mLD}_F  & 0                            & \ps{\mLD\hat\mZ_i}{\mLD\hat\mZ_i}_F  & 0
-          \\
-          \ps{\mLR\mZ_i}{\mI}_F   & 0                        & \ps{\mLR\hat\mZ_i}{\mLR}_F   & 0                                    & \ps{\mLR\hat\mZ_i}{\mLR\hat\mZ_i}_F
-          \end{bmatrix}.
-        \end{equation*}
+      %   \begin{equation*}
+      %     {\mM}_{CI3} = \sum_{i=1}^{N_k}
+      %     \begin{bmatrix}
+      %     \ps{\mI}{\mI}_F         & \ps{\mI}{\mLD_i}_F       & \ps{\mI}{-\mLR_i}_F          & \ps{\mI}{-\mLD\hat\mZ_i}_F           & \ps{\mI}{\mLR\hat\mZ_i}_F
+      %     \\
+      %     \ps{\mI}{\mLD_i}_F      & \ps{\mLD_i}{\mLD_i}_F    & 0                            & \ps{\mLD}{-\mLD\hat\mZ_i}_F          & 0
+      %     \\
+      %     \ps{\mI}{-\mLR_i}_F     & 0                        & \ps{\mLR_i}{\mLR_i}_F        & 0                                    & \ps{-\mLR}{\mLR\hat\mZ_i}_F
+      %     \\
+      %     \ps{-\mLD\mZ_i}{\mI}_F  & \ps{-\mLD\mZ_i}{\mLD}_F  & 0                            & \ps{\mLD\hat\mZ_i}{\mLD\hat\mZ_i}_F  & 0
+      %     \\
+      %     \ps{\mLR\mZ_i}{\mI}_F   & 0                        & \ps{\mLR\hat\mZ_i}{\mLR}_F   & 0                                    & \ps{\mLR\hat\mZ_i}{\mLR\hat\mZ_i}_F
+      %     \end{bmatrix}.
+      %   \end{equation*}
         
-        % Alors 
-        % \begin{multline*}
-        %   \det( {\mM}_{CI3}) =
-        % \end{multline*}
+      %   % Alors 
+      %   % \begin{multline*}
+      %   %   \det( {\mM}_{CI3}) =
+      %   % \end{multline*}
 
-        % A noter que si on pose
+      %   % À noter que si on pose
 
-        % \begin{align*}
-        %   m_{Di} &= \norm{\mLD\hat{\mZ}(k_{x},k_{y})_i}_F^2
-        % \end{align*}
-        % alors
-        % \begin{equation*}
-        %   \ps{l_D}{l_D} = \ps{1}{m_D}
-        % \end{equation*}
+      %   % \begin{align*}
+      %   %   m_{Di} &= \norm{\mLD\hat{\mZ}(k_{x},k_{y})_i}_F^2
+      %   % \end{align*}
+      %   % alors
+      %   % \begin{equation*}
+      %   %   \ps{l_D}{l_D} = \ps{1}{m_D}
+      %   % \end{equation*}
 
-      \end{REP}
+      % \end{REP}
   \subsection{Calcul des coefficients des CIOE par moindre carrés}
 
     \subsubsection[Expression de la fonction JZ]{Expression de la fonction \(J_Z\)}
@@ -564,10 +582,10 @@
         \label{tab:imp_fourier:plan:hoppe:33:hoibc}
       \end{table}
 
-      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériau sans perte où il y a une asymptote.
-      \begin{REM}[noasymptote]
-        C'est à expliquer (la signification d'une asymptote). Voir plus \hyperlink{REMasymptote}{bas}.
-      \end{REM}
+      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériau sans perte où l'on remarque une asymptote, que nous déterminerons plus tard.
+      % \begin{REM}[noasymptote]
+      %   C'est à expliquer (la signification d'une asymptote). Voir plus \hyperlink{REMasymptote}{bas}.
+      % \end{REM}
       La CI3 capture cette asymptote grâce à son dénominateur et est donc bien meilleure que la condition de Leontovich.
       \begin{figure}[!hbt]
           \centering

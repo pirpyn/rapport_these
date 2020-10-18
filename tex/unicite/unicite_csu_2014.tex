@@ -60,7 +60,7 @@
   %   Quand je met un vecteur à 3 composantes, c'est que la dernière est nulle en pratique.
   % \end{REP}
   \begin{prop}
-    \label{prop:unicite:injectif:operateur:LD}
+    \label{prop:unicite:injectif:opérateur:LD}
     Soit \(\vu \in V\).
 
     Soit \(\mathcal{P}_D\) l'opérateur tel que \(\mathcal{P}_D\vu = (a_0\oI + a_1 \LD)\vu\).
@@ -68,7 +68,7 @@
     Si \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\) alors l'opérateur \(\mathcal{P}_D\) est injectif sur \(V\).
   \end{prop}
   \begin{prop}
-    \label{prop:unicite:injectif:operateur:LR}
+    \label{prop:unicite:injectif:opérateur:LR}
     Soit \(\vu \in V\).
 
     Soit \(\mathcal{P}_R\) l'opérateur tel que \(\mathcal{P}_R\vu = (a_0\oI - a_2 \LR)\vu\).
@@ -76,7 +76,7 @@
     Si \(\Re(a_0)\ge 0\) et \(\Re(a_2)\le 0\), alors l'opérateur \(\mathcal{P}_R\) est injectif sur \(V\).
   \end{prop}
   \begin{prop}
-    \label{prop:unicite:injectif:operateur:LD-LR}
+    \label{prop:unicite:injectif:opérateur:LD-LR}
     Soit \(\vu \in V\).
     
     Soit \(\mathcal{P}\) l'opérateur tel que \(\mathcal{P}\vu = (a_0\oI + a_1 \LD - a_2\LR)\vu\).
@@ -84,7 +84,7 @@
     Si \(\Re(a_0)\ge 0\), \(\Re(a_1)\le 0\) et \(\Re(a_2)\le 0\), alors l'opérateur \(\mathcal{P}\) est injectif sur \(V\).
   \end{prop}
   \begin{proof}
-   Identique à la démonstration de la propriété \ref{prop:unicite:injectif:operateur:L}.
+   Identique à la démonstration de la propriété \ref{prop:unicite:injectif:opérateur:L}.
   \end{proof}
 
   \begin{prop}
@@ -569,7 +569,7 @@
 
     \end{proof}
   \begin{defn}
-    \label{def:csu:ci3-0}
+    \label{def:csu:ci3-1}
 
     On définit le sous-espace de \(\CC^5\)
 
@@ -720,12 +720,12 @@
       \right\rbrace.
     \end{equation*}
   \end{defn}
-  \begin{REM}
-    Et là tu peux mettre le passage à la limite que je t'ai envoyé par mail.
-  \end{REM}
-  \begin{REP}
-  A recopier.
-  \end{REP}
+  % \begin{REM}
+  %   Et là tu peux mettre le passage à la limite que je t'ai envoyé par mail.
+  % \end{REM}
+  % \begin{REP}
+  %   Je l'ai perdu...
+  % \end{REP}
 
  \begin{prop}[Une deuxième CSU pour la CI3]
     \label{prop:csu:ci3-2}
@@ -861,13 +861,13 @@
 
   \begin{proof}
     Supposons l'opérateur \(a_0\oI + a_1 \LD - a_2 \LR\) inversible.
-    \begin{REM}
-      Sur \(\Sobolev[1]\) ? Précisez les espaces. Il faut préciser les espaces, de plus il y a un autre problème. Prenons P l'opérateur
-      \(Pf=f''+af\). \(Pf=g\) a une infinité de solutions: si on en a une, alors en ajoutant  \(f_0\) telle que \(f_0''+a_f0 =0\), c'est à dire \(f_0=Ae^{\sqrt{-a}t}+Be^{-\sqrt{-a}t}\) alors comment ????????-tu \(f_0\)
-    \end{REM}
-    \begin{REP}
-      On a vu ça ensemble à Montréal: je ne sais pas dans quel espace me placer.
-    \end{REP}
+    % \begin{REM}
+    %   Sur \(\Sobolev[1]\) ? Précisez les espaces. Il faut préciser les espaces, de plus il y a un autre problème. Prenons P l'opérateur
+    %   \(Pf=f''+af\). \(Pf=g\) a une infinité de solutions: si on en a une, alors en ajoutant  \(f_0\) telle que \(f_0''+a_f0 =0\), c'est à dire \(f_0=Ae^{\sqrt{-a}t}+Be^{-\sqrt{-a}t}\) alors comment ????????-tu \(f_0\)
+    % \end{REM}
+    % \begin{REP}
+    %   On a vu ça ensemble à Montréal: je ne sais pas dans quel espace me placer.
+    % \end{REP}
    Alors,
 
     \begin{align*}
@@ -1006,7 +1006,7 @@
     %   Le même raisonnement est valable pour \(a_0\oI - a_2 \LR\).
     % \end{proof}
 
-    % On utilise les propositions \ref{prop:unicite:injectif:operateur:LD},\ref{prop:unicite:injectif:operateur:LR},\ref{prop:unicite:injectif:operateur:L}. On suppose donc \(\Re(a_0) \ge 0 \),\(\Re(a_1) \le 0\) et \(\Re(a_2)\le0\)), donc \(\left(\conj{a_0}  + \conj{a_1} \LD \right)\) et \(\left(\conj{a_0}  - \conj{a_2} \LR \right)\) sont injectifs et donc on déduit que
+    % On utilise les propositions \ref{prop:unicite:injectif:opérateur:LD},\ref{prop:unicite:injectif:opérateur:LR},\ref{prop:unicite:injectif:opérateur:L}. On suppose donc \(\Re(a_0) \ge 0 \),\(\Re(a_1) \le 0\) et \(\Re(a_2)\le0\)), donc \(\left(\conj{a_0}  + \conj{a_1} \LD \right)\) et \(\left(\conj{a_0}  - \conj{a_2} \LR \right)\) sont injectifs et donc on déduit que
 
     % \begin{align*}
     %   \left(\conj{a_0}\oI  + \conj{a_1} \LD \right)\LD\vR_1 = 0 &\Rightarrow \LD\vR_1 = 0,

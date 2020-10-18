@@ -33,9 +33,10 @@
     \end{defn}
 
     \begin{prop}
-      Soit \(X = (a_0,a_1,a_2,b_1,b_2)^t\), \((n,k_z)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre, alors
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)^t\), \((n,k_z)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre.
+      Supposons qu'il existe un unique \(X\) minimisant la distance entre ces deux matrices alors
       \begin{equation*}
-        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,k_z,X) - \hat\mZ_{ex}(n,k_z)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,k_z,\hat\mZ_{ex}(n,k_z))X - b(\hat\mZ_{ex}(n,k_z))}^2.
+        \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,k_z,X) - \hat\mZ_{ex}(n,k_z)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,k_z,\hat\mZ_{ex}(n,k_z))X - b(\hat\mZ_{ex}(n,k_z))}.
       \end{equation*}
     \end{prop}
 

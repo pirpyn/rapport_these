@@ -62,7 +62,7 @@
   % \end{REP}
 
   \begin{prop}
-    \label{prop:unicite:injectif:operateur:L}
+    \label{prop:unicite:injectif:opérateur:L}
     Soit \(\vu \in V=(\mathcal{C}^\infty(\Gamma))^3, a_0 \in \CC, a_1 \in \CC\).
     
     Soit \(\mathcal{P}\) l'opérateur de \(V\) vers lui-même tel que \(\mathcal{P}\vu = (a_0\oI + a_1 \LL)\vu\).
@@ -87,7 +87,7 @@
   \end{proof}
   
   \begin{prop}
-    \label{prop:unicite:inversible:operateur:L}
+    \label{prop:unicite:inversible:opérateur:L}
     Soit \(\vu \in V=(\mathcal{C}^\infty(\Gamma))^3\).
     
     Soit \(\mathcal{P}\) l'opérateur tel que \(\mathcal{P}\vu = (a_0\oI + a_1 \LL)\vu\).
@@ -96,7 +96,7 @@
   \end{prop}
   \begin{proof}
     D'après l'alternative de Fredholm (voir \cite[Théorème~VI.6, p.~92]{brezis_analyse_1996})%, si l'opérateur \(\LL\) est compact,%
-      alors \(\mathcal{P}\) est soit non-injectif soit bijectif. D'après la proposition \ref{prop:unicite:injectif:operateur:L}, comme \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\), alors il est injectif, donc bijectif.
+      alors \(\mathcal{P}\) est soit non-injectif soit bijectif. D'après la proposition \ref{prop:unicite:injectif:opérateur:L}, comme \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\), alors il est injectif, donc bijectif.
     % Montrons que \(\LL\) est compact.
   \end{proof}
 
@@ -263,13 +263,13 @@
       \end{equation*}
     \end{defn}
 
-    \begin{REM}
-      J'ai fait un petit calcul utilisant \(a_1-a_0\conj{b}=i\Im(\Delta)\) et j'en déduis que \(\Re(a_0)\ge0\) donc c'est une condition qui est contenue dans
-      les autres.
-    \end{REM}
-    \begin{REP}
-      Y a t'il équivalence ou implication entre \(\Re(\Delta) = 0\) et \(\Re(a_0)\ge0\) ? Si la première, autant s'en servir.
-    \end{REP}
+    % \begin{REM}
+    %   J'ai fait un petit calcul utilisant \(a_1-a_0\conj{b}=i\Im(\Delta)\) et j'en déduis que \(\Re(a_0)\ge0\) donc c'est une condition qui est contenue dans
+    %   les autres.
+    % \end{REM}
+    % \begin{REP}
+    %   Y a t'il équivalence ou implication entre \(\Re(\Delta) = 0\) et \(\Re(a_0)\ge0\) ? Si la première, autant s'en servir.
+    % \end{REP}
 
     \begin{prop}[Une première CSU pour la CI1]
       \label{prop:csu:ci1-1}
@@ -334,15 +334,15 @@
       \CSU[1]{CI1}\cap(\CC^2 \times \lbrace0\rbrace) = (\CSU{CI01}\cap S) \times\lbrace0\rbrace. 
     \end{equation}
 
-    \begin{REM}
-      Cas \(\Delta=0\) ...
-    \end{REM}
-    \begin{REP}
-      ??? 
-    \end{REP}
+    % \begin{REM}
+    %   Cas \(\Delta=0\) ...
+    % \end{REM}
+    % \begin{REP}
+    %   ??? 
+    % \end{REP}
 
     % \begin{lemme}
-    % \label{lem:coercivite:operateur-l}
+    % \label{lem:coercivite:opérateur-l}
     %   Soit \(z\in \CC\), \(\vu,\vv \in \Sobolev[1]{(\Gamma)}\) et \(a\) la forme bilinéaire
     %   \begin{equation*}
     %     a(\vect{u},\vect{v}) = \int_\Gamma(\oI + z\LL)\vect{u}\cdot\conj{\vect{v}}.
@@ -418,7 +418,7 @@
     \end{prop}
 
     \begin{proof}
-      Comme on suppose \(\Re(b)\le 0\), alors l'opérateur \(\oI + b\LL\) est injectif d'après la propriété \ref{prop:unicite:injectif:operateur:L}. Donc pour tout \(\vJ\) dans l'image de \(\oI + b\LL\), il existe un unique \(\vect{D}\) tel que
+      Comme on suppose \(\Re(b)\le 0\), alors l'opérateur \(\oI + b\LL\) est injectif d'après la propriété \ref{prop:unicite:injectif:opérateur:L}. Donc pour tout \(\vJ\) dans l'image de \(\oI + b\LL\), il existe un unique \(\vect{D}\) tel que
       \begin{align*}
         (\oI + b \LL)^{-1}\vJ &= \vect{D}.
       \end{align*}

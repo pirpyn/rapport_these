@@ -5,10 +5,10 @@ que l'on cherche à minimiser qui est \(F(X) = \left\lVert{\mH} X - b(\mZ_{ex})\
 
 On se place dans le cadre du plan infini de \cite{aubakirov_electromagnetic_2014}, où \(\eps=4,\mu=1,f=12\) GHz, et \(d=3.5\) mm. %Ce cas non physique possède un onde guidée pour \((k_x,k_y) = (k_0s^\star,0.)\) où \(\mR(k_0s^\star,0.) = \infty\).
 
-Il existe un \(s_z\) tel que \(\hat\mZ_{ex}(k_0s_z,0.) = \infty\). En effet, d'après la formule pour une couche de matériau de la définition \ref{def:plan:impedance:1c}, 
-\begin{REM}
-  Dis dans le texte (et non seulement dans le titre) que ce n'est possible que si \(\eps\mu\in\RR\).
-\end{REM}
+Il existe un \(s_z\) tel que \(\hat\mZ_{ex}(k_0s_z,0.) = \infty\) si \(\eps\mu\in\RR\). En effet, d'après la formule pour une couche de matériau de la définition \ref{def:plan:impedance:1c}, 
+% \begin{REM}
+%   Dis dans le texte (et non seulement dans le titre) que ce n'est possible que si \(\eps\mu\in\RR\).
+% \end{REM}
 \begin{equation}
   \hat{\mZ}_{ex}(k_x,0.) = i\frac{\eta}{k\sqrt{k^2 - k_x^2}}\tan(\sqrt{k^2 - k_x^2}d)\left(k^2\mI - \hat{\mLR}\right).
 \end{equation}
@@ -16,9 +16,9 @@ Ainsi, il est facile de voir que l'on a une asymptote à cause de la tangente, e
 \begin{equation}
   s_z = \sqrt{\eps \mu - \left(\frac{\pi/2}{k_0 d}\right)^2}.
 \end{equation}
-\begin{REM}[asymptote]
-  Et voilà l'explication de \hyperlink{REMnoasymptote}{la precedente remarque}.
-\end{REM}
+% \begin{REM}[asymptote]
+%   Et voilà l'explication de \hyperlink{REMnoasymptote}{la precedente remarque}.
+% \end{REM}
 Le problème est donc que si nous balayons en incidence et que l'on passe par ce point, alors la matrice \(\hat\mZ\) n'est pas définie en ce point. Or comme le gradient de la fonction est fonction de cette matrice, le gradient n'est pas défini pour tout \(X\). Si l'on utilise une méthode basée sur le gradient de type Newton, ce que nous avons fait, on comprend pourquoi la méthode numérique échoue à calculer des coefficients.
 
 \subsubsection{Réduction du nombre de variables de la minimisation}
@@ -102,10 +102,13 @@ Dans les faits, \({\mH}_\infty\) a \(4\) lignes non nulles et \({\mH}_r\) en a a
 
 
 On développe donc la fonction
-\begin{REM}
-  Voir \hyperlink{REMfonction}{avant}.
-  De plus, il est préférable de l'écrire sur le carré de la norme.
-\end{REM}
+% \begin{REM}
+%   Voir \hyperlink{REMfonction}{avant}.
+%   De plus, il est préférable de l'écrire sur le carré de la norme.
+% \end{REM}
+% \begin{REP}
+%   Fait
+% \end{REP}
 suivant cette décomposition :
 \begin{align*}
 \argmin{X}\left\rVert {\mH} X - {b} \right \rVert^2 &= \argmin{X_r}\left\rVert \left({\mH}_\infty + {\mH}_r\right)\left( X_\infty + X_r \right) - {b}_\infty - {b}_r \right \rVert^2.
@@ -118,9 +121,12 @@ suivant cette décomposition :
 \end{align*}
 
 On voit alors que l'on peut résoudre le problème
-\begin{REM}
-  Ce n'est pas rigoureux
-\end{REM}
+% \begin{REM}
+%   Ce n'est pas rigoureux
+% \end{REM}
+% \begin{REP}
+%   Pourtant c'est issus du travail à Montréal.
+% \end{REP}
 si l'on minimise uniquement sur les \(X_r\), les autres étant fixés, et si l'on enlève du système les lignes où l'impédance n'est pas définie.
 
 \subsubsection{Application de la réduction à la CI3}
@@ -130,11 +136,15 @@ On rappelle l'expression de la CI3
   \hat{\mZ}_{ap}(k_x,0) = \left(\mI + b_1 \hat{\mLD}(k_x,0) - b_2 \hat{\mLR}(k_x,0) \right)^{-1}\left(a_0\mI + a_1 \hat{\mLD}(k_x,0) - a_2 \hat{\mLR}(k_x,0) \right).
 \end{equation*}
 
-On voit donc que pour faire apparaître une asymptote,
-\begin{REM}
-  Pas math. "Une condition nécessaire et suffisante pour que \(\mZ\) ai une asymptote est". Elle est peut etre seulement nécessaire car si \(a_0\mI + a_1\mLD -a_2\mLR\) a un noyau
-\end{REM}
-il faut que la matrice de gauche ne soit pas inversible en \(s_z\).
+% On voit donc que pour faire apparaître une asymptote,
+% \begin{REM}
+%   Pas math. "Une condition nécessaire et suffisante pour que \(\mZ\) ai une asymptote est".
+%   Elle est peut être seulement nécessaire car si \(a_0\mI + a_1\mLD -a_2\mLR\) a un noyau
+% \end{REM}
+% \begin{REP}
+%   FAIT
+% \end{REP}
+Une condition nécessaire et suffisante pour que \(\hat{\mZ}_{ap}\) ai une asymptote est que la matrice de gauche ne soit pas inversible en \(s_z\).
 
 La matrice \({\mH}_\infty\) est donc nulle partout sauf en 8 termes, placés sur les deux dernières colonnes et les 4 lignes correspondantes à \((k_x,k_y)=(k_0 s_z,0)\).
 
