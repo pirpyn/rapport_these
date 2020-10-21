@@ -1284,7 +1284,7 @@ Dans \(\OO\), on a \(k(\vx)=k_0\sqrt{\gls{phy-eps}(\vx)\gls{phy-mu}(\vx)}\).
 
 Nous utilisons les équations de Maxwell-Helmholtz où les inconnues sont le champ électrique \gls{phy-e} et l'induction magnétique \gls{phy-h2}, elles se déduisent du système d'équations de Maxwell (voir annexe \ref{sec:annex:maxwell_equation}). 
 
-Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}^\infty(\RR^3)\cap\Hrot(\RR^3))^3\) tels que
+Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}_0^\infty(\RR^3)\cap\Hrot(\RR^3))^3\) tels que
 \begin{align}
   \left\lbrace
   \begin{matrix}
@@ -1459,7 +1459,9 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
 
     \subsubsection{Expression de l'opérateur de Calderón pour \(k_z\) quelconque}
 
-      On pose \(k_3 = \sqrt{k^2 - k_z^2}\) que l'on suppose non nul.
+      On pose \(k_3 = \sqrt{k^2 - k_z^2}\) que l'on suppose non nul et tel que \(k_z^2 < \Re(k^2)\).
+      Ainsi la partie imaginaire de \(k_3\) reste petite devant sa partie réelle.
+      Dans le cadre de cette thèse, nous avons considéré \(k_z < k_0\).
 
       L'opérateur \(\hat\mZ_n(k_z)\) est alors
 
@@ -1586,28 +1588,28 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
 
     On approche l'égalité caractérisant l'opérateur de Calderón par
     \[
-      \hat\vE_t = ( a_0 + a_1 \LL ) \hat \vJ
+      \hat\vE_t = ( a_0\oI + a_1 \LL ) \hat \vJ
     \]
 
   \subsection{Padé à l'ordre 1:1: la CI1}
 
     On approche l'égalité caractérisant l'opérateur de Calderón par
     \[
-      ( 1 + b_1 \LL )\hat\vE_t = ( a_0 + a_1 \LL ) \hat \vJ
+      ( \oI + b_1 \LL )\hat\vE_t = ( a_0\oI + a_1 \LL ) \hat \vJ
     \]
 
   \subsection{Padé à l'ordre 1:1, découplé: la CI3}
 
     On approche l'égalité caractérisant l'opérateur de Calderón par
     \[
-      ( 1 + b_1 \LD -b_2 \LR )\hat\vE_t = ( a_0 + a_1 \LD -a_2 \LR) \hat \vJ
+      ( \oI + b_1 \LD -b_2 \LR )\hat\vE_t = ( a_0\oI + a_1 \LD -a_2 \LR) \hat \vJ
     \]
 
   \subsection{Taylor à l'ordre 1, découplé: la CI4}
 
     On approche l'égalité caractérisant l'opérateur de Calderón par
     \[
-      \hat\vE_t = ( a_0 + a_1 \LD - a_2 \LR ) \hat \vJ
+      \hat\vE_t = ( a_0\oI + a_1 \LD - a_2 \LR ) \hat \vJ
     \]
 
 \section{Étude de l'unicité des solutions du problème extérieur avec CIOE sur le bord}

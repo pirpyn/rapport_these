@@ -90,15 +90,20 @@
     Les constantes relatives \(\eps,\mu\) (ou \(k,\eta\)) sont constantes par morceaux en fonction de \(z\).
     \begin{prop}
       \label{prop:unicite:interieur:postulat:multi-couche}
-      Le problème Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet homogènes \(\vE_{|z=z_n} = 0\), \(\vE_{|z=z_0} = 0\) admet une unique solution si et seulement si le déterminant d'un système linéaire est non-nul.
+      Le problème Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet homogènes \(\vE_{|z=z_n} = 0\), \(\vE_{|z=z_0} = 0\) admet une unique solution pour deux couches de matériaux si et seulement si pour tout \((k_x,k_y) \in \RR^2\) tel que \(k_x^2 + k_y^2 \not = 0\)
+      \begin{align*}
+        \begin{cases}
+        \kk_2k_1\eta_2\tan\left(\kk_2(z_2-z_1)\right) & \not = \kk_1k_2\eta_1\tan\left(\kk_1(z_0-z_1)\right),
+        \\
+        \kk_1k_2\eta_2\tan\left(\kk_2(z_2-z_1)\right) & \not = \kk_2k_1\eta_1\tan\left(\kk_1(z_0-z_1)\right).
+        \end{cases}
+      \end{align*}
     \end{prop}
-
+    Ces relations ne contiennent pas les conditions de résonance pour chacune des couches.
     \begin{proof}
-      Nous ne traiterons dans cette thèse que l'exemple de deux couches de matériaux.
+      % Nous ne traiterons dans cette thèse que l'exemple de deux couches de matériaux.
       % Nous supposons qu'il existe un champ \(\vE\) solution du problème de Maxwell-Helmholtz \eqref{eq:unicite:maxwell_int} avec conditions limite de Dirichlet homogènes sur les bords du domaine.
       % La démonstration de l'existence de ces champs est l'objet de la partie suivante.
-
-      \newcommand{\kk}{\tilde{k}}
 
       On pose \(\kk_1 = \sqrt{k_1^2 - k_x^2 - k_y^2}\),  \(\kk_2 = \sqrt{k_2^2 - k_x^2 - k_y^2}\).
 

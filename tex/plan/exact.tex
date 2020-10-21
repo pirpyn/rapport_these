@@ -105,6 +105,13 @@
 
     \subsection{Expressions des champs tangentiels dans chaque couche}
 
+      \begin{remark}
+        Nous supposons dans tout ce qui suit certaines matrices inversibles.
+        Ceci est uniquement une commodité de calcul mais n'est pas une condition nécessaire d'existence de l'opérateur de Calderón. 
+
+        Voir par exemple la proposition \ref{prop:unicite:interieur:postulat:multi-couche} pour un exemple de condition nécessaire d’existence pour 2 couches.
+      \end{remark}
+
       \begin{defn}
         On définit les matrices \(\mA_{E}(k_x,k_y,z)\), \(\mB_{E}(k_x,k_y,z)\), \(\mA_{H}(k_x,k_y,z)\), \(\mB_{H}(k_x,k_y,z)\) constantes par morceaux en \(z\)
         \begin{align*}
@@ -144,7 +151,7 @@
           \begin{align*}
               \hat{\vE}_t(k_x,k_y,z) &= \mA_E(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y,z) \\ c_3(k_x,k_y,z)\end{bmatrix} + \mB_E(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y,z) \\ c_4(k_x,k_y,z)\end{bmatrix},
               \\
-              (\vn \pvect \hat{\vH})_t(k_x,k_y,z) &= \mA_H(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y,z) \\ c_3(k_x,k_y,z)\end{bmatrix} + \mB_H(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y,z) \\ c_4(k_x,k_y,z)\end{bmatrix}.
+             \hat{\vJ}_t(k_x,k_y,z) &= \mA_H(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y,z) \\ c_3(k_x,k_y,z)\end{bmatrix} + \mB_H(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y,z) \\ c_4(k_x,k_y,z)\end{bmatrix}.
           \end{align*}
       \end{prop}
 
@@ -267,7 +274,7 @@
         \begin{align*}
             \hat{\vE}_t(k_x,k_y,z) &= \mA_E(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} + \mB_E(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix},
             \\
-            (\vn \pvect \hat{\vH})_t(k_x,k_y,z) &= \mA_H(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} + \mB_H(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}.
+            \hat{\vJ}_t(k_x,k_y,z) &= \mA_H(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix} + \mB_H(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}.
         \end{align*}
       \end{proof}
 
@@ -321,9 +328,9 @@
             \\
             \hat{\vH}_t(k_x,k_y,z_m^+) &= \hat{\vH}_t(k_x,k_y,z_m^-).
           \end{align*}
-          Donc on la même propriété sur \(\vn \pvect \hat{\vH}\),
+          Donc on la même propriété sur \(\hat{\vJ}\),
           \begin{align*}                
-            \vn \pvect \hat{\vH}_t(k_x,k_y,z_m^+) &= \vn \pvect \hat{\vH}_t(k_x,k_y,z_m^-).
+            \hat{\vJ}_t(k_x,k_y,z_m^+) &= \hat{\vJ}_t(k_x,k_y,z_m^-).
             \\
             \intertext{On repart de la propriété de la matrice \(\hat{\mZ}^+(k_x,k_y)\),}
             \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right).
@@ -371,7 +378,7 @@
         \begin{proof}
             Grâce au lemme \eqref{lem:plan:continuite_impedance}, on sait donc que l'on peut uniquement se placer dans la couche.
 
-            Il existe une répartition des constantes \((c_1,c_2,c_3c,_4)\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\).
+            Il existe une répartition des constantes \((c_1,c_2,c_3,c_4)\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\).
             Ici nous choisissons
             %Nous n'avons donc pas besoin de distinguer les vecteurs indépendants de \(z\) mais qui sont différents dans chaque couche, dans l'expression des champs tangentiels. Nous posons donc
             \begin{align*}
@@ -403,7 +410,7 @@
                 \left(\mA_E(k_x,k_y,0^-)-\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)\vect{C_1}(k_x,k_y),
             \end{multline*}
             \begin{multline*}
-                \vn \pvect \hat \vH_t(k_x,k_y,0^-) =
+                \hat{\vJ}(k_x,k_y,0^-) =
                 \\
                 \left(\mA_H(k_x,k_y,0^-)-\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)\vect{C_1}(k_x,k_y).
             \end{multline*}
@@ -474,9 +481,9 @@
             \end{align*}
         \end{proof}
         %On remarque que \(\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)\) et donc pour un matériau \((\eps,\mu,d)\) donné, l'opérateur d'impédance n'est pas inversible pour tous  \((k_x,k_y) \in \RR^2, n \in \NN\), \(k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2\), qui ne peut être vérifié que si \(\eps\mu\) est réel\footnote{Comme \(\eps, \mu\) sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}.
-        Dans l'article de \cite{marceaux_high-order_2000}, la matrice d'impédance est telle que
+        Dans l'article de \cite{marceaux_high-order_2000}, la matrice d'impédance est telle que, soit \(\vK = \vn \pvect \vE\)
         \begin{align*}
-             \vn \pvect \hat{\vE} = \hat{\mathfrak{Z}} \hat{\vH_t}, && \hat{\mathfrak{Z}} = -i\eta_r\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right).
+             \hat{\vK}_t = \hat{\mathfrak{Z}} \hat{\vH_t}, && \hat{\mathfrak{Z}} = -i\eta_r\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right).
         \end{align*}
         C'est une forme équivalente à la nôtre où \(\hat{\mZ} = \mT\hat{\mathfrak{Z}}\mT\) avec \(\mT = \begin{bmatrix}0&-1\\1&0\end{bmatrix}\).
 
@@ -553,7 +560,7 @@
     \begin{prop}%[Théorème de transfert]~
       \label{prop:plan:transfert:impedance}
 
-      Soient \(\hat\vE,\hat\vH\) tels que \(\vE_t(k_x,k_y,z_p^-) = \hat\mZ_{p}(k_x,k_y)(\vn \pvect \hat\vH(k_x,k_y,z_p^-)\).
+      Soient \(\hat\vE,\hat\vH\) tels que \(\vE_t(k_x,k_y,z_p^-) = \hat\mZ_{p}(k_x,k_y)\hat\vJ_t(k_x,k_y,z_p^-)\).
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
@@ -563,7 +570,7 @@
         \mA_{H}(k_x,k_y,z_{p-1})\mM_{A}(k_x,k_y,z_p^-, \hat\mZ_{p}(k_x,k_y))^{-1} - \mB_{H}(k_x,k_y,z_{p-1})\mM_{B}(k_x,k_y,z_p^-, \hat\mZ_{p}(k_x,k_y))^{-1},
       \end{align*}
 
-      alors \(\hat\vE_t(k_x,k_y,z_{p-1}) = \mT_p(k_x,k_y,z_{p-1},z_p^-,\hat\mZ_{p}(k_x,k_y))(\vn \pvect \hat\vH(k_x,k_y,z_{p-1}))\).
+      alors \(\hat\vE_t(k_x,k_y,z_{p-1}) = \mT_p(k_x,k_y,z_{p-1},z_p^-,\hat\mZ_{p}(k_x,k_y))(\hat{\vJ}(k_x,k_y,z_{p-1}))\).
 
       Une condition limite sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
     \end{prop}
@@ -668,7 +675,7 @@
     \begin{prop}%[Théorème de relèvement]~
       \label{prop:plan:relevement:impedance}
 
-      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(k_x,k_y,z_{p-1}) = \hat\mZ_{p-1}(k_x,k_y)(\vn \pvect \hat\vH(k_x,k_y,z_{p-1})\).
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(k_x,k_y,z_{p-1}) = \hat\mZ_{p-1}(k_x,k_y)\hat{\vJ}(k_x,k_y,z_{p-1})\).
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
@@ -678,7 +685,7 @@
         \mB_{H}(k_x,k_y,z_p^-)\mM_{B}(k_x,k_y,z_{p-1},\hat\mZ_{p-1}(k_x,k_y))^{-1} - \mA_{H}(k_x,k_y,z_p^-)\mM_{A}(k_x,k_y,z_{p-1},\hat\mZ_{p-1}(k_x,k_y))^{-1},
       \end{align*}
 
-      alors \(\hat\vE_t(k_x,k_y,z_p^-) = \mT_p(k_x,k_y,z_p^-,z_{p-1},\hat\mZ_{p-1}(k_x,k_y))(\vn \pvect \hat\vH(k_x,k_y,z_p^-))\).
+      alors \(\hat\vE_t(k_x,k_y,z_p^-) = \mT_p(k_x,k_y,z_p^-,z_{p-1},\hat\mZ_{p-1}(k_x,k_y))\hat{\vJ}(k_x,k_y,z_p^-)\).
 
       Une condition d'impédance sur le bord inférieur d'une couche détermine la condition limite sur le bord supérieur.
     \end{prop}
@@ -703,14 +710,25 @@
     \end{proof}
 
 
+    Une analyse rigoureuse des trois résultats qui précèdent est la suivante:
+    \begin{prop}
+      On considère le problème de Calderón pour \(p\) couches.
+
+      Sous condition de non résonance \(C_p\), le problème \(P_p\), constitué des équations des Maxwell dans les \(p\) couches avec conditions de Dirichlet, homogène sur l'interface inférieure \(z=z_0\) et inhomogène sur l'interface supérieure \(z=z_p, \vE=\vE_0\), a une unique solution, ce qui permet de calculer \(\vH\vert_{z=z_p-}\) et la matrice d'impédance $\hat\mZ_{p}$.
+
+      Sous condition de non résonance \(C_{p-1}\), le problème \(P_{p-1}\), constitué des équations des Maxwell dans les \(p-1\) premières couches avec conditions de Dirichlet, homogène sur l'interface inférieure \(z=z_0\) et inhomogène sur l'interface supérieure \(z=z_{p-1}, \vE=\vE_0^*\), a une unique solution, ce qui permet de calculer \(\vH\vert_{z=z_{p-1}-}\) et la matrice d'impédance \(\hat\mZ_{p-1}\).
+
+      Sous les conditions de non résonance \(C_p\) et \(C_{p-1}\), on peut exprimer la matrice \(\hat\mZ_p\) en fonction de \(\hat\mZ_{p-1}\) et réciproquement.
+    \end{prop}
+
     \begin{prop}%[Corollaire aux théorèmes de transfert et de relèvement.]{}~
       \label{prop:plan:synthese:impedance}{}~
 
       Soient \(\hat\vE_t,\hat\vH_t\) tels que 
       \begin{align*}
-      \vE_t(k_x,k_y,z_{p-1}) &= \hat\mZ_{p-1}(k_x,k_y)(\vn \pvect \hat\vH(k_x,k_y,z_{p-1})),
+      \vE_t(k_x,k_y,z_{p-1}) &= \hat\mZ_{p-1}(k_x,k_y)(\hat{\vJ}(k_x,k_y,z_{p-1})),
       \\
-      \vE_t(k_x,k_y,z_p^-) &= \hat\mZ_{p}(k_x,k_y)(\vn \pvect \hat\vH(k_x,k_y,z_p^-)).
+      \vE_t(k_x,k_y,z_p^-) &= \hat\mZ_{p}(k_x,k_y)(\hat{\vJ}(k_x,k_y,z_p^-)).
       \end{align*}
 
       Si les matrices suivantes sont inversibles

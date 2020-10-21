@@ -14,40 +14,60 @@
 \title{Mes remarques et demandes d'ajouts finaux}
 %\author{}
 \date{}
+
+\newcommand{\rep}[1]{\\\textbf{#1}\\}
+
 \begin{document}
 
 \maketitle
 
 1.3.3 et suivant. Il faut que tu dises: Nous adopterons la notation $(a_0+a_1L)$ pour l'opérateur $(a_0I+a_1L)$
+\rep{
+	Remplacé 1 par opérateur identité.
+}
 
 paragraphe 1.2.2.2 Est ce que tu fais une hypothèse sur $k_z$ pour définir $k_3$? En effet, si $k_z^2>\Re k^2$, la partie réelle de $k_3$ devient très petite par rapport à la partie imaginaire.
+\rep{
+	"On pose \(k_3 = \sqrt{k^2 - k_z^2}\) que l'on suppose non nul et tel que \(k_z^2 < \Re(k^2)\).
+	Ainsi la partie imaginaire de \(k_3\) reste petite devant sa partie réelle.
+	Dans le cadre de cette thèse, nous avons considéré \(k_z < k_0\)".
+}
+
 
 dans la Définition 2.12, ajoute, juste après:
 
 Remarquons que, grâce à l'égalité
 $$\Im \Delta \Im (a_1{\bar a}_0)+\vert a_0\vert^2\Im \Delta\Im b= (\Im \Delta)^2\Re a_0$$
 on en déduit que $\Re a_0\geq 0$ (et on retrouve ainsi une condition classique sur $a_0$, mais qui n'implique pas $CSU^1_{CI1}$
+\rep{Fait}
 
 Et à la fin de la preuve dis que : Dans le cas $\Delta=0$, la CIOE s'écrit $(I+bL)E=a_0(I+{\bar b}L)J$, et on ne peut pas en déduire aisément une condition sur les coefficients $a_0$ et $b$.
+\rep{Fait}
 
 dans toute la thèse, quand tu as besoin à la fois de régularité et d'intégration sur un domaine non borné, je te suggère de prendre $C^{\infty}_0(\Omega)$ (au lieu de $C^{\infty}\cap L^2$). Je l'ai vu dans les propositons 2.5,2.6, 2.7, 2.2.5, etc
+\rep{Fait}
 
 pour le cadre de la Proposition 2.31, mets que l'opérateur $a_0I+a_1L_D-a_2L_R$ est inversible dans $(\mathcal{S}'(\R^2))^2$ (puisque tu peux passer par la transformée de Fourier) et que tu écris les égalités qui suivent dans $(\mathcal{S}(\R^2))^2$ (pour éviter tout problème d'intégration).
-
+\rep{Fait. "L'opérateur \(a_0I + a_1 LD - a_2 LR\) est  inversible dans \((\mathcal{S}'(\R^2))^2\) et l'on se place dans \((\mathcal{S}(\R^2))^2\) afin que les intégrales suivantes soient bien posées."}
 
 {\bf Mets comme dernière phrase de la proposition 2.33}, mets
 si et seulement si  'les relations que tu obtiens à la fin de la démonstration avec ${\tilde k_2}...$
+\rep{Fait}
 
 et ajoute comme remarque. Ces relations ne contiennent pas les conditions de résonance pour chacune des couches dans la proposition.
+\rep{Fait}
 
 page 47, dans la phrase Il existe une répartition... il faut mettre $,c_4$ au lieu de $c_,4$
+\rep{Fait}
 
 Dans tout le paragraphe 3.2, mets dans tout (par exemple tout au début) que tu supposes toutes les matrices inversibles, même si ce ne sont pas des conditions nécessaires pour l'existence et l'unicité de l'opérateur de Calderon du $N$ couches. Mets cela avec une REMARQUE (bien visible) et non pas seulement une phrase. Ma proposition
 \begin{remark}
 Nous supposons dans tout ce qui suit certaines matrices intervenant dans nos expressions inversibles. Ceci est uniquement pour une commodité de calcul. La non inversibilité de ces matrices n'est pas une condition nécessaire d'existence de l'opérateur de Calderon. Voir par exemple la Proposition 2.33 pour un exemple pour 2 couches.
-
 \end{remark}
+~{}\rep{Fait}
+
 avant la définition (3.20) prends $V=(\mathcal{S}(\R^2))^2$.
+\rep{Le numéro ne correspond pas, j'imagine que tu parles du 3.21 (quand je présente LD LR en Fourier). Fait, ainsi que pour le cylindre et la sphère.}
 
 Une rédaction que je veux voir pour les opérateurs d'impédance quand tu passes d'une couche à l'autre est la suivante, après les propositions  3.12, 3.13, 3.14 (il manque une parenthèse après le $n\wedge H$ dans la proposition 3.12)
 \begin{proposition}
@@ -60,6 +80,8 @@ Sous les conditions de non résonance $C_p$ et $C_{p-1}$, on peut exprimer la ma
 
 \end{proposition}
 
+~{}
+\rep{Fait, mais je trouve ça redondant, avec la prop qui suit, ou alors les numéros ont changés.}
 
 
  \end{document}
