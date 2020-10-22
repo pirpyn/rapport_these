@@ -1,7 +1,7 @@
 \section[Choix 1 des coefficients de la CI3]{Choix des coefficients de la CI3 par moindres carrés sur l'impédance}
 
   Dans la section précédente, nous avons exprimé les matrices \(\hat\mZ\) (dite d'impédance) et la matrice \(\hat\mR\) (dite de réflexion) en fonction de l'empilement.
-  Nous allons montrer que nous pouvons choisir deux manières de trouver les coefficients de la CIOE CI3 (ce qui s’étend facilement au CIOE dérivées de cette dernière). 
+  Nous allons montrer que nous pouvons choisir deux manières de trouver les coefficients de la CIOE CI3 (ce qui s’étend facilement aux CIOE dérivées de cette dernière). 
 
   % On se donne \(N_x\) \(k_x\) et \(N_y\) \(k_y\).
   % Il existe donc \(N_k=N_xN_y\) couples tels que \((k_{xi},k_{yj}) = (k_x,k_y)_{(j-1)N_x+i}\).
@@ -87,7 +87,7 @@
     Les fonctions associées aux CIOE CI0, CI01, CI1, CI4 se déduisent aisément.
 
     Pour un couple \((k_x,k_y)\), les coefficients d'une CIOE (ici la CI3) sont solutions d'un problème d'optimisation.
-    Cependant, comme sans pertes de généralités, nous pouvons nous ramener à des matrices diagonales quand \(k_y\) est nul, alors il existera une infinité de solution possible.
+    Cependant, comme sans pertes de généralités, nous pouvons nous ramener à des matrices diagonales quand \(k_y\) est nul, alors il existera une infinité de solutions possibles.
     % Cependant, ces coefficients deviennent donc fonction de cette "incidence". 
  
     % Pour compléter, voici \(\mH_{CI1}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times3}(\CC)\) telle que
@@ -205,7 +205,7 @@
         \begin{align*}
           \det({\mM}_{CI4}) &= 2\ps{t}{t}\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right).
         \end{align*}
-        On conclu ici-aussi grâce à Cauchy–Schwarz.
+        On conclut ici-aussi grâce à Cauchy–Schwarz.
       \end{proof}
 
       \subsubsection{Pour la CI1}
@@ -238,7 +238,7 @@
 
       L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière.
 
-      Nous l'avons vérifiés numériquement et pour nous nos empilements, nous n'avons jamais constaté que ce déterminant s'annulait.
+      Nous l'avons vérifié numériquement et pour nous nos empilements, nous n'avons jamais constaté que ce déterminant s'annulait.
 
       % Intuition: au moins 3 pour la CI1
 
@@ -380,7 +380,7 @@
         \end{equation*}
         
         Nous n'exprimons pas le déterminant dont nous n'avons pas de simplification.
-        Tout comme pour la CI1, nous avons vérifiés numériquement que sur un certain nombre d'empilements et d’incidences qu'il ne s'annule pas.
+        Tout comme pour la CI1, nous avons vérifié numériquement que sur un certain nombre d'empilements et d’incidences qu'il ne s'annule pas.
 
         % Alors 
         % \begin{multline*}
@@ -434,7 +434,7 @@
       %   % \end{equation*}
 
       % \end{REP}
-  \subsection{Calcul des coefficients des CIOE par moindre carrés}
+  \subsection{Calcul des coefficients des CIOE par moindres carrés}
 
     \subsubsection[Expression de la fonction JZ]{Expression de la fonction \(J_Z\)}
       On peut alors calculer les coefficients d'une CIOE \(CI\) particulière.
@@ -506,7 +506,7 @@
       Si la fonction \(J_Z\) est quadratique et continue, alors il y a existence.
       Nous savons que pour certaines CIOE (CI0, CI01, CI4), elle l'est inconditionnellement.
 
-      L'unicité dépend en plus de la convexité de l'espace des contraintes, qui l'est aussi pour les même CIOE.
+      L'unicité dépend en plus de la convexité de l'espace des contraintes, ce qui est vérifié par les CIOE (CI0, CI01, CI4).
 
       % \begin{REM}[minimum]
       %   Si tu n'as pas de résultats d'existence et unicité, je ne comprends pas ce théorème.

@@ -2,7 +2,8 @@
 
     La démonstration de ces formules dépasse le cadre de cette thèse et nous renvoyons à \cite[\textsection~5.6]{nedelec_mixed_1980}.
 
-    Soit \(k_0\) le nombre d'onde dans le vide. Soit \(G\) la fonction de Green définie en tout point extérieur à \(\Gamma\) telle que
+    Soit \(k_0\) le nombre d'onde dans le vide.
+    Soit \(G\) la fonction de Green définie en tout point extérieur à \(\Gamma\) telle que
     \begin{equation*}
       G(\vz) = \frac{e^{-ik_0|\vz|}}{4\pi|\vz|}.
     \end{equation*}
@@ -43,11 +44,14 @@
 
 \section{Discrétisation de la surface de l'objet}
 
-  La méthode numérique utilisée au CEA  est basée sur l'article de \cite{medgyesi-mitschang_integral_1985}. Nous rappelons cette méthode en conservant les notations de \cite{stupfel_implementation_2015}.\\
+  La méthode numérique utilisée au CEA  est basée sur l'article de \cite{medgyesi-mitschang_integral_1985}.
+  Nous rappelons cette méthode en conservant les notations de \cite{stupfel_implementation_2015}.\\
 
-  Soit \(\Gamma_h\) une triangulation de \(\Gamma\) en \(N_e\) éléments triangulaires. Soit \(N=\frac{3}{2}N_e\) le nombre d'arête du maillage. On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
+  Soit \(\Gamma_h\) une triangulation de \(\Gamma\) en \(N_e\) éléments triangulaires. Soit \(N=\frac{3}{2}N_e\) le nombre d'arête du maillage.
+  On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini aux nœuds et arêtes du maillage.
 
-  Soit \(T\) un triangle défini par un nœud \(N_1\) et deux vecteurs \(\vect{e_1}\) et \(\vect{e_2}\). On rappelle la relation entre l'aire du triangle et ces vecteurs
+  Soit \(T\) un triangle défini par un nœud \(N_1\) et deux vecteurs \(\vect{e_1}\) et \(\vect{e_2}\).
+  On rappelle la relation entre l'aire du triangle et ces vecteurs
   \begin{equation*}
     2|T| = |\vect{e_1}\pvect\vect{e_2}|
   \end{equation*}
@@ -86,7 +90,8 @@
 
   \subsection[Fonctions de Raviart-Thomas phi Hdiv-conforme]{Fonctions de Raviart-Thomas \(\vect{\phi}\) \(\Hdiv\)-conforme}
 
-    Ces fonctions ont été introduites par \cite{raviart_mixed_1977}. Nous présentons ici les fonctions Raviart-Thomas de degré 0, c'est à dire telles que les degrés de liberté soient au milieu de chaque arête (voir \cite[eq.~(3.10)]{raviart_mixed_1977}).
+    Ces fonctions ont été introduites par \cite{raviart_mixed_1977}.
+    Nous présentons ici les fonctions Raviart-Thomas de degré 0, c'est à dire telles que les degrés de liberté soient au milieu de chaque arête (voir \cite[eq.~(3.10)]{raviart_mixed_1977}).
 
     \begin{minipage}{\textwidth}
       \begin{minipage}{0.329\textwidth}
@@ -213,7 +218,10 @@
 
   \subsection[Fonctions de Bendali q]{Fonctions de Bendali \(\vect{q}\)}
 
-    Ces fonctions ont été introduites par \cite[eq.~28]{bendali_boundary-element_1999}. Elles sont linéairement indépendantes. Nous modifions ces fonctions en les divisant par 2 fois l'aire du triangle. Ainsi, la matrice de passage (définie plus tard) sera plus simple.
+    Ces fonctions ont été introduites par \cite[eq.~28]{bendali_boundary-element_1999}.
+    Elles sont linéairement indépendantes.
+    Nous modifions ces fonctions en les divisant par 2 fois l'aire du triangle.
+    Ainsi, la matrice de passage (définie plus tard) sera plus simple.
 
 
     \begin{minipage}{\textwidth}
@@ -410,9 +418,11 @@
 
 \section{Forme variationnelle des équations intégrales}
 
-  Nous ne redémontrerons pas l'obtention des équations intégrales. Nous renvoyons à \cite[Section~5.5, p.~234]{nedelec_acoustic_2001}.
+  Nous ne remontrerons pas l'obtention des équations intégrales. 
+  Nous renvoyons à \cite[Section~5.5, p.~234]{nedelec_acoustic_2001}.
 
-  Nous rappelons notamment le théorème de trace (Theorem~5.4.2, p.~209) qui est déterminant dans les choix de discrétisations. Ce dernier stipule que si \(\vE,\vH \in \Hrot{(\Omega)}\) alors \(\vn \pvect \vH,\vn \pvect \vE \in \Hdiv^{-1/2}{(\Gamma)}\). 
+  Nous rappelons notamment le théorème de trace (Theorem~5.4.2, p.~209) qui est déterminant dans les choix de discrétisations. 
+  Ce dernier stipule que si \(\vE,\vH \in \Hrot{(\Omega)}\) alors \(\vn \pvect \vH,\vn \pvect \vE \in \Hdiv^{-1/2}{(\Gamma)}\). 
 
   Les équations intégrales s'énoncent alors:
 
@@ -437,7 +447,8 @@
         -  ik\int_{\Gamma} \left( \int_{\Gamma} g(\vx - \vy)\vK(\vy) \dd{\Gamma}(\vy) \right) \cdot \vect{\phi}(\vx) \dd{\Gamma}(\vx).
   \end{multline}
 
-  Ceci est l'expression continue de la formulation variationnelle des équations intégrales. Dans la suite nous approcherons cette forme variationnelle à l'aide des familles de fonction présentées précédemment. De plus, dans un abus de notation, nous omettrons le \(-1/2\) dans l'espace \(\Hdiv^{-1/2}(\Gamma)\equiv\Hdiv(\Gamma)\).
+  Ceci est l'expression continue de la formulation variationnelle des équations intégrales.
+  Dans la suite nous approcherons cette forme variationnelle à l'aide des familles de fonction présentées précédemment. De plus, dans un abus de notation, nous omettrons le \(-1/2\) dans l'espace \(\Hdiv^{-1/2}(\Gamma)\equiv\Hdiv(\Gamma)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -453,7 +464,12 @@
       \vK & \simeq \sum_{j=1}^N k_j \phij.
     \end{align*}
 
-  Il reste alors à trouver une bonne approximations de \(\vE_t\) et \(\vH_t\) pour exprimer \( \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)\) et \(\frac{1}{2} \int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)\) en fonctions des inconnues \(\vJ, \vK\). Selon la CIOE employée, cette décomposition ne sera pas la même. Notre but est alors de trouver une formulation qui se comporte bien quand on déduit d'une CIOE un autre plus simple. C'est-à-dire que la formulation intégrale déterminée avec la CI3 doit être équivalente à la formulation intégrale déterminée avec la CI0 quand les coefficients \(a_1,a_2,b_1,b_2\) sont nuls. En effet, à cause des opérateurs différentiels, nous ne représenterons pas \(\vE_t\) et \(\vH_t\) à l'aide d'une seule famille, mais potentiellement plusieurs familles. Nous préciserons lesquels dans la suite.
+  Il reste alors à trouver une bonne approximation de \(\vE_t\) et \(\vH_t\) pour exprimer \( \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)\) et \(\frac{1}{2} \int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)\) en fonctions des inconnues \(\vJ, \vK\).
+  Selon la CIOE employée, cette décomposition ne sera pas la même.
+  Notre but est alors de trouver une formulation qui se comporte bien quand on déduit d'une CIOE un autre plus simple.
+  C'est-à-dire que la formulation intégrale déterminée avec la CI3 doit être équivalente à la formulation intégrale déterminée avec la CI0 quand les coefficients \(a_1,a_2,b_1,b_2\) sont nuls.
+  En effet, à cause des opérateurs différentiels, nous ne représenterons pas \(\vE_t\) et \(\vH_t\) à l'aide d'une seule famille, mais potentiellement plusieurs familles.
+  Nous préciserons lesquels dans la suite.
 
   \subsection[Discrétisation des opérateurs LD, LR]{Discrétisation des opérateurs \(\LD,\LR\)}
     Les CIOE font intervenir les opérateurs différentiels \gls{ope-LD}, \gls{ope-LR}. On introduit donc les matrices \(\mLD,\mLR\) correspondantes.
@@ -538,7 +554,7 @@
       &= \frac{1}{2a_0}\int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) \vn \pvect \vK (\vx) \right.
       \\
       & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx),
-      \intertext{nous approchons \(\vK\) dans \(\Hdiv{(\Gamma_h)}\) mais nous avons choisis d'approcher \(\vJ\) dans \(\Hrot{(\Gamma_h)}\) au lieu de \(\Hdiv{(\Gamma_h)}\)}
+      \intertext{nous approchons \(\vK\) dans \(\Hdiv{(\Gamma_h)}\) mais nous avons choisi d'approcher \(\vJ\) dans \(\Hrot{(\Gamma_h)}\) au lieu de \(\Hdiv{(\Gamma_h)}\)}
       & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) k_j \vn \pvect   \phij (\vx) \right.
       \\
       & \hspace{5em} \left. - \left(a_1 \LD - a_2 \LR\right) I_j' \vn \pvect \phij (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx).
@@ -618,4 +634,4 @@
   Par contre, dans cet article la matrice était symétrique.
   %Nous n'avons pas pu bénéficier des solveurs haute-performance du CEA, optimisés pour les systèmes symétriques. 
   Les résultats numériques qui suivent sont issus d'un code maquette où le système linéaire est codé tel quel, ce qui impose des limites évidentes en coût mémoire.
-  L'introduction de cette modification dans un code industriel Haute Performance est une tache complexe qui nécessite un investissement conséquent des équipes en charge de ce solveur, et n'a pas été réalisé dans le cadre de cette thèse.
+  L'introduction de cette modification dans un code industriel "haute performance" est une tâche complexe qui nécessite un investissement conséquent des équipes en charge de ce solveur, et n'a pas été réalisé dans le cadre de cette thèse.

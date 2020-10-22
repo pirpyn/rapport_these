@@ -61,7 +61,7 @@
             \\
             \hat{\cH}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y).
         \end{align*}
-        Les constantes \(c_i\) ne peuvent en réalité pas être choisies arbitrairement car les exponentielles complexes divergent quand \(k_x^2 + k_y^2 \rightarrow \infty\) et ces solutions n'ont pas de transformées de Fourier. Nous supposons que les constantes \(c_i\) satisfassent la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}, où il n'y a pas de résonances.
+        Les constantes \(c_i\) ne peuvent en réalité pas être choisies arbitrairement, car les exponentielles complexes divergent quand \(k_x^2 + k_y^2 \rightarrow \infty\) et ces solutions n'ont pas de transformées de Fourier. Nous supposons que les constantes \(c_i\) satisfassent la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}, où il n'y a pas de résonances.
         % \begin{REM}
         %   Faux: Il faut que je te réexplique par Skype. Ce n'est pas la condition de résonance mais \(z \in [z_0,z_2]\) par exemple + une estimations sur les coefficients.
         % \end{REM}
@@ -714,11 +714,11 @@
     \begin{prop}
       On considère le problème de Calderón pour \(p\) couches.
 
-      Sous condition de non résonance \(C_p\), le problème \(P_p\), constitué des équations des Maxwell dans les \(p\) couches avec conditions de Dirichlet, homogène sur l'interface inférieure \(z=z_0\) et inhomogène sur l'interface supérieure \(z=z_p, \vE=\vE_0\), a une unique solution, ce qui permet de calculer \(\vH\vert_{z=z_p-}\) et la matrice d'impédance $\hat\mZ_{p}$.
+      Sous condition de non-résonance \(C_p\), le problème \(P_p\), constitué des équations des Maxwell dans les \(p\) couches avec conditions de Dirichlet, homogène sur l'interface inférieure \(z=z_0\) et inhomogène sur l'interface supérieure \(z=z_p, \vE=\vE_0\), a une unique solution, ce qui permet de calculer \(\vH\vert_{z=z_p-}\) et la matrice d'impédance $\hat\mZ_{p}$.
 
-      Sous condition de non résonance \(C_{p-1}\), le problème \(P_{p-1}\), constitué des équations des Maxwell dans les \(p-1\) premières couches avec conditions de Dirichlet, homogène sur l'interface inférieure \(z=z_0\) et inhomogène sur l'interface supérieure \(z=z_{p-1}, \vE=\vE_0^*\), a une unique solution, ce qui permet de calculer \(\vH\vert_{z=z_{p-1}-}\) et la matrice d'impédance \(\hat\mZ_{p-1}\).
+      Sous condition de non-résonance \(C_{p-1}\), le problème \(P_{p-1}\), constitué des équations des Maxwell dans les \(p-1\) premières couches avec conditions de Dirichlet, homogène sur l'interface inférieure \(z=z_0\) et inhomogène sur l'interface supérieure \(z=z_{p-1}, \vE=\vE_0^*\), a une unique solution, ce qui permet de calculer \(\vH\vert_{z=z_{p-1}-}\) et la matrice d'impédance \(\hat\mZ_{p-1}\).
 
-      Sous les conditions de non résonance \(C_p\) et \(C_{p-1}\), on peut exprimer la matrice \(\hat\mZ_p\) en fonction de \(\hat\mZ_{p-1}\) et réciproquement.
+      Sous les conditions de non-résonance \(C_p\) et \(C_{p-1}\), on peut exprimer la matrice \(\hat\mZ_p\) en fonction de \(\hat\mZ_{p-1}\) et réciproquement.
     \end{prop}
 
     \begin{prop}%[Corollaire aux théorèmes de transfert et de relèvement.]{}~
