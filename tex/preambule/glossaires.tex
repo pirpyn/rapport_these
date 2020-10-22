@@ -3,7 +3,7 @@
   \def\theglstoctitle{#2}%
   \par\noindent
   {\section*{\theglstoctitle}}
-  %{\addcontentsline{toc}{section}{\theglstoctitle}}%
+  {\addcontentsline{toc}{section}{\theglstoctitle}}%
 }
 
 % create :
@@ -217,7 +217,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \newglossaryentry{ope-pv}{
   type={ope},
   sort={pv},
@@ -234,7 +233,7 @@
   type={ope},
   sort={grads},
   name={\ensuremath{\vec{\nabla}_s}},
-  description={gradient surfacique : \(\vec{\nabla}_s u:= \vec{\nabla} u - \vec{n} ( \vec{n} \cdot \vec{\nabla} u )\)},
+  description={gradient surfacique : \(\vec{\nabla}_s f:= \vec{\nabla} f - \vec{n} ( \vec{n} \cdot \vec{\nabla} f )\)},
 }
 \newglossaryentry{ope-div}{
   type={ope},
@@ -246,7 +245,7 @@
   type={ope},
   sort={divs},
   name={\ensuremath{\vec{\nabla}_s\cdot}},
-  description={divergent surfacique},
+  description={divergent surfacique: \(\vec{\nabla}_s \cdot \vec u:= \vec{\nabla}\cdot (\vec u - \vec{n} ( \vec{n} \cdot \vec u ))\)}, 
 }
 \newglossaryentry{ope-rot}{
   type={ope},
@@ -258,7 +257,7 @@
   type={ope},
   sort={rots},
   name={\ensuremath{\vec{\nabla}_s\pvect}},
-  description={rotationnel surfacique},
+  description={rotationnel surfacique: \(\vec{\nabla}_s \pvect \vec u:= \vec{n} (\vec{n} \cdot \nabla \pvect \vec{u})\)},
 }
 \newglossaryentry{ope-laps}{
   type={ope},

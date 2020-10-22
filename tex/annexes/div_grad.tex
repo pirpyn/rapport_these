@@ -3,9 +3,9 @@
 \subsection{Cartésien}
 
     \begin{align}
-        \vgrad f &= \ddr{x}{f}\vect{e_x} + \ddr{y}{f}\vect{e_y}  + \ddr{z}{f}\vect{e_z}, \\
-        \vdiv \vu &= \ddr{x}{u_x} + \ddr{y}{u_y} + \ddr{z}{u_z}, \\
-        \vrot\vu &= \left(\ddr{y}{u_z}-\ddr{z}{u_y}\right)\vect{e_x} + \left(\ddr{z}{u_x}-\ddr{x}{u_y}\right)\vect{e_y} + \left(\ddr{x}{u_y}-\ddr{y}{u_x}\right)\vect{e_z}.
+        \gls{ope-grad} f &= \ddr{x}{f}\vect{e_x} + \ddr{y}{f}\vect{e_y}  + \ddr{z}{f}\vect{e_z}, \\
+        \gls{ope-div} \vu &= \ddr{x}{u_x} + \ddr{y}{u_y} + \ddr{z}{u_z}, \\
+        \gls{ope-rot} \vu &= \left(\ddr{y}{u_z}-\ddr{z}{u_y}\right)\vect{e_x} + \left(\ddr{z}{u_x}-\ddr{x}{u_y}\right)\vect{e_y} + \left(\ddr{x}{u_y}-\ddr{y}{u_x}\right)\vect{e_z}.
     \end{align}
 
 \subsection{Cylindrique}
@@ -52,13 +52,13 @@
     Soit \(\Omega\) un objet de surface \(\Gamma\) régulière et \(\vn\) la normale unitaire sortante de cet objet.
     Soit \(f\) et \(\vu\) une fonction et un champ de vecteurs dérivables en tout point \(\vx\) de \(\Gamma\), on rappelle de \cite{nedelec_acoustic_2001} les opérateurs différentiels surfaciques
     \begin{align}
-        \vgrads{f}(\vx) &= \vgrad{f}(\vx) - \vn(\vx) (\vn(\vx) \cdot \vgrad{f}(\vx)),
+        \gls{ope-grads}{f}(\vx) &= \vgrad{f}(\vx) - \vn(\vx) (\vn(\vx) \cdot \vgrad{f}(\vx)),
         \\
-        \vdivs{\vu} &= \vdiv\left(\vu(\vx) - \vn(\vx) (\vn(\vx) \cdot \vu(\vx)\right),
+        \gls{ope-divs}{\vu} &= \vdiv\left(\vu(\vx) - \vn(\vx) (\vn(\vx) \cdot \vu(\vx)\right),
         \\
-        \vrots{\vu}(\vx) &= \vn(\vx)\left(\vn(\vx) \cdot \vrot{\vu}(\vx)\right).
+        \gls{ope-rots}{\vu}(\vx) &= \vn(\vx)\left(\vn(\vx) \cdot \vrot{\vu}(\vx)\right).
     \end{align}
-    Si l'on veut appliquer le rotationnel surfacique comme une application sur les champs tangentiels, les opérateurs rotationnels surfaciques scalaire et vectoriel sont
+    Si l'on veut appliquer le rotationnel surfacique comme une application sur les champs tangentiels (à 2 coordonnées), les opérateurs rotationnels surfaciques scalaire et vectoriel sont
     \begin{align}
         \trots{\vu}(\vx) &= \vn(\vx) \cdot \vrot{\vu}(\vx),
         \\
