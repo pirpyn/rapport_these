@@ -4,7 +4,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
 
     \begin{defn}[Harmonique sphérique d'ordre \(n\) et de degré \(m\)]
         \label{def:sphere:harmoniques_spheriques}
-        Soit \(\PP^m_n\) la fonction associée de Legendre (voir \cite[Chapitre.~8]{abramowitz_handbook_1964} ou équivalent \cite[\url{https://dlmf.nist.gov/14}]{dlmf_nist_2019}) d'ordre \(n\) et de degré \(m\). 
+        Soit \(\gls{mat-pmn}\) la fonction associée de Legendre (voir \cite[Chapitre.~8]{abramowitz_handbook_1964} ou équivalent \cite[\url{https://dlmf.nist.gov/14}]{dlmf_nist_2019}) d'ordre \(n\) et de degré \(m\). 
 
         On appelle harmoniques sphériques d'ordre \(n\) et de degré \(m\) les fonctions de \(\RR\times\RR \rightarrow \CC\) telles que
         \begin{align*}
@@ -36,7 +36,7 @@ Nous rappelons d'abord de \cite{nedelec_acoustic_2001} des résultats connus sur
     On note \(j_n\) la fonction de Bessel sphérique de première espèce et \(h^{(2)}_n\) la fonction de Hankel sphérique de deuxième espèce.
 
     \begin{prop}
-        Soit \(z_n\) une fonction de Bessel sphérique d'ordre \(n\) et \(Y_{m,n}\) une harmonique sphérique d'ordre \(n\) et de degré \(m\), alors les fonctions \((\rtp) \mapsto z_n(k(r)r)Y_{m,n}(\tp)\) sont solutions de 
+        Soit \(z_n\) une fonction de Bessel sphérique d'ordre \(n\) et \(Y_{m,n}\) une harmonique sphérique d'ordre \(n\) et de degré \(m\), alors les fonctions \(\gls{mat-xsphe} \mapsto z_n(k(r)r)Y_{m,n}(\tp)\) sont solutions de 
         \begin{align*}
             \lapl u(\rtp) + k^2u(\rtp) = 0, && \forall (\rtp) \in \RR\times[0,\pi]\times[0,2\pi].
         \end{align*}
