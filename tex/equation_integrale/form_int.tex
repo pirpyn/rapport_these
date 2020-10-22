@@ -8,7 +8,7 @@
     \end{equation*}
     On définit \(g(\vx,\vy) := G(\vx - \vy)\).
 
-    Soit \(\vE^{inc}_t,\vH^{inc}_t\) le champ incident tangentiel à \(\Gamma\). On définit sur la surface \(\Gamma\), les traces tangentielles des champs \(\vJ = \vn \pvect \vH\), \(\vK = \vn \pvect \vE\).
+    Soit \(\vE^{inc}_t,\vH^{inc}_t\) le champ incident tangentiel à \(\gls{mat-ga}\). On définit sur la surface \(\Gamma\), les traces tangentielles des champs \(\gls{phy-J} = \gls{mat-vn} \pvect \gls{phy-h2}\), \(\vK = \vn \pvect \gls{phy-e}\).
 
     En utilisant le théorème de représentation intégrale (voir \cite[Théorème 5.5.1]{nedelec_acoustic_2001}), on obtient les équations intégrales suivantes
     \subsection{EFIE}
@@ -462,7 +462,7 @@
     \begin{defn}[Discrétisation de l'opérateur \(\LD\)]
       On définit la matrice \(\mLD\) telle que
       \begin{align*}
-          \mLD_{ij} = - \sum_{j=1}^N \int_{\Gamma_h} \vdivs \phij(\vx) \vdivs \phii(\vx) \dd{\Gamma}(\vx).
+          \mLD_{ij} = - \int_{\Gamma_h} \vdivs \phij(\vx) \vdivs \phii(\vx) \dd{\Gamma}(\vx).
       \end{align*}
     \end{defn}
 
@@ -543,19 +543,19 @@
       \\
       & \hspace{5em} \left. - \left(a_1 \LD - a_2 \LR\right) I_j' \vn \pvect \phij (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx).
       \intertext{En remarquant que \(\vn \pvect \phi_i \cdot \vn \pvect \phi_j = \phi_i \cdot \phi_j\) et \(\int_{\Gamma} \LR(\vn \pvect \vect{\phi})\cdot (\vn \pvect \vect{\psi}) = - \int_{\Gamma} \LD(\vect{\phi})\cdot \vect{\psi}\), on déduit}
-      & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_1 \LR - b_2 \LD\right) k_j \phij (\vx) \right.
+      & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_2 \LD - b_1 \LR\right) k_j \phij (\vx) \right.
       \\
-      & \hspace{5em} \left. - \left(a_1 \LR - a_2 \LD\right) I_j' \phij (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx),
+      & \hspace{5em} \left. - \left(a_2 \LD - a_1 \LR\right) I_j' \phij (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx),
       \intertext{ce qui s'exprime matriciellement}
-      & = \frac{1}{2a_0} \left( -\left(\mG{\phi}{\phi} + b_1 \mLR - b_2 \mLD\right) \comp{k}  - \left( a_1 \mLR - a_2 \mLD\right) \comp{I'}\right),
+      & = \frac{1}{2a_0} \left( -\left(\mG{\phi}{\phi} + b_2 \mLD - b_1 \mLR\right) \comp{k}  - \left( a_2 \mLD - a_1 \mLR\right) \comp{I'}\right),
       \\
-      & \simeq -\frac{1}{2a_0} \left( \left(\mM + b_1 \mLR - b_2 \mLD\right) \comp{k}  + \left( a_1 \mLR - a_2 \mLD\right) \mPP \comp{I} \right).
+      & \simeq -\frac{1}{2a_0} \left( \left(\mM + b_2 \mLD - b_1 \mLR\right) \comp{k}  + \left( a_2 \mLD - a_1 \mLR\right) \mPP \comp{I} \right).
     \end{align*}
     Donc la contribution des CIOE à la MFIE est
     \begin{equation*}
       \begin{aligned}
         \frac{1}{2}\int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)
-        &\simeq -\frac{1}{2a_0} \left( \left(\mM + b_1 \mLR - b_2 \mLD\right) \comp{k}  + \left( a_1 \mLR - a_2 \mLD\right) \mPP \comp{I} \right).
+        &\simeq -\frac{1}{2a_0} \left( \left(\mM + b_2 \mLD - b_1 \mLR\right) \comp{k}  + \left( a_2 \mLD - a_1 \mLR\right) \mPP \comp{I} \right).
       \end{aligned}
     \end{equation*}
 
@@ -597,7 +597,7 @@
     \begin{equation*}
       \begin{bmatrix}
         \mS +  \frac{1}{2} \left(a_0 \mM + a_1 \mLD - a_2 \mLR\right) & \mSt + \frac{1}{2}\left(b_1 \mLD - b_2 \mLR \right)\mPP \\
-        \mSt + \frac{1}{2a_0}\left( a_2 \mLD - a_1 \mLR \right)\mPP & -\mS - \frac{1}{2a_0}\left(\mM + b_1 \mLR - b_2 \mLD \right)
+        \mSt + \frac{1}{2a_0}\left( a_2 \mLD - a_1 \mLR \right)\mPP & -\mS - \frac{1}{2a_0}\left(\mM + b_2 \mLD - b_1 \mLR \right)
       \end{bmatrix}
       \begin{bmatrix}
         \comp{I}\\
@@ -615,5 +615,7 @@
 
   On remarque que le système n'est pas symétrique, sauf si \(b_2=a_2/a_0\) et \(b_1=a_1/a_0\) et que la contribution de la CIOE n'introduit que des matrices creuses. 
   C'est une amélioration par rapport aux travaux initiaux de \cite{stupfel_implementation_2015} où l'on introduisait une matrice dense dans le bloc inférieur droit. 
-  Par contre, dans cet article la matrice était symétrique. Nous n'avons pas pu bénéficier des solveurs haute-performance du CEA, optimisés pour les systèmes symétriques. 
-  Les résultats numériques qui suivent sont donc issus d'un code maquette où le système linéaire est codé tel quel, ce qui impose des limites évidentes en coût mémoire. 
+  Par contre, dans cet article la matrice était symétrique.
+  %Nous n'avons pas pu bénéficier des solveurs haute-performance du CEA, optimisés pour les systèmes symétriques. 
+  Les résultats numériques qui suivent sont issus d'un code maquette où le système linéaire est codé tel quel, ce qui impose des limites évidentes en coût mémoire.
+  L'introduction de cette modification dans un code industriel Haute Performance est une tache complexe qui nécessite un investissement conséquent des équipes en charge de ce solveur, et n'a pas été réalisé dans le cadre de cette thèse.

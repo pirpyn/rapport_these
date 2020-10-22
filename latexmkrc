@@ -2,7 +2,12 @@
 $ENV{'TZ'}='Europe/France';
 
 # Main file to compile
-@default_files = ('remarques-finales-these.tex','factorisation-determinant-2couches.tex','these_payen_2019.tex');
+@default_files = (
+    'remarques-finales-bruno.tex',
+    'remarques-finales-these.tex',
+    'factorisation-determinant-2couches.tex',
+    'these_payen_2019.tex'
+);
 
 # We want a pdf, dvi is so old school
 $pdf_mode = "1";

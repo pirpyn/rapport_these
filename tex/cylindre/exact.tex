@@ -204,7 +204,7 @@
     Sur une interface d'équation \(r=r_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mJ_E(r_p+ \delta,n,k_z) - \mJ_E(r_p - \delta,n,k_z) \not = 0\) .
 
     \begin{prop}
-      Dans chaque couche \(r_{m-1}\le r < r_m\), il existe \((c_i(n,k_z))_{1\le i\le 4}\) telles que les composantes en \(\vect{e_\theta},\vect{e_z}\) des champs (\(\vE,\vJ=\vect{e_r}\pvect\vH\)), dites composantes tangentielles par abus de langage, sont
+      Dans chaque couche \(r_{m-1}\le r < r_m\), il existe \((c_i(n,k_z))_{1\le i\le 4}\) telles que les composantes en \(\vect{e_\theta},\vect{e_z}\) des champs (\(\gls{phy-e},\gls{phy-J}=\vect{e_r}\pvect\gls{phy-h2}\)), dites composantes tangentielles par abus de langage, sont
       \begin{subequations}
         \begin{align}
           \hat \vE_t(r,n,k_z) &= \mJ_{E}(r,n,k_z)
@@ -844,7 +844,9 @@
 
   \subsection{Applications numériques}
 
-    On pose \((k_x,k_y) = (k_0 s, 0)\) pour le plan. On compare l'impédance du plan \(\hat{\mZ}(k_x,0)\) à l'impédance du cylindre \(\hat{\mZ}(n,0)\) quand \(n\) est de l'ordre de \(k_0r_1s\). On reprend la notation de \cite[p.~62]{hoppe_impedance_1995} qui définie \(k_t= n/r_1\).
+    On pose \((k_x,k_y) = (k_0 s, 0)\) pour le plan.
+    On compare l'impédance du plan \(\hat{\mZ}(k_x,0)\) à l'impédance du cylindre \(\hat{\mZ}(n,0)\) quand \(n\) est de l'ordre de \(k_0r_1s\) pour de faibles courbures.
+    On reprend la notation de \cite[p.~62]{hoppe_impedance_1995} qui définie \(k_t= n/r_1\).
 
     Pour une couche de matériau sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
 
