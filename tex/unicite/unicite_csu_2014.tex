@@ -203,11 +203,20 @@
   % \end{REP}
 \subsection{CSU pour la CI3}
 
-  Soit la CIOE énoncée dans \cite{marceaux_high-order_2000} que l'on nomme \hyperlink{ci3}{CI3} :
+  Soit la CIOE dérivée de celle de \cite{marceaux_high-order_2000} que l'on nomme \hyperlink{ci3}{CI3} :
   \begin{equation}
     \label{eq:unicite:ci3:ci3}
     ( \oI + b_1 \LD - b_2 \LR)\vE_t = (a_0\oI + a_1 \LD - a_2 \LR ) \vJ.
   \end{equation}
+
+  On remarque que ces CIOE sont égales à une permutation près des coefficients:
+  \begin{equation*}
+    \left(\oI + b_1 \LD - b_2 \LR\right)\vE_t = \left(a_0\oI + a_1 \LD - a_2\LR\right)(\vn \pvect \vH)_t
+  \end{equation*}
+  est équivalent à
+  \begin{equation*}
+    \left(\oI - b_1 \LR - b_2 \LD\right)(\vn \pvect \vE)_t = \left(-a_0\oI + a_1 \LR - a_2\LD\right)\vH_t.
+  \end{equation*}
 
   Par abus de notation, on omet les variables de la fonction \(\Delta\) \eqref{eq:unicite:delta} :
   \begin{align*}
