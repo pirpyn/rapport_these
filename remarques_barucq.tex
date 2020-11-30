@@ -6,23 +6,34 @@
 
 \newcommand{\rep}[1]{\\\textbf{#1}\\}
 
+\newenvironment{REM}{\itshape}{}
+\newenvironment{REP}{~{}\\}{}
+
 \begin{document}
 
 \maketitle
 
 \section{Plus de références}
-\begin{cite}
+\begin{REM}
     Ce chapitre (1) aurait mérité à mon avis un peu plus de liant car, comme son titre l’indique, il contient des outils mathématiques fondamentaux dont l’alternative de Fredholm sans laquelle tous les résultats mathématiques de la thèse seraient partiels ou même inutilisables.
-\end{cite}
+\end{REM}
 
+\begin{REP}
+    La première remarque est peut être la moins évidente.
+    Attend-elle que je parle plus de Fredholm ?
+\end{REP}
 
 \section{Par 2.4.2}
-\begin{cite}
+\begin{REM}
     Le paragraphe 2.4.2 est le passage que j’ai préféré même s’il est assez mal rédigé
-\end{cite}
+\end{REM}
+
+\begin{REP}
+    J'ai vu quelques fautes, et peut être le style n'est pas uniforme (  je,  nous,  on ). Sinon, je ne vois pas trop comment l'améliorer.
+\end{REP}
 
 \section{Différence CI3 poget vs aubakirov}
-\begin{cite}
+\begin{REM}
     Il (chapitre 2) manque par certains endroits de clarté.
     Par exemple, j’aurais aimé comprendre pourquoi il est intéressant de considérer les conditions de Marceaux et Stupfel à la place de celles de Stupfel et Poget.
     Ces dernières sont plus récentes, on
@@ -30,23 +41,42 @@
     Sauf erreur de ma part, il n’y a aucune discussion sur ce sujet dans la thèse.
     Je ne serais pas surprise que les conditions de Marceaux et Stupfel représentent des matériaux plus complexes (des empilements de matériaux?) vu le nombre élevé de paramètres.
     Il serait d’ailleurs intéressant d’avoir sous forme de propriété l’énoncé des conditions d’impédance.
-\end{cite}
+\end{REM}
+
+\begin{REP}
+    A faire: la CIOE est la même ( au transformation dont on a parlé il y a quelques semaines ) mais surtout dans cet article, les paramètres de la CIOE étaient der terminé par Taylor, padé ou colocation, et ne peuvent donc pas satisfaire les CSU.
+\end{REP}
 
 \section{CI6 pas implémentée}
-\begin{cite}
+\begin{REM}
     J’aurais bien aimé avoir plus d’explications à ce sujet car il me semble que les conditions CI3 et CI6 ont la même structure.
-\end{cite}
+\end{REM}
 
-\section{Resultats nums}
-\begin{cite}
+\begin{REP}
+    Presque, le terme constant étant isotrope (CI3, \(a_0 I\)) ou orthotrope (CI6, \(diag(a_1,a_2)\)).
+    Donc cela va modifier les calculs intégraux avec les matrices M ( fonctions de bases phi ), à décomposer sur une famille locale surfacique tau1 tau2.
+    C'est déjà en partie fais dans le code mais je n'avais pas le temps de me pencher dessus.
+\end{REP}
+
+\section{Résultats nums EI}
+\begin{REM}
     Les résultats numériques sont convaincants, on peut cependant regretter qu’ils ne soient pas très nombreux.
-\end{cite}
+\end{REM}
+
+\begin{REP}
+    Je n'ai jamais su me lancer dans un code EI maison sur mon ordi perso pour avoir plus de courbes car il y a pas mal de chose à faire pour ça ( mailleur, singularité du noyau de Green ).
+\end{REP}
 
 \section{Ouverture}
-\begin{cite}
-    L’approche proposée pour construire les conditions d’impédance est très originale et mériterait d’être analysée plus en profondeur afin de définir un cadre mathématique
-plus rigoureux.
+\begin{REM}
+    L’approche proposée pour construire les conditions d’impédance est très originale et mériterait d’être analysée plus en profondeur afin de définir un cadre mathématique plus rigoureux.
     Notamment, les questions ouvertes posées par le cas où la perméabilité et la permittivité sont complexes décrivent les contours de beaux problèmes mathématiques.
-\end{cite}
+\end{REM}
+
+\begin{REP}
+    J'ai eu plus de problèmes pour des constantes réelles, à cause des asymptotes.
+\end{REP}
+
+
 
 \end{document}
