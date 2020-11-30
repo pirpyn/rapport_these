@@ -32,19 +32,21 @@
     J'ai vu quelques fautes, et peut être le style n'est pas uniforme (  je,  nous,  on ). Sinon, je ne vois pas trop comment l'améliorer.
 \end{REP}
 
-\section{Différence CI3 poget vs aubakirov}
+\section{Différence CI3 Marceaux \& Stupfel vs Stupfel \& Poget}
 \begin{REM}
     Il (chapitre 2) manque par certains endroits de clarté.
     Par exemple, j’aurais aimé comprendre pourquoi il est intéressant de considérer les conditions de Marceaux et Stupfel à la place de celles de Stupfel et Poget.
-    Ces dernières sont plus récentes, on
-    aurait pu s’attendre à ce qu’elles soient plus performantes.
+    Ces dernières sont plus récentes, on aurait pu s’attendre à ce qu’elles soient plus performantes.
     Sauf erreur de ma part, il n’y a aucune discussion sur ce sujet dans la thèse.
     Je ne serais pas surprise que les conditions de Marceaux et Stupfel représentent des matériaux plus complexes (des empilements de matériaux?) vu le nombre élevé de paramètres.
     Il serait d’ailleurs intéressant d’avoir sous forme de propriété l’énoncé des conditions d’impédance.
 \end{REM}
 
 \begin{REP}
-    A faire: la CIOE est la même ( au transformation dont on a parlé il y a quelques semaines ) mais surtout dans cet article, les paramètres de la CIOE étaient der terminé par Taylor, padé ou colocation, et ne peuvent donc pas satisfaire les CSU.
+    Marceaux \& stupfel: les paramètres sont issus de Taylor, Padé ou colocation, donc pas de CSU, la CIOE phare de cette article étant la CI3.
+
+    Stupfel \& Poget: Les CIOE sont d'ordre plus élevé ( au moins jusque L^2 soit équivalent k_x^4) mais non décomposées en LD et LR ( L = LD - LR ). 
+    Des CSU pour ces CIOE "d'ordre deux" (IBC2, IBC2') ont été fournies mais plus on monte en ordre de CIOE, plus on va perturber le systeme EI final donc nous n’avons même pas considéré ces dernières pdt la thèse.
 \end{REP}
 
 \section{CI6 pas implémentée}
