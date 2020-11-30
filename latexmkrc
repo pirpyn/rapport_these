@@ -3,6 +3,7 @@ $ENV{'TZ'}='Europe/France';
 
 # Main file to compile
 @default_files = (
+    'remarques_barucq.tex',
     'remarques-finales-bruno.tex',
     'remarques-finales-these.tex',
     'factorisation-determinant-2couches.tex',
