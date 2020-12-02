@@ -1,4 +1,12 @@
-\section[Une CNS pour l'unicité des solutions de Maxwell intérieur]{Une condition nécessaire et suffisante pour l'unicité des solutions du problème intérieur}
+\section[Une CNS pour l'unicité des solutions du problème de Maxwell intérieur]{Une condition nécessaire et suffisante pour l'unicité des solutions du problème de Maxwell intérieur}
+\begin{REM}
+  [ Dans le titre apparaissant dans le sommaire]
+
+  SVP, Maxwell mérite mieux que ça, ajouter problème de
+\end{REM}
+\begin{REP}
+  Fait
+\end{REP}
   \subsection{Cas général: alternative de Fredholm}
 
     Cette partie détaille l'introduction à l'opérateur de Calderón du chapitre \ref{sec:context_math}.
@@ -19,6 +27,10 @@
     % \end{REP}
 
     nous devons exprimer les champs dans l'objet. Il apparaît nécessaire que ces derniers soient donc bien définis.
+
+\begin{REM}
+  mise en page
+\end{REM}
 
     Nous exhibons une condition nécessaire et suffisante d'unicité des solutions du problème de Maxwell-Helmholtz  \eqref{eq:unicite:maxwell_int} dans \(\OO\), objet multicouche autour d'un \gls{acr-cep}, c'est-a-dire tel que \(\partial \OO = \Gamma \cup \Gamma_0\) où \(\Gamma\) est la surface extérieure et \(\Gamma_0\) la surface intérieure. Le problème de Maxwell harmonique en \(e^{i\w t}\) s'exprime
 
@@ -50,6 +62,12 @@
     Il faut donc que les champs soient déterminés de façon unique pour exprimer cet opérateur.
     Nous ne pouvons nous satisfaire de l'alternative de Fredholm et devons exprimer une condition plus pratique pour déterminer s'il y a unicité.
     Nous allons alors approcher l'objet par une forme simple, mais avec les mêmes caractéristiques pour l'empilement.
+    \begin{REM}
+  ici, il me semble que c'est pas correct. L'alternative de Fredholm est ce qu'elle est et c'est parce que vous l’appliquer que vous êtes tant intéressé par l'unicité! 
+L'opérateur de Calderon n'existe que si le champ électromagnétique existe.
+Ce dernier vérifie l'alternative de Fredholm et donc existe s'il est unique. 
+\end{REM}
+
     Ainsi nous étudierons trois objets modèles pour le calcul de l'opérateur de Calderón ainsi que pour le calcul des coefficients des CIOE.
     % \begin{REM}
     %   Ce n'est pas une approximation de l'objet mais des objets modèles.
@@ -70,6 +88,9 @@
     Cependant, nous utiliserons des objets différents (cylindre à bouts arrondis, sphère-cône) lors du calcul par équations intégrales, utilisant les coefficients calculés sur ces objets modèles.
 
     Nous désirons une condition ne dépendant pas de la géométrie pour garantir l'unicité et l'alternative de Fredholm n'étant donc pas utilisable,
+    \begin{REM}
+  pourquoi ne peut on plus appliquer Fredholm ? meme confusion que plus haut
+\end{REM}
     % \begin{REM}
     %   Que veux-tu dire par là ? Que \(\eps\mu\w^2\) n'est jamais valeur propre du Laplacien ?
     % \end{REM}
@@ -79,6 +100,9 @@
     nous allons simplifier la géométrie du problème pour aboutir à une condition nécessaire d'unicité.
 
     L'objet est représenté schématiquement:
+    \begin{REM}
+  ???
+\end{REM}
     \begin{figure}[h!btp]
         \centering
         \tikzsetnextfilename{plan_n_couches}            
@@ -107,7 +131,13 @@
 
       On pose \(\kk_1 = \sqrt{k_1^2 - k_x^2 - k_y^2}\),  \(\kk_2 = \sqrt{k_2^2 - k_x^2 - k_y^2}\).
 
-      On remarques que toutes les composantes du champs \(\vE\) ( idem pour \(\vH\) ) sont solutions de \(\ddr[2]{u}{z} + (k_i^2 k_x^2 + k_y^2) u = 0 \), dont les solutions sont données par la famille \((\sin(\kk_i z),\cos(\kk_i z))\) selon la couche.
+      On remarques
+      \begin{REM}
+  remarque
+\end{REM} que toutes les composantes du champs \(\vE\) ( idem pour \(\vH\) ) sont solutions de \(\ddr[2]{u}{z} + (k_i^2 k_x^2 + k_y^2) u = 0 \),
+\begin{REM}
+   - entre ki et le reste
+\end{REM} dont les solutions sont données par la famille \((\sin(\kk_i z),\cos(\kk_i z))\) selon la couche.
       % En utilisant les relations de saut, on obtient formellement,
 
       % \begin{align*}
@@ -247,7 +277,10 @@
     c_1\sin(\kk_1(z-z_1))+d\cos(\kk_1(z-z_1)),&   z_0<z<z_1
     \end{cases}
     \end{align*}
-    Ces expressions prenant compte de condition de continuité tangentielle du champ électrique à l'interface \(z=z_1\).
+    Ces expressions prenant compte
+    \begin{REM}
+  prennent en compte la continuité des traces tangentielles du
+\end{REM} de condition de continuité tangentielle du champ électrique à l'interface \(z=z_1\).
 
     En supposant \(k_x^2 + k_y^2\) non nul, nous définissons d'autres paramètres \(A_2,C_2, A_1, C_1, B, D\) tels que
     % \[
@@ -278,14 +311,20 @@
     B ={}& \frac{b k_x + d k_y}{k_x^2 + k_y^2}, & D ={}& \frac{d k_y - b k_x}{k_x^2 + k_y^2}.
     \end{align*}
 
-    Les divergences nulle des champs nous permettent de déduire de \(a_2,c_2,a_1,c_1,b,d\) la décomposition sur \((\sin(\kk_i(z-z_i)),\cos(\kk_i(z-z_i)))\) de \(E_z\):
+    Les divergences nulle
+    \begin{REM}
+  nulles
+\end{REM} des champs nous permettent de déduire de \(a_2,c_2,a_1,c_1,b,d\) la décomposition sur \((\sin(\kk_i(z-z_i)),\cos(\kk_i(z-z_i)))\) de \(E_z\):
 
     \[
     E_z=i\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-i\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1)), z_1<z<z_2,
     \]
     Dans \(z_0<z<z_1\), il faut remplacer \(A_2\) par \(A_1\), \(C_2\) par \(C_1\) et \(\kk_2\) par \(\kk_1\).
 
-    Nous cherchons des résonances, c'est à dire des solutions non nulles du problème de Maxwell harmonique avec conditions de Dirichlet homogènes sur les bords \(z=z_0\) et \(z=z_2\).
+    Nous cherchons des résonances, c'est à dire
+    \begin{REM}
+  mettre tiret
+\end{REM} des solutions non nulles du problème de Maxwell harmonique avec conditions de Dirichlet homogènes sur les bords \(z=z_0\) et \(z=z_2\).
 
     Notons \(\alpha_1=\kk_1(z_0-z_1)\), \(\alpha_2=\kk_2(z_2-z_1)\).
 
@@ -306,7 +345,13 @@
 
     D'autre part, on écrit la condition de saut tangentiel du champ magnétique à l'interface \(z=z_1\).
 
-    Les coordonnées tangentielles de \(\vect F = \vrot \hat\vE\) dans \(z_1<z<z_2\) sont
+    Les coordonnées tangentielles de \(\vect F = \vrot \hat\vE\) dans \(z_1<z<z_2\) son
+    \begin{REM}
+  Je calcule : non
+\end{REM}
+\begin{REP}
+Fait
+\end{REP}
     \begin{multline*}
     F_x = -k_y\left(\frac{k_x^2+k_y^2}{\kk_2}A_2\cos(\kk_2(z-z_1))-\frac{k_x^2+k_y^2}{\kk_2}B\sin(\kk_2(z-z_1))\right)
     \\

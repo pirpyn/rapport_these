@@ -9,7 +9,10 @@
   %   Je ne connais pas les opérateurs de Calderón, ni la notion de compactant.
   % \end{REP}
 
-  Nous définissons une \glspl{acr-cioe} une condition limite liant \(\vE_t\) et \(\vn\pvect\vH\) sur \(\Gamma\) comme une approximation de cet opérateur de Calderón.
+  Nous définissons une \glspl{acr-cioe} une condition limite
+  \begin{REM}
+  supprimer condition limite
+\end{REM} liant \(\vE_t\) et \(\vn\pvect\vH\) sur \(\Gamma\) comme une approximation de cet opérateur de Calderón.
   %L'existence des CIOE est en dehors du cadre de cette thèse, nous ne ferons donc qu'utiliser des CIOE existantes.
 
   Grâce à ces CIOE, nous allons établir des conditions suffisantes qui impliquent la \gls{acr-cgu} \eqref{eq:unicite:form_var:cgu}.
@@ -47,6 +50,9 @@
 
   \begin{proof}
     Pour tous \(\vu,\vv \in (\mathcal C^\infty(\Gamma))^3\)
+    \begin{REM}
+  préciser que Gamma est sans bord
+\end{REM}
     \begin{align*}
       \int_\Gamma \vu\cdot \LL(\conj{\vv}) &= \int_\Gamma \conj{\vv}\cdot \LL(\vu),
       \\
@@ -64,6 +70,10 @@
   \begin{prop}
     \label{prop:unicite:injectif:opérateur:L}
     Soit \(\vu \in V=(\mathcal{C}^\infty(\Gamma))^3, a_0 \in \CC, a_1 \in \CC\).
+
+    \begin{REM}
+  a0 ^ne doit pas etre nul
+\end{REM}
     
     Soit \(\mathcal{P}\) l'opérateur de \(V\) vers lui-même tel que \(\mathcal{P}\vu = (a_0\oI + a_1 \LL)\vu\).
 
@@ -96,12 +106,18 @@
   \end{prop}
   \begin{proof}
     D'après l'alternative de Fredholm (voir \cite[Théorème~VI.6, p.~92]{brezis_analyse_1996})%, si l'opérateur \(\LL\) est compact,%
+    \begin{REM}
+  espace
+\end{REM}
       alors \(\mathcal{P}\) est soit non-injectif soit bijectif. D'après la proposition \ref{prop:unicite:injectif:opérateur:L}, comme \(\Re(a_0)\ge 0\) et \(\Re(a_1)\le 0\), alors il est injectif, donc bijectif.
     % Montrons que \(\LL\) est compact.
   \end{proof}
 
 
-  On se donne une condition limite sur \(\Gamma\) qui dépend d'une nombre fini de coefficients complexes.
+  On se donne une condition limite sur \(\Gamma\) qui dépend d'une
+  \begin{REM}
+  un
+\end{REM} nombre fini de coefficients complexes.
   On veut trouver des conditions sur ces coefficients permettant de de garantir  \eqref{eq:unicite:form_var:cgu}, et donc assurant que \((\vE,\vH) = (0,0)\) est l'unique solution de
 
   % problème sans sources. 
@@ -128,7 +144,9 @@
       \text{une condition limite à définir }  && \text{sur \(\Gamma\).}
     \end{aligned}
   \end{equation}
-
+\begin{REM}
+  c'st indépendant de la cl sur gamma ?
+\end{REM}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \subsection{CSU de la CI0}
     Considérons la condition d’impédance de Leontovich, la \hyperlink{ci0}{CI0} caractérisée par

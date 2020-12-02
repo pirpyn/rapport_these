@@ -5,6 +5,9 @@
 \newpage
 
 On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, convexe et régulier, sans sources. 
+\begin{REM}
+  source
+\end{REM}
 Les champs associés sont solutions des équations de Maxwell harmoniques, la convention dans toute la thèse étant en \(e^{i\w t}\). 
 
 Soit \(\gls{mat-ga}=\partial\overline{\gls{mat-om}}\) la frontière de \(\OO\), on décompose donc tout l'espace entre l'intérieur et l'extérieur, soit 
@@ -18,7 +21,11 @@ Dans \(\OO\), on a \(k(\gls{mat-vx})=k_0\sqrt{\gls{phy-eps}(\vx)\gls{phy-mu}(\vx
 
 % Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
 
-Nous utilisons les équations de Maxwell-Helmholtz où les inconnues sont le champ électrique \gls{phy-e} et l'induction magnétique \gls{phy-h2}, elles se déduisent du système d'équations de Maxwell (voir annexe \ref{sec:annex:maxwell_equation}). 
+Nous utilisons les équations de Maxwell-Helmholtz\begin{REM}
+  merci de dire ce que c'est, ce n'est pas standard
+\end{REM} où les inconnues sont le champ électrique \gls{phy-e} et l'induction \begin{REM}
+  excitation
+\end{REM} magnétique \gls{phy-h2}, elles se déduisent du système d'équations de Maxwell (voir annexe \ref{sec:annex:maxwell_equation}). 
 
 Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}_0^\infty(\RR^3)\cap\Hrot(\RR^3))^3\) tels que
 \begin{align}
@@ -33,13 +40,23 @@ Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}_0^\infty(\RR^3)\cap\Hrot
 \end{align}
 
 De plus, les conditions limites considérées sont les conditions de Silver-Müller à l'infini (voir \cite[eq (5.2.24), p.~183]{nedelec_acoustic_2001}) et les conditions de saut sur \(\Gamma\).
+\begin{REM}
+  Pourquoi ne pas les ecrire ? sans ça c'est très vague pas rigoureux du tout
+\end{REM}
 
 \section{Équations de Maxwell à l'intérieur et à l'extérieur de l'objet}
 
   \subsection{Étude de l'unicité des solutions du problème intérieur}
 
     \begin{thm}
-      Si \(\w^2\eps\mu\) n'est pas une valeur propre du Laplacien vectoriel, l'unique solution \(\vE,\vH\) de \eqref{eq:unicite:maxwell_int} avec condition limite de Dirichlet \(n\wedge \vE_{|\Gamma} = 0\),  est \((0,0)\).
+      Si \(\w^2\eps\mu\)
+      \begin{REM}
+  aucune blague si les espilon mu sont variables ? il me semble qu'une valeur propre ne depend pas de la position c'est omega**2 qui ne doit pas être valeur propore de 1 / epsilon mu Laplacien  
+\end{REM}
+ n'est pas une valeur propre du Laplacien vectoriel, l'unique solution \(\vE,\vH\) de \eqref{eq:unicite:maxwell_int} avec condition limite de Dirichlet 
+ \begin{REM}
+  non c'est conducteur parfait. Dirichlet c'est E = 0
+\end{REM}\(n\wedge \vE_{|\Gamma} = 0\),  est \((0,0)\).
       Si \(\w^2\eps\mu\) est une valeur propre du Laplacien vectoriel, \eqref{eq:unicite:maxwell_int} avec condition limite de Dirichlet \(\vE_{|\Gamma} = 0\) a pour solution tous les vecteurs propres de l'opérateur \(A\) introduit par \cite[eq.~(133), p.~58]{cessenat_mathematical_1996}.
     \end{thm}
     La preuve s'appuie notamment sur l'alternative de Fredholm, voir \cite[Théorème~8, p.~111]{cessenat_mathematical_1996}.
@@ -58,7 +75,10 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
     \end{prop}
     
     \begin{proof}
-      La démonstration s'appuie sur le lemme de Rellich, énoncé dans \cite[p.~74]{cessenat_mathematical_1996} et nous renvoyons à la proposition \ref{eq:unicite:form_var:cgu} du prochain chapitre pour le détail des opérations.
+      La démonstration s'appuie sur le lemme de Rellich,
+      \begin{REM}
+    entre autres, il y a d'autres références
+\end{REM} énoncé dans \cite[p.~74]{cessenat_mathematical_1996} et nous renvoyons à la proposition \ref{eq:unicite:form_var:cgu} du prochain chapitre pour le détail des opérations.
 
       % \begin{lemme}[Lemme de Rellich]
       %   Soit \(\OO^c\) un domaine connexe, complément d'un domaine borné, et soit \(u\) satisfaisant
@@ -109,11 +129,18 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
     \end{proof}      
 
 \section{Équations de Maxwell à l'extérieur avec condition limite de Calderón}
-  L'opérateur de Calderón \cite[Def~4, p.~108]{cessenat_mathematical_1996}, lie les traces tangentielles à la surface extérieure de l'objet des champs solutions du problème intérieur et extérieur.
+  L'opérateur de Calderón (\cite[Def~4, p.~108]{cessenat_mathematical_1996}),
+  \begin{REM}
+  mettre la ref entre parenthèses, sans ça c'est bizarre
+\end{REM} lie les traces tangentielles à la surface extérieure de l'objet des champs solutions du problème intérieur et extérieur.
   
   À un couple de domaines ouverts \((\Omega, \Omega^c)\) et à deux problèmes de type Maxwell \eqref{eq:unicite:maxwell_ext} dans chacun des ouverts, est associé un unique opérateur de Calderón.
 
   En imposant sur le bord extérieur de l'objet une condition limite utilisant cet opérateur, alors les solutions \((\vE,\vH)\) de ce nouveau problème posé uniquement à l'extérieur sont les mêmes que celles du problème intérieur et extérieur.
+  \begin{REM}
+  bizarrement exprimé: la solution d'une problème extérieur serait la même que celle d'un problème intérieur et extérieur ? maladroit :)
+  il faudrait écrire sont la restriction dans le domaine extérieur du champ électromagnétique solution du problème global posé à l'intérieur et à l'extérieur.
+\end{REM}
 
   % \begin{REM}
   %   % Je cherche la ref dans le Cessenat, mais si tu l'as, je prend.
@@ -143,7 +170,10 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
 
   \subsection{Expression de l'opérateur de Calderón pour un plan infini en tant que multiplicateur de Fourier}
 
-    Pour une couche d'épaisseur \(d\) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderón s'exprime en Fourier (nous choisissons la notation \gls{mat-four} pour désigner la transformée de \(u\)) comme un multiplicateur matriciel en \((k_x,k_y)\), supposant \(\sqrt{k^2-k_x^2-k_y^2}\not=0\),
+    Pour une couche d'épaisseur \(d\) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderón s'exprime en Fourier (nous choisissons la notation \gls{mat-four} pour désigner la transformée de \(u\)) comme un multiplicateur matriciel en \((k_x,k_y)\), supposant \(\sqrt{k^2-k_x^2-k_y^2}\not=0\), 
+    \begin{REM}
+    racine carré complexe ? il faut préciser que vous choisissiez la détermination principale de la racine carrée ayant pour partie réelle un nombre position
+\end{REM}
 
     \begin{align*}
       \gls{mat-matimp}(k_x,k_y) &= i\eta\frac{\tan\left(d\sqrt{k^2-k_x^2-k_y^2}\right)}{k \sqrt{k^2-k_x^2-k_y^2}}
@@ -161,13 +191,18 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
     On remarque que l'opérateur de Calderón n'est pas un opérateur aux dérivées partielles puisque son multiplicateur de Fourier fait intervenir le complexe \(\sqrt{k^2-k_x^2 - k_y^2}\), qui n'est pas un polynôme en $(k_x,k_y)$ et donc, par transformée inverse de Fourier ne peut s'exprimer avec les opérateurs \(\partial/\partial x, \partial / \partial y\).
     Par contre, on peut approcher cette dernière par un polynôme en \((k_x,k_y)\), voire par une fraction de polynômes, et les CIOE sont issues de cette approximation.
     Par exemple si on approche ce multiplicateur de Fourier par le quotient \(\frac{Q(k_x,k_y)}{R(k_x,k_y)}\), l'égalité \({\hat v}(k_x,k_y)=\frac{Q(k_x,k_y)}{R(k_x,k_y)}{\hat u}(k_x,k_y)\) se réécrit (même s'il faut des résultats supplémentaires pour que la formulation qui suit lui soit équivalente) \(R(k_x,k_y){\hat v}(k_x,k_y)=Q(k_x,k_y){\hat u}(k_x,k_y)\), qui se transforme en une égalité entre $v$ et $u$ utilisant des opérateurs différentiels.
-    
+    \begin{REM}
+  hum ? qui apres transformée de Fourier inverse relie u et v via des opérateurs différentiels
+\end{REM}
     Cette thèse ne fera cependant qu'utiliser des CIOE déjà écrites.
     Nous renvoyons par exemple à \cite{senior_approximate_1995} pour ce problème.
 
   \subsection{Expression de l'opérateur de Calderón pour un cylindre infini}
 
     Soit \(\gls{mat-jn}\) la fonction de Bessel de première espèce et \(\gls{mat-hn}\) la fonction de Hankel de deuxième espèce, et \(J_n', H_n^{(2)}{}'\) leur dérivée.
+    \begin{REM}
+  respectives
+\end{REM}
 
     Pour un cylindre de rayon \(r_0\) recouvert d'une couche d'épaisseur \(d\) (on note \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderón s'exprime en tant que multiplicateur de Fourier matriciel en \((n,k_z)\) où \(n\) est l'indice d'un coefficient de série de Bessel ( qui est une série de Fourier sur \(\theta\) ) et \(k_z\) est la variable de Fourier associée à la transformée de Fourier partielle en \(z\).
 
@@ -199,6 +234,9 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
       On pose \(k_3 = \sqrt{k^2 - k_z^2}\) que l'on suppose non nul et tel que \(k_z^2 < \Re(k^2)\).
       Ainsi la partie imaginaire de \(k_3\) reste petite devant sa partie réelle.
       Dans le cadre de cette thèse, nous avons considéré \(k_z < k_0\).
+      \begin{REM}
+  important non ? et pourquoi ? on pourrait avoir autre chose ? ça aurait été bien de commenter 
+\end{REM}
 
       L'opérateur \(\hat\mZ_n(k_z)\) est alors
 
@@ -273,12 +311,20 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
     \[
       \hat\vE_t = a_0 \hat \vJ
     \]
-    Très facile à mettre en œuvre numériquement, elle est néanmoins une bonne approximation quelque soit l'incidence pour des matériaux dont l'indice relatif \(|\sqrt{\eps\mu}|\) est grand devant l'unité (\cite[par.~3, p.421-422]{senior_impedance_1960}).
+    Très facile à mettre en œuvre numériquement, elle est néanmoins
+    \begin{REM}
+  ??? c'est cool non ?
+\end{REM} une bonne approximation quelque\begin{REM}
+  quelle que
+\end{REM} soit l'incidence pour des matériaux dont l'indice relatif \(|\sqrt{\eps\mu}|\) est grand devant l'unité (\cite[par.~3, p.421-422]{senior_impedance_1960}).
 
     Des choix possibles pour \(a_0\) sont alors
     \begin{itemize}
       \item plan: \(a_0 = \hat\mZ(0,0)_{11}\), pour ce couple \((k_x,k_y)\), l'opérateur est toujours multiple de l'identité.
       \item cylindre: \(a_0 = \hat\mZ_0(0)_{11}\), \(a_0 = \hat\mZ_0(0)_{22}\) ou une combinaison linéaire des deux. À noter que la courbure est prise en compte.
+      \begin{REM}
+  courbure ?? oui mais ça surgit du fond de la nuit
+\end{REM}
       \item sphère: \(a_0 = \hat\mZ_0,{}_{11}\), pour le 1\ier coefficient de la série de Mie, l'opérateur est toujours multiple de l'identité. Là aussi, on prend en compte les courbures.
     \end{itemize}
 
@@ -363,8 +409,13 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
   Dans le cas d'une source nulle, l'existence est assurée puisque la solution nulle vérifie toutes les conditions et équations du problème.
 
   {~}\\{~}
-  Nous allons donc permettre d'assurer l'unicité de la solution du problème sans source (c'est-à-dire déterminer des \glspl{acr-csu} qui piloteront le choix des paramètres), mais il est extrêmement important de comprendre que grâce à cela, nous pourrons \emph{garantir} l'unicité de la solution du problème avec source.
-
+  Nous allons donc permettre d'assurer
+  \begin{REM}
+  assurer tout court
+\end{REM} l'unicité de la solution du problème sans source (c'est-à-dire déterminer des \glspl{acr-csu} qui piloteront le choix des paramètres), mais il est extrêmement important de comprendre que grâce à cela, nous pourrons \emph{garantir} l'unicité de la solution du problème avec source.
+\begin{REM}
+  euh, c'est normal ça, non? j'ai loupé quelque chose???? Il me semble que dans le cas, comme ici, d'un problème linéaire, il n'y a pas de lézard: unicité avec source nulle et unicité avec terme source, même combat. Du coup, je m'étonne d'une telle emphase :)
+\end{REM}
   {~}\\{~}
   Les démonstrations des résultats de cette partie sont l'objet du chapitre \ref{sec:csu}, ainsi les \glspl{acr-csu} des autres CIOE.
   Afin de garantir la proposition \ref{prop:cgu}, les conditions suivantes permettent de choisir les paramètres des CIOE correspondantes.
