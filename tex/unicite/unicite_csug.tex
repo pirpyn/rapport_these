@@ -1,21 +1,12 @@
-\section[Une CSU des solutions du problème de Maxwell extérieur]{Une condition suffisante assurant l'unicité des solutions du problème de Maxwell extérieur}
-\begin{REM}
-  non, Maxwell est un scientifique il n'est pas extérieur. merci de rajouter problème devant Maxwell
-\end{REM}
-  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, sans sources.
-  \begin{REM}
-  source
-\end{REM}
+\section{Une condition suffisante assurant l'unicité des solutions du problème de Maxwell extérieur}
+  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, sans source.
   Les champs associés sont solutions des équations de Maxwell harmoniques, la convention dans toute la thèse étant en \(e^{i\w t}\). 
 
   % \begin{REM}
   %   Remplacer partout "l'unicité des solutions" par "l'unique solution est 0".
   % \end{REM}
 
-  Puisque le problème est sans sources,
-  \begin{REM}
-  source
-\end{REM} nous allons déterminer une condition suffisante qui assure que seuls les champs nuls sont solutions de ce problème.
+  Puisque le problème est sans source, nous allons déterminer une condition suffisante qui assure que seuls les champs nuls sont solutions de ce problème.
 
   % \begin{REM}
   %     Régularité de \(\Gamma\) ? Attention, comment définir l'extérieur sans convexité ( bouteille de Klein ) ?
@@ -31,17 +22,15 @@
   On définit en tout point de \(\Gamma\), supposée régulière, \(\gls{mat-vn}\) la normale unitaire sortante à \(\OO\).
   Dans \(\OO^c\) on définit \(\gls{phy-k0}=\gls{phy-w} / \gls{phy-c} \in \RR_+^*\), le nombre d'onde dans le vide, où \gls{phy-c} 
   est la célérité d'une onde dans le vide.
-  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, sans sources.
-  \begin{REM}
-  source
-\end{REM}
+  On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, sans source.
+
   Les champs associés sont solutions des équations de Maxwell harmoniques, la convention dans toute la thèse étant en \(e^{i\w t}\). 
 
   % Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
   Nous utilisons les équations de Maxwell-Helmholtz
   \begin{REM}
-  j'essaye de deviner c'est parce qu'on a pour inconnu l'induction ??? d'où l'inmplication d'Helmholtz ?
-\end{REM} où les inconnues sont le champ électrique \gls{phy-e} et l'induction magnétique \gls{phy-h2} dans le vide, elles se déduisent du système d'équations de Maxwell (voir annexe \ref{sec:annex:maxwell_equation}). 
+  j'essaye de deviner c'est parce qu'on a pour inconnu l'exitation ??? d'où l'inmplication d'Helmholtz ?
+\end{REM} où les inconnues sont le champ électrique \gls{phy-e} et l'exitation magnétique \gls{phy-h2} dans le vide, elles se déduisent du système d'équations de Maxwell (voir annexe \ref{sec:annex:maxwell_equation}). 
 
   Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}_0^\infty(\OO^c)\cap\Hrot(\OO^c))^2\) tels que
   \begin{align}
@@ -58,10 +47,7 @@
   %  En l'absence de source, le rotationnel d'un des champs a la même régularité que le champs lui-même, donc ces champs sont \(\mathcal{C}^\infty\).
 
   Pour étudier ce problème numériquement, on se ramène à un ouvert borné de la manière suivante : soit \(R\in\RR_+^*\) tel que le domaine \(\overline{\Omega}\) soit inclus dans \(B_R\), la boule de rayon \(R\).
-  On cherche alors les solutions de \eqref{eq:unicite:maxwell_ext_2} dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\), \(S_R\) étant la sphère de rayon \(R\) où l'on écrit la condition de rayonnement à l'infini
-  \begin{REM}
-  c'est vraiment à l'infini ? R est fini ... condition de radiatio nsortante plutot il faut changer
-\end{REM}
+  On cherche alors les solutions de \eqref{eq:unicite:maxwell_ext_2} dans \(\OO^c_R=\OO^c\cap B_R\) avec \(\partial\OO^c_R = \Gamma\cup S_R\), \(S_R\) étant la sphère de rayon \(R\) où l'on écrit la condition de radiation sortante
   \begin{equation}
     \label{eq:unicite:TR}
     \begin{aligned}
@@ -75,10 +61,7 @@
 
   Soit \(V = \lbrace \vect{u} \in (\mathcal{C}_0^\infty(\OO^c_R)\cap\Hrot(\OO^c_R) \rbrace\).
 
-  Quand il est bien posé, le problème \eqref{eq:unicite:maxwell_ext_2} sans sources
-  \begin{REM}
-  source
-\end{REM} muni de la condition \eqref{eq:unicite:TR} est équivalent à
+  Quand il est bien posé, le problème \eqref{eq:unicite:maxwell_ext_2} sans source muni de la condition \eqref{eq:unicite:TR} est équivalent à
   % \begin{REM}
   % Quand le problème est bien posé
   % \end{REM}
@@ -103,9 +86,6 @@
   % \begin{REP}
   %   Mis une ref vers Cessenat pour la réciproque.
   % \end{REP}
-  \begin{REM}
-  V désigne à la fois l'espace fonctionnel et une domaine d'integration
-\end{REM}
   \begin{proof} Sens direct.
     Nous omettons les dépendances en \(\vx\).
     Partons de la première équation de Maxwell
@@ -113,11 +93,12 @@
       0 & = \frac{\trot \vE}{ik_0} + \vH.
       \intertext{En appliquant cette égalité à \(\trot\vect{\phi}\) pour \(\vect{\phi} \in V\), on déduit la forme variationnelle }
       0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot \conj{\vect{\phi}}\dd{x} + \int_{\OO^c_R} \vH \cdot \trot\conj{\vect{\phi}}\dd{x}, && \forall \vect{\phi} \in V.
-      \intertext{Utilisons la formule de Green du rotationnel (voir \cite[eq.~(A1.32)]{bladel_electromagnetic_2007}).
+      \intertext{Utilisons la formule de Green du rotationnel (voir \cite[eq.~(A1.32)]{bladel_electromagnetic_2007}) où \(W\) est un ouvert bornée de frontière \(S\).
       \[
-        \int_V \vect{u}\cdot \trot{\vect{v}}\dd{x} = \int_V \trot\vect{u}\cdot \vect{v}\dd{x} + \int_{\partial V} \left( \vect{v}\pvect\vect{u} \right)\cdot \vn_V \dd{\Gamma(x)},
+        \int_W \vect{u}\cdot \trot{\vect{v}}\dd{x} = \int_W \trot\vect{u}\cdot \vect{v}\dd{x} + \int_{\partial W} \left( \vect{v}\pvect\vect{u} \right)\cdot \vn_{S} \dd{S(x)},
       \]
-      où \(\vn_V\) est la normale unitaire sortante de \(V\). On rappelle que \(\vn_\Gamma\) est la normale sortante de  \(\OO\) et \(\vn_{B_R}\) la normale sortante de \(B_R\).}
+      où \(\vn_{S}\) est la normale unitaire sortante de \(W\).
+      On rappelle que \(\vn_\Gamma\) est la normale sortante de  \(\OO\) et \(\vn_{B_R}\) la normale sortante de \(B_R\).}
       0 & = \int_{\OO^c_R} \frac{\trot \vE}{ik_0} \cdot \trot\vect{\phi}\dd{x} +\int_{\OO^c_R} \trot\vH \cdot \conj{\vect{\phi}}\dd{x}
       \\
       & \qquad \qquad+ \int_{S_R} \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_{B_R}\dd{S_R(x)} - \int_\Gamma \left( \conj{\vect \phi} \pvect \vH\right)  \cdot \vn_\Gamma \dd{\Gamma(x)}, && \forall \vect{\phi} \in V.
@@ -138,10 +119,7 @@
   \begin{REM}
   quel rapport avec la phrase précèdente ?
 \end{REM}
- le problème n'a pas de sources,
-  \begin{REM}
-  source
-\end{REM} l'unique solution du problème 
+ le problème n'a pas de source, l'unique solution du problème 
 \begin{REM}
   quel problème ? I am lost
 \end{REM}
@@ -213,9 +191,5 @@ si ce dernier est bien posé est \(\vE=\vH=0\).
 
   On en déduit \(\vH = 0 \).
 
-  On conclut donc que si on suppose \eqref{eq:unicite:form_var:cgu}, alors en l'absence de sources
-  \begin{REM}
-  source
-\end{REM}
- le couple \((\vE,\vH)=(0,0)\) est l'unique solution, ce qui démontre l'unicité par linéarité.
+  On conclut donc que si on suppose \eqref{eq:unicite:form_var:cgu}, alors en l'absence de sources le couple \((\vE,\vH)=(0,0)\) est l'unique solution, ce qui démontre l'unicité par linéarité.
 \end{proof}

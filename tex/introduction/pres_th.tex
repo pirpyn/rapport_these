@@ -1,20 +1,10 @@
 \section*{Plan de la thèse}
 
-La finalité de cette thèse est de proposer un modèle permettant de remplacer un empilement de matériaux par une condition aux limites
-de surface implémentée dans un code équations intégrales surfacique.
-\begin{REM}
-	c'est le code qui est surfacique ? surfaciques ...
-\end{REM}
-Pour cela, nous devons calculer les champs électromagnétiques sur la surface de ce dernier.
-\begin{REM}
-	le code ? c'est qui ce dernier ? certainement pas le code, surface de l'objet ?
-\end{REM}
-Ce calcul, réalisé par une méthode numérique, nécessite de définir une condition aux limites paramétrée par des coefficients.
+La finalité de cette thèse est de proposer un modèle permettant de remplacer un empilement de matériaux par une condition aux limites implémentée dans un code équations intégrales, afin de ne pas mailler l'intérieur de l'objet.
+
+Cette condition aux limites fera parti d'une famille  connu de conditions aux limites, les conditions d'impédances ( \cite{senior_approximate_1995} ) qui sont paramétrées par des coefficients complexes.
+
 Ces derniers peuvent être déterminés localement en résolvant un problème de minimisation sous contraintes, ces dernières permettant d'assurer l'unicité des solutions.
-Cette thèse présente donc chacun de ces points précédents dans l'ordre inverse.
-\begin{REM}
-	la vache ça serait bienvenu de me remettre tout ça dans l'ordre, quelle idéee !
-\end{REM}
 
 \subsection*{Chapitre 1}
 Ce chapitre présente une condition suffisante qui garantit l'unicité des solutions des équations de Maxwell à l'extérieur de l'objet.

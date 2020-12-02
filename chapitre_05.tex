@@ -4,7 +4,7 @@
 \minitoc
 \newpage
 
-On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, convexe et régulier, sans sources. 
+On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, convexe et régulier, sans source. 
 \begin{REM}
   source
 \end{REM}
@@ -24,10 +24,8 @@ Dans \(\OO\), on a \(k(\gls{mat-vx})=k_0\sqrt{\gls{phy-eps}(\vx)\gls{phy-mu}(\vx
 Nous utilisons les équations de Maxwell-Helmholtz
 \begin{REM}
   merci de dire ce que c'est, ce n'est pas standard
-\end{REM} où les inconnues sont le champ électrique \gls{phy-e} et l'induction
-\begin{REM}
-  excitation
-\end{REM} magnétique \gls{phy-h2}, elles se déduisent du système d'équations de Maxwell (voir annexe \ref{sec:annex:maxwell_equation}). 
+\end{REM}
+où les inconnues sont le champ électrique \gls{phy-e} et l'exitation magnétique \gls{phy-h2}, elles se déduisent du système d'équations de Maxwell (voir annexe \ref{sec:annex:maxwell_equation}). 
 
 Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}_0^\infty(\RR^3)\cap\Hrot(\RR^3))^3\) tels que
 \begin{align}
@@ -195,10 +193,7 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
 
   \subsection{Expression de l'opérateur de Calderón pour un cylindre infini}
 
-    Soit \(\gls{mat-jn}\) la fonction de Bessel de première espèce et \(\gls{mat-hn}\) la fonction de Hankel de deuxième espèce, et \(J_n', H_n^{(2)}{}'\) leur dérivée.
-    \begin{REM}
-  respectives
-\end{REM}
+    Soit \(\gls{mat-jn}\) la fonction de Bessel de première espèce et \(\gls{mat-hn}\) la fonction de Hankel de deuxième espèce, et \(J_n', H_n^{(2)}{}'\) leur dérivée respectives.
 
     Pour un cylindre de rayon \(r_0\) recouvert d'une couche d'épaisseur \(d\) (on note \(r_1=r_0 + d\)) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderón s'exprime en tant que multiplicateur de Fourier matriciel en \((n,k_z)\) où \(n\) est l'indice d'un coefficient de série de Bessel ( qui est une série de Fourier sur \(\theta\) ) et \(k_z\) est la variable de Fourier associée à la transformée de Fourier partielle en \(z\).
 
@@ -307,12 +302,7 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
     \[
       \hat\vE_t = a_0 \hat \vJ
     \]
-    Très facile à mettre en œuvre numériquement, elle est néanmoins
-    \begin{REM}
-  ??? c'est cool non ?
-\end{REM} une bonne approximation quelque\begin{REM}
-  quelle que
-\end{REM} soit l'incidence pour des matériaux dont l'indice relatif \(|\sqrt{\eps\mu}|\) est grand devant l'unité (\cite[par.~3, p.421-422]{senior_impedance_1960}).
+    Très facile à mettre en œuvre numériquement, elle est une bonne approximation quelle que soit l'incidence pour des matériaux dont l'indice relatif \(|\sqrt{\eps\mu}|\) est grand devant l'unité (\cite[par.~3, p.421-422]{senior_impedance_1960}).
 
     Des choix possibles pour \(a_0\) sont alors
     \begin{itemize}
@@ -405,10 +395,7 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
   Dans le cas d'une source nulle, l'existence est assurée puisque la solution nulle vérifie toutes les conditions et équations du problème.
 
   {~}\\{~}
-  Nous allons donc permettre d'assurer
-  \begin{REM}
-  assurer tout court
-\end{REM} l'unicité de la solution du problème sans source (c'est-à-dire déterminer des \glspl{acr-csu} qui piloteront le choix des paramètres), mais il est extrêmement important de comprendre que grâce à cela, nous pourrons \emph{garantir} l'unicité de la solution du problème avec source.
+  Nous allons assurer l'unicité de la solution du problème sans source (c'est-à-dire déterminer des \glspl{acr-csu} qui piloteront le choix des paramètres), mais il est extrêmement important de comprendre que grâce à cela, nous pourrons \emph{garantir} l'unicité de la solution du problème avec source.
 \begin{REM}
   euh, c'est normal ça, non? j'ai loupé quelque chose???? Il me semble que dans le cas, comme ici, d'un problème linéaire, il n'y a pas de lézard: unicité avec source nulle et unicité avec terme source, même combat. Du coup, je m'étonne d'une telle emphase :)
 \end{REM}
