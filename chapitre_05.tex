@@ -52,14 +52,11 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
 
     \begin{thm}
       Si \(\w^2\eps\mu\)
-      \begin{REM}
+\begin{REM}
   aucune blague si les espilon mu sont variables ? il me semble qu'une valeur propre ne depend pas de la position c'est omega**2 qui ne doit pas être valeur propore de 1 / epsilon mu Laplacien  
 \end{REM}
- n'est pas une valeur propre du Laplacien vectoriel, l'unique solution \(\vE,\vH\) de \eqref{eq:unicite:maxwell_int} avec condition limite de Dirichlet 
- \begin{REM}
-  non c'est conducteur parfait. Dirichlet c'est E = 0
-\end{REM}\(n\wedge \vE_{|\Gamma} = 0\),  est \((0,0)\).
-      Si \(\w^2\eps\mu\) est une valeur propre du Laplacien vectoriel, \eqref{eq:unicite:maxwell_int} avec condition limite de Dirichlet \(\vE_{|\Gamma} = 0\) a pour solution tous les vecteurs propres de l'opérateur \(A\) introduit par \cite[eq.~(133), p.~58]{cessenat_mathematical_1996}.
+      n'est pas une valeur propre du Laplacien vectoriel, l'unique solution \(\vE,\vH\) de \eqref{eq:unicite:maxwell_int} avec conditions aux limites de conducteur parfait ( \(n\wedge \vE_{|\Gamma} = 0\) ),  est \((0,0)\).
+      Si \(\w^2\eps\mu\) est une valeur propre du Laplacien vectoriel, \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet ( \(\vE_{|\Gamma} = 0\) ) a pour solution tous les vecteurs propres de l'opérateur \(A\) introduit par \cite[eq.~(133), p.~58]{cessenat_mathematical_1996}.
     \end{thm}
     La preuve s'appuie notamment sur l'alternative de Fredholm, voir \cite[Théorème~8, p.~111]{cessenat_mathematical_1996}.
 
@@ -130,16 +127,13 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
       % On conclut donc que si on suppose \eqref{eq:unicite:form_var:cgu}, alors en l'absence de sources le couple \((\vE,\vH)=(0,0)\) est l'unique solution, ce qui démontre l'unicité par linéarité.
     \end{proof}      
 
-\section{Équations de Maxwell à l'extérieur avec condition limite de Calderón}
-  L'opérateur de Calderón (\cite[Def~4, p.~108]{cessenat_mathematical_1996}),
-  \begin{REM}
-  mettre la ref entre parenthèses, sans ça c'est bizarre
-\end{REM} lie les traces tangentielles à la surface extérieure de l'objet des champs solutions du problème intérieur et extérieur.
+\section{Problème de Maxwell à l'extérieur de l'objet avec opérateur de Calderón sur son bord}
+  L'opérateur de Calderón (\cite[Def~4, p.~108]{cessenat_mathematical_1996}), lie les traces tangentielles à la surface extérieure de l'objet des champs solutions du problème intérieur et extérieur.
   
   À un couple de domaines ouverts \((\Omega, \Omega^c)\) et à deux problèmes de type Maxwell \eqref{eq:unicite:maxwell_ext} dans chacun des ouverts, est associé un unique opérateur de Calderón.
 
-  En imposant sur le bord extérieur de l'objet une condition limite utilisant cet opérateur, alors les solutions \((\vE,\vH)\) de ce nouveau problème posé uniquement à l'extérieur sont les mêmes que celles du problème intérieur et extérieur.
-  \begin{REM}
+  En imposant sur le bord extérieur de l'objet une \gls{acr-cl} utilisant cet opérateur, alors les solutions \((\vE,\vH)\) de ce nouveau problème posé uniquement à l'extérieur sont les mêmes que celles du problème intérieur et extérieur.
+\begin{REM}
   bizarrement exprimé: la solution d'une problème extérieur serait la même que celle d'un problème intérieur et extérieur ? maladroit :)
   il faudrait écrire sont la restriction dans le domaine extérieur du champ électromagnétique solution du problème global posé à l'intérieur et à l'extérieur.
 \end{REM}
@@ -302,7 +296,7 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
 
     La démonstration de ce calcul, ainsi que son extension à un nombre arbitraire de couches est l'objet du chapitre \ref{sec:sphere}.
 
-\section[Problème extérieur et condition limite de Calderón]{Équations de Maxwell à l'extérieur de l'objet avec une approximation de l'opérateur de Calderón sur son bord}
+\section{Problème de Maxwell à l'extérieur de l'objet avec approximation de l'opérateur de Calderón sur son bord}
 
   Nous cherchons à résoudre le problème de Maxwell extérieur avec condition de Silver-Müller à l'infini et une \gls{acr-cl} sur le bord de l'objet que nous choisirons.
   Cette CL est alors à choisir judicieusement si l'on espère que les solutions de ce nouveau problème approchent bien celui du problème extérieur avec opérateur de Calderón.
