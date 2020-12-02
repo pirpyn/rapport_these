@@ -23,7 +23,11 @@
   On exprime les équations de Maxwell dans le matériau en coordonnées cylindriques et sans perte de généralité, on effectue une transformée de Fourier en \(z\) par invariance en translation.
   La solution étant périodique en \(\theta\), elle est développable en série de Fourier sur cette coordonnée.
 
-  En utilisant l'inversion de Fourier, il existe \(\hat\vE\) telle que
+  En utilisant l'inversion de Fourier,
+\begin{REM}
+  jamais vu cette terminologie
+\end{REM} 
+   il existe \(\hat\vE\) telle que
 
   \begin{equation*}
     \vE\gls{mat-xcyl} = \frac{1}{2\pi}\sum_{n=-\infty}^{\infty}\int_{\RR} e^{i(n \theta + k_z z )}\hat{\vE} (r,n,k_z) \dd{k_z}.
@@ -155,7 +159,9 @@
     On peut donc se restreindre à \(n\) entier naturel.
 
     On trouve exactement les mêmes résultats pour \(\hat{\cH_z}\) dans la couche de matériau.
-
+\begin{REM}
+  matériaux
+\end{REM} 
     Il existe \((c_3(n,k_z),c_4(n,k_z)) \in (\CC(\NN_+\times\RR))^2\)
     \begin{equation*}
       \hat{\cH_z}(r,n,k_z) = c_3(n,k_z) J_n\left(k_3r\right) + c_4(n,k_z) H_n^{(2)}\left(k_3r\right).
@@ -374,7 +380,9 @@
       \det(\mH_\cH(r,n,k_z)) &= -\frac{ik(r)}{\eta(r)k_3(r)}H_n^{(2)}(k_3(r)r)H_n^{(2)}{}'(k_3(r)r).
      \end{align*}
     Et on ne peut rien conclure, car les zéros peuvent être complexes ( voir \cite{sandstrom_note_2007} ). On va donc supposer ces déterminants non nuls.
-
+\begin{REM}
+  même à haute fréquence ?
+\end{REM} 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -403,7 +411,11 @@
     \begin{proof}
       On se place dans le matériau: \(r_0 \le r \le r_ 1 \). Dans cette couche, \(\eps(r)\equiv \eps, \mu(r)\equiv \mu\).
 
-      On applique la condition limite du conducteur parfait \(\hat \vE(r_0,n,k_z) = 0\) dans \eqref{eq:imp_fourier:cylindre:Et}, donc
+      On applique la condition limite 
+\begin{REM}
+  aux
+\end{REM} 
+      du conducteur parfait \(\hat \vE(r_0,n,k_z) = 0\) dans \eqref{eq:imp_fourier:cylindre:Et}, donc
       \begin{equation*}
         \mJ_{E}(r_0,n,k_z)
         \begin{bmatrix}
@@ -442,7 +454,9 @@
       Ce dernier s'annule quand \(\frac{\cH_n^{(2)}(r_1k_3)}{J_n(r_1k_3)} = \frac{\cH_n^{(2)}{}'(r_0k_3)}{J_n'(r_0k_3)}\) ou quand \(\frac{\cH_n^{(2)}{}'(r_1k_3)}{J_n'(r_1k_3)} = \frac{\cH_n^{(2)}(r_0k_3)}{J_n(r_0k_3)}\).
 
       Il n'existe pas à notre connaissance de propriétés connues des fonctions de Bessel pour déduire de ces égalités des conditions sur \(k,k_z,r_1,r_0\).
-
+\begin{REM}
+  asymptotique ?
+\end{REM} 
       On suppose donc simplement \(\mH_{\cH}(r_1,n,k_z) - \mJ_{\cH}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) inversible, la matrice \(\hat\mZ(n,k_z)\) telle que \(\hat\vE_t(r_1,n,k_z) = \hat\mZ(n,k_z) (\vect{e_r}\pvect\vH(r_1,n,k_z))\) est alors
 
       \begin{multline*}
@@ -451,7 +465,7 @@
         \\
         \left(\mH_{\cH}(r_1,n,k_z) - \mJ_{\cH}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\right)^{-1}.
       \end{multline*}
-      Comme on a supposé la matrice \(\mH_E(r_0,n,k_z)\) inversible, on peut simplifer par cette matrice d'où la proposition.
+      Comme on a supposé la matrice \(\mH_E(r_0,n,k_z)\) inversible, on peut simplifier par cette matrice d'où la proposition.
 
     \end{proof}
 
@@ -517,7 +531,11 @@
 
       alors \(\hat\vE_t(r_{p-1}^+,n,k_z) = \mT_p(r_{p-1}^+,r_{p}^-,n,k_z,\hat\mZ_{p}(n,k_z))(\hat\vJ_t(r_{p-1}^+,n,k_z))\).
 
-      Une condition d'impédance sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
+      Une condition d'impédance sur le bord supérieur d'une couche détermine la condition limite
+\begin{REM}
+  aux
+\end{REM} 
+       sur le bord inférieur.
     \end{prop}
 
 
@@ -848,7 +866,11 @@
     On compare l'impédance du plan \(\hat{\mZ}(k_x,0)\) à l'impédance du cylindre \(\hat{\mZ}(n,0)\) quand \(n\) est de l'ordre de \(k_0r_1s\) pour de faibles courbures.
     On reprend la notation de \cite[p.~62]{hoppe_impedance_1995} qui définit \(k_t= n/r_1\).
 
-    Pour une couche de matériau sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
+    Pour une couche de matériau
+\begin{REM}
+  matériaux
+\end{REM} 
+     sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
 
     La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} (voir Figure \ref{fig:annex:hoppe:p62}).
 

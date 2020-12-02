@@ -17,7 +17,9 @@
   \end{defn}
 
   \subsection{Calcul des coefficients pour une incidence}
-
+\begin{REM}
+laquelle ? bizarrement dit 
+\end{REM}
     \begin{defn}
       On définit \(\mH_{CI3}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
       \begin{equation*}
@@ -46,7 +48,11 @@
     \end{defn}
 
     \begin{prop}
-      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((k_x,k_y)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du plan.
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((k_x,k_y)\) fixé et \(\hat\mZ_{ex}\) l'opérateur
+\begin{REM}
+on dirait que j'ai la réponse à ma question
+\end{REM}
+       d'impédance exact du plan.
 
       S'il existe un unique \(X\) minimisant la distance entre ces deux matrices alors
       \begin{multline*}
@@ -125,7 +131,11 @@
           \mH_{CI3}(k_{xN_x},k_{yN_y},\hat\mZ_{ex}(k_{xN_x},k_{yN_y}))
         \end{bmatrix}.
       \end{equation*}
-      On définit \(g\) la vecteur colonne complexe tel que
+      On définit \(g\) la
+\begin{REM}
+le
+\end{REM}
+       vecteur colonne complexe tel que
       \begin{equation*}
         g = 
         \begin{bmatrix}
@@ -157,6 +167,9 @@
       \begin{prop}
         La matrice \({\mM}_{CI01}\)
         associée à la CI01 est inversible, si et seulement s'il existe au moins deux couples \((k_{x},k_{y})\) différents.
+        \begin{REM}
+??? vérifiant quoi ? car sans condition, la réponse est tjs oui!!!
+\end{REM}
       \end{prop}
 
       \begin{proof}
@@ -189,7 +202,9 @@
         La matrice \({\mM}_{CI4}\)
         associée à la CI4 est inversible, si et seulement s'il existe au moins deux couples \((k_{xi},k_{yi})\) différents.
       \end{prop}
-
+\begin{REM}
+toujours le meme problem
+\end{REM}
       \begin{proof}
         En reprenant la définition des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant, on a
         \begin{equation*}
@@ -205,7 +220,11 @@
         \begin{align*}
           \det({\mM}_{CI4}) &= 2\ps{t}{t}\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right).
         \end{align*}
-        On conclut ici-aussi grâce à Cauchy–Schwarz.
+        On conclut ici-aussi
+\begin{REM}
+le tiret ?
+\end{REM}
+         grâce à Cauchy–Schwarz.
       \end{proof}
 
       \subsubsection{Pour la CI1}
@@ -233,13 +252,20 @@
       \end{multline*}
 
 
-      Supposons \(t\) et 1 colinéaires, c'est qui revient à ne prendre qu'un seul couple \(k_x,k_y\).
+      Supposons \(t\) et 1 colinéaires, c'est
+\begin{REM}
+ce 
+\end{REM} qui revient à ne prendre qu'un seul couple \(k_x,k_y\).
       Alors la deuxième colonne est multiple de la première.
       Donc son déterminant est nul.
 
       L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière.
 
-      Nous l'avons vérifié numériquement et pour nous nos empilements, nous n'avons jamais constaté que ce déterminant s'annulait.
+      Nous l'avons vérifié numériquement et pour nous
+\begin{REM}
+supprimer
+\end{REM}
+       nos empilements, nous n'avons jamais constaté que ce déterminant s'annulait.
 
       % Intuition: au moins 3 pour la CI1
 
@@ -336,7 +362,9 @@
       % \end{REP}
 
     \subsubsection{Pour la CI3}
-
+\begin{REM}
+quoi ?
+\end{REM}
       % Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et toute incidence.
       % \begin{REM}
       %   Il faut que tu en dises plus. As-tu trouvé des cas où elle n'est pas inversible ? As-tu fais l'essai avec deux couches ? Est-ce que pour certaines valeurs de \(k_x,k_y\) il y  des cas si \(\eps,\mu\) complexes.
@@ -382,6 +410,9 @@
         
         Nous n'exprimons pas le déterminant dont nous n'avons pas de simplification.
         Tout comme pour la CI1, nous avons vérifié numériquement que sur un certain nombre d'empilements et d’incidences qu'il ne s'annule pas.
+\begin{REM}
+  que qu'il
+\end{REM}
 
         % Alors 
         % \begin{multline*}
@@ -439,6 +470,9 @@
 
     \subsubsection[Expression de la fonction JZ]{Expression de la fonction \(J_Z\)}
       On peut alors calculer les coefficients d'une CIOE \(CI\) particulière.
+      \begin{REM}
+my god!!!
+\end{REM}
       \begin{defn}
         On définit la fonction \(J_Z\)
         \begin{equation*}
@@ -456,6 +490,10 @@
           X = \argmin{X\in \CC^N} J_Z(X).
         \end{equation*}
       \end{defn}
+
+\begin{REM}
+curieux
+\end{REM}
 
       % \begin{proof}
       %   On remarque que la fonction \(J_Z\) est quadratique si la matrice \(\conj{\mA^t}{\mA}\) est hermitienne définie positive. Une matrice \(\mM\) est hermitienne si \(\forall x, \conj{x^t}\mM x \in \RR\), elle est hermitienne positive si \(\forall x, \conj{x^t}\mM x \in \RR^+\) et elle est hermitienne définie positive si \(\forall x\not=0, \conj{x^t}\mM x \in \RR^{+*}\).
@@ -484,12 +522,20 @@
         \\
         &=\ps{X}{\conj{\mA_{CI}^t}\mA_{CI}X} - \ps{X}{\conj{\mA_{CI}^t}g} - \ps{\conj{\mA_{CI}^t}g}{X} + \ps{g}{g},
         \end{align*}
-        Si la matrice \(\conj{\mA_{CI}^t}\mA_{CI}\) est inversible, comme elle est par définition hermitienne et positive, alors la fonction est quadratique. Il existe donc un unique minimum où le gradient de cette fonction s'annule. Or
+        Si la matrice \(\conj{\mA_{CI}^t}\mA_{CI}\) est inversible, comme elle est par définition hermitienne et positive, alors la fonction
+\begin{REM}
+  laquelle ? J
+\end{REM}
+
+         est quadratique. Il existe donc un unique minimum où le gradient de cette fonction s'annule. Or
         \begin{align*}
           \nabla J_Z(X^*) &= 2\conj{\mA_{CI}^t}\mA_{CI}X^* - 2\conj{\mA_{CI}^t}g,
           \\ 
           &= 0.
         \end{align*}
+\begin{REM}
+  et donc ?
+\end{REM} 
       \end{proof}
 
     \subsubsection{Minimisation avec contraintes}
@@ -497,6 +543,9 @@
       \begin{defn}[Minimisation avec contraintes pour la CI3]
         Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
         Alors les coefficients de la CIOE respectant cette CSU sont solutions du problème.
+        \begin{REM}
+  lequel
+\end{REM} 
 
         Trouver \(X^* \in \CC^5\) tel que
         \begin{equation*}
@@ -505,7 +554,13 @@
       \end{defn}
 
       Si la fonction \(J_Z\) est quadratique et continue, alors il y a existence.
+      \begin{REM}
+  de quoi
+\end{REM} 
       Nous savons que pour certaines CIOE (CI0, CI01, CI4), elle l'est inconditionnellement.
+      \begin{REM}
+  french ?
+\end{REM} 
 
       L'unicité dépend en plus de la convexité de l'espace des contraintes, ce qui est vérifié par les CIOE (CI0, CI01, CI4).
 
@@ -533,7 +588,8 @@
           \end{equation*}
       \end{itemize}
 
-      L'opérateur \(\LL\) est le laplacien tangentiel \(\lapls\) appliqué à chaque composante. Le multiplicateur de Fourier associé est la matrice.
+      L'opérateur \(\LL\) est le laplacien tangentiel \(\lapls\) appliqué à chaque composante.
+      Le multiplicateur de Fourier associé est la matrice.
       \begin{equation*}
         \hat{\mL}  = -
         \begin{bmatrix}
@@ -583,11 +639,18 @@
         \label{tab:imp_fourier:plan:hoppe:33:hoibc}
       \end{table}
 
-      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériau sans perte où l'on remarque une asymptote, que nous déterminerons plus tard.
+      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériau
+\begin{REM}
+  matériaux
+\end{REM} 
+       sans perte où l'on remarque une asymptote, que nous déterminerons plus tard.
       % \begin{REM}[noasymptote]
       %   C'est à expliquer (la signification d'une asymptote). Voir plus \hyperlink{REMasymptote}{bas}.
       % \end{REM}
       La CI3 capture cette asymptote grâce à son dénominateur et est donc bien meilleure que la condition de Leontovich.
+\begin{REM}
+  elle est même impressionnante !!!
+\end{REM} 
       \begin{figure}[!hbt]
           \centering
           \input{tikz/plot/Z_SOUDAIS_plan_hoibc.tikz}

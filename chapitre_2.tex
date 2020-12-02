@@ -4,10 +4,22 @@
 \newpage
 
 \sectionstar{Introduction}
-Pour déterminer des coefficients complexes satisfaisants aux conditions introduites dans la partie précédente, nous commençons par la méthode de l'approximation du plan tangent, bien documenté \cite{hoppe_impedance_1995,marceaux_high-order_2000,aubakirov_electromagnetic_2014}. Cette méthode consiste à considérer localement l'objet comme un plan infini, ce qui reste valable dans le cadre de cette thèse, car nos objets d'études sont parfaitement réguliers.
+Pour déterminer des coefficients complexes satisfaisants aux conditions introduites dans la partie précédente, nous commençons par la méthode de l'approximation du plan tangent, bien
+\begin{REM}
+  supprimer bien
+\end{REM} documenté \cite{hoppe_impedance_1995,marceaux_high-order_2000,aubakirov_electromagnetic_2014}. Cette méthode consiste à considérer localement l'objet comme un plan infini
+\begin{REM}
+  surtout comme son plan tangent
+\end{REM}, ce qui reste valable dans le cadre de cette thèse, car nos objets d'études sont parfaitement réguliers.
 
-Dans le cadre du plan, nous rappellerons l'opérateur de Calderón exact qui lie les champs électromagnétiques à la surface extérieur de l’objet, ainsi que la condition nécessaire pour l'obtenir.
-Pour des considération de mise en oeuvre numérique, nous présenterons une méthode itérative pour exprimer cet opérateur.
+Dans le cadre du plan, nous rappellerons l'opérateur de Calderón exact qui lie les champs électromagnétiques à la surface extérieur
+\begin{REM}
+  ???
+\end{REM} de l’objet, ainsi que la condition nécessaire pour l'obtenir.
+Pour des considération
+\begin{REM}
+  texte surligné: pluriel ?
+\end{REM} de mise en œuvre numérique, nous présenterons une méthode itérative pour exprimer cet opérateur.
 Cette dernière va ajouter des conditions, dont nous rappellerons qu'elles ne sont à considérer que dans le cadre de cette méthode itérative.
 
 \input{tex/plan/intro}
@@ -18,10 +30,22 @@ Cette dernière va ajouter des conditions, dont nous rappellerons qu'elles ne so
 \input{tex/plan/minimisation_fourier}
 
 \sectionstar{Conclusion}
-Nous avons proposé une méthode pour calculer des coefficients complexes vérifiant une des CSU choisies, et qui permettent d'approcher l'opérateur de Calderón dans le cas d'un objet plan infini en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées.
+Nous avons proposé une méthode pour calculer des coefficients complexes vérifiant une des CSU choisies,
+\begin{REM}
+  souligné: choisie ?
+\end{REM} 
+ et qui permettent d'approcher l'opérateur de Calderón dans le cas d'un objet plan infini en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées.
 
 Nous avons montré que minimiser l'erreur entre les matrices de réflexion aboutit aux mêmes coefficients de CIOE.
-
-Pour cela, nous avons réalisé une analyse spectrale des équations de Maxwell et montré que la condition d'impédance s'exprime comme un multiplicateur de Fourier matriciel, tout comme la matrice de réflexion. Grâce à cette analyse spectrale, nous avons aussi exprimé les CIOE comme des multiplicateurs de Fourier matriciels dont on a déduit la matrice de réflexion associée. Nous avons alors exprimé le problème de minimisation sous contraintes et montré que celui-ci a besoin d'être réduit dans le cas d'une couche de matériau sans pertes.
-
-Nous avons montré sur cette géométrie que la CIOE choisie, la \hyperlink{ci3}{CI3}, était largement plus précise que les précédentes \hyperlink{ci01}{CI01} et \hyperlink{ci1}{CI1}. Ce gain en précision est tel que l'on peut introduire des contraintes lors du calcul et avoir une solution finale convenable, relativement à l'opérateur exact.
+\begin{REM}
+	donc on a, à un ordre donné, unicité de la CIOE?
+\end{REM} 
+Pour cela, nous avons réalisé une analyse spectrale des équations de Maxwell et montré que la condition d'impédance s'exprime comme un multiplicateur de Fourier matriciel, tout comme la matrice de réflexion.
+Grâce à cette analyse spectrale, nous avons aussi exprimé les CIOE comme des multiplicateurs de Fourier matriciels dont on a déduit la matrice de réflexion associée.
+Nous avons alors exprimé le problème de minimisation sous contraintes et montré que celui-ci a besoin d'être réduit dans le cas d'une couche de matériau sans pertes.
+\begin{REM}
+  en fait, elle est là l’originalité du travail.
+  On ne fait les sempiternelles approximations (Taylor ou Padé), on minimise. C'est ça ?
+\end{REM} 
+Nous avons montré sur cette géométrie que la CIOE choisie, la \hyperlink{ci3}{CI3}, était largement plus précise que les précédentes \hyperlink{ci01}{CI01} et \hyperlink{ci1}{CI1}.
+Ce gain en précision est tel que l'on peut introduire des contraintes lors du calcul et avoir une solution finale convenable, relativement à l'opérateur exact.

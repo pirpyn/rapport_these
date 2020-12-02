@@ -4,7 +4,11 @@
   Nous allons montrer que nous pouvons choisir deux manières de calculer les coefficients de la CIOE CI3 (ce qui s’étend facilement aux CIOE dérivées de cette dernière). 
 
   \subsection[Choix de la fonction Jz]{Choix de la fonction \(J_Z\)}
-    Ce premier choix consiste à minimiser l'erreur entre la matrice d'impédance exact et celle approchée par la CIOE.
+    Ce premier choix consiste à minimiser l'erreur entre la matrice d'impédance exact
+\begin{REM}
+  exacte
+\end{REM} 
+     et celle approchée par la CIOE.
     \begin{defn}
       On définit \(\mH_{CI3}\) la fonction de \(\NN \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
       \begin{equation*}
@@ -33,7 +37,11 @@
     \end{defn}
 
     \begin{prop}
-      Soit \(X = (a_0,a_1,a_2,b_1,b_2)^t\), \((n,k_z)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre.
+      Soit
+\begin{REM}
+  Soient
+\end{REM} 
+       \(X = (a_0,a_1,a_2,b_1,b_2)^t\), \((n,k_z)\) fixé et \(\hat\mZ_{ex}\) l'opérateur d'impédance exact du cylindre.
       Supposons qu'il existe un unique \(X\) minimisant la distance entre ces deux matrices alors
       \begin{equation*}
         \argmin{X\in\CC^5} \norm{\hat\mZ_{CI3}(n,k_z,X) - \hat\mZ_{ex}(n,k_z)} = \argmin{X\in\CC^5} \norm{\mH_{CI3}(n,k_z,\hat\mZ_{ex}(n,k_z))X - b(\hat\mZ_{ex}(n,k_z))}.
@@ -77,7 +85,16 @@
           \mH_{CI3}(n_{N_n},k_{zN_{k_z}},\hat\mZ_{ex}(n_{N_n},k_{zN_{k_z}}))
         \end{bmatrix}.
       \end{equation*}
-      On définit \(g\) la vecteur colonne de \(\CC^{4N_{n}N_{k_z}}\) telle que
+      On définit \(g\) la
+\begin{REM}
+  le
+\end{REM} 
+
+       vecteur colonne de \(\CC^{4N_{n}N_{k_z}}\) telle
+\begin{REM}
+  tel
+\end{REM} 
+        que
       \begin{equation*}
         g = 
         \begin{bmatrix}
@@ -100,6 +117,10 @@
       \begin{equation*}
         fonction{J_Z}{\CC^5}{\RR}{X}{\norm{{\mA}_{CI3}X - {g}}^2}.
       \end{equation*}
+\begin{REM}
+  bug
+\end{REM} 
+
     \end{defn}
     \begin{thm}[Minimisation sans contraintes pour la CI3]
 

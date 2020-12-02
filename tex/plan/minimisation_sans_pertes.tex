@@ -5,7 +5,12 @@ que l'on cherche à minimiser qui est \(F(X) = \left\lVert{\mH} X - b(\mZ_{ex})\
 
 On se place dans le cadre du plan infini de \cite{aubakirov_electromagnetic_2014}, où \(\eps=4,\mu=1,f=12\) GHz, et \(d=3.5\) mm. %Ce cas non physique possède un onde guidée pour \((k_x,k_y) = (k_0s^\star,0.)\) où \(\mR(k_0s^\star,0.) = \infty\).
 
-Il existe un \(s_z\) tel que \(\hat\mZ_{ex}(k_0s_z,0.) = \infty\) si \(\eps\mu\in\RR\). En effet, d'après la formule pour une couche de matériau de la définition \ref{def:plan:impedance:1c}, 
+Il existe un \(s_z\) tel que \(\hat\mZ_{ex}(k_0s_z,0.) = \infty\) si \(\eps\mu\in\RR\).
+En effet, d'après la formule pour une couche de matériau
+\begin{REM}
+  matériaux
+\end{REM} 
+ de la définition \ref{def:plan:impedance:1c}, 
 % \begin{REM}
 %   Dis dans le texte (et non seulement dans le titre) que ce n'est possible que si \(\eps\mu\in\RR\).
 % \end{REM}
@@ -24,7 +29,9 @@ Or comme le gradient de la fonction est fonction de cette matrice, le gradient n
 Si l'on utilise une méthode basée sur le gradient de type Newton, ce que nous avons fait, on comprend pourquoi la méthode numérique échoue à calculer des coefficients.
 
 En discrétisant plus finement l'incidence, peut-être aurions-nous pu éviter cette difficulté.
-
+\begin{REM}
+et une autre méthode de minimisation
+\end{REM} 
 \subsubsection{Réduction du nombre de variables de la minimisation}
 
 On décompose alors nos matrices et vecteurs en séparant les parties contentant cette asymptote.
@@ -148,7 +155,11 @@ On rappelle l'expression de la CI3
 % \begin{REP}
 %   FAIT
 % \end{REP}
-Une condition nécessaire et suffisante pour que \(\hat{\mZ}_{ap}\) ai une asymptote est que la matrice de gauche ne soit pas inversible en \(s_z\).
+Une condition nécessaire et suffisante pour que \(\hat{\mZ}_{ap}\) ai
+\begin{REM}
+  ait
+\end{REM} 
+ une asymptote est que la matrice de gauche ne soit pas inversible en \(s_z\).
 
 La matrice \({\mH}_\infty\) est donc nulle partout sauf en 8 termes, placés sur les deux dernières colonnes et les 4 lignes correspondantes à \((k_x,k_y)=(k_0 s_z,0)\).
 

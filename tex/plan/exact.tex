@@ -55,13 +55,20 @@
 
     \begin{prop}
         On se place dans le matériau et l’on suppose tel que \(\forall z \in [-d,0], k_3(z) \not = 0\).
-        Alors existe \((c_i(k_x,k_y))_{1\le i \le4}, \in (\CC(\RR^2))^4\) tels que les champs solutions de \ref{eq:imp_fourier:intro:maxwell_harmonique:form_cea} sont de la forme
+        Alors 
+        \begin{REM}
+  manque il
+\end{REM}existe \((c_i(k_x,k_y))_{1\le i \le4}, \in (\CC(\RR^2))^4\) tels que les champs solutions de \ref{eq:imp_fourier:intro:maxwell_harmonique:form_cea} sont de la forme
         \begin{align*}
             \hat{E}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_1(k_x,k_y) + e^{-ik_3(z)z}c_2(k_x,k_y),
             \\
             \hat{\cH}_y(k_x,k_y,z) & = e^{ik_3(z)z}c_3(k_x,k_y) + e^{-ik_3(z)z}c_4(k_x,k_y).
         \end{align*}
-        Les constantes \(c_i\) ne peuvent en réalité pas être choisies arbitrairement, car les exponentielles complexes divergent quand \(k_x^2 + k_y^2 \rightarrow \infty\) et ces solutions n'ont pas de transformées de Fourier. Nous supposons que les constantes \(c_i\) satisfassent la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}, où il n'y a pas de résonances.
+        Les constantes \(c_i\) ne peuvent en réalité pas être choisies arbitrairement, car les exponentielles complexes divergent quand \(k_x^2 + k_y^2 \rightarrow \infty\) et ces solutions n'ont pas de transformées de Fourier. Nous supposons que les constantes \(c_i\) satisfassent 
+        \begin{REM}
+  vérifient ? satisfassent c'est beurk
+\end{REM}
+        la propriété \eqref{prop:unicite:interieur:postulat:multi-couche}, où il n'y a pas de résonances.
         % \begin{REM}
         %   Faux: Il faut que je te réexplique par Skype. Ce n'est pas la condition de résonance mais \(z \in [z_0,z_2]\) par exemple + une estimations sur les coefficients.
         % \end{REM}
@@ -83,6 +90,9 @@
           \lapl{\cH_y} + k(z)^2 \cH_y & = 0.
       \end{align*}
       On applique les transformées partielles de Fourier en \((x,y)\) aux \glspl{acr-edp}, on obtient
+      \begin{REM}
+  bof
+\end{REM}
       \begin{align*}
           \ddr[2]{z}{\hat{E_y}}(k_x,k_y,z) + \left( k(z)^2 - k_x^2 - k_y^2\right) \hat{E}_y(k_x,k_y,z) & = 0,
           \\
@@ -107,9 +117,16 @@
 
       \begin{remark}
         Nous supposons dans tout ce qui suit certaines matrices inversibles.
+        \begin{REM}
+  lesquelles
+\end{REM}
         Ceci est uniquement une commodité de calcul mais n'est pas une condition nécessaire d'existence de l'opérateur de Calderón. 
 
-        Voir par exemple la proposition \ref{prop:unicite:interieur:postulat:multi-couche} pour un exemple de condition nécessaire d’existence pour 2 couches.
+        Voir par exemple la proposition \ref{prop:unicite:interieur:postulat:multi-couche} pour un exemple 
+\begin{REM}
+  donc, ce qui est vrai, on identifie l'existence et unicité d'un champ vérifiant les équations de maxwell harmoniques avec condition de dirichlet sur le bord de l'obstacle à l'existence de l’opérateur de Calderón.
+\end{REM}
+        de condition nécessaire d’existence pour 2 couches.
       \end{remark}
 
       \begin{defn}
@@ -147,7 +164,11 @@
       On remarque que \(\eps,\mu\) sont constantes par morceaux, donc \(k,\eta_r\) aussi.
       Sur une interface d'équation \(z=z_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mA_E(k_x,k_y,z_p+ \delta) - \mA_E(k_x,k_y,z_p - \delta) \not = 0\).
       \begin{prop}
-          Il existe \((c_i(k_x,k_y,z))_{1\le i \le4}\) constants par morceaux en \(z\) tels que les composantes en \(\vect{e_x},\vect{e_y}\) des champs, dites composantes tangentielles par abus de langage, sont
+          Il existe \((c_i(k_x,k_y,z))_{1\le i \le4}\) constants par morceaux en \(z\) tels que les composantes en \(\vect{e_x},\vect{e_y}\) des champs, dites composantes tangentielles par abus de langage,
+\begin{REM}
+  ???
+\end{REM}
+           sont
           \begin{align*}
               \hat{\vE}_t(k_x,k_y,z) &= \mA_E(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y,z) \\ c_3(k_x,k_y,z)\end{bmatrix} + \mB_E(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y,z) \\ c_4(k_x,k_y,z)\end{bmatrix},
               \\
@@ -157,7 +178,17 @@
 
       \begin{proof}
         On se place dans une couche, les constantes de matériaux sont donc fixées.
-        On reprend les équations de Maxwell appliquées sur les transformées de Fourier. À partir des composantes \(\vect{e_x},\vect{e_y}\) des équations de Maxwell, on  détermine un système d'\glspl{acr-edo} sur \(\hat{E_x},\hat{E_z},\hat{\mathcal{H}_x},\hat{\mathcal{H}_z}\) à partir de \(\hat{E_z}, \hat{\mathcal{H}_z}\).
+        On reprend les équations de Maxwell appliquées sur les transformées de Fourier.
+\begin{REM}
+  Ok, c'est quoi ça ???
+\end{REM}
+
+        À partir des composantes \(\vect{e_x},\vect{e_y}\) des équations de Maxwell, on  détermine un système d'\glspl{acr-edo}
+\begin{REM}
+  pluriel
+\end{REM}
+
+         sur \(\hat{E_x},\hat{E_z},\hat{\mathcal{H}_x},\hat{\mathcal{H}_z}\) à partir de \(\hat{E_z}, \hat{\mathcal{H}_z}\).
         % \begin{REM}
         %   Je te suggère d'ajouter comme on en a discuté le fait qu'il y a y un système d'EDO sur \(E_y,E_x,H_y,H_x\) en remplaçant \(E_z,H_z\).
         %   Dans ta présentation les calculs sont corrects presque tout le temps.
@@ -209,6 +240,9 @@
           \end{bmatrix}.
         \end{align*}
         Cette matrice est inversible si \(\det(\mM) = (k^2 - k_y^2)^2 \) est non nul.
+\begin{REM}
+  texte surligné: lourd
+\end{REM}
         On suppose ce dernier non nul, on peut en déduire \(X\)
         \begin{equation*}
           \begin{bmatrix}
@@ -253,6 +287,10 @@
           \right.
         \end{align*}
         Soit si l'on factorise par les exponentielles
+\begin{REM}
+  ???
+\end{REM}
+
         \begin{align*}
           &\left\lbrace
           \begin{aligned}
@@ -304,7 +342,11 @@
         \begin{lemme}[Continuité des impédances]
           \label{lem:plan:continuite_impedance}
           Soit \(z_m\) une interface entre deux matériaux.
-          On suppose qu'il existe des matrices de part et d'autre de l'interface telles que
+          On suppose qu'il existe des matrices
+\begin{REM}
+  mal dit ? c'est quoi ? la régularité de Et ?
+\end{REM}
+          de part et d'autre de l'interface telles que
           \begin{align*}
               \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right),
               \\
@@ -323,12 +365,22 @@
 
         \begin{proof}
           La démonstration est extrêmement rapide grâce à la continuité tangentielle des champs.
+\begin{REM}
+  pourquoi ?
+\end{REM}
+
           \begin{align*}
             \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\vE}_t(k_x,k_y,z_m^-),
             \\
             \hat{\vH}_t(k_x,k_y,z_m^+) &= \hat{\vH}_t(k_x,k_y,z_m^-).
           \end{align*}
           Donc on la même propriété sur \(\hat{\vJ}\),
+\begin{REM}
+ surligné: on utilise la continuité des champs
+\end{REM}
+\begin{REM}
+  ce qui s'identifie à Z..; : je ne comprend pas la preuve, ça tourne en rond ?
+\end{REM}
           \begin{align*}                
             \hat{\vJ}_t(k_x,k_y,z_m^+) &= \hat{\vJ}_t(k_x,k_y,z_m^-).
             \\
@@ -346,6 +398,9 @@
         \begin{defn}
           \label{def:plan:impedance:1c}
           On définit \(\hat \mZ(k_x,k_y)\) la fonction de \(\RR \times \RR\) dans \(\mathcal{M}_{2\times2}(\CC^2)\) telle que
+          \begin{REM}
+  mise en page ci-dessous
+\end{REM}
           \begin{align*}
             k_3 &= \sqrt{k^2 - k_x^2 -k_y^2} \not = 0,
             \hat \mZ(k_x,k_y) &= i\eta_r\frac{\tan\left(k_3d\right)}{k k_3}
@@ -377,6 +432,9 @@
 
         \begin{proof}
             Grâce au lemme \eqref{lem:plan:continuite_impedance}, on sait donc que l'on peut uniquement se placer dans la couche.
+\begin{REM}
+  surligné. Lourd ?
+\end{REM}
 
             Il existe une répartition des constantes \((c_1,c_2,c_3,c_4)\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\).
             Ici nous choisissons
@@ -386,7 +444,14 @@
                 && 
                 \vect{C_2}(k_x,k_y) = \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}.
             \end{align*}
-            Nous utilisons la condition limite du conducteur parfait
+            Nous utilisons la condition limite
+\begin{REM}
+  aux limites
+\end{REM}
+             du conducteur parfait
+\begin{REM}
+de ( mieux que le chauffard!!! condition au ... )  
+\end{REM}
             \begin{align*}
                 \hat{\vE}_t(k_x,k_y,-d^+) &= 0,
                 \\
@@ -479,6 +544,9 @@
                 \\
                 &= i\eta_r\frac{\tan\left(k_3d\right)}{k k_3}\left(k^2\mI + \hat{\mLD}\right).
             \end{align*}
+\begin{REM}
+  c'est ça le résulat non? pourquoi il n'est pas énoncé ? il faut le mettre dans la proposition!!!  
+\end{REM}
         \end{proof}
         %On remarque que \(\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)\) et donc pour un matériau \((\eps,\mu,d)\) donné, l'opérateur d'impédance n'est pas inversible pour tous  \((k_x,k_y) \in \RR^2, n \in \NN\), \(k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2\), qui ne peut être vérifié que si \(\eps\mu\) est réel\footnote{Comme \(\eps, \mu\) sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}.
         Dans l'article de \cite{marceaux_high-order_2000}, la matrice d'impédance est telle que, soit \(\vK = \vn \pvect \vE\)
@@ -516,6 +584,12 @@
     \end{figure}
 
     On suppose qu'il n'y pas de résonances, et nous renvoyons à la proposition \ref{prop:unicite:interieur:postulat:multi-couche} l’expression de ces dernières.
+\begin{REM}
+  charabia. 
+\end{REM}
+\begin{REP}
+  manque pour
+\end{REP}
 
     % \begin{REM}
     %   Rappelle au départ le problème bien posé avec conditions de Dirichlet homogène a une unique solution si \(\w^2\eps\mu\) n'est pas une résonance.
@@ -557,6 +631,9 @@
 
     A priori, pour \((k_x,k_y,z,z')\) donnés, \(\mT_p(k_x,k_y,z,z',\mZ)\) n'est pas définie pour toute matrice \(\mZ\).
 
+\begin{REM}
+  Elle dit quoi cette proposition ? pas clair
+\end{REM}
     \begin{prop}%[Théorème de transfert]~
       \label{prop:plan:transfert:impedance}
 
@@ -572,7 +649,15 @@
 
       alors \(\hat\vE_t(k_x,k_y,z_{p-1}) = \mT_p(k_x,k_y,z_{p-1},z_p^-,\hat\mZ_{p}(k_x,k_y))(\hat{\vJ}(k_x,k_y,z_{p-1}))\).
 
-      Une condition limite sur le bord supérieur d'une couche détermine la condition limite sur le bord inférieur.
+      Une condition limite
+\begin{REM}
+  aux
+\end{REM}
+       sur le bord supérieur d'une couche détermine la condition limite
+\begin{REM}
+  aux
+\end{REM}
+        sur le bord inférieur.
     \end{prop}
 
 
@@ -754,7 +839,9 @@
 
     On peut donc déterminer itérativement les matrices \(\hat\mZ_{p}\) pour obtenir la matrice associée à l'opérateur de Calderón.
     Dans notre cadre d'étude, la présence d'un conducteur parfait sur l'interface \(z= z_0\) implique \(\hat\mZ_{0}(k_x,k_y) = 0\).
-
+\begin{REM}
+  surligné: ?
+\end{REM}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -944,7 +1031,11 @@
 \subsection{Applications numériques}
 
   La figure \ref{fig:imp_fourier:plan:hoppe} permet de vérifier les résultats de \cite[p.~33]{hoppe_impedance_1995} pour une couche de matériau sans perte.
-  Dans cet ouvrage, l'opérateur de Calderón considéré n'est pas le même ( voir annexe \ref{sec:annexe:hoppe} ) et on pose \(\hat{\mathfrak{Z}} = \hat{\mZ}\begin{bmatrix}0&1\\-1&0\end{bmatrix}\) la matrice d'impédance utilisée par Hoppe.
+  Dans cet ouvrage, l'opérateur de Calderón considéré n'est pas le même
+\begin{REM}
+  ca veut dire quoi ça ? je ne comprends rien !!!
+\end{REM}
+   ( voir annexe \ref{sec:annexe:hoppe} ) et on pose \(\hat{\mathfrak{Z}} = \hat{\mZ}\begin{bmatrix}0&1\\-1&0\end{bmatrix}\) la matrice d'impédance utilisée par Hoppe.
 
   On applique les hypothèses précédentes d'invariance par rotation, donc \(k_y=0\).
   On remarque que pour \(k_x\slash k_0=2\), \(k_3(k_x,0)\) est nul et l'impédance n'est pas définie en ce point. 
@@ -959,6 +1050,9 @@
 
   La figure \ref{fig:imp_fourier:plan:soudais} permet de vérifier les résultats de \cite{soudais_3d_2017} pour une couche de matériau sans perte où \(k_3d = \frac{\pi}{2}\) pour \(k_x \simeq 0.94 k_0\).
   On a donc une asymptote bien visible sur le module des coefficients diagonaux de \(\hat\mZ\) pour \(k_x\slash k_0 \simeq 0.94\).
+\begin{REM}
+  pas clair, c'est quoi les résultats de soudais ?
+\end{REM}
   \begin{figure}[!hbt]
       \centering
       \input{tikz/plot/Z_SOUDAIS_plan.tikz}
