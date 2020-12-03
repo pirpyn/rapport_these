@@ -121,37 +121,30 @@
     \end{proof}
 
   \subsection{Expression de l'approximation du symbole de Calderón par une condition d'impédance}
-\begin{REM}
-  ca veut dire quoi ce titre ?
-\end{REM}
-  Grâce aux multiplicateurs de Fourier matriciels précèdent, on peut par exemple définir \(\hat{\mZ}_{CI3}\) l’opérateur matriciel associé à la condition d'impédance CI3.
+    Grâce aux multiplicateurs de Fourier matriciels précèdent, on peut par exemple définir \(\hat{\mZ}_{CI3}\) l’opérateur matriciel associé à la condition d'impédance CI3.
 
-  \begin{multline}
-    \label{eq:plan:hoibc:ci3}
-    \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - b_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2} \right)^{-1}\\\left(a_0 \mI + a_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - a_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2}\right).
-  \end{multline}
+    \begin{multline}
+      \label{eq:plan:hoibc:ci3}
+      \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - b_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2} \right)^{-1}\\\left(a_0 \mI + a_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - a_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2}\right).
+    \end{multline}
 
-  Les CIOE dérivées de la CI3 ( CI0, CI01, CI1, CI4 ) s'obtiennent s'en déduisent :
-  \begin{equation*}
-    \hat{\mZ}_{CI4}(k_x,k_y) = a_0 \mI + a_1 \frac{\hat{\mLD}}{k_0^2}(k_x,k_y) - a_2 \frac{\hat{\mLR}}{k_0^2}(k_x,k_y),
-  \end{equation*}
-  \begin{equation*}
-    \hat{\mZ}_{CI1}(k_x,k_y) =  \left(\mI + b \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)^{-1}\left(a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right),
-  \end{equation*}
-  \begin{equation*}
-    \hat{\mZ}_{CI01}(k_x,k_y) =  a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y).
-  \end{equation*}
-  Les coefficients de la CIOE peuvent être choisis comme ceux qui minimisent la distance entre \(\hat{\mZ}(k_x,k_y)\), le symbole de l'opérateur de Calderón, vu comme un multiplicateur de Fourier matriciel et \(\hat{\mZ}_{CI}(k_x,k_y)\), le multiplicateur de Fourier associé à la CI\footnote{La distance choisie est la norme de Frobenius}.
-  % \begin{REM}
-  %   Cette phrase ne veut pas dire ce que tu crois. Pour trouver les coefficients de la CIOE que l'on prendra dans le calcul, on choisit de minimiser. ( Pourquoi "il faut", pourquoi ce choix et le calcul. )
-  % \end{REM}
-  Il existe une infinité de combinaisons pour un couple \((k_x,k_y)\) donné.
-  Nous avons choisi de nous donner un grand nombre de couples
-\begin{REM}
-???
-\end{REM}
-et de minimiser au sens des moindres carrés.
+    Les CIOE dérivées de la CI3 ( CI0, CI01, CI1, CI4 ) s'obtiennent s'en déduisent :
+    \begin{equation*}
+      \hat{\mZ}_{CI4}(k_x,k_y) = a_0 \mI + a_1 \frac{\hat{\mLD}}{k_0^2}(k_x,k_y) - a_2 \frac{\hat{\mLR}}{k_0^2}(k_x,k_y),
+    \end{equation*}
+    \begin{equation*}
+      \hat{\mZ}_{CI1}(k_x,k_y) =  \left(\mI + b \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)^{-1}\left(a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right),
+    \end{equation*}
+    \begin{equation*}
+      \hat{\mZ}_{CI01}(k_x,k_y) =  a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y).
+    \end{equation*}
+    Les coefficients de la CIOE peuvent être choisis comme ceux qui minimisent la distance entre \(\hat{\mZ}(k_x,k_y)\), le symbole de l'opérateur de Calderón, vu comme un multiplicateur de Fourier matriciel et \(\hat{\mZ}_{CI}(k_x,k_y)\), le multiplicateur de Fourier associé à la CI\footnote{La distance choisie est la norme de Frobenius}.
+    % \begin{REM}
+    %   Cette phrase ne veut pas dire ce que tu crois. Pour trouver les coefficients de la CIOE que l'on prendra dans le calcul, on choisit de minimiser. ( Pourquoi "il faut", pourquoi ce choix et le calcul. )
+    % \end{REM}
+    Selon le nombre de paramètres de la CIOE, ce minimum peut ne pas être unique pour un couple \((k_x,k_y)\) donné.
+    Nous avons choisi de nous donner un grand nombre de ces couples, et pour chacun d'entre eux, calculer le symbole de Calderón exact du l'empilement plan de matériaux, et nous présentons dans la section suivante la méthode de calcul.
 
   \subsection{Le cas spécial de la condition de Leontovich}
 
-    La condition de Leontovich consiste à approcher la matrice par une constante, et donc à avoir \(a_1=a_2=b_1=b_2=0\). Cependant, cette condition rend compte exactement de l'impédance à incidence normale. Dans ce cas particulier, nous ne réaliserons pas de minimisation, mais on fixera cette constante à la valeur de la matrice quand \((k_x,k_y) = (0,0)\) donc \( \hat{\mZ}_{CI0}  = \hat{\mZ}(0,0)\). Cette dernière est diagonale.
+    Cette sous-section traite de la condition de Leontovich qui consiste à approcher la matrice par une constante, et donc à avoir \(a_1=a_2=b_1=b_2=0\). Cependant, cette condition rend compte exactement de l'impédance à incidence normale. Dans ce cas particulier, nous ne réaliserons pas de minimisation, mais on fixera cette constante à la valeur de la matrice quand \((k_x,k_y) = (0,0)\) donc \( \hat{\mZ}_{CI0}  = \hat{\mZ}(0,0)\). Cette dernière est diagonale.

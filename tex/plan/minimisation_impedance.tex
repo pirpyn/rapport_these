@@ -16,10 +16,7 @@
     \end{equation*}
   \end{defn}
 
-  \subsection{Calcul des coefficients pour une incidence}
-\begin{REM}
-laquelle ? bizarrement dit 
-\end{REM}
+  \subsection{Calcul des coefficients pour une incidence (\(k_x,k_y\)) donnée}
     \begin{defn}
       On définit \(\mH_{CI3}\) la fonction de \(\RR \times \RR \times \mathcal{M}_2(\CC) \rightarrow \mathcal{M}_{4\times5}(\CC)\) telle que
       \begin{equation*}
@@ -48,11 +45,7 @@ laquelle ? bizarrement dit
     \end{defn}
 
     \begin{prop}
-      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((k_x,k_y)\) fixé et \(\hat\mZ_{ex}\) l'opérateur
-\begin{REM}
-on dirait que j'ai la réponse à ma question
-\end{REM}
-       d'impédance exact du plan.
+      Soit \(X = (a_0,a_1,a_2,b_1,b_2)\), \((k_x,k_y)\) fixé et \(\hat\mZ_{ex}\) le symbole de l'opérateur de Calderón de l'empilement plan de matériaux.
 
       S'il existe un unique \(X\) minimisant la distance entre ces deux matrices alors
       \begin{multline*}
@@ -131,11 +124,7 @@ on dirait que j'ai la réponse à ma question
           \mH_{CI3}(k_{xN_x},k_{yN_y},\hat\mZ_{ex}(k_{xN_x},k_{yN_y}))
         \end{bmatrix}.
       \end{equation*}
-      On définit \(g\) la
-\begin{REM}
-le
-\end{REM}
-       vecteur colonne complexe tel que
+      On définit \(g\) le vecteur colonne complexe tel que
       \begin{equation*}
         g = 
         \begin{bmatrix}
@@ -162,7 +151,7 @@ le
 
   \subsection[Inversibilité des matrices Mci]{Inversibilité des matrices \(\mM_{CI}\)}
 
-    \subsubsection{Pour la CI01}
+    \subsubsection[Inversibilité de la matrice MCI01]{Inversibilité de la matrice \(\mM_{CI01}\)}
 
       \begin{prop}
         La matrice \({\mM}_{CI01}\)
@@ -196,7 +185,7 @@ le
         Donc d'après Cauchy–Schwarz (voir \cite[\href{https://dlmf.nist.gov/1.7\#E1}{eq.~1.7.1}]{dlmf_nist_2019}), le terme de droite est non-nul pour tout \(t\) non colinéaire au vecteur dont toutes les composantes valent 1, c'est-à-dire n'importe quel vecteur ayant au moins deux composantes différentes.
       \end{proof}
 
-    \subsubsection{Pour la CI4}
+      \subsubsection[Inversibilité de la matrice MCI4]{Inversibilité de la matrice \(\mM_{CI4}\)}
 
       \begin{prop}
         La matrice \({\mM}_{CI4}\)
@@ -220,14 +209,10 @@ toujours le meme problem
         \begin{align*}
           \det({\mM}_{CI4}) &= 2\ps{t}{t}\left( \ps{1}{1}\ps{t}{t} - \ps{t}{1}^2\right).
         \end{align*}
-        On conclut ici-aussi
-\begin{REM}
-le tiret ?
-\end{REM}
-         grâce à Cauchy–Schwarz.
+        On conclut ici aussi grâce à Cauchy–Schwarz.
       \end{proof}
 
-      \subsubsection{Pour la CI1}
+      \subsubsection[Inversibilité de la matrice MCI1]{Inversibilité de la matrice \(\mM_{CI1}\)}
 
       Nous renvoyons aux définitions des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant.
 
@@ -252,20 +237,13 @@ le tiret ?
       \end{multline*}
 
 
-      Supposons \(t\) et 1 colinéaires, c'est
-\begin{REM}
-ce 
-\end{REM} qui revient à ne prendre qu'un seul couple \(k_x,k_y\).
+      Supposons \(t\) et 1 colinéaires, ce qui revient à ne prendre qu'un seul couple \(k_x,k_y\).
       Alors la deuxième colonne est multiple de la première.
       Donc son déterminant est nul.
 
       L'introduction de \(\hat\mZ_{ex}\) dans \(\mM\) ne permet plus d'exprimer simplement le déterminant de cette dernière.
 
-      Nous l'avons vérifié numériquement et pour nous
-\begin{REM}
-supprimer
-\end{REM}
-       nos empilements, nous n'avons jamais constaté que ce déterminant s'annulait.
+      Nous l'avons vérifié numériquement et pour nos empilements, nous n'avons jamais constaté que ce déterminant s'annulait.
 
       % Intuition: au moins 3 pour la CI1
 
@@ -361,10 +339,8 @@ supprimer
 
       % \end{REP}
 
-    \subsubsection{Pour la CI3}
-\begin{REM}
-quoi ?
-\end{REM}
+    \subsubsection[Inversibilité de la matrice MCI3]{Inversibilité de la matrice \(\mM_{CI3}\)}
+
       % Nous n'avons pas réussi à démontrer que cette matrice, associée à la CIOE CI3, était définie pour tout empilement et toute incidence.
       % \begin{REM}
       %   Il faut que tu en dises plus. As-tu trouvé des cas où elle n'est pas inversible ? As-tu fais l'essai avec deux couches ? Est-ce que pour certaines valeurs de \(k_x,k_y\) il y  des cas si \(\eps,\mu\) complexes.
@@ -409,10 +385,8 @@ quoi ?
         \end{equation*}
         
         Nous n'exprimons pas le déterminant dont nous n'avons pas de simplification.
-        Tout comme pour la CI1, nous avons vérifié numériquement que sur un certain nombre d'empilements et d’incidences qu'il ne s'annule pas.
-\begin{REM}
-  que qu'il
-\end{REM}
+
+        Tout comme pour la CI1, nous avons vérifié numériquement sur un certain nombre d'empilements et d’incidences qu'il ne s'annule pas.
 
         % Alors 
         % \begin{multline*}
@@ -469,10 +443,12 @@ quoi ?
   \subsection{Calcul des coefficients des CIOE par moindres carrés}
 
     \subsubsection[Expression de la fonction JZ]{Expression de la fonction \(J_Z\)}
-      On peut alors calculer les coefficients d'une CIOE \(CI\) particulière.
       \begin{REM}
 my god!!!
 \end{REM}
+\begin{REP}
+  Je ne comprend pas.
+\end{REP}
       \begin{defn}
         On définit la fonction \(J_Z\)
         \begin{equation*}
@@ -482,8 +458,8 @@ my god!!!
 
     \subsubsection{Minimisation sans contraintes}
 
-      \begin{defn}[Minimisation sans contraintes pour la CI3]
-        Soit \(X^* \in \CC^N\) une solution du problème 
+      \begin{defn}
+        Soit \(X^* \in \CC^N\) une solution du problème suivant dit sans CSU, c'est-à-dire
 
         Trouver \(X \in \CC^N\) tel que
         \begin{equation*}
@@ -522,47 +498,35 @@ curieux
         \\
         &=\ps{X}{\conj{\mA_{CI}^t}\mA_{CI}X} - \ps{X}{\conj{\mA_{CI}^t}g} - \ps{\conj{\mA_{CI}^t}g}{X} + \ps{g}{g},
         \end{align*}
-        Si la matrice \(\conj{\mA_{CI}^t}\mA_{CI}\) est inversible, comme elle est par définition hermitienne et positive, alors la fonction
-\begin{REM}
-  laquelle ? J
-\end{REM}
-
-         est quadratique. Il existe donc un unique minimum où le gradient de cette fonction s'annule. Or
+        Si la matrice \(\conj{\mA_{CI}^t}\mA_{CI}\) est inversible, comme elle est par définition hermitienne et positive, alors la fonction \(J_Z\) est quadratique.
+        Il existe donc un unique minimum où le gradient de cette fonction s'annule.
+        Or
         \begin{align*}
           \nabla J_Z(X^*) &= 2\conj{\mA_{CI}^t}\mA_{CI}X^* - 2\conj{\mA_{CI}^t}g,
           \\ 
           &= 0.
         \end{align*}
-\begin{REM}
-  et donc ?
-\end{REM} 
+        Donc si l'hypothèse de la propriété est vérifiée, on déduit \(X^*\).
       \end{proof}
 
     \subsubsection{Minimisation avec contraintes}
 
       \begin{defn}[Minimisation avec contraintes pour la CI3]
+        ~{}\\
         Soit \(\CSU[3]{CI3}\) le sous-espace de \(\CC^5\) issu de la définition \ref{def:csu:ci3-3}.
-        Alors les coefficients de la CIOE respectant cette CSU sont solutions du problème.
-        \begin{REM}
-  lequel
-\end{REM} 
+        Alors les coefficients de la CIOE respectant cette CSU sont solutions du problème suivant
 
         Trouver \(X^* \in \CC^5\) tel que
         \begin{equation*}
-         J_Z(X^*) = \min{X\in \CSU[3]{CI3}}  J_Z(X).
+         J_Z(X^*) = \min_{X\in \CSU[3]{CI3}}  J_Z(X).
         \end{equation*}
       \end{defn}
 
-      Si la fonction \(J_Z\) est quadratique et continue, alors il y a existence.
-      \begin{REM}
-  de quoi
-\end{REM} 
-      Nous savons que pour certaines CIOE (CI0, CI01, CI4), elle l'est inconditionnellement.
-      \begin{REM}
-  french ?
-\end{REM} 
+      Si la fonction \(J_Z\) est quadratique et continue, alors il y a existence de ce minimum \(X^*\), et pour certaines CIOE (CI0, CI01, CI4), nous avons démontré l'inversibilité des matrices \(\mM_{CI}\) donc le caractère quadratique.
 
-      L'unicité dépend en plus de la convexité de l'espace des contraintes, ce qui est vérifié par les CIOE (CI0, CI01, CI4).
+      L'unicité dépend en plus de la convexité de l'espace des contraintes, ce qui est vérifié pour les CIOE (CI0, CI01, CI4).
+
+      Nous n'avons pas trouvés numériquement de cas où les autres CIOE ( CI1, CI3 ) ne permettaient pas de vérifier l'existence et l'unicité de ce minimum \(X^*\).
 
       % \begin{REM}[minimum]
       %   Si tu n'as pas de résultats d'existence et unicité, je ne comprends pas ce théorème.
@@ -639,11 +603,7 @@ curieux
         \label{tab:imp_fourier:plan:hoppe:33:hoibc}
       \end{table}
 
-      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériau
-\begin{REM}
-  matériaux
-\end{REM} 
-       sans perte où l'on remarque une asymptote, que nous déterminerons plus tard.
+      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériaux sans perte où l'on remarque une asymptote, que nous déterminerons plus tard.
       % \begin{REM}[noasymptote]
       %   C'est à expliquer (la signification d'une asymptote). Voir plus \hyperlink{REMasymptote}{bas}.
       % \end{REM}
@@ -673,9 +633,9 @@ curieux
       %     \label{fig:reflex_fourier:plan:soudais:hoibc}
       % \end{figure}
 
-      Si la matrice d'impédance exacte possède plusieurs asymptotes, il faut autant de pôles à la CIOE pour être une bonne approximation.
-
       La figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc} montre la limite de la CI3 pour capturer trois asymptotes. Pour cela, il faudrait utiliser une CI d'ordre au moins 6 sur l'opérateur agissant sur \(\vE_t\). La CI3 n'est donc une bonne CIOE que si le nombre d'asymptotes est inférieur à 1, ce que l'on peut calculer connaissant l'empilement (voir proposition \ref{prop:imp_plan:symb_z:1c}).
+
+      Si la matrice d'impédance exacte possède plusieurs asymptotes, il faut autant de pôles à la CIOE pour être une bonne approximation.
 
       L'expression d'une CIOE vérifiant ce critère est la \hyperlink{ci7}{CI7}
       \begin{equation}

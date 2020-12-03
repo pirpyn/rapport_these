@@ -22,13 +22,8 @@
 
   On exprime les équations de Maxwell dans le matériau en coordonnées cylindriques et sans perte de généralité, on effectue une transformée de Fourier en \(z\) par invariance en translation.
   La solution étant périodique en \(\theta\), elle est développable en série de Fourier sur cette coordonnée.
-
-  En utilisant l'inversion de Fourier,
-\begin{REM}
-  jamais vu cette terminologie
-\end{REM} 
-   il existe \(\hat\vE\) telle que
-
+  
+  Soit \(\hat\vE\) la transformée de Fourier telle que
   \begin{equation*}
     \vE\gls{mat-xcyl} = \frac{1}{2\pi}\sum_{n=-\infty}^{\infty}\int_{\RR} e^{i(n \theta + k_z z )}\hat{\vE} (r,n,k_z) \dd{k_z}.
   \end{equation*}
@@ -158,10 +153,7 @@
     Donc  \(\hat{E_z}(r,n,k_z)\) est colinéaire à  \(\hat{E_z}(r,-n,k_z)\).
     On peut donc se restreindre à \(n\) entier naturel.
 
-    On trouve exactement les mêmes résultats pour \(\hat{\cH_z}\) dans la couche de matériau.
-\begin{REM}
-  matériaux
-\end{REM} 
+    On trouve exactement les mêmes résultats pour \(\hat{\cH_z}\) dans la couche de matériaux. 
     Il existe \((c_3(n,k_z),c_4(n,k_z)) \in (\CC(\NN_+\times\RR))^2\)
     \begin{equation*}
       \hat{\cH_z}(r,n,k_z) = c_3(n,k_z) J_n\left(k_3r\right) + c_4(n,k_z) H_n^{(2)}\left(k_3r\right).
@@ -383,13 +375,15 @@
 \begin{REM}
   même à haute fréquence ?
 \end{REM} 
-
+\begin{REP}
+  Je ne sais pas. Question à prévoir.
+\end{REP}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-  \subsection{Expression de la matrice d'impédance pour une couche}
+  \subsection{Expression du symbole de l'opérateur de Calderón pour une couche}
 
     Soit \(r_1 = r_0 + d\). On se place dans le matériau donc \(r_0 \le r < r_1\).
 
@@ -453,7 +447,10 @@
       Il n'existe pas à notre connaissance de propriétés connues des fonctions de Bessel pour déduire de ces égalités des conditions sur \(k,k_z,r_1,r_0\).
 \begin{REM}
   asymptotique ?
-\end{REM} 
+\end{REM}
+\begin{REP}
+  Je ne sais pas. Pas le temps.
+\end{REP}
       On suppose donc simplement \(\mH_{\cH}(r_1,n,k_z) - \mJ_{\cH}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) inversible, la matrice \(\hat\mZ(n,k_z)\) telle que \(\hat\vE_t(r_1,n,k_z) = \hat\mZ(n,k_z) (\vect{e_r}\pvect\vH(r_1,n,k_z))\) est alors
 
       \begin{multline*}
@@ -859,11 +856,7 @@
     On compare l'impédance du plan \(\hat{\mZ}(k_x,0)\) à l'impédance du cylindre \(\hat{\mZ}(n,0)\) quand \(n\) est de l'ordre de \(k_0r_1s\) pour de faibles courbures.
     On reprend la notation de \cite[p.~62]{hoppe_impedance_1995} qui définit \(k_t= n/r_1\).
 
-    Pour une couche de matériau
-\begin{REM}
-  matériaux
-\end{REM} 
-     sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
+    Pour une couche de matériaux sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
 
     La figure \ref{fig:imp_fourier:cylindre:hoppe_p62:converge_rayon} permet de vérifier les résultats de \cite[p.~62]{hoppe_impedance_1995} (voir Figure \ref{fig:annex:hoppe:p62}).
 
