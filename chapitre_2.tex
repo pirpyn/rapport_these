@@ -4,22 +4,11 @@
 \newpage
 
 \sectionstar{Introduction}
-Pour déterminer des coefficients complexes satisfaisants aux conditions introduites dans la partie précédente, nous commençons par la méthode de l'approximation du plan tangent, bien
-\begin{REM}
-  supprimer bien
-\end{REM} documenté \cite{hoppe_impedance_1995,marceaux_high-order_2000,aubakirov_electromagnetic_2014}. Cette méthode consiste à considérer localement l'objet comme un plan infini
-\begin{REM}
-  surtout comme son plan tangent
-\end{REM}, ce qui reste valable dans le cadre de cette thèse, car nos objets d'études sont parfaitement réguliers.
+Pour déterminer des coefficients complexes satisfaisants aux conditions introduites dans la partie précédente, nous commençons par la méthode de l'approximation du plan tangent, documenté par \cite{hoppe_impedance_1995,marceaux_high-order_2000,aubakirov_electromagnetic_2014}.
+Cette méthode consiste à considérer localement l'objet, supposé régulier, comme son plan tangent comme un plan infini, ce qui reste valable dans le cadre de cette thèse, car nos objets d'études sont parfaitement réguliers.
 
-Dans le cadre du plan, nous rappellerons l'opérateur de Calderón exact qui lie les champs électromagnétiques à la surface extérieur
-\begin{REM}
-  ???
-\end{REM} de l’objet, ainsi que la condition nécessaire pour l'obtenir.
-Pour des considération
-\begin{REM}
-  texte surligné: pluriel ?
-\end{REM} de mise en œuvre numérique, nous présenterons une méthode itérative pour exprimer cet opérateur.
+Nous rappellerons l'opérateur de Calderón exact qui lie les champs électromagnétiques à la surface extérieure de l’objet, ainsi que la condition nécessaire pour l'obtenir.
+Pour des considérations de mise en œuvre numérique, nous présenterons une méthode itérative pour exprimer cet opérateur.
 Cette dernière va ajouter des conditions, dont nous rappellerons qu'elles ne sont à considérer que dans le cadre de cette méthode itérative.
 
 \input{tex/plan/intro}
@@ -30,11 +19,7 @@ Cette dernière va ajouter des conditions, dont nous rappellerons qu'elles ne so
 \input{tex/plan/minimisation_fourier}
 
 \sectionstar{Conclusion}
-Nous avons proposé une méthode pour calculer des coefficients complexes vérifiant une des CSU choisies,
-\begin{REM}
-  souligné: choisie ?
-\end{REM} 
- et qui permettent d'approcher l'opérateur de Calderón dans le cas d'un objet plan infini en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées.
+Nous avons proposé une méthode pour calculer des coefficients complexes vérifiant une des CSU choisie, et qui permettent d'approcher l'opérateur de Calderón dans le cas d'un objet plan infini en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées.
 
 Nous avons montré que minimiser l'erreur entre les matrices de réflexion aboutit aux mêmes coefficients de CIOE.
 \begin{REM}

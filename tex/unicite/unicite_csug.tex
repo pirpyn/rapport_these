@@ -54,10 +54,7 @@
       \Tr(\vE_t) = - \vn_{B_R} \pvect \vH && \text{sur \(S_R\).}
     \end{aligned}
   \end{equation}
-  \(\Tr\) est l'opérateur de capacité défini
-  \begin{REM}
-  c'est vraiment lui ? non introduit par exemple dans
-\end{REM} par \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{B_R}=\frac{1}{R}\vect{OM}\) la normale unitaire sortante à \(B_R\).
+  \(\Tr\) est l'opérateur de capacité introduit par \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{B_R}=\frac{1}{R}\vect{OM}\) la normale unitaire sortante à \(B_R\).
 
   Soit \(V = \lbrace \vect{u} \in (\mathcal{C}_0^\infty(\OO^c_R)\cap\Hrot(\OO^c_R) \rbrace\).
 
@@ -115,15 +112,7 @@
 \end{REM}
   \end{proof}
 
-  Puisque
-  \begin{REM}
-  quel rapport avec la phrase précèdente ?
-\end{REM}
- le problème n'a pas de source, l'unique solution du problème 
-\begin{REM}
-  quel problème ? I am lost
-\end{REM}
-si ce dernier est bien posé est \(\vE=\vH=0\).
+  Le problème n'a pas de source et l'unique solution du problème \eqref{sec:annex:maxwell_equation} si ce dernier est bien posé est \(\vE=\vH=0\).
 
   On définit en tout point de \(\Gamma\) la trace tangentielle de \(\vH\) que l'on note \(\vJ = \vn_\Gamma \pvect \vH\).
   \begin{prop}[Une \glsentrydesc{acr-csu}]~\\
@@ -160,20 +149,13 @@ si ce dernier est bien posé est \(\vE=\vH=0\).
     C &= \int_{S_R} \Tr(\vE_t)(\vx)  \cdot \conj{\vE_t}(\vx)\dd{S_R(\vx)}.
   \end{align}
 
-\begin{REM}
-  Il manque a(0,0) = 0
-\end{REM}
-\begin{REM}
-  pas de virgule avant on déduit
-\end{REM}
-\begin{REM}
-  on déduit: euh c'est quoi ça ?
-\end{REM}
   \begin{align*}
     \intertext{De}
     a(\vE,\vE) &= \frac{1}{ik_0} \int_{\OO^c_R} \norm{\trot \vE(\vx)}^2 \dd{x} + ik_0\int_{\OO^c_R}\norm{\vE(\vx)}^2 \dd{x}
-     + X + C,
-    \intertext{on déduit}
+     + X + C*
+     \\
+    &= 0,
+    \intertext{Donc}
     \Re(a(\vE,\vE)) & = 0,
     \intertext{ce qui se réecrit}
     \Re(C) + \Re(X) & = 0.

@@ -2,11 +2,7 @@
 
   \subsection[Expression des opérateurs LD, LR en Fourier]{Expression des opérateurs \(\LD\), \(\LR\) en Fourier}
     \label{sec:plan:hoibc:LD-LR}
-    Soient \((x,y,z)\) les coordonnées plan
-\begin{REM}
-  french ?
-\end{REM}
-     d'un point de l'espace et un plan d'équation \(z=0\).
+    Soient \((x,y,z)\) les coordonnées cartésiennes d'un point de l'espace et un plan d'équation \(z=0\).
 
     Soit \(V=(\mathcal{S}(\RR^2))^2\) l'espace des fonctions infiniment dérivables définies sur ce plan et de carré intégrable.
 
@@ -124,46 +120,33 @@
       \end{align*}
     \end{proof}
 
-  \subsection{Expression de la matrice d'impédance approchée par une CI}
+  \subsection{Expression de l'approximation du symbole de Calderón par une condition d'impédance}
 \begin{REM}
   ca veut dire quoi ce titre ?
 \end{REM}
-    On peut donc définir \(\hat{\mZ}_{CI3}\) l’opérateur matriciel associé à la condition d'impédance.
-\begin{REM}
-  laqueelle ?
-\end{REM}
-    \begin{multline}
-      \label{eq:plan:hoibc:ci3}
-      \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - b_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2} \right)^{-1}\\\left(a_0 \mI + a_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - a_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2}\right).
-    \end{multline}
+  Grâce aux multiplicateurs de Fourier matriciels précèdent, on peut par exemple définir \(\hat{\mZ}_{CI3}\) l’opérateur matriciel associé à la condition d'impédance CI3.
 
+  \begin{multline}
+    \label{eq:plan:hoibc:ci3}
+    \hat{\mZ}_{CI3}(k_x,k_y) = \left(\mI + b_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - b_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2} \right)^{-1}\\\left(a_0 \mI + a_1 \frac{\hat{\mLD}(k_x,k_y)}{k_0^2} - a_2 \frac{\hat{\mLR}(k_x,k_y)}{k_0^2}\right).
+  \end{multline}
 
-    Les CIOE dérivées de la CI3 s'obtiennent tout aussi facilement.
-\begin{REM}
-  CI4 ?
-\end{REM}
-\begin{REM}
-et donc les coefficients sont définis via la symbole de la CI ?
-\end{REM}
-
-    \begin{equation*}
-        \hat{\mZ}_{CI4}(k_x,k_y) = a_0 \mI + a_1 \frac{\hat{\mLD}}{k_0^2}(k_x,k_y) - a_2 \frac{\hat{\mLR}}{k_0^2}(k_x,k_y),
-    \end{equation*}
-    \begin{equation*}
-        \hat{\mZ}_{CI1}(k_x,k_y) =  \left(\mI + b \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)^{-1}\left(a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right),
-    \end{equation*}
-    \begin{equation*}
-        \hat{\mZ}_{CI01}(k_x,k_y) =  a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y).
-    \end{equation*}
-    Les coefficients de la CIOE peuvent être choisis comme ceux qui minimisent la distance entre \(\hat{\mZ}(k_x,k_y)\) et \(\hat{\mZ}_{CI}(k_x,k_y)\)\footnote{La distance choisie est la norme de Frobenius}.
-    \begin{REM}
-Z chapeau est le symbole de l'opérateur de Calderon ?
-\end{REM}
-    % \begin{REM}
-    %   Cette phrase ne veut pas dire ce que tu crois. Pour trouver les coefficients de la CIOE que l'on prendra dans le calcul, on choisit de minimiser. ( Pourquoi "il faut", pourquoi ce choix et le calcul. )
-    % \end{REM}
-    Il existe une infinité de combinaisons pour un couple \((k_x,k_y)\) donné.
-    Nous avons choisi de nous donner un grand nombre de couples
+  Les CIOE dérivées de la CI3 ( CI0, CI01, CI1, CI4 ) s'obtiennent s'en déduisent :
+  \begin{equation*}
+    \hat{\mZ}_{CI4}(k_x,k_y) = a_0 \mI + a_1 \frac{\hat{\mLD}}{k_0^2}(k_x,k_y) - a_2 \frac{\hat{\mLR}}{k_0^2}(k_x,k_y),
+  \end{equation*}
+  \begin{equation*}
+    \hat{\mZ}_{CI1}(k_x,k_y) =  \left(\mI + b \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right)^{-1}\left(a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y) \right),
+  \end{equation*}
+  \begin{equation*}
+    \hat{\mZ}_{CI01}(k_x,k_y) =  a_0\mI + a_1 \frac{\hat{\mLD} - \hat{\mLR}}{k_0^2}(k_x,k_y).
+  \end{equation*}
+  Les coefficients de la CIOE peuvent être choisis comme ceux qui minimisent la distance entre \(\hat{\mZ}(k_x,k_y)\), le symbole de l'opérateur de Calderón, vu comme un multiplicateur de Fourier matriciel et \(\hat{\mZ}_{CI}(k_x,k_y)\), le multiplicateur de Fourier associé à la CI\footnote{La distance choisie est la norme de Frobenius}.
+  % \begin{REM}
+  %   Cette phrase ne veut pas dire ce que tu crois. Pour trouver les coefficients de la CIOE que l'on prendra dans le calcul, on choisit de minimiser. ( Pourquoi "il faut", pourquoi ce choix et le calcul. )
+  % \end{REM}
+  Il existe une infinité de combinaisons pour un couple \((k_x,k_y)\) donné.
+  Nous avons choisi de nous donner un grand nombre de couples
 \begin{REM}
 ???
 \end{REM}
