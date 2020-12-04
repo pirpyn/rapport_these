@@ -147,11 +147,7 @@
       On remarque que \(\eps,\mu\) sont constantes par morceaux, donc \(k,\eta_r\) aussi.
       Sur une interface d'équation \(z=z_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mA_E(k_x,k_y,z_p+ \delta) - \mA_E(k_x,k_y,z_p - \delta) \not = 0\).
       \begin{prop}
-          Il existe \((c_i(k_x,k_y,z))_{1\le i \le4}\) constants par morceaux en \(z\) tels que les composantes en \(\vect{e_x},\vect{e_y}\) des champs, dites composantes tangentielles par abus de langage,
-\begin{REM}
-  ???
-\end{REM}
-           sont
+          Il existe \((c_i(k_x,k_y,z))_{1\le i \le4}\) constants par morceaux en \(z\) tels que les composantes en \(\vect{e_x},\vect{e_y}\) des champs sont
           \begin{align*}
               \hat{\vE}_t(k_x,k_y,z) &= \mA_E(k_x,k_y,z) \begin{bmatrix}c_1(k_x,k_y,z) \\ c_3(k_x,k_y,z)\end{bmatrix} + \mB_E(k_x,k_y,z) \begin{bmatrix}c_2(k_x,k_y,z) \\ c_4(k_x,k_y,z)\end{bmatrix},
               \\
@@ -161,10 +157,6 @@
 
       \begin{proof}
         On se place dans une couche, les constantes de matériaux sont donc fixées.
-        On reprend les équations de Maxwell appliquées sur les transformées de Fourier.
-\begin{REM}
-  Ok, c'est quoi ça ???
-\end{REM}
 
         À partir des composantes \(\vect{e_x},\vect{e_y}\) des équations de Maxwell, on  détermine un système d'\glspl{acr-edo} sur \(\hat{E_x},\hat{E_z},\hat{\mathcal{H}_x},\hat{\mathcal{H}_z}\) à partir de \(\hat{E_z}, \hat{\mathcal{H}_z}\).
         % \begin{REM}
@@ -244,28 +236,22 @@
         \end{equation*}
         On extrait alors uniquement les composantes tangentielles
         \begin{align*}
-          \left\lbrace
+          &\left\lbrace
           \begin{aligned}
             \hat{E_x} &= \frac{1}{k^2 - k_y^2}\left(ik_yik_x\hat{E_y} + ik\eta_r\ddr{z}{\hat{\mathcal{H}_y}}\right),
             \\
             \hat{E_y} &= e^{ik_3z}c_1 + e^{-ik_3z}c_2,
           \end{aligned}
           \right.
-          &&
-          \left\lbrace
+          \\
+          &\left\lbrace
           \begin{aligned}
             -\hat{\cH_y} &= -e^{ik_3z}c_3 - e^{-ik_3z}c_4,
             \\
             \hat{\cH_x} &= \frac{1}{k^2 - k_y^2}\left(-ik\eta_r^{-1}\ddr{z}{\hat{E_y}} + ik_yik_x\hat{\mathcal{H}_y}\right).
           \end{aligned}
           \right.
-        \end{align*}
-        Soit si l'on factorise par les exponentielles
-\begin{REM}
-  ???
-\end{REM}
-
-        \begin{align*}
+          \\
           &\left\lbrace
           \begin{aligned}
             \hat{E_x} &= \frac{1}{k^2 - k_y^2}\left(-\left(k_yk_x c_1 + k\eta_r k_3 c_3 \right)e^{ik_3z} - \left(k_yk_xc_2 -k\eta_r k_3 c_4\right)e^{-ik_3z}\right),
@@ -313,59 +299,32 @@
         % \end{figure}
 
         On commence par montrer un lemme très utile pour trouver l'expression de \(\hat \mZ(k_x,k_y)\).
-        \begin{lemme}[Continuité des impédances]
+        \begin{lemme}[Continuité des impédances]~{}
+
           \label{lem:plan:continuite_impedance}
           Soit \(z_m\) une interface entre deux matériaux.
-          On suppose qu'il existe des matrices
-\begin{REM}
-  mal dit ? c'est quoi ? la régularité de Et ?
-\end{REM}
-          de part et d'autre de l'interface telles que
+          Soient \(({\vE}_t,{\vH}_t)\) des champs solutions du problème de Maxwell dans les deux couches, alors si l'on peut définir des matrice qui lient les traces tengentielles des champs à l'interface de ces couches, alors ces matrices sont identique sur l'interface.
+
+          Si
           \begin{align*}
-              \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right),
-              \\
-              \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right).
+            \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \hat{\vJ}_t(k_x,k_y,z_m^+),
+            \\
+            \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \hat{\vJ}_t(k_x,k_y,z_m^-).
           \end{align*}
           Alors
           \begin{equation*}
           \hat \mZ^+(k_x,k_y) = \hat \mZ^-(k_x,k_y).
           \end{equation*}
         \end{lemme}
-
-        % \begin{REM}
-        %   Tu peux utiliser  cette notation mais cela ne s'appelle pas, une fois sur \(Z\) une matrice d'impédance.
-        %   Comme je t'ai dit d'un coté (en \(z_m^-\)) c'est bien une matrice d'impédance qui a donc été déterminé par le pb en \([z_0,z_m^+]\).
-        % \end{REM}
-
         \begin{proof}
-          La démonstration est extrêmement rapide grâce à la continuité tangentielle des champs.
-\begin{REM}
-  pourquoi ?
-\end{REM}
-
           \begin{align*}
-            \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\vE}_t(k_x,k_y,z_m^-),
-            \\
-            \hat{\vH}_t(k_x,k_y,z_m^+) &= \hat{\vH}_t(k_x,k_y,z_m^-).
-          \end{align*}
-          Donc on la même propriété sur \(\hat{\vJ}\),
-\begin{REM}
- surligné: on utilise la continuité des champs
-\end{REM}
-\begin{REM}
-  ce qui s'identifie à Z..; : je ne comprend pas la preuve, ça tourne en rond ?
-\end{REM}
-          \begin{align*}                
-            \hat{\vJ}_t(k_x,k_y,z_m^+) &= \hat{\vJ}_t(k_x,k_y,z_m^-).
-            \\
-            \intertext{On repart de la propriété de la matrice \(\hat{\mZ}^+(k_x,k_y)\),}
-            \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^+)\right).
+            \hat{\vE}_t(k_x,k_y,z_m^+) &= \hat{\mZ}^+(k_x,k_y) \hat{\vJ}_t(k_x,k_y,z_m^+).
             \\
             \intertext{On utilise la continuité des champs}
-            \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^+(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right).
+            \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^+(k_x,k_y) \hat{\vJ}_t(k_x,k_y,z_m^-).
             \\
             \intertext{Ce qui s'identifie à \(\hat{\mZ}^-(k_x,k_y)\)}
-            \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \left(\vect{e_z} \pvect \hat{\vH}_t(k_x,k_y,z_m^-)\right).
+            \hat{\vE}_t(k_x,k_y,z_m^-) &= \hat{\mZ}^-(k_x,k_y) \hat{\vJ}_t(k_x,k_y,z_m^-).
           \end{align*}
         \end{proof}
 
@@ -387,128 +346,128 @@
         %    C'est une fonction de \(\RR^2\) dans \(\mathcal{M}_{2\times2}(\CC^2)\) et si \(k_3\in\CC\) tu as des formes alternatives avec tanh.
         % \end{REM}
         \begin{prop}
-            \label{prop:imp_plan:symb_z:1c}
-            On suppose que
-            \begin{align*}
-                k_3     & \not = 0, \\
-                k_3d    & \not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN.
-            \end{align*}
-            % \begin{REM}
-            %   Remarquons que ces conditions sont toujours vérifiées si \(\eps\mu\not\in\RR_+\).
-            % \end{REM}
-            Alors
-            \begin{align*}
-              \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \vH(k_x,k_y,0^-)\right).
-            \end{align*}
+          \label{prop:imp_plan:symb_z:1c}
+          On suppose que
+          \begin{align*}
+            k_3     & \not = 0, \\
+            k_3d    & \not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN.
+          \end{align*}
+          % \begin{REM}
+          %   Remarquons que ces conditions sont toujours vérifiées si \(\eps\mu\not\in\RR_+\).
+          % \end{REM}
+          Alors
+          \begin{align*}
+            \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \vJ(k_x,k_y,0^-).
+          \end{align*}
         \end{prop}
 
         \begin{proof}
-            Grâce au lemme \eqref{lem:plan:continuite_impedance}, on sait donc que l'on peut uniquement se placer dans la couche.
+          Grâce au lemme \eqref{lem:plan:continuite_impedance}, on sait donc que l'on peut uniquement se placer dans la couche.
 \begin{REM}
   surligné. Lourd ?
 \end{REM}
 
-            Il existe une répartition des constantes \((c_1,c_2,c_3,c_4)\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\).
-            Ici nous choisissons
-            %Nous n'avons donc pas besoin de distinguer les vecteurs indépendants de \(z\) mais qui sont différents dans chaque couche, dans l'expression des champs tangentiels. Nous posons donc
-            \begin{align*}
-                \vect{C_1}(k_x,k_y) = \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix}, 
-                && 
-                \vect{C_2}(k_x,k_y) = \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}.
-            \end{align*}
-            Nous utilisons la condition aux limites de conducteur parfait
-            \begin{align*}
-                \hat{\vE}_t(k_x,k_y,-d^+) &= 0,
-                \\
-                &=  \mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y) + \mB_E(k_x,k_y,-d^+)\vect{C_2}(k_x,k_y).
-            \end{align*}
-            Si l’on suppose que ces matrices sont inversibles, donc que \(k_3\) est non-nul alors on a
-            \begin{align*}
-                \vect{C_2}(k_x,k_y) &= -\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y).
-            \end{align*}
-            % \begin{REM}
-            %   La tu peux ajouter: Il existe une répartition des constantes \(c_1,c_2,c_3,c_4\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\), Ici, nous en avons choisis une particulière.
-            % \end{REM}
-            % On part de l'expression de l'impédance, exprimée à l'intérieur
-            % \begin{align*}
-            %     \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0^-)\right)
-            % \end{align*}
-            Or on injecte le résultat précédent
-            \begin{multline*}
-                \hat \vE_t(k_x,k_y,0^-) =
-                \\
-                \left(\mA_E(k_x,k_y,0^-)-\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)\vect{C_1}(k_x,k_y),
-            \end{multline*}
-            \begin{multline*}
-                \hat{\vJ}(k_x,k_y,0^-) =
-                \\
-                \left(\mA_H(k_x,k_y,0^-)-\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)\vect{C_1}(k_x,k_y).
-            \end{multline*}
-            On en déduit l'impédance
-            \begin{multline*}
-                \hat \mZ(k_x,k_y) =
-                \\
-                \left(\mA_E(k_x,k_y,0^-)-\mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)
-                \\
-                \left(\mA_H(k_x,k_y,0^-)-\mB_H(k_x,k_y,0^-)\left(\mB_H(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)^{-1}.
-            \end{multline*}
-            Comme on a supposé les matrices inversibles
-            \begin{multline*}
-                \hat \mZ(k_x,k_y) =
-                \\ \left(\mA_E(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1}-\mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\right) 
-                \\
-                \left(\mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1}-\mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\right)^{-1}.
-            \end{multline*}
-            On va alors exprimer chacun des termes grâce aux expressions des matrices
-            \begin{align*}
-                \mA_E(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &= e^{ik_3d}\mI,
-                \\
-                \mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= e^{-ik_3d}\mI,
-                \\
-                \mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &= e^{ik_3d}\frac{1}{k\eta_r k_3}
-                \begin{bmatrix}
-                    k^2 - k_y^2 & k_x k_y
-                    \\
-                    k_x k _y & k^2 - k_x^2
-                \end{bmatrix},
-                \\
-                \mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= -e^{-ik_3d}\frac{1}{k\eta_r k_3}
-                    \begin{bmatrix}
-                    k^2 - k_y^2 & k_x k_y
-                    \\
-                    k_x k _y & k^2 - k_x^2
-                \end{bmatrix}.
-            \end{align*}
-            Soient les matrices \(\hat\mLD,\hat\mLR\) définies à la section \ref{sec:plan:hoibc:LD-LR}
-            \begin{align*}
-                \hat{\mLD} = -\begin{bmatrix}
-                k_x^2 & k_x k_y
-                \\
-                k_x k _y & k_y^2
-                \end{bmatrix},
-                & & 
-                \hat{\mLR} = \begin{bmatrix}
-                k_y^2 & -k_x k_y
-                \\
-                -k_x k _y &  k_x^2
-                \end{bmatrix}.
-            \end{align*}
-            On remarque alors que 
-            \begin{align*}
-                \mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &=  e^{ik_3d}\frac{1}{k\eta_r k_3}(k^2\mI  -\hat\mLR),
-                \\
-                \mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= -e^{-ik_3d}\frac{1}{k\eta_r k_3}(k^2\mI  -\hat\mLR).
-            \end{align*}
-            Ces matrices sont inversibles si \(k_3\) est non nul, ce que nous avons déjà supposé.
+          Il existe une répartition des constantes \((c_1,c_2,c_3,c_4)\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\).
+          Ici nous choisissons
+          %Nous n'avons donc pas besoin de distinguer les vecteurs indépendants de \(z\) mais qui sont différents dans chaque couche, dans l'expression des champs tangentiels. Nous posons donc
+          \begin{align*}
+            \vect{C_1}(k_x,k_y) = \begin{bmatrix}c_1(k_x,k_y) \\ c_3(k_x,k_y)\end{bmatrix}, 
+            && 
+            \vect{C_2}(k_x,k_y) = \begin{bmatrix}c_2(k_x,k_y) \\ c_4(k_x,k_y)\end{bmatrix}.
+          \end{align*}
+          Nous utilisons la condition aux limites de conducteur parfait
+          \begin{align*}
+            \hat{\vE}_t(k_x,k_y,-d^+) &= 0,
+            \\
+            &=  \mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y) + \mB_E(k_x,k_y,-d^+)\vect{C_2}(k_x,k_y).
+          \end{align*}
+          Si l’on suppose que ces matrices sont inversibles, donc que \(k_3\) est non-nul alors on a
+          \begin{align*}
+            \vect{C_2}(k_x,k_y) &= -\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\vect{C_1}(k_x,k_y).
+          \end{align*}
+          % \begin{REM}
+          %   La tu peux ajouter: Il existe une répartition des constantes \(c_1,c_2,c_3,c_4\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\), Ici, nous en avons choisis une particulière.
+          % \end{REM}
+          % On part de l'expression de l'impédance, exprimée à l'intérieur
+          % \begin{align*}
+          %     \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y) \left(\vect{e_z} \pvect \hat \vH_t(k_x,k_y,0^-)\right)
+          % \end{align*}
+          Or on injecte le résultat précédent
+          \begin{multline*}
+            \hat \vE_t(k_x,k_y,0^-) =
+            \\
+            \left(\mA_E(k_x,k_y,0^-)-\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)\vect{C_1}(k_x,k_y),
+          \end{multline*}
+          \begin{multline*}
+            \hat{\vJ}(k_x,k_y,0^-) =
+            \\
+            \left(\mA_H(k_x,k_y,0^-)-\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)\vect{C_1}(k_x,k_y).
+          \end{multline*}
+          On en déduit l'impédance
+          \begin{multline*}
+            \hat \mZ(k_x,k_y) =
+            \\
+            \left(\mA_E(k_x,k_y,0^-)-\mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)
+            \\
+            \left(\mA_H(k_x,k_y,0^-)-\mB_H(k_x,k_y,0^-)\left(\mB_H(k_x,k_y,-d^+)\right)^{-1}\mA_E(k_x,k_y,-d^+)\right)^{-1}.
+          \end{multline*}
+          Comme on a supposé les matrices inversibles
+        \begin{multline*}
+            \hat \mZ(k_x,k_y) =
+            \\ \left(\mA_E(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1}-\mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\right) 
+            \\
+            \left(\mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1}-\mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1}\right)^{-1}.
+          \end{multline*}
+          On va alors exprimer chacun des termes grâce aux expressions des matrices
+          \begin{align*}
+            \mA_E(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &= e^{ik_3d}\mI,
+            \\
+            \mB_E(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= e^{-ik_3d}\mI,
+            \\
+            \mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &= e^{ik_3d}\frac{1}{k\eta_r k_3}
+            \begin{bmatrix}
+              k^2 - k_y^2 & k_x k_y
+              \\
+              k_x k _y & k^2 - k_x^2
+            \end{bmatrix},
+            \\
+            \mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= -e^{-ik_3d}\frac{1}{k\eta_r k_3}
+            \begin{bmatrix}
+              k^2 - k_y^2 & k_x k_y
+              \\
+              k_x k _y & k^2 - k_x^2
+            \end{bmatrix}.
+          \end{align*}
+          Soient les matrices \(\hat\mLD,\hat\mLR\) définies à la section \ref{sec:plan:hoibc:LD-LR}
+          \begin{align*}
+            \hat{\mLD} = -\begin{bmatrix}
+            k_x^2 & k_x k_y
+            \\
+            k_x k _y & k_y^2
+            \end{bmatrix},
+            & & 
+            \hat{\mLR} = \begin{bmatrix}
+            k_y^2 & -k_x k_y
+            \\
+            -k_x k _y &  k_x^2
+            \end{bmatrix}.
+          \end{align*}
+          On remarque alors que 
+          \begin{align*}
+            \mA_H(k_x,k_y,0^-)\left(\mA_E(k_x,k_y,-d^+)\right)^{-1} &=  e^{ik_3d}\frac{1}{k\eta_r k_3}(k^2\mI  -\hat\mLR),
+            \\
+            \mB_H(k_x,k_y,0^-)\left(\mB_E(k_x,k_y,-d^+)\right)^{-1} &= -e^{-ik_3d}\frac{1}{k\eta_r k_3}(k^2\mI  -\hat\mLR).
+          \end{align*}
+          Ces matrices sont inversibles si \(k_3\) est non nul, ce que nous avons déjà supposé.
 
-            Un simple calcul matriciel permet de trouver que \( (k^2\mI - \hat{\mLR})^{-1} = \frac{1}{k^2k_3^2}\left(k^2 \mI + \hat{\mLD}\right) \).
+          Un simple calcul matriciel permet de trouver que \( (k^2\mI - \hat{\mLR})^{-1} = \frac{1}{k^2k_3^2}\left(k^2 \mI + \hat{\mLD}\right) \).
 
-            En supposant \(k_3d \not = \frac{\pi}{2} + n\pi\), donc \(e^{ik_3d}+e^{-ik_3d}\not=0\) on déduit que
-            \begin{align*}
-                \hat \mZ(k_x,k_y) &= \frac{\eta_r}{k k_3} \frac{e^{ik_3d} - e^{-ik_3d}}{e^{ik_3d} + e^{-ik_3d}}\left(k^2\mI + \hat{\mLD}\right),
-                \\
-                &= i\eta_r\frac{\tan\left(k_3d\right)}{k k_3}\left(k^2\mI + \hat{\mLD}\right).
-            \end{align*}
+          En supposant \(k_3d \not = \frac{\pi}{2} + n\pi\), donc \(e^{ik_3d}+e^{-ik_3d}\not=0\) on déduit que
+          \begin{align*}
+            \hat \mZ(k_x,k_y) &= \frac{\eta_r}{k k_3} \frac{e^{ik_3d} - e^{-ik_3d}}{e^{ik_3d} + e^{-ik_3d}}\left(k^2\mI + \hat{\mLD}\right),
+            \\
+            &= i\eta_r\frac{\tan\left(k_3d\right)}{k k_3}\left(k^2\mI + \hat{\mLD}\right).
+          \end{align*}
 \begin{REM}
   c'est ça le résulat non? pourquoi il n'est pas énoncé ? il faut le mettre dans la proposition!!!  
 \end{REM}
@@ -516,7 +475,7 @@
         %On remarque que \(\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)\) et donc pour un matériau \((\eps,\mu,d)\) donné, l'opérateur d'impédance n'est pas inversible pour tous  \((k_x,k_y) \in \RR^2, n \in \NN\), \(k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2\), qui ne peut être vérifié que si \(\eps\mu\) est réel\footnote{Comme \(\eps, \mu\) sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}.
         Dans l'article de \cite{marceaux_high-order_2000}, la matrice d'impédance est telle que, soit \(\vK = \vn \pvect \vE\)
         \begin{align*}
-             \hat{\vK}_t = \hat{\mathfrak{Z}} \hat{\vH_t}, && \hat{\mathfrak{Z}} = -i\eta_r\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right).
+          \hat{\vK_t} = \hat{\mathfrak{Z}} \hat{\vH_t}, && \hat{\mathfrak{Z}} = -i\eta_r\frac{\tan(k_3d)}{kk_3}\left(k^2\mI - \hat{\mLR}\right).
         \end{align*}
         C'est une forme équivalente à la nôtre où \(\hat{\mZ} = \mT\hat{\mathfrak{Z}}\mT\) avec \(\mT = \begin{bmatrix}0&-1\\1&0\end{bmatrix}\).
 
@@ -530,22 +489,22 @@
         
         % Alors la matrice \(\hat \mZ\) peut se réécrire comme
         \begin{equation*}
-            \hat \mZ =
-            \begin{bmatrix}
-                \hat Z_{TM} & 0
-                \\
-                0 & \hat Z_{TE}
-            \end{bmatrix}.
+          \hat \mZ =
+          \begin{bmatrix}
+            \hat Z_{TM} & 0
+            \\
+            0 & \hat Z_{TE}
+          \end{bmatrix}.
         \end{equation*}
 
   \subsection{Expression de la matrice d'impédance pour plusieurs couches}
     On suppose que l'on a \(n\) couches de matériaux :
     \begin{figure}[h!btp]
-        \centering
-        \tikzsetnextfilename{plan_n_couches}            
-        \begin{tikzpicture}
-            \input{tikz/schema/plan_n_couches.tikz}
-        \end{tikzpicture}
+      \centering
+      \tikzsetnextfilename{plan_n_couches}            
+      \begin{tikzpicture}
+        \input{tikz/schema/plan_n_couches.tikz}
+      \end{tikzpicture}
     \end{figure}
 
     On suppose qu'il n'y pas de résonances donc que la condition nécessaire à l'existence de l'opérateur de Calderón est vérifié.
@@ -597,7 +556,7 @@
     \begin{prop}%[Théorème de transfert]~
       \label{prop:plan:transfert:impedance}
 
-      Soient \(\hat\vE,\hat\vH\) tels que \(\vE_t(k_x,k_y,z_p^-) = \hat\mZ_{p}(k_x,k_y)\hat\vJ_t(k_x,k_y,z_p^-)\).
+      Soient \(\hat\vE,\hat\vH\) tels que \(\hat{\vE_t}(k_x,k_y,z_p^-) = \hat\mZ_{p}(k_x,k_y)\hat{\vJ_t}(k_x,k_y,z_p^-)\).
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
@@ -607,7 +566,7 @@
         \mA_{H}(k_x,k_y,z_{p-1})\mM_{A}(k_x,k_y,z_p^-, \hat\mZ_{p}(k_x,k_y))^{-1} - \mB_{H}(k_x,k_y,z_{p-1})\mM_{B}(k_x,k_y,z_p^-, \hat\mZ_{p}(k_x,k_y))^{-1},
       \end{align*}
 
-      alors \(\hat\vE_t(k_x,k_y,z_{p-1}) = \mT_p(k_x,k_y,z_{p-1},z_p^-,\hat\mZ_{p}(k_x,k_y))(\hat{\vJ}(k_x,k_y,z_{p-1}))\).
+      alors \(\hat{\vE_t}(k_x,k_y,z_{p-1}) = \mT_p(k_x,k_y,z_{p-1},z_p^-,\hat\mZ_{p}(k_x,k_y))(\hat{\vJ_t}(k_x,k_y,z_{p-1}))\).
 
       Une condition aux limites sur le bord supérieur d'une couche détermine la condition aux limites sur le bord inférieur.
     \end{prop}
@@ -685,7 +644,7 @@
         \end{bmatrix},
       \end{multline*}        
       \begin{multline*}
-        \vect{e_r}\times\hat{\vH}_t(k_x,k_y,z_{p-1}) =
+        \hat{\vJ_t}(k_x,k_y,z_{p-1}) =
         \\
         \left(\mB_{H}(k_x,k_y,z_{p-1})\hat\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y)) + \mA_{H}(k_x,k_y,z_{p-1}))\right)
         \begin{bmatrix}
@@ -698,12 +657,12 @@
 
       On obtient
       \begin{multline*}
-        \hat{\vE}_t(k_x,k_y,z_{p-1}) =
+        \hat{\vE_t}(k_x,k_y,z_{p-1}) =
         \\
         \left(\mA_{E}(k_x,k_y,z_{p-1}) + \mB_{E}(k_x,k_y,z_{p-1})\hat\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y))\right) \\
         \left(\mA_{H}(k_x,k_y,z_{p-1}) + \mB_{H}(k_x,k_y,z_{p-1})\hat\mR(k_x,k_y,z_p^-,\hat{\mZ}_p(k_x,k_y))\right)^{-1}
         \\
-        \vect{e_r}\times\hat{\vH}_t(k_x,k_y,z_{p-1}).
+        \hat{\vJ_t}(k_x,k_y,z_{p-1}).
       \end{multline*}
 
       Comme on a supposé l'inversibilité des deux matrices \(\mM_{A}\), \(\mM_{B}\), on simplifie afin d'obtenir la propriété.
@@ -712,7 +671,7 @@
     \begin{prop}%[Théorème de relèvement]~
       \label{prop:plan:relevement:impedance}
 
-      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(k_x,k_y,z_{p-1}) = \hat\mZ_{p-1}(k_x,k_y)\hat{\vJ}(k_x,k_y,z_{p-1})\).
+      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(k_x,k_y,z_{p-1}) = \hat\mZ_{p-1}(k_x,k_y)\hat{\vJ_t}(k_x,k_y,z_{p-1})\).
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
@@ -722,7 +681,7 @@
         \mB_{H}(k_x,k_y,z_p^-)\mM_{B}(k_x,k_y,z_{p-1},\hat\mZ_{p-1}(k_x,k_y))^{-1} - \mA_{H}(k_x,k_y,z_p^-)\mM_{A}(k_x,k_y,z_{p-1},\hat\mZ_{p-1}(k_x,k_y))^{-1},
       \end{align*}
 
-      alors \(\hat\vE_t(k_x,k_y,z_p^-) = \mT_p(k_x,k_y,z_p^-,z_{p-1},\hat\mZ_{p-1}(k_x,k_y))\hat{\vJ}(k_x,k_y,z_p^-)\).
+      alors \(\hat{\vE_t}(k_x,k_y,z_p^-) = \mT_p(k_x,k_y,z_p^-,z_{p-1},\hat\mZ_{p-1}(k_x,k_y))\hat{\vJ_t}(k_x,k_y,z_p^-)\).
 
       Une condition d'impédance sur le bord inférieur d'une couche détermine la condition aux limites sur le bord supérieur.
     \end{prop}
@@ -751,9 +710,9 @@
     \begin{prop}
       On considère le problème de Calderón pour \(p\) couches.
 
-      Sous condition de non-résonance \(C_p\), le problème \(P_p\), constitué des équations des Maxwell dans les \(p\) couches avec conditions de Dirichlet, homogène sur l'interface inférieure \(z=z_0\) et inhomogène sur l'interface supérieure \(z=z_p, \vE=\vE_0\), a une unique solution, ce qui permet de calculer \(\vH\vert_{z=z_p-}\) et la matrice d'impédance $\hat\mZ_{p}$.
+      Sous condition de non-résonance \(C_p\), le problème \(P_p\), constitué des équations des Maxwell dans les \(p\) couches avec conditions de Dirichlet, homogène sur l'interface inférieure \(z=z_0\) et inhomogène sur l'interface supérieure \(z=z_p, \hat\vE=\hat\vE_0\), a une unique solution, ce qui permet de calculer \(\vH\vert_{z=z_p-}\) et la matrice d'impédance $\hat\mZ_{p}$.
 
-      Sous condition de non-résonance \(C_{p-1}\), le problème \(P_{p-1}\), constitué des équations des Maxwell dans les \(p-1\) premières couches avec conditions de Dirichlet, homogène sur l'interface inférieure \(z=z_0\) et inhomogène sur l'interface supérieure \(z=z_{p-1}, \vE=\vE_0^*\), a une unique solution, ce qui permet de calculer \(\vH\vert_{z=z_{p-1}-}\) et la matrice d'impédance \(\hat\mZ_{p-1}\).
+      Sous condition de non-résonance \(C_{p-1}\), le problème \(P_{p-1}\), constitué des équations des Maxwell dans les \(p-1\) premières couches avec conditions de Dirichlet, homogène sur l'interface inférieure \(z=z_0\) et inhomogène sur l'interface supérieure \(z=z_{p-1}, \hat\vE=\hat\vE_0^*\), a une unique solution, ce qui permet de calculer \(\hat\vH\vert_{z=z_{p-1}-}\) et la matrice d'impédance \(\hat\mZ_{p-1}\).
 
       Sous les conditions de non-résonance \(C_p\) et \(C_{p-1}\), on peut exprimer la matrice \(\hat\mZ_p\) en fonction de \(\hat\mZ_{p-1}\) et réciproquement.
     \end{prop}
@@ -763,9 +722,9 @@
 
       Soient \(\hat\vE_t,\hat\vH_t\) tels que 
       \begin{align*}
-      \vE_t(k_x,k_y,z_{p-1}) &= \hat\mZ_{p-1}(k_x,k_y)(\hat{\vJ}(k_x,k_y,z_{p-1})),
+      \hat{\vE_t}(k_x,k_y,z_{p-1}) &= \hat\mZ_{p-1}(k_x,k_y)(\hat{\vJ_t}(k_x,k_y,z_{p-1})),
       \\
-      \vE_t(k_x,k_y,z_p^-) &= \hat\mZ_{p}(k_x,k_y)(\hat{\vJ}(k_x,k_y,z_p^-)).
+      \hat{\vE_t}(k_x,k_y,z_p^-) &= \hat\mZ_{p}(k_x,k_y)(\hat{\vJ_t}(k_x,k_y,z_p^-)).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -830,9 +789,9 @@
 
       On suppose qu'il existe \(\hat\mR_{p+1}(k_x,k_y)\) telle que 
       \begin{align*}
-        \vE_t(k_x,k_y,z_p^+) &= \mN_{E}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{p+1}(k_x,k_y),
+        \hat{\vE_t}(k_x,k_y,z_p^+) &= \mN_{E}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{p+1}(k_x,k_y),
         \\
-        \vect{e_r}\pvect\vH(k_x,k_y,z_p^+) &= \mN_{H}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{p+1}(k_x,k_y).
+        \hat{\vJ_t}(k_x,k_y,z_p^+) &= \mN_{H}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{p+1}(k_x,k_y).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -844,23 +803,23 @@
       \end{align*}
       alors
       \begin{align*}
-        \vE_t(k_x,k_y,z_p^-) &= \mN_{E}(k_x,k_y,z_p^-,\mathfrak{T}_p(k_x,k_y,z_p^-,z_p^+,\hat\mR_{p+1}(k_x,k_y)))\vect{C}_{p}(k_x,k_y),
+        \hat{\vE_t}(k_x,k_y,z_p^-) &= \mN_{E}(k_x,k_y,z_p^-,\mathfrak{T}_p(k_x,k_y,z_p^-,z_p^+,\hat\mR_{p+1}(k_x,k_y)))\vect{C}_{p}(k_x,k_y),
         \\
-        \vE_t(k_x,k_y,z_p^-) &= \mN_{H}(k_x,k_y,z_p^-,\mathfrak{T}_p(k_x,k_y,z_p^-,z_p^+,\hat\mR_{p+1}(k_x,k_y)))\vect{C}_{p}(k_x,k_y).
+        \hat{\vE_t}(k_x,k_y,z_p^-) &= \mN_{H}(k_x,k_y,z_p^-,\mathfrak{T}_p(k_x,k_y,z_p^-,z_p^+,\hat\mR_{p+1}(k_x,k_y)))\vect{C}_{p}(k_x,k_y).
       \end{align*}
     \end{prop}
 
     \begin{proof}
       De part et d'autre de \(z=z_p\), on a 
       \begin{align*}
-        \vE_t(k_x,k_y,z_p^+) &= \mN_{E}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{1}^+(k_x,k_y),
+        \hat{\vE_t}(k_x,k_y,z_p^+) &= \mN_{E}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{1}^+(k_x,k_y),
         \\
-        \vE_t(k_x,k_y,z_p^-) &= \mA_E(k_x,k_y,z_p^-)\vect{C}_{1}^-(k_x,k_y) + \mB_E(k_x,k_y,z_p^-)\vect{C}_{2}^-(k_x,k_y),
+        \hat{\vE_t}(k_x,k_y,z_p^-) &= \mA_E(k_x,k_y,z_p^-)\vect{C}_{1}^-(k_x,k_y) + \mB_E(k_x,k_y,z_p^-)\vect{C}_{2}^-(k_x,k_y),
       \end{align*}
       \begin{align*}
-        \vect{e_r}\pvect\vH(k_x,k_y,z_p^+) &= \mN_{H}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{1}^+(k_x,k_y),
+        \hat{\vJ_t}(k_x,k_y,z_p^+) &= \mN_{H}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{1}^+(k_x,k_y),
         \\
-        \vect{e_r}\pvect\vH(k_x,k_y,z_p^-) &= \mA_H(k_x,k_y,z_p^-)\vect{C}_{1}^-(k_x,k_y) + \mB_H(k_x,k_y,z_p^-)\vect{C}_{2}^-(k_x,k_y).
+        \hat{\vJ_t}(k_x,k_y,z_p^-) &= \mA_H(k_x,k_y,z_p^-)\vect{C}_{1}^-(k_x,k_y) + \mB_H(k_x,k_y,z_p^-)\vect{C}_{2}^-(k_x,k_y).
       \end{align*}
       Il y a continuité des champs à l'interface donc
       \begin{align*}
@@ -905,9 +864,9 @@
 
       On suppose qu'il existe \(\hat\mR_{p}(k_x,k_y)\) telle que 
       \begin{align*}
-        \vE_t(k_x,k_y,z_p^-) &= \mN_{E}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y),
+        \hat{\vE_t}(k_x,k_y,z_p^-) &= \mN_{E}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y),
         \\
-        \vect{e_r}\pvect\vH(k_x,k_y,z_p^-) &= \mN_{H}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y).
+        \hat{\vJ_t}(k_x,k_y,z_p^-) &= \mN_{H}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -919,14 +878,14 @@
       \end{align*}
       alors
       \begin{align*}
-        \vE_t(k_x,k_y,z_p^+) &= \mN_{E}(k_x,k_y,z_p^+,\mathfrak{T}_p(k_x,k_y,z_p^+,z_p^-,\hat\mR_{p}(k_x,k_y)))\vect{C}_{p+1}(k_x,k_y),
+        \hat{\vE_t}(k_x,k_y,z_p^+) &= \mN_{E}(k_x,k_y,z_p^+,\mathfrak{T}_p(k_x,k_y,z_p^+,z_p^-,\hat\mR_{p}(k_x,k_y)))\vect{C}_{p+1}(k_x,k_y),
         \\
-        \vE_t(k_x,k_y,z_p^+) &= \mN_{H}(k_x,k_y,z_p^+,\mathfrak{T}_p(k_x,k_y,z_p^+,z_p^-,\hat\mR_{p}(k_x,k_y)))\vect{C}_{p+1}(k_x,k_y).
+        \hat{\vE_t}(k_x,k_y,z_p^+) &= \mN_{H}(k_x,k_y,z_p^+,\mathfrak{T}_p(k_x,k_y,z_p^+,z_p^-,\hat\mR_{p}(k_x,k_y)))\vect{C}_{p+1}(k_x,k_y).
       \end{align*}
     \end{prop}
 
     \begin{proof}
-     Preuve identique à la proposition \ref{prop:plan:transfert:reflexion}.
+      Preuve identique à la proposition \ref{prop:plan:transfert:reflexion}.
     \end{proof}
 
     \begin{prop}%[Théorème de relévement]~
@@ -934,19 +893,21 @@
 
       On suppose qu'il existe \(\hat\mR_{p}(k_x,k_y)\) et \(\hat\mR_{p+1}(k_x,k_y)\) telles que 
       \begin{align*}
-      &\left\lbrace\begin{aligned}
-        \vE_t(k_x,k_y,z_p^-) &= \mN_{E}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y),
-        \\
-        \vect{e_r}\pvect\vH(k_x,k_y,z_p^-) &= \mN_{H}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y),
+        &\left\lbrace
+        \begin{aligned}
+          \hat{\vE_t}(k_x,k_y,z_p^-) &= \mN_{E}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y),
+          \\
+          \hat{\vJ_t}(k_x,k_y,z_p^-) &= \mN_{H}(k_x,k_y,z_p^-,\hat\mR_{p}(k_x,k_y))\vect{C}_{p}(k_x,k_y),
         \end{aligned}
-      \right.
-      \\
-      &\left\lbrace\begin{aligned}
-        \vE_t(k_x,k_y,z_p^+) &= \mN_{E}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{p+1}(k_x,k_y),
+        \right.
         \\
-        \vect{e_r}\pvect\vH(k_x,k_y,z_p^+) &= \mN_{H}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{p+1}(k_x,k_y).
+        &\left\lbrace
+        \begin{aligned}
+          \hat{\vE_t}(k_x,k_y,z_p^+) &= \mN_{E}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{p+1}(k_x,k_y),
+          \\
+          \hat{\vJ_t}(k_x,k_y,z_p^+) &= \mN_{H}(k_x,k_y,z_p^+,\hat\mR_{p+1}(k_x,k_y))\vect{C}_{p+1}(k_x,k_y).
         \end{aligned}
-      \right.      
+        \right.
       \end{align*}
 
       Si les matrices suivantes sont inversibles

@@ -650,8 +650,6 @@
   important
 \end{REM} 
   %Nous n'avons pas pu bénéficier des solveurs haute-performance du CEA, optimisés pour les systèmes symétriques. 
-  Les résultats numériques qui suivent sont issus d'un code maquette où le système linéaire est codé tel quel, ce qui impose des limites évidentes en coût mémoire.
-\begin{REM}
-  ???
-\end{REM} 
-  L'introduction de cette modification dans un code industriel "haute performance" est une tâche complexe qui nécessite un investissement conséquent des équipes en charge de ce solveur, et n'a pas été réalisé dans le cadre de cette thèse.
+  Les solveurs numériques du CEA étaient en début de thèse optimisés pour des matrices symétriques et nous avons utilisé un solveur maquette avec matrices générales mais dont la structure de données n'a pas été optimisée ( méthodes de compression ACA ou \(\mathcal{H}\)-matrices de \cite{lize_resolution_2014} ).
+  
+  Depuis, ces solveurs ont aussi été optimisés pour des matrices non-symétriques mais l'introduction de cette modification dans un code industriel "haute performance" est une tâche complexe qui nécessite un investissement conséquent des équipes en charge de ce solveur, et n'a pas été réalisé à temps dans le cadre de cette thèse.
