@@ -451,7 +451,7 @@
 \begin{REP}
   Je ne sais pas. Pas le temps.
 \end{REP}
-      On suppose donc simplement \(\mH_{\cH}(r_1,n,k_z) - \mJ_{\cH}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) inversible, la matrice \(\hat\mZ(n,k_z)\) telle que \(\hat\vE_t(r_1,n,k_z) = \hat\mZ(n,k_z) (\vect{e_r}\pvect\vH(r_1,n,k_z))\) est alors
+      On suppose donc simplement \(\mH_{\cH}(r_1,n,k_z) - \mJ_{\cH}(r_1,n,k_z)\mJ_{E}(r_0,n,k_z)^{-1}\mH_{E}(r_0,n,k_z)\) inversible, la matrice \(\hat\mZ(n,k_z)\) telle que \(\hat\vE_t(r_1,n,k_z) = \hat\mZ(n,k_z) \hat{\vJ_t}(r_1,n,k_z)\) est alors
 
       \begin{multline*}
         \hat \mZ =
@@ -592,7 +592,7 @@
 
       On injecte ce qui précède en \(r = r_{p-1}\)
       \begin{multline*}
-        \hat{\vE}_t(r_{p-1},n,k_z) = 
+        \hat{\vE_t}(r_{p-1},n,k_z) = 
         \\
         \left(\mH_{E}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z)) + \mJ_{E}(r_{p-1},n,k_z)\right)
         \begin{bmatrix}
@@ -601,7 +601,7 @@
         \end{bmatrix},
       \end{multline*}        
       \begin{multline*}
-        \vect{e_r}\times\hat{\vH}_t(r_{p-1},n,k_z) =
+        \hat{\vJ_t}(r_{p-1},n,k_z) =
         \\
         \left(\mH_{\cH}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z)) + \mJ_{\cH}(r_{p-1},n,k_z))\right)
         \begin{bmatrix}
@@ -614,12 +614,12 @@
 
       On obtient
       \begin{multline*}
-        \hat{\vE}_t(r_{p-1},n,k_z) =
+        \hat{\vE_t}(r_{p-1},n,k_z) =
         \\
         \left(\mJ_{E}(r_{p-1},n,k_z) + \mH_{E}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right) \\
         \left(\mJ_{\cH}(r_{p-1},n,k_z) + \mH_{\cH}(r_{p-1},n,k_z)\mR(r_{p},n,k_z,\hat{\mZ}_p(n,k_z))\right)^{-1}
         \\
-        \vect{e_r}\times\hat{\vH}_t(r_{p-1},n,k_z).
+        hat{\vJ_t}(r_{p-1},n,k_z).
       \end{multline*}
 
       Comme on a supposé l'inversibilité des deux matrices \(\mM_J\), \(\mM_H\) alors on peut factoriser à droite le numérateur et le dénominateur et on a la propriété.
@@ -651,9 +651,9 @@
       \label{prop:cylindre:synthese:impedance}
       Soient \(\hat\vE_t,\hat\vH_t\) tels que 
       \begin{align*}
-      \hat{\vE}_t(r_{p-1}^+,n,k_z) &= \hat\mZ_{p-1}(n,k_z)(\hat\vJ_t(r_{p-1}^+,n,k_z)),
+      \hat{\vE_t}(r_{p-1}^+,n,k_z) &= \hat\mZ_{p-1}(n,k_z)(\hat\vJ_t(r_{p-1}^+,n,k_z)),
       \\
-      \hat{\vE}_t(r_{p}^-,n,k_z) &= \hat\mZ_{p}(n,k_z)(\hat\vJ_t(r_{p}^-,n,k_z)).
+      \hat{\vE_t}(r_{p}^-,n,k_z) &= \hat\mZ_{p}(n,k_z)(\hat\vJ_t(r_{p}^-,n,k_z)).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -714,9 +714,9 @@
 
       On suppose qu'il existe \(\hat\mR_{p+1}(n,k_z)\) telle que 
       \begin{align*}
-        \hat{\vE}_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z),
+        \hat{\vE_t}(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z),
         \\
-        \vect{e_r}\pvect\vH(r_{p}^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z).
+        \hat{\vJ_t}(r_{p}^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{p+1}(n,k_z).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -737,14 +737,14 @@
     \begin{proof}
       De part et d'autre de \(r=r_p\), on a 
       \begin{align*}
-        \hat{\vE}_t(r_p^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z),
+        \hat{\vE_t}(r_p^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z),
         \\
-        \hat{\vE}_t(r_p^-,n,k_z) &= \mJ_E(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_E(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z),
+        \hat{\vE_t}(r_p^-,n,k_z) &= \mJ_E(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_E(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z),
       \end{align*}
       \begin{align*}
-        \vect{e_r}\pvect\vH(r_p^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z),
+        \hat{\vJ_t}(r_p^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\hat\mR_{p+1}(n,k_z))\vect{C}_{1}^+(n,k_z),
         \\
-        \vect{e_r}\pvect\vH(r_p^-,n,k_z) &= \mJ_\cH(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_\cH(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z).
+        \hat{\vJ_t}(r_p^-,n,k_z) &= \mJ_\cH(r_p^-,n,k_z)\vect{C}_{1}^-(n,k_z) + \mH_\cH(r_p^-,n,k_z)\vect{C}_{2}^-(n,k_z).
       \end{align*}
       Il y a continuité des champs au travers de l'interface donc
       \begin{align*}
@@ -785,7 +785,7 @@
 
       On suppose qu'il existe \(\hat\mR_{p}(n,k_z)\) telle que 
       \begin{align*}
-        \hat{\vE}_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
+        \hat{\vE_t}(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
         \\
         \hat\vJ_t(r_{p}^-,n,k_z) &= \mN_{\cH}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z).
       \end{align*}
@@ -799,9 +799,9 @@
       \end{align*}
       alors
       \begin{align*}
-        \hat{\vE}_t(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z),
+        \hat{\vE_t}(r_{p}^+,n,k_z) &= \mN_{E}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z),
         \\
-        \hat{\vE}_t(r_{p}^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z).
+        \hat{\vE_t}(r_{p}^+,n,k_z) &= \mN_{\cH}(r_p^+,n,k_z,\mathfrak{T}_p(r_p^+,r_p^-,n,k_z,\hat\mR_{p}(n,k_z)))\vect{C}_{p+1}(n,k_z).
       \end{align*}
     \end{prop}
 
@@ -815,7 +815,7 @@
       On suppose qu'il existe \(\hat\mR_{p}(n,k_z)\) et \(\hat\mR_{p+1}(n,k_z)\) telles que 
       \begin{align*}
       &\left\lbrace\begin{aligned}
-        \hat{\vE}_t(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
+        \hat{\vE_t}(r_{p}^-,n,k_z) &= \mN_{E}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
         \\
         \hat\vJ_t(r_{p}^-,n,k_z) &= \mN_{\cH}(r_p^-,n,k_z,\hat\mR_{p}(n,k_z))\vect{C}_{p}(n,k_z),
         \end{aligned}

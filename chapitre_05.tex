@@ -5,9 +5,6 @@
 \newpage
 
 On s’intéresse à la propagation des ondes électromagnétiques à l'extérieur d'un objet fermé borné, convexe et régulier, sans source. 
-\begin{REM}
-  source
-\end{REM}
 Les champs associés sont solutions des équations de Maxwell harmoniques, la convention dans toute la thèse étant en \(e^{i\w t}\). 
 
 Soit \(\gls{mat-ga}=\partial\overline{\gls{mat-om}}\) la frontière de \(\OO\), on décompose donc tout l'espace entre l'intérieur et l'extérieur, soit 
@@ -183,7 +180,7 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
     La démonstration de ce calcul, ainsi que son extension à un nombre arbitraire de couches est l'objet du chapitre \ref{sec:plan}.
 
     On remarque que l'opérateur de Calderón n'est pas un opérateur aux dérivées partielles puisque son multiplicateur de Fourier fait intervenir le complexe \(\sqrt{k^2-k_x^2 - k_y^2}\), qui n'est pas un polynôme en $(k_x,k_y)$ et donc, par transformée inverse de Fourier ne peut s'exprimer avec les opérateurs \(\partial/\partial x, \partial / \partial y\).
-    Par contre, on peut approcher cette dernière par un polynôme en \((k_x,k_y)\), voire par une fraction de polynômes, et les CIOE sont issues de cette approximation.
+    Par contre, on peut approcher cet opérateur par un polynôme en \((k_x,k_y)\), voire par une fraction de polynômes, et les CIOE sont issues de cette approximation.
     Par exemple si on approche ce multiplicateur de Fourier par le quotient \(\frac{Q(k_x,k_y)}{R(k_x,k_y)}\), l'égalité \({\hat v}(k_x,k_y)=\frac{Q(k_x,k_y)}{R(k_x,k_y)}{\hat u}(k_x,k_y)\) se réécrit (même s'il faut des résultats supplémentaires pour que la formulation qui suit lui soit équivalente) \(R(k_x,k_y){\hat v}(k_x,k_y)=Q(k_x,k_y){\hat u}(k_x,k_y)\), qui se transforme en une égalité entre $v$ et $u$ utilisant des opérateurs différentiels.
     \begin{REM}
   hum ? qui apres transformée de Fourier inverse relie u et v via des opérateurs différentiels
@@ -307,10 +304,7 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
     Des choix possibles pour \(a_0\) sont alors
     \begin{itemize}
       \item plan: \(a_0 = \hat\mZ(0,0)_{11}\), pour ce couple \((k_x,k_y)\), l'opérateur est toujours multiple de l'identité.
-      \item cylindre: \(a_0 = \hat\mZ_0(0)_{11}\), \(a_0 = \hat\mZ_0(0)_{22}\) ou une combinaison linéaire des deux. À noter que la courbure est prise en compte.
-      \begin{REM}
-  courbure ?? oui mais ça surgit du fond de la nuit
-\end{REM}
+      \item cylindre: \(a_0 = \hat\mZ_0(0)_{11}\), \(a_0 = \hat\mZ_0(0)_{22}\) ou une combinaison linéaire des deux. À noter que la courbure est prise en compte comme nous le verons dans le chapitre \ref{sec:cylindre}.
       \item sphère: \(a_0 = \hat\mZ_0,{}_{11}\), pour le 1\ier coefficient de la série de Mie, l'opérateur est toujours multiple de l'identité. Là aussi, on prend en compte les courbures.
     \end{itemize}
 
@@ -395,10 +389,9 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
   Dans le cas d'une source nulle, l'existence est assurée puisque la solution nulle vérifie toutes les conditions et équations du problème.
 
   {~}\\{~}
-  Nous allons assurer l'unicité de la solution du problème sans source (c'est-à-dire déterminer des \glspl{acr-csu} qui piloteront le choix des paramètres), mais il est extrêmement important de comprendre que grâce à cela, nous pourrons \emph{garantir} l'unicité de la solution du problème avec source.
-\begin{REM}
-  euh, c'est normal ça, non? j'ai loupé quelque chose???? Il me semble que dans le cas, comme ici, d'un problème linéaire, il n'y a pas de lézard: unicité avec source nulle et unicité avec terme source, même combat. Du coup, je m'étonne d'une telle emphase :)
-\end{REM}
+  Nous allons assurer l'unicité de la solution du problème sans source, c'est-à-dire déterminer des \glspl{acr-csu} qui piloteront le choix des paramètres, et par linéarité l'unicité du problème avec source est assurée, sans que les CSU ne changent. 
+  Elles pourront dont être utilisée même si le problème inclus une onde incidente, par exemple dans le chapitre \ref{sec:equation_integrale}.
+
   {~}\\{~}
   Les démonstrations des résultats de cette partie sont l'objet du chapitre \ref{sec:csu}, ainsi les \glspl{acr-csu} des autres CIOE.
   Afin de garantir la proposition \ref{prop:cgu}, les conditions suivantes permettent de choisir les paramètres des CIOE correspondantes.

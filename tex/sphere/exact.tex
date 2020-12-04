@@ -233,25 +233,25 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
     En utilisant les fonctions définies précédemment, on a les expressions des coordonnées tangentielles de \(\vE,\vJ = \vect{e_r}\pvect\vH\).
     \begin{prop}
         \label{prop:imp_fourier:sphere:Et}
-     \begin{align*}
+        \begin{align*}
             \vE_t(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
             \begin{bmatrix}
-              \Umn(\tp) & \Umn^\perp(\tp)
+                \Umn(\tp) & \Umn^\perp(\tp)
             \end{bmatrix}
             \left(
-              \mj_E(r,n)
-              \begin{bmatrix}
-                  a_{mn}
-                  \\
-                  b_{mn}
-              \end{bmatrix}
-              +
-              \mh_E(r,n)
-              \begin{bmatrix}
-                  c_{mn}
-                  \\
-                  d_{mn}
-              \end{bmatrix}
+                \mj_E(r,n)
+                \begin{bmatrix}
+                    a_{mn}
+                    \\
+                    b_{mn}
+                \end{bmatrix}
+                +
+                \mh_E(r,n)
+                \begin{bmatrix}
+                    c_{mn}
+                    \\
+                    d_{mn}
+                \end{bmatrix}
             \right),
             \\
             \vJ_t(\rtp) &= \sum_{n\in\ZZ}\sum_{m\in\ZZ}
@@ -355,20 +355,20 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
     Sur une interface d'équation \(r=r_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mj_E(r_p+ \delta,n) - \mj_E(r_p - \delta,n) \not = 0\) .
 
     \begin{prop}
-      \label{lem:sphere:imp:inv_matrices_JE-HE}
-      Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mj_E(r,n)\), \(\mj_\cH(r,n)\)  sont inversibles pour tout \(n\).
-      % Sinon, pour \(n\) donné, il existe un nombre fini de \(k_z\) tels que ces matrices ne soient pas inversibles. 
+        \label{lem:sphere:imp:inv_matrices_JE-HE}
+        Si \(\mu(r)\eps(r) \in \CC\backslash\RR\), alors les matrices \(\mj_E(r,n)\), \(\mj_\cH(r,n)\)  sont inversibles pour tout \(n\).
+        % Sinon, pour \(n\) donné, il existe un nombre fini de \(k_z\) tels que ces matrices ne soient pas inversibles. 
     \end{prop}
 
-    \begin{proof}
-      Par définition des matrices,
-      \begin{align*}
-        \det(\mj_E(r,n)) &= j_n(k(r)r)\tilde{j_n}(k(r)r),
-        \\
-        \det(\mj_\cH(r,n)) &= -\frac{1}{\eta(r)^2}j_n(k(r)r)\tilde{j_n}
-      \end{align*}
+        \begin{proof}
+        Par définition des matrices,
+        \begin{align*}
+            \det(\mj_E(r,n)) &= j_n(k(r)r)\tilde{j_n}(k(r)r),
+            \\
+            \det(\mj_\cH(r,n)) &= -\frac{1}{\eta(r)^2}j_n(k(r)r)\tilde{j_n}
+        \end{align*}
 
-      D’après \cite[p.~370]{abramowitz_handbook_1964} ou \cite[\url{https://dlmf.nist.gov/10.58}]{dlmf_nist_2019}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels, or les fonctions de Bessel sphériques d'ordre \(n\) sont des fonctions de Bessel d'ordre \(n+1/2\) donc si \(k(r) \in\CC\backslash\RR\) alors ces matrices sont inversibles.
+        D’après \cite[p.~370]{abramowitz_handbook_1964} ou \cite[\url{https://dlmf.nist.gov/10.58}]{dlmf_nist_2019}, les zéros des fonctions de Bessel d'ordre réel \(\nu >-1\) sont tous réels, or les fonctions de Bessel sphériques d'ordre \(n\) sont des fonctions de Bessel d'ordre \(n+1/2\) donc si \(k(r) \in\CC\backslash\RR\) alors ces matrices sont inversibles.
     \end{proof}
 
 
@@ -391,60 +391,64 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
     Soit \(r_1 = r_0 + d\). On se place dans le matériau donc \(r_0 \le r < r_1\).
 
     \begin{prop}
-     Supposons que la matrice \(\mh_{\cH}(r_1^-,n) - \mj_{\cH}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\mh_{E}(r_0^+,n)\) est inversible pour tout \(n\), alors
-      \begin{equation*}
-        \hat \vE_t(r_1^-,n) = \hat \mZ(n) \hat \vJ_t(r_1^-,n)
-      \end{equation*}
-      où
-      \begin{multline*}
-        \hat \mZ(n) =
-        \left(\mh_{E}(r_1^-,n)\mh_{E}(r_0^+,n)^{-1} - \mj_{E}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\right)\\
-        \left(\mh_{\cH}(r_1^-,n)\mh_{E}(r_0^+,n)^{-1} - \mj_{\cH}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\right)^{-1}.
-      \end{multline*}
+        Supposons que la matrice \(\mh_{\cH}(r_1^-,n) - \mj_{\cH}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\mh_{E}(r_0^+,n)\) est inversible pour tout \(n\), alors
+        \begin{equation*}
+            \hat \vE_t(r_1^-,n) = \hat \mZ(n) \hat \vJ_t(r_1^-,n)
+        \end{equation*}
+        où
+        \begin{multline*}
+            \hat \mZ(n) =
+            \left(\mh_{E}(r_1^-,n)\mh_{E}(r_0^+,n)^{-1} - \mj_{E}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\right)\\
+            \left(\mh_{\cH}(r_1^-,n)\mh_{E}(r_0^+,n)^{-1} - \mj_{\cH}(r_1^-,n)\mj_{E}(r_0^+,n)^{-1}\right)^{-1}.
+        \end{multline*}
     \end{prop}
 
     \begin{proof}
-      On applique la condition aux limites du conducteur parfait \(\hat \vE(r_0,n) = 0\) dans \eqref{prop:imp_fourier:sphere:Et}.
-      Comme les harmoniques sphériques forment une base de \(L^2(S(r_0))\), chaque terme doit être nul, donc par identification
-      \begin{equation*}
-        \mj_{E}(r_0,n)
-        \begin{bmatrix}
-          a_{nm} \\
-          b_{nm}
-        \end{bmatrix}
-        =-\mh_{E}(r_0,n)
-        \begin{bmatrix}
-          c_{nm} \\
-          d_{nm}
-        \end{bmatrix}.
-      \end{equation*}
+        On applique la condition aux limites du conducteur parfait \(\hat \vE(r_0,n) = 0\) dans \eqref{prop:imp_fourier:sphere:Et}.
+        Comme les harmoniques sphériques forment une base de \(L^2(S(r_0))\), chaque terme doit être nul, donc par identification
+        \begin{equation*}
+            \mj_{E}(r_0,n)
+            \begin{bmatrix}
+                a_{nm}
+                \\
+                b_{nm}
+            \end{bmatrix}
+            =-\mh_{E}(r_0,n)
+            \begin{bmatrix}
+                c_{nm}
+                \\
+                d_{nm}
+            \end{bmatrix}.
+        \end{equation*}
 
-      On peut donc exprimer les composantes tangentielles%, on omet les dépendances en \((n)\).
-      \begin{align*}
-        \hat \vE_t(r_1,n) &=
-        \left(\mh_{E}(r_1,n) - \mj_{E}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)
-        \begin{bmatrix}
-          c_{nm} \\
-          d_{nm}
-        \end{bmatrix},
-        \\
-        \vect{e_r}\pvect \hat \vH_t(r_1,n) &=
-        \left(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n) \right)
-        \begin{bmatrix}
-          c_{nm} \\
-          d_{nm}
-        \end{bmatrix}.
-      \end{align*}
+        On peut donc exprimer les composantes tangentielles%, on omet les dépendances en \((n)\).
+        \begin{align*}
+            \hat{\vE_t}(r_1,n) &=
+            \left(\mh_{E}(r_1,n) - \mj_{E}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)
+            \begin{bmatrix}
+                c_{nm}
+                \\
+                d_{nm}
+            \end{bmatrix},
+            \\
+            \hat{\vJ_t}(r_1,n) &=
+            \left(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n) \right)
+            \begin{bmatrix}
+                c_{nm}
+                \\
+                d_{nm}
+            \end{bmatrix}.
+        \end{align*}
 
-      On suppose donc \(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\) inversible, la matrice \(\hat\mZ(n)\) telle que \(\hat\vE_t(r_1,n) = \hat\mZ(n) \vJ(r_1,n)\) est alors
+        On suppose donc \(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\) inversible, la matrice \(\hat\mZ(n)\) telle que \(\hat{\vE_t}(r_1,n) = \hat\mZ(n) \vJ(r_1,n)\) est alors
 
-      \begin{multline*}
-        \hat \mZ =
-        \left(\mh_{E}(r_1,n) - \mj_{E}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)
-        \\
-        \left(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)^{-1}.
-      \end{multline*}
-      Comme on a supposé la matrice \(\mh_E(r_0,n)\) inversible, on a la proposition.
+        \begin{multline*}
+            \hat \mZ =
+            \left(\mh_{E}(r_1,n) - \mj_{E}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)
+            \\
+            \left(\mh_{\cH}(r_1,n) - \mj_{\cH}(r_1,n)\mj_{E}(r_0,n)^{-1}\mh_{E}(r_0,n)\right)^{-1}.
+        \end{multline*}
+        Comme on a supposé la matrice \(\mh_E(r_0,n)\) inversible, on a la proposition.
 
     \end{proof}
 
@@ -498,7 +502,7 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
     \begin{prop}%[Théorème de transfert]~
       \label{prop:sphere:transfert:impedance}
 
-      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p}^-,n) = \hat\mZ_{p}(n)\hat\vJ_t(r_{p}^-,n)\).
+      Soient \(\hat{\vE},\hat{\vH}\) tels que \(\hat{\vE_t}(r_{p}^-,n) = \hat\mZ_{p}(n)\hat{\vJ_t}(r_{p}^-,n)\).
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
@@ -508,7 +512,7 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
         \mj_{\cH}(r_{p-1}^+,n)\mM_{\mj}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1} - \mh_{\cH}(r_{p-1}^+,n)\mM_{\mh}(r_{p}^-,n,\hat\mZ_{p}(n))^{-1},
       \end{align*}
 
-      alors \(\hat\vE_t(r_{p-1}^+,n) = \mT_p(r_{p-1}^+,r_{p}^-,n,\hat\mZ_{p}(n))\hat\vJ_t(r_{p-1}^+,n)\).
+      alors \(\hat{\vE_t}(r_{p-1}^+,n) = \mT_p(r_{p-1}^+,r_{p}^-,n,\hat\mZ_{p}(n))\hat{\vJ_t}(r_{p-1}^+,n)\).
 
       Une condition d'impédance sur le bord supérieur d'une couche détermine la condition aux limites sur le bord inférieur.
     \end{prop}
@@ -577,14 +581,14 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
 
       On injecte ce qui précède en \(r = r_{p-1}^+\)
       \begin{align*}
-        \hat{\vE}_t(r_{p-1}^+,n) &= 
+        \hat{\vE_t}(r_{p-1}^+,n) &= 
         \left(\mh_{E}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n)) + \mj_{E}(r_{p-1}^+,n)\right)
         \begin{bmatrix}
           a_{nm} \\
           b_{nm}
         \end{bmatrix}
         \\
-        \hat{\vJ}_t(r_{p-1}^+,n) &=
+        \hat{\vJ_t}(r_{p-1}^+,n) &=
         \left(\mh_{\cH}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n)) + \mj_{\cH}(r_{p-1}^+,n))\right)
         \begin{bmatrix}
           a_{nm} \\
@@ -594,10 +598,10 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
 
       On suppose alors que \(\mh_{\cH}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n)) + \mj_{\cH}(r_{p-1}^+,n))\) est inversible pour tout \((n)\):
       \begin{multline*}
-        \hat{\vE}_t(r_{p-1}^+,n) =
+        \hat{\vE_t}(r_{p-1}^+,n) =
         \left(\mj_{E}(r_{p-1}^+,n) + \mh_{E}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n))\right) \\
         \left(\mj_{\cH}(r_{p-1}^+,n) + \mh_{\cH}(r_{p-1}^+,n)\mR(r_{p}^-,n,\hat{\mZ}_p(n))\right)^{-1}
-        \hat{\vJ}_t(r_{p-1}^+,n).
+        \hat{\vJ_t}(r_{p-1}^+,n).
       \end{multline*}
 
       Comme on a supposé l'inversibilité des deux matrices \(\mM_j\), \(\mM_h\) alors on a la propriété.
@@ -606,7 +610,7 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
     \begin{prop}%[Théorème de relèvement]~
       \label{prop:sphere:relevement:impedance}
 
-      Soient \(\hat\vE_t,\hat\vH_t\) tels que \(\vE_t(r_{p-1}^+,n) = \hat\mZ_{p-1}(n)\hat\vJ_t(r_{p-1}^+,n)\).
+      Soient \(\hat{\vE},\hat{\vH}\) tels que \(\hat{\vE_t}(r_{p-1}^+,n) = \hat\mZ_{p-1}(n)\hat{\vJ_t}(r_{p-1}^+,n)\).
 
       Si les matrices suivantes sont inversibles
       \begin{align*}
@@ -616,7 +620,7 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
         \mh_{\cH}(r_{p}^-,n)\mM_{\mh}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1} - \mj_{\cH}(r_{p}^-,n)\mM_{\mj}(r_{p-1}^+,n,\hat\mZ_{p-1}(n))^{-1},
       \end{align*}
 
-      alors \(\hat\vE_t(r_{p}^-,n) = \mT_p(r_p^-,r_{p-1}^+,n,\hat\mZ_{p-1}(n))\hat{\vJ}(r_{p}^-,n)\).
+      alors \(\hat{\vE_t}(r_{p}^-,n) = \mT_p(r_p^-,r_{p-1}^+,n,\hat\mZ_{p-1}(n))\hat{\vJ_t}(r_{p}^-,n)\).
 
       Une condition d'impédance sur le bord inférieur d'une couche détermine la condition aux limites sur le bord supérieur.
     \end{prop}
@@ -627,11 +631,11 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
 
     \begin{prop}%[Corollaire aux théorèmes de transfert et de relèvement.]{}~
       \label{prop:sphere:synthese:impedance}
-      Soient \(\hat\vE_t,\hat\vH_t\) tels que 
+      Soient \(\hat{\vE},\hat\vH\) tels que 
       \begin{align*}
-      \hat\vE_t(r_{p-1}^+,n) &= \hat\mZ_{p-1}(n)\hat\vJ_t(r_{p-1}^+,n),
+      \hat{\vE_t}(r_{p-1}^+,n) &= \hat\mZ_{p-1}(n)\hat{\vJ_t}(r_{p-1}^+,n),
       \\
-      \hat\vE_t(r_{p}^-,n) &= \hat\mZ_{p}(n)\hat\vJ_t(r_{p}^-,n).
+      \hat{\vE_t}(r_{p}^-,n) &= \hat\mZ_{p}(n)\hat{\vJ_t}(r_{p}^-,n).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -690,9 +694,9 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
       \label{prop:sphere:transfert:reflexion}
       On suppose qu'il existe \(\hat\mR_{p+1}(n)\) telle que 
       \begin{align*}
-        \hat\vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n),
+        \hat{\vE_t}(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n),
         \\
-        \hat\vJ_t(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n).
+        \hat{\vJ_t}(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -704,22 +708,22 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
       \end{align*}
       alors
       \begin{align*}
-        \hat\vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n),
+        \hat{\vE_t}(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n),
         \\
-        \hat\vJ_t(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n).
+        \hat{\vJ_t}(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\mathfrak{T}_p(r_p^-,r_p^+,n,\hat\mR_{p+1}(n)))\vect{C}_{p}(n).
       \end{align*}
     \end{prop}
 
     \begin{proof}
       De part et d'autre de \(r=r_p\), on a 
       \begin{align*}
-        \hat\vE_t(r_p^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
+        \hat{\vE_t}(r_p^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
         \\
-        \hat\vE_t(r_p^-,n) &= \mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n),
+        \hat{\vE_t}(r_p^-,n) &= \mj_E(r_p^-,n)\vect{C}_{1}^-(n) + \mh_E(r_p^-,n)\vect{C}_{2}^-(n),
         \\
-        \hat\vJ_t(r_p^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
+        \hat{\vJ_t}(r_p^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{1}^+(n),
         \\
-        \hat\vJ_t(r_p^-,n) &= \mj_\cH(r_p^-,n)\vect{C}_{1}^-(n) + \mh_\cH(r_p^-,n)\vect{C}_{2}^-(n).
+        \hat{\vJ_t}(r_p^-,n) &= \mj_\cH(r_p^-,n)\vect{C}_{1}^-(n) + \mh_\cH(r_p^-,n)\vect{C}_{2}^-(n).
       \end{align*}
       Il y a continuité des champs au travers de l'interface donc
       \begin{align*}
@@ -751,9 +755,9 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
       \label{prop:sphere:relevement:reflexion}
       On suppose qu'il existe \(\hat\mR_{p}(n)\) telle que 
       \begin{align*}
-        \hat\vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
+        \hat{\vE_t}(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
         \\
-        \hat\vJ_t(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n).
+        \hat{\vJ_t}(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n).
       \end{align*}
 
       Si les matrices suivantes sont inversibles
@@ -765,9 +769,9 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
       \end{align*}
       alors
       \begin{align*}
-        \hat\vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n),
+        \hat{\vE_t}(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n),
         \\
-        \hat\vJ_t(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n).
+        \hat{\vJ_t}(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\mathfrak{T}_p(r_p^+,r_p^-,n,\hat\mR_{p}(n)))\vect{C}_{p+1}(n).
       \end{align*}
     \end{prop}
 
@@ -780,16 +784,16 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
       On suppose qu'il existe \(\hat\mR_{p}(n)\) et \(\hat\mR_{p+1}(n)\) telles que 
       \begin{align*}
       &\left\lbrace\begin{aligned}
-        \hat\vE_t(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
+        \hat{\vE_t}(r_{p}^-,n) &= \mN_{E}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
         \\
-        \hat\vJ_t(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
+        \hat{\vJ_t}(r_{p}^-,n) &= \mN_{\cH}(r_p^-,n,\hat\mR_{p}(n))\vect{C}_{p}(n),
         \end{aligned}
       \right.
       \\
       &\left\lbrace\begin{aligned}
-        \hat\vE_t(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n),
+        \hat{\vE_t}(r_{p}^+,n) &= \mN_{E}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n),
         \\
-        \hat\vJ_t(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n).
+        \hat{\vJ_t}(r_{p}^+,n) &= \mN_{\cH}(r_p^+,n,\hat\mR_{p+1}(n))\vect{C}_{p+1}(n).
         \end{aligned}
       \right.      
       \end{align*}

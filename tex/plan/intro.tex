@@ -5,28 +5,29 @@ Nous rappellerons la méthode pour les obtenir puis nous montrerons qu’étendr
 
 Soit \(\OO\) un domaine fermé, borné, de frontière régulière. Soit \(\vect{e_1},\vect{e_2},\vect{e_n}\) un repère local adapté à la surface de \(\OO\).
 
-Supposons qu'il existe des champs
-\begin{REM}
-  bizarre comme formulation et donc on revient en temps
-\end{REM} \((\vE,\vect H)\) qui vérifient les équations de Maxwell:
-\begin{equation*}
-    \left\lbrace
-    \begin{matrix}
-    \vrot \vE(\gls{mat-vx},t) &=& -\mu(\vx) \ddr{t}{\vect H}(\vx,t),
-    \\
-    \vrot \vect H(\vx,t) &=& \eps(\vx) \ddr{t}{\vE}(\vx,t).
-    \end{matrix}
-    \right.
-\end{equation*}
+% Supposons qu'il existe des champs
+% \begin{REM}
+%   bizarre comme formulation et donc on revient en temps
+% \end{REM} \((\vE,\vect H)\) qui vérifient les équations de Maxwell:
+% \begin{equation*}
+%     \left\lbrace
+%     \begin{matrix}
+%     \vrot \vE(\gls{mat-vx},t) &=& -\mu(\vx) \ddr{t}{\vect H}(\vx,t),
+%     \\
+%     \vrot \vect H(\vx,t) &=& \eps(\vx) \ddr{t}{\vE}(\vx,t).
+%     \end{matrix}
+%     \right.
+% \end{equation*}
 
 On suppose aussi que \(\eps\) et \(\mu\) sont constants par couche: \(\eps(x_1,x_2,x_n)=\eps(x_n)\).
 
 On suppose enfin que ces champs \(\vE(\vx,t),\vect H(\vx,t)\) ont des transformées de Fourier partielles suivant les coordonnées tangentielles et le temps
 %(\(\hat{\vE}(k_1,k_2,x_n,\w), \hat{\vect H}(k_1,k_2,x_n,\w)\))
 (\cite[Théorème de Plancherel, p.~153]{yosida_functional_1995})
-\begin{REM}
-  pourquoi ce théorème
-\end{REM} telles que
+% \begin{REM}
+%   pourquoi ce théorème
+% \end{REM}
+telles que
 
 \begin{align*}
     \hat{\vE} (k_1,k_2,x_n,\w) &= \frac{1}{2\pi}\int_{\RR^2\times\RR_+} e^{-i(k_1x_1+k_2x_2+\w t)}\vE(x_1,x_2,x_n,t) \dd{x_1}\dd{x_2}\dd{t},
@@ -38,10 +39,13 @@ On suppose enfin que ces champs \(\vE(\vx,t),\vect H(\vx,t)\) ont des transform�
 % \begin{REM}
 %     Non. Ce n'est pas l'absence de résonances qui empêche le calcul en Fourier, c'est le fait qu'en général par Fourier une EDP n'a pas forcement de solution.
 % \end{REM}
-Dans cette thèse, on utilise les équations harmoniques de Maxwell, ainsi on réalise au moins une transformée partielle en temps.
-\begin{REM}
-  c'est pas vraiment le lieu, et ça apporte quoi ?
-\end{REM} La variable de Fourier associée est \(\w\), et donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\gls{phy-w}\).
+% Dans cette thèse, on utilise les équations harmoniques de Maxwell, ainsi on réalise au moins une transformée partielle en temps.
+% \begin{REM}
+%   c'est pas vraiment le lieu, et ça apporte quoi ?
+% \end{REM}
+
+
+La dépendance temporelle des équations de Maxwell harmoniques est \(i\w t\), donc l'opérateur \(\ddr{t}{~}\) est remplacé par \(i\gls{phy-w}\).
 
 Afin d'utiliser les mêmes conventions que \cite{stupfel_implementation_2015}, on substitue au champ magnétique \gls{phy-h} l’excitation magnétique \(\gls{phy-h2} = \gls{phy-eta0} \gls{phy-h}\).
 
