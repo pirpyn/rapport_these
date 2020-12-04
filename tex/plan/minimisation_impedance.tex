@@ -3,8 +3,9 @@
   Dans la section précédente, nous avons exprimé les matrices \(\hat\mZ\) (dite d'impédance) et la matrice \(\hat\mR\) (dite de réflexion) en fonction de l'empilement.
   Nous allons montrer que nous pouvons choisir deux manières de trouver les coefficients de la CIOE CI3 (ce qui s’étend facilement aux CIOE dérivées de cette dernière). 
 
-  % On se donne \(N_x\) \(k_x\) et \(N_y\) \(k_y\).
-  % Il existe donc \(N_k=N_xN_y\) couples tels que \((k_{xi},k_{yj}) = (k_x,k_y)_{(j-1)N_x+i}\).
+  On se donne \(N_x\) \(k_x\) et \(N_y\) \(k_y\).
+  Il existe donc \(N_k=N_xN_y\) couples tels que \((k_{xi},k_{yj}) = (k_x,k_y)_{(j-1)N_x+i}\).
+
   \begin{defn}
     Soit \(\ps{\cdot}{\cdot}\) le produit scalaire usuel de \(\CC^{N_{k}}\) et \(\norm{\cdot}\) la norme associée.
     \begin{equation*}
@@ -155,10 +156,7 @@
 
       \begin{prop}
         La matrice \({\mM}_{CI01}\)
-        associée à la CI01 est inversible, si et seulement s'il existe au moins deux couples \((k_{x},k_{y})\) différents.
-        \begin{REM}
-??? vérifiant quoi ? car sans condition, la réponse est tjs oui!!!
-\end{REM}
+        associée à la CI01 est inversible, si et seulement s'il existe au moins deux couples \((k_{x},k_{y})\) différents parmis les \(N_k\) considérés.
       \end{prop}
 
       \begin{proof}
@@ -189,11 +187,9 @@
 
       \begin{prop}
         La matrice \({\mM}_{CI4}\)
-        associée à la CI4 est inversible, si et seulement s'il existe au moins deux couples \((k_{xi},k_{yi})\) différents.
+        associée à la CI4 est inversible, si et seulement s'il existe au moins deux couples \((k_{x},k_{y})\) différents parmis les \(N_k\) considérés.
       \end{prop}
-\begin{REM}
-toujours le meme problem
-\end{REM}
+
       \begin{proof}
         En reprenant la définition des vecteurs de \(\RR_+^{N_{k}}\) \(t\) et \(1\) introduits ci-avant, on a
         \begin{equation*}
@@ -608,9 +604,14 @@ curieux
       %   C'est à expliquer (la signification d'une asymptote). Voir plus \hyperlink{REMasymptote}{bas}.
       % \end{REM}
       La CI3 capture cette asymptote grâce à son dénominateur et est donc bien meilleure que la condition de Leontovich.
+
 \begin{REM}
   elle est même impressionnante !!!
-\end{REM} 
+\end{REM}
+\begin{REP}
+  Commentaire non constructif
+\end{REP}
+
       \begin{figure}[!hbt]
           \centering
           \input{tikz/plot/Z_SOUDAIS_plan_hoibc.tikz}
