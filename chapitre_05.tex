@@ -22,6 +22,10 @@ Nous utilisons les équations de Maxwell-Helmholtz
 \begin{REM}
   merci de dire ce que c'est, ce n'est pas standard
 \end{REM}
+\begin{REP}
+  Olivier, c'est toi qui m'a donné ce nom, il y a 10 moins environs, d'après l'hisrorique.
+  Je n'ai pas de ref.
+\end{REP}
 où les inconnues sont le champ électrique \gls{phy-e} et l'exitation magnétique \gls{phy-h2}, elles se déduisent du système d'équations de Maxwell (voir annexe \ref{sec:annex:maxwell_equation}). 
 
 Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}_0^\infty(\RR^3)\cap\Hrot(\RR^3))^3\) tels que
@@ -46,11 +50,7 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
   \subsection{Étude de l'unicité des solutions du problème intérieur}
 
     \begin{thm}
-      Si \(\w^2\eps\mu\)
-\begin{REM}
-  aucune blague si les espilon mu sont variables ? il me semble qu'une valeur propre ne depend pas de la position c'est omega**2 qui ne doit pas être valeur propore de 1 / epsilon mu Laplacien  
-\end{REM}
-      n'est pas une valeur propre du Laplacien vectoriel, l'unique solution \(\vE,\vH\) de \eqref{eq:unicite:maxwell_int} avec conditions aux limites de conducteur parfait ( \(n\wedge \vE_{|\Gamma} = 0\) ),  est \((0,0)\).
+      Si \(\w^2\) n'est pas une valeur propre de \(1/(\eps\mu)\) Laplacien vectoriel, l'unique solution \(\vE,\vH\) de \eqref{eq:unicite:maxwell_int} avec conditions aux limites de conducteur parfait (\(n\wedge \vE_{|\Gamma} = 0\)), est \((0,0)\).
       Si \(\w^2\eps\mu\) est une valeur propre du Laplacien vectoriel, \eqref{eq:unicite:maxwell_int} avec conditions aux limites de Dirichlet ( \(\vE_{|\Gamma} = 0\) ) a pour solution tous les vecteurs propres de l'opérateur \(A\) introduit par \cite[eq.~(133), p.~58]{cessenat_mathematical_1996}.
     \end{thm}
     La preuve s'appuie notamment sur l'alternative de Fredholm, voir \cite[Théorème~8, p.~111]{cessenat_mathematical_1996}.
@@ -127,11 +127,7 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
   
   À un couple de domaines ouverts \((\Omega, \Omega^c)\) et à deux problèmes de type Maxwell \eqref{eq:unicite:maxwell_ext} dans chacun des ouverts, est associé un unique opérateur de Calderón.
 
-  En imposant sur le bord extérieur de l'objet une \gls{acr-cl} utilisant cet opérateur, alors les solutions \((\vE,\vH)\) de ce nouveau problème posé uniquement à l'extérieur sont les mêmes que celles du problème intérieur et extérieur.
-\begin{REM}
-  bizarrement exprimé: la solution d'une problème extérieur serait la même que celle d'un problème intérieur et extérieur ? maladroit :)
-  il faudrait écrire sont la restriction dans le domaine extérieur du champ électromagnétique solution du problème global posé à l'intérieur et à l'extérieur.
-\end{REM}
+  En imposant sur le bord extérieur de l'objet une \gls{acr-cl} utilisant cet opérateur, alors les solutions \((\vE,\vH)\) de ce nouveau problème posé uniquement à l'extérieur sont la restriction dans le domaine extérieur des solutions du problème global, posé à l'intérieur et extérieur.
 
   % \begin{REM}
   %   % Je cherche la ref dans le Cessenat, mais si tu l'as, je prend.
@@ -161,10 +157,11 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
 
   \subsection{Expression de l'opérateur de Calderón pour un plan infini en tant que multiplicateur de Fourier}
 
+    \begin{remark}
+      Dans ce masnuscrit, nous notons pour tout \(z\) complexe, sa racine \(\sqrt{z}\) le complexe de partie réelle positive.
+    \end{remark}
+
     Pour une couche d'épaisseur \(d\) de matériau diélectrique de constante relative \(\eps,\mu\) et donc de nombre d'onde complexe \(k = k_0\sqrt{\eps\mu}\) et d'impédance relative \(\eta=\sqrt{{\mu}/{\eps}}\), l'opérateur de Calderón s'exprime en Fourier (nous choisissons la notation \gls{mat-four} pour désigner la transformée de \(u\)) comme un multiplicateur matriciel en \((k_x,k_y)\), supposant \(\sqrt{k^2-k_x^2-k_y^2}\not=0\), 
-    \begin{REM}
-    racine carré complexe ? il faut préciser que vous choisissiez la détermination principale de la racine carrée ayant pour partie réelle un nombre position
-\end{REM}
 
     \begin{align*}
       \gls{mat-matimp}(k_x,k_y) &= i\eta\frac{\tan\left(d\sqrt{k^2-k_x^2-k_y^2}\right)}{k \sqrt{k^2-k_x^2-k_y^2}}
@@ -181,10 +178,8 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
 
     On remarque que l'opérateur de Calderón n'est pas un opérateur aux dérivées partielles puisque son multiplicateur de Fourier fait intervenir le complexe \(\sqrt{k^2-k_x^2 - k_y^2}\), qui n'est pas un polynôme en $(k_x,k_y)$ et donc, par transformée inverse de Fourier ne peut s'exprimer avec les opérateurs \(\partial/\partial x, \partial / \partial y\).
     Par contre, on peut approcher cet opérateur par un polynôme en \((k_x,k_y)\), voire par une fraction de polynômes, et les CIOE sont issues de cette approximation.
-    Par exemple si on approche ce multiplicateur de Fourier par le quotient \(\frac{Q(k_x,k_y)}{R(k_x,k_y)}\), l'égalité \({\hat v}(k_x,k_y)=\frac{Q(k_x,k_y)}{R(k_x,k_y)}{\hat u}(k_x,k_y)\) se réécrit (même s'il faut des résultats supplémentaires pour que la formulation qui suit lui soit équivalente) \(R(k_x,k_y){\hat v}(k_x,k_y)=Q(k_x,k_y){\hat u}(k_x,k_y)\), qui se transforme en une égalité entre $v$ et $u$ utilisant des opérateurs différentiels.
-    \begin{REM}
-  hum ? qui apres transformée de Fourier inverse relie u et v via des opérateurs différentiels
-\end{REM}
+    Par exemple si on approche ce multiplicateur de Fourier par le quotient \(\frac{Q(k_x,k_y)}{R(k_x,k_y)}\), l'égalité \({\hat v}(k_x,k_y)=\frac{Q(k_x,k_y)}{R(k_x,k_y)}{\hat u}(k_x,k_y)\) se réécrit (même s'il faut des résultats supplémentaires pour que la formulation qui suit lui soit équivalente) \(R(k_x,k_y){\hat v}(k_x,k_y)=Q(k_x,k_y){\hat u}(k_x,k_y)\), qui apres transformée de Fourier inverse relie \(u\) et \(v\) via des opérateurs différentiels.
+
     Cette thèse ne fera cependant qu'utiliser des CIOE déjà écrites.
     Nous renvoyons par exemple à \cite{senior_approximate_1995} pour ce problème.
 
@@ -222,10 +217,12 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
       On pose \(k_3 = \sqrt{k^2 - k_z^2}\) que l'on suppose non nul et tel que \(k_z^2 < \Re(k^2)\).
       Ainsi la partie imaginaire de \(k_3\) reste petite devant sa partie réelle.
       Dans le cadre de cette thèse, nous avons considéré \(k_z < k_0\).
-      \begin{REM}
+\begin{REM}
   important non ? et pourquoi ? on pourrait avoir autre chose ? ça aurait été bien de commenter 
 \end{REM}
-
+\begin{REP}
+  Prévoir question sur le comportement asymptotique des Bessel.
+\end{REP}
       L'opérateur \(\hat\mZ_n(k_z)\) est alors
 
       \newcommand{\Sni}{\frac{
