@@ -4,11 +4,7 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
 
     \begin{defn}[Harmonique sphérique d'ordre \(n\) et de degré \(m\)]
         \label{def:sphere:harmoniques_spheriques}
-        Soit \(\gls{mat-pmn}\) la fonction associée
-\begin{REM}
-  ???
-\end{REM} 
-         de Legendre (voir \cite[Chapitre.~8]{abramowitz_handbook_1964} ou équivalent \cite[\url{https://dlmf.nist.gov/14}]{dlmf_nist_2019}) d'ordre \(n\) et de degré \(m\). 
+        Soit \(\gls{mat-pmn}\) le polynôme associé de Legendre (voir \cite[Chapitre.~8]{abramowitz_handbook_1964} ou équivalent \cite[\url{https://dlmf.nist.gov/14.21\#i.p1}]{dlmf_nist_2019}) d'ordre \(n\) et de degré \(m\). 
 
         On appelle harmoniques sphériques d'ordre \(n\) et de degré \(m\) les fonctions de \(\RR\times\RR \rightarrow \CC\) telles que
         \begin{align*}
@@ -31,11 +27,7 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
 
     \begin{defn}
         \label{def:sphere:bessel_spheriques}
-        On appelle fonctions de Bessel sphérique
-\begin{REM}
-  Bessel n'était pas sphérique, enfin je l'espère pour lui
-\end{REM} 
-         d'ordre \(n\) les fonctions de \(\CC \rightarrow \CC\) solution de
+        On appelle fonctions de Bessel sphériques d'ordre \(n\) les fonctions de \(\CC \rightarrow \CC\) solution de
         \begin{align*}
             z^{2}\ddp[2]{z}{u(z)}+2z\ddp{z}{u(z)}+\left(z^{2}-n(n+1)\right)u(z)=0.
         \end{align*}
@@ -54,12 +46,11 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
     \end{proof}
 
     \begin{defn}
-        On définit l’opérateur \gls{mat-tild} agissant sur les fonctions dérivables tel que soit
-\begin{REM}
-  surligné: ???
-\end{REM}  \(f \in C^1(\CC)\),
+        On définit l’opérateur \gls{mat-tild} agissant sur les fonctions dérivables tel que
+        
+        Pour tout \(f \in C^1(\CC)\), 
         \begin{align*}
-        &\tilde{f}(z) = f(z) + zf'(z), && \forall z \in \CC.
+            &\tilde{f}(z) = f(z) + zf'(z), && \forall z \in \CC.
         \end{align*}
     \end{defn}
 
@@ -83,7 +74,8 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
             \label{eq:defNnn}
             \Nmn[z_n](\rtp) &:= \frac{\vrot \Mmn[z_n]}{k}(\rtp),
             \\
-            \notag&= \frac{1}{k(r)r}\begin{bmatrix}
+            \notag&= \frac{1}{k(r)r}
+            \begin{bmatrix}
                 z_n(k(r)r)n(n+1)Y_{mn}(\tp)
                 \\
                 \tilde{z_n}(k(r)r)\ddr{\theta}{Y_{mn}}(\tp)
@@ -109,10 +101,6 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
         Voir \cite[Théorème.~5.3.1]{nedelec_acoustic_2001} et sa démonstration ou l'annexe \ref{sec:annex:harmoniques_spheriques}.
     \end{proof}
 
-    On admet les propriétés suivantes:
-\begin{REM}
-  c'est prouvé quelque part non ?
-\end{REM} 
     \begin{prop}
         \label{prop:Mmn_Nmn_rot}
         \begin{align*}
@@ -121,6 +109,9 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
             \vrot \Nmn[z_n](\rtp) &= k\Mmn[z_n](\rtp).
         \end{align*}
     \end{prop}
+    \begin{proof}
+        La première se déduit de la définition de \(\Nmn[z_n]\), la seconde de la propriété précédente.
+    \end{proof}
 
     % Ces vecteurs harmoniques sphériques possèdent les propriétés suivantes
 
@@ -199,10 +190,6 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
         \end{multline*}
     \end{prop}
     \begin{proof}
-        Admise.
-\begin{REM}
-  supprimer
-\end{REM} 
         On renvoie à \cite{cheng_spectral_1993}.
     \end{proof}
 
@@ -364,11 +351,7 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
         \end{multline*}
     \end{proof}
 
-    On remarque que les paramètres \(\eps,\mu\) ( ou équivalent \(k,\eta\) )
-\begin{REM}
-  ??? mal dit
-\end{REM} 
-    sont constants par morceaux.
+    On remarque que les paramètres \(\eps,\mu\) ( et donc \(k,\eta\) ) sont constants par morceaux.
     Sur une interface d'équation \(r=r_p\) entre deux matériaux, il y a donc un saut de valeurs pour ces matrices: \(\lim_{\delta\rightarrow 0 } \mj_E(r_p+ \delta,n) - \mj_E(r_p - \delta,n) \not = 0\) .
 
     \begin{prop}
@@ -837,11 +820,7 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
     On compare l'impédance du plan \(\hat{\mZ}(k_x,0)\) à l'impédance de la sphère \(\hat{\mZ}(n)\) quand \(n\) est de l'ordre de \(k_0r_1s\).
     On reprend la notation de \cite[p.~62]{hoppe_impedance_1995} qui définit \(k_t= n/r_1\).
 
-    Pour une couche de matériau
-\begin{REM}
-  +x
-\end{REM} 
-     sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
+    Pour une couche de matériaux sans pertes, la matrice \(\hat\mZ\) est imaginaire pure, donc les parties réelles ne sont pas tracées.
 
     On trace dans la figure \ref{fig:imp_fourier:sphere:hoppe_p62:converge_rayon} les parties imaginaires des coefficients diagonaux de ces matrices.
 
@@ -853,5 +832,8 @@ Nous rappelons d'abord des résultats connus sur les fonctions spéciales usuell
     \end{figure}
      On voit donc que l'impédance de la sphère tend vers celle du plan quand \(r\) augmente.
 \begin{REM}
-  rassurant
-\end{REM} 
+    rassurant
+\end{REM}
+\begin{REP}
+    Pour valider le code.
+\end{REP}

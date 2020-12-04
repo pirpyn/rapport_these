@@ -48,16 +48,8 @@
   Nous rappelons cette méthode en conservant les notations de \cite{stupfel_implementation_2015}.\\
 
   Soit \(\Gamma_h\) une triangulation de \(\Gamma\) en \(N_e\) éléments triangulaires.
-  Soit \(N=\frac{3}{2}N_e\) le nombre d'arête
-\begin{REM}
-  +s
-\end{REM} 
-   du maillage.
-  On désigne par \(\vn\) la normale unitaire sortante du maillage, non défini
-\begin{REM}
-  +e
-\end{REM} 
-   aux nœuds et arêtes du maillage.
+  Soit \(N=\frac{3}{2}N_e\) le nombre d'arêtes du maillage.
+  On désigne par \(\vn\) la normale unitaire sortante du maillage, non définie aux nœuds et arêtes du maillage.
 
   Soit \(T\) un triangle défini par un nœud \(N_1\) et deux vecteurs \(\vect{e_1}\) et \(\vect{e_2}\).
   On rappelle la relation entre l'aire du triangle et ces vecteurs
@@ -100,11 +92,7 @@
   \subsection[Fonctions de Raviart-Thomas phi Hdiv-conforme]{Fonctions de Raviart-Thomas \(\vect{\phi}\) \(\Hdiv\)-conforme}
 
     Ces fonctions ont été introduites par \cite{raviart_mixed_1977}.
-    Nous présentons ici les fonctions Raviart-Thomas de degré 0, c'est à dire
-\begin{REM}
-  tiret
-\end{REM} 
-     telles que les degrés de liberté soient au milieu de chaque arête (voir \cite[eq.~(3.10)]{raviart_mixed_1977}).
+    Nous présentons ici les fonctions Raviart-Thomas de degré 0, c'est-à-dire telles que les degrés de liberté soient au milieu de chaque arête (voir \cite[eq.~(3.10)]{raviart_mixed_1977}).
 
     \begin{minipage}{\textwidth}
       \begin{minipage}{0.329\textwidth}
@@ -233,12 +221,8 @@
 
     Ces fonctions ont été introduites par \cite[eq.~28]{bendali_boundary-element_1999}.
     Elles sont linéairement indépendantes.
-    Nous modifions ces fonctions en les divisant par 2 fois l'aire du triangle.
-\begin{REM}
-  mal dit
-\end{REM} 
+    En accord avec l'article de \cite[annexe~B]{stupfel_implementation_2015}, nous les divisions par 2 fois l'aire de l'élément.
     Ainsi, la matrice de passage (définie plus tard) sera plus simple.
-
 
     \begin{minipage}{\textwidth}
       \begin{minipage}{0.329\textwidth}
@@ -283,13 +267,16 @@
     \end{minipage}
 
     \begin{prop}
-      Les fonctions \(\qj\) ne sont pas dans \(\Hrot\).
+      Les fonctions \(\qj\) ne sont pas dans \(\Hrot\) ni dans \(\Hdiv\).
     \end{prop}
     \begin{proof}
       La composante tangentielle à l'arête le long d'une arête n'est pas nulle.
 \begin{REM}
   ???
-\end{REM} 
+\end{REM}
+\begin{REP}
+  à faire
+\end{REP}
     \end{proof}
 
     \begin{prop}
@@ -323,11 +310,7 @@
     \end{equation*}
   \end{prop}
   \begin{proof}
-    C'est une conséquence immédiate du produit triangulaire
-\begin{REM}
-  c'est vraiment son nom ? mixte ?
-\end{REM} 
-     \(a\cdot (b \pvect c) = c\cdot (a \pvect b)\) et que les fonctions de bases soient tangentes à la surface.
+    C'est une conséquence immédiate du produit mixte \(a\cdot (b \pvect c) = c\cdot (a \pvect b)\) et que les fonctions de bases soient tangentes à la surface.
     \[
       \begin{aligned}
         \pj \cdot \pii &= (\vn \pvect \phij) \cdot ( \vn \pvect \phii),
@@ -472,11 +455,8 @@
 
   Ceci est l'expression continue de la formulation variationnelle des équations intégrales.
   Dans la suite nous approcherons cette forme variationnelle à l'aide des familles de fonction présentées précédemment.
-  De plus, dans un
-\begin{REM}
-  par
-\end{REM} 
-   abus de notation, nous omettrons le \(-1/2\) dans l'espace \(\Hdiv^{-1/2}(\Gamma)\equiv\Hdiv(\Gamma)\).
+
+  De plus, par abus de notation, nous omettrons le \(-1/2\) dans l'espace \(\Hdiv^{-1/2}(\Gamma)\equiv\Hdiv(\Gamma)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -492,33 +472,20 @@
       \vK & \simeq \sum_{j=1}^N k_j \phij.
     \end{align*}
 
-  Il reste alors à trouver une bonne approximation de \(\vE_t\) et \(\vH_t\) pour exprimer \( \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)\) et \(\frac{1}{2} \int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)\)
-\begin{REM}
-  s
-\end{REM} en fonctions
-   des inconnues \(\vJ, \vK\).
+  Il reste alors à trouver une bonne approximation de \(\vE_t\) et \(\vH_t\) pour exprimer \( \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)\) et \(\frac{1}{2} \int_{\Gamma_h} \vH_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)\) en fonction des inconnues \(\vJ, \vK\).
+
   Selon la CIOE employée, cette décomposition ne sera pas la même.
-  Notre but est alors de trouver une formulation qui se comporte bien quand on déduit d'une CIOE un
-\begin{REM}
-  une
-\end{REM} 
-   autre plus simple.
+  Notre but est alors de trouver une formulation qui se comporte bien quand on déduit d'une CIOE une autre plus simple.
   C'est-à-dire que la formulation intégrale déterminée avec la CI3 doit être équivalente à la formulation intégrale déterminée avec la CI0 quand les coefficients \(a_1,a_2,b_1,b_2\) sont nuls.
   En effet, à cause des opérateurs différentiels, nous ne représenterons pas \(\vE_t\) et \(\vH_t\) à l'aide d'une seule famille, mais potentiellement plusieurs familles.
-  Nous préciserons lesquels
-\begin{REM}
-  laquelles?
-\end{REM} 
-   dans la suite.
+  Nous préciserons lesquelles dans la suite.
 
   \subsection[Discrétisation des opérateurs LD, LR]{Discrétisation des opérateurs \(\LD,\LR\)}
-    Les CIOE font intervenir les opérateurs différentiels \gls{ope-LD}, \gls{ope-LR}. On introduit donc les matrices \(\mLD,\mLR\) correspondantes.
+    Les CIOE font intervenir les opérateurs différentiels \gls{ope-LD}, \gls{ope-LR}.
+    On introduit donc les matrices \(\mLD,\mLR\) correspondantes.
 
-    Comme les \(\phij\) sont dans \(\Hdiv\), de l'opérateur \gls{ope-LD} on définit la matrice \(\mLD\)
-\begin{REM}
-  mal dit
-\end{REM} 
-
+    Comme les \(\phij\) sont dans \(\Hdiv\), on peut appliquer directement la divergence surfacique.
+    
     \begin{defn}[Discrétisation de l'opérateur \(\LD\)]
       On définit la matrice \(\mLD\) telle que
       \begin{align*}
