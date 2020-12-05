@@ -347,7 +347,9 @@
         % \end{REM}
         \begin{prop}
           \label{prop:imp_plan:symb_z:1c}
-          On suppose que
+          Soient \((\vE,\vH)\) une solution du problème de Maxwell-Helmholtz harmonique \eqref{eq:imp_fourier:intro:maxwell_harmonique:form_cea} dans la couche avec les conditions aux limites \(\vE_{t|z=-d} = 0\) et \(\vE_{t|z=0} = \vE_0\).
+  
+          Si on suppose que
           \begin{align*}
             k_3     & \not = 0, \\
             k_3d    & \not = \frac{\pi}{2}+n\pi\,, \forall n \in \NN.
@@ -355,19 +357,16 @@
           % \begin{REM}
           %   Remarquons que ces conditions sont toujours vérifiées si \(\eps\mu\not\in\RR_+\).
           % \end{REM}
-          Alors
+          Alors il existe une unique solution, et cette solution conduit à
           \begin{align*}
-            \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y)\hat{\vJ_t}(k_x,k_y,0^-).
+            \hat \vE_t(k_x,k_y,0^-) &= \hat \mZ(k_x,k_y)\hat{\vJ_t}(k_x,k_y,0^-),
           \end{align*}
+          où \(\hat \mZ(k_x,k_y)\) est donné dans la définition précèdente.
         \end{prop}
 
         \begin{proof}
-          Grâce au lemme \eqref{lem:plan:continuite_impedance}, on sait donc que l'on peut uniquement se placer dans la couche.
-\begin{REM}
-  surligné. Lourd ?
-\end{REM}
 
-          Il existe une répartition des constantes \((c_1,c_2,c_3,c_4)\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\).
+          Dans la couche, étant donné les expressions des champs, il existe une répartition des constantes \((c_1,c_2,c_3,c_4)\) telles que \((c_i,c_j)\) s'exprime en fonction de \((c_k,c_l)\).
           Ici nous choisissons
           %Nous n'avons donc pas besoin de distinguer les vecteurs indépendants de \(z\) mais qui sont différents dans chaque couche, dans l'expression des champs tangentiels. Nous posons donc
           \begin{align*}
@@ -468,13 +467,8 @@
             \\
             &= i\eta_r\frac{\tan\left(k_3d\right)}{k k_3}\left(k^2\mI + \hat{\mLD}\right).
           \end{align*}
-\begin{REM}
-  c'est ça le résulat non? pourquoi il n'est pas énoncé ? il faut le mettre dans la proposition!!!  
-\end{REM}
-\begin{REP}
-  Olivier: c'est ce qu'on a fait plus haut: une def donne la valeur de ce Z, et la prop lie Et avec Z Jt.
-  Est-tu d'accord avec moi ?
-\end{REP}
+
+          On a démontré la propositon \ref{prop:imp_plan:symb_z:1c} avec l'expression de la définition \ref{def:plan:impedance:1c}.
         \end{proof}
         %On remarque que \(\det(\mat{Z}) = i\frac{\eta^2}{k_3}\eta\tan(k_3d)\) et donc pour un matériau \((\eps,\mu,d)\) donné, l'opérateur d'impédance n'est pas inversible pour tous  \((k_x,k_y) \in \RR^2, n \in \NN\), \(k_x^2+k_y^2 =  \w^2\eps\mu - \frac{1}{d^2}\left(\frac{\pi}{2} + n\pi\right)^2\), qui ne peut être vérifié que si \(\eps\mu\) est réel\footnote{Comme \(\eps, \mu\) sont à partie réelle (resp. imaginaire) strictement positive (resp. négative), alors ce n'est vrai pour les matériaux à partie imaginaire nulle.}.
         Dans l'article de \cite{marceaux_high-order_2000}, la matrice d'impédance est telle que, soit \(\vK = \vn \pvect \vE\) alors on a

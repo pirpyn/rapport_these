@@ -1,7 +1,10 @@
 % cf review.tex
+\usepackage{version}
+% \newenvironment{REM}{\GenericError{STOP}{REM non resolu}}{}
+% \newenvironment{REP}{\GenericError{STOP}{REP non resolu}}{}
 
-\newenvironment{REM}{\GenericError{STOP}{REM non resolu}}{}
-\newenvironment{REP}{\GenericError{STOP}{REP non resolu}}{}
+\excludeversion{REM}
+\excludeversion{REP}
 
 % Geometry finale
 \geometry{%
