@@ -63,13 +63,13 @@ jobs:
 
               exit 0
               EOF
-              bash tmp.bash these_payen_2019.tex > mono.tex
-      - name: Upload Mono TeX File PDF
+              bash tmp.bash thesis_payen.tex > thesis_payen.mono.tex
+      - name: Upload Mono TeX Archive
         uses: actions/upload-artifact@v2
         with:
           name: Monotex
           path: |
-            mono.tex
+            thesis_payen.mono.tex
             bib/
             images/
             csv/

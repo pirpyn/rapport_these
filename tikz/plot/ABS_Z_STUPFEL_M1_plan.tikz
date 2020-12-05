@@ -1,0 +1,46 @@
+\tikzsetnextfilename{STUPFEL_ABS_Z_CALDERON_CIOE.TM}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={Polarisation TM},
+            ylabel={SER (dB)},
+            xlabel={\(k_x / k_0 \)},
+            width=0.4\textwidth,
+            xmin=0,
+            xmax=1.8,
+            ymin=0.14,
+            ymax=0.34,
+            restrict y to domain=0:0.5,
+            mark repeat=20,
+            legend pos=outer north east
+        ]
+        \addplot [color=black,mark=square*] table [col sep=comma, x={kx/k0}, y={Exact}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
+        \addplot [color=\ccio,mark=x] table [col sep=comma, x={kx/k0}, y={CI0}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
+        \addplot [color=\ccit,mark=diamond*] table [col sep=comma, x={kx/k0}, y={CI3}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
+        \addplot [color=\ccitc,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
+    \end{axis}
+\end{tikzpicture}
+\tikzsetnextfilename{STUPFEL_ABS_Z_CALDERON_CIOE.TE}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={Polarisation TE},
+            ylabel={},
+            xlabel={\(k_x / k_0 \)},
+            width=0.4\textwidth,
+            xmin=0,
+            xmax=1.8,
+            ymin=0.203,
+            ymax=0.214,
+            restrict y to domain=0.1:0.3,
+            mark repeat=20,
+            legend pos=outer north east
+        ]
+        \addplot [color=black,mark=square*] table [col sep=comma, x={kx/k0}, y={Exact}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
+        \addlegendentry{Exact};
+        \addplot [color=\ccio,mark=x] table [col sep=comma, x={kx/k0}, y={CI0}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
+        \addlegendentry{CI0};
+        \addplot [color=\ccit,mark=diamond*] table [col sep=comma, x={kx/k0}, y={CI3}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
+        \addlegendentry{CI3};
+        \addplot [color=\ccitc,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
+        \addlegendentry{CI3\textsubscript{CSU}};
+    \end{axis}
+\end{tikzpicture}

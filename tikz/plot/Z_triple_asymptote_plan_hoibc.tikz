@@ -16,10 +16,10 @@
         \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/triple_asymptote/triple_asymptote.z_ex.MODE_2_TYPE_P.csv};
         % \addlegendentry{Exact};
 
-        \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.11)}] {csv/triple_asymptote/triple_asymptote.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=\ccio,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.11)}] {csv/triple_asymptote/triple_asymptote.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
         % \addlegendentry{CI0};
 
-        \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.11)}] {csv/triple_asymptote/triple_asymptote.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=\ccit,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.11)}] {csv/triple_asymptote/triple_asymptote.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
         % \addlegendentry{CI3};
 
         \addplot [color=cyan,mark=pentagon*] table [col sep=comma, x={s1}, y={Im(z_ibc7.11)}] {csv/triple_asymptote/triple_asymptote.z_ibc.IBC_ibc7_SUC_F_MODE_2_TYPE_P.csv};
@@ -44,10 +44,10 @@
         \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/triple_asymptote/triple_asymptote.z_ex.MODE_2_TYPE_P.csv};
         \addlegendentry{Exact};
 
-        \addplot [color=blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.22)}] {csv/triple_asymptote/triple_asymptote.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=\ccio,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.22)}] {csv/triple_asymptote/triple_asymptote.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
         \addlegendentry{CI0};
 
-        \addplot [color=red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.22)}] {csv/triple_asymptote/triple_asymptote.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
+        \addplot [color=\ccit,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.22)}] {csv/triple_asymptote/triple_asymptote.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
         \addlegendentry{CI3};
 
         \addplot [color=cyan,mark=pentagon*] table [col sep=comma, x={s1}, y={Im(z_ibc7.22)}] {csv/triple_asymptote/triple_asymptote.z_ibc.IBC_ibc7_SUC_F_MODE_2_TYPE_P.csv};

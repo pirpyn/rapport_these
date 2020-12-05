@@ -14,9 +14,9 @@
             legend pos=outer north east
         ]
         \addplot [color=black,mark=square*] table [col sep=comma, x={theta}, y={reference}] {csv/SER/ser_mono_cone_11352_elt.TM.csv};
-        \addplot [color=blue,mark=x] table [col sep=comma, x={theta}, y={CI0}] {csv/SER/ser_mono_cone_11352_elt.TM.csv};
-        \addplot [color=red,mark=diamond*] table [col sep=comma, x={theta}, y={CI3}] {csv/SER/ser_mono_cone_11352_elt.TM.csv};
-        \addplot [color=pink,mark=+] table [col sep=comma, x={theta}, y={CI3+CSU}] {csv/SER/ser_mono_cone_11352_elt.TM.csv};
+        \addplot [color=\ccio,mark=x] table [col sep=comma, x={theta}, y={CI0}] {csv/SER/ser_mono_cone_11352_elt.TM.csv};
+        \addplot [color=\ccit,mark=diamond*] table [col sep=comma, x={theta}, y={CI3}] {csv/SER/ser_mono_cone_11352_elt.TM.csv};
+        \addplot [color=\ccitc,mark=+] table [col sep=comma, x={theta}, y={CI3+CSU}] {csv/SER/ser_mono_cone_11352_elt.TM.csv};
     \end{axis}
 \end{tikzpicture}
 \tikzsetnextfilename{SER_mono_cone_11352_elt.TE}
@@ -31,16 +31,16 @@
             ymin=-25,
             ymax=10,
             restrict y to domain=-25:10,
-            mark repeat=30,
+            mark repeat=20,
             legend pos=outer north east
         ]
         \addplot [color=black,mark=square*] table [col sep=comma, x={theta}, y={reference}] {csv/SER/ser_mono_cone_11352_elt.TE.csv};
         \addlegendentry{Référence};
-        \addplot [color=blue,mark=x] table [col sep=comma, x={theta}, y={CI0}] {csv/SER/ser_mono_cone_11352_elt.TE.csv};
+        \addplot [color=\ccio,mark=x] table [col sep=comma, x={theta}, y={CI0}] {csv/SER/ser_mono_cone_11352_elt.TE.csv};
         \addlegendentry{CI0};
-        \addplot [color=red,mark=diamond*] table [col sep=comma, x={theta}, y={CI3}] {csv/SER/ser_mono_cone_11352_elt.TE.csv};
+        \addplot [color=\ccit,mark=diamond*] table [col sep=comma, x={theta}, y={CI3}] {csv/SER/ser_mono_cone_11352_elt.TE.csv};
         \addlegendentry{CI3};
-        \addplot [color=pink,mark=+] table [col sep=comma, x={theta}, y={CI3+CSU}] {csv/SER/ser_mono_cone_11352_elt.TE.csv};
+        \addplot [color=\ccitc,mark=+] table [col sep=comma, x={theta}, y={CI3+CSU}] {csv/SER/ser_mono_cone_11352_elt.TE.csv};
         \addlegendentry{CI3\textsubscript{CSU}};
     \end{axis}
 \end{tikzpicture}

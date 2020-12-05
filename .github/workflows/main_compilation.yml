@@ -27,10 +27,10 @@ jobs:
       - name: Append date to pdf
         run: |
             date="$(date +%Y_%m_%d-%Hh%Mm%Ss)";
-            file="payen_thesis.${date}.pdf";
-            cp build/these_payen_2019.pdf ${file};
+            file="thesis_payen.${date}.pdf";
+            cp build/thesis_payen.pdf ${file};
       - name: Upload Latex PDF
         uses: actions/upload-artifact@v2
         with:
-          name: payen_thesis_2019
-          path: payen_thesis.*.pdf
+          name: thesis_payen
+          path: thesis_payen.*.pdf

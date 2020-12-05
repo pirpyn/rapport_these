@@ -34,26 +34,26 @@
 
 % fonctions phij
 \coordinate (phi) at ($(x1)-(ol)$);
-\draw [->,red] (x1) -- (phi) node [sloped,midway,above] {\(\vect{\phi_j}(\vx)\)};
+\draw [->,\ccit] (x1) -- (phi) node [sloped,midway,above] {\(\vect{\phi_j}(\vx)\)};
 
 % fonctions pj = -n x phij
 \path let \p1=(phi) in coordinate (p) at (\y1,-\x1);
-\draw [->,black!60!green] (x1) -- ($(x1)+(p)$) node [midway,left] {\(\vect{p_j}(\vx)\)};
+\draw [->,black!60!\cciou] (x1) -- ($(x1)+(p)$) node [midway,left] {\(\vect{p_j}(\vx)\)};
 
 % fonctions qj
 \coordinate (vj) at ($(ou)!0.5!(od)$); %point milieu de ou od
 \coordinate (vj) at ($(vj)-(ou)$); % vecteur de ou a vj
-\draw [->,black!60!blue] (x1) -- ($(x1)+(vj)$) node [midway,right] {\(\vect{q_j}(\vx)\)};
+\draw [->,black!60!\ccio] (x1) -- ($(x1)+(vj)$) node [midway,right] {\(\vect{q_j}(\vx)\)};
 
 % idem deuxieme triangle
 
-\draw [->,red] (x2) -- (or) node [sloped,midway,below] {\(\vect{\phi_j}(x')\)};
+\draw [->,\ccit] (x2) -- (or) node [sloped,midway,below] {\(\vect{\phi_j}(x')\)};
 
 \coordinate (phi) at ($(or)-(x2)$);
 \path let \p1=(phi) in coordinate (p) at (\y1,-\x1);
 \coordinate (xp) at ($(x2)+(p)$);
-\draw [->,black!60!green] (x2) -- (xp) node [midway,left] {\(\vect{p_j}(x')\)};
+\draw [->,black!60!\cciou] (x2) -- (xp) node [midway,left] {\(\vect{p_j}(x')\)};
 
 \coordinate (vj) at ($(ou)!0.2!(od)$); % poit à 0.2 de ou vers od
 \coordinate (vj) at ($(vj)-(ou)$);
-\draw [->,black!60!blue] (x2) -- ($(x2)-(vj)$) node [midway,right] {\(\vect{q_j}(x')\)};
+\draw [->,black!60!\ccio] (x2) -- ($(x2)-(vj)$) node [midway,right] {\(\vect{q_j}(x')\)};

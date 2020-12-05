@@ -12,11 +12,11 @@
         ]
         \addplot [black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.11)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_1_TYPE_C_+3.000E-02m.csv};
 
-        \addplot [blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.11)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc0_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
+        \addplot [\ccio,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.11)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc0_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
 
-        \addplot [red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.11)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc3_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
+        \addplot [\ccit,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.11)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc3_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
 
-        \addplot [violet,mark=triangle*] table [col sep=comma, x={s1}, y={Im(z_ibc6.11)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc6_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
+        \addplot [\ccis,mark=triangle*] table [col sep=comma, x={s1}, y={Im(z_ibc6.11)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc6_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
     \end{axis}
 \end{tikzpicture}
 \tikzsetnextfilename{Z_HOPPE_62_cylindre_hoibc_mode_1.TE}
@@ -34,13 +34,13 @@
         \addplot [black,mark=square*] table [col sep=comma, x={s1}, y={Im(z_ex.22)}] {csv/HOPPE_62/HOPPE_62.z_ex.MODE_1_TYPE_C_+3.000E-02m.csv};
         \addlegendentry{Exact};
 
-        \addplot [blue,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.22)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc0_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
+        \addplot [\ccio,mark=x] table [col sep=comma, x={s1}, y={Im(z_ibc0.22)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc0_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
         \addlegendentry{CI0};
 
-        \addplot [red,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.22)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc3_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
+        \addplot [\ccit,mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.22)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc3_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
         \addlegendentry{CI3};
 
-        \addplot [violet,mark=triangle*] table [col sep=comma, x={s1}, y={Im(z_ibc6.22)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc6_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
+        \addplot [\ccis,mark=triangle*] table [col sep=comma, x={s1}, y={Im(z_ibc6.22)}] {csv/HOPPE_62/HOPPE_62.z_ibc.IBC_ibc6_SUC_F_MODE_1_TYPE_C_+3.000E-02m.csv};
         \addlegendentry{CI6};
     \end{axis}
 \end{tikzpicture}
