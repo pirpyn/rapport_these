@@ -3,8 +3,11 @@
         "**/.git": true,
         "**/build/*.[^p]*": true,
         "**/build/*.ph*": true,
-        "**/csv/**/*.csv" : true,
+        "**/csv/**/*.csv" : false,
         "**/csv/**/*.coeff.txt" : true,
+    },
+    "files.associations": {
+        "*.tikz" : "latex"
     },
     "latex-workshop.latex.outDir": "%DIR%/build",
     "latex-workshop.latex.autoBuild.run": "never",

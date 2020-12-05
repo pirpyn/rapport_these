@@ -1,0 +1,46 @@
+\tikzsetnextfilename{SER_bis_sphere_4240_elt.TM}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={Polarisation TM},
+            ylabel={SER (dB)},
+            xlabel={\(\theta_{obs}\) (deg)},
+            width=0.4\textwidth,
+            xmin=0,
+            xmax=180,
+            ymin=-27,
+            ymax=25,
+            restrict y to domain=-30:30,
+            mark repeat=20,
+            legend pos=outer north east
+        ]
+        \addplot [color=black,mark=square*] table [col sep=comma, x={theta}, y={Mie}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
+        \addplot [color=blue,mark=x] table [col sep=comma, x={theta}, y={CI0}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={theta}, y={CI3}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
+        \addplot [color=pink,mark=+] table [col sep=comma, x={theta}, y={CI3+CSU}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
+    \end{axis}
+\end{tikzpicture}
+\tikzsetnextfilename{SER_bis_sphere_4240_elt.TE}
+\begin{tikzpicture}[scale=1]
+    \begin{axis}[
+            title={Polarisation TE},
+            ylabel={},
+            xlabel={\(\theta_{obs}\) (deg)},
+            width=0.4\textwidth,
+            xmin=0,
+            xmax=180,
+            ymin=0,
+            ymax=20,
+            restrict y to domain=0:25,
+            mark repeat=30,
+            legend pos=outer north east
+        ]
+        \addplot [color=black,mark=square*] table [col sep=comma, x={theta}, y={Mie}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
+        \addlegendentry{Mie};
+        \addplot [color=blue,mark=x] table [col sep=comma, x={theta}, y={CI0}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
+        \addlegendentry{CI0};
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={theta}, y={CI3}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
+        \addlegendentry{CI3};
+        \addplot [color=pink,mark=+] table [col sep=comma, x={theta}, y={CI3+CSU}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
+        \addlegendentry{CI3\textsubscript{CSU}};
+    \end{axis}
+\end{tikzpicture}
