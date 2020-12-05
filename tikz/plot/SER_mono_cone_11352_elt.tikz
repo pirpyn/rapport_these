@@ -3,7 +3,7 @@
     \begin{axis}[
             title={Polarisation TM},
             ylabel={SER (dB)},
-            xlabel={\(\theta_{obs}\) (deg)},
+            xlabel={\(\theta_{inc}\) (deg)},
             width=0.4\textwidth,
             xmin=0,
             xmax=180,
@@ -24,7 +24,7 @@
     \begin{axis}[
             title={Polarisation TE},
             ylabel={},
-            xlabel={\(\theta_{obs}\) (deg)},
+            xlabel={\(\theta_{inc}\) (deg)},
             width=0.4\textwidth,
             xmin=0,
             xmax=180,
