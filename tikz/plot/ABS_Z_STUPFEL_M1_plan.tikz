@@ -32,7 +32,14 @@
             ymax=0.214,
             restrict y to domain=0.1:0.3,
             mark repeat=20,
-            legend pos=outer north east
+            legend pos=outer north east,
+            y tick label style={
+                /pgf/number format/.cd,
+                    fixed,
+                    fixed zerofill,
+                    precision=3,
+                /tikz/.cd
+            },
         ]
         \addplot [color=black,mark=square*] table [col sep=comma, x={kx/k0}, y={Exact}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
         \addlegendentry{Exact};
