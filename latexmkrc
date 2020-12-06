@@ -7,7 +7,7 @@ $ENV{'TZ'}='Europe/France';
     'remarques-finales-bruno.tex',
     'remarques-finales-these.tex',
     'factorisation-determinant-2couches.tex',
-    'these_payen_2019.tex'
+    'thesis_payen.tex'
 );
 
 # We want a pdf, dvi is so old school

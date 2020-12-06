@@ -73,14 +73,16 @@
   \newcommand{\yb}{0.0}
   \newcommand{\xc}{0.0}
   \newcommand{\yc}{3.0}
+  \begin{figure}[h!tb]
     \begin{center}
       \tikzsetnextfilename{fonbasloc_triangle_loc}
       \begin{tikzpicture}[scale=1]
         \input{tikz/schema/fonbasloc_triangle_loc.tikz}
       \end{tikzpicture}
     \end{center}
-    \captionof{figure}{Triangles, arêtes et nœuds définis par l'arête \(\uj\)}
+    \caption{Triangles, arêtes et nœuds définis par l'arête \(\uj\)}
     \label{fig:form_int:fon_base:tri}
+  \end{figure}
 
   On se place dans le repère local au triangle, on fait donc le changement de coordonnées suivant:
   \begin{align*}
@@ -94,7 +96,7 @@
     Ces fonctions ont été introduites par \cite{raviart_mixed_1977}.
     Nous présentons ici les fonctions Raviart-Thomas de degré 0, c'est-à-dire telles que les degrés de liberté soient au milieu de chaque arête (voir \cite[eq.~(3.10)]{raviart_mixed_1977}).
 
-    \begin{minipage}{\textwidth}
+    \begin{figure}[!htb]
       \begin{minipage}{0.329\textwidth}
           % Les commandes qui suivent servent pour les 4 prochains schémas
           \setnodes{0}{0}{3}{0}{0}{3}
@@ -132,9 +134,9 @@
             \end{equation*}
           \end{center}
       \end{minipage}
-      \captionof{figure}{Fonctions \(\phij\) locales}
+      \caption[Fonctions de Raviart-Thomas]{Fonctions \(\phij\) locales}
       \label{fig:form_int:fon_base:phi}
-    \end{minipage}
+    \end{figure}
 
     \begin{prop}
       Les fonctions \(\phij\) sont dans \(\Hdiv(\Gamma_h)\).
@@ -160,7 +162,7 @@
 
     Une première famille est celle des \(\pj=-\vn\pvect\phij\), où \(\vn\) est la normale extérieure au maillage. 
 
-    \begin{minipage}{\textwidth}
+    \begin{figure}[!htb]
       \begin{minipage}{0.329\textwidth}
           % Les commandes qui suivent servent pour les 4 prochains schémas
           \setnodes{0}{0}{3}{0}{0}{3}
@@ -198,9 +200,11 @@
             \end{equation*}
           \end{center}
       \end{minipage}
-      \captionof{figure}{Fonctions \(\pj\) locales}
+      \caption[Fonctions de Nédélec]{Fonctions \(\pj\) locales}
       \label{fig:form_int:fon_base:p}
-    \end{minipage}
+    \end{figure}
+
+    \FloatBarrier
 
     \begin{prop}
       Les fonctions \(\pj\) sont dans \(\Hrot(\Gamma_h)\).
@@ -224,7 +228,7 @@
     En accord avec l'article de \cite[annexe~B]{stupfel_implementation_2015}, nous les divisions par 2 fois l'aire de l'élément.
     Ainsi, la matrice de passage (définie plus tard) sera plus simple.
 
-    \begin{minipage}{\textwidth}
+    \begin{figure}[!htb]
       \begin{minipage}{0.329\textwidth}
           % Les commandes qui suivent servent pour les 4 prochains schémas
           \setnodes{0}{0}{3}{0}{0}{3}
@@ -262,14 +266,17 @@
             \end{equation*}
           \end{center}
       \end{minipage}
-      \captionof{figure}{Fonctions \(\qj\) locales}
+      \caption[Fonctions de Bendali modifiées]{Fonctions \(\qj\) locales}
       \label{fig:form_int:fon_base:q}
-    \end{minipage}
+    \end{figure}
 
     \begin{prop}
       Les fonctions \(\qj\) ne sont pas dans \(\Hrot\) ni dans \(\Hdiv\).
     \end{prop}
     \begin{proof}
+      \begin{TODO}
+        A faire
+      \end{TODO}
       La composante tangentielle à l'arête le long d'une arête n'est pas nulle.
 \begin{REM}
   ???

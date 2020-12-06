@@ -40,6 +40,23 @@
         \end{tcolorbox}%
     }%
 
+    \newcounter{TODO}
+    \newenvironment{TODO}[1][\theTODO]
+        {%
+            \stepcounter{TODO}
+            \hypertarget{TODO#1}{}%
+            \pdfbookmark[0]{TODO \theTODO}{TODO#1}
+            \begin{tcolorbox}[%
+                    title={TODO \theTODO},%
+                    colback=blue!30!white,%
+                    colframe=blue!75!black,%
+                ]
+        }
+        {
+            \end{tcolorbox}%
+            %
+        }%
+
 % Affiche devant chaque ligne en mode texte, le numéro de la ligne pour le corriger plus efficacement
 \usepackage{lineno}
     \linenumbers
