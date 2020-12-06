@@ -179,7 +179,8 @@ Connaissant les expressions des matrices \(\hat\mLD,\hat\mLR\) introduites dans 
 
 \subsection{Choix de la méthode numérique pour résoudre la minimisation sous contraintes}
 
-  Des méthodes basées sur le gradient sont adaptées, car la fonction est dérivable pour tout \(X\) et les contraintes se comportent comme des polynômes dépendant uniquement des composantes de \(X\). Nous avons donc fait le choix de la méthode \gls{acr-sqp} pour les raisons suivantes:
+  Des méthodes basées sur le gradient sont adaptées, car la fonction est dérivable pour tout \(X\) et les contraintes se comportent comme des polynômes dépendant uniquement des composantes de \(X\).
+  Nous avons donc fait le choix de la méthode \gls{acr-sqp} pour les raisons suivantes:
  
   \begin{itemize}
     \item elle est éprouvée depuis \cite{kraft_software_1988} et des sources Fortran à jour sont disponibles à \url{https://github.com/jacobwilliams/slsqp}, ce qui est capital pour l'intégrer dans un code industriel ;
@@ -187,8 +188,43 @@ Connaissant les expressions des matrices \(\hat\mLD,\hat\mLR\) introduites dans 
     \item elle accepte des contraintes non linéaires, donc elle est adaptée à nos CSU.
   \end{itemize}
 
-% \subsection{Résultats numérique avec contraintes}
+  \subsection{Résultats numérique avec contraintes}
 
-  % \begin{REM}
-  %   Quelques résultats avec contraintes
-  % \end{REM}
+  La figure \ref{fig:imp_fourier:plan:stupfel:hoibc_vs_csu} montre un empilement où les coefficients déterminés sans contraintes ne vérifient pas la \CSU[3]{CI3} de la définition \ref{def:csu:ci3-3}, et où on peut observer une différence entre l'opérateur de Calderón et son approximation avec les coefficients calulés en vérifiant cette CSU.
+
+  \begin{figure}[!hbt]
+    \centering
+    \input{tikz/plot/ABS_Z_STUPFEL_M1_plan.tikz}
+    \caption[Module de la matrice d'impédance pour le matériau M1, perte de précision à cause de la CSU]{ Module des coefficients diagnonaux de \(\hat\mZ\) pour \(\eps = 1-i\), \(\mu = 1\), \(d=5\)cm, \(f=200\)MHz.}
+    \label{fig:imp_fourier:plan:stupfel:hoibc_vs_csu}
+  \end{figure}
+
+  \begin{TODO}
+    Mettre coeffs figure \ref{fig:imp_fourier:plan:stupfel:hoibc_vs_csu}
+  \end{TODO}
+
+  \FloatBarrier
+
+  La figure \ref{fig:imp_fourier:plan:soudais:hoibc_csu} montre l'effet des matériaux sans perte sur la minimisation.
+  Nous complétons la figure \ref{fig:imp_fourier:plan:soudais:hoibc_csu} où nous avions déjà observé la précisons de la CI3, dont les coefficients étaient calculés sans contraintes.
+  L'on observe bien que si l'on n'adapte pas la minimsation pour le cas de ce matériau sans perte, en fixant les coefficients \(b_1\) et \(b_2\), la matrice approchée n'est pas du tout une bonne approximation de l'opérateur de Calderón.
+
+  \begin{figure}[!hbt]
+    \centering
+    \input{tikz/plot/Z_SOUDAIS_plan_hoibc_suc.tikz}
+    \caption[Partie imaginaire de l'opérateur de Calderón, comparé avec les approximations CI0, CI3, CI3 avec CSU, CI3 avec CSU adaptée pour une couche plane de matériau sans pertes de P.~Soudais]{Partie imaginaire des coefficients diagonaux de \(\hat\mZ\) pour \(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
+    \label{fig:imp_fourier:plan:soudais:hoibc_csu}
+  \end{figure}
+
+  \begin{table}[!hbt]
+    \centering
+    \tablecoeff[0.49]{\hyperlink{ci0}{CI0}}{csv/SOUDAIS/SOUDAIS.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
+    \tablecoeff[0.49]{\hyperlink{ci3}{CI3}}{csv/SOUDAIS/SOUDAIS.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
+    \begin{TODO}
+      Ajouter coeff CI3+CSU, CI3*+CSU
+    \end{TODO}
+    \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:soudais:hoibc_csu}}
+    \label{tab:imp_fourier:plan:soudais:hoibc_csu}
+  \end{table}
+
+  \FloatBarrier

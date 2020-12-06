@@ -14,9 +14,9 @@
             legend pos=outer north east
         ]
         \addplot [color=black,mark=square*] table [col sep=comma, x={theta}, y={Mie}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
-        \addplot [color=\ccio,mark=x] table [col sep=comma, x={theta}, y={CI0}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
-        \addplot [color=\ccit,mark=diamond*] table [col sep=comma, x={theta}, y={CI3}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
-        \addplot [color=\ccitc,mark=+] table [col sep=comma, x={theta}, y={CI3+CSU}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
+        \addplot [color=blue,mark=x] table [col sep=comma, x={theta}, y={CI0}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={theta}, y={CI3}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
+        \addplot [color=Gray,mark=+] table [col sep=comma, x={theta}, y={CI3+CSU}] {csv/SER/ser_bis_sphere_4240_elt.TM.csv};
     \end{axis}
 \end{tikzpicture}
 \tikzsetnextfilename{SER_bis_sphere_4240_elt.TE}
@@ -36,11 +36,11 @@
         ]
         \addplot [color=black,mark=square*] table [col sep=comma, x={theta}, y={Mie}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
         \addlegendentry{Mie};
-        \addplot [color=\ccio,mark=x] table [col sep=comma, x={theta}, y={CI0}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
+        \addplot [color=blue,mark=x] table [col sep=comma, x={theta}, y={CI0}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
         \addlegendentry{CI0};
-        \addplot [color=\ccit,mark=diamond*] table [col sep=comma, x={theta}, y={CI3}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={theta}, y={CI3}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
         \addlegendentry{CI3};
-        \addplot [color=\ccitc,mark=+] table [col sep=comma, x={theta}, y={CI3+CSU}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
+        \addplot [color=Gray,mark=+] table [col sep=comma, x={theta}, y={CI3+CSU}] {csv/SER/ser_bis_sphere_4240_elt.TE.csv};
         \addlegendentry{CI3\textsubscript{CSU}};
     \end{axis}
 \end{tikzpicture}

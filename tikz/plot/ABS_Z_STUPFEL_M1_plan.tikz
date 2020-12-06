@@ -14,9 +14,9 @@
             legend pos=outer north east
         ]
         \addplot [color=black,mark=square*] table [col sep=comma, x={kx/k0}, y={Exact}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
-        \addplot [color=\ccio,mark=x] table [col sep=comma, x={kx/k0}, y={CI0}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
-        \addplot [color=\ccit,mark=diamond*] table [col sep=comma, x={kx/k0}, y={CI3}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
-        \addplot [color=\ccitc,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
+        \addplot [color=blue,mark=x] table [col sep=comma, x={kx/k0}, y={CI0}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={kx/k0}, y={CI3}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
+        \addplot [color=Gray,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
     \end{axis}
 \end{tikzpicture}
 \tikzsetnextfilename{STUPFEL_ABS_Z_CALDERON_CIOE.TE}
@@ -43,11 +43,11 @@
         ]
         \addplot [color=black,mark=square*] table [col sep=comma, x={kx/k0}, y={Exact}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
         \addlegendentry{Exact};
-        \addplot [color=\ccio,mark=x] table [col sep=comma, x={kx/k0}, y={CI0}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
+        \addplot [color=blue,mark=x] table [col sep=comma, x={kx/k0}, y={CI0}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
         \addlegendentry{CI0};
-        \addplot [color=\ccit,mark=diamond*] table [col sep=comma, x={kx/k0}, y={CI3}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
+        \addplot [color=red,mark=diamond*] table [col sep=comma, x={kx/k0}, y={CI3}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
         \addlegendentry{CI3};
-        \addplot [color=\ccitc,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
+        \addplot [color=Gray,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
         \addlegendentry{CI3\textsubscript{CSU}};
     \end{axis}
 \end{tikzpicture}

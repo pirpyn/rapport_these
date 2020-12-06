@@ -605,18 +605,8 @@ curieux
 
       \FloatBarrier
 
-      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériaux sans perte où l'on remarque une asymptote, que nous déterminerons plus tard.
-      % \begin{REM}[noasymptote]
-      %   C'est à expliquer (la signification d'une asymptote). Voir plus \hyperlink{REMasymptote}{bas}.
-      % \end{REM}
-      La CI3 capture cette asymptote grâce à son dénominateur et est donc bien meilleure que la condition de Leontovich.
-
-\begin{REM}
-  elle est même impressionnante !!!
-\end{REM}
-\begin{REP}
-  Commentaire non constructif
-\end{REP}
+      La figure \ref{fig:imp_fourier:plan:soudais:hoibc} permet de vérifier les résultats de \cite[p.~11]{soudais_3d_2017} pour une couche de matériaux sans perte où l'on remarque une asymptote.
+      Si l'on n'impose pas de contrainte, la CI3 capture cette asymptote grâce à son dénominateur et approche bien l'opérateur de Calderón.
 
       \begin{figure}[!hbt]
           \centering
@@ -624,16 +614,16 @@ curieux
           \caption[Partie imaginaire de l'opérateur de Calderón, comparé avec les approximations CI0, CI3 pour une couche plane de matériau sans pertes de P.~Soudais]{Partie imaginaire des coefficients diagonaux de \(\hat\mZ\) pour \(\eps = 4, \mu = 1, d=0.035\text{m}, f=12\text{GHz}\)}
           \label{fig:imp_fourier:plan:soudais:hoibc}
       \end{figure}
+
       \begin{table}[!hbt]
         \centering
         \tablecoeff[0.49]{\hyperlink{ci0}{CI0}}{csv/SOUDAIS/SOUDAIS.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
         \tablecoeff[0.49]{\hyperlink{ci3}{CI3}}{csv/SOUDAIS/SOUDAIS.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
-        \begin{TODO}
-          Ajouter coeff CI3+CSU, CI3*+CSU
-        \end{TODO}
         \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:soudais:hoibc}}
         \label{tab:imp_fourier:plan:soudais:hoibc}
       \end{table}
+
+      \FloatBarrier
 
       % On voit sur la figure \ref{fig:reflex_fourier:plan:soudais:hoibc} que cela va de même pour la matrice de réflexion. On a vu que la matrice \(\hat\mR(k_x,k_y)\) diverge pour \((k_x,k_y)\simeq(1.4k_0,0)\), et on remarque que la CI3 reproduit ce phénomène.
       % \begin{figure}[!hbt]
@@ -643,24 +633,14 @@ curieux
       %     \label{fig:reflex_fourier:plan:soudais:hoibc}
       % \end{figure}
 
-      \begin{figure}[!hbt]
-        \centering
-        \input{tikz/plot/ABS_Z_STUPFEL_M1_plan.tikz}
-        \caption[Module de la matrice d'impédance pour le matériau M1, perte de précision à cause de la CSU]{ Module des coefficients diagnonaux de \(\hat\mZ\) pour \(\eps = 1-i\), \(\mu = 1\), \(d=5\)cm, \(f=200\)MHz}
-        \label{fig:imp_fourier:plan:stupfel:hoibc_vs_csu}
-      \end{figure}
-
-      La figure \ref{fig:imp_fourier:plan:stupfel:hoibc_vs_csu} montre un empilement où les coefficients déterminés sans contraintes ne vérifient pas les CSU, et où on peut observer une différence entre l'opérateur de Calderón et son approximation avec ces coefficients.
-
-      \FloatBarrier
-
-      La figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc} montre la limite de la CI3 pour capturer trois asymptotes. Pour cela, il faudrait utiliser une CI d'ordre au moins 6 sur l'opérateur agissant sur \(\vE_t\). La CI3 n'est donc une bonne CIOE que si le nombre d'asymptotes est inférieur à 1, ce que l'on peut calculer connaissant l'empilement (voir proposition \ref{prop:imp_plan:symb_z:1c}).
+      La figure \ref{fig:imp_fourier:plan:triple_asymptote:hoibc} montre la limite de la CI3 pour capturer trois asymptotes. Pour cela, il faudrait utiliser une CI d'ordre au moins 6 sur l'opérateur agissant sur \(\vE_t\).
+      La CI3 n'est donc une bonne CIOE que si le nombre d'asymptotes est inférieur à 1, ce que l'on peut calculer connaissant l'empilement (voir proposition \ref{prop:imp_plan:symb_z:1c}).
 
       Si la matrice d'impédance exacte possède plusieurs asymptotes, il faut autant de pôles à la CIOE pour être une bonne approximation.
 
       L'expression d'une CIOE vérifiant ce critère est la \hyperlink{ci7}{CI7}
       \begin{equation}
-        \left(\oI + \sum_{i=1}^3 \left(d_{i} \left(\frac{\LD}{k_0^2}\right)^i + e_{i} \left(-\frac{\LR}{k_0^2}\right)^i \right)\right)\vE_t = \left(a_0 \oI + \sum_{i=1}^3 \left(b_{i} \left(\frac{\LD}{k_0^2}\right)^i + c_{i} \left(-\frac{\LR}{k_0^2}^i\right) \right)\right)\vJ.
+        \left(\oI + \sum_{i=1}^3 \left(d_{i} \left(\frac{\LD}{k_0^2}\right)^i + e_{i} \left(-\frac{\LR}{k_0^2}\right)^i \right)\right)\vE_t = \left(a_0 \oI + \sum_{i=1}^3 \left(b_{i} \left(\frac{\LD}{k_0^2}\right)^i + c_{i} \left(-\frac{\LR}{k_0^2}\right)^i \right)\right)\vJ.
       \end{equation}
 
       \begin{figure}[!hbt]
@@ -669,6 +649,7 @@ curieux
           \caption[Partie imaginaire de l'opérateur de Calderón, comparé avec les approximations CI0, CI3 pour une couche plane de matériau sans pertes, avec triple asymptote]{Partie imaginaire des coefficients diagonaux de \(\hat\mZ\) pour \(\eps = 4, \mu = 1, d=0.2\text{m}, f=1\text{GHz}\)}
           \label{fig:imp_fourier:plan:triple_asymptote:hoibc}
       \end{figure}
+
       \begin{table}[!hbt]
         \centering
         \begin{minipage}[t]{0.49\textwidth}
