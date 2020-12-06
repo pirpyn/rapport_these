@@ -2,7 +2,7 @@
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TM},
-            ylabel={SER (dB)},
+            ylabel={\(\abs{\hat\mZ(k_x,0)}\)},
             xlabel={\(k_x / k_0 \)},
             width=0.4\textwidth,
             xmin=0,
