@@ -1,4 +1,4 @@
-\tikzsetnextfilename{Z_SOUDAIS_plan_hoibc.TM}
+\tikzsetnextfilename{Z_SOUDAIS_plan_hoibc_suc.TM}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TM},
@@ -30,7 +30,7 @@
 
     \end{axis}
 \end{tikzpicture}
-\tikzsetnextfilename{Z_SOUDAIS_plan_hoibc.TE}
+\tikzsetnextfilename{Z_SOUDAIS_plan_hoibc_suc.TE}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
             title={Polarisation TE},
