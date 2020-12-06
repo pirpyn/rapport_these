@@ -242,3 +242,20 @@
     \end{coefftable}
   \end{minipage}
 }
+
+\makeatletter
+\DeclareRobustCommand{\textsupsub}[2]{{%
+  \m@th\ensuremath{%
+    ^{\mbox{\scriptsize#1}}%
+    _{\mbox{\scriptsize#2}}%
+  }%
+}}
+\makeatother
+
+% couleur de plot
+\newcommand{\ccio}{blue}
+\newcommand{\cciou}{green}
+\newcommand{\cciu}{orange}
+\newcommand{\ccit}{red}
+\newcommand{\ccitc}{brown}
+\newcommand{\ccis}{purple}
