@@ -19,6 +19,7 @@
         \addplot [color=Gray,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
     \end{axis}
 \end{tikzpicture}
+
 \tikzsetnextfilename{STUPFEL_ABS_Z_CALDERON_CIOE.TE}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[

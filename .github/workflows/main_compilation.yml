@@ -34,3 +34,9 @@ jobs:
         with:
           name: thesis_payen
           path: thesis_payen.*.pdf
+      - name: Upload build dir
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: build_dir
+          path: build/
