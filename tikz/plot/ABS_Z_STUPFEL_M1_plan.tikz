@@ -4,7 +4,7 @@
             title={Polarisation TM},
             ylabel={\(\abs{\hat\mZ(k_x,0)}\)},
             xlabel={\(k_x / k_0 \)},
-            width=0.4\textwidth,
+            width=0.40\textwidth,
             xmin=0,
             xmax=1.8,
             ymin=0.14,
@@ -19,7 +19,6 @@
         \addplot [color=Gray,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
     \end{axis}
 \end{tikzpicture}
-
 \tikzsetnextfilename{STUPFEL_ABS_Z_CALDERON_CIOE.TE}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
@@ -51,4 +50,5 @@
         \addplot [color=Gray,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
         \addlegendentry{CI3\textsubscript{CSU}};
     \end{axis}
+
 \end{tikzpicture}

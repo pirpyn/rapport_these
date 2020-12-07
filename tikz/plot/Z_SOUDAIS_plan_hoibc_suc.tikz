@@ -25,7 +25,7 @@
         \addplot [color=Gray, dashed, mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TM.csv};
         % \addlegendentry{CI3\textsubscript{CSU}};
 
-        \addplot [color=GreenYellow, dotted, mark=+] table [col sep=comma, x={kx/k0}, y={CI3*+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TM.csv};
+        \addplot [color=Rhodamine, dotted, mark=+] table [col sep=comma, x={kx/k0}, y={CI3*+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TM.csv};
         % \addlegendentry{CI3\textsupsub{CSU}{*}};
 
     \end{axis}
@@ -57,8 +57,9 @@
         \addplot [color=Gray, dashed, mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TE.csv};
         \addlegendentry{CI3\textsubscript{CSU}};
 
-        \addplot [color=GreenYellow, dotted, mark=+] table [col sep=comma, x={kx/k0}, y={CI3*+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TE.csv};
+        \addplot [color=Rhodamine, dotted, mark=+] table [col sep=comma, x={kx/k0}, y={CI3*+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TE.csv};
         \addlegendentry{CI3\textsupsub{*}{CSU}};
 
     \end{axis}
+
 \end{tikzpicture}
