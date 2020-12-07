@@ -275,21 +275,15 @@
     \FloatBarrier
 
     \begin{prop}
-      Les fonctions \(\qj\) ne sont pas dans \(\Hrot\) ni dans \(\Hdiv\).
+      Les fonctions \(\qj\) ne sont ni dans \(\Hrot(\Gamma)\) ni dans \(\Hdiv(\Gamma)\).
     \end{prop}
     \begin{proof}
+      Nous renvoyons à l'annexe \ref{sec:annexe:Hdiv_Hrot} pour la démonstration des propriétés de compatibilité qui sont les suivantes.
+      Pour être dans \Hdiv, le saut de la composante normale de \(\qj\) à travers l'arête \(\vu_j\) doit être nul (voir la propriété \ref{prop:annex:hdiv_hrot:hdiv}).
+      Pour être dans \Hrot, le saut de la composante tangentielle de \(\qj\) à travers l'arête \(\vu_j\) doit être nul (voir la propriété \ref{prop:annex:hdiv_hrot:hrot}).
 
-
-      \begin{TODO}
-        A faire
-      \end{TODO}
-      La composante tangentielle à l'arête le long d'une arête n'est pas nulle.
-\begin{REM}
-  ???
-\end{REM}
-\begin{REP}
-  à faire
-\end{REP}
+      Or puisque nous divisons par l'aire du triangle alors que la longueur de l'arête est commune aux deux triangles, nous introduisons forcement un saut dès lors que ces deux triangles ne sont pas d'aires égales.
+      On remarque cependant qu'en dehors de ce saut, si l'on calcule la divergence surfacique de cette fonction à l'intérieur d'un triangle, elle est nulle.
     \end{proof}
 
     \begin{prop}
