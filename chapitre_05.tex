@@ -32,10 +32,20 @@ Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}_0^\infty(\RR^3)\cap\Hrot
   \label{eq:unicite:maxwell_ext}
 \end{align}
 
-De plus, les conditions limites considérées sont les conditions de Silver-Müller à l'infini (voir \cite[eq (5.2.24), p.~183]{nedelec_acoustic_2001}) et les conditions de saut sur \(\Gamma\).
-\begin{REM}
-  Pourquoi ne pas les ecrire ? sans ça c'est très vague pas rigoureux du tout
-\end{REM}
+De plus, les conditions limites considérées sont les conditions de Silver-Müller à l'infini (voir \cite[eq (5.2.25), p.~182]{nedelec_acoustic_2001})
+\begin{equation}
+  \label{eq:probleme_initial:CL:silver_muller}
+  \lim_{r\rightarrow\infty} r\left(\vE(r,\theta,\phi) \pvect \vect{e_r} + \vH(r,\theta,\phi) \right) = 0,
+\end{equation}
+où \(\rtp\) sont les coordonnées sphérique d'un point de l'espace et \(\vect{e_r}\) le vecteur unitaire radial et les conditions de saut sur \(\Gamma\)
+\begin{equation}
+  \label{eq:probleme_initial:CL:saut_sur_Gamma}
+  \begin{aligned}
+    \left[\vE_t(\vx)\right]_{|\Gamma} & = 0, & \forall \vx \in \Gamma,
+    \\
+    \left[\vH_t(\vx)\right]_{|\Gamma} & = 0, & \forall \vx \in \Gamma.
+  \end{aligned}
+\end{equation}
 
 \section{Équations de Maxwell à l'intérieur et à l'extérieur de l'objet}
 
@@ -164,6 +174,9 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
       \end{bmatrix}.
     \end{align*}
 
+    Notons que nous n'oublierons pas de considérer les cas où il y a des ondes évanescentes, quand la partie imaginaire de \(\sqrt{k^2-k_x^2-k_y^2}\) devient grande.
+    La présentation théorique que nous avons fait ne traite pas ce cas, même si les calculs numériques ont été faits dans des cas d'ondes évanescentes, y compris pour \(\eps,\mu\) réels.
+
     Notons ici que nous généralisons l'emploi du nom "opérateur de Calderón" dans ce cas, même si la couche de matériau diélectrique n'est pas un ouvert borné. Nous adopterons cette convention dans toute cette thèse. 
     
     La démonstration de ce calcul, ainsi que son extension à un nombre arbitraire de couches est l'objet du chapitre \ref{sec:plan}.
@@ -184,7 +197,7 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
     La démonstration des formules qui suivent, ainsi que leur extension à un nombre arbitraire de couches est l'objet du chapitre \ref{sec:cylindre}.
 
     \subsubsection{Expression de l'opérateur de Calderón quand \(k_z=0\)}
-      Le cas de l'incidence perpendiculaire à l'axe du cylindre simplifie grandement les calculs, car cette matrice est alors diagonale:
+      Le cas de l'incidence perpendiculaire à l'axe du cylindre simplifie grandement les calculs, car le multiplicateur de Fourier de l'opérateur de Calderón est alors diagonal:
 
       \begin{align*}
         (\hat\mZ_n(0))_{11} &= -i\eta\frac{
@@ -206,10 +219,14 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
 
     \subsubsection{Expression de l'opérateur de Calderón pour \(k_z\) quelconque}
 
-      On pose \(k_3 = \sqrt{k^2 - k_z^2}\) que l'on suppose non nul et tel que \(k_z^2 < \Re(k^2)\).
-      Ainsi la partie imaginaire de \(k_3\) reste petite devant sa partie réelle.
-      Dans le cadre de cette thèse, nous avons considéré \(k_z < k_0\).
+      On pose \(k_3 = \sqrt{k^2 - k_z^2}\) que l'on suppose non nul.
+
+%       et tel que \(k_z^2 < \Re(k^2)\).
+%       Ainsi la partie imaginaire de \(k_3\) reste petite devant sa partie réelle.
+%       Dans le cadre de cette thèse, nous avons considéré \(k_z < k_0\).
 \begin{REM}
+  kz < k0 :
+
   important non ? et pourquoi ? on pourrait avoir autre chose ? ça aurait été bien de commenter 
 \end{REM}
 \begin{REP}
@@ -242,6 +259,8 @@ De plus, les conditions limites considérées sont les conditions de Silver-Mül
         \\
         \hat\mZ_n(k_z)_{22} ={}& i\eta\frac{k_3}{k}\Tni.
       \end{align*}
+
+      Comme pour le plan, notons que nous n'oublierons pas de considérer les cas où la partie imaginaire de \(\sqrt{k^2-k_z}\) devient grande, même si la présentation théorique que nous avons fait ne traite pas de ce cas.
 
       On remarque que ces valeurs ne changent pas si on prend n'importe quel couple de solutions linéairement indépendantes de l'équation de Bessel.
 

@@ -53,19 +53,21 @@
   \end{equation}
   \(\Tr\) est l'opérateur de capacité introduit par \cite[p.~200]{nedelec_acoustic_2001}, \(\vn_{B_R}=\frac{1}{R}\vect{OM}\) la normale unitaire sortante à \(B_R\).
 
-  Soit \(V = \lbrace \vect{u} \in (\mathcal{C}_0^\infty(\OO^c_R)\cap\Hrot(\OO^c_R) \rbrace\).
-
-  Quand il est bien posé, le problème \eqref{eq:unicite:maxwell_ext_2} sans source muni de la condition \eqref{eq:unicite:TR} est équivalent à
+  % Quand il est bien posé, le problème \eqref{eq:unicite:maxwell_ext_2} sans source muni de la condition \eqref{eq:unicite:TR} est équivalent à
   % \begin{REM}
   % Quand le problème est bien posé
   % \end{REM}
   \begin{prop}[Formulation variationnelle du problème de Maxwell extérieur sans source]
-    Trouver \(\vE \in V\),
+    Le champ électrique \(\vE\), solution du problème \eqref{eq:unicite:maxwell_ext_2} sans source muni de la condition \eqref{eq:unicite:TR}, est solution du problème
+
+    Soit \(V = \lbrace \vect{u} \in (\mathcal{C}_0^\infty(\OO^c_R)\cap\Hrot(\OO^c_R) \rbrace\).
+
+    Trouver \(\vE \in V\), tel que
     \begin{align*}
       a(\vE,\vect\phi) = 0 && \forall \vect \phi \in V,
     \end{align*}
 
-    où a est la forme sesquilinéaire donnée par
+    où \(a\) est la forme sesquilinéaire donnée par
     \begin{equation*}
       \begin{aligned}
       a(\vE,\vect\phi) &:=  \frac{1}{ik_0} \int_{\OO^c_R} \trot \vE(\vx) \cdot \trot \conj{\vect{\phi}}(\vx) \dd{x} + ik_0\int_{\OO^c_R}\vE(\vx)\cdot\conj{\vect{\phi}}(\vx) \dd{x}
@@ -105,8 +107,11 @@
 
     Réciproque: voir \cite[p.~121, section~5, "SCATTERING PROBLEMS BY A DIELECTRIC OBSTACLE"]{cessenat_mathematical_1996}.
 \begin{REM}
-  quelle motivation pour faire le sens direct et négliger la réciproque ? car l'un n'est pas plus original que l'autre :)  
+  quelle motivation pour faire le sens direct et négliger la réciproque ? car l'un n'est pas plus original que l'autre :)
 \end{REM}
+\begin{REP}
+  Je ne veux pas m'embarquer la dedans, mais prévoir pour la soutenance.
+\end{REP}
   \end{proof}
 
   Le problème n'a pas de source et l'unique solution du problème \eqref{sec:annex:maxwell_equation} si ce dernier est bien posé est \(\vE=\vH=0\).

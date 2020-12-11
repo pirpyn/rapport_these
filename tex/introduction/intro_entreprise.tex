@@ -20,14 +20,7 @@ La complexité numérique (temps de calcul et taille mémoire) requise pour la r
 Il en est de même pour les méthodes surfaciques faisant intervenir des équations intégrales définies sur la surface de l'objet et sur les interfaces entre les matériaux qui les composent. 
 Après discrétisation pour une méthode d’éléments finis de frontière, ce problème se ramène aussi à un système linéaire où l'inconnue représente alors les valeurs discrétisées des composantes tangentielles des champs sur ces surfaces).
 Des études paramétriques (propagation d’incertitudes, variations de la géométrie ou des caractéristiques de l'empilement de matériaux...) nécessitent de très nombreux calculs.
-Mais elles requièrent une précision moindre,
-\begin{REM}
-	une précision moindre: pourquoi ?
-\end{REM}
-\begin{REP}
-	Bruno ?
-\end{REP}
-et des approximations peuvent s'avérer intéressantes.
+Mais se bornant à dégager des tendances, elles requièrent une précision moindre, et des approximations peuvent s'avérer intéressantes.
 La plus connue consiste à remplacer l'empilement de matériaux par une \gls{acr-ci} écrite sur la surface extérieure de l'objet: cette CI, implémentée dans une \gls{acr-ei}, permet de s’affranchir de la résolution des équations de Maxwell dans les matériaux.
 
 La CI la plus simple (Leontovich) relie par une impédance scalaire les composantes tangentielles du champ électrique à celles du champ magnétique.
