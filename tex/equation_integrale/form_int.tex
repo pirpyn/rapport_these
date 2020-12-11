@@ -284,7 +284,7 @@
       
       Pour être dans \(\Hrot\), le saut de la composante tangentielle de \(\qj\) à travers l'arête \(\vu_j\) doit être nul (voir la propriété \ref{prop:annex:hdiv_hrot:hrot}).
 
-      Or puisque nous divisons par l'aire du triangle alors que la longueur de l'arête est commune aux deux triangles, nous introduisons forcement un saut dès lors que ces deux triangles ne sont pas d'aires égales.
+      Or puisque nous divisons par l'aire du triangle alors que la longueur de l'arête est commune aux deux triangles, nous introduisons forcément un saut dès lors que ces deux triangles ne sont pas d'aires égales.
       On remarque cependant qu'en dehors de ce saut, si l'on calcule la divergence surfacique de cette fonction à l'intérieur d'un triangle, elle est nulle.
     \end{proof}
 
@@ -441,7 +441,8 @@
 
   Les équations intégrales s'énoncent alors:
 
-  Soit \(g\) la fonction de Green. Étant donné \((k,\vE^{inc},\vH^{inc})\), on cherche \(\vJ = \vn \pvect \vH, \vK = \vn \pvect \vE \in \Hdiv^{-1/2}{(\Gamma)}\)  tels que pour tout \(\vect{\phi} \in \Hdiv^{-1/2}(\Gamma)\),
+  Soit \(g\) la fonction de Green.
+  Étant donné \((k,\vE^{inc},\vH^{inc})\), on cherche \(\vJ = \vn \pvect \vH, \vK = \vn \pvect \vE \in \Hdiv^{-1/2}{(\Gamma)}\)  tels que pour tout \(\vect{\phi} \in \Hdiv^{-1/2}(\Gamma)\),
 
   l'EFIE s'exprime telle que
   \begin{multline}
@@ -505,6 +506,8 @@
     Par définition on a \(\mLD_{ij} = \int_{\Gamma_h} \LD(\phij)(\vx)\cdot\phii(\vx)\dd{\Gamma}(\vx)\).
 
     De plus, par définition des fonctions \(\phij\), on ne peut pas définir \( \int_{\Gamma_h} \LR(\phii)(\vx) \cdot \phij(\vx) \dd{\Gamma}(\vx)\) puisqu'elles ne sont pas dans \(\Hrot\).
+
+    Notons que ce problème peut être résolu en prenant en compte les sauts engendrés par cet opérateur sur les fonctions de Raviart-Thomas ( \cite{soudais_3d_2017} ) ou d'utiliser d'autres sous-espaces de \(\Hdiv(\Gamma)\), par exemple les fonctions de Buffa-Christiansen ( \cite{yan_accuracy_2013} ) mais ces approches n'ont pas étés considérées.
 
     On projette alors les fonctions \(\phij\) sur les fonctions \(\pj\) grâce aux \(\qj\).
     \begin{defn}[Discrétisation de l'opérateur \(\LR\)]
@@ -656,6 +659,6 @@
   important
 \end{REM} 
   %Nous n'avons pas pu bénéficier des solveurs haute-performance du CEA, optimisés pour les systèmes symétriques. 
-  Les solveurs numériques du CEA étaient en début de thèse optimisés pour des matrices symétriques et nous avons utilisé un solveur maquette avec matrices générales mais dont la structure de données n'a pas été optimisée ( méthodes de compression ACA ou \(\mathcal{H}\)-matrices de \cite{lize_resolution_2014} ).
   
-  Depuis, ces solveurs ont aussi été optimisés pour des matrices non-symétriques mais l'introduction de cette modification dans un code industriel "haute performance" est une tâche complexe qui nécessite un investissement conséquent des équipes en charge de ce solveur, et n'a pas été réalisé à temps dans le cadre de cette thèse.
+  L'introduction de cette modification dans un code industriel "haute performance" est une tâche complexe qui nécessite un investissement conséquent des équipes en charge de ce solveur, et n'a pas été réalisée dans le cadre de cette thèse, dépassant largement le cadre de cette dernière.
+  Nous n'avons donc pas bénéficié des codes optimisés pour un grand nombre d'inconnues ( méthodes de compression ACA ou \(\mathcal{H}\)-matrices de \cite{lize_resolution_2014} ) et présentons des résultats issus d'un code maquette résolvant l'EFIE et la MFIE dans lequel nous avons implémenté la méthode numérique précédente.

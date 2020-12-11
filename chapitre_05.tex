@@ -18,7 +18,7 @@ Dans \(\OO\), on a \(k(\gls{mat-vx})=k_0\sqrt{\gls{phy-eps}(\vx)\gls{phy-mu}(\vx
 
 % Soit \((\vE,\vH)\) dans \((\Hrot(\OO^c)) \times (\Hrot(\OO^c))\) tels que:
 
-Nous utilisons les équations de Maxwell-Helmholtz (Helmholtz car utilisent le nombre d'onde \(k\) et non la pulsation \(\w\)) où les inconnues sont le champ électrique \gls{phy-e} et l'exitation magnétique \gls{phy-h2}, elles se déduisent des équations de Maxwell  (voir annexe \ref{sec:annex:maxwell_equation}). 
+Nous utilisons les équations de Maxwell-Helmholtz (Helmholtz car utilisent le nombre d'onde \(k\) et non la pulsation \(\w\)) où les inconnues sont le champ électrique \gls{phy-e} et l'excitation magnétique \gls{phy-h2}, elles se déduisent des équations de Maxwell  (voir annexe \ref{sec:annex:maxwell_equation}). 
 
 Soit \((\gls{phy-e},\gls{phy-h2})\) dans \((\mathcal{C}_0^\infty(\RR^3)\cap\Hrot(\RR^3))^3\) tels que
 \begin{align}
@@ -183,7 +183,7 @@ où \(\rtp\) sont les coordonnées sphérique d'un point de l'espace et \(\vect{
 
     On remarque que l'opérateur de Calderón n'est pas un opérateur aux dérivées partielles puisque son multiplicateur de Fourier fait intervenir le complexe \(\sqrt{k^2-k_x^2 - k_y^2}\), qui n'est pas un polynôme en $(k_x,k_y)$ et donc, par transformée inverse de Fourier ne peut s'exprimer avec les opérateurs \(\partial/\partial x, \partial / \partial y\).
     Par contre, on peut approcher cet opérateur par un polynôme en \((k_x,k_y)\), voire par une fraction de polynômes, et les CIOE sont issues de cette approximation.
-    Par exemple si on approche ce multiplicateur de Fourier par le quotient \(\frac{Q(k_x,k_y)}{R(k_x,k_y)}\), l'égalité \({\hat v}(k_x,k_y)=\frac{Q(k_x,k_y)}{R(k_x,k_y)}{\hat u}(k_x,k_y)\) se réécrit (même s'il faut des résultats supplémentaires pour que la formulation qui suit lui soit équivalente) \(R(k_x,k_y){\hat v}(k_x,k_y)=Q(k_x,k_y){\hat u}(k_x,k_y)\), qui apres transformée de Fourier inverse relie \(u\) et \(v\) via des opérateurs différentiels.
+    Par exemple si on approche ce multiplicateur de Fourier par le quotient \(\frac{Q(k_x,k_y)}{R(k_x,k_y)}\), l'égalité \({\hat v}(k_x,k_y)=\frac{Q(k_x,k_y)}{R(k_x,k_y)}{\hat u}(k_x,k_y)\) se réécrit (même s'il faut des résultats supplémentaires pour que la formulation qui suit lui soit équivalente) \(R(k_x,k_y){\hat v}(k_x,k_y)=Q(k_x,k_y){\hat u}(k_x,k_y)\), qui après transformée de Fourier inverse relie \(u\) et \(v\) via des opérateurs différentiels.
 
     Cette thèse ne fera cependant qu'utiliser des CIOE déjà écrites.
     Nous renvoyons par exemple à \cite{senior_approximate_1995} pour ce problème.
@@ -307,7 +307,7 @@ où \(\rtp\) sont les coordonnées sphérique d'un point de l'espace et \(\vect{
     \[
       \hat\vE_t = a_0 \hat \vJ
     \]
-    Très facile à mettre en œuvre numériquement, elle est une bonne approximation quelle que soit l'incidence pour des matériaux dont l'indice relatif \(|\sqrt{\eps\mu}|\) est grand devant l'unité (\cite[par.~3, p.421-422]{senior_impedance_1960}).
+    Très facile à mettre en œuvre numériquement, elle est une bonne approximation quelle que soit l'incidence pour des matériaux, dont l'indice relatif \(|\sqrt{\eps\mu}|\) est grand devant l'unité (\cite[par.~3, p.421-422]{senior_impedance_1960}).
 
     Des choix possibles pour \(a_0\) sont alors
     \begin{itemize}
@@ -398,7 +398,7 @@ où \(\rtp\) sont les coordonnées sphérique d'un point de l'espace et \(\vect{
 
   {~}\\{~}
   Nous allons assurer l'unicité de la solution du problème sans source, c'est-à-dire déterminer des \glspl{acr-csu} qui piloteront le choix des paramètres, et par linéarité l'unicité du problème avec source est assurée, sans que les CSU ne changent. 
-  Elles pourront dont être utilisée même si le problème inclus une onde incidente, par exemple dans le chapitre \ref{sec:equation_integrale}.
+  Elles pourront donc être utilisées même si le problème inclut une onde incidente, par exemple dans le chapitre \ref{sec:equation_integrale}.
 
   {~}\\{~}
   Les démonstrations des résultats de cette partie sont l'objet du chapitre \ref{sec:csu}, ainsi les \glspl{acr-csu} des autres CIOE.

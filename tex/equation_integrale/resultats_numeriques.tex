@@ -7,7 +7,8 @@
     \label{fig:ser:cone-sphere-mono-M1}
   \end{figure}
 
-  La figure \ref{fig:ser:cone-sphere-mono-M1} contient la SER monostatique d'un cône-sphère, éclairé depuis le nez, calculée par un code de référence , calculée par un code axis symétrique de type équations intégrales avec éléments finis avec maillage des matériaux et cette SER est comparée avec les SER calculées par le code maquette équations intégrales couplées avec les CIOE CI0 et CI3 où les coefficients sont calculés dans le cadre de l'approximation du plan tangent.
+  La figure \ref{fig:ser:cone-sphere-mono-M1} contient la SER monostatique d'un cône-sphère, éclairé depuis le nez, calculée par un code axis symétrique de type équations intégrales avec maillage des matériaux.
+  Cette SER est comparée avec les SER calculées par le code maquette équations intégrales couplées avec les CIOE CI0 et CI3 où les coefficients sont calculés dans le cadre de l'approximation du plan tangent.
 
   \begin{figure}[!hbt]
     \centering
@@ -17,7 +18,7 @@
   \end{figure}
 
   Il y a 34056 inconnus pour le système linéaire final, pour ce cône-sphère (voir figure \ref{fig:obj:cone-sphere}).
-  Avec une structure de données type matrice complexe pleine sur 64 bits, cela représente au moins 19 Go de mémoire pour le système linéaire seul, et au moins 28 Go cumulativement pour les sous-matrices.
+  Avec une structure de données type matrice complexe pleine sur 64 bits, cela représente environ 19 Gigaoctets de mémoire vive pour le système linéaire final.
 
   % \begin{remark}
   %   La surface étant régulière sans bords, le nombre d'inconnus total est \(N_{éléments}*3/2*2\), \(3/2\) correspondant au rapport arêtes/élements, et \(2\) car pour chaque arête, il y a une inconnue pour chaque champ \(\vE,\vH\).
