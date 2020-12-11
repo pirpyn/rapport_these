@@ -4,8 +4,12 @@
 \textbf{\doctitlefr}
 \end{center}
 \section*{Résumé}
-Nous considérons la diffraction électromagnétique d'un objet modélisé par une condition d'impédance (CI).
-L'originalité de cette thèse est l'établissement de nouvelles conditions suffisantes d'unicité (CSU) pour calculer les coefficients de cette condition aux limites et leur mise en œuvre dans un code équation intégrale.
+Nous considérons le problème de la diffraction électromagnétique d'un objet modélisé par une condition d'impédance d'ordre élevée(CIOE) en régime harmonique.
+L'originalité de cette thèse est l'établissement de nouvelles conditions suffisantes d'unicité (CSU) pour calculer les coefficients de ces condition aux limites. Ces CSU garantissent l'unicité des solutions du problème des équations de Maxwell harmoniques.
+Afin d'exprimer l'opérateur de Calderón qui lie les traces tangentielles des champs électromagnétiques à la surface extérieure de l'objet, nous réaliserons des approximations locales de ce dernier par son plan tangent, par un cylindre infini ou par une sphère.
+Les coefficients de la CIOE sont calculés par minimisation sous contraintes de l'erreur entre l'opérateur de Calderón et son approximation par la CIOE.
+Cette minimisation est réalisé sur un nombre d'incidences arbitrairement choisies sur lesquelles on calcule l'opérateur de Calderón.
+Enfin ces CIOE sont implémentés dans un code équation intégrale EFIE-MFIE où les problèmes de discrétisations de opérateurs différentiel de la CIOE seront résolus en réalisant des transformations sur les fonctions de bases des sous-espaces fonctionnels.
 Cette modélisation est validée sur certains objets d'intérêt par comparaison avec des codes de référence.
 \\
 
@@ -20,9 +24,13 @@ Cette modélisation est validée sur certains objets d'intérêt par comparaison
 \textbf{\doctitleeng}
 \end{center}
 \section*{Abstract}
-We consider the electromagnetic scattering from an object modelled by an impedance boundary condition (IBC).
-The originality of this thesis is the exhibition of sufficient uniqueness conditions (SUC) to compute the IBC coefficients and their implementation in a integral equation code.
-The approximated solution is then validated on some objects of interest.
+We consider the problem of the electromagnetic diffraction of an object modeled by a high order impedance boundary condition (HOIBC) in harmonic regime.
+The originality of this thesis is the exhibition of new sufficient uniqueness conditions (SUC) to compute the coefficients of these boundary conditions. These SUC guarantee the uniqueness of the  harmonic Maxwell's equations solutions.
+In order to express the Calderón operator that binds the tangential traces of the electromagnetic fields on the outer surface of the object, we will perform local approximations of the latter by its tangent plane, by an infinite cylinder or by a sphere.
+The HOIBC's coefficients are then calculated by a constrained optimization problem, which minimizes the error between the Calderón operator and its approximation by the HOIBC.
+This minimization is performed on an arbitrary number of arbitrarily chosen incidences angles on which the Calderón operator is computed.
+Finally, these HOIBC are implemented in an integral equation EFIE-MFIE code where the discretization problems of the differential operators of the HOIBC will be solved by performing transformations on the basis functions of the functional subspaces.
+This modeling is validated on some objects of interest by comparison with reference codes.
 \\
 
 \textbf{Keywords}
