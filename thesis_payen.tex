@@ -60,26 +60,24 @@
         \pdfbookmark[0]{Sommaire}{tableofcontent}%
         \tableofcontents
         \cleardoublepage
+        \phantomsection
+        \label{listoffig}
         \addcontentsline{toc}{chapter}{Table des figures}
         \listoffigures
         \include{index}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \mainmatter
         \include{chapitre_0} % intro
-        \include{chapitre_05} % Les maths
-        \include{chapitre_1} % CSU
-        \include{chapitre_2} % Plan
-        \include{chapitre_3} % Cylindre
-        \include{chapitre_4} % Sphere
-        \include{chapitre_5} % Equation intégrales
+        \setcounter{mtc}{3} % "Corrige" les minitocs décallées à cause des chapter* (ex : Intro)
+        \include{chapitre_1} % Les maths
+        \include{chapitre_2} % CSU
+        \include{chapitre_3} % Plan
+        \include{chapitre_4} % Cylindre
+        \include{chapitre_5} % Sphere
+        \include{chapitre_6} % Equation intégrales
         \include{conclusion}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \backmatter
-        \appendix
-        \pagestyle{annexe}
-        % On change la numération des annexes en alphabétique
-        \renewcommand\thesection{\Alph{section}}
-        \setcounter{minitocdepth}{1} % Mini-toc breve (sections)
         \include{annexes}
     % \newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
     \printbibliography

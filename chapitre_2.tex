@@ -1,42 +1,19 @@
-\chapter{Calcul des coefficients pour un plan infini}
-\label{sec:plan}
+\chapter[Unicité des solutions de Maxwell]{Conditions d'unicité des solutions du problème de Maxwell-Helmholtz}
+\label{sec:csu}
 \minitoc
 \newpage
-
 \sectionstar{Introduction}
-Pour déterminer des coefficients complexes satisfaisants aux conditions introduites dans la partie précédente, nous commençons par la méthode de l'approximation du plan tangent, documenté par \cite{hoppe_impedance_1995,marceaux_high-order_2000,aubakirov_electromagnetic_2014}.
-Cette méthode consiste à considérer localement l'objet, supposé régulier, comme son plan tangent comme un plan infini, ce qui reste valable dans le cadre de cette thèse, car nos objets d'études sont parfaitement réguliers.
-
-Nous rappellerons l'opérateur de Calderón exact qui lie les champs électromagnétiques à la surface extérieure de l’objet, ainsi que la condition nécessaire pour l'obtenir.
-Pour des considérations de mise en œuvre numérique, nous présenterons une méthode itérative pour exprimer cet opérateur.
-Cette dernière va ajouter des conditions, dont nous rappellerons qu'elles ne sont à considérer que dans le cadre de cette méthode itérative.
-
-\input{tex/plan/intro}
-\input{tex/plan/exact}
-\input{tex/plan/hoibc}
-\input{tex/plan/minimisation_impedance}
-\input{tex/plan/minimisation_sans_pertes}
-\input{tex/plan/minimisation_fourier}
+Nous présentons ici la contribution principale de la thèse : l'établissement de \glsentrydescplural{acr-csu} des solutions des équations de Maxwell.
+Nous étendons les travaux entamés par \cite{stupfel_sufficient_2011} à une nouvelle \glsentrydesc{acr-cioe}, la \hyperlink{ci3}{CI3}.
+L'établissement de CSU pour cette CIOE est intéressant, car comme nous l'observerons dans les chapitres suivants, elle est bien plus performante que les CIOE de \cite{stupfel_sufficient_2011}.
+\input{tex/unicite/unicite_csug}
+\input{tex/unicite/unicite_csu_2011}
+\input{tex/unicite/unicite_csu_2014}
+\input{tex/unicite/unicite_interieur}
 
 \sectionstar{Conclusion}
-Nous avons proposé une méthode pour calculer des coefficients complexes vérifiant une des CSU choisie, et qui permettent d'approcher l'opérateur de Calderón dans le cas d'un objet plan infini en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées.
-
-Nous avons montré que minimiser l'erreur entre les matrices de réflexion aboutit aux mêmes coefficients de CIOE.
-\begin{REM}
-	donc on a, à un ordre donné, unicité de la CIOE?
-\end{REM}
-\begin{REP}
-  Question à prévoir.
-\end{REP}
-Pour cela, nous avons réalisé une analyse spectrale des équations de Maxwell et montré que la condition d'impédance s'exprime comme un multiplicateur de Fourier matriciel, tout comme la matrice de réflexion.
-Grâce à cette analyse spectrale, nous avons aussi exprimé les CIOE comme des multiplicateurs de Fourier matriciels dont on a déduit la matrice de réflexion associée.
-Nous avons alors exprimé le problème de minimisation sous contraintes et montré que celui-ci a besoin d'être réduit dans le cas d'une couche de matériau sans pertes.
-\begin{REM}
-  en fait, elle est là l’originalité du travail.
-  On ne fait les sempiternelles approximations (Taylor ou Padé), on minimise. C'est ça ?
-\end{REM}
-\begin{REP}
-  Oui ?
-\end{REP}
-Nous avons montré sur cette géométrie que la CIOE choisie, la \hyperlink{ci3}{CI3}, était largement plus précise que les précédentes \hyperlink{ci01}{CI01} et \hyperlink{ci1}{CI1}.
-Ce gain en précision est tel que l'on peut introduire des contraintes lors du calcul et avoir une solution finale convenable, relativement à l'opérateur exact.
+Nous avons réussi à fournir pour plusieurs CIOE des CSU qui permettent de garantir l'unicité des solutions du problème de Maxwell.
+Nous avons vu que ces conditions étaient non-linéaires, s'exprimaient comme des inégalités, des égalités, mais aussi par différences (ex \(z\not=0\)).
+Par contre, elles sont indépendantes de la géométrie et de la fréquence.
+De plus, nous sommes en mesure de calculer l'expression des champs et de l'opérateur d'impédance grâce au calcul en amont d'un déterminant.
+Grâce à cette condition, le problème est bien posé.

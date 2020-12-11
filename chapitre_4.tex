@@ -1,15 +1,18 @@
-\chapter{Calcul des coefficients pour une sphère}
-\label{sec:sphere}
+\chapter{Calcul des coefficients pour un cylindre infini}
+\label{sec:cylindre}
 \minitoc
 \newpage
 \sectionstar{Introduction}
-Après le cylindre, nous présentons la sphère, qui possède une courbure dans deux directions. Cette géométrie présente des résultats similaires au plan et au cylindre, car elle possède une courbure, comme pour le cylindre, et fera donc intervenir des fonctions de Bessel, mais possède une invariance par rotation en plus, comme pour le plan.
+L'introduction de courbures dans les CIOE est un atout majeur, car les objets réels sont rarement plats.
+%De plus ces géométries sont moins documentées et nous n'avons pas trouvé de littérature traitant de \gls{acr-cioe} avec \gls{acr-csu} sur des géométries courbes.
+%Nous présentons dans cette partie le cas d'un cylindre infini, en reprenant largement les résultats du plan.
+Nous considérons ici le cas d’un cylindre infini déjà traité par \cite{hoppe_higher_1994} en reprenant largement les résultats du plan.
 
-\input{tex/sphere/exact}
-\input{tex/sphere/hoibc}
-\input{tex/sphere/minimisation_impedance}
-\input{tex/sphere/minimisation_fourier}
-\input{tex/sphere/resultats_numeriques}
+\input{tex/cylindre/exact}
+\input{tex/cylindre/hoibc}
+\input{tex/cylindre/minimisation_impedance}
+\input{tex/cylindre/minimisation_fourier}
+\input{tex/cylindre/resultats_numeriques}
 
 \sectionstar{Conclusion}
-Nous avons montré comment calculer les coefficients dans le cas d'un objet sphérique en minimisant au sens des moindres carrés la différence entre les coefficients de Mie exacts et approchés. 
+Cette géométrie a pu montrer la limite de la CI3 pour approcher l'impédance exacte et l’on a introduit une meilleure CIOE, mais nous n'avons pas de CSU pour cette dernière. 

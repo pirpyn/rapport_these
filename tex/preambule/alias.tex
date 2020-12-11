@@ -194,16 +194,18 @@
 
 %% avec référence dans la table des matières et les bons en-têtes
 %% il sert pour l'introduction, la page de notations, etc
-\newcommand{\chapterstar}[1]{%
-  \chapter*{#1}%
-  \addcontentsline{toc}{chapter}{#1}%
-  %\markboth{#1}{#1}
-  }
-\newcommand{\sectionstar}[1]{%
-  \section*{#1}%
-  \addcontentsline{toc}{section}{#1}%
-  %\markboth{#1}{#1}
-  }
+\newcommand{\chapterstar}[1]{
+  \phantomsection
+  \chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}
+  \markboth{#1}{#1}
+}
+\newcommand{\sectionstar}[1]{
+  \phantomsection
+  \section*{#1}
+  \addcontentsline{toc}{section}{#1}
+  \markboth{#1}{#1}
+}
 
 \newcommand{\Mmn}[1][{}]{\vect{M_{m,n}^{#1}}}
 \newcommand{\Nmn}[1][{}]{\vect{N_{m,n}^{#1}}}

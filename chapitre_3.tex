@@ -1,18 +1,42 @@
-\chapter{Calcul des coefficients pour un cylindre infini}
-\label{sec:cylindre}
+\chapter{Calcul des coefficients pour un plan infini}
+\label{sec:plan}
 \minitoc
 \newpage
-\sectionstar{Introduction}
-L'introduction de courbures dans les CIOE est un atout majeur, car les objets réels sont rarement plats.
-%De plus ces géométries sont moins documentées et nous n'avons pas trouvé de littérature traitant de \gls{acr-cioe} avec \gls{acr-csu} sur des géométries courbes.
-%Nous présentons dans cette partie le cas d'un cylindre infini, en reprenant largement les résultats du plan.
-Nous considérons ici le cas d’un cylindre infini déjà traité par \cite{hoppe_higher_1994} en reprenant largement les résultats du plan.
 
-\input{tex/cylindre/exact}
-\input{tex/cylindre/hoibc}
-\input{tex/cylindre/minimisation_impedance}
-\input{tex/cylindre/minimisation_fourier}
-\input{tex/cylindre/resultats_numeriques}
+\sectionstar{Introduction}
+Pour déterminer des coefficients complexes satisfaisants aux conditions introduites dans la partie précédente, nous commençons par la méthode de l'approximation du plan tangent, documenté par \cite{hoppe_impedance_1995,marceaux_high-order_2000,aubakirov_electromagnetic_2014}.
+Cette méthode consiste à considérer localement l'objet, supposé régulier, comme son plan tangent comme un plan infini, ce qui reste valable dans le cadre de cette thèse, car nos objets d'études sont parfaitement réguliers.
+
+Nous rappellerons l'opérateur de Calderón exact qui lie les champs électromagnétiques à la surface extérieure de l’objet, ainsi que la condition nécessaire pour l'obtenir.
+Pour des considérations de mise en œuvre numérique, nous présenterons une méthode itérative pour exprimer cet opérateur.
+Cette dernière va ajouter des conditions, dont nous rappellerons qu'elles ne sont à considérer que dans le cadre de cette méthode itérative.
+
+\input{tex/plan/intro}
+\input{tex/plan/exact}
+\input{tex/plan/hoibc}
+\input{tex/plan/minimisation_impedance}
+\input{tex/plan/minimisation_sans_pertes}
+\input{tex/plan/minimisation_fourier}
 
 \sectionstar{Conclusion}
-Cette géométrie a pu montrer la limite de la CI3 pour approcher l'impédance exacte et l’on a introduit une meilleure CIOE, mais nous n'avons pas de CSU pour cette dernière. 
+Nous avons proposé une méthode pour calculer des coefficients complexes vérifiant une des CSU choisie, et qui permettent d'approcher l'opérateur de Calderón dans le cas d'un objet plan infini en minimisant au sens des moindres carrés la différence entre les matrices d'impédance exactes et approchées.
+
+Nous avons montré que minimiser l'erreur entre les matrices de réflexion aboutit aux mêmes coefficients de CIOE.
+\begin{REM}
+	donc on a, à un ordre donné, unicité de la CIOE?
+\end{REM}
+\begin{REP}
+  Question à prévoir.
+\end{REP}
+Pour cela, nous avons réalisé une analyse spectrale des équations de Maxwell et montré que la condition d'impédance s'exprime comme un multiplicateur de Fourier matriciel, tout comme la matrice de réflexion.
+Grâce à cette analyse spectrale, nous avons aussi exprimé les CIOE comme des multiplicateurs de Fourier matriciels dont on a déduit la matrice de réflexion associée.
+Nous avons alors exprimé le problème de minimisation sous contraintes et montré que celui-ci a besoin d'être réduit dans le cas d'une couche de matériau sans pertes.
+\begin{REM}
+  en fait, elle est là l’originalité du travail.
+  On ne fait les sempiternelles approximations (Taylor ou Padé), on minimise. C'est ça ?
+\end{REM}
+\begin{REP}
+  Oui ?
+\end{REP}
+Nous avons montré sur cette géométrie que la CIOE choisie, la \hyperlink{ci3}{CI3}, était largement plus précise que les précédentes \hyperlink{ci01}{CI01} et \hyperlink{ci1}{CI1}.
+Ce gain en précision est tel que l'on peut introduire des contraintes lors du calcul et avoir une solution finale convenable, relativement à l'opérateur exact.

@@ -1,20 +1,15 @@
-\chapter{Contribution des CIOE dans une formulation équation intégrale}
-\label{sec:equation_integrale}
+\chapter{Calcul des coefficients pour une sphère}
+\label{sec:sphere}
 \minitoc
 \newpage
 \sectionstar{Introduction}
-Nous pouvons donc aborder la dernière partie de notre problème pour évaluer la pertinence de notre démarche.
-En effet, c'est en calculant les champs électromagnétiques tangentiels sur la surface de notre objet et en les comparant avec des résultats de référence que nous déterminerons si les CIOE, dont les paramètres ont été déterminés sur des objets modèles, permettent de calculer des SER concordantes avec les résultats de références.
+Après le cylindre, nous présentons la sphère, qui possède une courbure dans deux directions. Cette géométrie présente des résultats similaires au plan et au cylindre, car elle possède une courbure, comme pour le cylindre, et fera donc intervenir des fonctions de Bessel, mais possède une invariance par rotation en plus, comme pour le plan.
 
-Les équations intégrales sont des méthodes bien éprouvées pour résoudre les équations de Maxwell, tel que l'a démontré \cite{nedelec_acoustic_2001}.
-\begin{REM}
-  Je regrette Isabelle Terrasse ne soit pas citée
-\end{REM}
-\begin{REP}
-  Je n'ai pas étudié ses travaux, les ouvrages que j'avais répondant à mes besoins.
-\end{REP}
-Ce chapitre rappelle quelques résultats connus et montre la contribution des \gls{acr-cioe}.
+\input{tex/sphere/exact}
+\input{tex/sphere/hoibc}
+\input{tex/sphere/minimisation_impedance}
+\input{tex/sphere/minimisation_fourier}
+\input{tex/sphere/resultats_numeriques}
 
-\input{tex/equation_integrale/espace_fonctionels}
-\input{tex/equation_integrale/form_int}
-\input{tex/equation_integrale/resultats_numeriques}
+\sectionstar{Conclusion}
+Nous avons montré comment calculer les coefficients dans le cas d'un objet sphérique en minimisant au sens des moindres carrés la différence entre les coefficients de Mie exacts et approchés. 

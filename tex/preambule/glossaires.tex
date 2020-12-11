@@ -2,6 +2,7 @@
 \renewcommand{\glossarysection}[2][1]{%
   \def\theglstoctitle{#2}%
   \par\noindent
+  {\phantomsection\label{\theglstoctitle}}
   {\section*{\theglstoctitle}}
   {\addcontentsline{toc}{section}{\theglstoctitle}}%
 }
