@@ -22,11 +22,13 @@
         \addplot [color=red, mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.11)}] {csv/SOUDAIS/SOUDAIS.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
         % \addlegendentry{CI3};
 
-        \addplot [color=Gray, dashed, mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TM.csv};
+        % \addplot [color=Gray, dashed, mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TM.csv};
+        \addplot [color=Gray, dashed, mark=+] table [col sep=comma, x={s1}, y={Im(z_ibc3.11)}] {csv/SOUDAIS/SOUDAIS.z_ibc.IBC_ibc3_SUC_T_MODE_2_TYPE_P.csv};
         % \addlegendentry{CI3\textsubscript{CSU}};
 
-        \addplot [color=Rhodamine, dotted, mark=+] table [col sep=comma, x={kx/k0}, y={CI3*+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TM.csv};
-        % \addlegendentry{CI3\textsupsub{CSU}{*}};
+        % \addplot [color=Rhodamine, dotted, mark=+] table [col sep=comma, x={kx/k0}, y={CI3*+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TM.csv};
+        \addplot [color=Rhodamine, dotted, mark=+] table [col sep=comma, x={s1}, y={Im(z_ibc3_reduced.11)}] {csv/SOUDAIS/SOUDAIS.z_ibc.IBC_ibc3_reduced_SUC_T_MODE_2_TYPE_P.csv};
+        % \addlegendentry{CI3\textsupsub{*}{CSU}};
 
     \end{axis}
 \end{tikzpicture}
@@ -54,10 +56,12 @@
         \addplot [color=red, mark=diamond*] table [col sep=comma, x={s1}, y={Im(z_ibc3.22)}] {csv/SOUDAIS/SOUDAIS.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
         \addlegendentry{CI3};
 
-        \addplot [color=Gray, dashed, mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TE.csv};
+        % \addplot [color=Gray, dashed, mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TE.csv};
+        \addplot [color=Gray, dashed, mark=+] table [col sep=comma, x={s1}, y={Im(z_ibc3.22)}] {csv/SOUDAIS/SOUDAIS.z_ibc.IBC_ibc3_SUC_T_MODE_2_TYPE_P.csv};
         \addlegendentry{CI3\textsubscript{CSU}};
 
-        \addplot [color=Rhodamine, dotted, mark=+] table [col sep=comma, x={kx/k0}, y={CI3*+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TE.csv};
+        % \addplot [color=Rhodamine, dotted, mark=+] table [col sep=comma, x={kx/k0}, y={CI3*+CSU}]  {csv/SOUDAIS/SOUDAIS.Im_z.exact_ibc.TE.csv};
+        \addplot [color=Rhodamine, dotted, mark=+] table [col sep=comma, x={s1}, y={Im(z_ibc3_reduced.22)}] {csv/SOUDAIS/SOUDAIS.z_ibc.IBC_ibc3_reduced_SUC_T_MODE_2_TYPE_P.csv};
         \addlegendentry{CI3\textsupsub{*}{CSU}};
 
     \end{axis}

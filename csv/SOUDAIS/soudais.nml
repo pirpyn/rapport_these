@@ -29,6 +29,7 @@
   show_iter = .True.,
   max_iter = 1000,
   linesearch_mode = 1,
+  starting_point = "zero",
 /
 
 &OUT

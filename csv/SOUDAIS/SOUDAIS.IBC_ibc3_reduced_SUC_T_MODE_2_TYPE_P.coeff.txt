@@ -7,9 +7,9 @@
   \verb|b2| & \verb| 1.226E+00 +0.000E+00i| \\
 % Verifying the Sufficient Uniqueness Conditions (SUC)
 %    [OK] SUC, Negative inequality constraints, IN <=  1.000E-08
-%    IN(1) = -0.000000E+00 ! -Re(a0*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
-%    IN(2) =  0.000000E+00 !  Re(a1*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
-%    IN(3) =  0.000000E+00 !  Re(a2*.z); z = |a1|^2.|a2|^2 - b1.a0.a1*.|a2|^2 - b2.a0.a2*.|a1|^2
+%    IN(1) = -0.000000E+00 ! -Re(a0*.z); z = 1 - b1.a0/a1 - b2.a0/a2
+%    IN(2) =  0.000000E+00 !  Re(a1*.z); z = 1 - b1.a0/a1 - b2.a0/a2
+%    IN(3) =  0.000000E+00 !  Re(a2*.z); z = 1 - b1.a0/a1 - b2.a0/a2
 %    IN(4) = -0.000000E+00 ! -Re(b1.a1*)
 %    IN(5) = -0.000000E+00 ! -Re(b2.a2*)
 %    IN(6) =  0.000000E+00 !  Re(b1.(a2.a1)*.a0)
