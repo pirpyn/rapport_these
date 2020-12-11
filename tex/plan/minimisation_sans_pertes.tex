@@ -21,16 +21,18 @@ Ainsi, il est facile de voir que l'on a une asymptote à cause de la tangente, e
 % \end{REM}
 Le problème est donc que si nous balayons en incidence et que l'on passe par ce point, alors la matrice \(\hat\mZ\) n'est pas définie en ce point.
 Or comme le gradient de la fonction est fonction de cette matrice, le gradient n'est pas défini pour tout \(X\).
+
 Si l'on utilise une méthode basée sur le gradient de type Newton, ce que nous avons fait, on comprend pourquoi la méthode numérique échoue à calculer des coefficients.
 
-Dans le code numérique, la discrétisation en incidence est linéaire et nous passions par ce point.
-En discrétisant différemment l'incidence, peut-être aurions-nous pu éviter cette difficulté.
+% Dans le code numérique, la discrétisation en incidence est linéaire et nous passions par ce point.
+% En discrétisant différemment l'incidence, peut-être aurions-nous pu éviter cette difficulté.
 \begin{REM}
-et une autre méthode de minimisation
+et une autre méthode de minimisation ?
 \end{REM} 
 \begin{REP}
   Question à prévoir.
 \end{REP}
+
 \subsubsection{Réduction du nombre de variables de la minimisation}
 
 On décompose alors nos matrices et vecteurs en séparant les parties contentant cette asymptote.
@@ -199,9 +201,15 @@ Connaissant les expressions des matrices \(\hat\mLD,\hat\mLR\) introduites dans 
     \label{fig:imp_fourier:plan:stupfel:hoibc_vs_csu}
   \end{figure}
 
-  \begin{TODO}
-    Mettre coeffs figure \ref{fig:imp_fourier:plan:stupfel:hoibc_vs_csu}
-  \end{TODO}
+  \begin{table}[!hbt]
+    \centering
+    \tablecoeff[0.49]{\hyperlink{ci0}{CI0}}{csv/STUPFEL_2/STUPFEL_2.IBC_ibc0_SUC_F_MODE_2_TYPE_P.coeff.txt}
+
+    \tablecoeff[0.49]{\hyperlink{ci3}{CI3}}{csv/STUPFEL_2/STUPFEL_2.IBC_ibc3_SUC_F_MODE_2_TYPE_P.coeff.txt}
+    \tablecoeff[0.49]{\hyperlink{ci3}{CI3 avec CSU}}{csv/STUPFEL_2/STUPFEL_2.IBC_ibc3_SUC_T_MODE_2_TYPE_P.coeff.txt}
+    \caption{Coefficients associés à la figure \ref{fig:imp_fourier:plan:soudais:hoibc_csu}}
+    \label{tab:imp_fourier:plan:soudais:hoibc_csu}
+  \end{table}
 
   \FloatBarrier
 

@@ -1,22 +1,30 @@
 \tikzsetnextfilename{STUPFEL_ABS_Z_CALDERON_CIOE.TM}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
-            title={Polarisation TM},
-            ylabel={\(\abs{\hat\mZ(k_x,0)}\)},
-            xlabel={\(k_x / k_0 \)},
-            width=0.40\textwidth,
-            xmin=0,
-            xmax=1.8,
-            ymin=0.14,
-            ymax=0.34,
-            restrict y to domain=0:0.5,
-            mark repeat=20,
-            legend pos=outer north east
-        ]
-        \addplot [color=black,mark=square*] table [col sep=comma, x={kx/k0}, y={Exact}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
-        \addplot [color=blue,mark=x] table [col sep=comma, x={kx/k0}, y={CI0}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
-        \addplot [color=red,mark=diamond*] table [col sep=comma, x={kx/k0}, y={CI3}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
-        \addplot [color=Gray,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TM.csv};
+        title={Polarisation TM},
+        ylabel={\(\abs{\hat\mZ(k_x,0)}\)},
+        xlabel={\(k_x / k_0 \)},
+        width=0.40\textwidth,
+        xmin=0,
+        xmax=1.8,
+        ymin=0.14,
+        ymax=0.34,
+        restrict y to domain=0:0.5,
+        mark repeat=20,
+        legend pos=outer north east
+    ]
+    \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(z_ex.11)}] {csv/STUPFEL_2/STUPFEL_2.z_ex.MODE_2_TYPE_P.csv};
+    % \addlegendentry{Exact};
+
+    \addplot [color=blue, mark=x] table [col sep=comma, x={s1}, y={Abs(z_ibc0.11)}] {csv/STUPFEL_2/STUPFEL_2.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
+    % \addlegendentry{CI0};
+
+    \addplot [color=red, mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.11)}] {csv/STUPFEL_2/STUPFEL_2.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
+    % \addlegendentry{CI3};
+
+    \addplot [color=Gray,mark=+] table [col sep=comma, x={s1}, y={Abs(z_ibc3.11)}] {csv/STUPFEL_2/STUPFEL_2.z_ibc.IBC_ibc3_SUC_T_MODE_2_TYPE_P.csv};
+    %\addlegendentry{CI3\textsubscript{CSU}};
+
     \end{axis}
 \end{tikzpicture}
 \tikzsetnextfilename{STUPFEL_ABS_Z_CALDERON_CIOE.TE}
@@ -41,14 +49,17 @@
                 /tikz/.cd
             },
         ]
-        \addplot [color=black,mark=square*] table [col sep=comma, x={kx/k0}, y={Exact}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
+        \addplot [color=black,mark=square*] table [col sep=comma, x={s1}, y={Abs(z_ex.22)}] {csv/STUPFEL_2/STUPFEL_2.z_ex.MODE_2_TYPE_P.csv};
         \addlegendentry{Exact};
-        \addplot [color=blue,mark=x] table [col sep=comma, x={kx/k0}, y={CI0}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
-        \addlegendentry{CI0};
-        \addplot [color=red,mark=diamond*] table [col sep=comma, x={kx/k0}, y={CI3}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
-        \addlegendentry{CI3};
-        \addplot [color=Gray,mark=+] table [col sep=comma, x={kx/k0}, y={CI3+CSU}] {csv/STUPFEL/STUPFEL.abs_z.calderon_cioe.TE.csv};
-        \addlegendentry{CI3\textsubscript{CSU}};
-    \end{axis}
 
+        \addplot [color=blue, mark=x] table [col sep=comma, x={s1}, y={Abs(z_ibc0.22)}] {csv/STUPFEL_2/STUPFEL_2.z_ibc.IBC_ibc0_SUC_F_MODE_2_TYPE_P.csv};
+        \addlegendentry{CI0};
+
+        \addplot [color=red, mark=diamond*] table [col sep=comma, x={s1}, y={Abs(z_ibc3.22)}] {csv/STUPFEL_2/STUPFEL_2.z_ibc.IBC_ibc3_SUC_F_MODE_2_TYPE_P.csv};
+        \addlegendentry{CI3};
+
+        \addplot [color=Gray,mark=+] table [col sep=comma, x={s1}, y={Abs(z_ibc3.22)}] {csv/STUPFEL_2/STUPFEL_2.z_ibc.IBC_ibc3_SUC_T_MODE_2_TYPE_P.csv};
+        \addlegendentry{CI3\textsubscript{CSU}};
+
+    \end{axis}
 \end{tikzpicture}

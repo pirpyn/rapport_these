@@ -1,0 +1,38 @@
+&MAIN
+  frequency  =  0.2,
+  s1 = 0., 1.8, 1.6E-2,
+  s2 = 0., 0., 1.E-0,
+  number_of_layer = 1,
+  number_of_hoibc = 4,
+/
+
+&HOIBC
+  name = 'ibc0', 'ibc3', 'ibc3', 'ibc3_reduced'
+  suc  = F, F, T, T
+  type = 'P','P','P','P'
+  mode = 2, 2, 2, 2
+/
+
+&MATERIAL
+  epsr  = (1., -1.),
+  mur   = (1., 0.),
+  thickness =  0.05,
+  loss =  0e-3,
+  initial_impedance =  (0.,0.),
+/
+
+&OPTIM
+  no_constraints = F,
+  show_iter = F,
+  starting_point = "zero"
+/
+
+&OUT
+  basename  = "/home/pirpyn/fhoibc/thesis/STUPFEL_2/STUPFEL_2",
+  z_ex      = true,
+  z_ibc     = true,
+  coeff     = true,
+  r_ex      = true,
+  r_ibc     = true,
+  backend   = "thesis",
+/
