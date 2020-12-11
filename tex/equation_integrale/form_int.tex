@@ -534,15 +534,15 @@
     On déduit de la CIOE que 
     \begin{align*}
         \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)
-        &= \frac{1}{2} \int_{\Gamma_h}  \left( \left(\oI + b_1 \LD - b_2 \LR\right) \vJ (\vx)\right.
+        &= \frac{1}{2} \int_{\Gamma_h}  \left( \left(a_0\oI + a_1 \LD - a_2 \LR\right) \vJ (\vx)\right.
         \\
         & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) \vE_t (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx).
         \intertext{Nous rappelons de \cite[Théorème~5.4.2, p.~209]{nedelec_acoustic_2001} que \((\vE, \vH) \in \Hrot{(\OO)}\) donc  \((\vK=\vn \pvect \vE, \vJ=\vn \pvect \vH) \in \Hdiv{(\Gamma)}\) et \((\vE_t, \vH_t) \in \Hrot{(\Gamma)}\). Cependant, nous avons choisis (voir \cite[eq.~10, p.~1660]{stupfel_implementation_2015}) d'approcher \(\vE_t\) dans \(\Hdiv{(\Gamma_h)}\) pour le décomposer sur les fonctions de Raviart-Thomas. Ainsi}
-        & \simeq \frac{1}{2} \sum_{j=1}^N \int_{\Gamma_h} \left( \left(\oI + b_1 \LD - b_2 \LR\right) I_j \phij (\vx)\right.
+        & \simeq \frac{1}{2} \sum_{j=1}^N \int_{\Gamma_h} \left( \left(a_0\oI + a_1 \LD - a_2 \LR\right) I_j \phij (\vx)\right.
         \\
         & \hspace{5em} \left.  - \left( b_1 \LD - b_2 \LR\right) e_j \phij (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx),
         \intertext{ce qui s'exprime matriciellement}
-        & = \frac{1}{2} \left( \left(\mG{\phi}{\phi} + b_1 \mLD - b_2 \mLR\right) \comp{I}  - \left( b_1 \mLD - b_2 \mLR\right) \comp{e}\right).
+        & = \frac{1}{2} \left( \left(a_0\mG{\phi}{\phi} + a_1 \mLD - a_2 \mLR\right) \comp{I}  - \left( b_1 \mLD - b_2 \mLR\right) \comp{e}\right).
     \end{align*}
 
     Or comme \(\vK = \vn \pvect \vE\), alors
@@ -555,7 +555,7 @@
     \begin{equation*}
       \begin{aligned}
         \frac{1}{2} \int_{\Gamma_h} \vE_t(\vx) \cdot \phii(\vx) \dd{\Gamma}(\vx)
-        & \simeq \frac{1}{2} \left( \left(\mM + b_1 \mLD - b_2 \mLR\right) \comp{I}  - \left( b_1 \mLD - b_2 \mLR\right) \mPP \comp{m}\right).
+        & \simeq \frac{1}{2} \left( \left(a_0\mM + a_1 \mLD - a_2 \mLR\right) \comp{I}  - \left( b_1 \mLD - b_2 \mLR\right) \mPP \comp{k}\right).
       \end{aligned}
     \end{equation*}
 
@@ -571,14 +571,14 @@
       & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx).
       \\
       \intertext{Nous remplaçons \(\vE_t\) par \(-\vn \pvect \vK\) ce qui va simplifier la discrétisation}
-      &= \frac{1}{2a_0}\int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) \vn \pvect \vK (\vx) \right.
+      &= \frac{1}{2a_0}\int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) (\vn \pvect \vK (\vx)) \right.
       \\
       & \hspace{5em} \left.- \left(a_1 \LD - a_2 \LR\right) \vJ (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx),
       \intertext{nous approchons \(\vK\) dans \(\Hdiv{(\Gamma_h)}\) mais nous avons choisi d'approcher \(\vJ\) dans \(\Hrot{(\Gamma_h)}\) au lieu de \(\Hdiv{(\Gamma_h)}\)}
-      & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) k_j \vn \pvect   \phij (\vx) \right.
+      & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_1 \LD - b_2 \LR\right) k_j ( \vn \pvect   \phij (\vx) )\right.
       \\
-      & \hspace{5em} \left. - \left(a_1 \LD - a_2 \LR\right) I_j' \vn \pvect \phij (\vx) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx).
-      \intertext{En remarquant que \(\vn \pvect \phi_i \cdot \vn \pvect \phi_j = \phi_i \cdot \phi_j\) et \(\int_{\Gamma} \LR(\vn \pvect \vect{\phi})\cdot (\vn \pvect \vect{\psi}) = - \int_{\Gamma} \LD(\vect{\phi})\cdot \vect{\psi}\), on déduit}
+      & \hspace{5em} \left. - \left(a_1 \LD - a_2 \LR\right) I_j' (\vn \pvect \phij (\vx)) \right) \cdot (\vn \pvect \phii)(\vx) \dd{\Gamma}(\vx).
+      \intertext{En remarquant que \(\vn \pvect \phii \cdot \vn \pvect \phij = \phii \cdot \phij\) et \(\int_{\Gamma} \LR(\vn \pvect \vect{\phi})\cdot (\vn \pvect \vect{\psi}) = - \int_{\Gamma} \LD(\vect{\phi})\cdot \vect{\psi}\), on déduit}
       & \simeq \frac{1}{2a_0}\sum_{i=1}^N \int_{\Gamma_h} \left( -\left(\oI + b_2 \LD - b_1 \LR\right) k_j \phij (\vx) \right.
       \\
       & \hspace{5em} \left. - \left(a_2 \LD - a_1 \LR\right) I_j' \phij (\vx) \right) \cdot \phii(\vx) \dd{\Gamma}(\vx),
@@ -632,7 +632,7 @@
     On cherche les vecteurs complexes \(\comp{I},\comp{k}\) solution de
     \begin{equation*}
       \begin{bmatrix}
-        \mS +  \frac{1}{2} \left(a_0 \mM + a_1 \mLD - a_2 \mLR\right) & \mSt + \frac{1}{2}\left(b_1 \mLD - b_2 \mLR \right)\mPP \\
+        \mS +  \frac{1}{2} \left(a_0 \mM + a_1 \mLD - a_2 \mLR\right) & \mSt - \frac{1}{2}\left(b_1 \mLD - b_2 \mLR \right)\mPP \\
         \mSt + \frac{1}{2a_0}\left( a_2 \mLD - a_1 \mLR \right)\mPP & -\mS - \frac{1}{2a_0}\left(\mM + b_2 \mLD - b_1 \mLR \right)
       \end{bmatrix}
       \begin{bmatrix}
