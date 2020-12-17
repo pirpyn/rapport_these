@@ -284,47 +284,48 @@
 
 \setlength{\parindent}{0pt} % pas d'alinéa à chaque paragraphe
 
-% Module pour formater du code
-\usepackage{listings}
-    \lstdefinelanguage{modern-fortran}{ % Creation d'un nouveau language
-        language=[08]Fortran,
-        otherkeywords={\%}, % pour les types dérivés
-        deletekeywords=[1]{ IN, OUT, INOUT}, % On enlève ces mots clefs de la catégorie 1
-        deletekeywords=[2]{ SIZE, TYPE, NAME, UNIT}, % de la catégorie 2
-        morekeywords=[1]{}, % On ajoute ces mots clefs à la catégrories 1
-        morekeywords=[2]{in,out,inout},
-    }
-    \lstdefinestyle{fortran}{ % Un nouveau style
-        numbers=none, % pas de numéros de lignes
-        language=modern-fortran, % Le language par défaut
-        basicstyle={\small\ttfamily}, % Style du texte
-        keywordstyle=[1]{\color{purple}}, % style des mots clefs 1
-        keywordstyle=[2]{\color{red}},
-        keywordstyle=[3]{\color{blue}},
-        commentstyle={\color{gray}}, % style des comentaires
-        stringstyle={\color{orange}}, % style des chaines de caratères
-        columns=fixed, % rendue du texte en monospace, espaces compris
-        basewidth={.48em}, % largeur d'un caractère
-        showstringspaces=false, % Ne pas accentuer les espaces dans les chaines de caractères
-    }
-    \lstdefinestyle{shell}{ % Un nouveau style
-        numbers=none, % pas de numéros de lignes
-        language=bash, % Le language par défaut
-        keywords=,
-        basicstyle={\small\ttfamily}, % Style du texte
-        columns=fixed, % rendue du texte en monospace, espaces compris
-        basewidth={.48em}, % largeur d'un caractère
-        showstringspaces=false, % Ne pas accentuer les espaces dans les chaines de caractères
-    }
-    \lstset{ % paramètres par défaut
-        style=fortran, % style
-        literate=% lstlistings ne comprend pas les accents utf8 é à ...
-        {é}{{\'e}}1% Il faut donc les convertir en macros tex et indiquer la taille en caractères du rendu
-        {è}{{\`e}}1%
-        {ê}{{\^e}}1%
-        {à}{{\`a}}1%
-        {à }{{\`a{ }}}2%
-        {â}{{\^a}}1%
-        {ô}{{\^o}}1%
-        {î}{{\^i}}1%
-    }
+% % Module pour formater du code
+% \usepackage{listings}
+%     \lstdefinelanguage{modern-fortran}{ % Creation d'un nouveau language
+%         language=[08]Fortran,
+%         otherkeywords={\%}, % pour les types dérivés
+%         deletekeywords=[1]{ IN, OUT, INOUT}, % On enlève ces mots clefs de la catégorie 1
+%         deletekeywords=[2]{ SIZE, TYPE, NAME, UNIT}, % de la catégorie 2
+%         morekeywords=[1]{}, % On ajoute ces mots clefs à la catégrories 1
+%         morekeywords=[2]{in,out,inout},
+%     }
+%     \lstdefinestyle{fortran}{ % Un nouveau style
+%         numbers=none, % pas de numéros de lignes
+%         language=modern-fortran, % Le language par défaut
+%         basicstyle={\small\ttfamily}, % Style du texte
+%         keywordstyle=[1]{\color{purple}}, % style des mots clefs 1
+%         keywordstyle=[2]{\color{red}},
+%         keywordstyle=[3]{\color{blue}},
+%         commentstyle={\color{gray}}, % style des comentaires
+%         stringstyle={\color{orange}}, % style des chaines de caratères
+%         columns=fixed, % rendue du texte en monospace, espaces compris
+%         basewidth={.48em}, % largeur d'un caractère
+%         showstringspaces=false, % Ne pas accentuer les espaces dans les chaines de caractères
+%     }
+%     \lstdefinestyle{shell}{ % Un nouveau style
+%         numbers=none, % pas de numéros de lignes
+%         language=bash, % Le language par défaut
+%         keywords=,
+%         basicstyle={\small\ttfamily}, % Style du texte
+%         columns=fixed, % rendue du texte en monospace, espaces compris
+%         basewidth={.48em}, % largeur d'un caractère
+%         showstringspaces=false, % Ne pas accentuer les espaces dans les chaines de caractères
+%     }
+%     \lstset{ % paramètres par défaut
+%         style=fortran, % style
+%         literate=% lstlistings ne comprend pas les accents utf8 é à ...
+%         {é}{{\'e}}1% Il faut donc les convertir en macros tex et indiquer la taille en caractères du rendu
+%         {è}{{\`e}}1%
+%         {ê}{{\^e}}1%
+%         {à}{{\`a}}1%
+%         {à }{{\`a{ }}}2%
+%         {â}{{\^a}}1%
+%         {ô}{{\^o}}1%
+%         {î}{{\^i}}1%
+%     }
+
